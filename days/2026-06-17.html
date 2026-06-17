@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-17</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-17 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-17 09:09:26 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论先说在前面：今天真正值得新增写入的重点，不是“大而全的 TSFM”，而是五个更具体的方向：</p>
+        <p>1. 跨装置、少样本、可实时的 Grad-Shafranov 平衡重建，开始从“单装置 surrogate”走向“可迁移的神经算子”。</p>
+        <p>2. 物理约束时序建模 正在从“输出层加 physics loss”转向“潜变量状态本身受物理约束”。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序</a>
+            <ul>
+              <li><a href="#paper-1">01 用工具驱动推理解决不规则时序问答</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / AI 交叉</a>
+            <ul>
+              <li><a href="#paper-5">05 面向跨装置 Grad-Shafranov 平衡的迁移学习神经算子</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-2">02 Phys-JEPA：物理约束潜变量世界模型</a></li>
+              <li><a href="#paper-3">03 面向超大规模强约束系统的概率时序预测</a></li>
+              <li><a href="#paper-4">04 基于铁电存内计算的神经动力系统实时预测</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">用工具驱动推理解决不规则时序问答</a></h3>
+              <p class="card__subtitle">Towards Verifiable Agentic Data Science: Solving Irregular TSQA via Tool-Grounded Reasoning</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序</span>
+                <span class="chip chip--muted">2026-06-13</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>如果你的关注点不只是“预测误差”，还包括 LLM/agent 怎么理解异步采样、缺测成因与时间不齐整，这篇是当前很新的评测基础设施论文。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">Phys-JEPA：物理约束潜变量世界模型</a></h3>
+              <p class="card__subtitle">Phys-JEPA: Physics-Informed Latent World Models for Multivariate Time-Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-15</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>很多“physics-informed forecasting”只在预测输出上加约束，这篇更进一步，直接约束 latent state 和 latent transition，对长期稳定建模更有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">面向超大规模强约束系统的概率时序预测</a></h3>
+              <p class="card__subtitle">Navigating the Safety-Fidelity Trade-off: Massive-Variate Time Series Forecasting for Power Systems via Probabilistic Scenarios</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-11</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>这篇的价值不只在于规模大，更在于它指出了一个会迁移到聚变控制与预警中的现实问题：预测分布好看，不代表物理或运行约束安全。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">基于铁电存内计算的神经动力系统实时预测</a></h3>
+              <p class="card__subtitle">Neural dynamical systems on ferroelectric compute-in-memory for real-time forecasting</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-15</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+              <p>这篇不是再提一个新 backbone，而是把连续时间时序预测直接落到类脑硬件基底上。对任何关心边缘部署、实时诊断、低功耗运行的人都值得看。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">面向跨装置 Grad-Shafranov 平衡的迁移学习神经算子</a></h3>
+              <p class="card__subtitle">Towards Data-Efficient Cross-Device Generalization of Grad-Shafranov Equilibria via Transfer Learning Neural Operator</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / AI 交叉</span>
+                <span class="chip chip--muted">2026-06-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这是今天最值得聚变方向优先看的新增论文。它不再满足于“给某一台装置做一个快 surrogate”，而是直接问：能不能在装置几何变化后，仍然用极少标注样本迁移？</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序</p>
+              <h3>用工具驱动推理解决不规则时序问答</h3>
+              <p class="paper__subtitle">Towards Verifiable Agentic Data Science: Solving Irregular TSQA via Tool-Grounded Reasoning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-13</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如果你的关注点不只是“预测误差”，还包括 LLM/agent 怎么理解异步采样、缺测成因与时间不齐整，这篇是当前很新的评测基础设施论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sanhorn Chen, Xiaoyang Chen, Boyu Liu, Roy Zhao</p>
+                <p class="muted">University of Illinois Urbana-Champaign</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.15107" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.15107" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>如果你的关注点不只是“预测误差”，还包括 LLM/agent 怎么理解异步采样、缺测成因与时间不齐整，这篇是当前很新的评测基础设施论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>当前 TSQA 与时序 agent 工作大多默认输入是规则采样序列，但真实系统中的时序数据往往异步、缺测且缺失机制本身含信息，导致现有评测与现实需求脱节。
+从本日报的选取理由看，如果你的关注点不只是“预测误差”，还包括 LLM/agent 怎么理解异步采样、缺测成因与时间不齐整，这篇是当前很新的评测基础设施论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>当前 TSQA 与时序 agent 工作大多默认输入是规则采样序列，但真实系统中的时序数据往往异步、缺测且缺失机制本身含信息，导致现有评测与现实需求脱节。
+对当前主题的关键意义在于：如果你在做托卡马克诊断信号理解、异步多通道日志分析、LLM+工具的实验数据问答，这篇很相关。它解决的是“如何系统评估模型是否真的懂不规则时序”，而不是“如何把 MSE 再降一点”。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8589d40c3225bf8a.png" alt="Figure 2: Question Generation Pipeline.">
+                    <figcaption>Figure 2: Question Generation Pipeline.</figcaption>
+                  </figure>
+                  <p>提出 IRTS-ToolBench，覆盖 13 个领域、10 类任务、1700 个问题，把不规则时序推理拆成三层能力：标准推理、 irregularity-specific reasoning、 regularity-irregularity interface reasoning。核心新增有三点：
+1. 用 LLM 引导“语义合理”的 regular-to-irregular 变换，而不是简单随机 dropout；
+2. 提供 30 个工具的工具库，包括 irregularity operator 和分析工具；
+3. 用多模型共识生成 golden tool set，支持评测 LLM 与 agent 的工具调用行为。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文不只是建 benchmark，也做了零样本评测。作者报告 Qwen3.6-27B 的总体准确率达到 78.59；Claude-Opus-4.7 在不同设置下总体约 74-77%。工具调用对某些不规则任务有明显帮助，例如 DeepSeek-V4-Flash 在 irregularity severity estimation 上从 31.33 提升到 98.67，regularity recovery 从 64.67 提升到 89.33。这说明当前模型对“不规则性本身”的理解仍然不稳，但工具增强确实有效。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这是 benchmark/agent 评测论文，不是直接提升预测精度的方法；目前以单变量不规则时序问答为主，对多变量科学诊断数据的覆盖仍有限；问题与答案生成大量依赖 LLM 质量控制，未来仍需更多人工与跨社区验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>论文不只是建 benchmark，也做了零样本评测。作者报告 Qwen3.6-27B 的总体准确率达到 78.59；Claude-Opus-4.7 在不同设置下总体约 74-77%。工具调用对某些不规则任务有明显帮助，例如 DeepSeek-V4-Flash 在 irregularity severity estimation 上从 31.33 提升到 98.67，regularity recovery 从 64.67 提升到 89.33。这说明当前模型对“不规则性本身”的理解仍然不稳，但工具增强确实有效。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你在做托卡马克诊断信号理解、异步多通道日志分析、LLM+工具的实验数据问答，这篇很相关。它解决的是“如何系统评估模型是否真的懂不规则时序”，而不是“如何把 MSE 再降一点”。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>面向跨装置 Grad-Shafranov 平衡的迁移学习神经算子</h3>
+              <p class="paper__subtitle">Towards Data-Efficient Cross-Device Generalization of Grad-Shafranov Equilibria via Transfer Learning Neural Operator</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这是今天最值得聚变方向优先看的新增论文。它不再满足于“给某一台装置做一个快 surrogate”，而是直接问：能不能在装置几何变化后，仍然用极少标注样本迁移？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jay Phil Yoo, William Howes, Yashika Ghai, Kazuma Kobayashi, Souvik Chakraborty, Syed Bahauddin Alam</p>
+                <p class="muted">University of Illinois Urbana-Champaign、Oak Ridge National Laboratory、Indian Institute of Technology Delhi、NCSA</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.15512" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.15512" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这是今天最值得聚变方向优先看的新增论文。它不再满足于“给某一台装置做一个快 surrogate”，而是直接问：能不能在装置几何变化后，仍然用极少标注样本迁移？</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>Grad-Shafranov 平衡重建是托卡马克控制、形状重建和稳定性评估的基础，但传统求解器迭代、装置相关、延迟高；现有机器学习 surrogate 往往只能服务于单一装置或固定几何。
+从本日报的选取理由看，这是今天最值得聚变方向优先看的新增论文。它不再满足于“给某一台装置做一个快 surrogate”，而是直接问：能不能在装置几何变化后，仍然用极少标注样本迁移？</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>Grad-Shafranov 平衡重建是托卡马克控制、形状重建和稳定性评估的基础，但传统求解器迭代、装置相关、延迟高；现有机器学习 surrogate 往往只能服务于单一装置或固定几何。
+对当前主题的关键意义在于：这篇对磁约束聚变 AI 很重要，因为它把研究问题从“单装置做快一点”抬高到了“不同装置之间能否迁移复用”。对做平衡重建、digital twin、快速 surrogate、控制导向推理的人都很相关。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bb31d83901e4675d.png" alt="Figure 1: Overview of the Neural Operator framework for MHD equilibrium solving and transfer learning across diverse magnetic configurations. (a) Illustration of a 3D tokamak torus alongside the traditional numerical solver approach, which derives a single profile solution from homogeneous and particular components. The poloidal cross-section defines the plasma boundary via key geometric parameters including inverse aspect ratio ( ϵ \epsilon ), elongation ( κ \kappa ), and triangularity ( δ \delta ). (b) Representative poloidal geometries for the eight configurations studied; target task geometries are highlighted within red dotted boundaries. All geometries are normalized that R ∈ \in [0, 1]. (c) Schematic of the Neural Operator architecture where geometric parameters and the constant A A serve as inputs to directly predict the final magnetic flux solution. (d) Visualization of the multi-head configuration where independent parameters are assigned to specific source tasks. (e) The transfer learning mechanism where black connections represent frozen weights from pre-trained models. Fine-tuning is restricted to the final learnable layers (red) using minimal data from unseen target geometries. This approach transitions from computationally intensive pre-training to near-instantaneous inference and accelerated fine-tuning.">
+                    <figcaption>Figure 1: Overview of the Neural Operator framework for MHD equilibrium solving and transfer learning across diverse magnetic configurations. (a) Illustration of a 3D tokamak torus...</figcaption>
+                  </figure>
+                  <p>作者把平衡重建表述为 cross-device operator learning 问题，用几何参数和 profile 参数直接映射到 poloidal flux field；基于 Solov'ev 解析族构造跨 8 种 tokamak-like geometry 的受控数据集，并系统比较 FNO、WNO、MIONet、NOMAD、Sp2GNO 五类神经算子在多种迁移学习策略下的表现。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文最核心的发现是：单几何预训练几乎不能可靠迁移，多几何预训练才有数据效率优势。 WNO 的跨几何表现最好，在 100 个目标标注样本下 mean relative L2 error 可低于 4%，完全 fine-tune 后低于 2%；作者还验证了预测磁场满足 divergence-free 条件，并报告四类架构相对并行数值基线达到约 15 到 1124 倍推理加速。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前还是在 Solov'ev 解析平衡家族上的受控研究，不是直接在真实 DIII-D/EAST/ITER 诊断闭环上做 end-to-end 验证；输入输出仍较理想化，离真实实验诊断噪声、边界不确定性和执行器耦合还有距离。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>论文最核心的发现是：单几何预训练几乎不能可靠迁移，多几何预训练才有数据效率优势。 WNO 的跨几何表现最好，在 100 个目标标注样本下 mean relative L2 error 可低于 4%，完全 fine-tune 后低于 2%；作者还验证了预测磁场满足 divergence-free 条件，并报告四类架构相对并行数值基线达到约 15 到 1124 倍推理加速。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>这篇对磁约束聚变 AI 很重要，因为它把研究问题从“单装置做快一点”抬高到了“不同装置之间能否迁移复用”。对做平衡重建、digital twin、快速 surrogate、控制导向推理的人都很相关。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>本轮聚变其他方向的新增情况</h3>
+            </div>
+          </div>
+          <p>控制：截至本轮截止时间，没有检索到明显强于上一版 Robust Control of ECH Deposition Profiles on DIII-D 的新论文，因此不重复展开。</p>
+          <p>诊断 / disruption prediction：没有看到足够新的高质量新增，上一版已重点覆盖的新装置零实验 disruption prediction 等工作暂无明确新版本或新实验更新。</p>
+          <p>快速仿真 / surrogate：今天最强新增就是上面的跨装置神经算子；其他方向没有同等级的新条目。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>Phys-JEPA：物理约束潜变量世界模型</h3>
+              <p class="paper__subtitle">Phys-JEPA: Physics-Informed Latent World Models for Multivariate Time-Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-15</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">很多“physics-informed forecasting”只在预测输出上加约束，这篇更进一步，直接约束 latent state 和 latent transition，对长期稳定建模更有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Weizhi Nie, Weichao Liu, Honglin Guo, Yuting Su</p>
+                <p class="muted">Tianjin University</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.16076" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.16076" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>很多“physics-informed forecasting”只在预测输出上加约束，这篇更进一步，直接约束 latent state 和 latent transition，对长期稳定建模更有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>许多 physics-informed forecasting 方法只约束输出层预测值是否满足物理规律，但生成这些预测的隐藏状态可能依旧缺乏物理结构，长时程时误差容易在 latent transition 中累积。
+从本日报的选取理由看，很多“physics-informed forecasting”只在预测输出上加约束，这篇更进一步，直接约束 latent state 和 latent transition，对长期稳定建模更有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>许多 physics-informed forecasting 方法只约束输出层预测值是否满足物理规律，但生成这些预测的隐藏状态可能依旧缺乏物理结构，长时程时误差容易在 latent transition 中累积。
+对当前主题的关键意义在于：对聚变领域尤其有启发，因为很多托卡马克建模任务都不是“纯统计序列”，而是带明确物理状态变量、耦合关系和守恒结构的动态系统。若你在想“怎样把物理先验放进 latent state，而不是只放进输出损失”，这篇值得精读。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c2c9690b7de50f98.png" alt="Figure 9: Compact DLinear comparison on the completed horizons. DLinear is a strong decomposition-based baseline; these results motivate a full strong-baseline suite before making broad claims against modern forecasting methods.">
+                    <figcaption>Figure 9: Compact DLinear comparison on the completed horizons. DLinear is a strong decomposition-based baseline; these results motivate a full strong-baseline suite before making ...</figcaption>
+                  </figure>
+                  <p>提出 Phys-JEPA，把 JEPA 风格的 latent prediction 用到多变量时序预测中，并把 latent state 分解为 physical component + residual component。模型不只约束静态物理状态对齐，还约束未来 latent physical state 的动态转移一致性，相当于把 physics regularization 从 output space 推进到 predictive latent state space。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 Jena Climate 上，H=24 的 aggregate MSE 从 0.12482 降到 0.12273，温度 MSE 从 0.01892 降到 0.01831；在 Traffic 上，H=192 的 MSE 从 0.800784 降到 0.773873；在 Electricity 上，不同 horizon 最优变体不同，但 H=192 上完整 Phys-JEPA 取得最佳 aggregate 和 target-variable MSE。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>结果提升是稳定但不夸张的“实改进”，不是碾压式领先；实验对象仍以气候、电力、交通等弱到中等物理约束任务为主，离聚变这类强耦合高维动力系统还有距离；作者也明确承认下一步需要更强物理约束问题来验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在 Jena Climate 上，H=24 的 aggregate MSE 从 0.12482 降到 0.12273，温度 MSE 从 0.01892 降到 0.01831；在 Traffic 上，H=192 的 MSE 从 0.800784 降到 0.773873；在 Electricity 上，不同 horizon 最优变体不同，但 H=192 上完整 Phys-JEPA 取得最佳 aggregate 和 target-variable MSE。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变领域尤其有启发，因为很多托卡马克建模任务都不是“纯统计序列”，而是带明确物理状态变量、耦合关系和守恒结构的动态系统。若你在想“怎样把物理先验放进 latent state，而不是只放进输出损失”，这篇值得精读。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>面向超大规模强约束系统的概率时序预测</h3>
+              <p class="paper__subtitle">Navigating the Safety-Fidelity Trade-off: Massive-Variate Time Series Forecasting for Power Systems via Probabilistic Scenarios</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-11</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇的价值不只在于规模大，更在于它指出了一个会迁移到聚变控制与预警中的现实问题：预测分布好看，不代表物理或运行约束安全。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Kaijie Xu, Anqi Wang, Xilin Dai</p>
+                <p class="muted">ZJU-UIUC Institute, Zhejiang University</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.13338" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.13338" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇的价值不只在于规模大，更在于它指出了一个会迁移到聚变控制与预警中的现实问题：预测分布好看，不代表物理或运行约束安全。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>大规模多变量概率预测通常只比较分布精度，但在强约束系统里，预测分布是否把质量放在“不可行/不安全区域” 同样重要；现有 benchmark 和指标很少把这一点作为一等公民。
+从本日报的选取理由看，这篇的价值不只在于规模大，更在于它指出了一个会迁移到聚变控制与预警中的现实问题：预测分布好看，不代表物理或运行约束安全。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>大规模多变量概率预测通常只比较分布精度，但在强约束系统里，预测分布是否把质量放在“不可行/不安全区域” 同样重要；现有 benchmark 和指标很少把这一点作为一等公民。
+对当前主题的关键意义在于：尽管不是聚变论文，但对 disruption prediction、边界预警、控制前风险评估很有借鉴价值。很多聚变 AI 工作也存在同样问题：点预测好看，但采样分布可能覆盖大量不可运行区域，这篇提供了更严肃的思考框架。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3ef26103fc510a22.png" alt="Figure 2: PowerForge architecture. The past series X ∈ ℝ T × C X\in\mathbb{R}^{T\times C} is anchor-subtracted and passed through a channel encoder (multi-scale temporal backbone with kernels { 5 , 25 , 97 } \{5,25,97\} , node and variable embeddings, and a low-rank global mixer). Calendar covariates Z Z are injected as time-aggregated context. A variable-aware decoder produces M M scenario branches with separate P , Q P,Q and V , θ V,\theta heads linked by a causal cross-attention bridge from P ^ , Q ^ \hat{P},\hat{Q} to V , θ V,\theta . The anchor is added back, and pointwise sorting along the scenario axis yields ordered quantile scenarios with quantile-bin weights ω \omega . The model is trained with an ordered-quantile pinball loss ℒ OQ \mathcal{L}_{\mathrm{OQ}} and physics regularisers ℒ phys \mathcal{L}_{\mathrm{phys}} .">
+                    <figcaption>Figure 2: PowerForge architecture. The past series X ∈ ℝ T × C X\in\mathbb{R}^{T\times C} is anchor-subtracted and passed through a channel encoder (multi-scale temporal backbone w...</figcaption>
+                  </figure>
+                  <p>提出 PowerPhase 概率预测 benchmark，覆盖 6 个输电网络、2,000 到 36,964 个联合预测通道，并加入 Safety_mBrier、NECV、CVaR 等约束感知指标。方法上提出 PowerForge：场景式分位数预测器，含 type-specific decoding heads、跨变量组 causal bridge、anchor-delta 电压参数化和 physics regularization。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者指出“分布精度”和“约束安全”对模型排名并不一致，并将其命名为 safety-fidelity trade-off。在最大规模的 PEGASE 9241（36,964 通道）上，PowerForge 在 CRPS、Distortion 与安全指标上全部最优；例如 CRPS 为 0.0077，明显优于 TimePrism 的 0.0112 与 Trans-TempFlow 的 0.0224。消融显示 anchor-delta 参数化是最关键组件。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>场景是电力系统而非聚变装置；模型与指标高度依赖电网电压安全语义，不可直接平移到托卡马克；此外它更强调概率分布与可行性权衡，不是通用时序 backbone 论文。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>作者指出“分布精度”和“约束安全”对模型排名并不一致，并将其命名为 safety-fidelity trade-off。在最大规模的 PEGASE 9241（36,964 通道）上，PowerForge 在 CRPS、Distortion 与安全指标上全部最优；例如 CRPS 为 0.0077，明显优于 TimePrism 的 0.0112 与 Trans-TempFlow 的 0.0224。消融显示 anchor-delta 参数化是最关键组件。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>尽管不是聚变论文，但对 disruption prediction、边界预警、控制前风险评估很有借鉴价值。很多聚变 AI 工作也存在同样问题：点预测好看，但采样分布可能覆盖大量不可运行区域，这篇提供了更严肃的思考框架。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>基于铁电存内计算的神经动力系统实时预测</h3>
+              <p class="paper__subtitle">Neural dynamical systems on ferroelectric compute-in-memory for real-time forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-15</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇不是再提一个新 backbone，而是把连续时间时序预测直接落到类脑硬件基底上。对任何关心边缘部署、实时诊断、低功耗运行的人都值得看。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Keshava Katti, Adithya Selvakumar, Pratik Chaudhari, Deep Jariwala</p>
+                <p class="muted">Electrical & Systems Engineering, University of Pennsylvania</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.16896" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.16896" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇不是再提一个新 backbone，而是把连续时间时序预测直接落到类脑硬件基底上。对任何关心边缘部署、实时诊断、低功耗运行的人都值得看。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>神经动力系统对连续时间预测很有表达力，但在传统数字硬件上顺序更新代价高、能效差，难以进入强实时、低功耗场景。
+从本日报的选取理由看，这篇不是再提一个新 backbone，而是把连续时间时序预测直接落到类脑硬件基底上。对任何关心边缘部署、实时诊断、低功耗运行的人都值得看。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>神经动力系统对连续时间预测很有表达力，但在传统数字硬件上顺序更新代价高、能效差，难以进入强实时、低功耗场景。
+对当前主题的关键意义在于：对需要边缘实时诊断、快采样信号处理、超低功耗预测的人很有参考价值。聚变场景里，高速磁探针、辐射或电流信号的本地快速预处理未来可能正需要这类路线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/526206f7fede7018.png" alt="Figure 6 : Benchmarking results and target application. Benchmarking: (a) Per-neuron per-inference energy of proposed system at frequency of 200 Hz (FerroNDS-200Hz) and 10 kHz (FerroNDS-10kHz) compared to other single-board computers and neuromorphic processors [ 44 ] . (b) Cell area versus write energy per bit for five memory technologies. Error bars indicate reported ranges across literature (see Methods). Future Work: (c) Target multi-modal sensing architecture in which frame camera, event camera, and IMU streams (spanning 30 Hz - 10 kHz) are fused through a FerroNDS module that functions as a combined sensor front-end and edge processor for downstream tasks.">
+                    <figcaption>Figure 6 : Benchmarking results and target application. Benchmarking: (a) Per-neuron per-inference energy of proposed system at frequency of 200 Hz (FerroNDS-200Hz) and 10 kHz (Fer...</figcaption>
+                  </figure>
+                  <p>提出 FerroNDS，把两类模拟原语结合起来：时间累积积分器与频率选择振荡器，并映射到多比特 ferrodiode 存内计算硬件上。128 神经元实例可完成短时傅里叶变换并预测 500 ms horizon 的周期、准周期和混沌信号。
+阅读时需要把方法设计与主要结果一起看：作者报告系统实现 sub-watt 实时运行；单神经元单次推理能耗为 1.64 μJ（200 Hz） 与 0.29 μJ（10 kHz）；相对 SRAM 数字系统面积缩减 25-40 倍；单层延迟为 3.18 ms（200 Hz） 与 63.87 μs（10 kHz）。论文声称这是 ferrodiode 首次被端到端集成进类脑计算预测框架。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告系统实现 sub-watt 实时运行；单神经元单次推理能耗为 1.64 μJ（200 Hz） 与 0.29 μJ（10 kHz）；相对 SRAM 数字系统面积缩减 25-40 倍；单层延迟为 3.18 ms（200 Hz） 与 63.87 μs（10 kHz）。论文声称这是 ferrodiode 首次被端到端集成进类脑计算预测框架。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这更像“时序预测硬件路线证明”而不是通用算法论文；任务类型偏周期/准周期/混沌信号，对复杂异构工业时序的适用性还需验证；系统搭建门槛高，普通实验室不易快速复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>作者报告系统实现 sub-watt 实时运行；单神经元单次推理能耗为 1.64 μJ（200 Hz） 与 0.29 μJ（10 kHz）；相对 SRAM 数字系统面积缩减 25-40 倍；单层延迟为 3.18 ms（200 Hz） 与 63.87 μs（10 kHz）。论文声称这是 ferrodiode 首次被端到端集成进类脑计算预测框架。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对需要边缘实时诊断、快采样信号处理、超低功耗预测的人很有参考价值。聚变场景里，高速磁探针、辐射或电流信号的本地快速预处理未来可能正需要这类路线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 聚变 surrogate 的真正分水岭，正在从“单装置快”变成“跨装置可迁移”</h3>
+          <p>今天这轮里最重要的聚变新增不是又一个单点替代求解器，而是 Grad-Shafranov 神经算子的跨几何迁移设定。对未来装置、装置升级、场景变形来说，这比单一 benchmark 上再降一点误差更关键。</p>
+        </article>
+        <article class="trend">
+          <h3>2. physics-informed time series 正在从输出约束走向状态约束</h3>
+          <p>Phys-JEPA 的贡献在于提醒我们：如果内部 latent dynamics 没有物理结构，输出端再加 loss 也可能只是“表面守规矩”。对聚变这类强动力系统问题，这个方向大概率会持续升温。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 不规则时序研究的一个核心瓶颈，已经变成评测与推理协议</h3>
+          <p>今天新增里，不规则时序最值得注意的不是新 forecast backbone，而是 IRTS-ToolBench 这种评测设施。说明社区开始承认：如果评测假设不对，方法进步也容易跑偏。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 高维时序系统的“安全-保真”分离，会越来越重要</h3>
+          <p>PowerForge 虽然来自电力系统，但它指出的 tension 对聚变同样存在：模型可能在 CRPS、MSE 或平均误差上不错，但一旦放到物理约束空间里，预测分布仍可能把大量质量放在危险区域。</p>
+        </article>
+        <article class="trend">
+          <h3>5. 时序 AI 的部署瓶颈正在向硬件共设计转移</h3>
+          <p>FerroNDS 提醒我们，下一阶段“能不能用”未必主要取决于模型结构，而可能取决于它与硬件物理过程是否天然匹配。对于未来实时诊断与边缘控制，这是个值得长期跟踪的信号。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

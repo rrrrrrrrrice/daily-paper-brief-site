@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-15</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-15 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-15 09:04:34 +08:00</p>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">可控核聚变 / AI 交叉</a>
+            <ul>
+              <li><a href="#paper-5">05 TCV 托卡马克平衡重建的实时物理约束代理模型实验验证</a></li>
+              <li><a href="#paper-6">06 DKEKAN：面向托卡马克 NTV 扭矩的快速漂移动理学代理</a></li>
+              <li><a href="#paper-7">07 利用合成诊断增强实现新装置零实验 disruption prediction</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 T2SP：把时间序列表示成结构化程序</a></li>
+              <li><a href="#paper-2">02 UniTok-FM：面向通用时序基础模型的统一 tokenizer</a></li>
+              <li><a href="#paper-3">03 UPLOTS：统一的受约束时间序列生成模型</a></li>
+              <li><a href="#paper-4">04 APEX：面向无线网络运维的原生时间序列基础模型</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">T2SP：把时间序列表示成结构化程序</a></h3>
+              <p class="card__subtitle">Representing Time Series as Structured Programs for LLM Reasoning</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>它不是继续堆 backbone，而是直接重新定义“时间序列如何喂给 LLM”。如果你在想“实验信号 + 自然语言推理 + agent”，这篇很值得看。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">UniTok-FM：面向通用时序基础模型的统一 tokenizer</a></h3>
+              <p class="card__subtitle">Time Series as Language: A Universal Tokenizer for General-Purpose Time Series Foundation Models</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-05-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>这篇比“另一个 forecasting model”更重要，因为它试图回答时间序列基础模型最底层的问题：连续值怎样离散化成可泛化、可多任务复用的 token。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">TCV 托卡马克平衡重建的实时物理约束代理模型实验验证</a></h3>
+              <p class="card__subtitle">Experimental validation of a fast control-oriented, physics-informed surrogate model for plasma equilibrium reconstruction in the TCV tokamak</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / AI 交叉</span>
+                <span class="chip chip--muted">2026-06-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这是本轮最强的聚变交叉论文。它不只是“做了个 surrogate”，而是已经部署进 TCV 实时控制系统，直接打通了 AI 到托卡马克控制链路。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">DKEKAN：面向托卡马克 NTV 扭矩的快速漂移动理学代理</a></h3>
+              <p class="card__subtitle">DKEKAN: A single-parameterized KAN surrogate for Drift Kinetic Equation Toward Fast Neoclassical Toroidal Viscosity Torque Modeling in Tokamaks</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / AI 交叉</span>
+                <span class="chip chip--muted">2026-06-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>它把高成本 DKE 求解压到可接受的运行时间，对集成建模、快速参数扫描、控制前评估都很关键，且数据来源直接绑定 EAST 参数范围。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">利用合成诊断增强实现新装置零实验 disruption prediction</a></h3>
+              <p class="card__subtitle">Experiment-free disruption prediction for new devices enabled by synthetic diagnostic data augmentation</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / AI 交叉</span>
+                <span class="chip chip--muted">2026-06-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>这篇切中 ITER 早期最现实的问题之一：目标装置没有历史破裂数据时，深度模型怎么启动。它比一般 disruption prediction 论文更接近“跨装置冷启动”。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>可控核聚变 / AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>TCV 托卡马克平衡重建的实时物理约束代理模型实验验证</h3>
+              <p class="paper__subtitle">Experimental validation of a fast control-oriented, physics-informed surrogate model for plasma equilibrium reconstruction in the TCV tokamak</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这是本轮最强的聚变交叉论文。它不只是“做了个 surrogate”，而是已经部署进 TCV 实时控制系统，直接打通了 AI 到托卡马克控制链路。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>M. Grandin, A. Mele, C. Galperti, D. Gonzales Castineiras, C. Heiß, A. Cenedese, TCV team, EUROfusion Tokamak Exploitation team</p>
+                <p class="muted">EPFL/TCV 与 EUROfusion 合作团队。</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.09487" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.09487" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这是本轮最强的聚变交叉论文。它不只是“做了个 surrogate”，而是已经部署进 TCV 实时控制系统，直接打通了 AI 到托卡马克控制链路。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>实时形状控制需要高频、高可信的磁平衡重建，但传统重建代码在速度与精度之间难兼得。
+从本日报的选取理由看，这是本轮最强的聚变交叉论文。它不只是“做了个 surrogate”，而是已经部署进 TCV 实时控制系统，直接打通了 AI 到托卡马克控制链路。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>实时形状控制需要高频、高可信的磁平衡重建，但传统重建代码在速度与精度之间难兼得。
+对当前主题的关键意义在于：对平衡重建、实时控制、physics-informed surrogate、数字孪生和控制前端状态估计都极其直接。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/6040e3e2bdd9d98b.png" alt="Figure 7: Closed-loop simulation with the experimental FMag mixed controller operating at 10 kHz. Left: X-point position errors Δ ​ r \Delta r (blue) and Δ ​ z \Delta z (red) in cm. Right: mixed control errors in arbitrary units across controlled channels.">
+                    <figcaption>Figure 7: Closed-loop simulation with the experimental FMag mixed controller operating at 10 kHz. Left: X-point position errors Δ ​ r \Delta r (blue) and Δ ​ z \Delta z (red) in cm...</figcaption>
+                  </figure>
+                  <p>把 liuqe 平衡重建代码蒸馏为物理约束神经网络代理；通过 branch/trunk 结构解耦磁测量编码与空间坐标处理，并借助自动微分对磁通图施加物理正则；模型已编译部署到 TCV 实时控制系统。
+阅读时需要把方法设计与主要结果一起看：基于约 10,000 次 TCV 放电训练；推理时间低于 100 微秒，可支撑 10 kHz 形状控制；离线与实时结果和 liuqe-rt、lih 相当，软件在环闭环测试中也表现出 control-equivalent 行为。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>基于约 10,000 次 TCV 放电训练；推理时间低于 100 微秒，可支撑 10 kHz 形状控制；离线与实时结果和 liuqe-rt、lih 相当，软件在环闭环测试中也表现出 control-equivalent 行为。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前主要验证于 TCV；跨装置泛化、极端异常工况和长期维护成本还需要后续工作。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>基于约 10,000 次 TCV 放电训练；推理时间低于 100 微秒，可支撑 10 kHz 形状控制；离线与实时结果和 liuqe-rt、lih 相当，软件在环闭环测试中也表现出 control-equivalent 行为。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对平衡重建、实时控制、physics-informed surrogate、数字孪生和控制前端状态估计都极其直接。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>DKEKAN：面向托卡马克 NTV 扭矩的快速漂移动理学代理</h3>
+              <p class="paper__subtitle">DKEKAN: A single-parameterized KAN surrogate for Drift Kinetic Equation Toward Fast Neoclassical Toroidal Viscosity Torque Modeling in Tokamaks</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">它把高成本 DKE 求解压到可接受的运行时间，对集成建模、快速参数扫描、控制前评估都很关键，且数据来源直接绑定 EAST 参数范围。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jinpeng Huang, Xingting Yan, Mingyu Zhang, Nana Bao, Zixuan Song, Yuetao Meng, Weiyong Zhou, Youwen Sun</p>
+                <p class="muted">摘要显示数据与参数设置直接基于 EAST，机构请以论文首页为准。</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.10310" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.10310" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>它把高成本 DKE 求解压到可接受的运行时间，对集成建模、快速参数扫描、控制前评估都很关键，且数据来源直接绑定 EAST 参数范围。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>NTV 扭矩对托卡马克转动与稳定性很关键，但 DKE 高维求解成本太高，难以进入自洽集成建模。
+从本日报的选取理由看，它把高成本 DKE 求解压到可接受的运行时间，对集成建模、快速参数扫描、控制前评估都很关键，且数据来源直接绑定 EAST 参数范围。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>NTV 扭矩对托卡马克转动与稳定性很关键，但 DKE 高维求解成本太高，难以进入自洽集成建模。
+对当前主题的关键意义在于：非常适合做集成建模加速、参数扫描、控制前快速物理评估，也能与神经算子路线形成对照。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e4e3b45c56dabc02.png" alt="Figure 2: Architecture of the proposed DKEKAN model. The heterogeneous DKE input groups, including F 1 F_{1} , F 2 F_{2} , C 1 C_{1} , and the real and imaginary components of C 2 C_{2} and C 3 C_{3} , are first processed by deterministic group-wise expert pathways. The resulting latent features are concatenated and then passed to a four-layer SKAN backbone to predict the perturbed distribution functions. The lower panel illustrates the structure of a SKAN neuron and its arctangent-based nonlinear mapping used in the backbone.">
+                    <figcaption>Figure 2: Architecture of the proposed DKEKAN model. The heterogeneous DKE input groups, including F 1 F_{1} , F 2 F_{2} , C 1 C_{1} , and the real and imaginary components of C 2 ...</figcaption>
+                  </figure>
+                  <p>提出单参数 KAN 代理 DKEKAN；先基于第一性原理模拟生成 DKE 参数到解的映射数据，再通过 physics-grouped expert layer 与 SKAN backbone 做快速替代，并与 NTVTOK 框架耦合。
+阅读时需要把方法设计与主要结果一起看：相对测试的 MLP、普通 KAN 和 neural operator baseline，整体预测更准；DKE 单独求解时间从 35.85 秒降到 3.74 秒，约 9.6 倍加速；总耦合 NTVTOK 运行从 38.24 秒降到 5.58 秒，约 6.9 倍加速。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>相对测试的 MLP、普通 KAN 和 neural operator baseline，整体预测更准；DKE 单独求解时间从 35.85 秒降到 3.74 秒，约 9.6 倍加速；总耦合 NTVTOK 运行从 38.24 秒降到 5.58 秒，约 6.9 倍加速。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前更像特定物理子模块的高效代理，离实时闭环控制仍有距离；对超出 EAST 参数分布的泛化能力还需要谨慎评估。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>相对测试的 MLP、普通 KAN 和 neural operator baseline，整体预测更准；DKE 单独求解时间从 35.85 秒降到 3.74 秒，约 9.6 倍加速；总耦合 NTVTOK 运行从 38.24 秒降到 5.58 秒，约 6.9 倍加速。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>非常适合做集成建模加速、参数扫描、控制前快速物理评估，也能与神经算子路线形成对照。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>利用合成诊断增强实现新装置零实验 disruption prediction</h3>
+              <p class="paper__subtitle">Experiment-free disruption prediction for new devices enabled by synthetic diagnostic data augmentation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇切中 ITER 早期最现实的问题之一：目标装置没有历史破裂数据时，深度模型怎么启动。它比一般 disruption prediction 论文更接近“跨装置冷启动”。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhiqiang Liu, Fengming Xue, Shiwei Xue, Bihao Guo, Dalong Chen, Wei Zheng, Ping Zhu</p>
+                <p class="muted">摘要显示实验围绕 EAST 到 J-TEXT 的跨装置迁移，并结合 NIMROD 模拟，机构请以论文首页为准。</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.08462" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.08462" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇切中 ITER 早期最现实的问题之一：目标装置没有历史破裂数据时，深度模型怎么启动。它比一般 disruption prediction 论文更接近“跨装置冷启动”。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>ITER 等新装置最早期没有历史破裂样本，且出于安全原因也不能靠“先积累大量 disruption”再训练深度模型。
+从本日报的选取理由看，这篇切中 ITER 早期最现实的问题之一：目标装置没有历史破裂数据时，深度模型怎么启动。它比一般 disruption prediction 论文更接近“跨装置冷启动”。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>ITER 等新装置最早期没有历史破裂样本，且出于安全原因也不能靠“先积累大量 disruption”再训练深度模型。
+对当前主题的关键意义在于：对 ITER 冷启动、跨装置迁移、simulation-to-experiment 数据融合尤其关键，也很适合作为“AI + synthetic diagnostics”的代表案例。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/310f18c252f82735.jpg" alt="Figure 1: Overview of the proposed zero-shot cross-device transfer framework for tokamak disruption prediction.">
+                    <figcaption>Figure 1: Overview of the proposed zero-shot cross-device transfer framework for tokamak disruption prediction.</figcaption>
+                  </figure>
+                  <p>利用目标装置的合成诊断信号补齐训练分布，把已有装置实验数据与目标装置 synthetic diagnostics 结合，再通过 Fourier Domain Adaptation 做零样本跨装置 disruption prediction。
+阅读时需要把方法设计与主要结果一起看：在 EAST 训练、J-TEXT 零样本测试的实验里，融合目标装置合成诊断后，1,596 次 J-TEXT 放电上的准确早期预警率从 50% 提升到 57%，鲁棒性也有所增强。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 EAST 训练、J-TEXT 零样本测试的实验里，融合目标装置合成诊断后，1,596 次 J-TEXT 放电上的准确早期预警率从 50% 提升到 57%，鲁棒性也有所增强。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>57% 仍不是可以直接上线的工程级精度；性能提升虽然真实，但幅度并不颠覆，且方法依赖合成诊断框架与模拟质量。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在 EAST 训练、J-TEXT 零样本测试的实验里，融合目标装置合成诊断后，1,596 次 J-TEXT 放电上的准确早期预警率从 50% 提升到 57%，鲁棒性也有所增强。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对 ITER 冷启动、跨装置迁移、simulation-to-experiment 数据融合尤其关键，也很适合作为“AI + synthetic diagnostics”的代表案例。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>T2SP：把时间序列表示成结构化程序</h3>
+              <p class="paper__subtitle">Representing Time Series as Structured Programs for LLM Reasoning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">它不是继续堆 backbone，而是直接重新定义“时间序列如何喂给 LLM”。如果你在想“实验信号 + 自然语言推理 + agent”，这篇很值得看。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jaeho Kim, Changhun Oh, Seokhyun Lee, Irina Rish, Changhee Lee</p>
+                <p class="muted">摘要页未完整展示机构，建议以 PDF 首页为准。</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.12481" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.12481" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>它不是继续堆 backbone，而是直接重新定义“时间序列如何喂给 LLM”。如果你在想“实验信号 + 自然语言推理 + agent”，这篇很值得看。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>LLM 对文本和代码推理很强，但对原始数值序列并不天然友好，直接把序列串成字符串通常既低效又不稳。
+从本日报的选取理由看，它不是继续堆 backbone，而是直接重新定义“时间序列如何喂给 LLM”。如果你在想“实验信号 + 自然语言推理 + agent”，这篇很值得看。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>LLM 对文本和代码推理很强，但对原始数值序列并不天然友好，直接把序列串成字符串通常既低效又不稳。
+对当前主题的关键意义在于：对“实验波形解释”“诊断信号问答”“AI 助手读懂 shot 数据”尤其相关，也适合和 agent 系统结合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4b73ac36083a61b1.png" alt="Figure 2: Overview of T2SP . A time series is decomposed into structured components – trend, periods, and events – through a sequential pipeline. Each component, together with its parameters, is expressed as a symbolic abstract representation of the time series. This program-friendly representation, along with a natural language description of each component and an instruction q q , is then passed to an LLM for downstream tasks. For editing, the LLM outputs an edited structural program representation, which is then reconstructed back into a time series, whereas for captioning and reasoning, it produces a natural language response.">
+                    <figcaption>Figure 2: Overview of T2SP . A time series is decomposed into structured components – trend, periods, and events – through a sequential pipeline. Each component, together with its ...</figcaption>
+                  </figure>
+                  <p>提出 T2SP（Time-Series-to-Structured-Program）表示，把趋势、周期、显著事件等时间结构先显式解析，再转成程序式符号表示；重点不是训练更大的模型，而是做一个 deterministic、training-free 的表示层。
+阅读时需要把方法设计与主要结果一起看：在 editing、captioning、question answering 三类时间序列推理任务上，相比原始数值串输入，性能更好、推理更快、失败率更低。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 editing、captioning、question answering 三类时间序列推理任务上，相比原始数值串输入，性能更好、推理更快、失败率更低。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它主要解决“表示与推理接口”问题，不直接给出常规 forecasting benchmark 的提升；对高噪声、多变量、实时控制闭环场景的价值还需要后续验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在 editing、captioning、question answering 三类时间序列推理任务上，相比原始数值串输入，性能更好、推理更快、失败率更低。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对“实验波形解释”“诊断信号问答”“AI 助手读懂 shot 数据”尤其相关，也适合和 agent 系统结合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>UniTok-FM：面向通用时序基础模型的统一 tokenizer</h3>
+              <p class="paper__subtitle">Time Series as Language: A Universal Tokenizer for General-Purpose Time Series Foundation Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-05-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇比“另一个 forecasting model”更重要，因为它试图回答时间序列基础模型最底层的问题：连续值怎样离散化成可泛化、可多任务复用的 token。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yunhao Zhang, Ruiying Qi, Jiale Zheng, Jianfeng Zhang, Lujia Pan, Junchi Yan</p>
+                <p class="muted">作者团队与上海交通大学相关工作线高度一致，但机构请仍以论文首页为准。</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.09861" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.09861" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇比“另一个 forecasting model”更重要，因为它试图回答时间序列基础模型最底层的问题：连续值怎样离散化成可泛化、可多任务复用的 token。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>LLM 的 next-token pretraining 很成功，但连续值时间序列没有天然 token，导致“时间序列即语言”的路线常常停留在口号层面。
+从本日报的选取理由看，这篇比“另一个 forecasting model”更重要，因为它试图回答时间序列基础模型最底层的问题：连续值怎样离散化成可泛化、可多任务复用的 token。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>LLM 的 next-token pretraining 很成功，但连续值时间序列没有天然 token，导致“时间序列即语言”的路线常常停留在口号层面。
+对当前主题的关键意义在于：对做通用时序基础模型、跨任务迁移、诊断序列预训练尤其重要，也可能启发聚变多诊断离散化表示。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/20ce78d2ed622270.png" alt="Figure 2 : Progressive-Resolution Causal Autoencoder. Each block applies causal convolution and attention, allowing each latent vector to attend only to the past. At block s s , the first 2 s − 1 2^{s}-1 vectors are preserved, while the remaining are downsampled/upsampled, yielding a progressive-resolution architecture in which earlier tokens with smaller receptive fields receive finer representations.">
+                    <figcaption>Figure 2 : Progressive-Resolution Causal Autoencoder. Each block applies causal convolution and attention, allowing each latent vector to attend only to the past. At block s s , th...</figcaption>
+                  </figure>
+                  <p>提出 UniTok，把时间序列离散为结构保持型 token；再在 token 上训练 UniTok-FM，使单一模型同时支持 zero-shot / prompt-boosted forecasting、few-shot generation、classification 和 training-free ICL。
+阅读时需要把方法设计与主要结果一起看：在 forecasting、generation、classification 上统一模型取得强竞争力，并声称提供了先前方法没有实现的 training-free in-context inference 能力。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 forecasting、generation、classification 上统一模型取得强竞争力，并声称提供了先前方法没有实现的 training-free in-context inference 能力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前仍需进一步看正文中的 token 长度、重构失真与长时域扩展代价；对不规则采样时间戳的直接支持不如 TS-ICL 那样明确。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在 forecasting、generation、classification 上统一模型取得强竞争力，并声称提供了先前方法没有实现的 training-free in-context inference 能力。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对做通用时序基础模型、跨任务迁移、诊断序列预训练尤其重要，也可能启发聚变多诊断离散化表示。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>UPLOTS：统一的受约束时间序列生成模型</h3>
+              <p class="paper__subtitle">UPLOTS: A Unified Pretrained Language Model for Constrained Time-series Generation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">当前时间序列生成通常一数据集一模型，难以复用，也难以按“峰值时段、日历模式、波动形态”等条件精确控制生成结果。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Du Yin, Hao Xue, Jinliang Deng, Yang Yang, Shuang Ao, Arian Prabowo, Flora Salim</p>
+                <p class="muted">机构以论文首页为准。</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.10466" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.10466" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>当前时间序列生成通常一数据集一模型，难以复用，也难以按“峰值时段、日历模式、波动形态”等条件精确控制生成结果。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>当前时间序列生成通常一数据集一模型，难以复用，也难以按“峰值时段、日历模式、波动形态”等条件精确控制生成结果。
+对当前主题的关键意义在于：对“合成诊断数据”“稀缺实验数据增强”“受约束 shot profile 生成”有潜在借鉴价值。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/acf585a4281b69ff.png" alt="Figure 1 . Conceptual comparison between traditional time-series generation (TSG) methods and our proposed UPLOTS framework. The left (red frame) illustrates the limitations of conventional approaches, including task fragmentation , poor generalization due to the need for dataset-specific models. The right (blue frame) shows the improvements of UPLOTS: a unified training pipeline , cross-domain generalization , and prompt-guided adaptability . The integration of the Time-series Prompt Embedding Module (TPEM, green block) enables UPLOTS to flexibly condition on diverse temporal patterns via prompts.">
+                    <figcaption>Figure 1 . Conceptual comparison between traditional time-series generation (TSG) methods and our proposed UPLOTS framework. The left (red frame) illustrates the limitations of con...</figcaption>
+                  </figure>
+                  <p>使用统一预训练 Transformer backbone，并通过 constraint prompt 实现可控生成；再结合多数据集损失重加权和 prompt-to-pattern mapping，让模型学会跨域共享时间结构。
+阅读时需要把方法设计与主要结果一起看：在四个真实基准与多个受约束生成设定上表现稳定，且在 held-out constraint combination 和下游 forecasting 增强实验中展现出泛化能力；摘要同时给出了匿名代码仓库。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在四个真实基准与多个受约束生成设定上表现稳定，且在 held-out constraint combination 和下游 forecasting 增强实验中展现出泛化能力；摘要同时给出了匿名代码仓库。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前更偏生成与数据增强，不是直接解决不规则采样或控制决策；工程上还需看 prompt 可解释性和条件失配时的鲁棒性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在四个真实基准与多个受约束生成设定上表现稳定，且在 held-out constraint combination 和下游 forecasting 增强实验中展现出泛化能力；摘要同时给出了匿名代码仓库。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对“合成诊断数据”“稀缺实验数据增强”“受约束 shot profile 生成”有潜在借鉴价值。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>APEX：面向无线网络运维的原生时间序列基础模型</h3>
+              <p class="paper__subtitle">APEX: A Network-Native Time-Series Foundation Model for Forecasting and Anomaly Detection for Wireless Edge Operations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-10</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">通用 TSFM 在强 bursty、零膨胀、协议层耦合的真实工业 telemetry 上转移效果不佳。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Swadhin Pradhan, Niloo Bahadori, Peiman Amini</p>
+                <p class="muted">机构以论文首页为准。</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.11553" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.11553" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>通用 TSFM 在强 bursty、零膨胀、协议层耦合的真实工业 telemetry 上转移效果不佳。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>通用 TSFM 在强 bursty、零膨胀、协议层耦合的真实工业 telemetry 上转移效果不佳。
+对当前主题的关键意义在于：对聚变场景的启发不在具体模型结构，而在于“为装置级 telemetry 训练领域原生 TSFM”这一路线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4603778f712ff4f3.jpg" alt="Figure 1: APEX Pipeline. Phase 1 trains on telemetry on cloud. Phase 2 runs inference on AP, transmitting only compact alerts.">
+                    <figcaption>Figure 1: APEX Pipeline. Phase 1 trains on telemetry on cloud. Phase 2 runs inference on AP, transmitting only compact alerts.</figcaption>
+                  </figure>
+                  <p>提出 domain-native 的 decoder-only TSFM，分别给出云侧 APEX-Large 和边端 APEX-Edge，强调从预训练数据分布本身出发，而不是指望通用基础模型包打天下。
+阅读时需要把方法设计与主要结果一起看：在 192-step DHCP degradation 任务上，APEX-Large 相对最强 foundation model baseline 将 MAE 降低 18%，相对 SARIMA 降低 38%，异常检测 F1 达 0.93；APEX-Edge 支持亚秒级边端推理。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 192-step DHCP degradation 任务上，APEX-Large 相对最强 foundation model baseline 将 MAE 降低 18%，相对 SARIMA 降低 38%，异常检测 F1 达 0.93；APEX-Edge 支持亚秒级边端推理。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>领域高度特化，不能直接外推到科学时序；更像“领域原生 TSFM”范式证明，而非可直接迁移的聚变方法。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在 192-step DHCP degradation 任务上，APEX-Large 相对最强 foundation model baseline 将 MAE 降低 18%，相对 SARIMA 降低 38%，异常检测 F1 达 0.93；APEX-Edge 支持亚秒级边端推理。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变场景的启发不在具体模型结构，而在于“为装置级 telemetry 训练领域原生 TSFM”这一路线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 聚变 AI 的高价值位置，正在进一步向“控制前端”和“冷启动部署”集中</h3>
+          <p>TCV surrogate 解决的是实时状态估计，disruption prediction 新作解决的是新装置无历史数据的启动问题，DKEKAN 则在为集成建模与控制前快速物理评估铺路。三篇共同说明：真正有价值的交叉工作，越来越不是泛泛的“AI for fusion”，而是能进入运行链路。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 时序研究的竞争点，正在从 backbone 迁移到“表示层”和“任务接口”</h3>
+          <p>T2SP 和 UniTok-FM 都不是简单换个 Transformer 结构，而是在重新定义时间序列如何表示、如何离散化、如何让 LLM 或基础模型真正理解。这种变化对科学时序尤其重要，因为诊断信号往往需要解释、问答和跨任务迁移，而不只是单一预测。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 生成式时序开始真正服务于数据稀缺问题</h3>
+          <p>UPLOTS 与 disruption prediction 这两条线，分别从“可控生成”和“合成诊断增强”两侧说明：未来值得关注的不是无条件生成多漂亮，而是生成模型能否真正缓解稀缺、偏移和冷启动。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
