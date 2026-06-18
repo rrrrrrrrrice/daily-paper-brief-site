@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-18</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-18 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-18 09:10:57 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论先说在前面：今天最值得新增写入的，不是又一篇泛化大模型综述，而是五个更具体、也更能迁移到你当前研究主线的方向：</p>
+        <p>1. 不规则时序生成 开始明确把“是否观测到”当成建模对象，而不是预处理阶段顺手补掉的缺失。</p>
+        <p>2. 时序预测可解释性 正在从“逐样本优化一个 counterfactual”转向“学习全局一致的干预函数”，更接近实时决策使用场景。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序</a>
+            <ul>
+              <li><a href="#paper-1">01 把 informative missingness 直接纳入不规则临床时序生成</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / AI 交叉</a>
+            <ul>
+              <li><a href="#paper-5">05 LRC-FNO：面向 PIC 模拟的潜变量残差闭包神经算子</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-3">03 Pollen AI Atlas：面向科学显微图像的专家引导多模态基础资源</a></li>
+              <li><a href="#paper-4">04 HLS-GPT：把单像素长时序预训练扩展到大陆尺度遥感重建</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-2">02 ConTex：把逐样本 counterfactual 优化改成全局共享干预函数</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">把 informative missingness 直接纳入不规则临床时序生成</a></h3>
+              <p class="card__subtitle">Informative Missingness to Generate Irregular Clinical Time Series</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序</span>
+                <span class="chip chip--muted">2026-06-14</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>如果你关心不规则时序，今天最关键的新变化不是再换一个插值器，而是承认“没测到”本身就是信号。这篇把缺失机制和数值生成一起建模，方法论上比单纯补齐后再预测更扎实。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">ConTex：把逐样本 counterfactual 优化改成全局共享干预函数</a></h3>
+              <p class="card__subtitle">ConTex: Reformulating Counterfactual Generation For Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>很多解释性工作能“解释”，但根本不适合在线使用。这篇真正有价值的点，是把逐样本优化改写成单次前向即可生成的共享干预函数，对控制、告警和运维决策更有现实意义。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">Pollen AI Atlas：面向科学显微图像的专家引导多模态基础资源</a></h3>
+              <p class="card__subtitle">Million-scale multimodal pollen microscopy with expert-guided foundation models</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-06-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>这篇不是泛泛地说“做了个 multimodal dataset”，而是把显微图像、专家语义锚点和开放 VLM 生成描述真正绑定起来。对科学图像理解、实验诊断图像语义化和可解释基础模型都很有参考价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">HLS-GPT：把单像素长时序预训练扩展到大陆尺度遥感重建</a></h3>
+              <p class="card__subtitle">HLS-GPT: A Generative Pretrained Transformer (GPT) for Continental-Scale NASA Harmonized Landsat and Sentinel-2 (HLS) Reflectance Reconstruction Across All Bands on Arbitrary Dates</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-06-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>它把“任意日期、任意像素、全波段重建”放在同一个单像素长时间序列 GPT 框架里，既是时序建模问题，也是科学观测重建问题。对做长时程不规则观测建模的人，这比常规 benchmark 上再刷一点指标更值得关注。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">LRC-FNO：面向 PIC 模拟的潜变量残差闭包神经算子</a></h3>
+              <p class="card__subtitle">Latent Residual-Closure Fourier Neural Operator for Robust Multi-Field Solving in Particle-in-Cell Simulations</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / AI 交叉</span>
+                <span class="chip chip--muted">2026-06-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这是今天最值得聚变与科学计算方向优先看的新增论文。它不是再做一个“黑盒更快替代”，而是明确把 PIC 场求解拆成 潜变量压缩、粗解预测与残差闭包恢复 三层问题，路线更接近真正可用的物理 surrogate。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序</p>
+              <h3>把 informative missingness 直接纳入不规则临床时序生成</h3>
+              <p class="paper__subtitle">Informative Missingness to Generate Irregular Clinical Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-14</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如果你关心不规则时序，今天最关键的新变化不是再换一个插值器，而是承认“没测到”本身就是信号。这篇把缺失机制和数值生成一起建模，方法论上比单纯补齐后再预测更扎实。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hadi Mehdizavareh, Gabriele Santangelo, Giovanna Nicora, Simon Lebech Cichosz, Arianna Dagliati, Arijit Khan, Riccardo Bellazzi</p>
+                <p class="muted">Aalborg University、University of Pavia、Bowling Green State University</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.17106" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.17106" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>如果你关心不规则时序，今天最关键的新变化不是再换一个插值器，而是承认“没测到”本身就是信号。这篇把缺失机制和数值生成一起建模，方法论上比单纯补齐后再预测更扎实。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>临床时序里的缺失通常不是随机噪声，而是医生决策与病人生理状态共同作用的结果。很多时序方法把缺测当成预处理问题处理掉，反而丢失了“为什么没测”的关键信息。
+从本日报的选取理由看，如果你关心不规则时序，今天最关键的新变化不是再换一个插值器，而是承认“没测到”本身就是信号。这篇把缺失机制和数值生成一起建模，方法论上比单纯补齐后再预测更扎实。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>临床时序里的缺失通常不是随机噪声，而是医生决策与病人生理状态共同作用的结果。很多时序方法把缺测当成预处理问题处理掉，反而丢失了“为什么没测”的关键信息。
+对当前主题的关键意义在于：这篇对你最有价值的地方，在于它把“不规则时序里缺失机制本身应被建模”说得更彻底。对托卡马克诊断、实验日志、异步传感器融合这类场景，这个思路比单纯上更大的 forecasting backbone 更值得跟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8d46e6172c70edc4.png" alt="Figure 1: Real vs. synthetic comparisons: (A) Hemoglobin and (B) White Blood Cells count univariate densities; (C) UMAP embedding of windows using all 26 channels (labs + masks), computed on a random subsample of 500 real and 500 synthetic windows.">
+                    <figcaption>Figure 1: Real vs. synthetic comparisons: (A) Hemoglobin and (B) White Blood Cells count univariate densities; (C) UMAP embedding of windows using all 26 channels (labs + masks), c...</figcaption>
+                  </figure>
+                  <p>作者基于 DACMI / MIMIC-III 数据，把每个实验室指标值与对应观测指示变量配对，扩展 TimeDiff 为同时生成连续数值 + 离散观测模式的扩散模型。关键点不在于“又用了 diffusion”，而在于它显式学习 MNAR-like 的 informative missingness，而不是先补齐再建模。
+阅读时需要把方法设计与主要结果一起看：论文报告生成样本在单变量实验室分布以及“数值-缺失模式”的联合嵌入上都能较好贴近真实病人轨迹，说明模型学到的不只是数值统计，还包括临床检测行为与生理状态之间的依赖关系。作者把它定位为后续临床 foundation model 与 prior-data fitted network 的前置组件，而不是终点模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告生成样本在单变量实验室分布以及“数值-缺失模式”的联合嵌入上都能较好贴近真实病人轨迹，说明模型学到的不只是数值统计，还包括临床检测行为与生理状态之间的依赖关系。作者把它定位为后续临床 foundation model 与 prior-data fitted network 的前置组件，而不是终点模型。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前场景集中在临床实验室时序，离工业传感器、聚变诊断或多模态异步实验数据还有明显距离；结果展示仍以生成真实性为主，不是直接面向预测或控制闭环；同时这还是初版工作，论文也明确把“后续如何利用这些 synthetic priors”留到扩展工作。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>论文报告生成样本在单变量实验室分布以及“数值-缺失模式”的联合嵌入上都能较好贴近真实病人轨迹，说明模型学到的不只是数值统计，还包括临床检测行为与生理状态之间的依赖关系。作者把它定位为后续临床 foundation model 与 prior-data fitted network 的前置组件，而不是终点模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>这篇对你最有价值的地方，在于它把“不规则时序里缺失机制本身应被建模”说得更彻底。对托卡马克诊断、实验日志、异步传感器融合这类场景，这个思路比单纯上更大的 forecasting backbone 更值得跟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>LRC-FNO：面向 PIC 模拟的潜变量残差闭包神经算子</h3>
+              <p class="paper__subtitle">Latent Residual-Closure Fourier Neural Operator for Robust Multi-Field Solving in Particle-in-Cell Simulations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这是今天最值得聚变与科学计算方向优先看的新增论文。它不是再做一个“黑盒更快替代”，而是明确把 PIC 场求解拆成 潜变量压缩、粗解预测与残差闭包恢复 三层问题，路线更接近真正可用的物理 surrogate。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jianhua Lyu, Linlin Zhong</p>
+                <p class="muted">School of Electrical Engineering, Southeast University</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.17733" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.17733" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这是今天最值得聚变与科学计算方向优先看的新增论文。它不是再做一个“黑盒更快替代”，而是明确把 PIC 场求解拆成 潜变量压缩、粗解预测与残差闭包恢复 三层问题，路线更接近真正可用的物理 surrogate。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>PIC 模拟是等离子体与聚变数值实验的重要工具，但密网格上的重复场求解极其耗时。单纯把场解当监督学习回归任务，往往容易牺牲闭环物理一致性与长时程稳定性。
+从本日报的选取理由看，这是今天最值得聚变与科学计算方向优先看的新增论文。它不是再做一个“黑盒更快替代”，而是明确把 PIC 场求解拆成 潜变量压缩、粗解预测与残差闭包恢复 三层问题，路线更接近真正可用的物理 surrogate。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>PIC 模拟是等离子体与聚变数值实验的重要工具，但密网格上的重复场求解极其耗时。单纯把场解当监督学习回归任务，往往容易牺牲闭环物理一致性与长时程稳定性。
+对当前主题的关键意义在于：这篇对聚变 AI 的价值在于，它强调 surrogate 不该只是“更快近似”，而应成为物理一致、能嵌进迭代求解链的模块。对未来做数字孪生、快速场重建、混合数值-学习求解器都很有启发。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/204b0b4559a1615a.png" alt="Figure 2: Overall architecture of LRC-FNO with latent-space and field-space residual closures.">
+                    <figcaption>Figure 2: Overall architecture of LRC-FNO with latent-space and field-space residual closures.</figcaption>
+                  </figure>
+                  <p>作者提出 LRC-FNO，把场求解拆成两级 residual-closure：先由 autoencoder 对粒子沉积源项做潜变量压缩，再由 Latent Closure Refiner 恢复压缩丢失的残差结构；随后用 Coarse-FNO Solver 学主响应，再用 Residual-Closure FNO 做全分辨率修正。它的关键不是“堆更多 FNO”，而是明确引入源项压缩与闭包恢复的结构设计。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 1D linear Landau damping、2D two-stream instability 和 2D SOL fusion plasma 三个层级递进 benchmark 上，LRC-FNO 都比直接回归式方法更稳。对于 SOL 场景，单步预测时自洽电势的相对 L2 error 为 0.0447，磁矢势为 0.0251；更重要的是，把它作为神经初值并配合 20 次迭代修正后，闭环外推可在接近两倍训练时域内保持较好的电荷与电流密度结构一致性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它主要服务于 PIC 场求解与初始化，不是面向 tokamak 控制闭环的端到端模型；验证场景虽包含 SOL fusion plasma，但仍属于受控数值实验；离真实装置诊断噪声、控制执行器耦合和多装置迁移还有明显距离。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在 1D linear Landau damping、2D two-stream instability 和 2D SOL fusion plasma 三个层级递进 benchmark 上，LRC-FNO 都比直接回归式方法更稳。对于 SOL 场景，单步预测时自洽电势的相对 L2 error 为 0.0447，磁矢势为 0.0251；更重要的是，把它作为神经初值并配合 20 次迭代修正后，闭环外推可在接近两倍训练时域内保持较好的电荷与电流密度结构一致性。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>这篇对聚变 AI 的价值在于，它强调 surrogate 不该只是“更快近似”，而应成为物理一致、能嵌进迭代求解链的模块。对未来做数字孪生、快速场重建、混合数值-学习求解器都很有启发。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>本轮聚变其他方向的新增情况</h3>
+            </div>
+          </div>
+          <p>控制：截至本轮截止时间，没有检索到明显强于上一版 Robust Control of ECH Deposition Profiles on DIII-D 的新论文，因此不重复展开。</p>
+          <p>诊断 / disruption prediction：没有看到足够新的高质量新增，上一版已重点覆盖的零实验 disruption prediction 与 runaway electrons 相关工作暂无值得改写判断的新进展。</p>
+          <p>数值 surrogate / solver：今天最强新增就是上面的 LRC-FNO；它和上一轮的跨装置 Grad-Shafranov 神经算子构成了两个不同层面的信号，一个偏装置平衡迁移，一个偏动力学数值求解闭包。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>Pollen AI Atlas：面向科学显微图像的专家引导多模态基础资源</h3>
+              <p class="paper__subtitle">Million-scale multimodal pollen microscopy with expert-guided foundation models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇不是泛泛地说“做了个 multimodal dataset”，而是把显微图像、专家语义锚点和开放 VLM 生成描述真正绑定起来。对科学图像理解、实验诊断图像语义化和可解释基础模型都很有参考价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Andras Biricz, Bjorn Gedda, Donat Magyar, Antonio Spanu, Janos Fillinger, Peter Pollner, Istvan Csabai</p>
+                <p class="muted">ELTE Eotvos Lorand University、Swedish Museum of Natural History、Semmelweis University 等</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.17809" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.17809" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇不是泛泛地说“做了个 multimodal dataset”，而是把显微图像、专家语义锚点和开放 VLM 生成描述真正绑定起来。对科学图像理解、实验诊断图像语义化和可解释基础模型都很有参考价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>花粉显微识别长期受限于制样差异、扫描设备差异和地域分布偏移，导致难以构建既可规模化泛化、又保留学科解释性的自动化系统。
+从本日报的选取理由看，这篇不是泛泛地说“做了个 multimodal dataset”，而是把显微图像、专家语义锚点和开放 VLM 生成描述真正绑定起来。对科学图像理解、实验诊断图像语义化和可解释基础模型都很有参考价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>花粉显微识别长期受限于制样差异、扫描设备差异和地域分布偏移，导致难以构建既可规模化泛化、又保留学科解释性的自动化系统。
+对当前主题的关键意义在于：如果你未来想做科学图像诊断、实验显微图像理解、专家术语驱动的领域 VLM，这篇很值得看。它证明了“专家语言 + 领域图像”可以成为比通用 caption 更有效的基础设施。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c24f1d20d485d594.jpeg" alt="Figure 1: The released captioned pollen-grain dataset is evaluated through complementary corpus-level, caption-level and downstream benchmarks. Corpus assembly is assessed by the number of released detections and expert-curated detection precision. Caption generation is assessed through five-model VLM diagnostics, including prompt compliance, leakage control, vocabulary coverage and text-retrieval performance. Downstream classification uses frozen LVD-ViT-S image features for image-only linear probing, privileged-information training with caption embeddings, and distillation from the privileged-information teacher. Downstream retrieval compares image, text and late-fusion search under leave-origin-out evaluation across 15 shared taxa. Classification reports Top-1 accuracy and Macro-F1; retrieval reports P@20, mAP@20 and MRR.">
+                    <figcaption>Figure 1: The released captioned pollen-grain dataset is evaluated through complementary corpus-level, caption-level and downstream benchmarks. Corpus assembly is assessed by the n...</figcaption>
+                  </figure>
+                  <p>作者构建了 Pollen AI Atlas，把纯种 whole-slide bright-field 图像、专家验证语义锚点以及开放权重 VLM 生成的颗粒级形态描述结合起来。重点不是单纯做 caption，而是让 aperture、表面纹饰、形状、大小等专业语义成为数据组织核心。
+阅读时需要把方法设计与主要结果一起看：数据集最终释放 1,511,390 个花粉颗粒检测，专家测试区域 proposal precision 达 99.6%；在五个开源 VLM 中，Gemma4 给出最可控的主 caption 集；基线检索与分类实验中，冻结视觉特征可达到 88.16% top-1 accuracy，而跨区域检索里文本嵌入在图像相似度下降时仍保持更稳健表现，mAP@20 为 0.811 vs 0.262。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>数据集最终释放 1,511,390 个花粉颗粒检测，专家测试区域 proposal precision 达 99.6%；在五个开源 VLM 中，Gemma4 给出最可控的主 caption 集；基线检索与分类实验中，冻结视觉特征可达到 88.16% top-1 accuracy，而跨区域检索里文本嵌入在图像相似度下降时仍保持更稳健表现，mAP@20 为 0.811 vs 0.262。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这更像“高质量领域资源 + 基线”而非单一 SOTA 模型论文；任务场景专注花粉显微，不一定直接迁移到其他科学影像；文本描述仍有机器生成部分，需要持续依赖专家锚点和质量控制。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>数据集最终释放 1,511,390 个花粉颗粒检测，专家测试区域 proposal precision 达 99.6%；在五个开源 VLM 中，Gemma4 给出最可控的主 caption 集；基线检索与分类实验中，冻结视觉特征可达到 88.16% top-1 accuracy，而跨区域检索里文本嵌入在图像相似度下降时仍保持更稳健表现，mAP@20 为 0.811 vs 0.262。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你未来想做科学图像诊断、实验显微图像理解、专家术语驱动的领域 VLM，这篇很值得看。它证明了“专家语言 + 领域图像”可以成为比通用 caption 更有效的基础设施。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>HLS-GPT：把单像素长时序预训练扩展到大陆尺度遥感重建</h3>
+              <p class="paper__subtitle">HLS-GPT: A Generative Pretrained Transformer (GPT) for Continental-Scale NASA Harmonized Landsat and Sentinel-2 (HLS) Reflectance Reconstruction Across All Bands on Arbitrary Dates</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">它把“任意日期、任意像素、全波段重建”放在同一个单像素长时间序列 GPT 框架里，既是时序建模问题，也是科学观测重建问题。对做长时程不规则观测建模的人，这比常规 benchmark 上再刷一点指标更值得关注。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Junjie Li, Hankui K. Zhang, David P. Roy</p>
+                <p class="muted">South Dakota State University、Michigan State University</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.18115" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.18115" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>它把“任意日期、任意像素、全波段重建”放在同一个单像素长时间序列 GPT 框架里，既是时序建模问题，也是科学观测重建问题。对做长时程不规则观测建模的人，这比常规 benchmark 上再刷一点指标更值得关注。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>现有 Landsat / Sentinel-2 反射率时间序列重建方法，往往受限于波段覆盖不全、空间泛化不足，或只能处理时间上下文很短的 patch 级任务，难以支撑大范围长时程观测重建。
+从本日报的选取理由看，它把“任意日期、任意像素、全波段重建”放在同一个单像素长时间序列 GPT 框架里，既是时序建模问题，也是科学观测重建问题。对做长时程不规则观测建模的人，这比常规 benchmark 上再刷一点指标更值得关注。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>现有 Landsat / Sentinel-2 反射率时间序列重建方法，往往受限于波段覆盖不全、空间泛化不足，或只能处理时间上下文很短的 patch 级任务，难以支撑大范围长时程观测重建。
+对当前主题的关键意义在于：它对你有价值的地方，在于展示了长时程、不规则、跨传感器科学观测完全可以被当成预训练时序建模问题，而不是只做传统插值。对实验诊断重建、缺测补全和大规模科学观测建模都有启发。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>作者提出 HLS-GPT，以单像素 12 个月时间序列为基本建模单元，用层级 Transformer 同时处理 Landsat 和 Sentinel-2 不同波段配置，并通过随机裁剪与随机遮蔽进行大规模预训练，使模型学会在稀疏、不规则观测条件下恢复任意日期、任意像素的全波段反射率。
+阅读时需要把方法设计与主要结果一起看：模型使用超过 0.25 million 个训练像素、9 年 HLS 数据训练，并在 62,000+ 个独立测试像素上评估。留一观测重建实验里，各波段 RMSE 均低于 0.026；可见光相对 RMSE 低于 35%，其他波段低于 13%。在随机遮蔽 10% 到 50% 观测时，all-band RMSE 仍低于 0.028；对 9 个独立大范围影像块的重建结果也优于两种传统方法和 NASA-IBM Prithvi。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>模型使用超过 0.25 million 个训练像素、9 年 HLS 数据训练，并在 62,000+ 个独立测试像素上评估。留一观测重建实验里，各波段 RMSE 均低于 0.026；可见光相对 RMSE 低于 35%，其他波段低于 13%。在随机遮蔽 10% 到 50% 观测时，all-band RMSE 仍低于 0.028；对 9 个独立大范围影像块的重建结果也优于两种传统方法和 NASA-IBM Prithvi。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这是地球观测重建，不是通用时序基础模型；输入单元是单像素时序，因此对跨空间像素关系的利用有限；同时其成功依赖大规模遥感预训练语境，不能简单照搬到小样本实验场景。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>模型使用超过 0.25 million 个训练像素、9 年 HLS 数据训练，并在 62,000+ 个独立测试像素上评估。留一观测重建实验里，各波段 RMSE 均低于 0.026；可见光相对 RMSE 低于 35%，其他波段低于 13%。在随机遮蔽 10% 到 50% 观测时，all-band RMSE 仍低于 0.028；对 9 个独立大范围影像块的重建结果也优于两种传统方法和 NASA-IBM Prithvi。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>它对你有价值的地方，在于展示了长时程、不规则、跨传感器科学观测完全可以被当成预训练时序建模问题，而不是只做传统插值。对实验诊断重建、缺测补全和大规模科学观测建模都有启发。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>ConTex：把逐样本 counterfactual 优化改成全局共享干预函数</h3>
+              <p class="paper__subtitle">ConTex: Reformulating Counterfactual Generation For Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">很多解释性工作能“解释”，但根本不适合在线使用。这篇真正有价值的点，是把逐样本优化改写成单次前向即可生成的共享干预函数，对控制、告警和运维决策更有现实意义。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jan Voets, Hasan Tercan, Tobias Meisen, Sebastian Baum</p>
+                <p class="muted">Institute for Technologies and Management of Digital Transformation, University of Wuppertal</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.18049" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.18049" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>很多解释性工作能“解释”，但根本不适合在线使用。这篇真正有价值的点，是把逐样本优化改写成单次前向即可生成的共享干预函数，对控制、告警和运维决策更有现实意义。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>时序预测模型常常能给出“会发生什么”，却很难告诉使用者“现在改哪里、改多少，才能让未来朝目标状态移动”。现有 counterfactual 方法多数依赖逐样本优化，代价高、结果不稳定，也不适合实时系统。
+从本日报的选取理由看，很多解释性工作能“解释”，但根本不适合在线使用。这篇真正有价值的点，是把逐样本优化改写成单次前向即可生成的共享干预函数，对控制、告警和运维决策更有现实意义。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>时序预测模型常常能给出“会发生什么”，却很难告诉使用者“现在改哪里、改多少，才能让未来朝目标状态移动”。现有 counterfactual 方法多数依赖逐样本优化，代价高、结果不稳定，也不适合实时系统。
+对当前主题的关键意义在于：对聚变控制、运维告警、能耗调度这类应用，真正需要的往往不是“更好解释过去”，而是“实时告诉我怎样改当前状态”。这篇把 counterfactual 从离线分析工具推进到在线策略模块，值得认真看。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>作者把 counterfactual generation 重新表述为学习一个全局一致的 intervention strategy。ConTex 由 temporal context encoder、conditional encoder 和两个干预头组成，分别学习时间相关性与修改强度，从而在单次前向中给出跨时间维与特征维的稀疏、可解释干预。
+阅读时需要把方法设计与主要结果一起看：在多种 forecasting 架构和 benchmark 上，ConTex 报告取得了 state-of-the-art validity，同时能用更少干预维度生成稀疏反事实。更关键的是，它把计算开销降到逐样本优化方法的 1/12 到 1/36，并把单次推理时间压到约 0.007 秒，这才使它真正进入在线决策可用区间。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在多种 forecasting 架构和 benchmark 上，ConTex 报告取得了 state-of-the-art validity，同时能用更少干预维度生成稀疏反事实。更关键的是，它把计算开销降到逐样本优化方法的 1/12 到 1/36，并把单次推理时间压到约 0.007 秒，这才使它真正进入在线决策可用区间。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它解决的是“如何解释并建议干预”，不是直接提高预测精度；反事实质量仍然依赖底层 forecasting 模型是否学到了可信因果结构；如果系统存在强约束物理边界，单靠数据驱动 counterfactual 仍可能给出统计上可行、物理上不可执行的干预方案。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>在多种 forecasting 架构和 benchmark 上，ConTex 报告取得了 state-of-the-art validity，同时能用更少干预维度生成稀疏反事实。更关键的是，它把计算开销降到逐样本优化方法的 1/12 到 1/36，并把单次推理时间压到约 0.007 秒，这才使它真正进入在线决策可用区间。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变控制、运维告警、能耗调度这类应用，真正需要的往往不是“更好解释过去”，而是“实时告诉我怎样改当前状态”。这篇把 counterfactual 从离线分析工具推进到在线策略模块，值得认真看。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 不规则时序的真正增量，正在从“如何补值”转向“如何建模缺失机制”</h3>
+          <p>Informative Missingness to Generate Irregular Clinical Time Series 说明社区开始更严肃地把观测模式本身当作生成对象。对任何异步实验系统，这比继续假设缺测只是噪声更重要。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 时序解释正在从离线诊断工具转成在线决策模块</h3>
+          <p>ConTex 的意义不在解释性口号，而在把 counterfactual 计算复杂度真正压到实时可用区间。对控制和告警系统，这一步比再多一个 saliency map 更实在。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 科学图像基础设施开始摆脱“自然图像迁移够用”的幻觉</h3>
+          <p>Pollen AI Atlas 的价值在于，它把领域专家语言、显微图像与开放 VLM 组织进同一套高质量资源里。未来实验诊断图像理解很可能也需要这种“专家锚点优先”的路线。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 长时程科学观测正在被重写为预训练时间序列问题</h3>
+          <p>HLS-GPT 说明跨传感器、跨季节、稀疏观测的大规模重建，不必只依赖传统插值或 patch-based 方法。单像素长时序预训练这条线值得继续跟。</p>
+        </article>
+        <article class="trend">
+          <h3>5. 聚变 surrogate 的下一阶段，不只是更快，而是更像求解器本身</h3>
+          <p>LRC-FNO 把 surrogate 与迭代求解链路接起来，而不是停在单步拟合误差。这对未来数值-学习混合求解器是更强信号。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
