@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-19</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-19 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-19 09:07:41 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮最值得记住的，不是“又有一篇大而全的 AI 总论”，而是五个更具体的信号：</p>
+        <p>1. 不规则时序异常检测 开始更认真地把连续时间动力学当成默认建模空间，而不是先强行补成规则网格。</p>
+        <p>2. 科学代理模型 的评估标准正在从“点误差够不够低”转向“物理机制有没有真的保住”。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序</a>
+            <ul>
+              <li><a href="#paper-1">01 稀疏不规则多变量时序异常检测的 Latent SDE 路线</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">多任务学习</a>
+            <ul>
+              <li><a href="#paper-3">03 多任务模型合并从参数相加走向 essential subspace</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-4">04 FG-BMK：细粒度图像理解正在暴露 LVLM 的真实短板</a></li>
+              <li><a href="#paper-5">05 OmniAgent：把主动感知直接写成全模态推理循环</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-2">02 用结构偏置检验科学代理模型到底有没有学到动力学</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">稀疏不规则多变量时序异常检测的 Latent SDE 路线</a></h3>
+              <p class="card__subtitle">Anomaly Detection for Sparse and Irregular Multivariate Time Series with Latent SDEs</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序</span>
+                <span class="chip chip--muted">2026-06-17</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>如果你关心真实世界的不规则传感器数据，这篇比常规规则采样 anomaly benchmark 更值得看。它不是先补值再检测，而是把异常检测直接放到连续时间随机动力系统里做，并且明确证明了在高稀疏场景下仍能稳住性能。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">用结构偏置检验科学代理模型到底有没有学到动力学</a></h3>
+              <p class="card__subtitle">Investigating Inductive Biases for Machine Learning Emulation of Sudden Stratospheric Warmings in Idealised Isca Simulations</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>这篇虽然不是聚变论文，但它对“物理代理模型该怎么验”说得很透。核心价值不只是比较 CNN、Transformer、GNN 哪个误差低，而是指出低 forecast error 不等于物理机制被保住，这对任何科学 surrogate 都重要。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">多任务模型合并从参数相加走向 essential subspace</a></h3>
+              <p class="card__subtitle">Essential Subspace Merging for Multi-Task Learning</p>
+              <div class="chip-row">
+                <span class="chip">多任务学习</span>
+                <span class="chip chip--muted">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>多任务学习这轮终于有一篇不是泛泛说“共享表示更好”，而是直接针对模型合并干扰提出结构化解决方案。对已经有多个专家模型、但不想重新训练一个大一统模型的人，这篇实用价值很高。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">FG-BMK：细粒度图像理解正在暴露 LVLM 的真实短板</a></h3>
+              <p class="card__subtitle">Benchmarking Large Vision-Language Models on Fine-Grained Image Tasks: From Evaluation to Diagnosis</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>如果你考虑把通用 VLM 用到科学图像、实验诊断图像或文档图表理解，这篇必须看。它做的不是再堆一个总榜，而是专门回答“模型为什么在细粒度视觉任务上看起来会、其实不会”。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">OmniAgent：把主动感知直接写成全模态推理循环</a></h3>
+              <p class="card__subtitle">Native Active Perception as Reasoning for Omni-Modal Understanding</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>这篇最有意思的点，是不再把长视频/音频理解当成“先全量编码、再用更长 CoT 回答”，而是让模型主动决定下一步去看什么、听什么。对实验监控、复杂时空观测、多传感器诊断都很有迁移想象空间。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序</p>
+              <h3>稀疏不规则多变量时序异常检测的 Latent SDE 路线</h3>
+              <p class="paper__subtitle">Anomaly Detection for Sparse and Irregular Multivariate Time Series with Latent SDEs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-17</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如果你关心真实世界的不规则传感器数据，这篇比常规规则采样 anomaly benchmark 更值得看。它不是先补值再检测，而是把异常检测直接放到连续时间随机动力系统里做，并且明确证明了在高稀疏场景下仍能稳住性能。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Martin Uray, Florian Graf, Dominik Geng, Stefan Huber, Roland Kwitt</p>
+                <p class="muted">Josef Ressel Centre for Intelligent and Secure Industrial Automation, University of Applied Sciences Salzburg；University of Salzburg</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.18898" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.18898" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>如果你关心真实世界的不规则传感器数据，这篇比常规规则采样 anomaly benchmark 更值得看。它不是先补值再检测，而是把异常检测直接放到连续时间随机动力系统里做，并且明确证明了在高稀疏场景下仍能稳住性能。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多变量时序异常检测已经在工业监测、网络安全、金融和医疗等场景用了很多年，但主流深度方法通常默认输入是规则采样、完整观测的序列。现实里大量数据恰恰相反：采样时间不均匀、变量缺测严重、不同通道的观测频率也不一致，因此异常检测模型常常在预处理阶段就丢掉了最关键的时间结构。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>当观测本身是稀疏、不规则甚至部分缺失时，如何不通过粗暴补值而直接学习正常行为分布，并进一步基于这种连续时间正常轨迹识别异常？
+对当前主题的关键意义在于：如果你后面想做聚变装置诊断异常检测、实验运行异常预警或多源时序状态监测，这篇给出的启发是明确的：先把连续时间和缺测机制纳入建模，再谈 detector 头部设计，往往比后端堆更大模型更关键。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3b70cd40100ff772.png" alt="Figure 2 : Overview of the proposed framework: a context window from the QAPPD dataset (three of 15 variates shown) is mapped during inference to a starting point on the target space, here 𝕊 n \mathbb{S}^{n} . From this point, the learned SDE integrates forward to the desired evaluation time steps, and the resulting reconstructions are scored to produce an anomaly metric.">
+                    <figcaption>Figure 2 : Overview of the proposed framework: a context window from the QAPPD dataset (three of 15 variates shown) is mapped during inference to a starting point on the target spa...</figcaption>
+                  </figure>
+                  <p>作者提出基于 Latent SDEs 的生成式方案，把观测序列投影到连续时间随机动力系统中，让潜变量轨迹自然处理不规则采样和缺失观测，同时利用随机微分方程的形式捕捉许多真实系统内在存在的周期性行为。论文还在训练中加入随机子采样掩码，让模型持续暴露于更稀疏的输入，以减轻过拟合并提高对严重缺测场景的鲁棒性。
+阅读时需要把方法设计与主要结果一起看：论文在 6 个异常检测 benchmark 上报告该方法总体排名第一，并明确指出在严重数据稀疏条件下，测试的多个现有基线性能会明显下滑，而 Latent SDE 方案仍保持更稳的表现。作者据此认为，对真实不规则时序而言，连续时间随机动力学是一种比规则网格假设更自然的归纳偏置。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文在 6 个异常检测 benchmark 上报告该方法总体排名第一，并明确指出在严重数据稀疏条件下，测试的多个现有基线性能会明显下滑，而 Latent SDE 方案仍保持更稳的表现。作者据此认为，对真实不规则时序而言，连续时间随机动力学是一种比规则网格假设更自然的归纳偏置。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它解决的是异常检测，不是异常成因诊断或干预建议；同时性能仍依赖“正常行为建模”能否学稳。论文验证场景覆盖工业、医疗等 benchmark，但离托卡马克多诊断通道、控制指令与日志混合数据这类更复杂实验环境还有距离。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇工作的真正增量，不是又换了一个 encoder，而是把不规则观测的异常检测重新放回连续时间动力学语境里考虑。对异步传感器、多源日志和强缺测实验数据，这条线值得继续跟。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后面想做聚变装置诊断异常检测、实验运行异常预警或多源时序状态监测，这篇给出的启发是明确的：先把连续时间和缺测机制纳入建模，再谈 detector 头部设计，往往比后端堆更大模型更关键。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>多任务学习</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多任务学习</p>
+              <h3>多任务模型合并从参数相加走向 essential subspace</h3>
+              <p class="paper__subtitle">Essential Subspace Merging for Multi-Task Learning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">多任务学习这轮终于有一篇不是泛泛说“共享表示更好”，而是直接针对模型合并干扰提出结构化解决方案。对已经有多个专家模型、但不想重新训练一个大一统模型的人，这篇实用价值很高。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Longhua Li, Lei Qi, Xin Geng, Qi Tian</p>
+                <p class="muted">东南大学计算机科学与工程学院；新一代人工智能技术及其交叉应用教育部重点实验室；Huawei Inc.</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.19164" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.19164" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>多任务学习这轮终于有一篇不是泛泛说“共享表示更好”，而是直接针对模型合并干扰提出结构化解决方案。对已经有多个专家模型、但不想重新训练一个大一统模型的人，这篇实用价值很高。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>随着同一底座模型被分别微调成多个专家模型，如何把这些专家重新合并成单一多任务模型，已经成为比从头多任务训练更实际的工程问题。现有 model merging 方法很多依赖参数相加、稀疏裁剪或启发式冲突消解，但任务之间的更新很容易互相污染，尤其当任务数增加时更明显。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如果多个任务微调模型都来自同一个 base model，怎样才能保留各任务真正起作用的功能更新，同时抑制那些单看能量不大、但跨任务叠加后会造成严重干扰的参数方向？
+对当前主题的关键意义在于：如果你后面有“一个底座 + 多个任务专家”的科学工作流，例如不同诊断任务、不同预测头或不同实验模态专家，这篇方法很适合当成低成本多任务整合路线，而不必每次都重新多任务训练一个大模型。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0abe04ecc4a57ce5.png" alt="Figure 2: Overview of ESM, the proposed static training-free model merging method. For each task update, Essential Subspace Decomposition (ESD) first extracts output shift-aware basis and coordinates, then truncates them to the task’s essential components. The retained components from all tasks are concatenated and orthogonalized to reduce cross-task interference, producing a single merged weight matrix added to the pre-trained weight with a global scaling coefficient.">
+                    <figcaption>Figure 2: Overview of ESM, the proposed static training-free model merging method. For each task update, Essential Subspace Decomposition (ESD) first extracts output shift-aware ba...</figcaption>
+                  </figure>
+                  <p>作者提出 Essential Subspace Decomposition (ESD)，不直接在参数空间做低秩分解，而是先分析任务更新带来的输出激活偏移，把能量集中、功能最关键的主方向定义为 essential subspace。在此基础上，ESM 通过对关键子空间做正交化和融合实现训练自由的静态合并；进一步的 ESM++ 则把任务残差拆成低秩 experts，并在推理时按层路由选择最相关的 expert，以保留更强的任务特异性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文在视觉与语言基准上都给出了较强结果。对 9 组视觉模型合并设置，静态版 ESM 取得最佳或并列最佳表现；路由版 ESM++ 在 9 组中的 7 组拿到最优。对 5 个 Llama-3.2-3B 专家模型（instruction、math、coding、multilingual、safety）合并时，ESM++ 的平均分达到 47.41，明显高于 DARE 的 41.82，并接近单任务上限 48.46。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前方法主要适用于同一架构、同一底座出发的模型合并；如果模型来源不同、训练 recipe 差异很大，任务更新未必能在统一的参数与激活空间中直接比较。动态路由版虽然更强，但也引入了 proxy data 与额外路由开销。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇工作的关键，不是“合并后再涨一点分”，而是给 model merging 提供了一个更合理的结构解释：真正该保的不是整块参数，而是少数功能主方向。这个视角很可能会比继续堆启发式 mask 更持久。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后面有“一个底座 + 多个任务专家”的科学工作流，例如不同诊断任务、不同预测头或不同实验模态专家，这篇方法很适合当成低成本多任务整合路线，而不必每次都重新多任务训练一个大模型。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>FG-BMK：细粒度图像理解正在暴露 LVLM 的真实短板</h3>
+              <p class="paper__subtitle">Benchmarking Large Vision-Language Models on Fine-Grained Image Tasks: From Evaluation to Diagnosis</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如果你考虑把通用 VLM 用到科学图像、实验诊断图像或文档图表理解，这篇必须看。它做的不是再堆一个总榜，而是专门回答“模型为什么在细粒度视觉任务上看起来会、其实不会”。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hong-Tao Yu, Chen-Wei Xie, Yuxin Peng, Serge Belongie, Xiu-Shen Wei</p>
+                <p class="muted">东南大学；Alibaba Group；北京大学；University of Copenhagen</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.19053" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.19053" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>如果你考虑把通用 VLM 用到科学图像、实验诊断图像或文档图表理解，这篇必须看。它做的不是再堆一个总榜，而是专门回答“模型为什么在细粒度视觉任务上看起来会、其实不会”。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>大模型时代的视觉语言研究常常强调开放式对话、多步推理和通用 multimodal interaction，但细粒度图像任务关心的是另一类能力：模型能否抓住局部细节、稳定区分相近类别、把视觉差异正确映射到概念层级中。对科学影像、医学图像、显微图像和工业缺陷诊断，这类能力往往比“会聊天”更关键。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>当前主流 LVLMs/VLMs 在细粒度视觉任务上到底表现如何？它们的失败主要来自视觉表征不足、细粒度语义 grounding 不足、模态对齐薄弱，还是类别级知识缺失？
+对当前主题的关键意义在于：如果你考虑未来用 VLM 做实验图像诊断、图表读数理解、科学影像分类或文档图像解析，这篇会提醒你优先关注细粒度表征与领域语义对齐，而不是只看开放问答 demo 是否流畅。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b73d9b7b36c9e1b8.png" alt="Figure 10 : Nemenyi statistical test results for fine-grained retrieval. Black horizontal lines indicate the critical distance (CD), grouping models with no significant performance differences.">
+                    <figcaption>Figure 10 : Nemenyi statistical test results for fine-grained retrieval. Black horizontal lines indicate the critical distance (CD), grouping models with no significant performance...</figcaption>
+                  </figure>
+                  <p>作者提出 FG-BMK，构建了包含 1.01 million 个问题和 0.28 million 张图像的综合细粒度评测框架，同时覆盖 human-oriented 的语义识别问答与 machine-oriented 的视觉可分性分析。它不是只输出一个排行榜，而是沿着“能否识别更细类别、失败卡在何处、训练设计如何影响、在视觉/语言扰动下是否稳健”这条诊断路径系统分析 LVLM。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文显示，当前 LVLM 在细粒度任务上仍然明显不够强：随着类别粒度继续变细，所有测试模型的正确率都会持续下降；作者进一步把失败归因为视觉表征、语义 grounding、模态对齐和类别知识四类瓶颈共同叠加。论文还展示了在模糊、噪声和误导性语言提示下，模型细粒度判断会进一步退化，说明通用多模态能力并不会自动转化成可靠的专业视觉辨识能力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇工作主要是评测与诊断框架，而不是一个直接可部署的新模型；虽然已经覆盖多类数据域，但离真正面向聚变诊断图像、实验仪表读数图像等专业场景仍有距离，后续仍需要领域化语义与数据构建。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇论文把一个常被忽视的事实说清楚了：通用 LVLM 的“会描述”不等于“会精细识别”。对需要依赖局部视觉证据和专业类别边界的任务，这是一个不能跳过的现实约束。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你考虑未来用 VLM 做实验图像诊断、图表读数理解、科学影像分类或文档图像解析，这篇会提醒你优先关注细粒度表征与领域语义对齐，而不是只看开放问答 demo 是否流畅。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>OmniAgent：把主动感知直接写成全模态推理循环</h3>
+              <p class="paper__subtitle">Native Active Perception as Reasoning for Omni-Modal Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇最有意思的点，是不再把长视频/音频理解当成“先全量编码、再用更长 CoT 回答”，而是让模型主动决定下一步去看什么、听什么。对实验监控、复杂时空观测、多传感器诊断都很有迁移想象空间。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhenghao Xing, Ruiyang Xu, Yuxuan Wang, Jinzheng He, Ziyang Ma, Qize Yang, Yunfei Chu, Jin Xu, Junyang Lin, Chi-Wing Fu, Pheng-Ann Heng</p>
+                <p class="muted">机构待核验（arXiv HTML 页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.19341" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.19341" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇最有意思的点，是不再把长视频/音频理解当成“先全量编码、再用更长 CoT 回答”，而是让模型主动决定下一步去看什么、听什么。对实验监控、复杂时空观测、多传感器诊断都很有迁移想象空间。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>传统长视频理解模型大多遵循“watch-it-all”范式，不管问题难不难，先把尽可能多的帧统一处理一遍，导致计算与上下文成本随着视频长度线性甚至更糟地增长。近来的交互式方案虽然引入了主动查询，但很多仍依赖全局预扫描，难以真正摆脱长上下文负担。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能不能让全模态模型像 agent 一样，在回答问题过程中主动决定还需要观察哪些音视频证据，并把推理复杂度更多绑定到任务难度，而不是原始视频长度？
+对当前主题的关键意义在于：如果你未来会碰到长实验视频、同步音频、日志和传感器混合分析，这篇说明更合理的系统形态可能不是一次性吞掉全量数据，而是让模型像研究者一样边观察边追问边缩小证据范围。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f0a949fadf2f075e.png" alt="Figure 1 : The OmniAgent Framework for Native Active Perception. Unlike passive methods that process video frames uniformly, OmniAgent treats perception as an iterative reasoning process via an Observation-Thought-Action (OTA) cycle. Conditioned on a specific query, the agent executes on-demand actions to selectively gather audio-visual cues, distilling high-dimensional transient percepts into a persistent textual memory until sufficient evidence is gathered to produce the final answer.">
+                    <figcaption>Figure 1 : The OmniAgent Framework for Native Active Perception. Unlike passive methods that process video frames uniformly, OmniAgent treats perception as an iterative reasoning p...</figcaption>
+                  </figure>
+                  <p>作者提出 OmniAgent，把视频理解建模为基于 POMDP 的 Observation-Thought-Action 循环，让模型按需执行动作、选择性提炼音视频线索并写入持久化文本记忆。训练上，一方面通过 Agentic Supervised Fine-Tuning 用 best-of-N trajectory synthesis 和双阶段质量控制启动主动感知能力；另一方面引入 TAURA，利用逐轮熵信息把强化学习 credit assignment 更集中到关键发现回合。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OmniAgent-7B 在多项长视频与音视频 benchmark 上展示了很强的 open-source 表现：在 LVBench 上达到 50.5%，明显超过 Qwen2.5-Omni-7B 的 43.0%，也超过大约 10 倍参数量 的 Qwen2.5-VL-72B 的 47.3%；在 MLVU 上达到 71.1%，高于 Video-R1 的 60.9%；在 DailyOmni 和 OmniVideoBench 上也分别比原生 omni-modal baseline 高 4.7% 和 7.8%。论文还给出正向的 test-time scaling 现象：允许更多推理轮次时，性能继续上升。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要验证场景仍是长视频、音视频和时序 grounding benchmark，而不是通用实验系统；其 agentic 流程虽然更高效，但也意味着运行时控制策略、交互环境和预算管理会变成系统设计的一部分。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇工作的核心意义在于，它把主动感知从外挂工具链推进成模型本身的推理范式。对以后做长时程实验监控、复杂多传感器观察和事件驱动诊断，这条路很值得继续看。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你未来会碰到长实验视频、同步音频、日志和传感器混合分析，这篇说明更合理的系统形态可能不是一次性吞掉全量数据，而是让模型像研究者一样边观察边追问边缩小证据范围。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测 / 建模</p>
+              <h3>用结构偏置检验科学代理模型到底有没有学到动力学</h3>
+              <p class="paper__subtitle">Investigating Inductive Biases for Machine Learning Emulation of Sudden Stratospheric Warmings in Idealised Isca Simulations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-17</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇虽然不是聚变论文，但它对“物理代理模型该怎么验”说得很透。核心价值不只是比较 CNN、Transformer、GNN 哪个误差低，而是指出低 forecast error 不等于物理机制被保住，这对任何科学 surrogate 都重要。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Oskar Bohn Lassen, Simon Driscoll, Stephen I. Thomson, Sebastian Schemm, Francisco C. Pereira</p>
+                <p class="muted">Technical University of Denmark；University of Cambridge；University of Exeter</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.18857" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.18857" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇虽然不是聚变论文，但它对“物理代理模型该怎么验”说得很透。核心价值不只是比较 CNN、Transformer、GNN 哪个误差低，而是指出低 forecast error 不等于物理机制被保住，这对任何科学 surrogate 都重要。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>天气与气候方向越来越多地使用机器学习代理模型去补充数值模拟，希望延长亚季节到季节尺度上的可预报性。但在这类系统中，真正重要的可预报信息往往来自某些动力学锚点，例如平流层变率对对流层环流的延迟影响。问题在于，很多模型评估仍然主要盯着平均误差，而不是它是否真的学到了这些耦合机制。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>不同架构的归纳偏置，是否会显著影响模型对 SSW 动力学的学习？而且即便一个模型在逐点预测误差上表现很好，它是否真的保留了波-平均流相互作用这类关键物理结构？
+对当前主题的关键意义在于：对聚变数值代理、诊断重建和可控系统 surrogate 来说，这篇最大的启发是评估中必须加入机制层面的诊断量，而不能只看 MAE/RMSE。否则模型也许会在均值意义上看起来不错，但在真正决定控制成败的结构变量上失真。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/affe370cdda7901c.png" alt="Figure 2: Schematic overview of the architecture families used in this study. Two-dimensional convolutional and transformer models operate on latitude–longitude structure while stacking pressure levels and variables in the channel dimension, whereas three-dimensional variants act directly across latitude, longitude, and pressure and therefore encode explicit vertical coupling. Graph-based models represent the atmosphere on either a spherical grid graph or a spherical mesh while stacking pressure levels and variables in the node features.">
+                    <figcaption>Figure 2: Schematic overview of the architecture families used in this study. Two-dimensional convolutional and transformer models operate on latitude–longitude structure while sta...</figcaption>
+                  </figure>
+                  <p>作者在理想化 Isca 模拟上构造了一对只在波数 2 加热扰动上不同的数据集，分别对应无 SSW 与有 SSW-like 变率的两种制度；随后系统比较卷积、Transformer 与图网络架构的一步预测表现。真正有价值的设计，是把 Eliassen-Palm flux 诊断也纳入评估，用它检查模型是否保住了关键波驱动结构，而不是只看温度、纬向风等场变量的点误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文发现，在平流层动力学相对安静的 regime 下，不同模型差异并不大；但一旦进入 SSW-enabled 场景，性能差距会明显拉开，显式建模三维垂向耦合的 3D U-Net 和 3D global transformer 在平流层指标上表现最好。与此同时，EP-flux 诊断显示，即便点预测误差已经不高，模型仍可能在波驱动结构上保留连贯误差，说明“低误差”与“物理忠实”并不等价。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>场景仍是理想化 Isca 仿真和一步预测，不是实际装置控制或多步闭环预测；研究对象是大气动力学而非聚变等离子体，因此迁移时需要重新考虑变量、边界条件和尺度差异。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇论文的真正贡献，在于把科学代理模型的评估标准抬高了一层：不是只问“拟合得准不准”，而是问“关键机制有没有被保住”。这个判断框架本身就值得借到其他科学 AI 场景。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变数值代理、诊断重建和可控系统 surrogate 来说，这篇最大的启发是评估中必须加入机制层面的诊断量，而不能只看 MAE/RMSE。否则模型也许会在均值意义上看起来不错，但在真正决定控制成败的结构变量上失真。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 不规则时序异常检测正在回到连续时间建模</h3>
+          <p>Latent SDE 这篇说明，真实世界异常检测的关键不是后端 detector 花样有多新，而是有没有把不规则采样和缺测当成问题本体的一部分。未来这条线很可能会继续替代“先规则化、再检测”的默认流程。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 科学机器学习的评估门槛正在被抬高</h3>
+          <p>SSW 代理模型这篇最值得借鉴的，不是气候问题本身，而是它明确要求模型在机制诊断上也要过关。对聚变 surrogate、实验重建和数字孪生，这种评估视角会越来越重要。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 多任务学习的工程落点正在向“后训练合并”移动</h3>
+          <p>ESM / ESM++ 的信号很明确：当底座模型已经存在、任务专家也已经分化出来时，重新训一个统一模型未必总是最划算的。更聪明的 merge 机制会成为越来越现实的多任务路线。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 细粒度视觉理解正在成为通用 LVLM 的硬边界测试</h3>
+          <p>FG-BMK 说明，越是需要局部特征、部件关系和专业语义的任务，通用多模态模型越容易暴露能力缺口。科学图像和实验图像场景大概率会比通用开放域更早撞到这道边界。</p>
+        </article>
+        <article class="trend">
+          <h3>5. 主动感知可能成为长时程多模态理解的默认范式</h3>
+          <p>OmniAgent 这类工作表明，未来复杂观测系统更合理的处理方式，可能不是无差别地看完所有数据，而是让模型先决定“哪里值得看”。这对计算预算、延迟和解释性都更友好。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
