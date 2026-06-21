@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-21</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-21 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-21 09:06:17 +08:00</p>
+      <div class="hero__overview">
+        <p>今天最重要的判断，不是某个旧方向又出现了一篇“勉强能写”的增量，而是五个更值得记住的新信号：</p>
+        <p>1. 可靠性问题正在从“把概率调准”推进到“分发路由也要在分布偏移下可校准”，这对 MoE 大模型会越来越关键。</p>
+        <p>2. 工具调用 agent 的一个核心短板不是不会调工具，而是没有把状态当成独立的一等对象管理，这比再加几层 prompt 技巧更基础。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">多模态学习 / 图像 / 计算机视觉 / 具身智能</a>
+            <ul>
+              <li><a href="#paper-3">03 现有 world model 还没有真正的持久状态核心</a></li>
+              <li><a href="#paper-4">04 不重训、不加推理成本地压 VLM 幻觉</a></li>
+              <li><a href="#paper-5">05 第一视角人类视频可能比真实机器人轨迹更适合预训练</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">通用 AI / 可靠性 / Agent</a>
+            <ul>
+              <li><a href="#paper-1">01 分布偏移下的可校准 MoE</a></li>
+              <li><a href="#paper-2">02 LedgerAgent：把 agent 状态从 prompt 里剥离出来</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">分布偏移下的可校准 MoE</a></h3>
+              <p class="card__subtitle">Toward Calibrated Mixture-of-Experts Under Distribution Shift</p>
+              <div class="chip-row">
+                <span class="chip">通用 AI / 可靠性 / Agent</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>MoE 现在几乎成了大模型扩展的基础构件，但大家常讨论的是路由效率和参数利用率，较少把“分布偏移后置信度还能不能信”作为主问题单独处理。这篇把校准、路由与 shift 条件绑在一起讲清楚，重要性不低于继续追一点点平均精度。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">LedgerAgent：把 agent 状态从 prompt 里剥离出来</a></h3>
+              <p class="card__subtitle">LedgerAgent: Structured State for Policy-Adherent Tool-Calling Agents</p>
+              <div class="chip-row">
+                <span class="chip">通用 AI / 可靠性 / Agent</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这篇不是再教 agent “怎么想”，而是把系统设计往前推了一步：先把观测到的任务状态独立存起来，再在执行会改环境的工具调用前做策略门控。对真实 agent 系统，这往往比继续堆 chain-of-thought 更有效。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">现有 world model 还没有真正的持久状态核心</a></h3>
+              <p class="card__subtitle">Current World Models Lack a Persistent State Core</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉 / 具身智能</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这篇最值得看的是它提的问题足够尖锐：如果镜头移开后，一个物体的状态就不再继续演化，那模型只是会补帧，不是真的在建模世界。这个批评对视频生成、具身智能和长期交互系统都成立。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">不重训、不加推理成本地压 VLM 幻觉</a></h3>
+              <p class="card__subtitle">Spectral Query-Key Product Weight Steering for Training-Free VLM Hallucination Mitigation</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉 / 具身智能</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>多模态系统要想真正进实验和生产，一定得解决“说得很顺但图里根本没有”的幻觉问题。这篇最有意思的点是，它不靠额外数据、不靠 fine-tuning，也不在推理时加额外开销，而是直接改注意力里的高能先验方向。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">第一视角人类视频可能比真实机器人轨迹更适合预训练</a></h3>
+              <p class="card__subtitle">HumanScale: Egocentric Human Video Can Outperform Real-Robot Data for Embodied Pretraining</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉 / 具身智能</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这篇如果结论站得住，会直接改写很多人对 embodied data scaling 的默认直觉。它讨论的不是“人类视频能不能凑合用”，而是在人形或操作模型的预训练阶段，这类数据是否可能比昂贵的 teleoperation 轨迹更划算、更有效。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉 / 具身智能</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉 / 具身智能</p>
+              <h3>现有 world model 还没有真正的持久状态核心</h3>
+              <p class="paper__subtitle">Current World Models Lack a Persistent State Core</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇最值得看的是它提的问题足够尖锐：如果镜头移开后，一个物体的状态就不再继续演化，那模型只是会补帧，不是真的在建模世界。这个批评对视频生成、具身智能和长期交互系统都成立。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jinpeng Lu, Dexu Zhu, Haoyuan Shi, Linghan Cai, Guo Tang, Yinda Chen, Jie Cao, Duyu Tang, Yi Zhang, Yong Dai, Xiaozhu Ju</p>
+                <p class="muted">University of Science and Technology of China, Beijing Innovation Center of Humanoid Robotics, Institute of Automation Chinese Academy of Sciences, Dresden University of Technology, Peking University 等</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20545" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20545" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇最值得看的是它提的问题足够尖锐：如果镜头移开后，一个物体的状态就不再继续演化，那模型只是会补帧，不是真的在建模世界。这个批评对视频生成、具身智能和长期交互系统都成立。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视频生成和交互式场景生成近一年被频繁包装成 world model，但多数 benchmark 主要检验画面质量、运动自然性、摄像机控制或局部几何一致性。真正的世界建模还要求内部状态在不可观测时继续演化，即物体和事件要在离开视野后仍按物理或任务逻辑推进，而不是镜头回来时从“离开前那一刻”继续接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>现有主流 world model / video generation system，是否真的维护了一个与观测解耦、在不可见期间仍持续演化的内部世界状态？如果没有，应当如何系统化测出这个缺陷？
+对当前主题的关键意义在于：如果你关心具身智能、长期交互、多传感器观测或实验视频理解，这篇非常值得读。它给出的批评框架也能迁移到科学场景建模：真正重要的是不可见期间的状态是否被持续维护。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/33f525e0e3170e5d.png" alt="Figure 2: WRBench method overview. Natural-25 event-view records supply the scene, event, and viewpoint intervention; WRBenchLib translates each record into a generated video and provenance record per model; the evaluation suite scores six diagnostic dimensions from control execution to re-observed-state consistency; and human preference annotation calibrates each dimension independently.">
+                    <figcaption>Figure 2: WRBench method overview. Natural-25 event-view records supply the scene, event, and viewpoint intervention; WRBenchLib translates each record into a generated video and p...</figcaption>
+                  </figure>
+                  <p>作者提出 WRBench，把摄像机移动当成对可观测性的干预，并把评估拆成一条人类校准的诊断链：先看镜头是否按要求交互，再看物体在可见时是否连续一致，最后看重新出现的目标是否与“离开视野期间理应发生的事件推进”保持一致。这个设计的关键是把“返回后状态是否合理”单独拿出来，不再默认视觉逼真就等于建模了世界演化。
+阅读时需要把方法设计与主要结果一起看：论文在来自 23 个模型的 9600 段视频上评估，发现一个相当一致的失败模式：当前系统通常只能把已观测世界当成 tracking shot 维持住，而不能在目标离开视野后继续推进其状态。作者进一步指出，这一问题在不同控制范式、模型家族和参数规模下都反复出现，说明它不是简单靠更大模型或更好几何先验就能自动解决的。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文在来自 23 个模型的 9600 段视频上评估，发现一个相当一致的失败模式：当前系统通常只能把已观测世界当成 tracking shot 维持住，而不能在目标离开视野后继续推进其状态。作者进一步指出，这一问题在不同控制范式、模型家族和参数规模下都反复出现，说明它不是简单靠更大模型或更好几何先验就能自动解决的。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇更偏 benchmark 与诊断，不直接给出新的可训练 world-state core 架构；此外，评测仍主要围绕视频世界模型，而非真实机器人闭环交互。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它最重要的贡献，是把“persistent state core”明确提升为 world model 的首要目标之一。以后再看这类系统，不能只问画面像不像，还要问镜头移开后世界是不是继续活着。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你关心具身智能、长期交互、多传感器观测或实验视频理解，这篇非常值得读。它给出的批评框架也能迁移到科学场景建模：真正重要的是不可见期间的状态是否被持续维护。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉 / 具身智能</p>
+              <h3>不重训、不加推理成本地压 VLM 幻觉</h3>
+              <p class="paper__subtitle">Spectral Query-Key Product Weight Steering for Training-Free VLM Hallucination Mitigation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">多模态系统要想真正进实验和生产，一定得解决“说得很顺但图里根本没有”的幻觉问题。这篇最有意思的点是，它不靠额外数据、不靠 fine-tuning，也不在推理时加额外开销，而是直接改注意力里的高能先验方向。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Karn Tiwari, Varnith Chordia, Prathosh A P</p>
+                <p class="muted">Indian Institute of Science Bengaluru, Snap Research</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20419" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20419" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>多模态系统要想真正进实验和生产，一定得解决“说得很顺但图里根本没有”的幻觉问题。这篇最有意思的点是，它不靠额外数据、不靠 fine-tuning，也不在推理时加额外开销，而是直接改注意力里的高能先验方向。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视觉语言模型经常会输出语义流畅、但图像里并不存在的对象描述，这种 object hallucination 在评测、检索辅助、科学图像阅读和高风险决策场景里都很危险。过去的主流解决方案通常要么依赖额外监督和重训，要么在解码时引入对比、惩罚或重打分机制，代价是工程复杂度和推理开销都上升。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在不追加数据、不做 fine-tuning、也不增加推理时计算的情况下，直接从注意力机理层面削弱那些促使模型“按语言先验瞎补物体”的主导方向？
+对当前主题的关键意义在于：如果你后面需要把 VLM 用到实验图像说明、论文图表理解或诊断辅助，这条路线很值得关注。因为你真正需要的是可靠视觉 grounding，而不是只在 benchmark 上多一两个点。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/368e5e9f772e4830.png" alt="Figure 1: Overview of QK Product Steering . For each selected query head and its assigned shared key head, we form the QK product M h = W q , h ⊤ ​ W k , g M_{h}=W_{q,h}^{\top}W_{k,g} , suppress its dominant singular modes, and recover an edited query weight through a closed-form query-only projection. The shared key weight is kept unchanged, making the edit compatible with grouped-query attention. The same framework also enables symmetric and antisymmetric QK decompositions to identify whether hallucination-relevant priors arise from mutual or directional attention channels.">
+                    <figcaption>Figure 1: Overview of QK Product Steering . For each selected query head and its assigned shared key head, we form the QK product M h = W q , h ⊤ ​ W k , g M_{h}=W_{q,h}^{\top}W_{k...</figcaption>
+                  </figure>
+                  <p>作者提出 QK Product Steering，直接编辑注意力里生成 pre-softmax logits 的 query-key product。方法在选定中间层中抑制少量主导奇异模式，再通过闭式 query-only 更新把修改投回查询权重，同时保持共享 key 权重不变，因此兼容 grouped-query attention。论文还把 QK product 分解为对称与反对称通道，用来区分“互相内容相似性先验”和“方向性注意模式”，并指出主要幻觉信号集中在对称通道。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告在三种基于 GQA 的 VLM 上，该方法都能显著降低 CHAIR_s 这类对象幻觉指标，而随机模式对照几乎没有效果。同时，论文强调这种编辑大体保留了模型原有多模态能力，说明它不是靠粗暴削弱表征换来的假改进。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前重点仍在 object hallucination，而不是更广义的关系、属性或长链推理幻觉；另外，不同架构和层位的稳定迁移性还需要更系统的验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇的价值在于展示了一种更“机制层”的可靠性修补方式：不去每次解码时补锅，而是直接削弱产生幻觉的高能先验方向。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后面需要把 VLM 用到实验图像说明、论文图表理解或诊断辅助，这条路线很值得关注。因为你真正需要的是可靠视觉 grounding，而不是只在 benchmark 上多一两个点。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉 / 具身智能</p>
+              <h3>第一视角人类视频可能比真实机器人轨迹更适合预训练</h3>
+              <p class="paper__subtitle">HumanScale: Egocentric Human Video Can Outperform Real-Robot Data for Embodied Pretraining</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇如果结论站得住，会直接改写很多人对 embodied data scaling 的默认直觉。它讨论的不是“人类视频能不能凑合用”，而是在人形或操作模型的预训练阶段，这类数据是否可能比昂贵的 teleoperation 轨迹更划算、更有效。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Juncheng Ma, Jianxin Bi, Yufan Deng, Xuanran Zhai, Kewei Zhang, Ye Huang, Bo Liang, Shukai Gong, Jiankai Tu, Xiaotian Tang, Jiaxin Li, Kaiqi Chen, Duomin Wang, Yuqi Wang, Bingyi Kang, Eric Huang, Zhiyang Dou, Zhen Dong, Enze Xie, Wojciech Matusik, Tat-Seng Chua, Daquan Zhou</p>
+                <p class="muted">机构待核验（摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20521" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20521" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇如果结论站得住，会直接改写很多人对 embodied data scaling 的默认直觉。它讨论的不是“人类视频能不能凑合用”，而是在人形或操作模型的预训练阶段，这类数据是否可能比昂贵的 teleoperation 轨迹更划算、更有效。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>具身基础模型一直受数据瓶颈制约。真实机器人遥操作轨迹虽然动作监督精确、机体对齐强，但采集成本高、环境和行为多样性也有限。因此社区开始关注第一视角人类视频，认为它更便宜、更多样，但过去一直缺少在统一 post-training 协议下，与真实机器人数据直接比较的系统性证据。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在保持后训练和验证协议一致的前提下，第一视角人类视频经过合适的过滤与标注后，能否不仅作为机器人数据的替代品，而且在具身模型预训练阶段带来更好的表示和更强真实机器人迁移？
+对当前主题的关键意义在于：如果你关心具身智能、多模态世界表征或实验操作自动化，这篇非常值得看。它对“科学场景里先学表示、再学控制”的数据组织思路也有启发。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文围绕“数据源比较”本身设计实验，系统比较 egocentric human video 和 teleoperated real-robot trajectories 作为具身预训练数据的效果。关键不在于提出复杂新架构，而在于建立一条面向人类视频的过滤与标注流水线，然后在固定后训练与验证设置下做公平对比，把争议聚焦到“数据价值”而非训练 recipe 偏差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告，在相同预训练数据量下，基于第一视角人类视频预训练的模型，在真实机器人动作预测上验证损失降低约 24%，在分布内和分布外真实机器人任务执行上的成功率分别提高约 52.5% 和 90%。这个结果的意义在于，它不是只说明“可用”，而是说明在预训练阶段可能更优。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇结论依赖其特定的数据处理与标注流水线，迁移到别的操作域是否仍保持同等优势，还需要更多独立验证；同时，人类视频学到的是更丰富的世界表征，不代表动作空间对齐问题本身已经解决。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇最大的价值，是把 embodied pretraining 的数据策略从“优先囤机器人轨迹”改写成“先用更廉价的大规模人类第一视角学世界，再用少量机器人数据做动作对齐”。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你关心具身智能、多模态世界表征或实验操作自动化，这篇非常值得看。它对“科学场景里先学表示、再学控制”的数据组织思路也有启发。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>通用 AI / 可靠性 / Agent</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">通用 AI / 可靠性 / Agent</p>
+              <h3>分布偏移下的可校准 MoE</h3>
+              <p class="paper__subtitle">Toward Calibrated Mixture-of-Experts Under Distribution Shift</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">MoE 现在几乎成了大模型扩展的基础构件，但大家常讨论的是路由效率和参数利用率，较少把“分布偏移后置信度还能不能信”作为主问题单独处理。这篇把校准、路由与 shift 条件绑在一起讲清楚，重要性不低于继续追一点点平均精度。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Gina Wong, Drew Prinster, Suchi Saria, Rama Chellappa, Anqi Liu</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20544" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20544" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>MoE 现在几乎成了大模型扩展的基础构件，但大家常讨论的是路由效率和参数利用率，较少把“分布偏移后置信度还能不能信”作为主问题单独处理。这篇把校准、路由与 shift 条件绑在一起讲清楚，重要性不低于继续追一点点平均精度。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>现代大模型系统里，校准问题越来越重要，因为 downstream 决策往往需要把模型分数当成可信概率使用。已有工作发现，单个预测器层面的校准有时能提升 ensemble 或 MoE 的整体表现，但“什么时候这种改进真的会传导到整体系统”其实并不清楚。尤其在分布偏移下，路由机制会改变样本到专家的分配方式，导致“专家自己看起来校准不错”不一定等于“最终 aggregate 也校准良好”。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在存在分布偏移时，MoE 的路由方式会如何影响整体校准？更具体地说，专家级别的校准是否足以保证整体模型的校准，还是需要直接对聚合后的 routed predictor 做更强的鲁棒约束？
+对当前主题的关键意义在于：如果你后面关注模型不确定性、分布偏移鲁棒性，或者想把大模型能力接进科学/工业决策链路，这篇很值得看。它给出的启发是：MoE 的可靠性分析不能只看局部专家，还必须看路由后的整体行为。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4c549a339ab4cef1.png" alt="Figure E.4: Reliability diagrams for all methods on CIFAR-10H. (a) All test images, an expanded view of Figure 1 with per-bin error bars. (b) Hard subset (low-agreement images) only.">
+                    <figcaption>Figure E.4: Reliability diagrams for all methods on CIFAR-10H. (a) All test images, an expanded view of Figure 1 with per-bin error bars. (b) Hard subset (low-agreement images) onl...</figcaption>
+                  </figure>
+                  <p>论文先从理论上区分 hard-routed 和 soft-routed 两类 MoE。作者表明，对一大类分布偏移而言，前者中专家级校准足以推出整体校准，而后者则不成立。基于这一点，作者提出一种面向分布偏移的对抗式重加权思路，直接惩罚 routed aggregate 在 shift 条件下的校准误差，而不是只在单个专家层面做局部处理。这个视角的重要性在于，它把校准对象从“专家”提升到了“经路由后的系统输出”。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告该方法在多种模型类别、预测任务和分布偏移设置下，都改善了准确率与校准之间的折中关系，而且不仅体现在平均表现上，也体现在更困难的数据子集上。换句话说，它不是只修饰整体 ECE 一类平均指标，而是更关注“难样本上是否仍可信”。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇更偏理论与方法框架，离超大规模生产级 sparse LLM 还有距离；同时它讨论的是预测校准，不直接解决专家专门化质量、路由成本或 MoE 训练稳定性这些并行问题。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇工作的关键贡献，是把 MoE 可靠性从“专家是否 individually calibrated”推进到“路由后的系统在 shift 下是否整体可信”。对以后任何要把 MoE 用到高风险应用的工作，这个问题都绕不过去。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后面关注模型不确定性、分布偏移鲁棒性，或者想把大模型能力接进科学/工业决策链路，这篇很值得看。它给出的启发是：MoE 的可靠性分析不能只看局部专家，还必须看路由后的整体行为。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">通用 AI / 可靠性 / Agent</p>
+              <h3>LedgerAgent：把 agent 状态从 prompt 里剥离出来</h3>
+              <p class="paper__subtitle">LedgerAgent: Structured State for Policy-Adherent Tool-Calling Agents</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇不是再教 agent “怎么想”，而是把系统设计往前推了一步：先把观测到的任务状态独立存起来，再在执行会改环境的工具调用前做策略门控。对真实 agent 系统，这往往比继续堆 chain-of-thought 更有效。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Md Nayem Uddin, Amir Saeidi, Eduardo Blanco, Chitta Baral</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20529" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20529" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇不是再教 agent “怎么想”，而是把系统设计往前推了一步：先把观测到的任务状态独立存起来，再在执行会改环境的工具调用前做策略门控。对真实 agent 系统，这往往比继续堆 chain-of-thought 更有效。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>真实工具调用 agent 往往在多轮对话中逐步获得用户信息、检索记录、更新约束，然后再决定是否执行会改变环境状态的动作。现有系统大多把这些信息继续堆在 prompt 里，让模型每次都从长上下文里重建当前状态。这种设计虽然通用，但会把“状态管理”变成语言模型的隐式记忆任务，从而带来状态漂移、规则误用和策略违规。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在不改模型权重的前提下，把 agent 的任务状态变成一个显式、一致、可检查的系统级对象，并在真正执行写操作前做基于状态的策略校验，从而减少“调用格式正确但业务规则错误”的失误？
+对当前主题的关键意义在于：如果你后续做科研自动化 agent、实验流程 agent 或带外部系统写操作的代理，这篇非常值得参考。它提示要把“状态对象”和“执行前约束检查”做成系统层能力，而不是只依赖模型自觉遵守。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/6cf06cfdc0fc4fe6.png" alt="Figure 5: Failure categories for Ledger trajectories across domains and backbone models. Missed required actions dominate, with domain-specific wrong-argument and unauthorized-action errors.">
+                    <figcaption>Figure 5: Failure categories for Ledger trajectories across domains and backbone models. Missed required actions dominate, with domain-specific wrong-argument and unauthorized-acti...</figcaption>
+                  </figure>
+                  <p>LedgerAgent 引入两个推理时组件。第一是 schema-anchored ledger，把成功工具返回中的关键信息投影成一个紧凑的、类型化的状态字典，并在每轮重新注入 prompt，让模型查“当前状态”时不必翻全文历史。第二是在会修改环境的工具调用前增加 policy gate，把候选动作与 ledger 中的状态字段做规则匹配，若违反策略便直接阻断并返回冲突反馈。它的重点不是更强 reasoning，而是把状态与策略执行前置成系统约束。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文在四个 customer-service domain 和多种开源/闭源模型上评估，报告 LedgerAgent 相比标准 prompt-based 工具调用基线，平均 pass^k 更高，且在更强调多次独立试验一致性的严格指标下收益更明显。作者还通过消融指出，提升主要来自显式 typed ledger 与策略门控，而不是别的附带技巧。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前评估主要集中在客户服务类任务，状态结构相对规则化；迁移到开放环境、多工具强交互或更弱结构化的科学实验代理时，ledger schema 的设计成本会更高。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇最值得吸收的是观点转移：工具 agent 的一类核心问题，本质上是状态表示和执行边界设计问题，不该全丢给语言模型在 prompt 里自己恢复。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后续做科研自动化 agent、实验流程 agent 或带外部系统写操作的代理，这篇非常值得参考。它提示要把“状态对象”和“执行前约束检查”做成系统层能力，而不是只依赖模型自觉遵守。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 可靠性问题正在从单模型校准走向“路由后整体系统校准”</h3>
+          <p>Toward Calibrated Mixture-of-Experts Under Distribution Shift 说明，MoE 的风险不只是专家质量，而是路由后的 aggregate 在 shift 下还能不能保持可信概率输出。以后讨论大模型可靠性，MoE 不再能只谈吞吐和成本。</p>
+        </article>
+        <article class="trend">
+          <h3>2. Agent 系统的核心工程问题之一是显式状态管理</h3>
+          <p>LedgerAgent 提醒我们，很多 agent failure 不是 reasoning 不够，而是系统没有把状态从长 prompt 里抽离出来，导致后续行动依据变脏。这个方向很可能比继续叠加 prompt 技巧更有长期价值。</p>
+        </article>
+        <article class="trend">
+          <h3>3. “会生成视频”不等于“会建模世界”</h3>
+          <p>Current World Models Lack a Persistent State Core 把一个过去常被忽略的问题抬到台面上：如果物体离开视野后状态就冻结，模型只是会接视觉，不是真的维护了世界状态。这会成为后续 world model 评测的分水岭。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 多模态可靠性开始出现更低成本的机理级修补路线</h3>
+          <p>QK Product Steering 说明，VLM 幻觉不一定都要用重训或推理时外挂手段修。直接在注意力能量主方向上做一次性编辑，可能会成为更实用的部署路线。</p>
+        </article>
+        <article class="trend">
+          <h3>5. 具身预训练的数据策略可能从“先收机器人轨迹”转向“先学世界，再对齐动作”</h3>
+          <p>HumanScale 的信号很强：第一视角人类视频可能更适合学习多样世界表征，而少量机器人数据只负责最后的动作空间对齐。这会改变很多具身模型的数据预算分配方式。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
