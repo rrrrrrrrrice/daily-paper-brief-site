@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-22</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-22 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-22 09:18:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今天最重要的增量，不在于又冒出几篇泛化的“大模型应用稿”，而在于下面五个更值得记住的新信号：</p>
+        <p>1. 扩散式语言模型的透明性问题开始被拆成“中间状态是否可解释”与“推理过程是否可重建”两层来研究，这比泛泛谈可解释性更具体。</p>
+        <p>2. 可信机器学习里 multicalibration 的一个老问题被真正补上了：最优样本复杂度不再需要靠随机化 predictor 才能做到。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-4">04 TimeProVe：先提议再核验的长视频时序推理</a></li>
+              <li><a href="#paper-5">05 S-Agent：把空间智能从静态看图推进到连续 3D 证据累积</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">通用 AI / 可解释性 / 可靠性 / 科学智能</a>
+            <ul>
+              <li><a href="#paper-1">01 DiffusionGemma 到底透明到什么程度</a></li>
+              <li><a href="#paper-2">02 最优样本复杂度的确定性 multicalibration</a></li>
+              <li><a href="#paper-3">03 Agentic Symbolic Search：让代理直接搜索 PDE 的可解释结构</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">DiffusionGemma 到底透明到什么程度</a></h3>
+              <p class="card__subtitle">How Transparent is DiffusionGemma?</p>
+              <div class="chip-row">
+                <span class="chip">通用 AI / 可解释性 / 可靠性 / 科学智能</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>如果扩散式 LLM 真要成为下一波生成与推理范式，大家迟早都得回答一个问题：它在连续潜空间里做掉的那大段计算，到底还能不能被人理解。这篇的价值不只是“研究一个具体模型”，而是把扩散推理透明性拆成了更可检验的两个层面。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">最优样本复杂度的确定性 multicalibration</a></h3>
+              <p class="card__subtitle">Optimal Deterministic Multicalibration and Omniprediction</p>
+              <div class="chip-row">
+                <span class="chip">通用 AI / 可解释性 / 可靠性 / 科学智能</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这篇不是 flashy system paper，但在可靠性理论上很硬。过去很多最优 multicalibration 结果都依赖随机化 predictor，这使它离真正可部署的可信预测系统总差一步；这篇把那一步补上了。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">Agentic Symbolic Search：让代理直接搜索 PDE 的可解释结构</a></h3>
+              <p class="card__subtitle">Agentic Symbolic Search: Characterizing PDEs Beyond Hand-crafted Expressions, Meshes, and Neural Networks</p>
+              <div class="chip-row">
+                <span class="chip">通用 AI / 可解释性 / 可靠性 / 科学智能</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>相比“用 agent 帮你调工具”这类工作，这篇更接近科学智能真正该做的事：不仅给出数值解或神经近似，而是尝试自动产出数学上可读、可分析的结构表达。对做科学机器学习的人，这比又一个 benchmark 涨点更重要。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">TimeProVe：先提议再核验的长视频时序推理</a></h3>
+              <p class="card__subtitle">TimeProVe: Propose, then Verify for Efficient Long Video Temporal Reasoning in Activities of Daily Living</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>长视频理解最常见的工程问题不是模型“不会答”，而是为了找几个关键证据要把成本烧穿。TimeProVe 把问题改写成“先用轻模块提出候选答案和证据窗口，再让贵 VLM 去核验”，这个思路很有迁移价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">S-Agent：把空间智能从静态看图推进到连续 3D 证据累积</a></h3>
+              <p class="card__subtitle">S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这篇值得看的不是它又做出一个 spatial benchmark SOTA，而是它明确反对“单帧看图做静态推断”的范式，转而让系统围绕连续场景、几何证据和时序记忆来组织推理，这更像真实机器人和真实视觉系统要解决的问题。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>TimeProVe：先提议再核验的长视频时序推理</h3>
+              <p class="paper__subtitle">TimeProVe: Propose, then Verify for Efficient Long Video Temporal Reasoning in Activities of Daily Living</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">长视频理解最常见的工程问题不是模型“不会答”，而是为了找几个关键证据要把成本烧穿。TimeProVe 把问题改写成“先用轻模块提出候选答案和证据窗口，再让贵 VLM 去核验”，这个思路很有迁移价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Arkaprava Sinha, Dominick Reilly, Siddharth Krishnan, Hieu Le, Srijan Das</p>
+                <p class="muted">机构待核验（摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20561" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20561" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>长视频理解最常见的工程问题不是模型“不会答”，而是为了找几个关键证据要把成本烧穿。TimeProVe 把问题改写成“先用轻模块提出候选答案和证据窗口，再让贵 VLM 去核验”，这个思路很有迁移价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>Long Video Question Answering 的难点在于，真正与问题相关的证据往往非常稀疏，而且常常与动作变化、短时局部事件绑定。已有方法要么用大 VLM 密集处理视频，计算代价极高；要么依赖稀疏 caption 做推理，但容易错过关键的动作性和时间定位证据。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在不牺牲时序定位能力的前提下，减少大 VLM 在长视频上的无效调用，把推理重点放到最可能相关的时间窗口上？
+对当前主题的关键意义在于：如果你后面处理实验长视频、监控日志、多阶段操作记录或任何证据稀疏但序列很长的任务，这个框架很有迁移潜力。它对资源受限的多模态系统尤其有参考价值。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>TimeProVe 采用 propose-then-verify 框架。其核心模块 Action-based Candidate Evidence (ACE) 先从时间局部动作出发，借助轻量 LLM 推出候选答案和对应证据窗口，然后只对这些候选调用更昂贵的 VLM 做目标核验。作者还构建了开放式的 OpenTSUBench (OTB)，专门考察真实日常活动场景中的 temporally grounded reasoning。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，TimeProVe 在 OTB 上超过最强基线约 7.3%，同时把 VLM 调用次数减少约 75%、推理成本降低约 93%。此外，即使没有显式 temporal grounding 训练，它在 Charades-STA 上也能达到有竞争力的表现，并在接入 grounding VLM 后进一步达到 SOTA 水平。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇的主战场仍是日常活动长视频，而不是更复杂的科学实验视频或多传感器联合观测；另外，它的收益相当依赖前段候选证据生成是否足够稳，一旦 proposal 阶段漏掉关键事件，后续 verification 也无法补救。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇最值得记住的是一个系统设计判断：长视频推理未必需要“看更多”，而是需要更早、更便宜地找到该看的部分。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后面处理实验长视频、监控日志、多阶段操作记录或任何证据稀疏但序列很长的任务，这个框架很有迁移潜力。它对资源受限的多模态系统尤其有参考价值。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>S-Agent：把空间智能从静态看图推进到连续 3D 证据累积</h3>
+              <p class="paper__subtitle">S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇值得看的不是它又做出一个 spatial benchmark SOTA，而是它明确反对“单帧看图做静态推断”的范式，转而让系统围绕连续场景、几何证据和时序记忆来组织推理，这更像真实机器人和真实视觉系统要解决的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yalun Dai, Hao Li, Shulin Tian, Runmao Yao, Yuhao Dong, Fangzhou Hong, Zhaoxi Chen, Fangfu Liu, Baoliang Tian, Dingwen Zhang, Tao Wang, Kim-Hui Yap, Ziwei Liu</p>
+                <p class="muted">机构待核验（摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20515" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20515" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇值得看的不是它又做出一个 spatial benchmark SOTA，而是它明确反对“单帧看图做静态推断”的范式，转而让系统围绕连续场景、几何证据和时序记忆来组织推理，这更像真实机器人和真实视觉系统要解决的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>现实世界的空间智能要求系统持续理解一个变化中的 3D 环境，而现有多数 VLM 仍偏向从孤立的单帧或单图中做静态判断。即便加了工具，很多系统也还是围绕瞬时视觉 observation 工作，缺少跨视角、跨时间的场景状态维护能力。
+从本日报的选取理由看，这篇值得看的不是它又做出一个 spatial benchmark SOTA，而是它明确反对“单帧看图做静态推断”的范式，转而让系统围绕连续场景、几何证据和时序记忆来组织推理，这更像真实机器人和真实视觉系统要解决的问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否把空间推理重构成“围绕连续场景状态做证据收集、几何提升与记忆整合”的过程，而不是对每一帧分别做独立判断？
+对当前主题的关键意义在于：如果你关心具身智能、机器人视觉、多视角实验理解或连续空间中的科学观测，这篇很值得补。它也和昨天那篇批评 world model 缺少 persistent state core 的工作形成很强呼应。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/1ad8056ff36f01ab.png" alt="Figure 2: The pipeline of S-Agent . Instead of answering from an isolated visual impression, S-Agent uses a VLM as a semantic planner, spatial tools and experts as scene-specific evidence providers, and memory as the carrier of persistent 3D state across views, frames, and reasoning steps.">
+                    <figcaption>Figure 2: The pipeline of S-Agent . Instead of answering from an isolated visual impression, S-Agent uses a VLM as a semantic planner, spatial tools and experts as scene-specific e...</figcaption>
+                  </figure>
+                  <p>S-Agent 把 VLM 作为语义规划器，让它先决定需要什么证据，再交给层级化的空间工具与专家去做 2D grounding、3D 几何提升和高层空间知识聚合。与此同时，系统引入 Scene Memory 和 Agent Memory，分别维护场景演化状态和推理上下文，使空间推理从 frame-centric recognition 转向 scene-centric understanding。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文表明，S-Agent 能在训练自由的前提下稳定提升开源和闭源 VLM 在多视角与视频空间推理 benchmark 上的表现。进一步地，作者利用 S-Agent 生成的空间轨迹做监督微调，得到 S-Agent-8B，其效果显著超过同量级基线，并可与更强闭源模型接近。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这类空间代理系统的整体能力高度依赖工具链稳定性、几何 lifting 质量和记忆机制设计，真实部署时会比单模型推理更复杂；此外，benchmark 的成功不自动等于在真实机器人或复杂科学场景里也能同等可靠。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇的最大价值，是把空间智能明确拉向“连续世界建模 + 工具化证据积累”的范式。后面再看 spatial VLM，不该只问它认不认识图，而要问它能不能持续维护场景。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你关心具身智能、机器人视觉、多视角实验理解或连续空间中的科学观测，这篇很值得补。它也和昨天那篇批评 world model 缺少 persistent state core 的工作形成很强呼应。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>通用 AI / 可解释性 / 可靠性 / 科学智能</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">通用 AI / 可解释性 / 可靠性 / 科学智能</p>
+              <h3>DiffusionGemma 到底透明到什么程度</h3>
+              <p class="paper__subtitle">How Transparent is DiffusionGemma?</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如果扩散式 LLM 真要成为下一波生成与推理范式，大家迟早都得回答一个问题：它在连续潜空间里做掉的那大段计算，到底还能不能被人理解。这篇的价值不只是“研究一个具体模型”，而是把扩散推理透明性拆成了更可检验的两个层面。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Joshua Engels, Callum McDougall, Bilal Chughtai, Janos Kramar, Senthoran Rajamanoharan, Cindy Wu, Arthur Conmy, Asic Q Chen, Jean Tarbouriech, Min Ma, Brendan O'Donoghue, João Gabriel Lopes de Oliveira, Rohin Shah, Neel Nanda</p>
+                <p class="muted">机构待核验（摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20560" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20560" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>如果扩散式 LLM 真要成为下一波生成与推理范式，大家迟早都得回答一个问题：它在连续潜空间里做掉的那大段计算，到底还能不能被人理解。这篇的价值不只是“研究一个具体模型”，而是把扩散推理透明性拆成了更可检验的两个层面。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>随着扩散式语言模型开始承接推理、生成和安全相关任务，理解它们内部状态的能力会直接影响调试、对齐和风险监控。已有关于推理透明性的讨论，多数隐含以前提是“模型每一步都产出相对可读的 token 状态”；而在扩散模型里，大量计算发生在去噪步骤之间的连续表示中，因此传统对 autoregressive LLM 的可解释直觉并不能直接沿用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>扩散式语言模型相比自回归模型，究竟是在什么意义上更不透明？这种不透明到底来自中间状态本身不可读，还是来自推理过程更难重建？
+对当前主题的关键意义在于：如果你后面关注模型可解释性、监控、对齐，或者想判断扩散式语言模型是否值得进入高风险科研和工程链路，这篇很值得看。它提供了一套比“能不能看 attention map”更实在的分析框架。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0dc981dceaee7ec1.png" alt="Figure 1 : A simplified architecture diagram of DiffusionGemma, with the first two denoising steps shown; see Section ˜ 2.1 for an in-depth description of DiffusionGemma’s architecture and sampling. We additionally show the path with the largest opaque serial depth with and without the assumption that the intermediates 𝒔 \boldsymbol{s} are interpretable; see Section ˜ 2.2 for more details on this calculation.">
+                    <figcaption>Figure 1 : A simplified architecture diagram of DiffusionGemma, with the first two denoising steps shown; see Section ˜ 2.1 for an in-depth description of DiffusionGemma’s architec...</figcaption>
+                  </figure>
+                  <p>作者把透明性拆成两部分。variable transparency 关注中间计算状态本身能否被理解，algorithmic transparency 关注是否能借助这些状态重建模型如何得到最终输出。论文首先指出 DiffusionGemma 的 opaque serial depth 看上去远高于 Gemma 4，但随后构造了一个可解释 token bottleneck，把去噪步骤之间传递的信息映射到更可读的 token 空间，在几乎不损伤性能的前提下显著压低了这部分不透明性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，若采用该 bottleneck 来看待中间状态，DiffusionGemma 相比 Gemma 4 的“不可解释串行深度”会从初看时的约 28.6 倍 降到约 1.1 倍。同时，作者通过案例分析指出扩散推理还会呈现一些 autoregressive LLM 中不常见的现象，例如非时间顺序推理、token / sequence smearing 和 intermediate-context reasoning，但在 monitorability 上与 Gemma 4 大体相近。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇更像是对一个具体扩散式 LLM 的透明性解剖，不代表所有扩散语言模型都会呈现完全相同的性质；此外，算法透明性部分仍主要是初步案例研究，不等于已经建立完备的分析理论。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇真正重要的贡献，是把“扩散模型是不是更黑箱”从模糊印象变成了可分解、可测量的问题。后面再讨论扩散式 LLM，可解释性不能再只停留在直觉层面。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后面关注模型可解释性、监控、对齐，或者想判断扩散式语言模型是否值得进入高风险科研和工程链路，这篇很值得看。它提供了一套比“能不能看 attention map”更实在的分析框架。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">通用 AI / 可解释性 / 可靠性 / 科学智能</p>
+              <h3>最优样本复杂度的确定性 multicalibration</h3>
+              <p class="paper__subtitle">Optimal Deterministic Multicalibration and Omniprediction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇不是 flashy system paper，但在可靠性理论上很硬。过去很多最优 multicalibration 结果都依赖随机化 predictor，这使它离真正可部署的可信预测系统总差一步；这篇把那一步补上了。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Georgy Noarov, Aaron Roth</p>
+                <p class="muted">机构待核验（摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20557" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20557" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇不是 flashy system paper，但在可靠性理论上很硬。过去很多最优 multicalibration 结果都依赖随机化 predictor，这使它离真正可部署的可信预测系统总差一步；这篇把那一步补上了。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>multicalibration 是可信机器学习里很基础的性质，它要求模型不仅整体校准，而且在多种群体重加权条件下也保持无偏。问题在于，以前达到最优样本复杂度的结果依赖随机化输出，而确定性 predictor 已知只能做到更差的样本复杂度。对部署型系统来说，随机化 predictor 往往意味着解释、审计和复现实验都更麻烦。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>为了达到 ε-multicalibration 的 minimax-optimal 样本复杂度，随机化是否真的不可避免？如果不是，确定性 predictor 能否同时满足 multicalibration、outcome indistinguishability 以及 omniprediction 一类更强性质？</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>作者给出了一个输出确定性 predictor 的最优 multicalibration 算法，并进一步把这条路线推广到满足 outcome indistinguishability 的确定性 predictor。由此又推出具有最优样本复杂度的 deterministic omnipredictor 和 panpredictor。核心贡献不在于又多一个 calibration 变体，而是在理论上关闭了“最优速率是否必须靠随机化”的开放问题。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文声称解决了此前文献明确提出或隐含提出的开放问题：在 epsilon-multicalibration 上，确定性 predictor 也能达到 minimax-optimal 的 ~O(epsilon^{-3}) 样本复杂度；同样的最优性还能推广到 outcome indistinguishability、omniprediction 和 panprediction 相关构造上。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇是偏理论的可信机器学习工作，距离大规模工业部署还有一层“如何把这些性质真正落到复杂模型与数据流程中”的工程问题；同时，它更多告诉你什么是可能的，而不是直接提供一个开箱即用的大模型可靠性方案。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇的价值在于把一个长期存在的理论缺口补齐了。以后谈 multicalibration，就不能再默认“最优结果离不开随机化”。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你关心可靠预测、群体公平性、风险控制，或者要把模型分数接入下游决策流程，这篇很值得补。它是那种短期不会直接变产品、但会重塑后续方法设计边界的工作。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">通用 AI / 可解释性 / 可靠性 / 科学智能</p>
+              <h3>Agentic Symbolic Search：让代理直接搜索 PDE 的可解释结构</h3>
+              <p class="paper__subtitle">Agentic Symbolic Search: Characterizing PDEs Beyond Hand-crafted Expressions, Meshes, and Neural Networks</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">相比“用 agent 帮你调工具”这类工作，这篇更接近科学智能真正该做的事：不仅给出数值解或神经近似，而是尝试自动产出数学上可读、可分析的结构表达。对做科学机器学习的人，这比又一个 benchmark 涨点更重要。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zongmin Yu, Liu Yang</p>
+                <p class="muted">机构待核验（摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20467" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20467" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>相比“用 agent 帮你调工具”这类工作，这篇更接近科学智能真正该做的事：不仅给出数值解或神经近似，而是尝试自动产出数学上可读、可分析的结构表达。对做科学机器学习的人，这比又一个 benchmark 涨点更重要。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>对于 PDE，数学家真正关心的不只是某个网格上的数值值，而是可解释的结构、规律和近解析表达。传统数值模拟能给出高精度解，但不给结构；神经网络近似能提高效率，但通常仍是黑箱表示。过去若想得到数学表达式，往往得依赖手工分析或非常脆弱的符号回归。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否让一个代理系统把 PDE 理论、公开约束和以往搜索经验转成可测试的符号程序，并通过自动搜索得到可解释、可继续分析的结构表达，而不仅仅是数值拟合？
+对当前主题的关键意义在于：如果你关心科学机器学习、符号归纳、可解释代理，或者想把 AI 真正用于发现可分析的物理规律，这篇很值得读。它也能给聚变、等离子体和多物理场问题的结构化建模带来启发。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/46675139d35d2543.png" alt="Figure 1 : ASYS alternates between an outer loop over mathematical structure and an inner loop over continuous parameters. The agent reads problem guidance, previous high-scoring representations, and diagnostic summaries, then revises the representation, the training objective, and the optimizer configuration. The evaluator fits the resulting ansatz by quasi-Newton optimization and scores it using PDE-residual and public-constraint diagnostics. Note the separation of objectives: the inner loop optimizes the agent’s training loss, while the outer loop selects based on the evaluator’s fixed score.">
+                    <figcaption>Figure 1 : ASYS alternates between an outer loop over mathematical structure and an inner loop over continuous parameters. The agent reads problem guidance, previous high-scoring r...</figcaption>
+                  </figure>
+                  <p>作者提出 Agentic Symbolic Search (ASYS)。它不是盲目的符号回归，而是先由 agent 把 PDE 先验、问题约束和历史经验翻译成可微符号程序，再通过 evolutionary search 调整结构、通过梯度优化拟合连续参数。论文把这件事描述成一种自动化的 inductive-bias injection，也就是主动把理论先验写进搜索过程，而不是等模型自己碰运气学出来。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在五类 PDE 问题上，ASYS 不仅能够自然恢复已知解析形式，还能在没有现成闭式描述的场景里构造出可解释近似，例如 Allen-Cahn 2D 动力学中的几何界面公式，以及 Keller-Segel 趋化爆破中的九参数收缩律。这个结果说明它不是只会拟合已知答案，而是真的能提供有分析价值的新结构。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前实验规模仍是相对受控的 PDE 问题族，还不能据此推出它对更高维、更强耦合、噪声更重的真实科学系统都同样有效；另外，它依赖把问题合理翻译到符号程序搜索空间里，这一步本身需要很强先验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇最值得吸收的是目标函数的转移：不再只追求“拟合得更准”，而是追求“产出可解释结构，帮助进一步科学分析”。这对科学智能比单纯做 surrogate 更有长期价值。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你关心科学机器学习、符号归纳、可解释代理，或者想把 AI 真正用于发现可分析的物理规律，这篇很值得读。它也能给聚变、等离子体和多物理场问题的结构化建模带来启发。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 可解释性讨论开始从“看不看得懂模型”转向“中间状态能否被解释、推理路径能否被重建”</h3>
+          <p>How Transparent is DiffusionGemma? 最有价值的地方，是把透明性拆成两个层面来谈。这说明下一轮模型可解释性不会只停在 attention 可视化，而会越来越强调中间状态语义与推理路径重构。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 可信预测理论正在补齐从“存在性结果”到“可部署结果”的最后一层</h3>
+          <p>Optimal Deterministic Multicalibration and Omniprediction 把确定性 predictor 的理论地位抬起来了。以后凡是想把 calibration、omniprediction 真正落到系统里，这类结果都会变得更关键。</p>
+        </article>
+        <article class="trend">
+          <h3>3. Agent 的高价值应用正在从自动化操作转向结构化科学发现</h3>
+          <p>Agentic Symbolic Search 传达的不是“agent 又能多做一个 benchmark”，而是 agent 可以开始尝试产出数学上有后续分析价值的结构表达。科学智能的门槛也因此被抬高了。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 长视频多模态系统越来越像“候选证据管理系统”</h3>
+          <p>TimeProVe 说明，面对超长上下文，真正重要的不是把一切都喂进模型，而是更早更便宜地提出候选证据并只在必要处调用重模型。这对实验记录、监控视频和长流程分析都很有启发。</p>
+        </article>
+        <article class="trend">
+          <h3>5. 空间智能正在摆脱单帧视觉问答，转向连续世界状态维护</h3>
+          <p>S-Agent 把空间推理变成多视角、跨时间和跨工具的证据积累过程。它和昨天 world model 那篇批评一起看，会更清楚地表明未来重点不在“认图”，而在“持续维护场景”。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
