@@ -15,9 +15,9 @@
       <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
       <p class="hero__meta">信息检索截止时间：2026-06-23 09:07:35 +08:00</p>
       <div class="hero__overview">
+        <p>本次按新规则首次启用“在研课题启发”附加分区：它不改变下方原有五篇主推荐，而是补录此前未在日报中展开、可直接映射到 P1-P3 待解决问题的原始来源论文。补录条目均明确保留实际发布日期，不能视作 6 月 23 日新投稿。</p>
         <p>今天最重要的变化，不在于又多了几篇泛化的大模型综述，而在于下面五个更具体的信号：</p>
         <p>1. 世界模型 的一个关键方向正在变得更清楚：表示不该只为“预测下一帧”服务，而应该为“后续动作决策”服务。</p>
-        <p>2. 科学机器学习 里高价值的新增，开始把 surrogate 做到“不只快，而且带不确定性”，这对真实反问题与贝叶斯推断更关键。</p>
       </div>
     </div>
   </header>
@@ -34,26 +34,46 @@
             </ul>
           </li>
           <li class="toc-section">
-            <a href="#section-2">多模态学习 / 图像 / 计算机视觉</a>
+            <a href="#section-2">在研课题启发 / P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-6">06 TIDES：让选择性状态空间模型保留真实不规则时间间隔</a></li>
+              <li><a href="#paper-7">07 SurF：为异步多变量事件流构造可预训练的时间重标定空间</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发 / P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-8">08 EventDrive：用多时间尺度事件金字塔和时域 MoE 融合 RGB 与 Event</a></li>
+              <li><a href="#paper-9">09 Fusion-E2Pulse：以 RGB 结构先验抑制 Event 噪声、由 Event 补回高频细节</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-10">10 M3R：以诊断时序为 query 检索图像中的局部前兆</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态学习 / 图像 / 计算机视觉</a>
             <ul>
               <li><a href="#paper-5">05 UNIEGO：用 proxy 把多视角多模态知识蒸进统一第一视角表示</a></li>
             </ul>
           </li>
           <li class="toc-section">
-            <a href="#section-3">科学机器学习 / 代理模型</a>
+            <a href="#section-6">科学机器学习 / 代理模型</a>
             <ul>
               <li><a href="#paper-2">02 DeepGaLA：带不确定性的 PDE 反问题神经代理</a></li>
               <li><a href="#paper-3">03 比较四类神经代理如何长时程预测电池内部状态</a></li>
             </ul>
           </li>
           <li class="toc-section">
-            <a href="#section-4">通用 AI / 世界模型 / 推理</a>
+            <a href="#section-7">通用 AI / 世界模型 / 推理</a>
             <ul>
               <li><a href="#paper-1">01 让世界模型先学会为动作服务</a></li>
             </ul>
           </li>
           <li class="toc-section">
-            <a href="#section-5">部署与系统</a>
+            <a href="#section-8">部署与系统</a>
             <ul>
               <li><a href="#paper-4">04 把 KV cache 扩展成整段可恢复执行状态</a></li>
             </ul>
@@ -73,6 +93,7 @@
       <section class="panel" id="top-picks">
         <div class="panel__head">
           <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
         </div>
         <div class="cards">
           <article class="card card--top" data-paper-card data-top-pick="true">
@@ -161,6 +182,297 @@
       </section>
       <section class="panel" id="section-2">
         <div class="panel__head">
+          <h2>在研课题启发 / P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P1 不规则时序与聚变高低频统一建模</p>
+              <h3>TIDES：让选择性状态空间模型保留真实不规则时间间隔</h3>
+              <p class="paper__subtitle">TIDES: Implicit Time-Awareness in Selective State Space Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-05-10</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如何在不规则采样下同时保留真实 Δt、逐点输入依赖和状态空间模型对超长序列的可扩展性？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Taylan Soydan, Miguel A. Bessa, Dirk Mohr, Rui Barreira</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2605.09742" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/TaylanSoydan/TIDES" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2605.09742" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>选择性状态空间模型能够避免长序列全局注意力的二次开销，但常见做法会把离散步长变成输入的隐变量，进而失去真实时间间隔语义。连续时间 SSM 虽能直接使用不规则时间戳，却通常受限于线性时不变动态，难以兼顾逐点选择性与时间物理含义。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不规则采样下同时保留真实 Δt、逐点输入依赖和状态空间模型对超长序列的可扩展性？
+对当前主题的关键意义在于：原始应用是通用不规则时序。可先在现有数据上将每通道真实 Δt 显式输入 SSM，与插补加 Mamba、Neural CDE 做相同显存预算比较；若高频通道仍过长，再只对其前端加入分块压缩，而不破坏跨块时间间隔。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2a07ed8a8076f8e6.png" alt="Figure 4 : Task setup. 40 detectors split into three rate zones. Sparse flashes (top) produce zone-dependent decaying glows; the same flashes under different Δ \Delta (middle, bottom) yield rescaled dynamics. The model needs to predict the correct decaying glows given the sparse flashes, zone and Δ \Delta values.">
+                    <figcaption>Figure 4 : Task setup. 40 detectors split into three rate zones. Sparse flashes (top) produce zone-dependent decaying glows; the same flashes under different Δ \Delta (middle, bott...</figcaption>
+                  </figure>
+                  <p>TIDES 固定使用真实采样间隔作为状态离散化步长，同时把输入依赖迁移到对角状态矩阵，而不是让 Δt 吸收全部选择性。这样既保留连续时间解释，又可让不同观测点触发不同的状态演化。论文还构造 Fading Flash 诊断基准，专门测试采样间隔分布外变化和输入依赖这两个常被混在一起的问题。
+阅读时需要把方法设计与主要结果一起看：作者报告，TIDES 在 UEA 时间序列分类和 Physiome-ODE 回归基准上取得最佳平均排名，并在其受控诊断中避免了现有选择性 SSM 与连续时间 SSM 的不同失败模式。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告，TIDES 在 UEA 时间序列分类和 Physiome-ODE 回归基准上取得最佳平均排名，并在其受控诊断中避免了现有选择性 SSM 与连续时间 SSM 的不同失败模式。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要没有证明其在百万级原始聚变点流上的端到端显存上界；高频通道与低频通道如何分层压缩、再做跨通道交互仍需另行设计和实测。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇最有价值的不是再换一个 SSM 名称，而是把“模型内部步长”重新锚定到真实物理时间。它适合作为 P1 的时间编码主干候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是通用不规则时序。可先在现有数据上将每通道真实 Δt 显式输入 SSM，与插补加 Mamba、Neural CDE 做相同显存预算比较；若高频通道仍过长，再只对其前端加入分块压缩，而不破坏跨块时间间隔。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P1 不规则时序与聚变高低频统一建模</p>
+              <h3>SurF：为异步多变量事件流构造可预训练的时间重标定空间</h3>
+              <p class="paper__subtitle">SurF: A Generative Model for Multivariate Irregular Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-05-13</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否把具有巨大时间尺度差异的异步多变量事件流映射到统一表示，同时让训练和推断可扩展到长序列？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mohammad R. Rezaei, Tejas Balaji, Rahul G. Krishnan</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2605.14069" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2605.14069" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多变量异步数据常被强行栅格化或切窗，但当不同通道采样率差异极大时，前者带来空洞和显存浪费，后者又容易截断长程依赖。神经时间点过程虽天然描述异步事件，却常被窗口级数值积分拖慢，难以形成跨数据集的通用表征。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否把具有巨大时间尺度差异的异步多变量事件流映射到统一表示，同时让训练和推断可扩展到长序列？
+对当前主题的关键意义在于：原始应用涵盖地震、社交与电商事件流。最小验证实验是把一个高频诊断转为阈值事件或变化点事件，与原始连续通道并行输入，比较重标定前后在不同采样率扰动下的预测稳定性和峰值显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f224d2906c5c0dac.png" alt="Figure 2 : Time-rescaling goodness-of-fit across datasets and variants. Empirical CDF of the residuals Δ ​ z i = Λ ​ ( τ i ∣ h i − 1 ) \Delta z_{i}=\Lambda(\tau_{i}\mid h_{i-1}) on the test split. A perfectly calibrated model produces residuals that are i.i.d. Exp ​ ( 1 ) \mathrm{Exp}(1) (black dotted curve); smaller KS statistic D D indicates better calibration. SurF achieves near-ideal calibration (Figure 8 presents the results for all six datasets).">
+                    <figcaption>Figure 2 : Time-rescaling goodness-of-fit across datasets and variants. Empirical CDF of the residuals Δ ​ z i = Λ ​ ( τ i ∣ h i − 1 ) \Delta z_{i}=\Lambda(\tau_{i}\mid h_{i-1}) on...</figcaption>
+                  </figure>
+                  <p>SurF 用可学习的时间重标定定理双射，把事件序列变换为单位速率指数噪声；再提供三种累计强度参数化与 Transformer 编码器，用于跨数据集预训练。关键启发是先规范化“事件时间几何”，再学习跨通道表示，而不是默认所有观测已经处在同一采样网格。
+阅读时需要把方法设计与主要结果一起看：论文报告，在六个真实事件流基准上，SurF 在 Earthquake、Retweet、Taobao 的时间 RMSE 达到最佳，并在严格 leave-one-out 设置中于六个数据集中的五个超过所有经典与神经自回归基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，在六个真实事件流基准上，SurF 在 Earthquake、Retweet、Taobao 的时间 RMSE 达到最佳，并在严格 leave-one-out 设置中于六个数据集中的五个超过所有经典与神经自回归基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它是生成式事件流预测框架，并未直接解决连续波形诊断的空间结构，也未给出聚变多诊断上的验证；把高频连续采样转成事件表示会引入阈值和信息保真度选择。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>SurF 提供的是“先对齐异步时间几何、再做统一预训练”的路线，适合作为 P1 的事件化建模备选，而非直接替换所有连续信号模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用涵盖地震、社交与电商事件流。最小验证实验是把一个高频诊断转为阈值事件或变化点事件，与原始连续通道并行输入，比较重标定前后在不同采样率扰动下的预测稳定性和峰值显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发 / P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P2 RGB-Event 属性识别</p>
+              <h3>EventDrive：用多时间尺度事件金字塔和时域 MoE 融合 RGB 与 Event</h3>
+              <p class="paper__subtitle">EventDrive: Event Cameras for Vision-Language Driving Intelligence</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如何让 RGB 与异步 Event 在不同运动速度、照明条件和任务需求下，以自适应的时间尺度进行对齐和融合？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Dongyue Lu, Rong Li, Ao Liang, Lingdong Kong, Wei Yin, Lai Xing Ng, Benoit R. Cottereau, Camille Simon Chane, Wei Tsang Ooi</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.18242" target="_blank" rel="noreferrer">论文</a><a href="https://dylanorange.github.io/projects/eventdrive" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2606.18242" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB 帧提供密集外观语义，却在强动态范围、模糊和快速运动下失真；Event 传感器保留微秒级亮度变化，但其信息密度和有效时间范围随运动与光照改变。把两者统一成固定帧或在末端简单相加，往往无法利用 Event 的时间分辨率优势。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让 RGB 与异步 Event 在不同运动速度、照明条件和任务需求下，以自适应的时间尺度进行对齐和融合？
+对当前主题的关键意义在于：原始应用是自动驾驶。最小验证实验是在 TriPro 中把单一 Event 帧替换为短/中/长三种事件累积窗口，并用轻量 gate 根据 RGB 质量或事件率选择权重，先只评估低照度、快速运动和事件稀疏子集。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/863a9bef494bad95.png" alt="Figure 1 : Overview of the E v e n t D r i ve benchmark. The dataset contains 𝟒𝟕𝟏 ​ 𝐤 \mathbf{471k} event–frame–language samples across four levels of driving reasoning spanning 𝟏𝟕 \mathbf{17} subtasks: Perception evaluates scene-level context such as scene type, traffic, and illumination. Understanding assesses object-centric semantics , including presence, motion state, and grounding. Prediction infers short-horizon motion intent of surrounding agents . Planning estimates ego motion intent and future waypoints from past trajectories. Each task is formulated through structured, language-grounded queries, enabling unified evaluation of event–frame models across the autonomy stack.">
+                    <figcaption>Figure 1 : Overview of the E v e n t D r i ve benchmark. The dataset contains 𝟒𝟕𝟏 ​ 𝐤 \mathbf{471k} event–frame–language samples across four levels of driving reasoning spanning 𝟏𝟕...</figcaption>
+                  </figure>
+                  <p>EventDrive-VLM 构建多时间跨度的 event pyramid，并通过 temporal-horizon mixture-of-experts 为不同输入动态选择或融合时间视野；系统还把事件、RGB 与语言监督放进同一基准，覆盖感知、理解、预测和规划。对 P2 而言，关键不是语言部分，而是“时间尺度作为可路由专家”的融合结构。
+阅读时需要把方法设计与主要结果一起看：作者报告，Event 作为 RGB 的互补模态，在时间精度、运动感知和挑战条件鲁棒性上带来显著收益；论文以多任务基准验证了该多时间尺度融合设计。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告，Event 作为 RGB 的互补模态，在时间精度、运动感知和挑战条件鲁棒性上带来显著收益；论文以多任务基准验证了该多时间尺度融合设计。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始目标是驾驶视觉语言任务，并非细粒度人体属性；模型规模和训练数据要求可能高于 ReID 设定，需要先验证时间 MoE 的收益是否足以抵消工程复杂度。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>该工作最可迁移的部分是让 Event 表示的时间窗口可学习、可路由，而不是预先固定。它为 P2 提供了比“再加一个 cross-attention”更明确的时间融合假设。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是自动驾驶。最小验证实验是在 TriPro 中把单一 Event 帧替换为短/中/长三种事件累积窗口，并用轻量 gate 根据 RGB 质量或事件率选择权重，先只评估低照度、快速运动和事件稀疏子集。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P2 RGB-Event 属性识别</p>
+              <h3>Fusion-E2Pulse：以 RGB 结构先验抑制 Event 噪声、由 Event 补回高频细节</h3>
+              <p class="paper__subtitle">Fusion-E2Pulse: A Multimodal Event-RGB Fusion Network for Non-contact Pulse Wave Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-14</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如何让 RGB 的稳定结构信息约束 Event 噪声，同时保留 Event 对细粒度时变信号的补充能力？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qian Feng, Hao Guo, Yan Niu, Zhenhuan Xu, Yidi Li</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.15597" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.15597" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB 由曝光积分形成，能稳定提供结构与外观，却会平滑细微快速变化；Event 对快速亮度变化敏感，但很容易被小幅运动和噪声触发。双模态系统若忽略两者的误差结构差异，常会把 Event 噪声当作有效细节一并融合。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让 RGB 的稳定结构信息约束 Event 噪声，同时保留 Event 对细粒度时变信号的补充能力？
+对当前主题的关键意义在于：原始应用是非接触生理测量。最小验证实验是在属性 head 前加一个 residual fusion：RGB 主分支预测属性，Event 分支只预测由 RGB 不确定性或低照度触发的残差，并比较对事件噪声和遮挡的鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Fusion-E2Pulse 将滤波后的 RGB 信号作为结构先验抑制运动伪影，并利用 Event 流的高敏感性重建 RGB 曝光会削弱的波形细节。其方法假设的核心不是模态平等，而是依据物理观测机制给每个模态分配不同角色。
+阅读时需要把方法设计与主要结果一起看：论文报告，在非接触脉搏重建中取得 0.78 bpm 平均绝对心率误差、0.89 波形相关系数和 16.74 ms 收缩期时长误差，并声明优于对比方法。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，在非接触脉搏重建中取得 0.78 bpm 平均绝对心率误差、0.89 波形相关系数和 16.74 ms 收缩期时长误差，并声明优于对比方法。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务输出是连续生理波形而非离散属性，且先验关系可能依赖特定成像条件；迁移到人体属性需要验证 RGB 结构先验是否会压制与属性相关的稀有事件模式。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇给 P2 的核心启发是基于误差来源进行非对称融合：RGB 负责可信结构，Event 负责高频残差，而不是两个特征向量直接相加。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是非接触生理测量。最小验证实验是在属性 head 前加一个 residual fusion：RGB 主分支预测属性，Event 分支只预测由 RGB 不确定性或低照度触发的残差，并比较对事件噪声和遮挡的鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>M3R：以诊断时序为 query 检索图像中的局部前兆</h3>
+              <p class="paper__subtitle">M3R: Localized Rainfall Nowcasting with Meteorology-Informed MultiModal Attention</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-04-15</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如何在完成异步时间对齐后，让数值时序动态选择图像中的局部证据，而不是被整帧视觉特征淹没？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sanjeev Panta, Rhett M. Morvant, Xu Yuan, Li Chen, Nian-Feng Tzeng</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2604.15377" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/Sanjeev97/M3Rain" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2604.15377" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多传感器预警问题中，图像携带空间结构，数值时序携带局部和时间连续信息。常见 early/late fusion 会把图像全局特征和时序向量混合，导致模型难以区分哪些图像区域真正与当前时间演化有关，并且容易引入无关视觉背景。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在完成异步时间对齐后，让数值时序动态选择图像中的局部证据，而不是被整帧视觉特征淹没？
+对当前主题的关键意义在于：原始应用是气象临近预报。最小验证实验是让诊断时序 token 作为 query，交叉注意可见光图像 patch；用模态 dropout 和注意区域稳定性作为消融，并单独报告预警提前量、误报率、推理延迟和跨装置性能。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/419b02da0f925dab.png" alt="Figure 3: Illustration of M3R Model with Vision Encoder, TS Encoder, MultiModal Attention Block, TS Decoder and MLP Head.">
+                    <figcaption>Figure 3: Illustration of M3R Model with Vision Encoder, TS Encoder, MultiModal Attention Block, TS Decoder and MLP Head.</figcaption>
+                  </figure>
+                  <p>M3R 对异构气象数据进行时间对齐，以 weather-station time series 作为 query，选择性注意 NEXRAD 雷达图像的空间特征，从而提取与当前降雨演化最相关的局部模式。这里可迁移的是非对称 cross-attention 的信息流方向，而不是气象领域知识。
+阅读时需要把方法设计与主要结果一起看：论文报告，该方法在三个区域的降雨临近预报实验中优于既有方法，并同时强调预测效率和降水检测能力；论文已声明 ICME 2026 接收并公开代码。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，该方法在三个区域的降雨临近预报实验中优于既有方法，并同时强调预测效率和降水检测能力；论文已声明 ICME 2026 接收并公开代码。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>雷达图像与聚变可见光诊断在几何、噪声和时间尺度上不同；论文尚未处理跨装置分布漂移，因而不能直接视为破裂预测方案。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 最值得借鉴的结构是“时序主导视觉检索”。它能把融合问题改写为可检查的问题：哪段诊断演化让模型关注了哪块图像区域。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是气象临近预报。最小验证实验是让诊断时序 token 作为 query，交叉注意可见光图像 patch；用模态 dropout 和注意区域稳定性作为消融，并单独报告预警提前量、误报率、推理延迟和跨装置性能。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
           <h2>多模态学习 / 图像 / 计算机视觉</h2>
         </div>
         <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
@@ -214,7 +526,7 @@
           </div>
         </article>
       </section>
-      <section class="panel" id="section-3">
+      <section class="panel" id="section-6">
         <div class="panel__head">
           <h2>科学机器学习 / 代理模型</h2>
         </div>
@@ -328,7 +640,7 @@
           </div>
         </article>
       </section>
-      <section class="panel" id="section-4">
+      <section class="panel" id="section-7">
         <div class="panel__head">
           <h2>通用 AI / 世界模型 / 推理</h2>
         </div>
@@ -387,7 +699,7 @@
           </div>
         </article>
       </section>
-      <section class="panel" id="section-5">
+      <section class="panel" id="section-8">
         <div class="panel__head">
           <h2>部署与系统</h2>
         </div>
