@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-24</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-24 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-24 09:30:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论是：新稿最有价值的不是又一个通用大模型，而是三个可直接落地的结构性问题——以图拓扑而不是固定网格构造超导电路代理、以分布建模补足超长预测的点估计、以及将 ITER 磁传感器配对从组合枚举降为多项式指派。时序连续重参数化与原生 Event 表征各提供一条可验证的课题支线。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">可控核聚变 / 诊断与运行</a>
+            <ul>
+              <li><a href="#paper-3">03 从指数级枚举到三次复杂度的 ITER 磁传感器核验</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">在研课题启发 / P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-4">04 DiffTW：以连续 ODE 流实现可分析的时间重对齐</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发 / P2 RGB-Event 属性识别</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">时序分析 / 预测与对齐</a>
+            <ul>
+              <li><a href="#paper-2">02 用条件扩散补足超长时序预测的不确定性</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">科学机器学习 / 超导磁体代理</a>
+            <ul>
+              <li><a href="#paper-1">01 面向超导磁体拓扑变化的图神经代理</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">面向超导磁体拓扑变化的图神经代理</a></h3>
+              <p class="card__subtitle">SuperCond-GNN: Scalable Graph Neural Network Surrogate for Superconducting Circuit Simulations</p>
+              <div class="chip-row">
+                <span class="chip">科学机器学习 / 超导磁体代理</span>
+                <span class="chip chip--muted">2026-06-22</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>高温超导磁体被直接表示为等效电路图，模型因此可显式接收拓扑、材料与电流条件；同时检验未见拓扑上的零样本与少样本泛化。对聚变磁体的快速状态估计，这比固定尺寸张量上的黑箱回归更有工程迁移价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">用条件扩散补足超长时序预测的不确定性</a></h3>
+              <p class="card__subtitle">Distribution-Aware Diffusion-LLM for Robust Ultra-Long-Term Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 预测与对齐</span>
+                <span class="chip chip--muted">2026-06-22</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>它把 LLM 的长上下文表征与条件扩散的未来分布建模合并，针对的是超长预测中常被点预测掩盖的多峰与失配问题。虽仍需在真实不规则诊断上复现，但作为概率预测对照组足够直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">从指数级枚举到三次复杂度的 ITER 磁传感器核验</a></h3>
+              <p class="card__subtitle">Disambiguation of magnetic sensors in ITER</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 诊断与运行</span>
+                <span class="chip chip--muted">2026-06-22</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这篇将磁线圈信号配对与极性问题准确改写为带符号指派，再使用 Hungarian 类算法。它展示了诊断调试中先识别问题结构、再选算法的价值，并给出可量化的置信度结果。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>可控核聚变 / 诊断与运行</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 诊断与运行</p>
+              <h3>从指数级枚举到三次复杂度的 ITER 磁传感器核验</h3>
+              <p class="paper__subtitle">Disambiguation of magnetic sensors in ITER</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-22</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇将磁线圈信号配对与极性问题准确改写为带符号指派，再使用 Hungarian 类算法。它展示了诊断调试中先识别问题结构、再选算法的价值，并给出可量化的置信度结果。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>M. J. Hole, S. D. Pinches, G. Vayakis, S. C. McIntosh, O. Hoenen, P. Abreu</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.23427" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.23427" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇将磁线圈信号配对与极性问题准确改写为带符号指派，再使用 Hungarian 类算法。它展示了诊断调试中先识别问题结构、再选算法的价值，并给出可量化的置信度结果。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>若依靠多轮无等离子体放电和组合波形来识别传感器，调试成本高且组合空间迅速爆炸。磁诊断中的接线和极性错误会直接影响后续平衡重建与控制，因此需要在有限激励下可靠定位。
+从本日报的选取理由看，这篇将磁线圈信号配对与极性问题准确改写为带符号指派，再使用 Hungarian 类算法。它展示了诊断调试中先识别问题结构、再选算法的价值，并给出可量化的置信度结果。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在大规模磁传感器中同时解决通道配对和极性歧义，并避免 (O(2^N N!)) 的暴力枚举？
+对当前主题的关键意义在于：可在现有多诊断通道上构造“通道置换/符号翻转”注入试验，比较 Hungarian 指派、相关性匹配和端到端分类器在噪声与缺失条件下的恢复率、置信度和运行时间。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/29cea0136eb7b2aa.jpg" alt="Figure 1: (a) Poloidal cross section of ITER showing inner and outer vessel walls, location of poloidal field probes (square), flux loops (circle) and Rogowski coils (diamond). (b) The ITER inner wall, parameterisation, geometric angle θ \theta with axis located at the geometric centre ( 6.2523 , 0.0767 ) (6.2523,0.0767) , and the tangent vector field.">
+                    <figcaption>Figure 1: (a) Poloidal cross section of ITER showing inner and outer vessel walls, location of poloidal field probes (square), flux loops (circle) and Rogowski coils (diamond). (b)...</figcaption>
+                  </figure>
+                  <p>通过组合极向场线圈与环向非对称主动线圈激励，并使用 Biot-Savart 计算预测信号；将匹配改写为 signed assignment problem，再以 Hungarian-algorithm-based 优化获得 (O(N^3)) 搜索。该形式化是其最具迁移价值的部分。
+阅读时需要把方法设计与主要结果一起看：摘要报告算法在信噪比 50 下可在约 2 秒内完成测试阵列识别；第一壁实际线圈位置重建置信度超过 0.97。第二壁仅靠局部代价较低，加入极向场线圈后置信度由超过 0.15 提升到超过 0.59。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告算法在信噪比 50 下可在约 2 秒内完成测试阵列识别；第一壁实际线圈位置重建置信度超过 0.97。第二壁仅靠局部代价较低，加入极向场线圈后置信度由超过 0.15 提升到超过 0.59。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>部分阵列的置信度仍不足以支持无人工复核的自动接收；结果依赖主动线圈场模型与噪声假设，未覆盖真实安装误差和全部运行工况。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>诊断数据问题优先做结构化建模，常比在错误的组合空间上增加搜索更有效。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可在现有多诊断通道上构造“通道置换/符号翻转”注入试验，比较 Hungarian 指派、相关性匹配和端到端分类器在噪声与缺失条件下的恢复率、置信度和运行时间。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>在研课题启发 / P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P1 不规则时序与聚变高低频统一建模</p>
+              <h3>DiffTW：以连续 ODE 流实现可分析的时间重对齐</h3>
+              <p class="paper__subtitle">Time Series Classification through Diffeomorphic Time Warping (DiffTW)</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-22</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否学习两个实值时间函数之间的连续、可逆时间形变，而不是用离散匹配近似对齐？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Vicky Geneva Haney, Kamel Lahouel, Victor Rielly, Bruno M. Jedynak</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.23472" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.23472" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>DTW 是处理速度变化的常用方法，但其离散点匹配缺少连续可解释性，且难以直接成为可学习多模态时间对齐模块。聚变多诊断的时间轴既有真实采样间隔，又有采样率变化，要求对齐机制不能仅依赖固定帧索引。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否学习两个实值时间函数之间的连续、可逆时间形变，而不是用离散匹配近似对齐？
+对当前主题的关键意义在于：原始应用是通用时序分类；可先用上述降采样扰动实验验证其对真实 Δt 的保持能力，并把它置于高频压缩之后而不是作用于全部原始点流。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c976dbe54fd92b59.png" alt="Figure 8: Ham dataset spectrographic measurements, where both methods achieved identical classification accuracy of 61%.">
+                    <figcaption>Figure 8: Ham dataset spectrographic measurements, where both methods achieved identical classification accuracy of 61%.</figcaption>
+                  </figure>
+                  <p>作者以线性输运方程特征曲线的 ODE 表达形变，并在 RKHS 与最优控制框架下学习速度场；所得映射为函数之间的微分同胚。它把时间对齐从启发式距离变成可分析的连续动力学对象。
+阅读时需要把方法设计与主要结果一起看：使用 1-nearest-neighbor 分类器时，DiffTW 在 86 个数据集中的 60 个上超过 DTW。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>使用 1-nearest-neighbor 分类器时，DiffTW 在 86 个数据集中的 60 个上超过 DTW。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>实验是分类设置，未证明对异步多通道、高频原始点流、缺失非随机或流式在线推断的扩展性；ODE 求解也可能成为极长序列的时间瓶颈。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 的时间几何对齐组件或诊断基线，不应被误认为一套完整高低频统一模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是通用时序分类；可先用上述降采样扰动实验验证其对真实 Δt 的保持能力，并把它置于高频压缩之后而不是作用于全部原始点流。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发 / P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 / P2 RGB-Event 属性识别</p>
+              <h3>本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>判断：截至检索截止时间，没有发现新增的、同时提供原生 Event 表征、RGB-Event 时间对齐或可靠性动态融合，并能对 TriPro-ReID 形成最小可验证替换的实证论文。</p>
+          <p>补充说明：新增的 *A Systematic Survey on Event Camera Representation Learning*（arXiv:2606.23078）可作为表示选择的索引资料，但属于综述，未提出或验证可直接替换 TriPro 模块的新机制，因此不作为本轮 P2 收录论文。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>判断：本轮未发现新增且经原始来源核验的论文，能够同时覆盖异步图像—诊断时序融合、模态缺失或跨装置泛化，并直接提供可迁移的低延迟前兆检索机制。</p>
+          <p>补充说明：新出现的 TCV X-Point Target divertor 动态研究（arXiv:2606.23432）具有诊断与扰动抑制价值，但不包含可见光图像和诊断时序融合，故不以领域相近为由纳入 P3。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>时序分析 / 预测与对齐</h2>
+        </div>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 预测与对齐</p>
+              <h3>用条件扩散补足超长时序预测的不确定性</h3>
+              <p class="paper__subtitle">Distribution-Aware Diffusion-LLM for Robust Ultra-Long-Term Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-22</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">它把 LLM 的长上下文表征与条件扩散的未来分布建模合并，针对的是超长预测中常被点预测掩盖的多峰与失配问题。虽仍需在真实不规则诊断上复现，但作为概率预测对照组足够直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Falguni Ghosh, Vahid Hashemi, Bernhard Kainz</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.23391" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.23391" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>它把 LLM 的长上下文表征与条件扩散的未来分布建模合并，针对的是超长预测中常被点预测掩盖的多峰与失配问题。虽仍需在真实不规则诊断上复现，但作为概率预测对照组足够直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>超长预测在分布漂移、少样本或多模态条件下常具有不止一个合理未来。单点回归会将多峰结果平均化，并且难以表达预测何时不可信；LLM 具备上下文建模能力，但并不天然校准非文本连续变量的概率分布。
+从本日报的选取理由看，它把 LLM 的长上下文表征与条件扩散的未来分布建模合并，针对的是超长预测中常被点预测掩盖的多峰与失配问题。虽仍需在真实不规则诊断上复现，但作为概率预测对照组足够直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让长上下文时序表征同时刻画未来条件分布，并在少样本和超长预测场景下保持稳健？
+对当前主题的关键意义在于：在现有规则采样诊断子集上，先以同一 encoder 比较点预测 head 与轻量条件扩散 head 的 CRPS、校准误差和预警提前量；仅当不确定性收益超过采样延迟时再扩展到实时链路。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0090cf134fec3fea.png" alt="Figure 1 : Training architecture of Diffusion-LLM . (A) The prompt, input, and target time series are reprogrammed into a shared token embedding space using a frozen LLM encoder and a trainable patch encoder. (B) The encoded input is used for direct forecasting via a frozen LLM body + trainable output projection module. (C) A conditional DDPM is trained to model the distribution of the encoded target, conditioned on the input, by predicting the added noise. The final loss combines forecasting and diffusion-based regularization.">
+                    <figcaption>Figure 1 : Training architecture of Diffusion-LLM . (A) The prompt, input, and target time series are reprogrammed into a shared token embedding space using a frozen LLM encoder an...</figcaption>
+                  </figure>
+                  <p>Diffusion-LLM 将条件扩散模型纳入 LLM 预测管线，在共享潜在空间中进行未来分布学习和语义对齐。可迁移重点是“主干负责长上下文，扩散头负责多样未来”的职责分离。
+阅读时需要把方法设计与主要结果一起看：作者在 ETT、Weather、ECL 等六个长预测基准上报告优于所比较的 LLM 基线，并特别强调超长预测和少样本设定的增益。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者在 ETT、Weather、ECL 等六个长预测基准上报告优于所比较的 LLM 基线，并特别强调超长预测和少样本设定的增益。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要未给出不规则时间戳、缺失机制或高频流式推断的实证；扩散采样的时延和显存成本也可能不适合严格实时破裂预警。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可把它视为概率预测基线候选，而不是直接替代低延迟时序主干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在现有规则采样诊断子集上，先以同一 encoder 比较点预测 head 与轻量条件扩散 head 的 CRPS、校准误差和预警提前量；仅当不确定性收益超过采样延迟时再扩展到实时链路。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>科学机器学习 / 超导磁体代理</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学机器学习 / 超导磁体代理</p>
+              <h3>面向超导磁体拓扑变化的图神经代理</h3>
+              <p class="paper__subtitle">SuperCond-GNN: Scalable Graph Neural Network Surrogate for Superconducting Circuit Simulations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-22</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">高温超导磁体被直接表示为等效电路图，模型因此可显式接收拓扑、材料与电流条件；同时检验未见拓扑上的零样本与少样本泛化。对聚变磁体的快速状态估计，这比固定尺寸张量上的黑箱回归更有工程迁移价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Nandana Menon, Giorgio Vallone</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.23548" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.23548" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>高温超导磁体被直接表示为等效电路图，模型因此可显式接收拓扑、材料与电流条件；同时检验未见拓扑上的零样本与少样本泛化。对聚变磁体的快速状态估计，这比固定尺寸张量上的黑箱回归更有工程迁移价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>超导磁体中电流再分配与节点电压通常依赖电路仿真。常规神经代理若把系统摊平成固定向量，面对磁带数量、连线和工作条件变化时会丢失结构先验，也难以判断能否向新配置外推。
+从本日报的选取理由看，高温超导磁体被直接表示为等效电路图，模型因此可显式接收拓扑、材料与电流条件；同时检验未见拓扑上的零样本与少样本泛化。对聚变磁体的快速状态估计，这比固定尺寸张量上的黑箱回归更有工程迁移价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否以电路拓扑、材料属性和工作电流为输入，快速预测节点电压，并在未见电路拓扑上维持可用泛化？
+对当前主题的关键意义在于：可先把现有磁诊断或电路仿真导出成图，比较 GNN 与固定维度 MLP 在留出拓扑、工作电流外推和峰值误差上的差异；该实验不需要改动主控制链路。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/eb36c70eda3ce62a.png" alt="Figure 4: Overview of the SC-GNN framework. Starting from an input tape stack configuration, a SPICE netlist is generated and simulated using ngspice under a ramped input current I i ​ n = t T ​ I target I_{in}=\frac{t}{T}I_{\text{target}} to produce true nodal voltages 𝐕 ​ ( t ) \mathbf{V}(t) . The circuit is simultaneously represented as a graph 𝒢 = ( 𝒱 , ℰ ) \mathcal{G}=(\mathcal{V},\mathcal{E}) across T T current steps, which is passed through the encoder-processor-decoder based GNN. The encoder comprising a node encoder and edge encoder produces latent embeddings that is sent through the message passing processor, and finally the decoder produces predicted nodal voltages 𝐕 ¯ ​ ( t ) \bar{\mathbf{V}}(t) . The model is trained by minimizing a loss function via gradient-based optimization.">
+                    <figcaption>Figure 4: Overview of the SC-GNN framework. Starting from an input tape stack configuration, a SPICE netlist is generated and simulated using ngspice under a ramped input current I...</figcaption>
+                  </figure>
+                  <p>作者以节点和边构成 HTS tape-stack 的等效电路图，使用消息传递 GNN 预测电压分布；同时测试 Kirchhoff 电流定律的物理正则，并以零样本推断和少样本微调评估拓扑外泛化。其关键贡献是把“配置变化”保留为图结构而非数据增广噪声。
+阅读时需要把方法设计与主要结果一起看：在文中给定设计空间内，模型达到 4.3% 平均 MAPE；摘要报告其可用于快速推断电流再分配和局部工况，并评估了未见拓扑上的零样本与少样本适配。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在文中给定设计空间内，模型达到 4.3% 平均 MAPE；摘要报告其可用于快速推断电流再分配和局部工况，并评估了未见拓扑上的零样本与少样本适配。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前验证仅到最多 10 条 tape 的等效电路，且训练数据来自仿真；尚未证明对完整聚变磁体、多物理热-电耦合或实测漂移的可靠性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它提供的是可扩展的代理表示，而不是只对一个固定线圈配置拟合一个回归器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可先把现有磁诊断或电路仿真导出成图，比较 GNN 与固定维度 MLP 在留出拓扑、工作电流外推和峰值误差上的差异；该实验不需要改动主控制链路。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 物理代理的泛化单位正在从“样本”回到“结构”</h3>
+          <p>SuperCond-GNN 的价值在于把电路拓扑留在模型输入中。对于可能改变布局、连接关系或设备配置的科学系统，图表示比对固定尺寸数据做数据增强更可审计。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 长预测要同时报告均值、分布和运行成本</h3>
+          <p>Diffusion-LLM 将分布学习带入 LLM forecasting，但实时系统不能只看精度；扩散采样延迟、校准质量和告警提前量必须一起评估。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 诊断工程优先寻找可证明的组合结构</h3>
+          <p>ITER 传感器工作说明，发现 signed assignment 结构后，复杂度可从指数级降到三次。对数据通道标定、模态匹配和状态映射问题，应先检查是否可转化为指派、匹配或约束优化。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
