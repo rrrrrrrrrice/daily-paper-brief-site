@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-23</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-23 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-23 09:07:35 +08:00</p>
+      <div class="hero__overview">
+        <p>今天最重要的变化，不在于又多了几篇泛化的大模型综述，而在于下面五个更具体的信号：</p>
+        <p>1. 世界模型 的一个关键方向正在变得更清楚：表示不该只为“预测下一帧”服务，而应该为“后续动作决策”服务。</p>
+        <p>2. 科学机器学习 里高价值的新增，开始把 surrogate 做到“不只快，而且带不确定性”，这对真实反问题与贝叶斯推断更关键。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">可控核聚变 / AI 交叉</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-5">05 UNIEGO：用 proxy 把多视角多模态知识蒸进统一第一视角表示</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">科学机器学习 / 代理模型</a>
+            <ul>
+              <li><a href="#paper-2">02 DeepGaLA：带不确定性的 PDE 反问题神经代理</a></li>
+              <li><a href="#paper-3">03 比较四类神经代理如何长时程预测电池内部状态</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">通用 AI / 世界模型 / 推理</a>
+            <ul>
+              <li><a href="#paper-1">01 让世界模型先学会为动作服务</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">部署与系统</a>
+            <ul>
+              <li><a href="#paper-4">04 把 KV cache 扩展成整段可恢复执行状态</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">让世界模型先学会为动作服务</a></h3>
+              <p class="card__subtitle">Sensorimotor World Models: Perception for Action via Inverse Dynamics</p>
+              <div class="chip-row">
+                <span class="chip">通用 AI / 世界模型 / 推理</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>这篇把一个非常重要但经常被混过去的问题挑明了：世界模型的表示到底应该忠于视觉重建，还是忠于后续行动。它用 inverse dynamics regularization 把表示直接拉向“对动作有用”的方向，这比单纯继续做 latent prediction 更有研究价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">DeepGaLA：带不确定性的 PDE 反问题神经代理</a></h3>
+              <p class="card__subtitle">Neural network surrogates with uncertainty quantification for inverse problems in partial differential equations</p>
+              <div class="chip-row">
+                <span class="chip">科学机器学习 / 代理模型</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>很多 surrogate 工作只证明“能近似 forward solver”，但真实反问题里更要命的是 surrogate 过度自信。这篇把不确定性量化直接做进神经代理，并用简短的 delayed-acceptance MCMC 做后验诊断，思路非常实在。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">比较四类神经代理如何长时程预测电池内部状态</a></h3>
+              <p class="card__subtitle">Comparative Study of Neural Surrogate Architectures for Autoregressive Prediction of Internal Battery States</p>
+              <div class="chip-row">
+                <span class="chip">科学机器学习 / 代理模型</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>这篇不是再给出一个单点最优模型，而是把 MLP、ResNet、U-Net、FNO 放在统一训练设定里正面对比，看谁更适合做长时程 autoregressive state-transition operator。对任何数字孪生或快速物理代理问题，这样的比较都很有参考价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">把 KV cache 扩展成整段可恢复执行状态</a></h3>
+              <p class="card__subtitle">Execution-State Capsules: Graph-Bound Execution-State Checkpoint and Restore for Low-Latency, Small-Batch, On-Device Physical-AI Serving</p>
+              <div class="chip-row">
+                <span class="chip">部署与系统</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>如果你关心 agent、语音系统或机器人策略在低延迟场景里的真实部署，这篇比普通 serving 优化论文更值得看。它的问题定义不是“如何更快复用 prefix”，而是“如何把整个执行边界的可恢复状态完整保存并回滚”。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">UNIEGO：用 proxy 把多视角多模态知识蒸进统一第一视角表示</a></h3>
+              <p class="card__subtitle">UNIEGO: Proxies as Mediators for Unified Egocentric Video Representation Learning</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>多教师蒸馏本身不新，但这篇真正有意思的点，是它承认不同 teacher 的特征空间根本不兼容，因此先用 proxy 做“翻译层”，再做选择性蒸馏。这个结构比直接把 teacher 全堆进去更像长期可扩展路线。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>可控核聚变 / AI 交叉</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>判断：截至 2026-06-23 09:07:35 +08:00，本轮在 physics.plasm-ph 可确认新增中，没有检索到明显强于前几版已展开条目的聚变 AI 新稿。</p>
+          <p>补充说明：北京时间 2026-06-23 上午检索时，physics.plasm-ph 的 recent 页仍只显示到 Fri, 19 Jun 2026；这一批新增里更靠前的条目集中在激光等离子体、天体等离子体或一般 plasma physics，不直接落在你当前重点关注的 tokamak / disruption / diagnosis / control / surrogate / optimization 主线上。</p>
+          <p>延续判断：此前已经重点覆盖的 DIII-D ECH robust control、新装置零实验 disruption prediction、Grad-Shafranov transfer learning neural operator 与 stellarator data-informed parameterization + Bayesian optimization 仍然有效，但本轮没有足够新的版本或实验增量，故不重复长文展开。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>UNIEGO：用 proxy 把多视角多模态知识蒸进统一第一视角表示</h3>
+              <p class="paper__subtitle">UNIEGO: Proxies as Mediators for Unified Egocentric Video Representation Learning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">多教师蒸馏本身不新，但这篇真正有意思的点，是它承认不同 teacher 的特征空间根本不兼容，因此先用 proxy 做“翻译层”，再做选择性蒸馏。这个结构比直接把 teacher 全堆进去更像长期可扩展路线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Wenhao Chi, Arkaprava Sinha, Dominick Reilly, Hieu Le, Srijan Das</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20559" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20559" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>多教师蒸馏本身不新，但这篇真正有意思的点，是它承认不同 teacher 的特征空间根本不兼容，因此先用 proxy 做“翻译层”，再做选择性蒸馏。这个结构比直接把 teacher 全堆进去更像长期可扩展路线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>第一视角视频理解天然受限于狭窄视角、单一模态和单一模型能力。一个真正强的 egocentric 表示理应吸收 ego-exo 视角、RGB/depth/skeleton 模态以及不同 foundation model 的补充知识，但这些 teacher 的架构与特征空间往往差异极大，直接多教师蒸馏容易造成梯度冲突和错误监督传播。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把异构 teacher 的知识先变成相互可对齐、再选择性蒸进一个仅依赖 egocentric video 的统一编码器中？
+对当前主题的关键意义在于：如果你后续做多传感器融合、跨视角观测对齐或想把多个强模型的能力压进一个较轻的部署模型，这篇很有借鉴意义。它对科学视频理解和实验场景多模态表示学习也有启发。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>作者提出两阶段结构。第一阶段引入一层 Proxy models，让每个 teacher 的知识先被翻译到同质的 egocentric 表示空间，避免直接对齐不同几何结构的特征。第二阶段用 Selective Proxy Distillation (SPD) 为每个样本动态挑选既正确又有信心的 proxy，只从可靠监督中蒸馏；同时，把目标模型初始化为 proxy 参数的学习型凸组合，让优化从更稳的区域出发。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，UNIEGO 在三个具挑战性的 ego-exo benchmark 上，对动作识别、视频检索和动作分割三个任务都达到或接近 state-of-the-art，并显著优于 naive multi-teacher distillation。这表明 proxy-mediated transfer 不只是训练技巧，而是对表示对齐问题的更好建模。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前重点仍在 egocentric video representation，不是更宽泛的开放场景多模态推理；同时，方法依赖多个 teacher 与 proxy，训练成本和工程复杂度明显高于普通单教师蒸馏。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇工作的价值在于承认并正面解决“异构知识不能直接硬蒸”的问题。以后再看多教师、多模态知识融合，proxy 层会是很值得考虑的中间结构。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你后续做多传感器融合、跨视角观测对齐或想把多个强模型的能力压进一个较轻的部署模型，这篇很有借鉴意义。它对科学视频理解和实验场景多模态表示学习也有启发。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>科学机器学习 / 代理模型</h2>
+        </div>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学机器学习 / 代理模型</p>
+              <h3>DeepGaLA：带不确定性的 PDE 反问题神经代理</h3>
+              <p class="paper__subtitle">Neural network surrogates with uncertainty quantification for inverse problems in partial differential equations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">很多 surrogate 工作只证明“能近似 forward solver”，但真实反问题里更要命的是 surrogate 过度自信。这篇把不确定性量化直接做进神经代理，并用简短的 delayed-acceptance MCMC 做后验诊断，思路非常实在。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Christian Jimenez-Beltran, Aretha L. Teckentrup, Antonio Vergari, Konstantinos C. Zygalakis</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20417" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20417" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>很多 surrogate 工作只证明“能近似 forward solver”，但真实反问题里更要命的是 surrogate 过度自信。这篇把不确定性量化直接做进神经代理，并用简短的 delayed-acceptance MCMC 做后验诊断，思路非常实在。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>微分方程反问题广泛存在于科学与工程中，通常需要从噪声或不完整观测反推出未知参数。贝叶斯推断是自然框架，但 forward solver 昂贵时，似然评估会成为瓶颈。现有 surrogate 虽然能加速推断，但如果缺少合理的不确定性刻画，就容易在数据不足或参数维度升高时给出过度自信的错误后验。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否构建一种既能高效近似 PDE forward solver，又能对 surrogate 自身不确定性给出可用估计的神经代理，从而支撑更可靠的反问题贝叶斯推断？
+对当前主题的关键意义在于：如果你做聚变、等离子体或其他需要反演参数的物理系统，这篇很值得看。它尤其适合那些不能容忍 surrogate 胆大乱猜的场景，比如反演、同化、参数识别和不确定性传播。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e88ea3ac7194c2ea.png" alt="Figure 1: 1D BVP: Marginal ground-truth posterior distributions and the DeepGaLA mean and marginal approximations for different training set sizes.">
+                    <figcaption>Figure 1: 1D BVP: Marginal ground-truth posterior distributions and the DeepGaLA mean and marginal approximations for different training set sizes.</figcaption>
+                  </figure>
+                  <p>作者提出 DeepGaLA，把带不确定性量化的神经网络代理用于 PDE solver 近似，并在训练数据有限时显式抑制过度自信。除此之外，论文没有停在 surrogate 预测误差层面，而是进一步提出用一段简短的 delayed-acceptance MCMC 来诊断 surrogate 诱导后验与真实后验之间的偏差，这让方法更像一个可靠推断流程，而不只是一个近似器。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在多组数值实验中，DeepGaLA 在 forward-model 近似精度上与传统 Gaussian-process surrogate 相当，同时在参数维度升高时更能维持计算效率。论文还表明，它可以吸收微分方程约束，包含非线性场景，这使它更接近真实科学系统而不是只适合玩具问题。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这篇工作更强在“可靠 surrogate 推断框架”，而不是针对某一类具体物理系统给出现成最优解；另外，diagnostic MCMC 虽然短，但仍增加了流程复杂度，对极端高维或超昂贵问题是否同样实用，还需要更多验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇论文把 surrogate 的评价标准往前推了一步。以后再看 PDE 代理，不该只问“快多少、准多少”，还要问“它给出的不确定性能不能信”。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你做聚变、等离子体或其他需要反演参数的物理系统，这篇很值得看。它尤其适合那些不能容忍 surrogate 胆大乱猜的场景，比如反演、同化、参数识别和不确定性传播。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学机器学习 / 代理模型</p>
+              <h3>比较四类神经代理如何长时程预测电池内部状态</h3>
+              <p class="paper__subtitle">Comparative Study of Neural Surrogate Architectures for Autoregressive Prediction of Internal Battery States</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇不是再给出一个单点最优模型，而是把 MLP、ResNet、U-Net、FNO 放在统一训练设定里正面对比，看谁更适合做长时程 autoregressive state-transition operator。对任何数字孪生或快速物理代理问题，这样的比较都很有参考价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Gihyun Lee, Thorben Menne, Simon Olma, Jakob Hilgert, Sangyoung Park</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20053" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20053" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇不是再给出一个单点最优模型，而是把 MLP、ResNet、U-Net、FNO 放在统一训练设定里正面对比，看谁更适合做长时程 autoregressive state-transition operator。对任何数字孪生或快速物理代理问题，这样的比较都很有参考价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>Doyle-Fuller-Newman (DFN) 模型能高保真描述锂电池内部电化学状态，但数值求解成本太高，难以直接用于实时部署、pack 级管理或 fleet 级数字孪生。机器学习 surrogate 可以显著提速，但很多现有方法只在固定工况附近学习局部近似，很难真正泛化到更广的状态演化范围。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在把内部状态预测重写为 autoregressive state-transition operator 的前提下，不同神经网络结构的空间归纳偏置究竟会如何影响长时程 rollout 精度与稳定性？
+对当前主题的关键意义在于：如果你关心快速物理代理、可观测内部状态估计或科学数字孪生，这篇值得补读。即便应用领域不同，它关于多尺度结构与 rollout 稳定性的判断仍然可迁移。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/481aecd4fc9cbf5e.png" alt="Figure 1: Schematic of the DFN model geometry. Top: Macroscopic domain along the cell thickness ( x x ) spanning the electrodes and separator. Bottom: Microscopic domain along the radial coordinate ( r r ) within solid particles.">
+                    <figcaption>Figure 1: Schematic of the DFN model geometry. Top: Macroscopic domain along the cell thickness ( x x ) spanning the electrodes and separator. Bottom: Microscopic domain along the ...</figcaption>
+                  </figure>
+                  <p>作者把 MLP、ResNet、U-Net、FNO 四类结构统一为同一个多步展开、自回归预测框架，并加入 current-conditioning，刻意隔离掉训练协议差异，让对比聚焦到架构本身的空间归纳偏置。这样得到的结论，比“每个模型各用各的训练技巧再比一场”更可信。
+阅读时需要把方法设计与主要结果一起看：论文报告，U-Net 的多尺度层级结构在 300 步 autoregressive rollout 后，对全部内部状态变量可达到平均约 3% 的 final-step nRMSE，同时相对数值求解器提供约 5.38x 加速。作者据此指出，在这类内部状态代理问题里，多尺度空间结构是决定性能的关键因素。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，U-Net 的多尺度层级结构在 300 步 autoregressive rollout 后，对全部内部状态变量可达到平均约 3% 的 final-step nRMSE，同时相对数值求解器提供约 5.38x 加速。作者据此指出，在这类内部状态代理问题里，多尺度空间结构是决定性能的关键因素。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>研究对象仍是电池 DFN 模型，不能直接等同于其他复杂多物理场系统；此外，它比较的是四类常见结构，并没有纳入更广泛的神经算子或带物理约束的混合式方案，因此结论更多是“统一设定下的结构性判断”，而非终局答案。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇工作的价值在于把 surrogate 设计问题具体化为“什么空间归纳偏置更适合长时程状态演化”。这种判断方式对很多数字孪生任务都比单纯追更大模型更有用。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你关心快速物理代理、可观测内部状态估计或科学数字孪生，这篇值得补读。即便应用领域不同，它关于多尺度结构与 rollout 稳定性的判断仍然可迁移。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>通用 AI / 世界模型 / 推理</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">通用 AI / 世界模型 / 推理</p>
+              <h3>让世界模型先学会为动作服务</h3>
+              <p class="paper__subtitle">Sensorimotor World Models: Perception for Action via Inverse Dynamics</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">这篇把一个非常重要但经常被混过去的问题挑明了：世界模型的表示到底应该忠于视觉重建，还是忠于后续行动。它用 inverse dynamics regularization 把表示直接拉向“对动作有用”的方向，这比单纯继续做 latent prediction 更有研究价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Petr Ivashkov, Randall Balestriero, Bernhard Schölkopf</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20104" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20104" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>这篇把一个非常重要但经常被混过去的问题挑明了：世界模型的表示到底应该忠于视觉重建，还是忠于后续行动。它用 inverse dynamics regularization 把表示直接拉向“对动作有用”的方向，这比单纯继续做 latent prediction 更有研究价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>近年的 JEPA 风格世界模型强调从高维观测中压缩出可预测的潜在状态，以便后续进行长时程预测或规划。但只靠“容易预测”来训练 latent 表示，会面临表示塌缩和语义漂移问题，而且很难保证这些表示真正保留了对行动有用的信息。另一方面，“perception for action” 传统一直强调，表示应更多反映可控因素而不是纯视觉细节。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在不依赖冻结编码器、EMA teacher 或复杂 latent regularizer 的前提下，让世界模型学到既稳定又面向动作的潜在状态表示？
+对当前主题的关键意义在于：对聚变控制、实验决策和任何需要把状态表示直接接到下游控制器或规划器的任务，这篇都很有启发。它提醒我们，状态表示如果不对动作敏感，后面的控制优化很可能从一开始就吃亏。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4b0695e6d5026e17.png" alt="Figure 1: Method overview. We train an encoder f θ f_{\theta} , a forward dynamics model g ϕ g_{\phi} , and an inverse dynamics model h ψ h_{\psi} jointly from an offline dataset of transitions ( o t , a t , o t + 1 ) (o_{t},a_{t},o_{t+1}) . The encoder maps each observation to a compact embedding, z t = f θ ​ ( o t ) z_{t}=f_{\theta}(o_{t}) and z t + 1 = f θ ​ ( o t + 1 ) z_{t+1}=f_{\theta}(o_{t+1}) . The forward model predicts the next embedding from the current embedding and action, z ^ t + 1 = g ϕ ​ ( z t , a t ) \hat{z}_{t+1}=g_{\phi}(z_{t},a_{t}) , and is supervised by the mean-squared forward loss ℒ fwd \mathcal{L}_{\text{fwd}} between z ^ t + 1 \hat{z}_{t+1} and z t + 1 z_{t+1} . In parallel, the inverse model predicts the executed action from the two embeddings, a ^ t = h ψ ​ ( z t , z t + 1 ) \hat{a}_{t}=h_{\psi}(z_{t},z_{t+1}) , supervised by the mean-squared inverse loss ℒ inv \mathcal{L}_{\text{inv}} between a ^ t \hat{a}_{t} and a t a_{t} . Both losses backpropagate into the encoder through the joint objective ℒ = ℒ fwd + λ ​ ℒ inv \mathcal{L}=\mathcal{L}_{\text{fwd}}+\lambda\,\mathcal{L}_{\text{inv}} . The inverse loss acts as an anti-collapse mechanism: to enable action recovery, f θ f_{\theta} must preserve the action-relevant information contained in ( o t , o t + 1 ) (o_{t},o_{t+1}) .">
+                    <figcaption>Figure 1: Method overview. We train an encoder f θ f_{\theta} , a forward dynamics model g ϕ g_{\phi} , and an inverse dynamics model h ψ h_{\psi} jointly from an offline dataset o...</figcaption>
+                  </figure>
+                  <p>作者提出 Sensorimotor World Model (SMWM)，核心是在端到端训练的 latent world model 中加入 inverse dynamics regularization。这个约束强迫潜在状态保留产生状态转移所需的动作信息，从而把表示拉向环境中的可控自由度，同时压制与动作无关的干扰因素。和很多额外堆叠技巧不同，它用单一正则同时解决表示塌缩与动作对齐两个问题。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，SMWM 能在离线、无奖励轨迹上稳定训练，学到更紧凑且更可解释的 latent space，并在简单 2D/3D 控制任务上支持有竞争力的规划性能。虽然没有把系统包装成大而全的 benchmark 冠军，但它给出了一条更清楚的表示学习原则。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前实验仍集中在相对简化的控制任务，距离复杂机器人、多传感器系统或真实实验平台还有明显距离；同时，inverse dynamics 对“动作主导状态演化”的假设更友好，对于观测噪声极强或不可控因素占主导的系统，收益可能没有那么稳定。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇真正有价值的地方，是把世界模型的训练目标从“预测友好”推向“动作友好”。如果后续 world model 真要落到复杂控制与实验系统里，这种目标重心的转移很关键。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变控制、实验决策和任何需要把状态表示直接接到下游控制器或规划器的任务，这篇都很有启发。它提醒我们，状态表示如果不对动作敏感，后面的控制优化很可能从一开始就吃亏。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>部署与系统</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">部署与系统</p>
+              <h3>把 KV cache 扩展成整段可恢复执行状态</h3>
+              <p class="paper__subtitle">Execution-State Capsules: Graph-Bound Execution-State Checkpoint and Restore for Low-Latency, Small-Batch, On-Device Physical-AI Serving</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-18</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如果你关心 agent、语音系统或机器人策略在低延迟场景里的真实部署，这篇比普通 serving 优化论文更值得看。它的问题定义不是“如何更快复用 prefix”，而是“如何把整个执行边界的可恢复状态完整保存并回滚”。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Liang Su</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.20537" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.20537" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>如果你关心 agent、语音系统或机器人策略在低延迟场景里的真实部署，这篇比普通 serving 优化论文更值得看。它的问题定义不是“如何更快复用 prefix”，而是“如何把整个执行边界的可恢复状态完整保存并回滚”。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>主流 LLM serving 系统主要围绕 paged 或 radix KV cache 做 prefix 复用，这对高吞吐、多并发场景非常有效。但在交互 agent、语音系统、机器人策略等低延迟 physical-AI 场景中，系统经常要中断、分叉、重入和回滚，单独复用 token 位置上的 KV 碎片并不能完整恢复先前执行状态。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在不牺牲低延迟的前提下，把完整可恢复执行状态而非单一 KV 片段，作为可快照、可回滚、可分叉的复用单元？
+对当前主题的关键意义在于：如果你未来要把模型接入实验控制、实时交互系统或边端部署，这篇很值得看。它提供的是一套更贴近真实控制环闭环的 serving 视角。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5eda23d45ac4d463.png" alt="Figure 8: Cross-device, single-stream, paper-TTFT convention (first base-logit token, MTP tail excluded). Left: cold vs capsule TTFT vs prefix length on all three devices (log scale)—cold prefill rises with prefix and is ordered by device compute (Thor > > Spark > > 5090), while the capsule is flat and clustered low ( ∼ \sim 50 50 – 240 240 ms) on every device. Right: the cold → \to capsule speedup widens with prefix and tracks each device’s recompute cost ( 27 × 27\times on the 5090, 33 × 33\times on Spark, 76 × 76\times on Thor at 16 16 k). The capsule TTFT itself stays ∼ \sim 0.05 0.05 – 0.24 0.24 s independent of prefix and architecture; only the eliminated cold cost differs.">
+                    <figcaption>Figure 8: Cross-device, single-stream, paper-TTFT convention (first base-logit token, MTP tail excluded). Left: cold vs capsule TTFT vs prefix length on all three devices (log scal...</figcaption>
+                  </figure>
+                  <p>作者提出 execution-state capsules，把某个提交边界上的完整可恢复状态封装成 graph-bound snapshot。配套的 FlashRT 运行时以封闭的命名 buffer 集为基础，因此 capsule 可以一次性保存并恢复 KV、循环状态、卷积状态、MTP 状态和元数据。这样，复用单位从 token-addressed KV fragment 转成了完整执行边界。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告，在 RTX 5090 上，capsule restore 在存储状态级别是 byte-exact 的，贪心解码下可保持 token-identical；KV-only 消融会发生行为偏离，说明循环状态等确实是 load-bearing 的。GPU 驻留的 snapshot/restore 达到亚毫秒级，TTFT 相对冷启动 prefill 的加速从 2k token 时约 3.9x 增长到 16k token 时约 27x。在 Jetson AGX Thor 与 DGX Spark 上，结构性质同样成立。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>作者也明确说明，这不是高吞吐 KV-cache serving 的替代品，而是面向 latency-first 场景的互补路线；此外，方案依赖较白盒的 backend/runtime 控制能力，对通用黑盒服务栈的可迁移性有限。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇工作最值得记住的点，是把“模型状态复用”从 KV cache 单点优化，推进到完整执行状态管理。对于实际 agent 和 physical-AI 部署，这可能比再做一点 token 级缓存优化更关键。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>如果你未来要把模型接入实验控制、实时交互系统或边端部署，这篇很值得看。它提供的是一套更贴近真实控制环闭环的 serving 视角。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 世界模型研究正在从“预测得准”转向“对动作有用”</h3>
+          <p>Sensorimotor World Models 说明，latent 表示如果不对可控自由度敏感，只靠视觉预测目标很难自然长成好用的控制状态。后面 world model 研究里，动作对齐很可能会成为越来越核心的约束。</p>
+        </article>
+        <article class="trend">
+          <h3>2. surrogate 的评价标准正在从“速度和误差”升级到“后验是否可信”</h3>
+          <p>DeepGaLA 这类工作提醒我们，科学机器学习里真正值钱的代理不是只会快跑，而是能在反问题里给出不会过度自信的结果。尤其在高风险科学推断场景，不确定性质量会越来越重要。</p>
+        </article>
+        <article class="trend">
+          <h3>3. Physical AI 部署的瓶颈越来越像执行状态管理问题</h3>
+          <p>Execution-State Capsules 给出的信号很明确：低延迟 agent 和机器人系统不只需要 prefix reuse，而需要完整的 checkpoint / restore / fork / rollback 机制。未来 serving 优化会更像 runtime systems，而不只是 cache engineering。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 多模态蒸馏正在从“直接对齐”转向“先翻译、再选择”</h3>
+          <p>UNIEGO 的启发在于，异构 teacher 的知识冲突不是训练噪声，而是结构问题。先做 proxy 翻译层，再做样本级选择性蒸馏，可能会成为多源知识融合更稳的标准套路。</p>
+        </article>
+        <article class="trend">
+          <h3>5. 统一训练协议下的结构对比，正在比“再提一个新模型名”更有价值</h3>
+          <p>电池内部状态代理这篇说明，很多时候研究真正缺的不是又一个新架构，而是把不同结构放进同一设定里看清楚谁为什么更适合长时程状态演化。这对科学数字孪生尤其重要。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
