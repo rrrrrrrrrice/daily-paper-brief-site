@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-25</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-25 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-25 05:35:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：高价值增量集中在三个结构性问题——原生事件流的几何运动判别、长序列状态空间模型的实际扩展边界，以及异步多源图像插值。主推荐不因 P1-P3 附加课题而压缩；P1-P3 分别给出一个可执行的最小验证入口。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">可控核聚变 / AI 交叉</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">图像 / 计算机视觉与 Event 感知</a>
+            <ul>
+              <li><a href="#paper-1">01 原生 Event 流的几何独立运动判别</a></li>
+              <li><a href="#paper-2">02 面向 4K RAW 重建的信息密度选择性状态空间模型</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发 / P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-4">04 长序列 Mamba 的速度收益与数据不足边界</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 / P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-5">05 UniRED：用 Event 引导 RGB-D 的双向时间插帧</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-6">06 MotifGen：异步、错位多源图像的掩码重建与概率插值</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多任务学习</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">科学机器学习 / 神经算子</a>
+            <ul>
+              <li><a href="#paper-3">03 基于物理算子相位选择神经算子谱基</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">原生 Event 流的几何独立运动判别</a></h3>
+              <p class="card__subtitle">GeoIMO: Geometry-Driven Independent Motion Classification for Event Cameras</p>
+              <div class="chip-row">
+                <span class="chip">图像 / 计算机视觉与 Event 感知</span>
+                <span class="chip chip--muted">2026-06-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>论文直接在异步事件流上利用焦点扩张（FOE）和偏航补偿估计背景运动，再以局部残差识别独立运动，不把 Event 先转成帧。它给出了低学习依赖、可解释的原生事件基线，适合检验 RGB-Event 属性模型是否真正需要复杂融合。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">面向 4K RAW 重建的信息密度选择性状态空间模型</a></h3>
+              <p class="card__subtitle">MambaRaw: Selective State Space Modeling for Efficient 4K Raw Image Reconstruction</p>
+              <div class="chip-row">
+                <span class="chip">图像 / 计算机视觉与 Event 感知</span>
+                <span class="chip chip--muted">2026-06-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>该工作不在所有图像块上平均花费上下文计算，而是只在信息密度高的 tile 上执行 Mamba 式扫描，并用能量感知残差处理长尾原始信号。它为高分辨率科学图像提供了“先选择信息密度、再做线性时序/空间扫描”的可复验设计。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">基于物理算子相位选择神经算子谱基</a></h3>
+              <p class="card__subtitle">Real vs. Complex Spectral Bases for Neural Operators: The Role of Green's Function Alignment</p>
+              <div class="chip-row">
+                <span class="chip">科学机器学习 / 神经算子</span>
+                <span class="chip chip--muted">2026-06-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>论文将 FNO 与实值 Hartley 神经算子做等参数比较，结论不是宣称统一优胜者，而是按算子相位内容选择谱基。对聚变中的椭圆平衡重建与含传播相位的演化代理，这是直接可检验的架构选择原则。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>可控核聚变 / AI 交叉</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>判断：physics.plasm-ph 的增量主要为实验物理、数值模拟或硬件加速；未发现新增且直接涉及聚变诊断、控制、破裂预测或跨装置 AI 泛化的高质量论文。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>图像 / 计算机视觉与 Event 感知</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">图像 / 计算机视觉与 Event 感知</p>
+              <h3>原生 Event 流的几何独立运动判别</h3>
+              <p class="paper__subtitle">GeoIMO: Geometry-Driven Independent Motion Classification for Event Cameras</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">论文直接在异步事件流上利用焦点扩张（FOE）和偏航补偿估计背景运动，再以局部残差识别独立运动，不把 Event 先转成帧。它给出了低学习依赖、可解释的原生事件基线，适合检验 RGB-Event 属性模型是否真正需要复杂融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Anil Bayram Gogebakan, Filippo Marostica, Alessio Caviglia, Alessandro Savino, Stefano Di Carlo</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.24499" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.24499" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>论文直接在异步事件流上利用焦点扩张（FOE）和偏航补偿估计背景运动，再以局部残差识别独立运动，不把 Event 先转成帧。它给出了低学习依赖、可解释的原生事件基线，适合检验 RGB-Event 属性模型是否真正需要复杂融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>Event 相机以异步稀疏事件给出微秒级变化，但汽车数据集的运动标签常由帧式管线生成，难以反映原生事件的时间结构。仅在体素帧上做分类会混淆相机自运动、目标运动和事件噪声。
+从本日报的选取理由看，论文直接在异步事件流上利用焦点扩张（FOE）和偏航补偿估计背景运动，再以局部残差识别独立运动，不把 Event 先转成帧。它给出了低学习依赖、可解释的原生事件基线，适合检验 RGB-Event 属性模型是否真正需要复杂融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否不训练外观网络、不依赖人工运动标签，而由事件流本身稳定地区分静态物体与独立运动物体？
+对当前主题的关键意义在于：先在 TriPro-ReID 的 Event 支路前添加 FOE 残差和稳定度作为 token 质量特征，比较“原 Event 帧”“Event 帧+几何质量门控”“仅 RGB”在弱光、快速运动和事件稀疏切分上的属性 mA 与校准误差。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/69c320d5e949e1d2.png" alt="Figure 1: Overview of the proposed pipeline.">
+                    <figcaption>Figure 1: Overview of the proposed pipeline.</figcaption>
+                  </figure>
+                  <p>GeoIMO 以含偏航补偿的 FOE 模型估计背景全局运动；当检测框内的局部运动与该预测的尺度不变残差足够大时标记为独立运动，并跨事件窗口做时间稳定化。关键在于把事件的异步运动线索保留到判别规则中。
+阅读时需要把方法设计与主要结果一起看：作者在 MVSEC 与 Prophesee 1 Megapixel Automotive Detection 数据集上报告稳定表现；摘要指出偏航补偿在转弯时有收益，简化局部平移模型具有较好的精度—效率折中。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者在 MVSEC 与 Prophesee 1 Megapixel Automotive Detection 数据集上报告稳定表现；摘要指出偏航补偿在转弯时有收益，简化局部平移模型具有较好的精度—效率折中。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务仅是运动二分类，输入仍依赖外部检测框；没有 RGB 语义属性、模态缺失或时钟不同步实验，不能直接替代 RGB-Event 属性识别网络。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它提供的是原生事件的可解释运动先验，可用于判断学习式融合是否真的增加了有效信息。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在 TriPro-ReID 的 Event 支路前添加 FOE 残差和稳定度作为 token 质量特征，比较“原 Event 帧”“Event 帧+几何质量门控”“仅 RGB”在弱光、快速运动和事件稀疏切分上的属性 mA 与校准误差。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">图像 / 计算机视觉与 Event 感知</p>
+              <h3>面向 4K RAW 重建的信息密度选择性状态空间模型</h3>
+              <p class="paper__subtitle">MambaRaw: Selective State Space Modeling for Efficient 4K Raw Image Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">该工作不在所有图像块上平均花费上下文计算，而是只在信息密度高的 tile 上执行 Mamba 式扫描，并用能量感知残差处理长尾原始信号。它为高分辨率科学图像提供了“先选择信息密度、再做线性时序/空间扫描”的可复验设计。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Peize Li, Fanhu Zeng, Tongda Xu, Xingguo Xu, Xinjie Zhang, Xingtong Ge, Haotian Zhang, Yan Wang</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.24479" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.24479" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>该工作不在所有图像块上平均花费上下文计算，而是只在信息密度高的 tile 上执行 Mamba 式扫描，并用能量感知残差处理长尾原始信号。它为高分辨率科学图像提供了“先选择信息密度、再做线性时序/空间扫描”的可复验设计。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RAW 数据与 JPEG 预览可提供互补信息，但高分辨率条件下，若每个位置都做昂贵的全局上下文处理，重建延迟和显存会迅速上升。通用 Mamba 扫描虽线性，但仍可能在低信息区域浪费计算。
+从本日报的选取理由看，该工作不在所有图像块上平均花费上下文计算，而是只在信息密度高的 tile 上执行 Mamba 式扫描，并用能量感知残差处理长尾原始信号。它为高分辨率科学图像提供了“先选择信息密度、再做线性时序/空间扫描”的可复验设计。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保持高分辨率 RAW 细节的同时，避免上下文模型在所有区域均匀消耗计算资源？
+对当前主题的关键意义在于：在 Event 支路上把 tile 能量替换为事件计数、时间新鲜度和 RGB 不确定性的组合评分，仅对 top-k token 做重计算；对比固定体素化、随机丢弃和任务门控的属性 mA、显存及延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/576997a3da730a24.png" alt="Figure 3 : The Overall Framework of MambaRaw. We adopt a two-level VAE architecture conditioned on the available JPEG preview. The core innovation lies in the Level-1 Context Model, where we replace standard separate spatial/channel contexts with a coupled design: TileMambaBlock for efficient long-range spatial modeling on selected information-dense tiles, and EAR for lightweight energy-guided refinement.">
+                    <figcaption>Figure 3 : The Overall Framework of MambaRaw. We adopt a two-level VAE architecture conditioned on the available JPEG preview. The core innovation lies in the Level-1 Context Model...</figcaption>
+                  </figure>
+                  <p>MambaRaw 使用 JPEG 条件和元数据估计熵参数；TileMambaBlock 只对信息密度高的 tile 执行 Mamba 风格选择性扫描，Energy-Aware Refinement 则以恒等初始化残差贴合 RAW 的长尾能量分布。两者把位置选择与表征修正显式拆开。
+阅读时需要把方法设计与主要结果一起看：作者在 Sony、Olympus、Samsung 三个相机数据集上报告优于强元数据重建基线；低码率下 PSNR 提升 1.2–1.4 dB，端到端编码时延约降低 9%，并公开代码。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者在 Sony、Olympus、Samsung 三个相机数据集上报告优于强元数据重建基线；低码率下 PSNR 提升 1.2–1.4 dB，端到端编码时延约降低 9%，并公开代码。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目标是压缩/重建而非语义理解，选择标准是空间能量而非任务相关性；没有验证跨相机极端噪声、异步 Event 流或属性识别。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>其价值在于提供可学习的“只对值得处理的区域付费”的结构，而不是可直接拿来做识别的完整网络。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在 Event 支路上把 tile 能量替换为事件计数、时间新鲜度和 RGB 不确定性的组合评分，仅对 top-k token 做重计算；对比固定体素化、随机丢弃和任务门控的属性 mA、显存及延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发 / P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P1 不规则时序与聚变高低频统一建模</p>
+              <h3>长序列 Mamba 的速度收益与数据不足边界</h3>
+              <p class="paper__subtitle">Scaling State-Space Models from Lines to Paragraphs: An Ablation of Mamba-based OCR</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-23</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">SSM 在序列长度增加时的速度、精度和数据需求怎样变化，哪些超参数决定长上下文的可用性？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Merveilles Agbeti-Messan, Pierrick Tranouez, Stéphane Nicolas, Clément Chatelain, Thierry Paquet</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.23524" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.23524" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长上下文 Transformer 的注意力成本随长度二次增长，SSM 被视为线性替代，但“线性复杂度”不等价于在噪声、长长度或数据稀缺时仍能可靠建模。P1 的高低频异步诊断正需要这一工程边界，而不只需要理论复杂度。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>SSM 在序列长度增加时的速度、精度和数据需求怎样变化，哪些超参数决定长上下文的可用性？
+对当前主题的关键意义在于：原始应用为 OCR；先以现有诊断数据构造“高频完整/高频降采样/低频异步”的三档切分，逐步测量该骨干的显存、吞吐、预警性能和采样率迁移，确认收益后再加入跨频率交互模块。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/cbea68fbf6774ab9.png" alt="Figure 1: Mamba-OCR (AR variant) architecture. The shared CNN visual encoder extracts features enriched with 2D sinusoidal positional encoding and flattened into a sequence. The bidirectional Mamba connector models global visual context using a shared Mamba block processed forward and backward. Segment embeddings distinguish visual from text tokens before concatenation. The autoregressive Mamba decoder (4 unidirectional Mamba layers with state dimension 256 and expansion factor 6) processes the concatenated sequence and predicts characters through a linear projection. Causality is naturally enforced by Mamba’s recurrent state, avoiding the need for attention masks.">
+                    <figcaption>Figure 1: Mamba-OCR (AR variant) architecture. The shared CNN visual encoder extracts features enriched with 2D sinusoidal positional encoding and flattened into a sequence. The bi...</figcaption>
+                  </figure>
+                  <p>作者在 Mamba OCR 解码器上系统扫描解码深度、状态维度、扩张倍数与连接器深度，并以从行到段落的 100–1,000 字符受控长度实验同 Transformer 对比。其启发是应把长度扩展、主干容量和数据规模作为一组实验，而非只替换算子。
+阅读时需要把方法设计与主要结果一起看：摘要称清洁合成段落上两类模型的字符错误率均低于 1%，SSM 速度为 Transformer 的 1.4–4.5 倍；真实 IAM 手写上，SSM 的 CER 为 8.2%（行）和 10.0%（段），Transformer 为 4.2% 和 3.5%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称清洁合成段落上两类模型的字符错误率均低于 1%，SSM 速度为 Transformer 的 1.4–4.5 倍；真实 IAM 手写上，SSM 的 CER 为 8.2%（行）和 10.0%（段），Transformer 为 4.2% 和 3.5%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>OCR token 序列不等于带真实 Δt、缺失和异步通道的测量流；没有高低频交互、在线状态更新或采样机制变化实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 的复杂度与数据量诊断证据，不可当作完整的多采样率建模方案。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用为 OCR；先以现有诊断数据构造“高频完整/高频降采样/低频异步”的三档切分，逐步测量该骨干的显存、吞吐、预警性能和采样率迁移，确认收益后再加入跨频率交互模块。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 / P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P2 RGB-Event 属性识别</p>
+              <h3>UniRED：用 Event 引导 RGB-D 的双向时间插帧</h3>
+              <p class="paper__subtitle">UniRED: Unified RGB-D Video Frame Interpolation with Event Guidance</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如何联合 RGB 外观、深度几何和异步 Event 时间线索，在快速运动中重建一致的中间 RGB-D 状态？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yinuo Zhang, Guangshun Wei, Yuanfeng Zhou, Yiran Shen</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.24282" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.24282" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB 帧率有限，复杂运动下仅由两帧估计中间状态常产生边缘模糊和几何失配；Event 提供异步高频变化，但简单叠加 Event 帧与 RGB 特征并不能保证时间对齐。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何联合 RGB 外观、深度几何和异步 Event 时间线索，在快速运动中重建一致的中间 RGB-D 状态？
+对当前主题的关键意义在于：原始领域为 RGB-D 视频插帧；先仅复用 Event 引导的双向对齐损失与质量分数，保留现有 TriPro 外观编码器，验证其是否比直接特征相加更稳健。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/434ee72c446d006d.png" alt="Figure 1: The pipeline of UniRED : it consists of three major modules as shaded in different colors along with the input modalities. From left to right, the model takes consecutive RGB frames, depth maps, and the event stream as input. Modality-specific encoders and a tri-modal fusion module first extract and exchange complementary features across RGB, depth, and events. The motion-aware flow estimation module then predicts bidirectional flows in two branches, where motion basis refinement is used for RGB and Z-axial refinement is used for depth. Finally, forward/backward warping and soft blending synthesize the target RGB-D frame.">
+                    <figcaption>Figure 1: The pipeline of UniRED : it consists of three major modules as shaded in different colors along with the input modalities. From left to right, the model takes consecutive...</figcaption>
+                  </figure>
+                  <p>UniRED 先融合三模态线索，再以 motion-basis refinement 优化 RGB 双向流、以 Z-axial refinement 优化深度运动，最后用双向 warping 和软混合合成目标帧；同时构建 RGB-D-Event 数据集。
+阅读时需要把方法设计与主要结果一起看：摘要报告在公开基准和新数据集上，RGB 插帧的光度保真度及深度几何准确度优于对比方法，但未在摘要中提供具体数值。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在公开基准和新数据集上，RGB 插帧的光度保真度及深度几何准确度优于对比方法，但未在摘要中提供具体数值。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>依赖 RGB-D 输入；其目标是重建而非身份属性识别，未报告弱光事件噪声、模态缺失训练或属性不确定性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>最可迁移的是“Event 先校正跨帧运动，再融合语义”的对齐顺序，而不是其完整插帧网络。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域为 RGB-D 视频插帧；先仅复用 Event 引导的双向对齐损失与质量分数，保留现有 TriPro 外观编码器，验证其是否比直接特征相加更稳健。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>MotifGen：异步、错位多源图像的掩码重建与概率插值</h3>
+              <p class="paper__subtitle">MotifGen: Spatiotemporal interpolation of misaligned satellite images via multi-source generative modeling, in an application to tropical cyclones</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-23</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否在来源集合随样本变化、时间不规则且空间未对齐时，生成与真实观测统计一致的中间图像或表征？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Clément Dauvilliers, Claire Monteleoni</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.24263" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.24263" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多源观测常在不同时间到达、覆盖区域错位且仪器属性不同。若先强行同步并以缺失值填充，模型容易把传感器差异误学为前兆；破裂预测中的图像与诊断同样存在这种异步性。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在来源集合随样本变化、时间不规则且空间未对齐时，生成与真实观测统计一致的中间图像或表征？
+对当前主题的关键意义在于：原始领域为遥感气旋监测；以可见光与诊断时序构造随机时间偏移、通道缺失和装置留出数据，先验证掩码跨模态重建能否提升下游破裂预测的提前量与置信度，再评估是否值得保留生成头。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c8f13048f8f1c96f.png" alt="Figure 3 : Diagram of the architecture. Top: overall view of the backbone. Bottom: scheme of the cross-source attention.">
+                    <figcaption>Figure 3 : Diagram of the architecture. Top: overall view of the backbone. Bottom: scheme of the cross-source attention.</figcaption>
+                  </figure>
+                  <p>MotifGen 将多源微波与红外卫星图像作为异构输入，使用随机遮蔽一个来源并重建的自监督目标学习跨源互补；其生成模型同时输出集合预测，使插值不仅有均值，也能用概率评分评估不确定性。
+阅读时需要把方法设计与主要结果一起看：摘要报告随机源遮蔽重建的 CRPS 显著优于监督训练；融合红外和微波优于仅微波，且生成结果的功率谱更接近真实观测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告随机源遮蔽重建的 CRPS 显著优于监督训练；融合红外和微波优于仅微波，且生成结果的功率谱更接近真实观测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始问题是卫星图像插值，未包含标量/波形诊断、低延迟约束、跨装置迁移或破裂标签；生成模型可能不适合直接部署到毫秒级预警链路。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它应先被视为“异步模态缺失预训练”的机制候选，而不是端到端破裂预测器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域为遥感气旋监测；以可见光与诊断时序构造随机时间偏移、通道缺失和装置留出数据，先验证掩码跨模态重建能否提升下游破裂预测的提前量与置信度，再评估是否值得保留生成头。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多任务学习</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">多任务学习</p>
+              <h3>本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>判断：未发现 2026-06-24 上次检索后、兼具明确多任务共享机制和可迁移实验支撑的高质量新增论文；不以泛多智能体、泛强化学习或多基准拼接工作凑数。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>科学机器学习 / 神经算子</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学机器学习 / 神经算子</p>
+              <h3>基于物理算子相位选择神经算子谱基</h3>
+              <p class="paper__subtitle">Real vs. Complex Spectral Bases for Neural Operators: The Role of Green's Function Alignment</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">论文将 FNO 与实值 Hartley 神经算子做等参数比较，结论不是宣称统一优胜者，而是按算子相位内容选择谱基。对聚变中的椭圆平衡重建与含传播相位的演化代理，这是直接可检验的架构选择原则。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jason Sulskis, Sathya Ravi</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.24851" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.24851" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>论文将 FNO 与实值 Hartley 神经算子做等参数比较，结论不是宣称统一优胜者，而是按算子相位内容选择谱基。对聚变中的椭圆平衡重建与含传播相位的演化代理，这是直接可检验的架构选择原则。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>FNO 常被视为通用 PDE 代理，但实值场的 Fourier 表示存在共轭冗余；另一方面，波动、平流等含相位传播的动态又需要保留复值相位。固定地偏向某一谱基会掩盖这两类算子的不同结构。
+从本日报的选取理由看，论文将 FNO 与实值 Hartley 神经算子做等参数比较，结论不是宣称统一优胜者，而是按算子相位内容选择谱基。对聚变中的椭圆平衡重建与含传播相位的演化代理，这是直接可检验的架构选择原则。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在等参数量下，如何根据目标算子的结构选择实值还是复值谱表示，而非默认 FNO 必然更优？
+对当前主题的关键意义在于：对现有 Grad-Shafranov/平衡重建代理和一项含快速传播动态的诊断预测任务，在相同截断频率、宽度和训练预算下对比 HNO/FNO 的误差、显存、推理延迟及跨工况外推；若相位判据不成立，应保留 FNO。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4b1fb43748bc5b35.png" alt="Figure 2: HNO/FNO relative- L 2 L^{2} ratio across PDEs (rows) and initial-condition/boundary combinations (columns). Green indicates HNO wins, red FNO; bold rows are the elliptic operators. The elliptic rows are green and the time-dependent rows red, with the FNO margin increasing from heat (phaseless) through wave to the transport-dominated operators. This figure reports the full relative- L 2 L^{2} comparison.">
+                    <figcaption>Figure 2: HNO/FNO relative- L 2 L^{2} ratio across PDEs (rows) and initial-condition/boundary combinations (columns). Green indicates HNO wins, red FNO; bold rows are the elliptic ...</figcaption>
+                  </figure>
+                  <p>作者构建 HNO，用纯实离散 Hartley 变换替代 FFT，并在保留频率角点数与参数量可比的条件下对比 FNO。理论上，实对称 Green 函数对应的自伴椭圆算子偏向 HNO；含传播相位的时间演化偏向 FNO。
+阅读时需要把方法设计与主要结果一起看：摘要报告跨 Poisson、双调和、热、波动、平流、Burgers 与 Navier-Stokes 的统一比较，性能差异随算子相位内容单调变化，并与所给 Green 函数分析一致。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告跨 Poisson、双调和、热、波动、平流、Burgers 与 Navier-Stokes 的统一比较，性能差异随算子相位内容单调变化，并与所给 Green 函数分析一致。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>结果主要是标准 PDE 与合成初值族；对非规则几何、带噪诊断、跨装置漂移和实际实时部署的优势仍待验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>关键产出是谱基选择规则，不是一个在所有物理任务上胜出的新模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对现有 Grad-Shafranov/平衡重建代理和一项含快速传播动态的诊断预测任务，在相同截断频率、宽度和训练预算下对比 HNO/FNO 的误差、显存、推理延迟及跨工况外推；若相位判据不成立，应保留 FNO。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 异步模态的关键不再是“拼上去”，而是先解释时间与几何</h3>
+          <p>GeoIMO 保留事件流中的运动几何，UniRED 让 Event 先约束双向运动估计，MotifGen 用掩码重建处理来源和时间的不齐。三者都指向同一结论：先建模哪些观测在何时、以何种质量对应，再谈表征融合。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 线性复杂度必须连同数据效率一起验收</h3>
+          <p>Mamba OCR 显示长序列速度增益真实存在，但真实手写数据显著落后。P1 的高频数据实验因此必须同时报告长度、采样率漂移、训练样本量和峰值显存。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 科学代理的骨干选择可以从物理结构推出</h3>
+          <p>HNO/FNO 对比提示：并非所有 PDE 都应使用同一种谱基。聚变代理需要先区分自伴静态算子与带传播相位的动态任务，再开始调网络宽度。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
