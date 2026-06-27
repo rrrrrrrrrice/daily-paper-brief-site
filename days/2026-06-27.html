@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-06-27</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-06-27 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-06-27 05:02:49 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天最有价值的新增信号集中在四个方向：科学机器学习代理模型开始从“残差越小越好”转向学习误差修正策略；多模态机器人数据把异步、多频率、多噪声传感器作为一等公民；时序预测再次提醒低成本线性基线和预处理搜索不能被大模型叙事掩盖；事件相机方向继续推进原生事件模拟与高速状态估计。它们不直接替代聚变模型，但给 P1/P2/P3 提供了可验证的机制入口。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">可控核聚变 / AI 交叉</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">在研课题启发 / P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-8">08 OctoSense 多模态机器人感知</a></li>
+              <li><a href="#paper-9">09 线性模型到底能把时序预测做到多好</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发 / P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-10">10 分数阶松弛像素动力学事件相机模拟</a></li>
+              <li><a href="#paper-11">11 事件主动凝视的高速球旋转估计</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-12">12 OctoSense 多模态机器人感知</a></li>
+              <li><a href="#paper-13">13 世界模型幻觉可预测且可预防</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态学习 / 图像与事件视觉</a>
+            <ul>
+              <li><a href="#paper-5">05 OctoSense 多模态机器人感知</a></li>
+              <li><a href="#paper-6">06 分数阶松弛像素动力学事件相机模拟</a></li>
+              <li><a href="#paper-7">07 事件主动凝视的高速球旋转估计</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">时序分析 / 低成本基线 / 不确定性</a>
+            <ul>
+              <li><a href="#paper-3">03 线性模型到底能把时序预测做到多好</a></li>
+              <li><a href="#paper-4">04 Ribbon 可扩展稳健不确定性量化</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">科学机器学习 / 物理代理模型</a>
+            <ul>
+              <li><a href="#paper-1">01 误差条件神经求解器</a></li>
+              <li><a href="#paper-2">02 世界模型幻觉可预测且可预防</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">误差条件神经求解器</a></h3>
+              <p class="card__subtitle">Error-Conditioned Neural Solvers</p>
+              <div class="chip-row">
+                <span class="chip">科学机器学习 / 物理代理模型</span>
+                <span class="chip chip--muted">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>ENS 指出在病态 PDE 系统里，单纯最小化 PDE residual 可能不能带来更准的解，并改为把 residual field 作为迭代网络输入，让模型学习“如何根据误差形状修正预测”。这对聚变代理模型、平衡重建和诊断反演都比普通 surrogate 更贴近真实部署。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">OctoSense 多模态机器人感知</a></h3>
+              <p class="card__subtitle">OctoSense: Self-Supervised Learning for Multimodal Robot Perception</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与事件视觉</span>
+                <span class="chip chip--muted">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>OctoSense 同时采集 stereo RGB、event、LiDAR、thermal、IMU、GPS 和本体感知，并明确处理不同表示、频率、延迟和噪声。其 late-fusion MAE 使用模态专属 tokenizer 和推理时 token cache，是 P1/P3 中异步多采样率融合的强工程模板。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">线性模型到底能把时序预测做到多好</a></h3>
+              <p class="card__subtitle">How Good Can Linear Models Be for Time-Series Forecasting?</p>
+              <div class="chip-row">
+                <span class="chip">时序分析 / 低成本基线 / 不确定性</span>
+                <span class="chip chip--muted">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>论文用 Ridge regression 系统搜索 context length、局部归一化、正则和增强，证明很多时序预测收益来自预处理与共享策略，而不是模型容量本身。对聚变高低频建模，它提供了必要的低成本反证基线：先证明复杂模型真的超过优化后的线性方案。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">世界模型幻觉可预测且可预防</a></h3>
+              <p class="card__subtitle">Hallucination in World Models is Predictable and Preventable</p>
+              <div class="chip-row">
+                <span class="chip">科学机器学习 / 物理代理模型</span>
+                <span class="chip chip--muted">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>论文把世界模型 rollout 偏离真实动力学的幻觉归因到 state-action coverage 缺口，并提出三类可预测失败的轻量信号，再用 coverage-aware sampling 和 curiosity 采样补齐数据。对破裂预测和跨工况仿真，关键启发是先定位模型在哪些状态区域不可信。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">分数阶松弛像素动力学事件相机模拟</a></h3>
+              <p class="card__subtitle">FracEvent: Event-Camera Simulation via Fractional-Relaxation Pixel Dynamics</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与事件视觉</span>
+                <span class="chip chip--muted">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>FracEvent 不把事件模拟简化为固定阈值触发，而是显式保留像素电压松弛记忆和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了低成本扩充原生事件训练数据、同时保留事件时序结构的可迁移工具。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>可控核聚变 / AI 交叉</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / AI 交叉</p>
+              <h3>本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>判断：本轮 physics.plasm-ph 检索出现了 *The Negative Triangularity Tokamak Path for Fusion Pilot Plants*、*Integrating Gyrokinetic Flux Predictions with Ideal MHD Stability Boundaries* 等高质量聚变物理/建模论文，但它们并非 AI 诊断、AI 控制、破裂预测或跨装置机器学习论文。按 fusion-ai-default 的 AI 交叉门槛，本轮不将其纳入主推荐，只作为背景跟踪；直接可核验的 tokamak/disruption/fusion diagnostics + AI 新增工作本轮空缺，不凑数。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>在研课题启发 / P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P1 不规则时序与聚变高低频统一建模</p>
+              <h3>OctoSense 多模态机器人感知</h3>
+              <p class="paper__subtitle">OctoSense: Self-Supervised Learning for Multimodal Robot Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否让各通道在原始采样节奏下形成可缓存状态 token，再按需要与其他通道晚融合？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Anthony Bisulco, Jeremy Wang, Kostas Daniilidis, Randall Balestriero, Pratik Chaudhari</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27317" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.27317" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 的核心困难不是单纯序列长，而是高频海量点、低频稀疏观测、缺失和异步通道并存。把所有通道强行重采样到同一网格会带来显存浪费和时间信息丢失。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否让各通道在原始采样节奏下形成可缓存状态 token，再按需要与其他通道晚融合？
+对当前主题的关键意义在于：最小实验应记录压缩比、峰值显存、预警提前量和跨采样率鲁棒性；若 token cache 对关键短瞬态召回下降，需要加入事件强度或物理阈值优先保留策略。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>OctoSense 的 late-fusion MAE 为不同模态建立专属 tokenizer，并缓存模态 token，使新测量到达时增量处理。迁移到 P1 时，可把高频诊断压缩成短时 token queue，低频诊断保留真实时间戳，融合层只读取最近有效 token 与时间间隔编码。
+阅读时需要把方法设计与主要结果一起看：原文在多传感器机器人任务中报告实时级表示计算和退化传感器下的鲁棒性收益。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在多传感器机器人任务中报告实时级表示计算和退化传感器下的鲁棒性收益。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有显式连续时间 Δt 建模、缺失机制建模或百万级点序列压力测试；高频破裂前兆可能在 token 化阶段被压掉。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1 的工程结构启发，仍需与 Neural CDE/ODE/SDE、SSM 或显式 Δt 编码结合。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验应记录压缩比、峰值显存、预警提前量和跨采样率鲁棒性；若 token cache 对关键短瞬态召回下降，需要加入事件强度或物理阈值优先保留策略。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P1 不规则时序与聚变高低频统一建模</p>
+              <h3>线性模型到底能把时序预测做到多好</h3>
+              <p class="paper__subtitle">How Good Can Linear Models Be for Time-Series Forecasting?</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">复杂高低频统一模型相对优化线性基线的真实增益来自哪里？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lang Huang, Jinglue Xu, Luke Darlow</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27282" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.27282" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 容易直接进入复杂架构设计，但如果简单模型通过正确窗口和局部归一化已能解释大部分信号，复杂模型的优势就必须来自跨频率耦合或非线性前兆，而不是预处理差异。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>复杂高低频统一模型相对优化线性基线的真实增益来自哪里？
+对当前主题的关键意义在于：最小实验：对每个诊断通道做 per-channel Ridge 和 grouped Ridge，记录最佳 lookback 与采样率、物理量类型的关系，再分析深度模型是否真正学习到跨通道高低频耦合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/77e2e9d4b8a38f83.png" alt="Figure 6 : Weight magnitude | w | |w| over lag and forecast horizon. Lighter shades indicate larger magnitudes. Lag is measured from the most recent input (bottom row); white regions lie beyond each model’s chosen lookback.">
+                    <figcaption>Figure 6 : Weight magnitude | w | |w| over lag and forecast horizon. Lighter shades indicate larger magnitudes. Lag is measured from the most recent input (bottom row); white regio...</figcaption>
+                  </figure>
+                  <p>论文通过大规模超参数搜索揭示最佳历史长度和归一化窗口强依赖数据集与序列。迁移时，应把这些超参数看成诊断数据结构分析工具，先判断哪些通道需要长历史、哪些通道只需要短局部趋势。
+阅读时需要把方法设计与主要结果一起看：原文称优化 Ridge 在多数标准基准上超过既有线性模型，并在六个基准上超过多类深度基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文称优化 Ridge 在多数标准基准上超过既有线性模型，并在六个基准上超过多类深度基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不直接处理不规则采样和多模态融合；若任务核心是突变前兆或复杂非线性耦合，线性模型只能作为下限。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 的论文或实验应把该类低成本强基线列为必跑项。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验：对每个诊断通道做 per-channel Ridge 和 grouped Ridge，记录最佳 lookback 与采样率、物理量类型的关系，再分析深度模型是否真正学习到跨通道高低频耦合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发 / P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P2 RGB-Event 属性识别</p>
+              <h3>分数阶松弛像素动力学事件相机模拟</h3>
+              <p class="paper__subtitle">FracEvent: Event-Camera Simulation via Fractional-Relaxation Pixel Dynamics</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否用更真实的像素记忆动态扩充事件训练分布，使 Event 分支学到对稀疏与噪声更稳健的表示？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Langyi Chen, Chuanzhi Xu, Haoxian Zhou, Pengfei Ye, Ziyu Luo, Haodong Chen, Qiang Qu, Xiaoming Chen, Weidong Cai</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.26636" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.26636" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别需要事件流提供动态补充，但现有数据规模和标注限制会迫使模型过拟合特定事件分布。模拟器若只保留简单阈值触发，会把事件时间结构变成伪边缘图。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用更真实的像素记忆动态扩充事件训练分布，使 Event 分支学到对稀疏与噪声更稳健的表示？
+对当前主题的关键意义在于：最小实验应分开报告动态属性、外观属性和遮挡/模糊样本收益；若只提升边缘敏感属性而不改善语义属性，需要进一步加入 RGB/Event 对比学习或属性级可靠性门控。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/238d9bf52cf9fa61.png" alt="Figure S2 : Additional DAVIS240C reconstruction comparisons. The panel extends the main reconstruction visual to more DAVIS240C scenes using the same matched GoPro-trained models, methods, metrics, and raw [ 0 , 1 ] [0,1] display convention.">
+                    <figcaption>Figure S2 : Additional DAVIS240C reconstruction comparisons. The panel extends the main reconstruction visual to more DAVIS240C scenes using the same matched GoPro-trained models, ...</figcaption>
+                  </figure>
+                  <p>FracEvent 用分数阶松弛模式保留像素电压历史，连续定位 ON/OFF 阈值穿越时间，并把残余状态影响到后续事件。P2 可把它作为事件域随机化工具，生成不同响应时间、噪声和阈值的训练样本。
+阅读时需要把方法设计与主要结果一起看：原文在事件流比较、图像重建和光流估计迁移上优于模拟器基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在事件流比较、图像重建和光流估计迁移上优于模拟器基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有属性识别实验，也没有开放词表语义监督；模拟事件仍需要真实事件数据校准参数。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>优先把 FracEvent 用作 Event 分支预训练/增强，而不是直接改变融合头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验应分开报告动态属性、外观属性和遮挡/模糊样本收益；若只提升边缘敏感属性而不改善语义属性，需要进一步加入 RGB/Event 对比学习或属性级可靠性门控。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P2 RGB-Event 属性识别</p>
+              <h3>事件主动凝视的高速球旋转估计</h3>
+              <p class="paper__subtitle">Event-based Gaze Control System for Accurate Real-time Spin Estimation in Professional Ball Games</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">原生事件是否能先形成可解释的动态状态，再服务于属性识别，而不是直接与 RGB 特征相加？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yunpu Hu, Fabian Schilling, Valentina Cavinato, Asude Aydin, Agis Politis, Ricardo Tapiador Morales, Kirk Y. W. Scheper, Peter Dürr, Naoya Takahashi</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.26780" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.26780" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>TriPro-ReID 类模型若只把 Event 转成固定长度帧，无法充分利用事件相机的微秒级时间信息。属性识别中，跑动、转身、携带物和遮挡边界都可能从事件动态中受益。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>原生事件是否能先形成可解释的动态状态，再服务于属性识别，而不是直接与 RGB 特征相加？
+对当前主题的关键意义在于：最小实验应比较三种 Event 输入：转帧、事件体素、事件动态状态 token；同时报告模态缺失、事件稀疏和噪声注入下的可靠性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文通过事件检测、主动凝视、s-CMax 离线伪标签和不确定性感知在线 CNN，实现高速旋转估计。迁移到 P2 时，可去掉硬件主动控制，保留事件动态状态和不确定性监督。
+阅读时需要把方法设计与主要结果一起看：原文报告在线系统 3 ms 延迟、750 Hz 吞吐，并在专业乒乓三视角场景中保持较高旋转估计精度。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告在线系统 3 ms 延迟、750 Hz 吞吐，并在专业乒乓三视角场景中保持较高旋转估计精度。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要专用硬件和高质量伪标签；人体属性的外观语义更复杂，不能假定事件动态一定对应目标属性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合启发 Event 分支训练目标，而不是直接复用系统。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验应比较三种 Event 输入：转帧、事件体素、事件动态状态 token；同时报告模态缺失、事件稀疏和噪声注入下的可靠性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>OctoSense 多模态机器人感知</h3>
+              <p class="paper__subtitle">OctoSense: Self-Supervised Learning for Multimodal Robot Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如何让图像和诊断通道各自形成稳定 token，再通过受控瓶颈融合，减少无关视觉信息和缺失模态冲击？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Anthony Bisulco, Jeremy Wang, Kostas Daniilidis, Randall Balestriero, Pratik Chaudhari</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27317" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.27317" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 需要同时处理可见光局部前兆和诊断时序中的连续变化。两者采样率、延迟和缺失模式不同，直接把图像特征与时序向量拼接会把许多无关视觉信息带入预测头。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让图像和诊断通道各自形成稳定 token，再通过受控瓶颈融合，减少无关视觉信息和缺失模态冲击？
+对当前主题的关键意义在于：最小实验可在现有可见光帧与诊断时序上做 masked multimodal pretraining，冻结/微调比较，并加入 Grad-CAM 或 attention rollout 检查图像证据是否集中在等离子体边界、辐射增强或异常结构区域。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>OctoSense 的 late-fusion MAE 可作为预训练目标：遮掉某些模态或时间片，让模型从其他模态重建；token cache 则支持实时流式更新。P3 可把重建目标改成诊断-图像互预测和未来风险 token 预测。
+阅读时需要把方法设计与主要结果一起看：原文证明多模态自监督表示在夜间和传感器退化场景下优于图像单模态基础模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文证明多模态自监督表示在夜间和传感器退化场景下优于图像单模态基础模型。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有物理可解释性、跨装置评估或破裂风险标签；需要额外机制选择图像局部区域。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P3 的多模态底座候选，仍需加上局部证据选择和物理约束。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验可在现有可见光帧与诊断时序上做 masked multimodal pretraining，冻结/微调比较，并加入 Grad-CAM 或 attention rollout 检查图像证据是否集中在等离子体边界、辐射增强或异常结构区域。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 / P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>世界模型幻觉可预测且可预防</h3>
+              <p class="paper__subtitle">Hallucination in World Models is Predictable and Preventable</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否在预测时识别“这段放电不在模型可信覆盖范围内”，并据此触发保守预警或数据补采？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Nicklas Hansen, Xiaolong Wang</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27326" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.27326" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测模型在训练覆盖充分的装置和工况上可能表现良好，但在未见运行区间中会给出过度自信判断。跨装置泛化失败常被平均指标掩盖。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在预测时识别“这段放电不在模型可信覆盖范围内”，并据此触发保守预警或数据补采？
+对当前主题的关键意义在于：最小实验：留一装置或留一工况评估时，将样本按覆盖度分桶，分别报告 AUC、ECE、提前量和误报率；若低覆盖桶显著退化，则将覆盖度作为风险门控或拒判条件。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a1458dedddb178bb.png" alt="Figure 1 : Hallucination. We categorize hallucinations as three distinct failure modes: perceptual , action marginalization , and scene divergence , and develop methods for detection and mitigation.">
+                    <figcaption>Figure 1 : Hallucination. We categorize hallucinations as three distinct failure modes: perceptual , action marginalization , and scene divergence , and develop methods for detecti...</figcaption>
+                  </figure>
+                  <p>论文将幻觉拆成不同失败模式，并用轻量数据覆盖信号预测失败。P3 可把“世界模型幻觉”替换为“风险预测漂移”：图像-时序表示落在训练覆盖稀疏区域时，模型输出应伴随更高不确定性。
+阅读时需要把方法设计与主要结果一起看：原文在 MMBench2 上显示覆盖信号可用于检测和缓解失败，并用少量真实轨迹适配未见环境。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在 MMBench2 上显示覆盖信号可用于检测和缓解失败，并用少量真实轨迹适配未见环境。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>聚变缺少可随意采样的 live simulator，不能像机器人那样通过 curiosity reward 主动采集危险工况；覆盖信号只能降低风险，不能替代物理验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P3 的可信度与跨装置评估框架，而不是融合架构本身。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验：留一装置或留一工况评估时，将样本按覆盖度分桶，分别报告 AUC、ECE、提前量和误报率；若低覆盖桶显著退化，则将覆盖度作为风险门控或拒判条件。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与事件视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与事件视觉</p>
+              <h3>OctoSense 多模态机器人感知</h3>
+              <p class="paper__subtitle">OctoSense: Self-Supervised Learning for Multimodal Robot Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">OctoSense 同时采集 stereo RGB、event、LiDAR、thermal、IMU、GPS 和本体感知，并明确处理不同表示、频率、延迟和噪声。其 late-fusion MAE 使用模态专属 tokenizer 和推理时 token cache，是 P1/P3 中异步多采样率融合的强工程模板。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Anthony Bisulco, Jeremy Wang, Kostas Daniilidis, Randall Balestriero, Pratik Chaudhari</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27317" target="_blank" rel="noreferrer">论文</a><a href="https://abisulco.com/octosense/" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2606.27317" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>OctoSense 同时采集 stereo RGB、event、LiDAR、thermal、IMU、GPS 和本体感知，并明确处理不同表示、频率、延迟和噪声。其 late-fusion MAE 使用模态专属 tokenizer 和推理时 token cache，是 P1/P3 中异步多采样率融合的强工程模板。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态机器人和实验诊断都面临相似问题：传感器频率不同、延迟不同、质量随场景变化，且某些模态在夜间、遮挡或退化条件下失效。简单对齐成同一帧率或直接拼接特征，会掩盖真实采样结构。
+从本日报的选取理由看，OctoSense 同时采集 stereo RGB、event、LiDAR、thermal、IMU、GPS 和本体感知，并明确处理不同表示、频率、延迟和噪声。其 late-fusion MAE 使用模态专属 tokenizer 和推理时 token cache，是 P1/P3 中异步多采样率融合的强工程模板。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从异步、多频率、多噪声传感器中学习可迁移表征，同时保持实时推理？
+对当前主题的关键意义在于：对聚变图像-诊断融合，可让可见光、ECE、磁探针和工程量各自使用 tokenizer，再通过缓存 token 与晚融合瓶颈交互；最小实验是比较统一重采样、早融合 cross-attention 和 OctoSense 式 late-fusion cache 在缺失模态、延迟扰动和峰值显存上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文构建包含 stereo RGB、event cameras、LiDAR、thermal、IMU、RTK-GPS 和 proprioception 的 OctoSense 平台与数据集；模型采用 late-fusion masked autoencoder，使用模态专属 tokenizer 适配不同 spatiotemporal 特征，并在推理时缓存各模态 token，使新测量到达时可增量更新表示。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告表示计算在 NVIDIA 5090 上约 6.68 ms、Orin NX 上约 112 ms；在光流、深度、语义分割、自车运动等任务上优于图像单模态基础模型，并在夜间或传感器退化时更稳健。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是机器人感知，不包含聚变物理约束、破裂早期预警或诊断信号的极高频海量点；其时间同步数据集也不等于真实异步缺失数据。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是本轮最适合迁移到 P1/P3 的多模态工程模板，尤其是“模态专属 token + late fusion + token cache”。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变图像-诊断融合，可让可见光、ECE、磁探针和工程量各自使用 tokenizer，再通过缓存 token 与晚融合瓶颈交互；最小实验是比较统一重采样、早融合 cross-attention 和 OctoSense 式 late-fusion cache 在缺失模态、延迟扰动和峰值显存上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与事件视觉</p>
+              <h3>分数阶松弛像素动力学事件相机模拟</h3>
+              <p class="paper__subtitle">FracEvent: Event-Camera Simulation via Fractional-Relaxation Pixel Dynamics</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">FracEvent 不把事件模拟简化为固定阈值触发，而是显式保留像素电压松弛记忆和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了低成本扩充原生事件训练数据、同时保留事件时序结构的可迁移工具。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Langyi Chen, Chuanzhi Xu, Haoxian Zhou, Pengfei Ye, Ziyu Luo, Haodong Chen, Qiang Qu, Xiaoming Chen, Weidong Cai</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.26636" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.26636" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>FracEvent 不把事件模拟简化为固定阈值触发，而是显式保留像素电压松弛记忆和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了低成本扩充原生事件训练数据、同时保留事件时序结构的可迁移工具。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机异步报告亮度变化，但真实 event 数据采集成本高，且任务标注常依赖同步帧相机或传感器。传统模拟器多基于固定对数亮度阈值和手工噪声，容易简化像素生命周期，导致下游迁移偏差。
+从本日报的选取理由看，FracEvent 不把事件模拟简化为固定阈值触发，而是显式保留像素电压松弛记忆和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了低成本扩充原生事件训练数据、同时保留事件时序结构的可迁移工具。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在给定 log-intensity trajectory 时，生成更符合真实像素动态与事件时序结构的模拟事件流？
+对当前主题的关键意义在于：对 TriPro-ReID，可用 FracEvent 从 RGB 视频或高帧率片段生成不同阈值、噪声和松弛记忆的事件流，训练 Event 分支对稀疏/噪声/缺失更稳健；最小实验是比较固定阈值模拟、事件转帧增强和 FracEvent 增强下弱光/运动模糊属性 F1 与校准误差。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/238d9bf52cf9fa61.png" alt="Figure S2 : Additional DAVIS240C reconstruction comparisons. The panel extends the main reconstruction visual to more DAVIS240C scenes using the same matched GoPro-trained models, methods, metrics, and raw [ 0 , 1 ] [0,1] display convention.">
+                    <figcaption>Figure S2 : Additional DAVIS240C reconstruction comparisons. The panel extends the main reconstruction visual to more DAVIS240C scenes using the same matched GoPro-trained models, ...</figcaption>
+                  </figure>
+                  <p>FracEvent 使用一组 relaxation modes 驱动像素电压状态，在连续电压轨迹上定位 ON/OFF 阈值穿越并更新时间参考，同时保留底层记忆模式，使残余电压响应影响后续事件时间。这比一次性阈值触发更接近真实像素动态。
+阅读时需要把方法设计与主要结果一起看：摘要称 FracEvent 在 event-stream comparison、图像重建和光流估计下游迁移中优于多个模拟器基线，说明改进时间结构能带来实际任务收益。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称 FracEvent 在 event-stream comparison、图像重建和光流估计下游迁移中优于多个模拟器基线，说明改进时间结构能带来实际任务收益。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文核心是模拟器，不直接解决 RGB/Event 融合、属性识别或开放词表监督；模拟质量仍依赖输入帧轨迹和传感器参数设定。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可把它作为数据增强与域随机化工具，而不是把模拟事件直接当真实数据替代品。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对 TriPro-ReID，可用 FracEvent 从 RGB 视频或高帧率片段生成不同阈值、噪声和松弛记忆的事件流，训练 Event 分支对稀疏/噪声/缺失更稳健；最小实验是比较固定阈值模拟、事件转帧增强和 FracEvent 增强下弱光/运动模糊属性 F1 与校准误差。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与事件视觉</p>
+              <h3>事件主动凝视的高速球旋转估计</h3>
+              <p class="paper__subtitle">Event-based Gaze Control System for Accurate Real-time Spin Estimation in Professional Ball Games</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否用事件相机主动跟踪未改造球体，并以毫秒级延迟估计高速旋转大小和轴向？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yunpu Hu, Fabian Schilling, Valentina Cavinato, Asude Aydin, Agis Politis, Ricardo Tapiador Morales, Kirk Y. W. Scheper, Peter Dürr, Naoya Takahashi</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.26780" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.26780" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高速小目标的旋转估计受限于传统相机帧率、运动模糊和目标尺寸。事件相机能提供高时间分辨率，但如果目标很小，还需要主动凝视和对焦机制保证空间分辨率。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用事件相机主动跟踪未改造球体，并以毫秒级延迟估计高速旋转大小和轴向？
+对当前主题的关键意义在于：P2 可借鉴它的事件不确定性输出，把 Event 分支先训练成局部运动/方向/可靠性估计器，再与 RGB 属性 token 融合；最小实验是在动态属性和模糊样本上加入事件运动置信度门控，比较 mA、F1、ECE 和推理延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>系统用事件 2D 检测做居中控制，用外部 3D 定位系统重初始化；离线方法 s-CMax 在球面上做 contrast maximization 产生高精度伪标签，在线方法用不确定性感知 CNN 加 GPU 批量 contrast maximization 精修。
+阅读时需要把方法设计与主要结果一起看：摘要报告静态多运动球上旋转大小误差 2.1%、轴向误差 4.0 度；专业乒乓三视角场景中在线方法达到 8.8% 大小误差、6.4 度轴向不匹配、3 ms 延迟和 750 Hz 吞吐。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告静态多运动球上旋转大小误差 2.1%、轴向误差 4.0 度；专业乒乓三视角场景中在线方法达到 8.8% 大小误差、6.4 度轴向不匹配、3 ms 延迟和 750 Hz 吞吐。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>场景是单目标高速球，不是人体属性识别；系统依赖专门硬件和主动控制，不能直接迁移到普通 RGB-Event 行人数据集。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>最可迁移的是“事件动态属性 + 不确定性伪标签 + 低延迟精修”，而不是完整硬件方案。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>P2 可借鉴它的事件不确定性输出，把 Event 分支先训练成局部运动/方向/可靠性估计器，再与 RGB 属性 token 融合；最小实验是在动态属性和模糊样本上加入事件运动置信度门控，比较 mA、F1、ECE 和推理延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>时序分析 / 低成本基线 / 不确定性</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 低成本基线 / 不确定性</p>
+              <h3>线性模型到底能把时序预测做到多好</h3>
+              <p class="paper__subtitle">How Good Can Linear Models Be for Time-Series Forecasting?</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">论文用 Ridge regression 系统搜索 context length、局部归一化、正则和增强，证明很多时序预测收益来自预处理与共享策略，而不是模型容量本身。对聚变高低频建模，它提供了必要的低成本反证基线：先证明复杂模型真的超过优化后的线性方案。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lang Huang, Jinglue Xu, Luke Darlow</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27282" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.27282" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>论文用 Ridge regression 系统搜索 context length、局部归一化、正则和增强，证明很多时序预测收益来自预处理与共享策略，而不是模型容量本身。对聚变高低频建模，它提供了必要的低成本反证基线：先证明复杂模型真的超过优化后的线性方案。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>时序预测近年不断转向 Transformer、MLP、CNN 和基础模型，但许多公开基准中的收益可能来自数据预处理、归一化窗口和上下文长度选择。若线性模型经过同等细致调参后仍能竞争，复杂模型的贡献就需要重新解释。
+从本日报的选取理由看，论文用 Ridge regression 系统搜索 context length、局部归一化、正则和增强，证明很多时序预测收益来自预处理与共享策略，而不是模型容量本身。对聚变高低频建模，它提供了必要的低成本反证基线：先证明复杂模型真的超过优化后的线性方案。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在标准预测基准上，优化充分的线性 Ridge 模型究竟能达到什么水平，哪些数据结构被大模型静默吸收了？
+对当前主题的关键意义在于：对聚变诊断预测，先构造按通道/工况分组的 Ridge + 局部归一化 + context 搜索强基线，报告不同采样率和不同预警窗口下的最佳历史长度；若复杂模型收益主要来自归一化或窗口选择，应把这些因素单独剥离。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/77e2e9d4b8a38f83.png" alt="Figure 6 : Weight magnitude | w | |w| over lag and forecast horizon. Lighter shades indicate larger magnitudes. Lag is measured from the most recent input (bottom row); white regions lie beyond each model’s chosen lookback.">
+                    <figcaption>Figure 6 : Weight magnitude | w | |w| over lag and forecast horizon. Lighter shades indicate larger magnitudes. Lag is measured from the most recent input (bottom row); white regio...</figcaption>
+                  </figure>
+                  <p>作者以闭式解 Ridge regression 为试验台，搜索 context length、local normalization、regularization 和 augmentation。因为权重和超参数可解释，它还能反向诊断每个数据集、每条序列需要多长历史、是否需要局部归一化、是否应跨序列共享。
+阅读时需要把方法设计与主要结果一起看：摘要报告优化后的线性模型在八个标准基准中多数 dataset-horizon 组合超过既有线性预测器，并在六个基准上超过 Transformer、MLP 和 CNN 基线；最佳 lookback 强烈依赖序列和预测步长，且不总是越长越好。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告优化后的线性模型在八个标准基准中多数 dataset-horizon 组合超过既有线性预测器，并在六个基准上超过 Transformer、MLP 和 CNN 基线；最佳 lookback 强烈依赖序列和预测步长，且不总是越长越好。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文主要处理规则采样公共预测基准，未直接覆盖不规则采样、缺失、事件流和多频率诊断；线性模型不能替代需要非线性物理机制或复杂跨模态交互的任务。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇应作为所有时序新模型实验的 sanity check：先打败优化后的简单模型，再讨论架构贡献。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变诊断预测，先构造按通道/工况分组的 Ridge + 局部归一化 + context 搜索强基线，报告不同采样率和不同预警窗口下的最佳历史长度；若复杂模型收益主要来自归一化或窗口选择，应把这些因素单独剥离。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析 / 低成本基线 / 不确定性</p>
+              <h3>Ribbon 可扩展稳健不确定性量化</h3>
+              <p class="paper__subtitle">Ribbon: Scalable Approximation and Robust Uncertainty Quantification</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否在只训练一次模型后，通过线性化近似得到稳健、可调尺度的不确定性估计？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Graham Gibson, John Tipton, Kellin Rumsey, Natalie Klein</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27269" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.27269" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>贝叶斯后验采样和 bootstrap 重训练能给出原则性不确定性，但在高维模型中代价过高。实际部署里，若不能频繁重训，预测区间和置信度常常退化成事后温度缩放。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在只训练一次模型后，通过线性化近似得到稳健、可调尺度的不确定性估计？
+对当前主题的关键意义在于：破裂预测需要低误报和置信校准，可先在固定特征编码器加线性/浅层头的设置上比较 Ribbon、temperature scaling、MC dropout 和 ensemble 的 ECE、Brier score 与低置信拒判收益。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/7cb1346e4bc83ad5.png" alt="Figure 2: Total predictive uncertainty on the sine dataset. Shaded regions represent 90% predictive intervals obtained by combining epistemic variability with observation-noise uncertainty according to the method-specific predictive construction.">
+                    <figcaption>Figure 2: Total predictive uncertainty on the sine dataset. Shaded regions represent 90% predictive intervals obtained by combining epistemic variability with observation-noise unc...</figcaption>
+                  </figure>
+                  <p>Ribbon 围绕单个已拟合模型做 influence-function 线性化，近似 Bayesian bootstrap 或 weighted-likelihood bootstrap 的重拟合目标；通过 concentration parameter 得到可在验证集调校的不确定性族，并在正确设定与错设定情形下连接 Laplace 近似和 sandwich covariance。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称在合成回归、MNIST 分类和 California Housing 上，Ribbon 在避免重复模型训练的同时提供有竞争力的预测性能，并在若干设置中改善校准。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前摘要未覆盖长序列、多模态或分布漂移预警；影响函数近似在强非线性深度模型和极端异常样本上可能失真。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>该文适合作为不确定性低成本估计候选，优先用于小模型或最后一层校准实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>破裂预测需要低误报和置信校准，可先在固定特征编码器加线性/浅层头的设置上比较 Ribbon、temperature scaling、MC dropout 和 ensemble 的 ECE、Brier score 与低置信拒判收益。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>科学机器学习 / 物理代理模型</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学机器学习 / 物理代理模型</p>
+              <h3>误差条件神经求解器</h3>
+              <p class="paper__subtitle">Error-Conditioned Neural Solvers</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">ENS 指出在病态 PDE 系统里，单纯最小化 PDE residual 可能不能带来更准的解，并改为把 residual field 作为迭代网络输入，让模型学习“如何根据误差形状修正预测”。这对聚变代理模型、平衡重建和诊断反演都比普通 surrogate 更贴近真实部署。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Haina Jiang, Liam Wang, Peng-Chen Chen, Min Seop Kwak, Seungryong Kim, Brian Bell, Jeong Joon Park</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27354" target="_blank" rel="noreferrer">论文</a><a href="https://neuralsolver.github.io/" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2606.27354" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>ENS 指出在病态 PDE 系统里，单纯最小化 PDE residual 可能不能带来更准的解，并改为把 residual field 作为迭代网络输入，让模型学习“如何根据误差形状修正预测”。这对聚变代理模型、平衡重建和诊断反演都比普通 surrogate 更贴近真实部署。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>PDE 代理模型常被训练成参数到解的统计映射，部署时如果遇到分布外参数或病态区域，低 residual 并不必然对应低重构误差。混合优化方法尝试用梯度下降或 Gauss-Newton 修正物理约束，但计算成本高，且可能在病态系统中优化错目标。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让神经求解器既保留快速推理，又能根据自身误差结构进行稳定迭代修正，而不是盲目追求残差数值最小？
+对当前主题的关键意义在于：对聚变代理模型，可把 Grad-Shafranov residual、输运方程残差或诊断一致性误差作为条件输入，而不是只做 loss；最小实验是在已有平衡/剖面代理上加入 residual-conditioned correction block，比较单步 surrogate、residual loss 和 ENS 式迭代修正的精度、外推误差与推理时延。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/633bacec63a3fae9.png" alt="Figure 10 : PDE residual over iterations . From top to bottom, we visualize the PDE residual trajectory for the ablation baseline without PDE residual conditioning, ENS model on in-distribution data, ENS model on out-of-distribution data. Clearly, without conditioning on the residual field, the PDE residual even increases during the correction process.">
+                    <figcaption>Figure 10 : PDE residual over iterations . From top to bottom, we visualize the PDE residual trajectory for the ablation baseline without PDE residual conditioning, ENS model on in...</figcaption>
+                  </figure>
+                  <p>作者理论和实验说明 residual minimization 在病态系统中可能不是准确性的可靠代理；ENS 在每次迭代中把 PDE residual field 直接输入网络，让模型读取空间误差结构并输出修正。其关键不是把物理残差变成额外 loss，而是把残差信息变成条件输入与更新策略。
+阅读时需要把方法设计与主要结果一起看：摘要称 ENS 在四类 PDE family 中多数设置取得最高预测精度，在 turbulent Kolmogorov flow 上最高达到约 10 倍增益，并在零样本参数变化和跨方程迁移中保持优势；优势在 residual minimization 最不可靠的病态区域更明显。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称 ENS 在四类 PDE family 中多数设置取得最高预测精度，在 turbulent Kolmogorov flow 上最高达到约 10 倍增益，并在零样本参数变化和跨方程迁移中保持优势；优势在 residual minimization 最不可靠的病态区域更明显。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文目标是 PDE 求解，尚未覆盖托卡马克平衡重建、破裂预测或多诊断反演；如果 residual 计算本身昂贵或物理方程不完整，迭代修正成本和误导风险仍需评估。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>该文值得作为科学代理模型的高优先级阅读对象，尤其适合重新审视“物理残差约束是否真的提升预测准确性”。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对聚变代理模型，可把 Grad-Shafranov residual、输运方程残差或诊断一致性误差作为条件输入，而不是只做 loss；最小实验是在已有平衡/剖面代理上加入 residual-conditioned correction block，比较单步 surrogate、residual loss 和 ENS 式迭代修正的精度、外推误差与推理时延。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学机器学习 / 物理代理模型</p>
+              <h3>世界模型幻觉可预测且可预防</h3>
+              <p class="paper__subtitle">Hallucination in World Models is Predictable and Preventable</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">论文把世界模型 rollout 偏离真实动力学的幻觉归因到 state-action coverage 缺口，并提出三类可预测失败的轻量信号，再用 coverage-aware sampling 和 curiosity 采样补齐数据。对破裂预测和跨工况仿真，关键启发是先定位模型在哪些状态区域不可信。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Nicklas Hansen, Xiaolong Wang</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27326" target="_blank" rel="noreferrer">论文</a><a href="https://www.nicklashansen.com/mmbench2" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2606.27326" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>论文把世界模型 rollout 偏离真实动力学的幻觉归因到 state-action coverage 缺口，并提出三类可预测失败的轻量信号，再用 coverage-aware sampling 和 curiosity 采样补齐数据。对破裂预测和跨工况仿真，关键启发是先定位模型在哪些状态区域不可信。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>生成式世界模型已经可以产生看似真实的动作条件未来，但 rollout 会在低覆盖区域偏离真实动力学。科学预测和控制任务中，这类“看起来合理但物理上漂移”的错误尤其危险。
+从本日报的选取理由看，论文把世界模型 rollout 偏离真实动力学的幻觉归因到 state-action coverage 缺口，并提出三类可预测失败的轻量信号，再用 coverage-aware sampling 和 curiosity 采样补齐数据。对破裂预测和跨工况仿真，关键启发是先定位模型在哪些状态区域不可信。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在世界模型出错前预测其失败区域，并用这些信号指导更高效的数据补采或微调？
+对当前主题的关键意义在于：在破裂预测中，可把不同放电工况、控制动作和诊断片段映射为覆盖空间，先预测模型在哪些低覆盖区域容易给出过度自信预警；最小实验是基于训练集 kNN/密度、ensemble disagreement 和时序重构误差构造覆盖分数，评估低覆盖样本上的 AUC、ECE 和提前量退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a1458dedddb178bb.png" alt="Figure 1 : Hallucination. We categorize hallucinations as three distinct failure modes: perceptual , action marginalization , and scene divergence , and develop methods for detection and mitigation.">
+                    <figcaption>Figure 1 : Hallucination. We categorize hallucinations as three distinct failure modes: perceptual , action marginalization , and scene divergence , and develop methods for detecti...</figcaption>
+                  </figure>
+                  <p>作者构建 MMBench2，包含 427 小时、210 个任务、真实动作和奖励以及 live simulator；识别 perceptual、action-marginalized、scene-diverging 三类幻觉模式，并开发三种轻量信号预测失败。训练时用 coverage-aware sampling，在线用幻觉预测器作为 curiosity reward 定向采样。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称方法可用少至 50 条真实环境轨迹把预训练世界模型适配到未见环境，说明同一组覆盖信号既能检测失败，也能指导缓解。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>对象是视觉机器人世界模型，不是物理方程约束的聚变动力学；覆盖信号迁移到诊断时序时，需要重新定义状态区域、动作变量和失败模式。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为“模型可信区域诊断”的方法参考，而非直接的聚变预测模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在破裂预测中，可把不同放电工况、控制动作和诊断片段映射为覆盖空间，先预测模型在哪些低覆盖区域容易给出过度自信预警；最小实验是基于训练集 kNN/密度、ensemble disagreement 和时序重构误差构造覆盖分数，评估低覆盖样本上的 AUC、ECE 和提前量退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 科学代理模型正在从静态拟合走向自我修正</h3>
+          <p>ENS 的价值在于把物理 residual 从 loss 变成输入，让模型学习如何纠错。这比“加一个物理损失项”更适合病态和分布外场景，但也要求严肃检查 residual 与真实误差的关系。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 多模态融合开始重视传感器工程事实</h3>
+          <p>OctoSense 和事件相机新工作都强调频率、延迟、噪声、像素动态和推理缓存。P1/P2/P3 的融合实验应从“特征相加”升级为“表示、时间和可靠性都可被建模”。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 强基线和可信度评估比新架构更容易暴露问题</h3>
+          <p>优化 Ridge、Ribbon 和世界模型 coverage 信号都提醒：很多模型问题并不需要更大架构才能发现。先做强基线、校准和低覆盖分桶，能避免把数据问题误判成模型创新。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
