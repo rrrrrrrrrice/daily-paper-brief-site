@@ -15,7 +15,7 @@
       <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
       <p class="hero__meta">信息检索截止时间：2026-06-30 05:04:41 +08:00</p>
       <div class="hero__overview">
-        <p>本轮结论：本期没有满足 fusion-ai-default 主推荐标准的新增论文，也没有满足 P1/P2/P3 附加分区门槛的新版本、新代码、新实验或新的课题映射。2026-06-27 简报中已经覆盖的 Error-Conditioned Neural Solvers、OctoSense、How Good Can Linear Models Be for Time-Series Forecasting?、Hallucination in World Models is Predictable and Preventable、FracEvent、Event-based Gaze Control System 仍是近期最值得回看的条目，但本轮没有新的原始来源事实支持重新展开。</p>
+        <p>本轮结论：今天没有新增论文，但不输出空缺页。本期主推荐改为“2025-2026 回看推荐”，优先选择近期已核验、机制可迁移、能直接形成实验设计的论文：不规则时序观测机制建模、托卡马克 ECH 实时控制、轻量协变量时序基础模型、多模态异步传感器融合、事件相机模拟。它们不是 2026-06-30 新稿，但比重复空缺判断更适合指导本周实验。</p>
       </div>
     </div>
   </header>
@@ -29,11 +29,15 @@
           <li class="toc-section">
             <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
             <ul>
+              <li><a href="#paper-1">01 观测存在先于数值：联合建模未来观测存在性与状态演化的不规则时序预测</a></li>
+              <li><a href="#paper-2">02 CITRAS-FM：面向协变量感知零样本预测的微型时序基础模型</a></li>
             </ul>
           </li>
           <li class="toc-section">
             <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断与预测</a>
             <ul>
+              <li><a href="#paper-5">05 DIII-D 上 ECH 沉积剖面的鲁棒实时控制</a></li>
+              <li><a href="#paper-6">06 用深度学习分层建模逃逸电子</a></li>
             </ul>
           </li>
           <li class="toc-section">
@@ -42,8 +46,10 @@
             </ul>
           </li>
           <li class="toc-section">
-            <a href="#section-4">多任务学习 / 多模态学习 / 图像与计算机视觉</a>
+            <a href="#section-4">多模态学习 / 图像与计算机视觉</a>
             <ul>
+              <li><a href="#paper-3">03 OctoSense 多模态机器人感知</a></li>
+              <li><a href="#paper-4">04 分数阶松弛像素动力学事件相机模拟</a></li>
             </ul>
           </li>
         </ul>
@@ -55,20 +61,80 @@
           <li><a href="#trend-notes">趋势判断</a></li>
         </ul>
       </div>
-      <div class="sidebar__block sidebar__warning">
-        <h2>字段警告</h2>
-        <ul>
-          <li>没有解析到论文条目。</li>
-        </ul>
-      </div>
     </aside>
 
     <section class="content">
       <section class="panel" id="top-picks">
         <div class="panel__head">
           <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
         </div>
         <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">观测存在先于数值：联合建模未来观测存在性与状态演化的不规则时序预测</a></h3>
+              <p class="card__subtitle">Existence Precedes Value: Joint Modeling of Observational Existence and Evolving States in Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-11</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>Timeflies 直接处理不规则时序中常被忽略的问题：未来哪些时刻会有有效观测本身并不总是已知。对聚变诊断里的通道掉线、事件触发采样和异步日志，它比单纯插值或 mask embedding 更贴近真实数据生成过程。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">DIII-D 上 ECH 沉积剖面的鲁棒实时控制</a></h3>
+              <p class="card__subtitle">Robust Control of ECH Deposition Profiles on DIII-D</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 等离子体控制 / 诊断与预测</span>
+                <span class="chip chip--muted">2026-06-11</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>ECHO 把 TORBEAM 神经网络 surrogate 与遗传优化器接入 DIII-D 实验控制链路，目标是实时优化 gyrotron mirror angle 与 power。这是“AI 进入托卡马克 actuator-level optimization”的近期强案例。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">CITRAS-FM：面向协变量感知零样本预测的微型时序基础模型</a></h3>
+              <p class="card__subtitle">CITRAS-FM: Tiny Time Series Foundation Model for Covariate-Informed Zero-Shot Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-06-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>CITRAS-FM 只有 7M 参数，强调 CPU 实时推理和 known/observed covariates。对真实控制与诊断环境，外生协变量常常比盲目增大模型更关键。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">OctoSense 多模态机器人感知</a></h3>
+              <p class="card__subtitle">OctoSense: Self-Supervised Learning for Multimodal Robot Perception</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>OctoSense 把 RGB、event、LiDAR、thermal、IMU、GPS、本体感知作为异步多频传感器处理，使用模态专属 tokenizer、late-fusion MAE 和推理 token cache。它是 P1/P3 的强工程模板。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">分数阶松弛像素动力学事件相机模拟</a></h3>
+              <p class="card__subtitle">FracEvent: Event-Camera Simulation via Fractional-Relaxation Pixel Dynamics</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>FracEvent 用分数阶松弛像素动力学保留 residual voltage memory 和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了比固定阈值事件转帧更接近原生事件流的数据增强入口。</p>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -76,28 +142,233 @@
         <div class="panel__head">
           <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
         </div>
-        <article class="paper paper--note">
-          <div class="paper__header">
-            <div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
               <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
-              <h3>本轮空缺判断</h3>
+              <h3>观测存在先于数值：联合建模未来观测存在性与状态演化的不规则时序预测</h3>
+              <p class="paper__subtitle">Existence Precedes Value: Joint Modeling of Observational Existence and Evolving States in Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-11</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
             </div>
+            <p class="paper-card__summary">Timeflies 直接处理不规则时序中常被忽略的问题：未来哪些时刻会有有效观测本身并不总是已知。对聚变诊断里的通道掉线、事件触发采样和异步日志，它比单纯插值或 mask embedding 更贴近真实数据生成过程。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yifan Hu, Hongzhou Chen, Peiyuan Liu, Yiding Liu, Zewei Dong, Jiang-Ming Yang</p>
+                <p class="muted">Ant International</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.13571" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.13571" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Timeflies 直接处理不规则时序中常被忽略的问题：未来哪些时刻会有有效观测本身并不总是已知。对聚变诊断里的通道掉线、事件触发采样和异步日志，它比单纯插值或 mask embedding 更贴近真实数据生成过程。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>不规则时序预测常见做法是先插值、补齐或编码观测 mask，再预测未来值。但真实诊断系统里，未来观测的存在性与设备状态、触发逻辑、传输延迟和实验阶段相关，缺失本身可能是信号。
+从本日报的选取理由看，Timeflies 直接处理不规则时序中常被忽略的问题：未来哪些时刻会有有效观测本身并不总是已知。对聚变诊断里的通道掉线、事件触发采样和异步日志，它比单纯插值或 mask embedding 更贴近真实数据生成过程。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否同时预测未来观测存在性和数值演化，并让缺失机制反过来帮助数值预测？
+对当前主题的关键意义在于：P1 可把观测存在性头改造成通道可用性、事件触发或诊断失效预测头；最小实验是在现有诊断数据上同时预测通道下一窗口是否有效和破裂风险，比较 impute-only、mask embedding 与 Timeflies 式双流结构的 AUC、提前量和缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/6b79d0dcbd8269de.png" alt="Figure 1: Evolution of Forecasting Paradigms for Time Series. (a) Grid-Restricted Paradigm : Treats missingness as a defect and employs a rigid impute-then-forecast approach for aligned time slots. (b) Irregular-Aware Paradigm : Models continuous latent trajectories from irregular historical observations. However, it requires prior knowledge of future valid timestamps during inference. (c) Observation-State Joint Paradigm (Ours): Elevates forecasting to a cascaded dual-track task. It explicitly decodes historical observational regularity to jointly predict future accessibility and value evolution only where valid. This architecture ensures predictive relevance in real-world deployment.">
+                    <figcaption>Figure 1: Evolution of Forecasting Paradigms for Time Series. (a) Grid-Restricted Paradigm : Treats missingness as a defect and employs a rigid impute-then-forecast approach for al...</figcaption>
+                  </figure>
+                  <p>提出 Timeflies 框架，用 observation stream 和 value stream 双流结构建模观测存在与状态数值；Reliability-Aware Patch Embedding 压制不可靠稀疏片段，Observation-Guided Value Attention 用观测可靠性引导数值注意力，Dual Prediction Head 同时输出存在性与数值。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文构建 Shadow Benchmark，覆盖 6 个领域和 16 个地区，并报告在未来观测存在性预测与数值预测上均优于强基线；案例分析显示模型会主动降低稀疏不可靠片段权重。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>部分 benchmark 包含专有数据，外部复现门槛较高；论文未直接处理托卡马克高频诊断、事件流或多模态图像-时序融合。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它的核心价值是把缺失机制作为一等预测目标，适合用于重新设计聚变诊断中的不规则采样建模。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>P1 可把观测存在性头改造成通道可用性、事件触发或诊断失效预测头；最小实验是在现有诊断数据上同时预测通道下一窗口是否有效和破裂风险，比较 impute-only、mask embedding 与 Timeflies 式双流结构的 AUC、提前量和缺失鲁棒性。</p></section>
+              </div>
+            </details>
           </div>
-          <p>本轮没有发现新的不规则多变量时序、连续时间建模、Neural CDE/ODE/SDE、连续或选择性状态空间模型、长上下文线性内存、多采样率或多分辨率时序论文达到主推荐标准。submittedDate 扩展窗口中出现的 Disentangling Continuous-Time Latent Dynamics 等 2026-06-26 条目不属于本轮新增；其核心更偏潜变量 SDE 可辨识性，不足以替代上期已经记录的异步多传感器 token cache、优化线性强基线和误差条件科学代理模型作为今日主推荐。</p>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>CITRAS-FM：面向协变量感知零样本预测的微型时序基础模型</h3>
+              <p class="paper__subtitle">CITRAS-FM: Tiny Time Series Foundation Model for Covariate-Informed Zero-Shot Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">CITRAS-FM 只有 7M 参数，强调 CPU 实时推理和 known/observed covariates。对真实控制与诊断环境，外生协变量常常比盲目增大模型更关键。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yosuke Yamaguchi, Issei Suemitsu, Yuki Kajihara, Wenpeng Wei</p>
+                <p class="muted">Hitachi Ltd. Research & Development Group</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.10798" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.10798" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>CITRAS-FM 只有 7M 参数，强调 CPU 实时推理和 known/observed covariates。对真实控制与诊断环境，外生协变量常常比盲目增大模型更关键。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>许多时序基础模型更擅长 target-only 预测，面对已知未来协变量或观测协变量时支持有限；大模型推理成本也不适合控制前端或在线诊断。
+从本日报的选取理由看，CITRAS-FM 只有 7M 参数，强调 CPU 实时推理和 known/observed covariates。对真实控制与诊断环境，外生协变量常常比盲目增大模型更关键。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用小参数量模型在零样本或少样本场景中有效利用协变量，同时保持 CPU 级低延迟推理？
+对当前主题的关键意义在于：P1/P3 可把放电程序、加热功率、磁场配置、诊断可用性作为协变量输入，比较 CITRAS-FM、PatchTST/Mamba 和简单 Ridge 在跨炮号、跨采样率与提前预警上的表现。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5d34f9a4aa35141a.png" alt="Figure 3: Zero-shot forecasting results on EPF-NP.">
+                    <figcaption>Figure 3: Zero-shot forecasting results on EPF-NP.</figcaption>
+                  </figure>
+                  <p>提出 7M 参数 patch-based decoder-only Transformer，核心模块 Shifted Attention 面向跨变量交互和 forecast horizon 内协变量利用；CovSynth 用合成伪协变量缓解预训练语料里协变量不足的问题。
+阅读时需要把方法设计与主要结果一起看：论文报告在 fev-bench 的 100 个任务上，CITRAS-FM 在 sub-10M TSFM 中达到最优零样本精度；在协变量感知设定下优于参数量大 20 倍以上的模型，CPU 推理延迟低于 0.1 秒。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告在 fev-bench 的 100 个任务上，CITRAS-FM 在 sub-10M TSFM 中达到最优零样本精度；在协变量感知设定下优于参数量大 20 倍以上的模型，CPU 推理延迟低于 0.1 秒。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是专门的不规则时间戳模型，也未证明能处理百万级高频序列或复杂物理约束；协变量质量差时可能引入伪相关。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为“轻量 TSFM + 协变量”的工程基线，尤其适合先做可部署性验证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>P1/P3 可把放电程序、加热功率、磁场配置、诊断可用性作为协变量输入，比较 CITRAS-FM、PatchTST/Mamba 和简单 Ridge 在跨炮号、跨采样率与提前预警上的表现。</p></section>
+              </div>
+            </details>
+          </div>
         </article>
       </section>
       <section class="panel" id="section-2">
         <div class="panel__head">
           <h2>可控核聚变 / 等离子体控制 / 诊断与预测</h2>
         </div>
-        <article class="paper paper--note">
-          <div class="paper__header">
-            <div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
               <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断与预测</p>
-              <h3>本轮空缺判断</h3>
+              <h3>DIII-D 上 ECH 沉积剖面的鲁棒实时控制</h3>
+              <p class="paper__subtitle">Robust Control of ECH Deposition Profiles on DIII-D</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-11</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
             </div>
+            <p class="paper-card__summary">ECHO 把 TORBEAM 神经网络 surrogate 与遗传优化器接入 DIII-D 实验控制链路，目标是实时优化 gyrotron mirror angle 与 power。这是“AI 进入托卡马克 actuator-level optimization”的近期强案例。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>A. Rothstein, H. J. Farre-Kaga, K. Yasoda, J. Lestz, N. Chen, S. K. Kim, A. Jalalvand, E. Kolemen 等</p>
+                <p class="muted">Princeton University、Princeton Plasma Physics Laboratory、University of California Irvine 等</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.13661" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.13661" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>ECHO 把 TORBEAM 神经网络 surrogate 与遗传优化器接入 DIII-D 实验控制链路，目标是实时优化 gyrotron mirror angle 与 power。这是“AI 进入托卡马克 actuator-level optimization”的近期强案例。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>未来托卡马克需要在硬件失效、等离子体参数变化和目标剖面变化时仍能稳定控制加热沉积。传统高保真 ray tracing 难以直接满足实时优化需求。
+从本日报的选取理由看，ECHO 把 TORBEAM 神经网络 surrogate 与遗传优化器接入 DIII-D 实验控制链路，目标是实时优化 gyrotron mirror angle 与 power。这是“AI 进入托卡马克 actuator-level optimization”的近期强案例。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用足够快且可信的 surrogate 在实时约束下优化 gyrotron mirror angle 与 power，从而稳健控制 ECH deposition profile？
+对当前主题的关键意义在于：P3 或聚变控制实验可借鉴其 surrogate-in-the-loop 思路，把破裂风险、诊断一致性或加热策略作为优化目标；最小验证是比较离线 surrogate、surrogate+optimizer 和带不确定性约束 optimizer 在目标跟踪误差、约束违反和实时延迟上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/15aec6651d43d437.png" alt="Figure 2: Overview of the ECHO algorithm. The plasma state information including profiles and equilibria are first measured. This is passed to TorbeamNN , which is run in parallel for each gyrotron and several poloidal angles to make a lookup table of individual deposition profiles. The genetic optimizer then uses a user-defined target ECH deposition profile and the lookup table to find the optimal gyrotron configuration. These duty cycles and mirror angles are then sent as hardware commands to actuate on the plasma.">
+                    <figcaption>Figure 2: Overview of the ECHO algorithm. The plasma state information including profiles and equilibria are first measured. This is passed to TorbeamNN , which is run in parallel ...</figcaption>
+                  </figure>
+                  <p>提出 ECHO 算法，用 TORBEAM 的并行神经网络 surrogate 加遗传优化器，联合优化多个 gyrotron 的 mirror angle 与 power；核心是把 surrogate 放入 actuator-level optimization，而不是只做离线预测。
+阅读时需要把方法设计与主要结果一起看：作者报告该方法已经部署到 DIII-D 实验，并通过实验 ECE 测量与事后离线 ray tracing 验证，在 gyrotron failure 和显著等离子体参数变化下保持可靠。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告该方法已经部署到 DIII-D 实验，并通过实验 ECE 测量与事后离线 ray tracing 验证，在 gyrotron failure 和显著等离子体参数变化下保持可靠。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>控制目标聚焦 ECH deposition profile，不是完整等离子体状态控制；方法仍依赖 surrogate 的训练覆盖和 ray tracing 物理模型。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇是“AI 如何进入聚变控制链路”的现实样板，适合放在聚变 AI 交叉主线中反复参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>P3 或聚变控制实验可借鉴其 surrogate-in-the-loop 思路，把破裂风险、诊断一致性或加热策略作为优化目标；最小验证是比较离线 surrogate、surrogate+optimizer 和带不确定性约束 optimizer 在目标跟踪误差、约束违反和实时延迟上的差异。</p></section>
+              </div>
+            </details>
           </div>
-          <p>本轮没有发现直接面向 tokamak disruption prediction、fusion diagnostics、plasma control、magnetic confinement fusion 与 AI 交叉的高质量新增论文。扩展窗口内的 On the Relationship Between Plasma and Tritium Fuel Cycle Through Matter Injection and Particle Exhaust、Sawtooth suppression by flux pumping on HBT-EP 和 The Negative Triangularity Tokamak Path for Fusion Pilot Plants 属于聚变物理或装置路线讨论，缺少可迁移的 AI 诊断、预测、控制或跨装置学习机制，因此不纳入本期主推荐。</p>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断与预测</p>
+              <h3>用深度学习分层建模逃逸电子</h3>
+              <p class="paper__subtitle">Hierarchical Framework of Runaway Electrons using Deep Learning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">能否在保持物理一致性的前提下，用深度学习快速预测逃逸电子电流、平均能量和能谱演化？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tyler Mark, Christopher J. McDevitt</p>
+                <p class="muted">University of Florida</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.12567" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.12567" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>逃逸电子动力学计算昂贵，并与 MHD、破裂缓解和安全边界紧密相关。传统求解器难以支持大范围参数扫描或在线风险评估。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在保持物理一致性的前提下，用深度学习快速预测逃逸电子电流、平均能量和能谱演化？
+对当前主题的关键意义在于：对 disruption mitigation、RE 风险评估和 physics-informed surrogate 很相关；最小实验可比较 PINN surrogate、传统 solver 采样和不确定性估计在参数扫描速度、误差和 OOD 检测上的表现。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a770bf0b45fdc31a.png" alt="用深度学习分层建模逃逸电子">
+                    <figcaption>论文核心框架图 / 实验图</figcaption>
+                  </figure>
+                  <p>论文把伴随问题与 PINN 结合，构建分层深度学习框架，同时处理逃逸电子电流、平均能量和能谱分布；物理结构被写入 surrogate 构造，而不是只作为普通正则项。
+阅读时需要把方法设计与主要结果一起看：作者报告相对传统 RE solver 可实现数量级加速，并在宽参数范围下与基准求解器保持良好一致；框架可用于任意初始电子分布的时间演化预测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者报告相对传统 RE solver 可实现数量级加速，并在宽参数范围下与基准求解器保持良好一致；框架可用于任意初始电子分布的时间演化预测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前仍是高保真物理 surrogate，不是已接入实时控制回路的系统；极端分布外工况下的稳健性仍需更多实验证据。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合与 ECH 控制论文配套阅读：一个偏 actuator control，一个偏风险物理 surrogate。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对 disruption mitigation、RE 风险评估和 physics-informed surrogate 很相关；最小实验可比较 PINN surrogate、传统 solver 采样和不确定性估计在参数扫描速度、误差和 OOD 检测上的表现。</p></section>
+              </div>
+            </details>
+          </div>
         </article>
       </section>
       <section class="panel" id="section-3">
@@ -108,42 +379,141 @@
           <div class="paper__header">
             <div>
               <p class="paper__section">在研课题启发</p>
-              <h3>空缺判断：P1 不规则时序与聚变高低频统一建模</h3>
+              <h3>新增情况：P1 不规则时序与聚变高低频统一建模</h3>
             </div>
           </div>
-          <p>本轮空缺判断：未发现新增论文能明确同时满足真实时间间隔建模、线性或近线性显存复杂度、高频压缩后与低频通道交互、多尺度异步通道耦合以及采样率变化鲁棒性。2026-06-27 简报中的 OctoSense token cache、优化线性强基线和 Error-Conditioned Neural Solvers 仍是近期最可执行的验证入口，但本轮没有新版本、新代码或新增实验，故不重复展开。下一轮应优先观察是否出现面向真实 Δt、流式推理、token compression/pruning 或 continuous/selective SSM 的新稿；若仍空缺，现有实验可继续比较统一重采样、per-channel cache、Mamba/SSM 与优化 Ridge 在峰值显存、提前量和跨采样率鲁棒性上的差异。</p>
+          <p>选取理由：【P1】推荐优先回看 Timeflies、OctoSense 和 CITRAS-FM。原始应用分别是不规则观测预测、多模态机器人感知和协变量时序基础模型；可迁移模块是观测存在性预测头、模态专属 tokenizer/token cache、协变量感知 shifted attention。它们对应 P1 中真实 Δt、缺失机制、高低频压缩与低频通道交互的问题。预期计算影响是用高频 token cache 和小模型协变量头降低显存与延迟；风险是这些论文没有直接处理百万级聚变诊断点和物理突变前兆。最小验证：在同一聚变诊断数据上比较 impute-only、Timeflies 式双流、OctoSense 式 token cache、CITRAS-FM 协变量输入的峰值显存、AUC、提前量和采样率变化鲁棒性。</p>
         </article>
         <article class="paper paper--note">
           <div class="paper__header">
             <div>
               <p class="paper__section">在研课题启发</p>
-              <h3>空缺判断：P2 RGB-Event 属性识别</h3>
+              <h3>新增情况：P2 RGB-Event 属性识别</h3>
             </div>
           </div>
-          <p>本轮空缺判断：未发现新增论文在原生事件表征、RGB/Event 时间对齐、事件 token、质量或可靠性感知融合、模态缺失、开放词表属性监督、属性不确定性校准上给出足够强的新机制。上期的 FracEvent 事件模拟与事件主动凝视工作仍可作为 TriPro-ReID 的局部替换启发，但本轮没有发现代码、数据、实验或属性识别映射更新。下一轮应重点关注 event foundation model、event-guided token selection、modality dropout 和 attribute-level uncertainty；当前最小验证仍是把 FracEvent 增强、事件动态状态 token、属性级可靠性门控分别接入现有 RGB-Event 属性识别流程。</p>
+          <p>选取理由：【P2】推荐优先回看 FracEvent，并补充事件主动凝视类高速状态估计工作。原始应用是事件模拟、光流/重建迁移和高速运动估计；可迁移模块是 fractional-relaxation event simulation、事件动态状态 token、不确定性感知伪标签。它对应 P2 中原生 Event 表征、弱光/运动模糊、事件稀疏和模态缺失的问题。预期计算影响主要发生在离线增强和轻量事件状态头，推理成本可控；风险是模拟事件和人体属性语义之间仍有域差。最小验证：在 TriPro-ReID 基线上加入 FracEvent 增强和事件可靠性门控，按外观属性、动态属性、弱光、模态缺失分别报告 mA、F1 和 ECE。</p>
         </article>
         <article class="paper paper--note">
           <div class="paper__header">
             <div>
               <p class="paper__section">在研课题启发</p>
-              <h3>空缺判断：P3 可见光图像与诊断时序融合的破裂预测</h3>
+              <h3>新增情况：P3 可见光图像与诊断时序融合的破裂预测</h3>
             </div>
           </div>
-          <p>本轮空缺判断：未发现新增论文能清晰迁移到异步图像-诊断时序融合、时序查询图像局部证据、低延迟低显存部署、模态缺失训练、物理可解释性或跨装置评估。直接 tokamak disruption prediction 与 fusion diagnostics + AI 新稿本轮空缺；跨领域图像-传感器融合也没有出现足以替代上期 OctoSense late-fusion cache 与世界模型 coverage 诊断的新工作。下一轮应继续检索 masked multimodal pretraining、contrastive alignment、gated fusion、multimodal bottleneck 和 domain adaptation；现有数据上的最小验证可保持为可见光帧局部证据选择、诊断时序提前量分桶、缺失模态训练和跨装置留一评估。</p>
+          <p>选取理由：【P3】推荐优先回看 OctoSense、ECHO 和世界模型 coverage 诊断思路。原始应用分别是多模态机器人感知、DIII-D ECH 控制和视觉机器人世界模型；可迁移模块是 masked multimodal pretraining、surrogate-in-the-loop optimization、coverage-aware failure detection。它对应 P3 中异步图像-诊断融合、低延迟部署、跨装置泛化和模型过度自信的问题。预期计算影响是用 token cache 降低融合显存，用覆盖度统计增加轻量在线可信度评分；风险是机器人/控制任务与破裂预测因果结构不同。最小验证：用可见光帧 tokenizer 与诊断时序 tokenizer 做 masked cross-modal reconstruction，再按覆盖度分桶报告 AUC、ECE、提前量、误报率和跨装置留一表现。</p>
         </article>
       </section>
       <section class="panel" id="section-4">
         <div class="panel__head">
-          <h2>多任务学习 / 多模态学习 / 图像与计算机视觉</h2>
+          <h2>多模态学习 / 图像与计算机视觉</h2>
         </div>
-        <article class="paper paper--note">
-          <div class="paper__header">
-            <div>
-              <p class="paper__section">多任务学习 / 多模态学习 / 图像与计算机视觉</p>
-              <h3>本轮空缺判断</h3>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>OctoSense 多模态机器人感知</h3>
+              <p class="paper__subtitle">OctoSense: Self-Supervised Learning for Multimodal Robot Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
             </div>
+            <p class="paper-card__summary">OctoSense 把 RGB、event、LiDAR、thermal、IMU、GPS、本体感知作为异步多频传感器处理，使用模态专属 tokenizer、late-fusion MAE 和推理 token cache。它是 P1/P3 的强工程模板。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Anthony Bisulco, Jeremy Wang, Kostas Daniilidis, Randall Balestriero, Pratik Chaudhari</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.27317" target="_blank" rel="noreferrer">论文</a><a href="https://abisulco.com/octosense/" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2606.27317" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>OctoSense 把 RGB、event、LiDAR、thermal、IMU、GPS、本体感知作为异步多频传感器处理，使用模态专属 tokenizer、late-fusion MAE 和推理 token cache。它是 P1/P3 的强工程模板。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>机器人感知和聚变诊断都面对多传感器异步、多频率、局部失效和质量波动。统一重采样虽然实现简单，但会丢掉时间结构并放大显存压力。
+从本日报的选取理由看，OctoSense 把 RGB、event、LiDAR、thermal、IMU、GPS、本体感知作为异步多频传感器处理，使用模态专属 tokenizer、late-fusion MAE 和推理 token cache。它是 P1/P3 的强工程模板。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从异步、多频率、多噪声传感器中学习可迁移表征，同时保持实时推理能力？
+对当前主题的关键意义在于：P1 可用 per-channel tokenizer 压缩高频诊断，P3 可用可见光 tokenizer 与诊断 tokenizer 做 masked cross-modal reconstruction；最小实验比较统一重采样、早融合 cross-attention 和 late-fusion cache 的峰值显存、提前量、缺失模态鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文构建 stereo RGB、event、LiDAR、thermal、IMU、RTK-GPS 和 proprioception 的多模态平台；模型采用 late-fusion masked autoencoder，用模态专属 tokenizer 适配不同 spatiotemporal 特征，并通过 token cache 增量更新表示。
+阅读时需要把方法设计与主要结果一起看：摘要报告表示计算在 NVIDIA 5090 上约 6.68 ms、Orin NX 上约 112 ms；在光流、深度、语义分割、自车运动等任务上优于图像单模态基础模型，并在夜间或传感器退化时更稳健。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告表示计算在 NVIDIA 5090 上约 6.68 ms、Orin NX 上约 112 ms；在光流、深度、语义分割、自车运动等任务上优于图像单模态基础模型，并在夜间或传感器退化时更稳健。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务不是聚变破裂预测，也没有物理约束和跨装置评估；late fusion 可能不足以捕捉细粒度图像局部证据与诊断时序前兆的因果关系。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1/P3 的多模态底座候选，最值得迁移的是模态专属 token、masked pretraining 和 token cache。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>P1 可用 per-channel tokenizer 压缩高频诊断，P3 可用可见光 tokenizer 与诊断 tokenizer 做 masked cross-modal reconstruction；最小实验比较统一重采样、早融合 cross-attention 和 late-fusion cache 的峰值显存、提前量、缺失模态鲁棒性。</p></section>
+              </div>
+            </details>
           </div>
-          <p>本轮没有发现新的多任务、多模态、视觉语言模型、图像理解/生成、科学图像分析、事件视觉或 RGB-Event 论文同时满足“近期新增”和“机制可迁移性明确”两个条件。扩展窗口内的 DeLux、OctoSense、FracEvent 和 Event-based Gaze Control System 已在前序检索中被召回或覆盖；本轮没有发现作者页、项目页、代码仓库或会议页的新事实，故不重复写入。</p>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>分数阶松弛像素动力学事件相机模拟</h3>
+              <p class="paper__subtitle">FracEvent: Event-Camera Simulation via Fractional-Relaxation Pixel Dynamics</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">FracEvent 用分数阶松弛像素动力学保留 residual voltage memory 和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了比固定阈值事件转帧更接近原生事件流的数据增强入口。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Langyi Chen, Chuanzhi Xu, Haoxian Zhou, Pengfei Ye, Ziyu Luo, Haodong Chen, Qiang Qu, Xiaoming Chen, Weidong Cai</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.26636" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.26636" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>FracEvent 用分数阶松弛像素动力学保留 residual voltage memory 和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了比固定阈值事件转帧更接近原生事件流的数据增强入口。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机异步报告亮度变化，但真实事件数据采集、同步和标注成本高。传统模拟器多依赖固定阈值和手工噪声，容易把事件时间结构简化成边缘图。
+从本日报的选取理由看，FracEvent 用分数阶松弛像素动力学保留 residual voltage memory 和连续阈值穿越时间。对 RGB-Event 属性识别，它提供了比固定阈值事件转帧更接近原生事件流的数据增强入口。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在给定 log-intensity trajectory 时，生成更符合真实像素动态与事件时序结构的模拟事件流？
+对当前主题的关键意义在于：最小实验是在 TriPro-ReID 或现有 RGB-Event 属性流程中比较固定阈值模拟、事件转帧增强和 FracEvent 增强，分别报告弱光、运动模糊、事件稀疏和模态缺失下的 mA、F1、ECE。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/238d9bf52cf9fa61.png" alt="Figure S2 : Additional DAVIS240C reconstruction comparisons. The panel extends the main reconstruction visual to more DAVIS240C scenes using the same matched GoPro-trained models, methods, metrics, and raw [ 0 , 1 ] [0,1] display convention.">
+                    <figcaption>Figure S2 : Additional DAVIS240C reconstruction comparisons. The panel extends the main reconstruction visual to more DAVIS240C scenes using the same matched GoPro-trained models, ...</figcaption>
+                  </figure>
+                  <p>FracEvent 用 fractional-relaxation pixel dynamics 建模像素电压状态，保留 residual voltage memory，并在连续电压轨迹上定位 ON/OFF 阈值穿越时间，使历史状态影响后续事件。
+阅读时需要把方法设计与主要结果一起看：摘要称 FracEvent 在 event-stream comparison、图像重建和光流估计迁移中优于多个模拟器基线，说明更真实的时间结构能带来下游收益。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称 FracEvent 在 event-stream comparison、图像重建和光流估计迁移中优于多个模拟器基线，说明更真实的时间结构能带来下游收益。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文核心是模拟器，不直接解决 RGB/Event 融合、属性语义监督或开放词表属性识别；模拟参数仍需要真实传感器校准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合做 P2 的事件分支预训练和增强工具，不应被当成完整属性识别方案。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro-ReID 或现有 RGB-Event 属性流程中比较固定阈值模拟、事件转帧增强和 FracEvent 增强，分别报告弱光、运动模糊、事件稀疏和模态缺失下的 mA、F1、ECE。</p></section>
+              </div>
+            </details>
+          </div>
         </article>
       </section>
 
@@ -152,12 +522,12 @@
           <h2>趋势判断</h2>
         </div>
         <article class="trend">
-          <h3>1. 连续两天空缺更像来源窗口问题，不是主题标准变化</h3>
-          <p>- 2026-06-29 和 2026-06-30 两期都显示 arXiv 核心类别在本地清晨检索窗口内没有新的可核验条目。本轮没有降低主推荐标准，也没有因为在研课题分区而压缩 fusion-ai-default 原有范围；结论只是当前窗口没有足够强的新事实。</p>
+          <h3>1. 当日无新增时，回看推荐比空缺页更有行动价值</h3>
+          <p>- 对当前课题而言，2026-06-30 没有新稿并不意味着当天没有阅读价值。更合理的产物是明确“无本日新增”，同时把 2025-2026 已核验且仍可迁移的论文重新排序，形成实验优先级。</p>
         </article>
         <article class="trend">
-          <h3>2. 下一轮应以恢复后的新批次作为主排序对象</h3>
-          <p>- 若下一轮 arXiv 新批次恢复，主推荐仍按最近性、相关性、新颖度、可落地性和证据质量排序；P1/P2/P3 附加区独立筛选。特别需要区分“论文领域相似”和“机制可迁移”：只有能明确对应真实时间间隔、事件/RGB 动态融合或图像-诊断时序破裂预测待解决问题的工作才进入附加分区。</p>
+          <h3>2. 值得补读的论文应服务最小验证实验</h3>
+          <p>- 本期没有泛泛列综述或背景论文，而是选择能直接落到模型模块、训练目标或评估指标上的工作：观测存在性头、协变量 attention、token cache、事件模拟、surrogate-in-loop 和 coverage 分桶。</p>
         </article>
       </section>
     </section>
