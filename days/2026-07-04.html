@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-04</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-04 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-04 05:55:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天不是纯空缺。主推荐 5 篇均为 2026-07-02 UTC 新增：Zeus 关注免微调多任务时序基础模型，SGA 用共享注意力矩阵把时序注意力分数计算降为线性复杂度，MAS 从累计条件强度函数建模异步事件，VT-WAM 给出稀疏触觉动态与视觉锚点的门控融合，Bridge-WA 把未来变化位置和运动方向压缩成轻量先验。直接聚变 AI 新稿本轮空缺，但 P1/P2/P3 都有可迁移机制可用于当前课题。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 Zeus：免微调的统一时序基础模型</a></li>
+              <li><a href="#paper-2">02 Self-Gating Attention：面向高吞吐时序预测的线性注意力替换件</a></li>
+              <li><a href="#paper-3">03 MAS：用单调交替样条高效建模时间点过程</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断与预测</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">多模态学习 / 图像与事件视觉</a>
+            <ul>
+              <li><a href="#paper-4">04 VT-WAM：视觉-触觉世界动作模型中的动态稀疏模态门控</a></li>
+              <li><a href="#paper-5">05 Bridge-WA：用未来变化图抑制无关视觉细节</a></li>
+              <li><a href="#paper-6">06 CALM：从非配对数据学习可解释跨模态对齐</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">Zeus：免微调的统一时序基础模型</a></h3>
+              <p class="card__subtitle">Zeus: Towards Tuning-Free Foundation Model for Time Series Analysis</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增。它把 forecasting、imputation、classification 等多种时序任务放进同一免微调 TSFM，核心是多尺度 Transformer 与 Multi-Objective Temporal Masking；适合作为高低频统一建模的基础模型参照。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">Self-Gating Attention：面向高吞吐时序预测的线性注意力替换件</a></h3>
+              <p class="card__subtitle">Self-Gating Attention for Efficient Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增。SGA 明确针对标准 self-attention 随 look-back length 二次增长的时间和显存问题，用共享可学习矩阵加输入相关残差近似注意力分数；对百万长度诊断窗口很直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">MAS：用单调交替样条高效建模时间点过程</a></h3>
+              <p class="card__subtitle">Efficient Temporal Point Processes via Monotone Alternating Splines</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增。它不直接建模条件强度，而建模累计条件强度函数，避免数值积分误差，并用插值/外推分离的 monotone alternating splines 提升复杂异步事件动态表达力。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">VT-WAM：视觉-触觉世界动作模型中的动态稀疏模态门控</a></h3>
+              <p class="card__subtitle">VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与事件视觉</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增。论文把未来视觉预测、触觉形变预测和动作预测统一到 flow matching，并用 asymmetric MoT attention 与 contact-gated AVTAG 控制何时依赖稀疏触觉证据；对 RGB-Event 可靠性融合有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">Bridge-WA：用未来变化图抑制无关视觉细节</a></h3>
+              <p class="card__subtitle">Bridge-WA: Predicting Where and How the World Changes for Robotic Action</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与事件视觉</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增。它把大未来生成模型蒸馏成 future tokens、change maps 和 motion-flow maps，推理时不生成密集未来图像，只让动作模型关注会改变的位置和方向；对 P3 的图像局部前兆选择很有价值。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Zeus：免微调的统一时序基础模型</h3>
+              <p class="paper__subtitle">Zeus: Towards Tuning-Free Foundation Model for Time Series Analysis</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它把 forecasting、imputation、classification 等多种时序任务放进同一免微调 TSFM，核心是多尺度 Transformer 与 Multi-Objective Temporal Masking；适合作为高低频统一建模的基础模型参照。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yisong Fu, Zezhi Shao, Chengqing Yu, Yujie Li, Yongjun Xu, Xueqi Cheng, Fei Wang</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.01918" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.01918" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它把 forecasting、imputation、classification 等多种时序任务放进同一免微调 TSFM，核心是多尺度 Transformer 与 Multi-Objective Temporal Masking；适合作为高低频统一建模的基础模型参照。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>时序基础模型常在预测任务上做零样本评估，但在分类、补全、异常抽象或状态识别上仍需要任务微调。聚变诊断同样需要同一表征支撑破裂预警、缺失补全、状态分段和跨炮检索，单一预测目标不够。
+从本日报的选取理由看，新增。它把 forecasting、imputation、classification 等多种时序任务放进同一免微调 TSFM，核心是多尺度 Transformer 与 Multi-Objective Temporal Masking；适合作为高低频统一建模的基础模型参照。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不为每个下游任务单独微调的情况下，让同一个时序模型同时保留点级细节、长程结构和多任务所需的归纳偏置？
+对当前主题的关键意义在于：可把现有高低频诊断窗口统一成多尺度 token，预训练外推、补全和全局状态识别三类目标，再比较 Zeus 式多目标预训练、单一 forecast 预训练和监督破裂模型在跨炮 AUC、提前量和缺失鲁棒性上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d39a0df073016790.png" alt="Figure 2: Overall architecture of Zeus . Inputs from different downstream tasks are first unified into a common format and converted into point-wise tokens via tokenization. The resulting sequence is then processed by a U-shaped multi-scale Transformer. Quantile head is used to produce probabilistic outputs, while for classification tasks, global pooling is applied to obtain sequence-level representations.">
+                    <figcaption>Figure 2: Overall architecture of Zeus . Inputs from different downstream tasks are first unified into a common format and converted into point-wise tokens via tokenization. The re...</figcaption>
+                  </figure>
+                  <p>Zeus 使用 point-wise tokenization 与 U-shaped hierarchy 的多尺度 Transformer，在细粒度 token fidelity 与长序列效率之间折中；训练目标采用 Multi-Objective Temporal Masking，将外推、插值和全局抽象纳入统一预训练策略。
+阅读时需要把方法设计与主要结果一起看：论文报告在五类代表性任务上，Zeus 在 tuning-free 设置下持续取得有竞争力结果；arXiv 摘要页注明论文已被 ICML 2026 接收。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文报告在五类代表性任务上，Zeus 在 tuning-free 设置下持续取得有竞争力结果；arXiv 摘要页注明论文已被 ICML 2026 接收。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要未显示其是否显式支持真实不规则时间戳、异步多采样率和高频海量诊断；Transformer 层级结构虽然降低负担，但对百万级点序列仍需结合压缩或流式机制。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>Zeus 值得作为 P1 多任务时序基础模型基线，重点看其 masking 目标能否迁移到聚变诊断。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把现有高低频诊断窗口统一成多尺度 token，预训练外推、补全和全局状态识别三类目标，再比较 Zeus 式多目标预训练、单一 forecast 预训练和监督破裂模型在跨炮 AUC、提前量和缺失鲁棒性上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Self-Gating Attention：面向高吞吐时序预测的线性注意力替换件</h3>
+              <p class="paper__subtitle">Self-Gating Attention for Efficient Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。SGA 明确针对标准 self-attention 随 look-back length 二次增长的时间和显存问题，用共享可学习矩阵加输入相关残差近似注意力分数；对百万长度诊断窗口很直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Dezheng Wang, Tong Chen, Wei Yuan, Congyan Chen, Shihua Li, Hongzhi Yin</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02344" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02344" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。SGA 明确针对标准 self-attention 随 look-back length 二次增长的时间和显存问题，用共享可学习矩阵加输入相关残差近似注意力分数；对百万长度诊断窗口很直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长序列时序预测往往依赖 self-attention 建模历史时间点依赖，但标准注意力对窗口长度呈二次复杂度。聚变高频诊断中，若每个采样点都进注意力层，显存会先于模型能力成为瓶颈。
+从本日报的选取理由看，新增。SGA 明确针对标准 self-attention 随 look-back length 二次增长的时间和显存问题，用共享可学习矩阵加输入相关残差近似注意力分数；对百万长度诊断窗口很直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否利用时序注意力图中跨时间戳冗余和重复模式，在保留输入相关变化的同时避免 query-key 全量分数计算？
+对当前主题的关键意义在于：可在现有 Transformer 破裂预测或多通道 forecasting backbone 中只替换注意力为 SGA，固定 tokenizer 和训练策略，比较显存峰值、吞吐、AUC、提前量以及采样率变化下性能退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4705a23c4e25da9e.png" alt="Figure 2: Illustration of SGA. SGA uses a shared attention score matrix 𝓐 \bm{\mathcal{A}} to model common attention patterns and an input-dependent residual score matrix 𝓡 t \bm{\mathcal{R}}_{t} to capture input-dependent variations.">
+                    <figcaption>Figure 2: Illustration of SGA. SGA uses a shared attention score matrix 𝓐 \bm{\mathcal{A}} to model common attention patterns and an input-dependent residual score matrix 𝓡 t \bm{\...</figcaption>
+                  </figure>
+                  <p>SGA 用共享可学习矩阵表示公共注意力模式，用输入相关残差表示样本特异变化，从而绕开标准注意力分数中的 query/key projection。论文称其在 look-back length 上实现线性时间和 score-matrix memory complexity。
+阅读时需要把方法设计与主要结果一起看：作者在电力、金融、天气、医疗监测、人类活动和气候等九个公开真实数据集上测试，报告相较标准 self-attention 和轻量注意力变体有更好的推理效率，同时保持有竞争力的预测性能。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者在电力、金融、天气、医疗监测、人类活动和气候等九个公开真实数据集上测试，报告相较标准 self-attention 和轻量注意力变体有更好的推理效率，同时保持有竞争力的预测性能。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>SGA 仍基于规则采样 benchmark，未证明可直接处理真实 Δt、通道异步或采样率突变；共享注意力矩阵可能对 regime 快速切换的诊断数据表达不足。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇是 P1 长序列显存控制的工程候选，适合作为 Transformer 替换注意力层先做小实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可在现有 Transformer 破裂预测或多通道 forecasting backbone 中只替换注意力为 SGA，固定 tokenizer 和训练策略，比较显存峰值、吞吐、AUC、提前量以及采样率变化下性能退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>MAS：用单调交替样条高效建模时间点过程</h3>
+              <p class="paper__subtitle">Efficient Temporal Point Processes via Monotone Alternating Splines</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它不直接建模条件强度，而建模累计条件强度函数，避免数值积分误差，并用插值/外推分离的 monotone alternating splines 提升复杂异步事件动态表达力。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Cheng Wan, Quyu Kong, Feng Zhou</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.01752" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.01752" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它不直接建模条件强度，而建模累计条件强度函数，避免数值积分误差，并用插值/外推分离的 monotone alternating splines 提升复杂异步事件动态表达力。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>异步事件序列常用条件强度函数描述，但训练和似然计算需要数值积分，复杂度和误差都不理想。聚变诊断中许多重要前兆不是规则点值，而是峰值、突变、饱和、报警、控制动作等事件。
+从本日报的选取理由看，新增。它不直接建模条件强度，而建模累计条件强度函数，避免数值积分误差，并用插值/外推分离的 monotone alternating splines 提升复杂异步事件动态表达力。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保证累计条件强度单调性的同时，提高复杂时间动态的表达能力，并避免数值近似带来的不稳定？
+对当前主题的关键意义在于：可把 ELM 突变、辐射尖峰、控制动作、阈值报警和缺失触发编码为事件序列，用 MAS 估计未来危险事件强度，再与连续诊断 encoder 的风险分数融合，比较提前预警和误报率。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4a797f3331b4aff3.png" alt="Figure 1: Performance comparison of MNNs and MAS on three classical TPPs (Hawkes, Poisson, Self-Correcting). The left column shows the three MNN deadlocks—Convexity Restriction, Saturation Limit, and Violations of CCIF Requirements—while the right column shows that MAS overcomes these limitations and accurately reconstructs the ground-truth dynamics.">
+                    <figcaption>Figure 1: Performance comparison of MNNs and MAS on three classical TPPs (Hawkes, Poisson, Self-Correcting). The left column shows the three MNN deadlocks—Convexity Restriction, Sa...</figcaption>
+                  </figure>
+                  <p>论文指出现有 Monotone Neural Networks 存在凸性限制、饱和限制和 CCIF 约束冲突三类结构瓶颈；MAS 将插值和外推组件分开，用 monotone alternating splines 建模 CCIF，理论上缩小 MNN 的不可约近似缺口。
+阅读时需要把方法设计与主要结果一起看：摘要报告 MAS 在合成和真实数据集上优于现有方法，并兼顾拟合精度和外推泛化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 MAS 在合成和真实数据集上优于现有方法，并兼顾拟合精度和外推泛化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它解决的是事件到事件的 TPP 建模，不直接给出多通道连续高频信号融合方案；用于破裂预测时需要先定义事件抽取或把连续信号与事件过程联合建模。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>MAS 适合作为不规则事件通道的概率层，与连续时序 encoder 互补，而不是替代所有诊断建模。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把 ELM 突变、辐射尖峰、控制动作、阈值报警和缺失触发编码为事件序列，用 MAS 估计未来危险事件强度，再与连续诊断 encoder 的风险分数融合，比较提前预警和误报率。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断与预测</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断与预测</p>
+              <h3>本轮空缺判断：直接聚变 AI 新增不足</h3>
+            </div>
+          </div>
+          <p>英文原标题：本轮未收录直接新增论文</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-07-04 检索截止前未发现合格新增</p>
+          <p>论文链接：无</p>
+          <p>选取理由：本轮空缺判断。physics.plasm-ph recent 与定向关键词检索中没有发现同时满足新增、AI 方法实质性、tokamak disruption / fusion diagnostics / plasma control 强相关的论文；因此不把普通等离子体物理论文或弱相关控制论文伪装成今日重点。</p>
+          <p>研究背景：聚变 AI 方向近期已有跨装置平衡神经算子、实验无关破裂预测、ECH 控制和逃逸电子层级建模等已核验工作，但本轮公开原始来源没有更强新条目。</p>
+          <p>核心问题：当前缺口仍是跨装置、跨诊断、实时可信预警和物理可解释融合；这些问题需要等待更直接的新论文或项目更新，而不是降低收录标准。</p>
+          <p>方法与关键创新：本节不引入新方法，只保留检索结论。真正可迁移机制已在 Zeus/SGA/MAS、VT-WAM、Bridge-WA、CALM 中从多任务时序、线性注意力、事件过程、动态模态门控和缺配模态对齐角度补充。</p>
+          <p>主要结果：无新增实验结果。</p>
+          <p>局限性：空缺判断依赖本轮 arXiv 与公开网页检索；若作者主页、会议 early access 或代码仓库晚于本轮检索暴露，需在后续日报补录。</p>
+          <p>总结：聚变主线今天应优先读 P1/P3 的可迁移机制，不应追逐弱相关新增。</p>
+          <p>研究相关性：后续继续关注 tokamak disruption prediction、fusion diagnostics、plasma control、ECEI/BES/visible/IR diagnostics、cross-device transfer、uncertainty calibration 与 physics-informed multimodal fusion。</p>
+          <p>是否值得精读：空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>新增情况：P1 不规则时序与聚变高低频统一建模</h3>
+            </div>
+          </div>
+          <p>选取理由：【P1】新增收录 Self-Gating Attention 与 MAS，并把 Zeus 作为主推荐背景参考。Self-Gating Attention 的原始应用领域是通用时序预测，可迁移模块是共享注意力矩阵加输入相关残差的线性复杂度 attention；它对应 P1 中“避免长序列注意力导致显存爆炸”的待解决问题，预期计算/显存从标准二次 score matrix 降为随 look-back length 线性增长，风险是共享矩阵可能压掉快速 regime 切换和真实 Δt 差异；最小验证是在现有 Transformer 破裂预测模型中只替换 attention，比较显存峰值、吞吐、AUC、提前量和采样率扰动鲁棒性。MAS 的原始应用领域是 temporal point process，可迁移模块是直接建模累计条件强度函数的 monotone alternating splines；它对应 P1 中真实时间间隔、异步事件和缺失触发建模的问题，预期计算影响是避免数值积分并把稀疏事件通道建成轻量概率头，风险是需要先把连续高频诊断抽取为有物理意义的事件；最小验证是把 ELM、辐射尖峰、控制动作和报警阈值事件输入 MAS，再与连续 SSM/Transformer encoder 融合做破裂提前预警。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>新增情况：P2 RGB-Event 属性识别</h3>
+            </div>
+          </div>
+          <p>选取理由：【P2】新增机制收录 VT-WAM；本轮没有发现直接面向 RGB-Event attribute recognition 的 2026-07-02 UTC 新稿。VT-WAM 的原始应用领域是机器人 contact-rich manipulation，可迁移模块是 Asymmetric MoT attention、稀疏触觉动态预测和 contact-gated AVTAG；它对应 P2 中原生异步 Event 与 RGB 在弱光、运动模糊、事件稀疏/噪声和模态缺失时如何动态加权的问题，预期计算/显存影响主要是增加轻量 gate、少量专家注意力和事件动态预测头，若用事件 token 替代固定帧堆叠可降低无效 token；风险是触觉与事件相机物理机制不同，contact gate 不能直接等同于事件可靠性，且属性标签不一定提供足够动态监督；最小验证是在 TriPro-ReID 或 EventPAR 上构造 event-phase gate，把事件率、时间表面变化、RGB 清晰度和属性区域置信度输入 gate，对比直接相加、cross-attention、quality-aware MoE 与 VT-WAM 式非对称门控在 mA、F1、ECE、低照度、事件缺失和属性分组上的表现。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>新增情况：P3 可见光图像与诊断时序融合的破裂预测</h3>
+            </div>
+          </div>
+          <p>选取理由：【P3】新增收录 Bridge-WA 与 CALM。Bridge-WA 的原始应用领域是机器人 VLA action generation，可迁移模块是 future tokens、change maps、motion-flow maps 和推理时移除 teacher 的轻量 WorldBridge；它对应 P3 中“时序如何选择图像局部证据、怎样抑制无关视觉信息”的待解决问题，预期计算/显存影响是用少量变化 ROI token 代替全图密集 token，可降低融合层显存，但增加一个离线蒸馏/变化图训练阶段；风险是聚变可见光缺少明确 action-induced change 监督，change map 可能学到亮度伪相关；最小验证是用诊断异常分数生成 query，训练可见光未来变化图或局部前兆热图，比较全图 ViT、固定 ROI 和 query-guided change-map ROI 的 AUC、提前量、误报率、显存和热区物理一致性。CALM 的原始应用领域是非配对脑影像-遗传 biomarker discovery，可迁移模块是 class-conditional latent distribution matching 与可解释线性投影；它对应 P3 中异步、多采样率、可能缺失且跨装置不完全配对的图像-诊断数据利用问题，预期计算影响较小，可作为离线对齐预训练，不增加太多在线推理延迟；风险是线性共享空间可能不足以表达非线性等离子体状态，且类别条件标签质量会强烈影响对齐；最小验证是用仅有可见光的炮和仅有完整诊断的炮训练共享 latent，再用少量配对炮 fine-tune，报告缺失模态、跨装置和低延迟破裂预测性能。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与事件视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与事件视觉</p>
+              <h3>VT-WAM：视觉-触觉世界动作模型中的动态稀疏模态门控</h3>
+              <p class="paper__subtitle">VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。论文把未来视觉预测、触觉形变预测和动作预测统一到 flow matching，并用 asymmetric MoT attention 与 contact-gated AVTAG 控制何时依赖稀疏触觉证据；对 RGB-Event 可靠性融合有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shuai Tian, Yupeng Zheng, Yuhang Zheng, Songen Gu, Yujie Zang, Yuxing Qin, Weize Li, Haoran Li, Wenchao Ding, Dongbin Zhao</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02503" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02503" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。论文把未来视觉预测、触觉形变预测和动作预测统一到 flow matching，并用 asymmetric MoT attention 与 contact-gated AVTAG 控制何时依赖稀疏触觉证据；对 RGB-Event 可靠性融合有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>接触丰富操作需要利用局部形变、压力、滑移和摩擦，但这些线索常常稀疏且视觉不可见。RGB-Event 属性识别同样需要让动态事件补充 RGB 外观，而不是把两种模态固定拼接。
+从本日报的选取理由看，新增。论文把未来视觉预测、触觉形变预测和动作预测统一到 flow matching，并用 asymmetric MoT attention 与 contact-gated AVTAG 控制何时依赖稀疏触觉证据；对 RGB-Event 可靠性融合有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在统一模型中同时预测未来视觉、稀疏触觉动态和动作，并在真正接触或高价值局部动态出现时才增强副模态注意力？
+对当前主题的关键意义在于：对 TriPro-ReID，可用事件率、时间表面变化、RGB 模糊度和属性区域置信度构造 event-phase gate，让属性 query 只在事件可靠且与属性区域相关时增强事件 token，避免固定帧化和直接相加。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/6d34a19a01636dfc.png" alt="Figure 2: Overview of VT-WAM. (a) Joint visual-tactile-action flow matching with three modality-specific experts connected by Asymmetric MoT Attention. (b) Attention masks in Asymmetric MoT Attention during training and inference. (c) Contact-gated AVTAG applies a training-only hinge ranking loss that encourages action queries to prioritize tactile evidence during contact phases.">
+                    <figcaption>Figure 2: Overview of VT-WAM. (a) Joint visual-tactile-action flow matching with three modality-specific experts connected by Asymmetric MoT Attention. (b) Attention masks in Asymm...</figcaption>
+                  </figure>
+                  <p>VT-WAM 用统一 flow matching 学习未来视觉预测、触觉形变预测和动作预测；提出 Asymmetric Mixture-of-Transformers attention 连接首帧视觉锚点与时间触觉动态，并用 contact-gated Action-Visual-Tactile Attention Guidance 让 action query 在接触阶段依赖触觉证据。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文在六个真实 contact-rich manipulation 任务上报告 71.67% 平均成功率，相比 Fast-WAM 提升 26.67%，相比 OmniVTLA 提升 35.84%；消融显示触觉形变动态建模和 contact-phase tactile attention guidance 都重要。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>触觉不是原生 event camera，动作监督也不同于属性识别；RGB-Event 迁移时需要重新定义“contact gate”为事件密度、运动边界、曝光质量或属性相关区域 gate。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>VT-WAM 的价值在于动态副模态 gate 与非对称融合设计，可作为 P2/P3 的跨领域机制参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对 TriPro-ReID，可用事件率、时间表面变化、RGB 模糊度和属性区域置信度构造 event-phase gate，让属性 query 只在事件可靠且与属性区域相关时增强事件 token，避免固定帧化和直接相加。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与事件视觉</p>
+              <h3>Bridge-WA：用未来变化图抑制无关视觉细节</h3>
+              <p class="paper__subtitle">Bridge-WA: Predicting Where and How the World Changes for Robotic Action</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它把大未来生成模型蒸馏成 future tokens、change maps 和 motion-flow maps，推理时不生成密集未来图像，只让动作模型关注会改变的位置和方向；对 P3 的图像局部前兆选择很有价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yongjie Bai, Hanting Wang, Mingtong Dai, Qijun Zhong, Yang Liu, Liang Lin</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02195" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02195" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它把大未来生成模型蒸馏成 future tokens、change maps 和 motion-flow maps，推理时不生成密集未来图像，只让动作模型关注会改变的位置和方向；对 P3 的图像局部前兆选择很有价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态视觉模型容易浪费容量在背景、光照和干扰物等弱相关细节上。破裂预测中的可见光图像也会包含大量不相关亮度、反射和视角噪声，关键是提取局部前兆变化。
+从本日报的选取理由看，新增。它把大未来生成模型蒸馏成 future tokens、change maps 和 motion-flow maps，推理时不生成密集未来图像，只让动作模型关注会改变的位置和方向；对 P3 的图像局部前兆选择很有价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否把昂贵的未来视觉建模压缩成轻量变化先验，让下游模型关注与任务有关的局部变化，而不是密集重建全图？
+对当前主题的关键意义在于：可把诊断时序异常作为 query，训练轻量 change-map head 预测未来几个窗口内可见光局部变化，再把少量 ROI token 融入破裂预测模型，比较全图 ViT、固定 ROI 和变化图引导 ROI 的延迟、显存、AUC 与解释一致性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bd990752512e0e37.png" alt="Figure 4: Experimental results across simulation, ablation, and real-robot evaluations. (I)-(III) RoboTwin 2.0 results on the 15-task subset, including per-task radar plots under the Easy and Hard tracks and average success rates for each model across both tracks. (IV) VLABench-5 ablation results, reporting the average success rate (SR) and progress score (PS) for each world-prior and conditioning configuration. Here, 1 × \times 1, etc. denote the spatial resolution of future, change, or flow priors before flattening into conditioning tokens or spatial biases. (V) Dobot real-robot evaluation results, reporting the average success rate under each evaluation track.">
+                    <figcaption>Figure 4: Experimental results across simulation, ablation, and real-robot evaluations. (I)-(III) RoboTwin 2.0 results on the 15-task subset, including per-task radar plots under t...</figcaption>
+                  </figure>
+                  <p>Bridge-WA 将冻结 future-change teacher 蒸馏为三类紧凑先验：表示目标结果的 future tokens、表示干预支撑区域的 change maps、表示局部转移方向的 motion-flow maps。WorldBridge 通过多源 attention memories 和时空 bias 把这些先验注入 action transformer，推理时移除 teacher。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文在 VLABench、RoboTwin2.0、LIBERO-Plus 和真实机器人评估上提升任务成功率、进度和鲁棒性，尤其在 OOD 视觉变化下收益明显；项目页与可视化已公开。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是机器人动作生成，不是等离子体破裂；change maps 的监督来自未来变化教师，迁移到聚变需要定义可见光前兆变化或借助弱监督。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>Bridge-WA 是 P3 中“时序触发局部视觉证据选择”的强候选机制。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把诊断时序异常作为 query，训练轻量 change-map head 预测未来几个窗口内可见光局部变化，再把少量 ROI token 融入破裂预测模型，比较全图 ViT、固定 ROI 和变化图引导 ROI 的延迟、显存、AUC 与解释一致性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与事件视觉</p>
+              <h3>CALM：从非配对数据学习可解释跨模态对齐</h3>
+              <p class="paper__subtitle">CALM: Interpretable Cross-Modal Alignment for Biomarker Discovery from Unpaired Data</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">如何在两类模态来自互不重叠样本时，学习共享 latent space，同时让跨模态关联仍可解释、可稳定验证？</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jueqi Wang, Zachary Jacokes, John Darrell Van Horn, Kevin A. Pelphrey, Michael C. Schatz, Archana Venkataraman</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.01656" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.01656" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>未提供</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>很多真实科学数据集不是严格配对采集：有些炮有可见光，有些有高频诊断，有些只有低频工程量。强行训练 paired fusion 会浪费大量历史数据。
+从本日报的选取理由看，</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在两类模态来自互不重叠样本时，学习共享 latent space，同时让跨模态关联仍可解释、可稳定验证？
+对当前主题的关键意义在于：可用只有可见光的炮与只有完整诊断的炮先学 class-conditional shared space，再在少量配对炮上 fine-tune 破裂预测，验证是否提升缺失模态鲁棒性和跨装置泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d1128360fe93701a.png" alt="Figure 1 : Overview CALM. Given unpaired MRI and genetics data, pretrained encoders ( ℰ I \mathcal{E}_{I} , ℰ G \mathcal{E}_{G} ) output item-specific representations that are projected into a shared latent space via the learned linear maps 𝐖 I \mathbf{W}_{I} and 𝐖 G \mathbf{W}_{G} . The loss function simultaneously matches the within-class distributions across modalities, while separating diagnostic groups. The cross-modal association matrix 𝐀 = 𝐖 I ⊤ ​ 𝐖 G \mathbf{A}=\mathbf{W}_{I}^{\top}\mathbf{W}_{G} quantifies the association between each brain region and genetic pathway.">
+                    <figcaption>Figure 1 : Overview CALM. Given unpaired MRI and genetics data, pretrained encoders ( ℰ I \mathcal{E}_{I} , ℰ G \mathcal{E}_{G} ) output item-specific representations that are proj...</figcaption>
+                  </figure>
+                  <p>CALM 使用线性投影把两种模态映射到共享空间，同时匹配 class-conditional latent distributions 并保持 group separability；投影本身提供 pathway-ROI 关联解释。论文在非配对 imaging / genetics 数据上训练，并泛化到未见过的 paired dataset。
+阅读时需要把方法设计与主要结果一起看：摘要报告 CALM 优于多种 state-of-the-art 方法和消融基线，且学到的 autism 相关免疫/代谢通路与皮层区域关联符合既有文献；论文已被 MICCAI 2026 接收。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 CALM 优于多种 state-of-the-art 方法和消融基线，且学到的 autism 相关免疫/代谢通路与皮层区域关联符合既有文献；论文已被 MICCAI 2026 接收。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它处理的是静态医学影像和遗传特征，不包含实时异步时序，也不解决低延迟融合；线性投影的表达力可能不足以处理复杂非线性等离子体状态。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>CALM 适合用于缺配模态预训练或跨装置对齐，不宜直接替代在线融合模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可用只有可见光的炮与只有完整诊断的炮先学 class-conditional shared space，再在少量配对炮上 fine-tune 破裂预测，验证是否提升缺失模态鲁棒性和跨装置泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 长序列路线正在从“全量注意力”转向“多尺度、共享结构和事件概率层”</h3>
+          <p>Zeus 用 U-shaped hierarchy 平衡点级细节和长程抽象，SGA 把注意力分数中的冗余模式共享化，MAS 则把稀疏事件交给连续时间概率模型。对 P1 来说，更合理的路线是高频连续信号走线性/层级 encoder，稀疏关键事件走 TPP，而不是把所有点硬塞进同一个 Transformer。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 多模态融合的重点继续从“加更多模态”转向“判断何时可信、何处相关”</h3>
+          <p>VT-WAM 用 contact gate 控制何时依赖触觉，Bridge-WA 用变化图压缩视觉证据，CALM 在非配对数据中保留可解释跨模态关联。这些都支持一个判断：P2/P3 的关键不是把 RGB、Event、可见光和诊断时序直接拼接，而是先估计模态可靠性、局部相关性和缺配对齐条件。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
