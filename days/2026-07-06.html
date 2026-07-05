@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-06</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-06 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-06 05:35:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有可用新增，不是回看空缺页。主推荐 5 篇分别覆盖线性显存时序注意力、稀有极端事件预测、惊讶驱动的层级时间抽象、面向细粒度 VLM 的视觉 token 剪枝、以及正反向自监督一致性的 MHD 潜扩散。可迁移主线很明确：P1 关注“少量关键事件 + 长上下文 + 线性内存”，P2 关注“属性/文本查询下保留细粒度视觉证据”，P3 关注“风险时序 query 选择图像 token、用正反向一致性估计无真值不确定性”。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 Self-Gating Attention：线性时间和线性 score-memory 的时序注意力</a></li>
+              <li><a href="#paper-2">02 Extreme Adaptive Transformer：面向稀有极端事件的稀疏注意力</a></li>
+              <li><a href="#paper-3">03 SUNTA：用预测惊讶切分长时序视频</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断与预测</a>
+            <ul>
+              <li><a href="#paper-6">06 Bidirectional Latent Diffusion for MHD：正反向一致性的 MHD 诊断与不确定性</a></li>
+              <li><a href="#paper-7">07 直接 tokamak disruption / visible diagnostics 新稿不足</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">多模态学习 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-4">04 Entropy-Aware Dense Pruning：细粒度查询下的视觉 token 选择</a></li>
+              <li><a href="#paper-5">05 When Token Compression Breaks：高压缩下 token reduction 的鲁棒性边界</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">Self-Gating Attention：线性时间和线性 score-memory 的时序注意力</a></h3>
+              <p class="card__subtitle">Self-Gating Attention for Efficient Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增。它把时序注意力分解为共享可学习模式和输入相关残差，避免标准 QK score 计算，在 look-back length 上实现线性时间和线性 score-matrix 显存；对 P1 的高频长序列和低延迟部署最直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">Extreme Adaptive Transformer：面向稀有极端事件的稀疏注意力</a></h3>
+              <p class="card__subtitle">Extreme Adaptive Transformer for Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增。Exformer 用 Local、Stride、Extreme 三类稀疏注意力显式建模正常模式与稀有峰值事件之间的依赖；可迁移到破裂预警中“少数关键前兆不能被长序列平均掉”的建模问题。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">SUNTA：用预测惊讶切分长时序视频</a></h3>
+              <p class="card__subtitle">SUNTA: Hierarchical Video Prediction with Surprise-based Chunking</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增。它把层级状态空间模型的 chunk 边界从固定长度/相似度改为预测误差和内部不一致性驱动，在 250 步视频预测上保持更长有效滚动；对 P1 的多尺度时间抽象和 P3 的图像-时序早期异常分段都有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Entropy-Aware Dense Pruning：细粒度查询下的视觉 token 选择</a></h3>
+              <p class="card__subtitle">Combating Textual Noise and Redundancy: Entropy-Aware Dense Visual Token Pruning</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增。EADP 先用统计熵过滤文本噪声，再把视觉 token 选择建模为带空间先验的子模最大化，避免严格 token 预算下丢掉细粒度视觉线索；对 P2 属性查询和 P3 风险 query 读取局部可见光证据很实用。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">Bidirectional Latent Diffusion for MHD：正反向一致性的 MHD 诊断与不确定性</a></h3>
+              <p class="card__subtitle">Bidirectional Autoregressive Latent Diffusion for Forward and Inverse Magnetohydrodynamics</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 等离子体控制 / 诊断与预测</span>
+                <span class="chip chip--muted">2026-06-28</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>补录新增。它面向磁流体多场演化，利用正向/反向时间流的一致性做无真值误差和不确定性估计，并提出用稀疏诊断或有限视角进行自适应反馈；这是本轮最强的聚变 AI 交叉条目。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Self-Gating Attention：线性时间和线性 score-memory 的时序注意力</h3>
+              <p class="paper__subtitle">Self-Gating Attention for Efficient Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它把时序注意力分解为共享可学习模式和输入相关残差，避免标准 QK score 计算，在 look-back length 上实现线性时间和线性 score-matrix 显存；对 P1 的高频长序列和低延迟部署最直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Dezheng Wang, Tong Chen, Wei Yuan, Congyan Chen, Shihua Li, Hongzhi Yin</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02344" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02344" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它把时序注意力分解为共享可学习模式和输入相关残差，避免标准 QK score 计算，在 look-back length 上实现线性时间和线性 score-matrix 显存；对 P1 的高频长序列和低延迟部署最直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高频诊断、负荷预测、气象和医疗监测都需要长窗口历史；但 Transformer 的 QK attention score 会随窗口长度平方增长。聚变诊断中如果把高频通道直接送入长序列注意力，显存和延迟会很快成为主要瓶颈。
+从本日报的选取理由看，新增。它把时序注意力分解为共享可学习模式和输入相关残差，避免标准 QK score 计算，在 look-back length 上实现线性时间和线性 score-matrix 显存；对 P1 的高频长序列和低延迟部署最直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保留时间依赖建模能力的同时，把时序注意力的推理和 score-matrix 显存从二次复杂度降到线性复杂度？
+对当前主题的关键意义在于：可把现有诊断 Transformer 中部分 self-attention 替换为 SGA，比较相同 look-back 下的 AUC、提前量、峰值显存、吞吐和跨采样率鲁棒性，再检查是否需要把 Δt embedding 加入残差支路。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4705a23c4e25da9e.png" alt="Figure 2: Illustration of SGA. SGA uses a shared attention score matrix 𝓐 \bm{\mathcal{A}} to model common attention patterns and an input-dependent residual score matrix 𝓡 t \bm{\mathcal{R}}_{t} to capture input-dependent variations.">
+                    <figcaption>Figure 2: Illustration of SGA. SGA uses a shared attention score matrix 𝓐 \bm{\mathcal{A}} to model common attention patterns and an input-dependent residual score matrix 𝓡 t \bm{\...</figcaption>
+                  </figure>
+                  <p>SGA 用共享可学习矩阵表示稳定的公共注意力模式，用输入相关残差捕获样本特异变化；它避免标准 query/key 投影生成完整 score matrix，可作为 plug-and-play attention 集成到多个 forecasting backbone。
+阅读时需要把方法设计与主要结果一起看：摘要报告论文在电力、金融、天气、医疗监测、人类活动和气候等九个真实数据集上比较标准自注意力和轻量注意力变体，SGA 在保持竞争性预测性能的同时提升推理效率。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告论文在电力、金融、天气、医疗监测、人类活动和气候等九个真实数据集上比较标准自注意力和轻量注意力变体，SGA 在保持竞争性预测性能的同时提升推理效率。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要没有显示它是否原生支持不规则时间戳和缺失机制；共享 attention 模式假设在分布剧烈切换或控制策略改变时可能失效。用于聚变时需要显式加入 Δt、工况和采样率变化。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>SGA 是 P1 的工程优先候选，可先作为高频通道 encoder 或低频融合层的 attention 替换件验证显存收益。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把现有诊断 Transformer 中部分 self-attention 替换为 SGA，比较相同 look-back 下的 AUC、提前量、峰值显存、吞吐和跨采样率鲁棒性，再检查是否需要把 Δt embedding 加入残差支路。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Extreme Adaptive Transformer：面向稀有极端事件的稀疏注意力</h3>
+              <p class="paper__subtitle">Extreme Adaptive Transformer for Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。Exformer 用 Local、Stride、Extreme 三类稀疏注意力显式建模正常模式与稀有峰值事件之间的依赖；可迁移到破裂预警中“少数关键前兆不能被长序列平均掉”的建模问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sanjeev Shrestha, Hui Liu, Yifan Zhang</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02437" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02437" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。Exformer 用 Local、Stride、Extreme 三类稀疏注意力显式建模正常模式与稀有峰值事件之间的依赖；可迁移到破裂预警中“少数关键前兆不能被长序列平均掉”的建模问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>许多时序模型在平均误差上表现不错，却会把罕见但代价极高的峰值、尖峰或异常前兆平滑掉。聚变破裂预测也面临类似问题：负样本和正常片段占绝大多数，真正决定预警价值的是少数短暂的风险转折。
+从本日报的选取理由看，新增。Exformer 用 Local、Stride、Extreme 三类稀疏注意力显式建模正常模式与稀有峰值事件之间的依赖；可迁移到破裂预警中“少数关键前兆不能被长序列平均掉”的建模问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让 Transformer 在长程依赖建模中显式关注极端事件与正常模式之间的关系，而不是均匀处理所有时间点？
+对当前主题的关键意义在于：可在破裂数据中把辐射尖峰、MHD 活动、控制动作异常或接近阈值的风险状态定义为 extreme tokens，比较普通稀疏 attention、SGA 和 Exformer 式三分支 attention 在提前量和漏报代价上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b8cfa5f31914d56c.png" alt="Figure 1: The architecture of our proposed Exformer framework.">
+                    <figcaption>Figure 1: The architecture of our proposed Exformer framework.</figcaption>
+                  </figure>
+                  <p>Exformer 设计 extreme-adaptive attention，由 Local、Stride、Extreme 三类稀疏组件组成；Local 捕获短期依赖，Stride 捕获周期依赖，Extreme 选择性建模正常与极端流量模式之间的事件感知依赖。
+阅读时需要把方法设计与主要结果一起看：摘要报告在四个真实水文 streamflow 数据集上，Exformer 的 3-day forecast 优于若干 SOTA 基线，并显示显式 extreme-aware attention 能提升不平衡时序中稀有高影响事件的预测能力。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在四个真实水文 streamflow 数据集上，Exformer 的 3-day forecast 优于若干 SOTA 基线，并显示显式 extreme-aware attention 能提升不平衡时序中稀有高影响事件的预测能力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始任务是规则采样水文预测，不处理异步多通道、模态缺失或聚变高频波形；Extreme 事件如何定义需要领域规则或可学习阈值，否则可能引入人工偏置。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为“稀有前兆不被平均掉”的注意力设计参考，尤其适合和代价敏感预警指标结合。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可在破裂数据中把辐射尖峰、MHD 活动、控制动作异常或接近阈值的风险状态定义为 extreme tokens，比较普通稀疏 attention、SGA 和 Exformer 式三分支 attention 在提前量和漏报代价上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>SUNTA：用预测惊讶切分长时序视频</h3>
+              <p class="paper__subtitle">SUNTA: Hierarchical Video Prediction with Surprise-based Chunking</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它把层级状态空间模型的 chunk 边界从固定长度/相似度改为预测误差和内部不一致性驱动，在 250 步视频预测上保持更长有效滚动；对 P1 的多尺度时间抽象和 P3 的图像-时序早期异常分段都有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tomoshi Iiyama, Masahiro Suzuki, Yutaka Matsuo</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02087" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02087" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它把层级状态空间模型的 chunk 边界从固定长度/相似度改为预测误差和内部不一致性驱动，在 250 步视频预测上保持更长有效滚动；对 P1 的多尺度时间抽象和 P3 的图像-时序早期异常分段都有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长时序建模常需要同时处理稳定阶段和快速转折。固定窗口会错过突变边界，相似度边界又可能无法对应真正需要高层记忆的位置；在聚变诊断和可见光视频中，关键阶段常由预测失败或局部异常触发。
+从本日报的选取理由看，新增。它把层级状态空间模型的 chunk 边界从固定长度/相似度改为预测误差和内部不一致性驱动，在 250 步视频预测上保持更长有效滚动；对 P1 的多尺度时间抽象和 P3 的图像-时序早期异常分段都有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在层级状态空间模型中学习更符合数据内在时间结构的 chunk 边界，并避免端到端训练时的层级塌缩？
+对当前主题的关键意义在于：可把诊断时序和可见光视频的 forecast error / reconstruction error 作为 chunk boundary 候选，形成短窗高频 encoder + 长窗状态摘要，再评估是否降低长上下文显存并提高早期异常定位。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/fe30ff8a1778ffcf.png" alt="Figure 2 : Overview of Sunta . During inference (left), observations are encoded into low-level states and segmented into chunks at points of high prediction error. A bottom-up encoder aggregates each chunk into a single latent state for high-level dynamics modeling. During generation (right), the high-level model produces high-level states that are decoded into low-level sequences. Chunk boundaries are detected via top-down surprise, which measures the mismatch between low-level rollouts and high-level context, enabling dynamic chunking without ground-truth observations.">
+                    <figcaption>Figure 2 : Overview of Sunta . During inference (left), observations are encoded into low-level states and segmented into chunks at points of high prediction error. A bottom-up enc...</figcaption>
+                  </figure>
+                  <p>SUNTA 提出 Surprise-based Nested Temporal Abstraction，用解耦训练保留 surprise signal，并在 open-loop imagined rollouts 中用 internal inconsistency 作为 top-down surprise metric 决定 chunk boundary。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 2D 和 3D 视频预测任务中，SUNTA 优于基线，并能在 250 timesteps 上保持准确预测，而所有基线在前 10 timesteps 内退化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 2D 和 3D 视频预测任务中，SUNTA 优于基线，并能在 250 timesteps 上保持准确预测，而所有基线在前 10 timesteps 内退化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它的验证集中在视频预测，不是多诊断时序；surprise 信号在强噪声诊断中可能对应测量异常而非物理状态变化，需要和质量控制或不确定性估计联动。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>SUNTA 提供了一个可迁移的多尺度时间切分原则：让模型在“预测失败处”升级时间抽象。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把诊断时序和可见光视频的 forecast error / reconstruction error 作为 chunk boundary 候选，形成短窗高频 encoder + 长窗状态摘要，再评估是否降低长上下文显存并提高早期异常定位。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断与预测</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断与预测</p>
+              <h3>Bidirectional Latent Diffusion for MHD：正反向一致性的 MHD 诊断与不确定性</h3>
+              <p class="paper__subtitle">Bidirectional Autoregressive Latent Diffusion for Forward and Inverse Magnetohydrodynamics</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-28</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">补录新增。它面向磁流体多场演化，利用正向/反向时间流的一致性做无真值误差和不确定性估计，并提出用稀疏诊断或有限视角进行自适应反馈；这是本轮最强的聚变 AI 交叉条目。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Alexander Scheinker</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.29620" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.29620" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>补录新增。它面向磁流体多场演化，利用正向/反向时间流的一致性做无真值误差和不确定性估计，并提出用稀疏诊断或有限视角进行自适应反馈；这是本轮最强的聚变 AI 交叉条目。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>MHD 多场演化包含密度、压强、速度和磁场等耦合场，真实实验中又常只有稀疏诊断或有限视角。仅靠前向预测很难知道模型在无真值测试时是否可信，也难以把少量观测用于在线校正。
+从本日报的选取理由看，补录新增。它面向磁流体多场演化，利用正向/反向时间流的一致性做无真值误差和不确定性估计，并提出用稀疏诊断或有限视角进行自适应反馈；这是本轮最强的聚变 AI 交叉条目。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用同一生成模型同时做 MHD 前向演化、逆向重构、无真值不确定性估计，并利用稀疏诊断进行自适应反馈？
+对当前主题的关键意义在于：可把正反向一致性迁移为破裂预测的无真值置信度估计：用历史诊断预测未来风险，再反向重构历史状态，反向误差作为在线不确定性；也可用稀疏可见光或磁测量对 latent state 做 feedback。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/535234d0764ee571.png" alt="Figure 1: Conditional diffusion overview. Each MHD field is encoded into its own lower-dimensional latent representation.">
+                    <figcaption>Figure 1: Conditional diffusion overview. Each MHD field is encoded into its own lower-dimensional latent representation.</figcaption>
+                  </figure>
+                  <p>论文提出 bidirectional autoregressive latent diffusion，预测 MHD 多场的时间演化；通过比较正向流和反向流是否能回到同一预测场，把正反向一致性作为自监督误差和不确定性指标；并展示可用稀疏诊断或有限测量进行 adaptive feedback。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法可用于 forward/inverse MHD，能在无 ground truth 时估计 test-time uncertainty 和 error，并有作为 non-invasive plasma diagnostic 的潜力。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法可用于 forward/inverse MHD，能在无 ground truth 时估计 test-time uncertainty 和 error，并有作为 non-invasive plasma diagnostic 的潜力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要层面无法确认实验数据规模、与现有 MHD surrogate 的细节对比和实时部署成本；latent diffusion 可能比判别式 surrogate 更重，直接用于毫秒级破裂预警需要压缩或蒸馏。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是本轮聚变 AI 最值得精读的论文，尤其适合作为 P3 中“诊断时序 + 有限视角图像/场重构 + 不确定性”的机制来源。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把正反向一致性迁移为破裂预测的无真值置信度估计：用历史诊断预测未来风险，再反向重构历史状态，反向误差作为在线不确定性；也可用稀疏可见光或磁测量对 latent state 做 feedback。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断与预测</p>
+              <h3>直接 tokamak disruption / visible diagnostics 新稿不足</h3>
+              <p class="paper__subtitle">本轮未收录直接新增论文</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06 检索截止前未发现合格新增</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。tokamak、disruption prediction、fusion diagnostics、visible/IR/ECEI/BES、plasma control 定向检索中，近期新增主要是硬 X 射线探测、RMP、撕裂模、粒子排出和聚变工程物理论文；除 Bidirectional Latent Diffusion for MHD 外，未发现新的直接破裂预测或可见光-诊断时序融合 AI 条目。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>不适用</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。tokamak、disruption prediction、fusion diagnostics、visible/IR/ECEI/BES、plasma control 定向检索中，近期新增主要是硬 X 射线探测、RMP、撕裂模、粒子排出和聚变工程物理论文；除 Bidirectional Latent Diffusion for MHD 外，未发现新的直接破裂预测或可见光-诊断时序融合 AI 条目。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变 AI 近期重点仍是实验无关破裂预测、跨装置平衡神经算子、ECH 沉积控制、逃逸电子层级建模和 MHD surrogate/diagnostic。直接可见光图像与诊断时序融合的公开新稿仍稀缺。
+从本日报的选取理由看，本轮空缺判断。tokamak、disruption prediction、fusion diagnostics、visible/IR/ECEI/BES、plasma control 定向检索中，近期新增主要是硬 X 射线探测、RMP、撕裂模、粒子排出和聚变工程物理论文；除 Bidirectional Latent Diffusion for MHD 外，未发现新的直接破裂预测或可见光-诊断时序融合 AI 条目。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>当前缺口仍是跨装置泛化、异步多采样率融合、低延迟可部署不确定性、物理可解释热区和有限视角诊断。
+对当前主题的关键意义在于：后续继续监测 tokamak disruption prediction、plasma diagnostics、visible/IR/ECEI/BES fusion、cross-device transfer、uncertainty calibration 与 physics-informed multimodal fusion。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本节不引入新方法，只保留检索结论；可迁移机制来自 SGA/Exformer/SUNTA 的长时序压缩与事件切分、EADP 的 query-aware token selection、以及 MHD 正反向一致性。
+阅读时需要把方法设计与主要结果一起看：无新增实验结果。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>无新增实验结果。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>空缺判断依赖本轮公开 arXiv 与网页检索；若期刊 early access 或作者主页晚于检索截止释放，需要后续补录。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>今天不应用普通 tokamak 物理论文凑数；聚变方向应优先精读 MHD latent diffusion，并把视觉/时序融合机制从通用论文迁移过来验证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>后续继续监测 tokamak disruption prediction、plasma diagnostics、visible/IR/ECEI/BES fusion、cross-device transfer、uncertainty calibration 与 physics-informed multimodal fusion。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>新增情况：P1 不规则时序与聚变高低频统一建模</h3>
+            </div>
+          </div>
+          <p>选取理由：【P1】本轮收录 Self-Gating Attention、Extreme Adaptive Transformer 与 SUNTA。SGA 的原始应用领域是通用时序预测，可迁移模块是共享注意力模式 + 输入残差的线性 score-memory attention；它对应 P1 中高频长序列注意力显存爆炸和在线推理延迟的问题，预期计算/显存影响是把部分 attention score 开销从二次降到线性，但不自动解决真实 Δt 与缺失机制；风险是共享模式在跨装置或工况突变时失效；最小验证是在现有诊断 Transformer 中替换一层或两层 attention，记录 AUC、提前量、峰值显存和吞吐。Exformer 的原始应用领域是水文极端流量预测，可迁移模块是 Local/Stride/Extreme 三分支稀疏注意力；它对应 P1 中稀有破裂前兆容易被长序列平均掉的问题，预期计算开销低于全 attention，但需要定义或学习 extreme token；风险是阈值规则把噪声尖峰当成物理事件；最小验证是把辐射尖峰、MHD 活动和控制异常作为候选 extreme tokens，比较漏报代价和提前量。SUNTA 的原始应用领域是长时序视频预测，可迁移模块是 surprise-based chunk boundary 和 internal inconsistency；它对应 P1 中多尺度异步通道如何按预测失败触发高层记忆的问题，预期显存影响是减少固定长窗口全量建模，但需要额外 forecast/reconstruction head；风险是测量噪声造成错误分段；最小验证是在高频诊断上用重构误差触发 chunk，再与固定窗口 SSM/Transformer 比较长上下文开销和异常定位。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>新增情况：P2 RGB-Event 属性识别</h3>
+            </div>
+          </div>
+          <p>选取理由：【P2】本轮没有新的原生 RGB-Event 属性识别论文；收录 Entropy-Aware Dense Pruning 作为可迁移机制，并把 When Token Compression Breaks 作为压缩鲁棒性约束。EADP 的原始应用领域是 VLM 细粒度指令下的视觉 token pruning，可迁移模块是 entropy-based textual noise filtering、instruction relevance score 和带空间先验的 submodular token selection；它对应 P2 中属性查询需要在弱光、运动模糊和事件稀疏时保留局部细粒度证据的问题，预期计算/显存影响是用少量属性相关 token 替代全量 patch/event token 参与融合；风险是论文不处理原生异步 event，event token 化和属性 query 监督仍需重新设计；最小验证是在 TriPro-ReID 中用属性文本或属性 prototype 对 RGB patch 与 event voxel/time-surface token 做 EADP 式选择，比较直接相加、全局 cross-attention 和 query-aware pruning 在 mA、F1、ECE、低照度与 event dropout 上的表现。When Token Compression Breaks 的原始应用领域是 ViT 语义分割压缩评估，可迁移模块是 high-compression/corruption 下比较 token reduction、structural pruning 和 prune-then-merge 的协议；它对应 P2 中避免压缩删掉属性局部证据的问题，预期计算影响是训练或评估阶段增加鲁棒性 sweep，在线可选择更稳定的中等结构剪枝 + 中等 token 压缩；风险是分割鲁棒性不等价于属性鲁棒性；最小验证是在属性组级别报告高压缩预算下的 mA/F1 退化曲线和失败属性类别。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>新增情况：P3 可见光图像与诊断时序融合的破裂预测</h3>
+            </div>
+          </div>
+          <p>选取理由：【P3】直接 tokamak 可见光图像 + 诊断时序融合新稿本轮空缺；本轮收录 Bidirectional Latent Diffusion for MHD、EADP 与 SUNTA 作为可迁移机制。Bidirectional Latent Diffusion for MHD 的原始应用领域是磁流体多场前向/逆向建模与稀疏诊断，可迁移模块是正反向自监督一致性、test-time uncertainty/error estimation 和 sparse-diagnostic adaptive feedback；它对应 P3 中无真值在线不确定性、有限视角诊断和跨装置泛化的问题，预期计算/显存影响可能高于判别式破裂模型，适合作为离线 teacher 或低频 latent monitor，再蒸馏到实时模型；风险是 diffusion 代价和 MHD surrogate 任务与破裂分类之间存在落差；最小验证是训练一个轻量正向/反向 latent predictor，用反向重构误差作为破裂风险置信度，比较有无可见光/磁诊断 feedback 时的提前量、校准和跨炮泛化。EADP 的原始应用领域是 VLM token pruning，可迁移模块是 query-aware spatially diverse token selection；它对应 P3 中时序风险 query 如何选择可见光局部证据并抑制无关视觉信息的问题，预期显存影响是用少量被选 patch 参与 cross-attention，低于全图融合；风险是可见光前兆弱时 query 可能学到亮度或曝光伪相关；最小验证是用诊断 encoder 输出风险 query 对可见光 patch 做 EADP 式选择，比较全图 ViT、固定 ROI 和 query pruning 的 AUC、提前量、显存和热区解释。SUNTA 的原始应用领域是视频预测，可迁移模块是 surprise-based temporal segmentation；它对应 P3 中可见光/诊断异步变化何时进入高层状态的问题，预期可减少固定全窗口融合开销；风险是噪声/遮挡导致伪 surprise；最小验证是用图像重构误差和诊断预测误差联合触发分段，评估分段边界是否提前于破裂标注窗口。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>Entropy-Aware Dense Pruning：细粒度查询下的视觉 token 选择</h3>
+              <p class="paper__subtitle">Combating Textual Noise and Redundancy: Entropy-Aware Dense Visual Token Pruning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。EADP 先用统计熵过滤文本噪声，再把视觉 token 选择建模为带空间先验的子模最大化，避免严格 token 预算下丢掉细粒度视觉线索；对 P2 属性查询和 P3 风险 query 读取局部可见光证据很实用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xuehui Wang, Xuankun Yang, Wei Shen</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02484" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02484" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。EADP 先用统计熵过滤文本噪声，再把视觉 token 选择建模为带空间先验的子模最大化，避免严格 token 预算下丢掉细粒度视觉线索；对 P2 属性查询和 P3 风险 query 读取局部可见光证据很实用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视觉语言模型和图像-时序融合系统常用 token pruning 降低显存，但简单 Top-K 会偏向显著区域，忽略细小局部证据。属性识别中的携带物、衣物细节、姿态变化，以及破裂可见光中的局部光斑/边缘变化都属于容易被剪掉的证据。
+从本日报的选取理由看，新增。EADP 先用统计熵过滤文本噪声，再把视觉 token 选择建模为带空间先验的子模最大化，避免严格 token 预算下丢掉细粒度视觉线索；对 P2 属性查询和 P3 风险 query 读取局部可见光证据很实用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在严格视觉 token 预算下，既过滤文本查询噪声，又保留空间覆盖充分、非冗余且与细粒度指令相关的视觉证据？
+对当前主题的关键意义在于：对 TriPro-ReID，可用属性文本/属性 query 对 RGB 与 event-derived token 分别做 EADP 式选择；对 P3，可用诊断风险 query 先过滤无关可见光 patch，再做轻量 cross-attention，比较显存、提前量和局部热区可信度。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/17f374c5a4427890.png" alt="Figure 2 : Overview of the EADP. EADP acts as a plug-and-play module compressing N N visual tokens into a highly informative subset of K K tokens for the downstream LLM. Stage 1 : An entropy-guided denoising mechanism filters out high-entropy textual noise to get the dense guidance score S D S^{D} . This is fused with the global EOS score S G S^{G} to yield a robust instruction relevance score S I S^{I} . Stage 2 : After refining S I S^{I} via gaussian smoothing and score polarization to prevent feature fragmentation, a submodular maximization objective uses inter-token visual similarity to select the final subset 𝒴 \mathcal{Y} .">
+                    <figcaption>Figure 2 : Overview of the EADP. EADP acts as a plug-and-play module compressing N N visual tokens into a highly informative subset of K K tokens for the downstream LLM. Stage 1 : ...</figcaption>
+                  </figure>
+                  <p>EADP 先用统计熵量化并过滤 textual noise，得到更稳健的 instruction relevance score；随后不做朴素 Top-K，而把 token selection 建模为带空间先验的 submodular maximization，以保留整体且非冗余的视觉表示。
+阅读时需要把方法设计与主要结果一起看：摘要显示 EADP 在多模态 benchmark 上改善准确率-效率权衡，并在严格 token budgets 下稳健保留细粒度视觉线索；论文已被 ECCV 2026 接收。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要显示 EADP 在多模态 benchmark 上改善准确率-效率权衡，并在严格 token budgets 下稳健保留细粒度视觉线索；论文已被 ECCV 2026 接收。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>EADP 面向 VLM 指令，不处理原生 event stream 或异步时序；迁移到 P2/P3 时需要把属性 query 或风险 query 转成可参与相关性评分的文本/隐向量。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是一个比“按 attention 分数取 Top-K”更稳的视觉证据压缩模块，适合与 Event-VLA 式 query routing 结合。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对 TriPro-ReID，可用属性文本/属性 query 对 RGB 与 event-derived token 分别做 EADP 式选择；对 P3，可用诊断风险 query 先过滤无关可见光 patch，再做轻量 cross-attention，比较显存、提前量和局部热区可信度。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>When Token Compression Breaks：高压缩下 token reduction 的鲁棒性边界</h3>
+              <p class="paper__subtitle">When Token Compression Breaks: Structural Pruning vs. Token Reduction for Robust ViT Segmentation under High Compression</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它不是提出单一新融合模型，而是在统一 FLOPs 下比较 token compression 与 structural pruning，说明高压缩和输入扰动下简单减 token 会突然失稳。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tien-Phat Nguyen, Ngai-Man Cheung</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02237" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02237" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它不是提出单一新融合模型，而是在统一 FLOPs 下比较 token compression 与 structural pruning，说明高压缩和输入扰动下简单减 token 会突然失稳。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2/P3 都会遇到低显存部署需求，但压缩策略不能只看平均速度。若细粒度属性证据或破裂局部前兆被压缩策略删掉，模型可能在正常样本上看似可用，在弱光、噪声和跨装置变化下快速退化。
+从本日报的选取理由看，新增。它不是提出单一新融合模型，而是在统一 FLOPs 下比较 token compression 与 structural pruning，说明高压缩和输入扰动下简单减 token 会突然失稳。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在 ViT segmentation 的高压缩部署中，token reduction 和 structural pruning 哪种更鲁棒，二者如何组合更合理？
+对当前主题的关键意义在于：可把 RGB/Event 属性识别和可见光破裂预测的 token pruning 实验扩展到弱光、运动模糊、event dropout、跨装置和高压缩预算，比较单纯 token reduction、结构剪枝和 prune-then-merge。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4a5ab6067e6bcd10.png" alt="Figure 1 : Compression strategies and their robustness-compute trade-off. Left: token compression reduces the number of processed tokens, structural pruning reduces model width/capacity, and our prune-then-merge pipeline combines both techniques. Right: a summary view of the robustness-compute trade-off on ADE20K-C, measured by corrupted-input mIoU versus compute. Token compression can preserve performance at mild reductions but drops sharply in the high-compression regime. Structural pruning degrades more smoothly, while prune-then-merge provides a stronger trade-off at comparable FLOPs.">
+                    <figcaption>Figure 1 : Compression strategies and their robustness-compute trade-off. Left: token compression reduces the number of processed tokens, structural pruning reduces model width/cap...</figcaption>
+                  </figure>
+                  <p>论文在 ADE20K、Cityscapes 及其 common-corruption 版本上，以匹配 FLOPs 的统一协议评估代表性 token compression 和 structural pruning；进一步提出 prune-then-merge 管线，把中等结构剪枝和中等 token 压缩组合。
+阅读时需要把方法设计与主要结果一起看：摘要报告 token compression 在轻度压缩时有效，但高压缩下因信息丢失急剧退化；structural pruning 退化更平滑，高压缩更稳定，组合策略在相近 FLOPs 下取得更好的准确率-鲁棒性权衡。代码已公开。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 token compression 在轻度压缩时有效，但高压缩下因信息丢失急剧退化；structural pruning 退化更平滑，高压缩更稳定，组合策略在相近 FLOPs 下取得更好的准确率-鲁棒性权衡。代码已公开。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>实验是语义分割，不覆盖 VLM 指令、event stream 或诊断时序；但它对“压缩策略必须测 corruption 和 high compression”的结论很有迁移价值。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇更像压缩评估警示：P2/P3 不应只用 token budget 和平均精度决定剪枝模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把 RGB/Event 属性识别和可见光破裂预测的 token pruning 实验扩展到弱光、运动模糊、event dropout、跨装置和高压缩预算，比较单纯 token reduction、结构剪枝和 prune-then-merge。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 长时序建模正在从“全量注意力”转向“结构化稀疏 + 线性记忆”</h3>
+          <p>SGA 用共享模式和残差替代完整 QK score，Exformer 用 Local/Stride/Extreme 组件保留稀有事件依赖，SUNTA 用 surprise 决定层级 chunk。对高频聚变诊断来说，这比盲目扩大上下文更可部署。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 视觉融合的关键不只是压缩，而是保留任务相关局部证据</h3>
+          <p>EADP 和 token compression break 的结果共同提醒：严格预算下的 token 选择必须和查询、空间覆盖、扰动鲁棒性一起评估。P2/P3 如果只用 Top-K attention 或固定 ROI，很容易在弱光、模态缺失和跨装置变化下丢掉真正前兆。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 聚变 AI 的不确定性估计开始出现更物理化的自监督信号</h3>
+          <p>MHD 正反向一致性提供了一个有物理时间结构的无真值误差信号。它不等于破裂预测模型，但适合为跨装置诊断、有限视角图像和稀疏测量提供置信度来源。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
