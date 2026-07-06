@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-07</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-07 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-07 05:20:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天不是新增爆发日，主推荐采用 5 篇未在 7 月 6 日主推荐中展开、但对当前课题仍有清晰迁移价值的回看条目。最值得看的是 TiRex-2 的 streaming 多变量时序基础模型、Anchor-CKM 的稀疏测量优先重建、HOLA 的线性注意力外接精确记忆、EHHN 的事件驱动异构超图和 SA-RDM-DC 的自审计图像重建可靠性。P1/P2/P3 附加区独立选取，不压缩主推荐；其中 P2 原生 RGB-Event 属性识别新增本轮空缺，P3 直接托卡马克破裂图像-诊断时序融合新增本轮空缺。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 TiRex-2：面向多变量与流式推理的 xLSTM 时序基础模型</a></li>
+              <li><a href="#paper-2">02 Anchor-CKM：从稀疏不规则测量重建连续场并输出不确定性</a></li>
+              <li><a href="#paper-3">03 HOLA：给线性注意力补一个有界精确 KV 记忆</a></li>
+              <li><a href="#paper-4">04 EHHN：事件驱动异构超图用于下一活动预测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 科学 AI / 诊断融合</a>
+            <ul>
+              <li><a href="#paper-7">07 Tactile-WAM：用不对称注意力抑制稀疏副模态污染</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-8">08 P1-1. TiRex-2：streaming 多变量 TSFM</a></li>
+              <li><a href="#paper-9">09 P1-2. HOLA：压缩状态外接稀有事件精确记忆</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-10">10 P2-1. LipsFlow：事件表征和语义监督的低延迟范式</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-11">11 P3-1. SA-RDM-DC：自审计图像可靠性图</a></li>
+              <li><a href="#paper-12">12 P3-2. Tactile-WAM：不对称跨模态访问防止副模态污染</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态学习 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-5">05 SA-RDM-DC：自审计残差漂移用于快速 MRI 重建可靠性</a></li>
+              <li><a href="#paper-6">06 LipsFlow：神经形态 VSR 中的事件表征与低延迟语义生成</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">TiRex-2：面向多变量与流式推理的 xLSTM 时序基础模型</a></h3>
+              <p class="card__subtitle">TiRex-2: Generalizing TiRex to Multivariate Data and Streaming</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-01</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>非当日新增 / 回看推荐。它把多变量预测、未来已知协变量、严格因果目标变量和 streaming constant per-patch cost 放在同一个 TSFM 里，对 P1 的高频诊断在线压缩和低频通道融合最直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">Anchor-CKM：从稀疏不规则测量重建连续场并输出不确定性</a></h3>
+              <p class="card__subtitle">Channel Knowledge Map Reconstruction From Sparse Measurements via Pilot-Anchored Layout-Conditioned Fourier Refinement</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-01</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>非当日新增 / 回看推荐。它明确指出零填充会把采样 mask 与真实场混在一起，先做 support-aware 表征再做 Fourier refinement 和 heteroscedastic prediction；这对稀疏诊断、缺失机制和可见光局部证据重建都有价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">HOLA：给线性注意力补一个有界精确 KV 记忆</a></h3>
+              <p class="card__subtitle">A Hippocampus for Linear Attention: An Exact Memory for What the Recurrent State Forgets</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>非当日新增 / 回看推荐。线性注意力和 SSM 的固定状态会遗忘少数关键关联，HOLA 用预测残差触发有界 KV cache 写入；可迁移到破裂预警中“少数前兆不能被压缩状态覆盖”的问题。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">EHHN：事件驱动异构超图用于下一活动预测</a></h3>
+              <p class="card__subtitle">EHHN: An Event-driven Heterogeneous Hypergraph Network for Object-Centric Next Activity Prediction</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>非当日新增 / 回看推荐。它把多对象共享事件、对象状态变化、事件间隔和全局原型放进双流超图模型，并报告最高 24 倍峰值显存下降；对异步多通道诊断的事件化表征很有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">SA-RDM-DC：自审计残差漂移用于快速 MRI 重建可靠性</a></h3>
+              <p class="card__subtitle">Self-Auditing Residual Drifting for Pathology-Preserving Accelerated Knee MRI</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>非当日新增 / 回看推荐。它在快速图像重建里同时输出图像修正、缺失频域修正、dense error map 和风险分数；对 P3 的可见光证据筛选、低延迟部署和选择性人工复核机制很实用。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>TiRex-2：面向多变量与流式推理的 xLSTM 时序基础模型</h3>
+              <p class="paper__subtitle">TiRex-2: Generalizing TiRex to Multivariate Data and Streaming</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-01</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 回看推荐。它把多变量预测、未来已知协变量、严格因果目标变量和 streaming constant per-patch cost 放在同一个 TSFM 里，对 P1 的高频诊断在线压缩和低频通道融合最直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Patrick Podest, Marco Pichler, Elias Burger, Levente Zolyomi, Bernhard Voggenberger, Wilhelm Berghammer, Daniel Klotz, Sebastian Bock, Gunter Klambauer, Sepp Hochreiter</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.01204" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.01204" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 回看推荐。它把多变量预测、未来已知协变量、严格因果目标变量和 streaming constant per-patch cost 放在同一个 TSFM 里，对 P1 的高频诊断在线压缩和低频通道融合最直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>现有 Transformer 时序基础模型能做跨变量依赖，但长上下文通常有二次复杂度，且新观测到来时需要重算完整历史。聚变高频诊断和工程量低频通道都更接近在线流式系统，不适合每个时刻重新处理全窗口。
+从本日报的选取理由看，非当日新增 / 回看推荐。它把多变量预测、未来已知协变量、严格因果目标变量和 streaming constant per-patch cost 放在同一个 TSFM 里，对 P1 的高频诊断在线压缩和低频通道融合最直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让一个时序基础模型同时支持多变量、未来已知协变量、严格因果目标变量和任意长度 streaming，而不让显存随上下文线性或二次爆炸？
+对当前主题的关键意义在于：可先把现有多诊断数据重采样为 patch stream，比较 TiRex-2 式 recurrent encoder 与 Transformer/Mamba 在相同预测提前量下的峰值显存、吞吐、AUC 和跨 shot 泛化。最小实验是在现有破裂或异常检测数据上只替换时序 backbone，不改标签和训练协议。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e2428a7de7aaf3b1.png" alt="Figure 10 : Mean MASE on fev-bench versus mean active parameters across nine zero-shot time series foundation models (TSFMs). Pareto-optimal models (Moirai-2.0, TiRex, TiRex-2) form the lower-left frontier (dashed staircase) and are highlighted with black outlines; the shaded region marks the dominated subset of the parameter–MASE plane. TiRex-2 attains the lowest mean MASE in the benchmark while using ∼ 2.2 × \sim\!2.2\times fewer mean active parameters than Chronos-2 and ∼ 4.3 × \sim\!4.3\times fewer than TimesFM-2.5. For TiRex-2, the variate mixer is skipped on purely univariate inputs (Sec. 3 ), so we report the task-weighted expectation 𝔼 t ​ [ P active ] = P base + p cov ​ P var-mix = 38.4 + 0.35 ⋅ 44.1 ≈ 53.84 \mathbb{E}_{t}[P_{\text{active}}]=P_{\text{base}}+p_{\text{cov}}\,P_{\text{var-mix}}=38.4+0.35\cdot 44.1\approx 53.84 M over the 65 / 100 65/100 univariate and 35 / 100 35/100 multivariate tasks of fev-bench. All other models are dense, so total and active parameter counts coincide.">
+                    <figcaption>Figure 10 : Mean MASE on fev-bench versus mean active parameters across nine zero-shot time series foundation models (TSFMs). Pareto-optimal models (Moirai-2.0, TiRex, TiRex-2) for...</figcaption>
+                  </figure>
+                  <p>论文使用 recurrent xLSTM 架构，组合 bidirectional time mixer 与 asymmetric grouped-attention variate mixer。时间维通过递归记忆保持 constant per-patch inference，变量维通过分组注意力融合未来已知协变量，同时对目标变量保持因果约束。
+阅读时需要把方法设计与主要结果一起看：摘要报告 TiRex-2 在 GIFT-Eval 与 fev-bench 上达到 state-of-the-art zero-shot performance，stream 到任意上下文长度时保持稳定，并在单变量模式使用 38.4M active parameters，多变量预测额外激活 44.1M 参数。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 TiRex-2 在 GIFT-Eval 与 fev-bench 上达到 state-of-the-art zero-shot performance，stream 到任意上下文长度时保持稳定，并在单变量模式使用 38.4M active parameters，多变量预测额外激活 44.1M 参数。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文摘要未显示对真实不规则时间戳、缺失非随机机制或聚变高频 MHz 级采样的直接实验；未来已知协变量在聚变控制中可能受执行器延迟和反馈策略改变影响。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>TiRex-2 是本轮 P1 最值得读的工程基线，重点看它如何把 streaming、跨变量融合和因果约束放进同一架构。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可先把现有多诊断数据重采样为 patch stream，比较 TiRex-2 式 recurrent encoder 与 Transformer/Mamba 在相同预测提前量下的峰值显存、吞吐、AUC 和跨 shot 泛化。最小实验是在现有破裂或异常检测数据上只替换时序 backbone，不改标签和训练协议。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Anchor-CKM：从稀疏不规则测量重建连续场并输出不确定性</h3>
+              <p class="paper__subtitle">Channel Knowledge Map Reconstruction From Sparse Measurements via Pilot-Anchored Layout-Conditioned Fourier Refinement</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-01</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 回看推荐。它明确指出零填充会把采样 mask 与真实场混在一起，先做 support-aware 表征再做 Fourier refinement 和 heteroscedastic prediction；这对稀疏诊断、缺失机制和可见光局部证据重建都有价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhonghao Jiu, Fan Meng, Yongming Huang, Hang Zhan, Zening Liu, Xiaohu You</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.01453" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.01453" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 回看推荐。它明确指出零填充会把采样 mask 与真实场混在一起，先做 support-aware 表征再做 Fourier refinement 和 heteroscedastic prediction；这对稀疏诊断、缺失机制和可见光局部证据重建都有价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>许多科学诊断都不是完整规则网格。无线信道图重建中的稀疏 pilot 与聚变诊断中的稀疏测点、坏点、遮挡和局部可见光证据类似，关键是先尊重观测支撑，再引入结构先验。
+从本日报的选取理由看，非当日新增 / 回看推荐。它明确指出零填充会把采样 mask 与真实场混在一起，先做 support-aware 表征再做 Fourier refinement 和 heteroscedastic prediction；这对稀疏诊断、缺失机制和可见光局部证据重建都有价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从极低覆盖率的稀疏观测中重建连续场，同时避免零填充造成采样 mask 与真实物理场混叠？
+对当前主题的关键意义在于：可把 ECEI/BES/可见光局部 patch 或稀疏磁探针映射成带 mask 的空间或时空场，比较零填充卷积、partial convolution、Anchor-CKM 式 Fourier refinement 在缺失率变化下的重建误差和下游破裂预测性能。最小实验是在人为 mask 的既有诊断网格上做重建再接原破裂分类器。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/252f3a2e94c984f3.png" alt="Figure 2: Anchor-CKM architecture. Stage 1 caches layout-conditioned FiLM fields; Stage 2 applies PConv-DtS densification and FiLM-modulated C-FNO propagation per snapshot; Stage 3 predicts continuous mean and predictive variance. Dashed arrows denote cached conditioning.">
+                    <figcaption>Figure 2: Anchor-CKM architecture. Stage 1 caches layout-conditioned FiLM fields; Stage 2 applies PConv-DtS densification and FiLM-modulated C-FNO propagation per snapshot; Stage 3...</figcaption>
+                  </figure>
+                  <p>Anchor-CKM 先用 support-aware partial convolutions 形成 pilot-supported representation，再执行 layout-conditioned dual-path Fourier refinement，最后用 coordinate-based heteroscedastic prediction 输出均值与逐位置预测方差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 DeepMIMO transmitter-disjoint 场景、missing ratio 0.3 到 0.95、甚至 5% 到 10% pilot coverage 下，相对最强复现基线降低 received-power RMSE 0.79 到 1.33 dB；消融显示 pilot-support stabilization 贡献最大。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始任务是无线场重建，不是时间序列预测；layout prior 在聚变中要替换为磁面、探针几何或相机标定，且 Fourier refinement 对突发非平稳事件可能过平滑。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它提供了一个清晰的“先观测支撑、后结构先验”的稀疏诊断重建范式。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把 ECEI/BES/可见光局部 patch 或稀疏磁探针映射成带 mask 的空间或时空场，比较零填充卷积、partial convolution、Anchor-CKM 式 Fourier refinement 在缺失率变化下的重建误差和下游破裂预测性能。最小实验是在人为 mask 的既有诊断网格上做重建再接原破裂分类器。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>HOLA：给线性注意力补一个有界精确 KV 记忆</h3>
+              <p class="paper__subtitle">A Hippocampus for Linear Attention: An Exact Memory for What the Recurrent State Forgets</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 回看推荐。线性注意力和 SSM 的固定状态会遗忘少数关键关联，HOLA 用预测残差触发有界 KV cache 写入；可迁移到破裂预警中“少数前兆不能被压缩状态覆盖”的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Wanyun Cui</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02303" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02303" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 回看推荐。线性注意力和 SSM 的固定状态会遗忘少数关键关联，HOLA 用预测残差触发有界 KV cache 写入；可迁移到破裂预警中“少数前兆不能被压缩状态覆盖”的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 需要线性内存模型处理高频长序列，但破裂前兆、异常控制动作或罕见 MHD 活动往往是少数关键事件。完全压进固定状态会提高吞吐，却可能牺牲 needle recall。
+从本日报的选取理由看，非当日新增 / 回看推荐。线性注意力和 SSM 的固定状态会遗忘少数关键关联，HOLA 用预测残差触发有界 KV cache 写入；可迁移到破裂预警中“少数前兆不能被压缩状态覆盖”的问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保持线性注意力低内存优势的同时，为无法线性压缩的关键关联保留可精确读取的有界记忆？
+对当前主题的关键意义在于：可在 Mamba/线性 attention 诊断模型旁加入小容量 event cache，写入高预测残差、高不确定性或高物理风险 token，比较无 cache、recency cache 和 residual-triggered cache 的提前预警、漏报率与显存。最小实验是冻结现有 encoder，只加一个可检索事件库和轻量融合头。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>HOLA 保留 delta-rule recurrent state 作为压缩记忆，并增加 bounded exact KV cache。cache 不使用学习驱逐模块，而是保留具有较大 beta * residual norm 的 token，再用解耦 RMSNorm-gamma cache read 做尖锐检索。
+阅读时需要把方法设计与主要结果一起看：摘要报告 340M 参数模型在 15B SlimPajama tokens 上训练后，Wikitext perplexity 从 27.32 降至 22.92，并在 RULER needle-in-a-haystack recall 上对 32k tokens 保持更强鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 340M 参数模型在 15B SlimPajama tokens 上训练后，Wikitext perplexity 从 27.32 降至 22.92，并在 RULER needle-in-a-haystack recall 上对 32k tokens 保持更强鲁棒性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文验证对象是语言模型，不是连续时间诊断；KV cache 会带来额外显存，写入规则是否能对应物理前兆仍需重新定义。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>HOLA 对 P1 的价值不是语言结果，而是“压缩状态 + 稀有事件精确记忆”的混合记忆设计。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可在 Mamba/线性 attention 诊断模型旁加入小容量 event cache，写入高预测残差、高不确定性或高物理风险 token，比较无 cache、recency cache 和 residual-triggered cache 的提前预警、漏报率与显存。最小实验是冻结现有 encoder，只加一个可检索事件库和轻量融合头。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>EHHN：事件驱动异构超图用于下一活动预测</h3>
+              <p class="paper__subtitle">EHHN: An Event-driven Heterogeneous Hypergraph Network for Object-Centric Next Activity Prediction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 回看推荐。它把多对象共享事件、对象状态变化、事件间隔和全局原型放进双流超图模型，并报告最高 24 倍峰值显存下降；对异步多通道诊断的事件化表征很有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiaxing Wang, Kaitao Chen, Zhubin Han, Chenyu Hou, Bin Cao, Jing Fan, Ji Zhang</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.01785" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/chenkaitao1112/EHHN" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.01785" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 回看推荐。它把多对象共享事件、对象状态变化、事件间隔和全局原型放进双流超图模型，并报告最高 24 倍峰值显存下降；对异步多通道诊断的事件化表征很有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>业务流程 OCEL 与聚变多诊断看似跨域，但都有“一个事件同时关联多个对象或通道”的结构。直接 pairwise graph 或 flatten 会丢掉共享事件上下文，也容易在长序列上显存过高。
+从本日报的选取理由看，非当日新增 / 回看推荐。它把多对象共享事件、对象状态变化、事件间隔和全局原型放进双流超图模型，并报告最高 24 倍峰值显存下降；对异步多通道诊断的事件化表征很有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在多对象事件日志中保留事件与对象的高阶关系，同时捕捉局部状态变化和全局演化模式？
+对当前主题的关键意义在于：可把 shot 内的控制动作、阈值越界、峰值检测、缺失段和图像异常区域转成 hyperedge 事件，通道或诊断子系统作为对象，比较 flatten Transformer、temporal graph 和 EHHN 式 hypergraph 在显存与提前预警上的差异。最小实验是只用离散事件流训练 next-risk 或 next-event 预测头。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ca9e22aa00910c20.png" alt="Figure 1 : Overview of the EHHN framework. A prediction prefix is converted into a heterogeneous prefix hypergraph with event–object and lifecycle hyperedges. The micro-spatial stream applies JEST, LCSE, and HIE to encode local event-driven object-state evolution, while the macro-evolution stream uses TASE and prototype memory to model temporal and global execution patterns. The two streams are fused for next activity prediction.">
+                    <figcaption>Figure 1 : Overview of the EHHN framework. A prediction prefix is converted into a heterogeneous prefix hypergraph with event–object and lifecycle hyperedges. The micro-spatial str...</figcaption>
+                  </figure>
+                  <p>EHHN 将 prediction prefix 表示为 heterogeneous hypergraph，用 event-object hyperedges 绑定共参与对象，用 lifecycle hyperedge 表示主对象已观测生命周期。模型采用 micro-spatial stream 建模事件驱动对象状态演化，macro-evolution stream 用检索全局原型捕捉时间动态。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 EHHN 在 4 个公开 OCEL benchmark 上相对 9 个基线取得最佳 accuracy 和 macro F1，较最强基线分别提升最高 8.1 和 12.4 个百分点；相对最强 OCEL-native graph baseline 峰值 GPU 显存最高降低 24 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始数据是离散业务事件，不处理连续波形和真实 Δt embedding；把聚变信号转成事件需要阈值、峰值或学习型 tokenizer，可能损失幅值细节。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>EHHN 是 P1 的事件化建模备选路线，尤其适合稀疏报警、控制动作、诊断状态切换与多对象关联。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把 shot 内的控制动作、阈值越界、峰值检测、缺失段和图像异常区域转成 hyperedge 事件，通道或诊断子系统作为对象，比较 flatten Transformer、temporal graph 和 EHHN 式 hypergraph 在显存与提前预警上的差异。最小实验是只用离散事件流训练 next-risk 或 next-event 预测头。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 科学 AI / 诊断融合</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 科学 AI / 诊断融合</p>
+              <h3>Tactile-WAM：用不对称注意力抑制稀疏副模态污染</h3>
+              <p class="paper__subtitle">Tactile-WAM: Touch-Aware World Action Model with Tactile Asymmetric Attention</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】非当日新增 / 回看推荐。原始应用是触觉-视觉机器人动作模型；可迁移模块是 Tactile Asymmetric Attention 和 VideoClean mask，用约束式跨模态访问防止稀疏事件副模态污染视觉预测。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Siyu Wu, Linjing You, Junjie Zhu, Yaozu Liu, Changhao Zhang, Jian Liu, Weiqiang Wang, Qi Li, Jituo Li, Hengshuang Zhao</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.26663" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.26663" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】非当日新增 / 回看推荐。原始应用是触觉-视觉机器人动作模型；可迁移模块是 Tactile Asymmetric Attention 和 VideoClean mask，用约束式跨模态访问防止稀疏事件副模态污染视觉预测。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 的可见光图像与诊断时序融合面临类似问题：诊断前兆可能稀疏、局部、事件驱动，如果无约束注入视觉 token，模型可能让图像分支吸收噪声，反而降低视觉证据质量。
+从本日报的选取理由看，【P3】非当日新增 / 回看推荐。原始应用是触觉-视觉机器人动作模型；可迁移模块是 Tactile Asymmetric Attention 和 VideoClean mask，用约束式跨模态访问防止稀疏事件副模态污染视觉预测。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让稀疏副模态在需要时影响决策，但不破坏主视觉动力学的表示？
+对当前主题的关键意义在于：对应 P3 的待解决问题是异步、多采样率、可能缺失的图像与诊断时序融合。预期计算影响是 mask 约束会减少不必要 cross-attention，但需要额外门控或 bias 头。风险是过强 mask 会阻止真实前兆进入视觉分支。最小验证实验是在现有图像-诊断融合模型里设置三种策略：全 cross-attention、诊断到风险 query 单向访问、TAAM 式受限访问，比较提前量、误报、显存和可视化热区稳定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/513f3170b32ba417.png" alt="Figure 2: Method overview. Tactile-WAM jointly denoises future visual tokens, tactile contact tokens, and actions. TAAM routes touch selectively: VideoClean protects video prediction from tactile tokens, while the touch-aware bias guides action denoising using predicted touch changes.">
+                    <figcaption>Figure 2: Method overview. Tactile-WAM jointly denoises future visual tokens, tactile contact tokens, and actions. TAAM routes touch selectively: VideoClean protects video predicti...</figcaption>
+                  </figure>
+                  <p>TAAM 结合 VideoClean mask 和 touch-aware bias。VideoClean mask 阻止 video-query 直接访问 tactile key/value，同时保留 action-query 对触觉 token 的访问；touch-aware bias 来自预测触觉变化，在 denoising 中调制动作注意力。
+阅读时需要把方法设计与主要结果一起看：摘要报告 Tactile-WAM 在 ManiFeel 上总体 mean success rate 提升 38.9%，contact-rich tasks 提升 86%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 Tactile-WAM 在 ManiFeel 上总体 mean success rate 提升 38.9%，contact-rich tasks 提升 86%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>机器人触觉不是聚变诊断，且模型目标是动作生成；迁移到破裂预测时需要重新定义哪些 query 可以访问诊断 token、哪些视觉路径必须保持干净。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇不是聚变论文，但它把“副模态有用但会污染主模态”的工程问题讲得很清楚。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应 P3 的待解决问题是异步、多采样率、可能缺失的图像与诊断时序融合。预期计算影响是 mask 约束会减少不必要 cross-attention，但需要额外门控或 bias 头。风险是过强 mask 会阻止真实前兆进入视觉分支。最小验证实验是在现有图像-诊断融合模型里设置三种策略：全 cross-attention、诊断到风险 query 单向访问、TAAM 式受限访问，比较提前量、误报、显存和可视化热区稳定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / 科学 AI / 诊断融合</p>
+              <h3>本轮空缺判断：直接 tokamak disruption / visible diagnostics + AI 新稿</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty verdict for direct tokamak disruption prediction or visible-diagnostics fusion papers*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-07-07</p>
+          <p>论文链接：[arXiv recent](https://arxiv.org/list/physics.plasm-ph/recent)</p>
+          <p>选取理由：【P3】本轮空缺判断。已检索 tokamak、disruption prediction、plasma diagnostics、MHD、fusion、visible diagnostics 等关键词，未发现 2026-07-06 之后合格的直接托卡马克破裂图像-诊断时序融合 AI 新稿。</p>
+          <p>研究背景：聚变方向最近几期已经补录 MHD latent diffusion、cross-device Grad-Shafranov、experiment-free disruption prediction 等相关工作；本轮不再重复旧论文，避免把无新增进展的旧重点伪装成新增。</p>
+          <p>核心问题：当前缺口仍是异步图像和诊断时序的统一表示、跨装置泛化、低延迟部署和物理可解释性，而不是缺少泛泛的融合模型。</p>
+          <p>方法与关键创新：不适用。今天没有满足“原始来源可核验、机制可迁移、证据质量足够、与 tokamak disruption 或 visible diagnostics fusion 直接相关”的新增工作。</p>
+          <p>主要结果：不适用。</p>
+          <p>局限性：空缺判断依赖本轮检索窗口和公开索引状态；若作者主页或项目页先于 arXiv 发布，可能需要下一轮补录。</p>
+          <p>总结：本轮聚变直接新增空缺，但 P3 可从 SA-RDM-DC 和 Tactile-WAM 借鉴可靠性图、不对称跨模态访问和选择性复核机制。</p>
+          <p>研究相关性：建议今天不要在聚变直接论文上花时间凑数，优先把 P3 的最小验证实验落实到现有可见光图像和诊断时序数据上：用诊断风险 query 选择图像局部 token，并记录显存、延迟、提前量和跨 shot 泛化。</p>
+          <p>是否值得精读：空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>P1-1. TiRex-2：streaming 多变量 TSFM</h3>
+              <p class="paper__subtitle">TiRex-2: Generalizing TiRex to Multivariate Data and Streaming</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-01</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是通用多变量时序预测；可迁移模块是 recurrent xLSTM streaming backbone、bidirectional time mixer、asymmetric grouped-attention variate mixer 和 synthetic coupling pretraining。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Patrick Podest, Marco Pichler, Elias Burger, Levente Zolyomi, Bernhard Voggenberger, Wilhelm Berghammer, Daniel Klotz, Sebastian Bock, Gunter Klambauer, Sepp Hochreiter</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.01204" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.01204" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是通用多变量时序预测；可迁移模块是 recurrent xLSTM streaming backbone、bidirectional time mixer、asymmetric grouped-attention variate mixer 和 synthetic coupling pretraining。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 同时需要处理低频常规诊断和高频海量点，核心约束是显存、真实时间间隔和跨采样率交互。TiRex-2 的 constant per-patch cost 是直接可测的工程指标。
+从本日报的选取理由看，【P1】原始应用是通用多变量时序预测；可迁移模块是 recurrent xLSTM streaming backbone、bidirectional time mixer、asymmetric grouped-attention variate mixer 和 synthetic coupling pretraining。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否把高频诊断压成 patch stream，并在不重算历史的情况下与低频协变量交互？
+对当前主题的关键意义在于：对应待解决问题是高低频、多尺度、异步通道的耦合。预期计算影响是时间维 constant per-patch，变量 mixer 增加常数级参数。主要不成立条件是 patch 化丢失破裂前短促高频前兆。最小实验是在现有数据上比较 1 秒、5 秒、10 秒历史窗口下的显存和提前预警。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e2428a7de7aaf3b1.png" alt="Figure 10 : Mean MASE on fev-bench versus mean active parameters across nine zero-shot time series foundation models (TSFMs). Pareto-optimal models (Moirai-2.0, TiRex, TiRex-2) form the lower-left frontier (dashed staircase) and are highlighted with black outlines; the shaded region marks the dominated subset of the parameter–MASE plane. TiRex-2 attains the lowest mean MASE in the benchmark while using ∼ 2.2 × \sim\!2.2\times fewer mean active parameters than Chronos-2 and ∼ 4.3 × \sim\!4.3\times fewer than TimesFM-2.5. For TiRex-2, the variate mixer is skipped on purely univariate inputs (Sec. 3 ), so we report the task-weighted expectation 𝔼 t ​ [ P active ] = P base + p cov ​ P var-mix = 38.4 + 0.35 ⋅ 44.1 ≈ 53.84 \mathbb{E}_{t}[P_{\text{active}}]=P_{\text{base}}+p_{\text{cov}}\,P_{\text{var-mix}}=38.4+0.35\cdot 44.1\approx 53.84 M over the 65 / 100 65/100 univariate and 35 / 100 35/100 multivariate tasks of fev-bench. All other models are dense, so total and active parameter counts coincide.">
+                    <figcaption>Figure 10 : Mean MASE on fev-bench versus mean active parameters across nine zero-shot time series foundation models (TSFMs). Pareto-optimal models (Moirai-2.0, TiRex, TiRex-2) for...</figcaption>
+                  </figure>
+                  <p>用 recurrent state 处理时间流，用变量 mixer 处理跨变量协变量；对目标变量保持严格因果，避免未来信息泄露。
+阅读时需要把方法设计与主要结果一起看：摘要报告 zero-shot benchmark 达到 SOTA，并可 stream 到任意上下文长度。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 zero-shot benchmark 达到 SOTA，并可 stream 到任意上下文长度。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不规则 Δt 和缺失机制需额外编码；聚变控制输入不是普通 future covariates，可能存在闭环因果问题。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>最小验证是替换现有时序 backbone，记录峰值显存和吞吐，不先改损失函数。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是高低频、多尺度、异步通道的耦合。预期计算影响是时间维 constant per-patch，变量 mixer 增加常数级参数。主要不成立条件是 patch 化丢失破裂前短促高频前兆。最小实验是在现有数据上比较 1 秒、5 秒、10 秒历史窗口下的显存和提前预警。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>P1-2. HOLA：压缩状态外接稀有事件精确记忆</h3>
+              <p class="paper__subtitle">A Hippocampus for Linear Attention: An Exact Memory for What the Recurrent State Forgets</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是线性注意力语言模型；可迁移模块是 residual-triggered bounded KV cache，用来补偿固定 recurrent state 对稀有关键事件的遗忘。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Wanyun Cui</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02303" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02303" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是线性注意力语言模型；可迁移模块是 residual-triggered bounded KV cache，用来补偿固定 recurrent state 对稀有关键事件的遗忘。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 不能只追求线性内存，还要保证少数异常前兆可被检索。
+从本日报的选取理由看，【P1】原始应用是线性注意力语言模型；可迁移模块是 residual-triggered bounded KV cache，用来补偿固定 recurrent state 对稀有关键事件的遗忘。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何决定哪些高频 token 不应被压进状态，而应保留为精确记忆？
+对当前主题的关键意义在于：对应待解决问题是长序列显存与稀有前兆保留的冲突。预期显存影响是小容量 cache 带来可控额外显存。风险是 cache 写入过多退化为普通注意力。最小实验是用高重构误差或高风险分数触发 cache 写入，比较无 cache 与固定最近 cache。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>根据预测残差触发 cache 写入，并使用独立读出避免软平均。
+阅读时需要把方法设计与主要结果一起看：摘要报告 long-context needle recall 到 32k tokens 更鲁棒。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 long-context needle recall 到 32k tokens 更鲁棒。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>语言模型 residual 与物理前兆 residual 不同，需要重新校准写入阈值。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 Mamba/线性 attention 旁路记忆，不适合直接照搬整套语言架构。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是长序列显存与稀有前兆保留的冲突。预期显存影响是小容量 cache 带来可控额外显存。风险是 cache 写入过多退化为普通注意力。最小实验是用高重构误差或高风险分数触发 cache 写入，比较无 cache 与固定最近 cache。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>P2-1. LipsFlow：事件表征和语义监督的低延迟范式</h3>
+              <p class="paper__subtitle">A First Exploration of Neuromorphic OT-CFM for Multi-Speaker VSR</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-30；v2 更新时间 2026-07-01</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是多说话人视觉语音识别；可迁移模块是事件表征、单目标时序切片、OT-CFM 两步低延迟生成和 token/sentence 双层语义监督。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lin Chen, Jingping Fang, Hairui Liu, Chenyang Xu, Junhao Chen, Xiaorui Li, Weidong Cai, Xiaoming Chen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.31225" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.31225" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是多说话人视觉语音识别；可迁移模块是事件表征、单目标时序切片、OT-CFM 两步低延迟生成和 token/sentence 双层语义监督。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>属性识别中的运动属性、遮挡和弱光细节与唇动识别中的细微动态类似，都需要事件流补充 RGB。
+从本日报的选取理由看，【P2】原始应用是多说话人视觉语音识别；可迁移模块是事件表征、单目标时序切片、OT-CFM 两步低延迟生成和 token/sentence 双层语义监督。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在低延迟下保留事件中的高频动态，并将其对齐到语义标签？
+对当前主题的关键意义在于：对应待解决问题是原生事件动态属性提取、弱光和运动模糊鲁棒性。预期计算影响是事件 token 增加前端开销，OT-CFM 降低后端生成延迟。风险是合成事件无法泛化到真实 event camera。最小实验是在 TriPro-ReID 中增加事件 token 分支和属性语义监督，只比较不确定样本、低照和运动模糊子集。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/9b30dab4ab12759f.png" alt="Figure 2 : Overview of LipsFlow Framework. Event-based visual features are extracted via hierarchical interpolation and Conformer encoding, then conditioned on speaker embeddings through OT-CFM to generate semantic token representations. The BERT [ Devlin19-BERT ] weight tying is utilized alongside multi-level supervision signals during training (token-level ℒ CE \mathcal{L}_{\mathrm{CE}} , sentence-level ℒ sem \mathcal{L}_{\mathrm{sem}} , and auxiliary CTC loss ℒ CTC \mathcal{L}_{\mathrm{CTC}} for alignment), ensuring both local precision and global semantic coherence.">
+                    <figcaption>Figure 2 : Overview of LipsFlow Framework. Event-based visual features are extracted via hierarchical interpolation and Conformer encoding, then conditioned on speaker embeddings t...</figcaption>
+                  </figure>
+                  <p>事件表征负责动态细节，语义潜空间 OT-CFM 降低推理步数，双层语义监督减少局部动态和句级意义之间的歧义。
+阅读时需要把方法设计与主要结果一起看：摘要报告 22.3% WER 与 240 ms latency。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 22.3% WER 与 240 ms latency。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是真实 RGB-Event 属性数据，事件流来自 RGB 转换；缺少属性级不确定性和模态缺失实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮 P2 没有合格直接新增，LipsFlow 可作为事件语义监督的机制启发。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是原生事件动态属性提取、弱光和运动模糊鲁棒性。预期计算影响是事件 token 增加前端开销，OT-CFM 降低后端生成延迟。风险是合成事件无法泛化到真实 event camera。最小实验是在 TriPro-ReID 中增加事件 token 分支和属性语义监督，只比较不确定样本、低照和运动模糊子集。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>P2-2. 本轮空缺判断：原生 RGB-Event 属性识别新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty verdict for native RGB-Event attribute recognition papers*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-07-07</p>
+          <p>论文链接：[arXiv event camera search](https://arxiv.org/search/?query=event+camera+attribute+recognition&searchtype=all)</p>
+          <p>选取理由：【P2】本轮空缺判断。检索 event camera、event stream、RGB-Event、neuromorphic vision、attribute recognition、open-vocabulary attribute 等关键词后，未发现新的高质量原生 RGB-Event 属性识别论文。</p>
+          <p>研究背景：已有 EventPAR 等回看条目已在前几期覆盖；今天没有新版本、新代码或新实验支撑重复展开。</p>
+          <p>核心问题：P2 当前仍缺少原生异步事件与属性不确定性、开放词表语义监督、模态缺失鲁棒训练之间的统一方案。</p>
+          <p>方法与关键创新：不适用。</p>
+          <p>主要结果：不适用。</p>
+          <p>局限性：二手摘要或项目页可能有未被 arXiv 收录的新稿，后续需继续监控。</p>
+          <p>总结：今天不凑数，P2 只保留 LipsFlow 作为机制启发。</p>
+          <p>研究相关性：最小验证仍建议围绕 TriPro-ReID 做模块替换：事件 token 表征、属性 query 动态选择和 modality dropout 三项分开消融。</p>
+          <p>是否值得精读：空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>P3-1. SA-RDM-DC：自审计图像可靠性图</h3>
+              <p class="paper__subtitle">Self-Auditing Residual Drifting for Pathology-Preserving Accelerated Knee MRI</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是快速 MRI 重建；可迁移模块是 residual correction、dense error map、slice-level risk score 和 protocol-shift 下的 selective-review signal。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qing Lyu, Jianxu Wang, Mohammad Kawas, Ge Wang, Christopher T. Whitlow</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02428" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02428" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是快速 MRI 重建；可迁移模块是 residual correction、dense error map、slice-level risk score 和 protocol-shift 下的 selective-review signal。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 需要让时序风险选择图像局部证据，同时知道哪些图像证据不可信。
+从本日报的选取理由看，【P3】原始应用是快速 MRI 重建；可迁移模块是 residual correction、dense error map、slice-level risk score 和 protocol-shift 下的 selective-review signal。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把图像分支的局部不确定性显式传给时序融合模型？
+对当前主题的关键意义在于：对应待解决问题是抑制无关或不可靠视觉信息。预期计算影响是增加一个轻量 error-map 头，显存小幅上升。风险是伪 error map 学到相机噪声而非物理风险。最小实验是把 error map 均值、局部最大值和热区 token 输入现有融合模型，比较有无质量门控。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/42908aec117cd95d.png" alt="Figure 1: Overview of SA-RDM-DC. A: PCD-RDNet predicts image-domain and missing-k-space residuals from physics-conditioned inputs and applies measured-data consistency. B: PC-SAN predicts error maps, quantile maps, and slice-level risk scores from reconstruction and physics-residual features.">
+                    <figcaption>Figure 1: Overview of SA-RDM-DC. A: PCD-RDNet predicts image-domain and missing-k-space residuals from physics-conditioned inputs and applies measured-data consistency. B: PC-SAN p...</figcaption>
+                  </figure>
+                  <p>在重建过程中同时预测图像修正和误差图，让模型在输出图像的同时输出风险。
+阅读时需要把方法设计与主要结果一起看：摘要报告 subsecond per-slice inference，并能识别高误差重建。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 subsecond per-slice inference，并能识别高误差重建。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>MRI 的 k-space 真值监督不能直接套到可见光，需要噪声、遮挡或多视角一致性伪监督。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 的图像质量门控，而非主预测模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是抑制无关或不可靠视觉信息。预期计算影响是增加一个轻量 error-map 头，显存小幅上升。风险是伪 error map 学到相机噪声而非物理风险。最小实验是把 error map 均值、局部最大值和热区 token 输入现有融合模型，比较有无质量门控。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>P3-2. Tactile-WAM：不对称跨模态访问防止副模态污染</h3>
+              <p class="paper__subtitle">Tactile-WAM: Touch-Aware World Action Model with Tactile Asymmetric Attention</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-25</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是触觉-视觉机器人世界动作模型；可迁移模块是 VideoClean mask 与 touch-aware bias，对应诊断 token 只影响风险 query、不直接污染视觉预测。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Siyu Wu, Linjing You, Junjie Zhu, Yaozu Liu, Changhao Zhang, Jian Liu, Weiqiang Wang, Qi Li, Jituo Li, Hengshuang Zhao</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.26663" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.26663" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是触觉-视觉机器人世界动作模型；可迁移模块是 VideoClean mask 与 touch-aware bias，对应诊断 token 只影响风险 query、不直接污染视觉预测。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测的诊断时序和可见光图像存在不同步、缺失、噪声和信息密度差异。
+从本日报的选取理由看，【P3】原始应用是触觉-视觉机器人世界动作模型；可迁移模块是 VideoClean mask 与 touch-aware bias，对应诊断 token 只影响风险 query、不直接污染视觉预测。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样让稀疏诊断前兆调制图像证据选择，而不是让所有模态无约束相互污染？
+对当前主题的关键意义在于：对应待解决问题是异步多模态融合、模态缺失训练和低显存部署。预期计算影响是减少部分 cross-attention 边，显存可能下降。风险是限制过强导致视觉分支无法吸收真实诊断线索。最小实验是全连接 cross-attention、单向诊断到风险 query 和 TAAM 式 mask 三者对照。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/513f3170b32ba417.png" alt="Figure 2: Method overview. Tactile-WAM jointly denoises future visual tokens, tactile contact tokens, and actions. TAAM routes touch selectively: VideoClean protects video prediction from tactile tokens, while the touch-aware bias guides action denoising using predicted touch changes.">
+                    <figcaption>Figure 2: Method overview. Tactile-WAM jointly denoises future visual tokens, tactile contact tokens, and actions. TAAM routes touch selectively: VideoClean protects video predicti...</figcaption>
+                  </figure>
+                  <p>用不对称 attention mask 限制副模态访问路径，只允许任务 query 读取副模态，保护主视觉预测。
+阅读时需要把方法设计与主要结果一起看：摘要报告 contact-rich tasks 成功率提升 86%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 contact-rich tasks 成功率提升 86%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>机器人动作任务与 tokamak 物理差异大，迁移时需要重新设计 query 和 mask。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为融合结构的反例约束：不是所有 cross-attention 都有益。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是异步多模态融合、模态缺失训练和低显存部署。预期计算影响是减少部分 cross-attention 边，显存可能下降。风险是限制过强导致视觉分支无法吸收真实诊断线索。最小实验是全连接 cross-attention、单向诊断到风险 query 和 TAAM 式 mask 三者对照。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>SA-RDM-DC：自审计残差漂移用于快速 MRI 重建可靠性</h3>
+              <p class="paper__subtitle">Self-Auditing Residual Drifting for Pathology-Preserving Accelerated Knee MRI</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-02</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 回看推荐。它在快速图像重建里同时输出图像修正、缺失频域修正、dense error map 和风险分数；对 P3 的可见光证据筛选、低延迟部署和选择性人工复核机制很实用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qing Lyu, Jianxu Wang, Mohammad Kawas, Ge Wang, Christopher T. Whitlow</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02428" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02428" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 回看推荐。它在快速图像重建里同时输出图像修正、缺失频域修正、dense error map 和风险分数；对 P3 的可见光证据筛选、低延迟部署和选择性人工复核机制很实用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>图像模型在科学诊断中不能只追求全局 SSIM 或分类分数，关键局部结构被抹平会直接影响后续决策。破裂预测中的可见光图像也类似，局部光斑、边缘或等离子体形态变化需要可靠性估计。
+从本日报的选取理由看，非当日新增 / 回看推荐。它在快速图像重建里同时输出图像修正、缺失频域修正、dense error map 和风险分数；对 P3 的可见光证据筛选、低延迟部署和选择性人工复核机制很实用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在快速重建或增强图像时，不仅恢复图像，还知道哪些区域可能不可信，并把不可信样本用于选择性复核？
+对当前主题的关键意义在于：可在现有可见光或红外图像上做人为降采样、遮挡、噪声和模态缺失，训练一个轻量残差修正加 error-map 头，再把风险图作为时序融合模型的视觉权重。最小实验是比较无可靠性图、简单置信度、SA-RDM-DC 式 error map 在破裂预测提前量和误报上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/42908aec117cd95d.png" alt="Figure 1: Overview of SA-RDM-DC. A: PCD-RDNet predicts image-domain and missing-k-space residuals from physics-conditioned inputs and applies measured-data consistency. B: PC-SAN predicts error maps, quantile maps, and slice-level risk scores from reconstruction and physics-residual features.">
+                    <figcaption>Figure 1: Overview of SA-RDM-DC. A: PCD-RDNet predicts image-domain and missing-k-space residuals from physics-conditioned inputs and applies measured-data consistency. B: PC-SAN p...</figcaption>
+                  </figure>
+                  <p>SA-RDM-DC 将 generative drifting 迁移到 accelerated MRI，学习从 zero-filled reconstruction 到 fully sampled residual correction 的 physics-conditioned drift field，同时预测图像和 missing k-space residual，施加 data consistency、frequency-aware supervision 和 residual drifting supervision。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 fastMRI knee 多加速因子和 SKM-TEA protocol shift 下，SA-RDM-DC 取得最高 SSIM，保持 subsecond per-slice inference，病理区域结构保真更好，self-auditing scores 能强识别高误差重建并部分跨协议迁移。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医学 MRI 的 k-space 物理约束不同于可见光相机或聚变诊断；dense error map 的监督信号在聚变真实图像中可能没有完全采样真值，需要弱监督或伪标签。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为 P3 的图像可靠性模块参考，尤其是低延迟场景下的逐样本风险输出。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可在现有可见光或红外图像上做人为降采样、遮挡、噪声和模态缺失，训练一个轻量残差修正加 error-map 头，再把风险图作为时序融合模型的视觉权重。最小实验是比较无可靠性图、简单置信度、SA-RDM-DC 式 error map 在破裂预测提前量和误报上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>LipsFlow：神经形态 VSR 中的事件表征与低延迟语义生成</h3>
+              <p class="paper__subtitle">A First Exploration of Neuromorphic OT-CFM for Multi-Speaker VSR</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-06-30；v2 更新时间 2026-07-01</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】非当日新增 / 回看推荐。原始应用是多说话人视觉语音识别；可迁移模块是高时间分辨率事件表征、说话人级时序裁剪、OT-CFM 两步低延迟生成和 token/sentence 双层语义监督。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lin Chen, Jingping Fang, Hairui Liu, Chenyang Xu, Junhao Chen, Xiaorui Li, Weidong Cai, Xiaoming Chen</p>
+                <p class="muted">机构待核验（arXiv 摘要页未直接列出）</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2606.31225" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2606.31225" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】非当日新增 / 回看推荐。原始应用是多说话人视觉语音识别；可迁移模块是高时间分辨率事件表征、说话人级时序裁剪、OT-CFM 两步低延迟生成和 token/sentence 双层语义监督。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 的 RGB-Event 属性识别不能只把事件转帧再平均，真正价值在于原生事件的高时间分辨率和对运动模糊、弱光细节的补充。LipsFlow 虽然从 RGB 生成事件流，但它讨论的是事件表征如何承载微秒级运动。
+从本日报的选取理由看，【P2】非当日新增 / 回看推荐。原始应用是多说话人视觉语音识别；可迁移模块是高时间分辨率事件表征、说话人级时序裁剪、OT-CFM 两步低延迟生成和 token/sentence 双层语义监督。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在运动模糊、遮挡和细微局部动作下，用事件表征保留动态细节，并以低延迟方式输出语义序列？
+对当前主题的关键意义在于：对应 P2 的待解决问题是原生异步事件的动态属性提取与低延迟语义监督。预期计算影响是 OT-CFM 两步生成可降低序列解码延迟，但事件表示会增加前端 token 密度。风险是 RGB 合成事件与真实事件噪声分布不一致。最小验证实验是在 TriPro-ReID 中加入事件短片段 tokenizer 和属性级语义监督，比较转帧 CNN、事件 token 和 LipsFlow 式语义约束对运动属性、携带物属性和弱光样本的增益。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/9b30dab4ab12759f.png" alt="Figure 2 : Overview of LipsFlow Framework. Event-based visual features are extracted via hierarchical interpolation and Conformer encoding, then conditioned on speaker embeddings through OT-CFM to generate semantic token representations. The BERT [ Devlin19-BERT ] weight tying is utilized alongside multi-level supervision signals during training (token-level ℒ CE \mathcal{L}_{\mathrm{CE}} , sentence-level ℒ sem \mathcal{L}_{\mathrm{sem}} , and auxiliary CTC loss ℒ CTC \mathcal{L}_{\mathrm{CTC}} for alignment), ensuring both local precision and global semantic coherence.">
+                    <figcaption>Figure 2 : Overview of LipsFlow Framework. Event-based visual features are extracted via hierarchical interpolation and Conformer encoding, then conditioned on speaker embeddings t...</figcaption>
+                  </figure>
+                  <p>LipsFlow 将 RGB 视频转换成高时间分辨率 event streams，用 ByteTrack 与 TalkNet 切分单说话人片段；随后使用 learnable event-based representation 与 OT-CFM，在语义潜空间中用 deterministic straight-line trajectory generation 将推理降到 2 个 ODE steps，并加入 token-level BERT weight tying 和 sentence-level priors。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 LipsFlow 在竞争性 VSR benchmark 上达到 22.3% WER、240 ms latency，并作为 ECCV 2026 接收论文强调事件式 VSR 的鲁棒和高效。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是 RGB-Event 属性识别，且事件流来自 RGB 转换而非真实 event camera；属性标签、开放词表语义和模态缺失没有直接验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 本轮没有合格的原生 RGB-Event 属性识别新增，LipsFlow 作为事件表征和低延迟语义监督的回看启发更合适。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应 P2 的待解决问题是原生异步事件的动态属性提取与低延迟语义监督。预期计算影响是 OT-CFM 两步生成可降低序列解码延迟，但事件表示会增加前端 token 密度。风险是 RGB 合成事件与真实事件噪声分布不一致。最小验证实验是在 TriPro-ReID 中加入事件短片段 tokenizer 和属性级语义监督，比较转帧 CNN、事件 token 和 LipsFlow 式语义约束对运动属性、携带物属性和弱光样本的增益。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 新批次停滞时，回看推荐必须更严格</h3>
+          <p>- arXiv 最新批次未超过 7 月 6 日已处理范围，本期没有把旧批次写成“新增”。回看条目只保留机制可迁移、能导出最小实验且未在昨天主推荐中充分展开的论文。</p>
+        </article>
+        <article class="trend">
+          <h3>2. P1 的关键词从“更长上下文”转向“流式状态 + 少数关键事件保留”</h3>
+          <p>- TiRex-2、HOLA、EHHN 都指向同一个工程判断：长上下文不是简单加窗口，而是要区分可压缩连续动态和必须精确保留的稀有事件。</p>
+        </article>
+        <article class="trend">
+          <h3>3. P3 的融合重点不是拼接，而是可靠性和访问约束</h3>
+          <p>- SA-RDM-DC 与 Tactile-WAM 都提示，图像-诊断融合要显式处理不可信视觉区域和副模态污染，否则 cross-attention 可能只是在放大噪声。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
