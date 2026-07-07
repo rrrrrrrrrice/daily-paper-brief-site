@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-08</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-08 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-08 05:25:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇值得进入主推荐的新增或近几日未收录论文。P1 最强条目是 Advances in Neural Controlled Differential Equations，它把 Log-NCDE、Linear NCDE 和 Structured Linear NCDE 汇总为可扩展连续时间建模路线；ReCal3R 则从流式视觉状态可靠性角度补充线性内存长序列更新策略。P2 新增 E-TraMamba 和仿生 event-driven motion detection，适合从原生事件长序列、运动模糊和低延迟约束映射到 RGB-Event 属性识别。聚变方向新增 Deep Learning Models for ADITYA-U MHD Equilibrium，虽不是破裂预测，但可作为实时 equilibrium / control surrogate 的直接聚变 AI 条目。P3 没有直接新增 tokamak 可见光破裂预测论文，因此只给出可迁移机制启发，不凑数替代直接基线。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">RGB-Event / 多模态视觉 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-3">03 ReCal3R：流式 3D 重建中的状态可靠性校准</a></li>
+              <li><a href="#paper-4">04 E-TraMamba：事件相机长时 3D 特征跟踪</a></li>
+              <li><a href="#paper-5">05 仿生 event-driven motion detection：低功耗可解释事件运动检测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 Advances in NCDE：连续时间不规则时序建模的可扩展路线</a></li>
+              <li><a href="#paper-2">02 TSFM break-even：什么时候时序基础模型真的值得部署</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变 / 等离子体控制 / 诊断</a>
+            <ul>
+              <li><a href="#paper-7">07 ADITYA-U MHD Equilibrium：面向实时控制的 tokamak surrogate</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-8">08 P1-1. Advances in NCDE：真实 Δt 与高低频统一的连续时间底座</a></li>
+              <li><a href="#paper-9">09 P1-2. ReCal3R：可靠性校准的在线状态更新</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-10">10 P2-1. E-TraMamba：原生事件长序列 encoder</a></li>
+              <li><a href="#paper-11">11 P2-2. 仿生 event-driven motion detection：轻量事件质量与运动先验</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-12">12 P3-1. FUSE：从二分类风险到可校准多模态后验</a></li>
+              <li><a href="#paper-13">13 P3-2. ReCal3R：低延迟视觉状态的可靠性更新</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">多模态学习 / 科学 AI</a>
+            <ul>
+              <li><a href="#paper-6">06 FUSE：ICML 2026 科学多模态后验估计</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">Advances in NCDE：连续时间不规则时序建模的可扩展路线</a></h3>
+              <p class="card__subtitle">Advances in Neural Controlled Differential Equations</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-06。它系统整理并推进 Neural CDE：Log-NCDE 加速训练，Linear NCDE 支持闭式解和平行时间计算，Structured Linear NCDE 进一步提升效率；对 P1 的真实时间间隔、过采样/欠采样统一建模最直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">ReCal3R：流式 3D 重建中的状态可靠性校准</a></h3>
+              <p class="card__subtitle">ReCal3R: Reliability-Calibrated Learning Rates for Streaming 3D Reconstruction</p>
+              <div class="chip-row">
+                <span class="chip">RGB-Event / 多模态视觉 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-06。它把长图像流压进 compact recurrent scene state，并用 token reliability 校准更新率，避免噪声帧覆盖可靠历史；对 P1 的在线长序列记忆和 P3 的低延迟图像证据筛选都有迁移价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">FUSE：ICML 2026 科学多模态后验估计</a></h3>
+              <p class="card__subtitle">FUSE: FK-Steered Multi-Modal Flow Matching for Efficient Simulation-Based Posterior Estimation</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 科学 AI</span>
+                <span class="chip chip--muted">2026-07-06；ICML 2026 accepted</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-06，ICML 2026。FUSE 用 dual-track architecture 保留多模态输入差异，再用 Feynman-Kac steered sampling 引导生成轨迹；比简单拼接/相加更适合科学诊断参数与观测之间的异质融合。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">E-TraMamba：事件相机长时 3D 特征跟踪</a></h3>
+              <p class="card__subtitle">E-TraMamba: A New Paradigm for Efficient Long-Term 3D Feature Tracking with Event Cameras</p>
+              <div class="chip-row">
+                <span class="chip">RGB-Event / 多模态视觉 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-03</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>近几日新增 / arXiv 2026-07-03，昨日未收录。它用线性状态空间模型处理稀疏噪声事件流中的长程依赖，并融合局部时空 patch、correlation map 和 positional embedding；对 P2 的原生事件 token 和低显存长序列建模很关键。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">ADITYA-U MHD Equilibrium：面向实时控制的 tokamak surrogate</a></h3>
+              <p class="card__subtitle">Deep Learning Models for ADITYA-U MHD Equilibrium</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 等离子体控制 / 诊断</span>
+                <span class="chip chip--muted">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-06。它用 100,760 个 free-boundary equilibrium 合成样本和 766 个 ADITYA-U 放电脉冲输入，预测标量 equilibrium、1D safety factor profile、2D poloidal flux，并做 PF coil inverse model；是今天最直接的聚变 AI 条目。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>RGB-Event / 多模态视觉 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">RGB-Event / 多模态视觉 / 图像与计算机视觉</p>
+              <h3>ReCal3R：流式 3D 重建中的状态可靠性校准</h3>
+              <p class="paper__subtitle">ReCal3R: Reliability-Calibrated Learning Rates for Streaming 3D Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-06。它把长图像流压进 compact recurrent scene state，并用 token reliability 校准更新率，避免噪声帧覆盖可靠历史；对 P1 的在线长序列记忆和 P3 的低延迟图像证据筛选都有迁移价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xinze Li, Yiyuan Wang, Pengxu Chen, Wentao Fan, Weifeng Su, Weisi Lin, Wentao Cheng</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05356" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/Powertony102/ReCal3R" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.05356" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-06。它把长图像流压进 compact recurrent scene state，并用 token reliability 校准更新率，避免噪声帧覆盖可靠历史；对 P1 的在线长序列记忆和 P3 的低延迟图像证据筛选都有迁移价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 的可见光图像与诊断时序融合不可能无限缓存历史帧。需要一个紧凑状态承载长期视觉证据，并且在低质量帧、遮挡、火花或视角变化时避免错误更新污染状态。
+从本日报的选取理由看，新增 / arXiv 2026-07-06。它把长图像流压进 compact recurrent scene state，并用 token reliability 校准更新率，避免噪声帧覆盖可靠历史；对 P1 的在线长序列记忆和 P3 的低延迟图像证据筛选都有迁移价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在流式 3D 重建中保持 bounded memory，同时根据 token 可靠性控制历史状态的更新幅度？
+对当前主题的关键意义在于：最小实验是为可见光视频 encoder 增加 frame/patch reliability gate，比较固定滑窗、简单 EMA、ReCal3R 式可靠性更新在提前量、误报率和显存上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5bdd34c0e438bfc5.png" alt="Figure 7: Additional qualitative results on DL3DV. The visualizations are produced directly from uninterrupted streaming inference over the full sequence, without applying any state reset or sequence-wise reinitialization.">
+                    <figcaption>Figure 7: Additional qualitative results on DL3DV. The visualizations are produced directly from uninterrupted streaming inference over the full sequence, without applying any stat...</figcaption>
+                  </figure>
+                  <p>ReCal3R 估计 maintained scene state 中的 state token reliability，再结合 token alignment、state reconstruction residual 和 recent update pressure 产生候选学习率，最终用可靠性校准 token-wise learning rate。
+阅读时需要把方法设计与主要结果一起看：摘要报告该训练无关校准规则应用到 CUT3R 后，在长序列 pose、depth、reconstruction quality 上表现更强，包括 ATE 降低 3.7 倍，且运行时间和显存相近。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该训练无关校准规则应用到 CUT3R 后，在长序列 pose、depth、reconstruction quality 上表现更强，包括 ATE 降低 3.7 倍，且运行时间和显存相近。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目标是 3D 重建而非分类/预警；可靠性定义来自视觉几何一致性，迁移到破裂前兆需要重新定义风险相关可靠性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇值得看的是“如何更新长期状态”，不是 3D 重建任务本身。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是为可见光视频 encoder 增加 frame/patch reliability gate，比较固定滑窗、简单 EMA、ReCal3R 式可靠性更新在提前量、误报率和显存上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">RGB-Event / 多模态视觉 / 图像与计算机视觉</p>
+              <h3>E-TraMamba：事件相机长时 3D 特征跟踪</h3>
+              <p class="paper__subtitle">E-TraMamba: A New Paradigm for Efficient Long-Term 3D Feature Tracking with Event Cameras</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-03</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">近几日新增 / arXiv 2026-07-03，昨日未收录。它用线性状态空间模型处理稀疏噪声事件流中的长程依赖，并融合局部时空 patch、correlation map 和 positional embedding；对 P2 的原生事件 token 和低显存长序列建模很关键。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Juwei Shen, Yujie Wu, Changwen Chen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02866" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.02866" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.02866" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>近几日新增 / arXiv 2026-07-03，昨日未收录。它用线性状态空间模型处理稀疏噪声事件流中的长程依赖，并融合局部时空 patch、correlation map 和 positional embedding；对 P2 的原生事件 token 和低显存长序列建模很关键。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别中的 event 分支不仅要补亮度，还要提供高速运动、姿态变化和短时动态线索。传统 CNN/Transformer 在稀疏事件流上要么局部性太强，要么显存随长序列上升。
+从本日报的选取理由看，近几日新增 / arXiv 2026-07-03，昨日未收录。它用线性状态空间模型处理稀疏噪声事件流中的长程依赖，并融合局部时空 patch、correlation map 和 positional embedding；对 P2 的原生事件 token 和低显存长序列建模很关键。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在事件相机 3D tracking 中高效捕获长程时空依赖，并在运动模糊和遮挡下保持稳定特征轨迹？
+对当前主题的关键意义在于：最小实验是用 E-TraMamba 风格 SSM event encoder 替换 TriPro-ReID/EventPAR 的事件分支，测试弱光、运动模糊、事件稀疏和模态缺失分组。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文采用线性 state-space model 做长程建模，加入轻量 affine-transform predictor，在多尺度局部时空 patch、correlation map 和 positional embedding 之间融合线索，并构造 EvD-PointOdyssey 合成数据集。
+阅读时需要把方法设计与主要结果一起看：摘要报告在事件基准上达到 SOTA，在严格精度阈值下 feature lifetime 超过 2 倍，并提升 tracked-feature ratio、降低 RMSE。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在事件基准上达到 SOTA，在严格精度阈值下 feature lifetime 超过 2 倍，并提升 tracked-feature ratio、降低 RMSE。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是 3D feature tracking，不是属性识别；合成数据和真实行人属性场景仍有域差距。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 应把它当作事件流 encoder 参考，尤其适合替换固定长度 voxel/frame 输入。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用 E-TraMamba 风格 SSM event encoder 替换 TriPro-ReID/EventPAR 的事件分支，测试弱光、运动模糊、事件稀疏和模态缺失分组。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">RGB-Event / 多模态视觉 / 图像与计算机视觉</p>
+              <h3>仿生 event-driven motion detection：低功耗可解释事件运动检测</h3>
+              <p class="paper__subtitle">An event-driven framework for fly-inspired visual motion detection</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-06。它用 time-surface encoding、仿生 optic-lobe 网络和 bottom-up attention 做训练无关运动方向估计，可作为 P2 的轻量事件先验。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qinbing Fu, Jingyu Huang, Yan Xie, Jigen Peng, Yuchao Tang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05205" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.05205" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.05205" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-06。它用 time-surface encoding、仿生 optic-lobe 网络和 bottom-up attention 做训练无关运动方向估计，可作为 P2 的轻量事件先验。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 中事件相机常被大型网络吞掉，难解释事件噪声、低光照和背景运动对属性识别的影响。仿生前端提供了一种可解释、低参数、低延迟的事件运动描述。
+从本日报的选取理由看，新增 / arXiv 2026-07-06。它用 time-surface encoding、仿生 optic-lobe 网络和 bottom-up attention 做训练无关运动方向估计，可作为 P2 的轻量事件先验。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把异步事件表示与可解释生物启发运动电路结合，并抑制背景运动和低光照事件噪声？
+对当前主题的关键意义在于：最小实验是在 EventPAR/TriPro 中加入 time-surface motion saliency 作为属性分支权重，观察动态属性、模糊样本和低照样本是否改善。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d6a5bac776adbdb7.png" alt="Figure 2: Overview of the proposed computational framework. Panel A: The input ON/OFF event streams are first encoded into HATS representations. Panel B: The two polarity-specific time surfaces are fed into a fly optic-lobe-inspired neural network to extract directional motion signals from the foreground moving target, producing motion responses that indicate both motion direction and magnitude. A saliency map is further generated through a bottom-up attention model, which produces a binary mask centered on the estimated visual centroid to suppress isolated background noise and irrelevant motion responses.">
+                    <figcaption>Figure 2: Overview of the proposed computational framework. Panel A: The input ON/OFF event streams are first encoded into HATS representations. Panel B: The two polarity-specific ...</figcaption>
+                  </figure>
+                  <p>框架用 time-surface 编码前端事件，再接 fly optic-lobe-inspired feed-forward network 做前景运动方向估计，并用 bottom-up attention 强化前景 saliency。
+阅读时需要把方法设计与主要结果一起看：摘要说明该方法在真实地面车辆数据上相对 frame baseline 和 optimization-based approach 展示了事件视觉时间优势与仿生处理效率。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要说明该方法在真实地面车辆数据上相对 frame baseline 和 optimization-based approach 展示了事件视觉时间优势与仿生处理效率。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>会议短文，任务窄；不能替代属性语义模型，只适合作为事件质量/运动先验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合给 P2 加一个轻量 motion prior 或 event quality score。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 EventPAR/TriPro 中加入 time-surface motion saliency 作为属性分支权重，观察动态属性、模糊样本和低照样本是否改善。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Advances in NCDE：连续时间不规则时序建模的可扩展路线</h3>
+              <p class="paper__subtitle">Advances in Neural Controlled Differential Equations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-06。它系统整理并推进 Neural CDE：Log-NCDE 加速训练，Linear NCDE 支持闭式解和平行时间计算，Structured Linear NCDE 进一步提升效率；对 P1 的真实时间间隔、过采样/欠采样统一建模最直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Benjamin Walker</p>
+                <p class="muted">University of Oxford DPhil thesis</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05280" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.05280" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.05280" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-06。它系统整理并推进 Neural CDE：Log-NCDE 加速训练，Linear NCDE 支持闭式解和平行时间计算，Structured Linear NCDE 进一步提升效率；对 P1 的真实时间间隔、过采样/欠采样统一建模最直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断和工程时序同时包含稀疏异步通道、过采样高频通道和真实时间间隔。离散 Transformer/SSM 若只靠固定 patch 或重采样，容易丢失真实 Δt 和缺失机制；NCDE 天然把观测看成驱动路径，但传统非线性向量场求解昂贵且序列化。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何保留 NCDE 对不规则/过采样时间序列的连续时间表达能力，同时降低训练和推理成本，让它能用于更长、更高频、更多通道的数据？
+对当前主题的关键意义在于：最小实验是在现有不规则时序/聚变诊断数据上对比 GRU-D、Transformer patch、Mamba/SSM、NCDE、Linear NCDE，固定显存预算下报告 AUC、提前量、训练吞吐和对采样率扰动的鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文汇总三条贡献：Log-NCDE 用 Log-ODE 方法近似 NCDE 解以加速训练；Linear NCDE 用线性向量场获得闭式解和平行时间计算；Structured Linear NCDE 进一步用结构化线性向量场提升效率并保持表达能力。
+阅读时需要把方法设计与主要结果一起看：arXiv 摘要报告这些方法把 NCDE 每步训练时间降低最高三个数量级，同时在多类时序基准上达到 state-of-the-art performance。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>arXiv 摘要报告这些方法把 NCDE 每步训练时间降低最高三个数量级，同时在多类时序基准上达到 state-of-the-art performance。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>这是博士论文体量的综合工作，落到聚变高频诊断还需要重新评估插值、噪声、事件密度和多通道异步耦合；闭式/线性结构若过强，可能削弱非平稳前兆表达。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 今天首读。它提供了“真实 Δt + 连续时间 + 可扩展训练”的主线，比单纯增加上下文长度更贴近不规则时序问题本身。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有不规则时序/聚变诊断数据上对比 GRU-D、Transformer patch、Mamba/SSM、NCDE、Linear NCDE，固定显存预算下报告 AUC、提前量、训练吞吐和对采样率扰动的鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>TSFM break-even：什么时候时序基础模型真的值得部署</h3>
+              <p class="paper__subtitle">When Do Foundation Models Pay Off? A Break-Even Analysis of Pretrained Time Series Forecasters</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-06。它不提出新 backbone，而是给出 TSFM 相对 XGBoost/ARIMA/ETS 的部署决策边界，对避免盲目上大模型很有用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Nicholas Tan Jerome, Frank Simon</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.04919" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/nicolaisi/fm-breakeven" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.04919" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-06。它不提出新 backbone，而是给出 TSFM 相对 XGBoost/ARIMA/ETS 的部署决策边界，对避免盲目上大模型很有用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>近几周简报连续出现 TiRex-2、Olivia、STOIC 等 TSFM。真正落到聚变诊断时，GPU 成本、数据量、季节性/周期性和短序列微调风险会决定是否值得使用基础模型。
+从本日报的选取理由看，新增 / arXiv 2026-07-06。它不提出新 backbone，而是给出 TSFM 相对 XGBoost/ARIMA/ETS 的部署决策边界，对避免盲目上大模型很有用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在不同训练样本量、季节性强度和数据集特征下，预训练时序模型相对经典模型何时能抵消基础设施和工程成本？
+对当前主题的关键意义在于：最小实验是为每个诊断任务计算训练样本量、周期性/频谱特征和经典模型基线，在 5-10% pilot 上决定是否进入 TSFM 微调。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/9bc7d8d033dd4898.png" alt="Figure 1: Scaling curves across all 30 datasets. Dashed horizontal line : best FM zero-shot MASE (fixed, independent of task data). Solid red line with diamonds : best FM LoRA fine-tuned MASE (mean over 3 seeds); shaded band = ± \pm 1 standard deviation across seeds. Coloured lines : classical methods (XGBoost, ETS, ARIMA, Naive). Vertical dashed line : break-even point n ∗ n^{*} . Break-even ranges from 21 samples (FRED-MD) to 8,361 samples (ETTm2); 15 datasets show no break-even (FM-dominant). Border colour encodes category: blue = FM-dominant, red = Early ( ≤ \leq 5%), purple = Mid (10%), green = Late ( ≥ \geq 20%).">
+                    <figcaption>Figure 1: Scaling curves across all 30 datasets. Dashed horizontal line : best FM zero-shot MASE (fixed, independent of task data). Solid red line with diamonds : best FM LoRA fine...</figcaption>
+                  </figure>
+                  <p>论文在 30 个 benchmark 数据集上比较 Chronos、Moirai、Lag-Llama 的 zero-shot/LoRA fine-tuning 与 Naive、ETS、ARIMA、XGBoost，并提出两步决策框架：先看训练长度和季节性，必要时再用 5-10% 数据做 pilot。
+阅读时需要把方法设计与主要结果一起看：摘要显示 15/30 数据集上 FM 在所有训练比例都优于经典方法；6 个数据集上经典方法只用 2% 训练数据即可超过 zero-shot FM；当 n_train < 700 且季节性非弱时，zero-shot FM 往往值得优先试用；LoRA 在短序列上可能退化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要显示 15/30 数据集上 FM 在所有训练比例都优于经典方法；6 个数据集上经典方法只用 2% 训练数据即可超过 zero-shot FM；当 n_train < 700 且季节性非弱时，zero-shot FM 往往值得优先试用；LoRA 在短序列上可能退化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是 forecasting，不覆盖异常/破裂预测；聚变数据的物理 regime shift 不能仅由样本量和季节性判断。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合做工程决策尺子：先证明 TSFM 在你的数据量和采样结构下跨过 break-even，再投入大规模训练。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是为每个诊断任务计算训练样本量、周期性/频谱特征和经典模型基线，在 5-10% pilot 上决定是否进入 TSFM 微调。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断</p>
+              <h3>ADITYA-U MHD Equilibrium：面向实时控制的 tokamak surrogate</h3>
+              <p class="paper__subtitle">Deep Learning Models for ADITYA-U MHD Equilibrium</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-06。它用 100,760 个 free-boundary equilibrium 合成样本和 766 个 ADITYA-U 放电脉冲输入，预测标量 equilibrium、1D safety factor profile、2D poloidal flux，并做 PF coil inverse model；是今天最直接的聚变 AI 条目。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Udaya Maurya, Suman Aich, Indranil Bandyopadhyay, Daniel Raju</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.04865" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.04865" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.04865" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-06。它用 100,760 个 free-boundary equilibrium 合成样本和 766 个 ADITYA-U 放电脉冲输入，预测标量 equilibrium、1D safety factor profile、2D poloidal flux，并做 PF coil inverse model；是今天最直接的聚变 AI 条目。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测之外，实时 equilibrium 估计是聚变控制链路的关键状态输入。若 equilibrium surrogate 能稳定输出 q profile、poloidal flux 和 PF coil 反解，就能为控制、诊断解释和破裂前态建模提供物理中间变量。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用合成 free-boundary Grad-Shafranov 数据和真实放电输入训练深度模型，快速预测 ADITYA-U 的 equilibrium 参数、1D/2D profiles，并反推线圈电流？
+对当前主题的关键意义在于：最小实验是把 equilibrium surrogate 输出作为 disruption / MHD 前兆模型的中间物理特征，验证是否提升跨 shot 和跨工况泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ea24fce8af47c6b7.png" alt="Figure 4 : Probability density distributions of experimentally measured β p \beta_{p} values from 39 discharges and model-generated β p \beta_{p} values for the 766-shot dataset. The density curves are normalized to maximum value 1 for visual comparison.">
+                    <figcaption>Figure 4 : Probability density distributions of experimentally measured β p \beta_{p} values from 39 discharges and model-generated β p \beta_{p} values for the 766-shot dataset. T...</figcaption>
+                  </figure>
+                  <p>论文基于 pyIPREQ Grad-Shafranov solver 生成 100,760 个合成 equilibrium case，输入来自 766 个 ADITYA-U plasma discharges；比较 Dense NN、PCA reduced-order models、1D/2D CNN、带 Grad-Shafranov residual 的 PINN，并加入 PF coil current inverse model。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告模型可在数据覆盖的 operational domain 内准确估计关键 equilibrium 参数和 profiles，为实时控制、快速 equilibrium 分析和实验规划提供计算高效替代。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>数据限制在 ADITYA-U circular limiter flat-top 附近，尚非跨装置、非破裂动态预测；合成 equilibrium 分布外泛化要谨慎。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>建议作为聚变主题的直接新增阅读，重点看数据构造、物理残差、profile 输出和 inverse control 接口。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把 equilibrium surrogate 输出作为 disruption / MHD 前兆模型的中间物理特征，验证是否提升跨 shot 和跨工况泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断</p>
+              <h3>本轮空缺判断：直接可见光图像 + 诊断时序破裂预测新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*本轮空缺判断*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-07-08 检索截止前</p>
+          <p>论文链接：[arXiv plasma search](https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term=tokamak+disruption+vision+multimodal&terms-0-field=all&classification-physics_archives=physics.plasm-ph&classification-include_cross_list=include&date-filter_by=date_range&date-from_date=2026-07-06&date-to_date=2026-07-08&date-date_type=submitted_date)</p>
+          <p>选取理由：本轮空缺判断。检索 tokamak disruption prediction、visible diagnostics、video + 0D parameters、plasma diagnostics multimodal fusion 等组合后，没有发现 2026-07-06 UTC 批次中可替代 2026-07-07 已收录 KSTAR IVIS + 0D 或跨装置 ELM 预测的新增直接论文。</p>
+          <p>研究背景：P3 的直接基线仍应以前一日收录的 KSTAR IVIS + 0D 破裂预测和 Communications Physics 跨装置 ELM 预测为核心，不应把普通医学/自动驾驶多模态论文伪装成 tokamak 直接新增。</p>
+          <p>核心问题：本轮是否有直接同时满足可见光图像、诊断时序、破裂预测、实时预警和跨装置评估的新增高质量论文？</p>
+          <p>方法与关键创新：不适用；本条仅记录检索空缺，避免凑数。</p>
+          <p>主要结果：新增直接论文空缺；可迁移机制在 P3 附加区从 ReCal3R 和 FUSE 中提取。</p>
+          <p>局限性：会议/期刊页可能存在未被 arXiv/API 抓到的在线优先文章，后续仍需监测 ScienceDirect、AIP、Nature、IEEE 和装置团队主页。</p>
+          <p>总结：P3 今天不替换直接基线，只补机制。</p>
+          <p>研究相关性：继续沿用 2026-07-07 的直接论文作为复现实验起点。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>P1-1. Advances in NCDE：真实 Δt 与高低频统一的连续时间底座</h3>
+              <p class="paper__subtitle">Advances in Neural Controlled Differential Equations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用领域是通用不规则/连续时间序列建模；可迁移模块是 Log-NCDE、Linear NCDE、Structured Linear NCDE。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Benjamin Walker</p>
+                <p class="muted">University of Oxford</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05280" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.05280" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用领域是通用不规则/连续时间序列建模；可迁移模块是 Log-NCDE、Linear NCDE、Structured Linear NCDE。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 需要同时处理常规稀疏不规则观测和聚变高频海量点，核心不是把所有通道重采样到同一频率，而是保留真实时间路径。
+从本日报的选取理由看，【P1】原始应用领域是通用不规则/连续时间序列建模；可迁移模块是 Log-NCDE、Linear NCDE、Structured Linear NCDE。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>连续时间模型能否在保留真实 Δt 的同时避免 NCDE 顺序求解过慢？
+对当前主题的关键意义在于：对应待解决问题是真实 Δt、缺失机制和高低频异步耦合。预期计算/显存影响是以 ODE 求解或闭式线性更新替代长注意力，显存随隐藏状态而非原始 token 数增长。主要风险是线性化后无法表达强非线性 MHD 前兆。最小验证实验是在同一数据切分上比较 NCDE/Linear NCDE 与 Mamba/Transformer 的显存、吞吐、AUC 和采样率扰动鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Log-ODE 近似、线性向量场闭式解、结构化线性向量场提供可并行训练和更低计算成本。
+阅读时需要把方法设计与主要结果一起看：摘要报告训练时间最高降低三个数量级，并在多类时序基准达到 SOTA。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告训练时间最高降低三个数量级，并在多类时序基准达到 SOTA。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>聚变数据的强噪声、极端过采样和非平稳破裂前兆仍需实证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是 P1 的核心机制候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是真实 Δt、缺失机制和高低频异步耦合。预期计算/显存影响是以 ODE 求解或闭式线性更新替代长注意力，显存随隐藏状态而非原始 token 数增长。主要风险是线性化后无法表达强非线性 MHD 前兆。最小验证实验是在同一数据切分上比较 NCDE/Linear NCDE 与 Mamba/Transformer 的显存、吞吐、AUC 和采样率扰动鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>P1-2. ReCal3R：可靠性校准的在线状态更新</h3>
+              <p class="paper__subtitle">ReCal3R: Reliability-Calibrated Learning Rates for Streaming 3D Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用领域是流式 3D 重建；可迁移模块是 compact recurrent state、state token reliability 和 token-wise update rate。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xinze Li 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05356" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.05356" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用领域是流式 3D 重建；可迁移模块是 compact recurrent state、state token reliability 和 token-wise update rate。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 的高频通道压缩后仍需和低频通道交互，关键是哪些历史状态值得保留、哪些新观测应弱更新。
+从本日报的选取理由看，【P1】原始应用领域是流式 3D 重建；可迁移模块是 compact recurrent state、state token reliability 和 token-wise update rate。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在 bounded memory 下如何防止噪声观测覆盖可靠历史？
+对当前主题的关键意义在于：对应待解决问题是高频压缩后与低频通道交互、streaming/online 和线性内存。预期计算/显存影响是增加轻量 reliability head，但避免保留全量历史 token。风险是可靠性指标学成数据质量而非物理前兆。最小实验是对高频诊断 patch 维护 recurrent state，按 reliability 控制更新，比较固定滑窗和全历史注意力。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5bdd34c0e438bfc5.png" alt="Figure 7: Additional qualitative results on DL3DV. The visualizations are produced directly from uninterrupted streaming inference over the full sequence, without applying any state reset or sequence-wise reinitialization.">
+                    <figcaption>Figure 7: Additional qualitative results on DL3DV. The visualizations are produced directly from uninterrupted streaming inference over the full sequence, without applying any stat...</figcaption>
+                  </figure>
+                  <p>用可靠性估计校准候选学习率，抑制不可靠 token 的激进更新。
+阅读时需要把方法设计与主要结果一起看：摘要报告 ATE 降低 3.7 倍，且运行时间和显存相近。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 ATE 降低 3.7 倍，且运行时间和显存相近。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>视觉几何可靠性不能直接等价于诊断物理可靠性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为高频压缩后状态维护策略。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是高频压缩后与低频通道交互、streaming/online 和线性内存。预期计算/显存影响是增加轻量 reliability head，但避免保留全量历史 token。风险是可靠性指标学成数据质量而非物理前兆。最小实验是对高频诊断 patch 维护 recurrent state，按 reliability 控制更新，比较固定滑窗和全历史注意力。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>P2-1. E-TraMamba：原生事件长序列 encoder</h3>
+              <p class="paper__subtitle">E-TraMamba: A New Paradigm for Efficient Long-Term 3D Feature Tracking with Event Cameras</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-03</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用领域是 event-based 3D tracking；可迁移模块是 Mamba/SSM event encoder、affine transform predictor、多尺度事件线索融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Juwei Shen, Yujie Wu, Changwen Chen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.02866" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.02866" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用领域是 event-based 3D tracking；可迁移模块是 Mamba/SSM event encoder、affine transform predictor、多尺度事件线索融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别需要避免把事件流简单转成固定帧，否则会丢掉异步和低延迟优势。
+从本日报的选取理由看，【P2】原始应用领域是 event-based 3D tracking；可迁移模块是 Mamba/SSM event encoder、affine transform predictor、多尺度事件线索融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>稀疏噪声事件流中如何线性复杂度建模长程依赖？
+对当前主题的关键意义在于：对应待解决问题是原生异步事件表征、事件稀疏/噪声和固定长度采样缺陷。预期计算/显存影响是从二次注意力降到线性 SSM 更新。风险是 3D tracking 学到的几何动态不直接支持衣着/情绪属性。最小实验是替换事件 encoder，保持 RGB 和 loss 不变，做弱光、运动模糊、事件缺失分组评估。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>用线性状态空间模型处理事件长序列，并融合局部时空 patch、correlation map 和位置嵌入。
+阅读时需要把方法设计与主要结果一起看：摘要报告特征寿命超过 2 倍，并提升 tracked-feature ratio。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告特征寿命超过 2 倍，并提升 tracked-feature ratio。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>跟踪任务与属性语义不一致，需补属性级监督。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>最适合作为 TriPro/EventPAR 的事件分支替代候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是原生异步事件表征、事件稀疏/噪声和固定长度采样缺陷。预期计算/显存影响是从二次注意力降到线性 SSM 更新。风险是 3D tracking 学到的几何动态不直接支持衣着/情绪属性。最小实验是替换事件 encoder，保持 RGB 和 loss 不变，做弱光、运动模糊、事件缺失分组评估。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>P2-2. 仿生 event-driven motion detection：轻量事件质量与运动先验</h3>
+              <p class="paper__subtitle">An event-driven framework for fly-inspired visual motion detection</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用领域是事件相机运动方向检测；可迁移模块是 time-surface encoding、仿生 feed-forward motion circuit、bottom-up attention。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qinbing Fu, Jingyu Huang, Yan Xie, Jigen Peng, Yuchao Tang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05205" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.05205" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用领域是事件相机运动方向检测；可迁移模块是 time-surface encoding、仿生 feed-forward motion circuit、bottom-up attention。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>属性识别不总需要重型事件模型，尤其在边缘部署或样本少时，轻量事件先验可能更稳。
+从本日报的选取理由看，【P2】原始应用领域是事件相机运动方向检测；可迁移模块是 time-surface encoding、仿生 feed-forward motion circuit、bottom-up attention。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在低光和背景运动噪声下提取可解释前景运动线索？
+对当前主题的关键意义在于：对应待解决问题是事件噪声、弱光和按样本/区域动态加权。预期计算/显存影响很低，适合前端预处理。风险是 hand-crafted/仿生先验对复杂行人属性过弱。最小实验是把 motion saliency 加到属性分支 attention map，比较动态属性和模糊样本收益。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d6a5bac776adbdb7.png" alt="Figure 2: Overview of the proposed computational framework. Panel A: The input ON/OFF event streams are first encoded into HATS representations. Panel B: The two polarity-specific time surfaces are fed into a fly optic-lobe-inspired neural network to extract directional motion signals from the foreground moving target, producing motion responses that indicate both motion direction and magnitude. A saliency map is further generated through a bottom-up attention model, which produces a binary mask centered on the estimated visual centroid to suppress isolated background noise and irrelevant motion responses.">
+                    <figcaption>Figure 2: Overview of the proposed computational framework. Panel A: The input ON/OFF event streams are first encoded into HATS representations. Panel B: The two polarity-specific ...</figcaption>
+                  </figure>
+                  <p>time-surface 前端编码异步事件，仿生 optic-lobe 网络估计运动方向，bottom-up attention 抑制背景运动。
+阅读时需要把方法设计与主要结果一起看：摘要显示真实地面车辆数据上验证了低延迟、低功耗和可解释性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要显示真实地面车辆数据上验证了低延迟、低功耗和可解释性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不处理开放词表属性，也不建模 RGB/Event 语义对齐。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为属性级动态权重或事件质量评分模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是事件噪声、弱光和按样本/区域动态加权。预期计算/显存影响很低，适合前端预处理。风险是 hand-crafted/仿生先验对复杂行人属性过弱。最小实验是把 motion saliency 加到属性分支 attention map，比较动态属性和模糊样本收益。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>P3-1. FUSE：从二分类风险到可校准多模态后验</h3>
+              <p class="paper__subtitle">FUSE: FK-Steered Multi-Modal Flow Matching for Efficient Simulation-Based Posterior Estimation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用领域是 scientific simulation-based inference；可迁移模块是 dual-track multimodal architecture 和 FK-steered sampling。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Weichen Qin 等</p>
+                <p class="muted">ICML 2026</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05252" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.05252" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用领域是 scientific simulation-based inference；可迁移模块是 dual-track multimodal architecture 和 FK-steered sampling。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测需要知道风险和不确定性，而不只是输出一个硬标签。
+从本日报的选取理由看，【P3】原始应用领域是 scientific simulation-based inference；可迁移模块是 dual-track multimodal architecture 和 FK-steered sampling。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>图像和诊断时序融合后能否输出可校准的前兆状态后验？
+对当前主题的关键意义在于：对应待解决问题是异步多模态融合、uncertainty 和早期预警。预期计算/显存影响高于普通分类头，但可用采样步数和低维后验变量控制。风险是后验目标定义不清导致训练不稳定。最小实验是把现有 video+0D 模型改成风险时间分布预测，比较 ECE、Brier score、提前量和误报率。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ccd44e61df159c1d.png" alt="Figure 1 : Pipeline of FUSE. (a) FUSE’s Architecture. The architecture employs an independent embedding interface to map heterogeneous inputs into a shared space, followed by an MM-DiT-based fusion module for multimodal integration. Finally, the posterior predictor estimates the denoising velocity based on refined, parameter-wise token representations. (b) FK-Steered Inference. We steer the FUSE sampling process via a guidance mechanism that operates throughout the entire generative trajectory. By leveraging the log-likelihood from the simulator and the prior density of the parameters, the framework dynamically evaluates and rectifies the generative flow.">
+                    <figcaption>Figure 1 : Pipeline of FUSE. (a) FUSE’s Architecture. The architecture employs an independent embedding interface to map heterogeneous inputs into a shared space, followed by an MM...</figcaption>
+                  </figure>
+                  <p>双轨保留模态差异，用中间 likelihood steering 改善后验采样。
+阅读时需要把方法设计与主要结果一起看：摘要报告后验接近 MCMC，并解决 exoplanet orbital estimation 中的复杂退化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告后验接近 MCMC，并解决 exoplanet orbital estimation 中的复杂退化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要为 tokamak 定义可计算 likelihood 或物理一致性 steering。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为 P3 从分类走向后验风险估计的机制启发。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是异步多模态融合、uncertainty 和早期预警。预期计算/显存影响高于普通分类头，但可用采样步数和低维后验变量控制。风险是后验目标定义不清导致训练不稳定。最小实验是把现有 video+0D 模型改成风险时间分布预测，比较 ECE、Brier score、提前量和误报率。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>P3-2. ReCal3R：低延迟视觉状态的可靠性更新</h3>
+              <p class="paper__subtitle">ReCal3R: Reliability-Calibrated Learning Rates for Streaming 3D Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用领域是流式视觉重建；可迁移模块是可靠性校准更新和 compact recurrent scene state。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xinze Li 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05356" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.05356" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用领域是流式视觉重建；可迁移模块是可靠性校准更新和 compact recurrent scene state。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 的可见光视频可能包含无关视觉变化、遮挡、火花和视角差异，必须抑制无关视觉信息污染风险状态。
+从本日报的选取理由看，【P3】原始应用领域是流式视觉重建；可迁移模块是可靠性校准更新和 compact recurrent scene state。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>实时融合中如何决定视觉状态何时更新、更新多少？
+对当前主题的关键意义在于：对应待解决问题是低延迟、低显存部署和抑制无关视觉信息。预期计算/显存影响是轻量 reliability gate 换取更短缓存。风险是可靠性估计忽略物理重要但视觉不稳定的前兆。最小实验是在 KSTAR/EAST 可见光视频上比较固定帧采样、滑窗 Transformer、可靠性 recurrent state 的提前量和误报。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5bdd34c0e438bfc5.png" alt="Figure 7: Additional qualitative results on DL3DV. The visualizations are produced directly from uninterrupted streaming inference over the full sequence, without applying any state reset or sequence-wise reinitialization.">
+                    <figcaption>Figure 7: Additional qualitative results on DL3DV. The visualizations are produced directly from uninterrupted streaming inference over the full sequence, without applying any stat...</figcaption>
+                  </figure>
+                  <p>根据 token alignment、重建残差和更新压力估计候选更新，再用状态可靠性校准。
+阅读时需要把方法设计与主要结果一起看：摘要报告长序列重建显著改善且成本相近。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告长序列重建显著改善且成本相近。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>几何重建目标与破裂前兆目标不同。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为 P3 视觉分支的低延迟记忆机制。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应待解决问题是低延迟、低显存部署和抑制无关视觉信息。预期计算/显存影响是轻量 reliability gate 换取更短缓存。风险是可靠性估计忽略物理重要但视觉不稳定的前兆。最小实验是在 KSTAR/EAST 可见光视频上比较固定帧采样、滑窗 Transformer、可靠性 recurrent state 的提前量和误报。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>多模态学习 / 科学 AI</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 科学 AI</p>
+              <h3>FUSE：ICML 2026 科学多模态后验估计</h3>
+              <p class="paper__subtitle">FUSE: FK-Steered Multi-Modal Flow Matching for Efficient Simulation-Based Posterior Estimation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06；ICML 2026 accepted</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-06，ICML 2026。FUSE 用 dual-track architecture 保留多模态输入差异，再用 Feynman-Kac steered sampling 引导生成轨迹；比简单拼接/相加更适合科学诊断参数与观测之间的异质融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Weichen Qin, Yufan Xie, Peihao Wang, Chia-Jui Chou, Minghui Du, Peng Xu, Ziren Luo, Yi Yang, Jingyi Yu, Bo Liang, Jiakai Zhang</p>
+                <p class="muted">ICML 2026</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05252" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.05252" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.05252" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-06，ICML 2026。FUSE 用 dual-track architecture 保留多模态输入差异，再用 Feynman-Kac steered sampling 引导生成轨迹；比简单拼接/相加更适合科学诊断参数与观测之间的异质融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变预测和控制常需要从模拟、诊断参数、图像/场分布中反推隐变量或状态后验。简单 late fusion 容易忽视参数、观测和物理约束的结构差异。
+从本日报的选取理由看，新增 / arXiv 2026-07-06，ICML 2026。FUSE 用 dual-track architecture 保留多模态输入差异，再用 Feynman-Kac steered sampling 引导生成轨迹；比简单拼接/相加更适合科学诊断参数与观测之间的异质融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在 SBI 中同时建模多模态输入结构差异和复杂后验退化，并提升生成式后验估计的采样质量？
+对当前主题的关键意义在于：最小实验是把 disruption 模型从二分类扩展为前兆状态/风险时间的后验估计，用诊断时序和图像 token 双轨编码，再比较 calibration、提前量和风险置信区间。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ccd44e61df159c1d.png" alt="Figure 1 : Pipeline of FUSE. (a) FUSE’s Architecture. The architecture employs an independent embedding interface to map heterogeneous inputs into a shared space, followed by an MM-DiT-based fusion module for multimodal integration. Finally, the posterior predictor estimates the denoising velocity based on refined, parameter-wise token representations. (b) FK-Steered Inference. We steer the FUSE sampling process via a guidance mechanism that operates throughout the entire generative trajectory. By leveraging the log-likelihood from the simulator and the prior density of the parameters, the framework dynamically evaluates and rectifies the generative flow.">
+                    <figcaption>Figure 1 : Pipeline of FUSE. (a) FUSE’s Architecture. The architecture employs an independent embedding interface to map heterogeneous inputs into a shared space, followed by an MM...</figcaption>
+                  </figure>
+                  <p>FUSE 使用 dual-track architecture 保留不同模态特征并促成动态交互；推理时用 Feynman-Kac steered sampling，根据中间 observation likelihood 引导 flow matching 生成轨迹。
+阅读时需要把方法设计与主要结果一起看：摘要报告 FUSE 在标准 SBI benchmarks 上超过 SOTA baseline，后验接近 ground-truth MCMC，并在 exoplanet orbital estimation 中解决复杂参数退化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 FUSE 在标准 SBI benchmarks 上超过 SOTA baseline，后验接近 ground-truth MCMC，并在 exoplanet orbital estimation 中解决复杂参数退化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始应用是 SBI/天体物理，不是 tokamak；需要把 likelihood 或 steering signal 改成聚变可计算的物理一致性或诊断观测一致性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇对 P3 的价值在于“融合后输出不只是分类分数，而是可校准后验”。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把 disruption 模型从二分类扩展为前兆状态/风险时间的后验估计，用诊断时序和图像 token 双轨编码，再比较 calibration、提前量和风险置信区间。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. P1 今天的关键词是“连续时间 + 可扩展”</h3>
+          <p>- NCDE 路线提醒我们，不规则时序不是简单补齐缺失值；若能把真实观测路径作为驱动，同时通过线性/结构化形式降低成本，就比盲目长上下文更适合高低频统一建模。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 事件相机方向从“帧化”继续转向原生序列</h3>
+          <p>- E-TraMamba 和仿生 motion detection 都强调原生事件的异步、稀疏和低延迟特性。P2 后续应把 EventPAR 作为任务基准，把 E-TraMamba 类 encoder 作为可验证替换模块。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 聚变新增不是破裂预测，但仍有控制链价值</h3>
+          <p>- ADITYA-U equilibrium surrogate 不能替代 disruption prediction，但能为控制、状态估计和物理中间变量建模提供直接参考。</p>
+        </article>
+        <article class="trend">
+          <h3>4. P3 直接新稿空缺，机制不空缺</h3>
+          <p>- 今天没有新的可见光 + 诊断时序 tokamak disruption 直接论文；可迁移机制主要来自 FUSE 的后验估计和 ReCal3R 的视觉状态可靠性更新。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
