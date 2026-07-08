@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-09</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-09 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-09 06:10:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇值得进入主推荐的新增论文。最直接命中聚变主线的是 Hierarchical Multi-to-Single-Modal Knowledge Distillation for Disruption Prediction in EAST，它在训练期利用可见光图像和诊断时序，推理期只保留时序学生模型，明确对应低延迟破裂预测。Machine-Learning-Enabled Full-State Reconstruction of Fusion Plasmas from Minimal Sensor Measurements 则给出从少量传感器历史重建全域等离子体状态的数字孪生路线。时序侧，Exogenous Dropout 和 Drift Happens 分别提供模态/协变量缺失鲁棒训练与时间分布漂移评估。P2 方向新增 EeveeDark，它把 RAW 帧与事件流做传感器级融合，并用事件引导 skip gating 做低光视频增强，适合迁移到 RGB-Event 属性识别的动态可靠性建模。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">RGB-Event / 多模态视觉 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-3">03 EeveeDark：事件引导的低光视频传感器级融合</a></li>
+              <li><a href="#paper-4">04 OmniFocus：查询引导的多模态 token 压缩</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 Exogenous Dropout：协变量缺失、错位和噪声下的强时序基线</a></li>
+              <li><a href="#paper-2">02 Drift Happens：时间分布漂移下架构归纳偏置的实证审计</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变 / 等离子体控制 / 诊断 / 预测</a>
+            <ul>
+              <li><a href="#paper-5">05 EAST 多模态蒸馏：训练用可见光 + 时序，推理只用时序</a></li>
+              <li><a href="#paper-6">06 Fusion full-state reconstruction：少量传感器到全域等离子体状态</a></li>
+              <li><a href="#paper-7">07 本轮未收录直接新增论文：跨装置可见光破裂预测与 RGB-Event 属性基准空缺</a></li>
+              <li><a href="#paper-8">08 P1：不规则时序与聚变高低频统一建模</a></li>
+              <li><a href="#paper-9">09 P2：RGB-Event 属性识别</a></li>
+              <li><a href="#paper-10">10 P3：可见光图像与诊断时序融合的破裂预测</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">EAST 多模态蒸馏：训练用可见光 + 时序，推理只用时序</a></h3>
+              <p class="card__subtitle">Hierarchical Multi-to-Single-Modal Knowledge Distillation for Disruption Prediction in EAST</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 等离子体控制 / 诊断 / 预测</span>
+                <span class="chip chip--muted">2026-07-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-05。它直接命中 P3：用 EAST 同步多模态数据训练可见光图像 + 时序 teacher，再把图结构、表示和决策知识蒸馏到时序 student，降低推理成本而保留多模态判别优势。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">Fusion full-state reconstruction：少量传感器到全域等离子体状态</a></h3>
+              <p class="card__subtitle">Machine-Learning-Enabled Full-State Reconstruction of Fusion Plasmas from Minimal Sensor Measurements</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 等离子体控制 / 诊断 / 预测</span>
+                <span class="chip chip--muted">2026-07-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-05。论文把稀疏传感器历史做 temporal encoding，再 spatial decoding 成完整 plasma-field maps；对诊断增强、实时状态估计和数据驱动数字孪生很直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">Exogenous Dropout：协变量缺失、错位和噪声下的强时序基线</a></h3>
+              <p class="card__subtitle">Exogenous Dropout: A Simple, Strong Baseline for Corruption-Robust Time Series Forecasting with Covariates</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-05。它不靠新架构，而是在训练期随机置零整条外生通道，让 forecasting 模型在协变量噪声、时间错位、整通道缺失下保持鲁棒；对 P1 的异步/缺失诊断通道很实用。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">EeveeDark：事件引导的低光视频传感器级融合</a></h3>
+              <p class="card__subtitle">EeveeDark: A Binary Neural Framework for Low-Light Video Enhancement via Event-Guided Sensor-Level Fusion</p>
+              <div class="chip-row">
+                <span class="chip">RGB-Event / 多模态视觉 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-07。它用 RAW 帧和 event stream 的 modality-specific binary encoders、轻量 fusion block 与 event-guided skip gating，在极低光条件下做高效视频增强；对 P2 的弱光、运动模糊和事件可靠性建模最相关。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">OmniFocus：查询引导的多模态 token 压缩</a></h3>
+              <p class="card__subtitle">OmniFocus: Query-Guided Modality-Balanced Token Compression for Omni-Modal Large Language Models</p>
+              <div class="chip-row">
+                <span class="chip">RGB-Event / 多模态视觉 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-03</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>近几日新增 / arXiv 2026-07-03，今日补录。它分别估计音频和视频重要性，在 25% token retention 下保持较强性能并提升 prefill；对 P3 的实时图像/时序证据筛选和 P2 的事件 token 剪枝有工程启发。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>RGB-Event / 多模态视觉 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">RGB-Event / 多模态视觉 / 图像与计算机视觉</p>
+              <h3>EeveeDark：事件引导的低光视频传感器级融合</h3>
+              <p class="paper__subtitle">EeveeDark: A Binary Neural Framework for Low-Light Video Enhancement via Event-Guided Sensor-Level Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-07。它用 RAW 帧和 event stream 的 modality-specific binary encoders、轻量 fusion block 与 event-guided skip gating，在极低光条件下做高效视频增强；对 P2 的弱光、运动模糊和事件可靠性建模最相关。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Onur Eker, Erkut Erdem, Aykut Erdem</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.06217" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.06217" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.06217" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-07。它用 RAW 帧和 event stream 的 modality-specific binary encoders、轻量 fusion block 与 event-guided skip gating，在极低光条件下做高效视频增强；对 P2 的弱光、运动模糊和事件可靠性建模最相关。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 的 RGB-Event 属性识别常遇到弱光、运动模糊、事件稀疏和噪声。若只做固定窗口事件帧或 RGB/Event 特征相加，很难按区域和时刻判断哪种模态更可信。
+从本日报的选取理由看，新增 / arXiv 2026-07-07。它用 RAW 帧和 event stream 的 modality-specific binary encoders、轻量 fusion block 与 event-guided skip gating，在极低光条件下做高效视频增强；对 P2 的弱光、运动模糊和事件可靠性建模最相关。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在极低光视频增强中同时利用 RAW 帧的空间纹理和事件流的高时间精度，并保持资源受限设备上的计算效率？
+对当前主题的关键意义在于：最小实验是在 TriPro-ReID 或 EventPAR 管线上，把固定事件帧分支替换为轻量事件 encoder + event-guided gating，比较弱光/模糊/事件稀疏子集上的 mA、F1 和单属性不确定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8ea7955ac82707e6.png" alt="Figure 1: Comparison with state-of-the-art models. PSNR versus computational complexity is shown, with circle sizes indicating parameter count (millions). EeveeDark outperforms prior BNN methods BBCU and BRVE by a significant margin, and offers a favorable performance-efficiency trade-off against full-precision models, ShiftNet, FloRNN, and EvLight.">
+                    <figcaption>Figure 1: Comparison with state-of-the-art models. PSNR versus computational complexity is shown, with circle sizes indicating parameter count (millions). EeveeDark outperforms pri...</figcaption>
+                  </figure>
+                  <p>EeveeDark 使用 Binary Neural Network，量化权重和激活降低计算开销；设计 RAW 与事件的 modality-specific binary encoders、轻量 fusion block，以及 event-guided skip gating，用事件动态引导时空细节恢复。
+阅读时需要把方法设计与主要结果一起看：摘要报告模型在 synthetic 和 real-world datasets 上优于 prior BNN-based methods，并相对全精度模型取得更好的性能/效率折中。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告模型在 synthetic 和 real-world datasets 上优于 prior BNN-based methods，并相对全精度模型取得更好的性能/效率折中。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是低光增强，不是属性识别或 ReID；属性语义监督、开放词表标签和模态缺失训练还需要另行设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 今天最值得看的不是最终增强指标，而是“事件引导跳连门控”如何变成属性识别中的区域/属性级可靠性权重。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro-ReID 或 EventPAR 管线上，把固定事件帧分支替换为轻量事件 encoder + event-guided gating，比较弱光/模糊/事件稀疏子集上的 mA、F1 和单属性不确定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">RGB-Event / 多模态视觉 / 图像与计算机视觉</p>
+              <h3>OmniFocus：查询引导的多模态 token 压缩</h3>
+              <p class="paper__subtitle">OmniFocus: Query-Guided Modality-Balanced Token Compression for Omni-Modal Large Language Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-03</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">近几日新增 / arXiv 2026-07-03，今日补录。它分别估计音频和视频重要性，在 25% token retention 下保持较强性能并提升 prefill；对 P3 的实时图像/时序证据筛选和 P2 的事件 token 剪枝有工程启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shijie Cao, Qingyu Zhang, Boxi Yu, Yuzhong Zhang, Boxi Cao, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.03050" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.03050" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.03050" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>近几日新增 / arXiv 2026-07-03，今日补录。它分别估计音频和视频重要性，在 25% token retention 下保持较强性能并提升 prefill；对 P3 的实时图像/时序证据筛选和 P2 的事件 token 剪枝有工程启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态大模型和诊断融合模型的瓶颈不只是准确率，也包括长视频、事件流或多通道时序带来的 token 数量。简单统一压缩容易让高频稀疏模态被低频密集模态淹没。
+从本日报的选取理由看，近几日新增 / arXiv 2026-07-03，今日补录。它分别估计音频和视频重要性，在 25% token retention 下保持较强性能并提升 prefill；对 P3 的实时图像/时序证据筛选和 P2 的事件 token 剪枝有工程启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在输入查询给定时，如何压缩长音视频 token，同时保留各模态自己的 salient evidence 和跨模态对齐？
+对当前主题的关键意义在于：最小实验是在多模态破裂预测中加入 task query，对图像 patch、事件 token 和诊断窗口分别估计重要性，在 25%/50% retention 下比较 AUC、提前量、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c3b0423603291c8a.png" alt="Table 4: Ablation study on Qwen2.5-Omni-7B. We report the effects of chunk relevance scoring, drop ratio allocation, and score transformation on DailyOmni under 35% and 25% token retention. The best result within each ablation group is highlighted in bold.">
+                    <figcaption>Table 4: Ablation study on Qwen2.5-Omni-7B. We report the effects of chunk relevance scoring, drop ratio allocation, and score transformation on DailyOmni under 35% and 25% token r...</figcaption>
+                  </figure>
+                  <p>OmniFocus 是 training-free 方法，对视频和音频分别做 query-guided importance estimation，再进行 modality-symmetric compression，显式缓解 unimodal-guided compression 的 modality bias。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 Qwen2.5-Omni 系列四个音视频 benchmark 上，低 token retention 仍能保持强性能；DailyOmni 上 25% token retention 保持 59.40 accuracy，并带来最高 1.38 倍 prefill speedup。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 Qwen2.5-Omni 系列四个音视频 benchmark 上，低 token retention 仍能保持强性能；DailyOmni 上 25% token retention 保持 59.40 accuracy，并带来最高 1.38 倍 prefill speedup。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>对象是音视频 OmniLLM，不是传感器诊断；query-guided 重要性估计在无自然语言查询的破裂预测中需要替换为风险 query 或 learnable task query。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为“模态均衡 token 压缩”的工程启发，特别是高频事件/诊断流与低频图像证据共同输入时。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在多模态破裂预测中加入 task query，对图像 patch、事件 token 和诊断窗口分别估计重要性，在 25%/50% retention 下比较 AUC、提前量、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Exogenous Dropout：协变量缺失、错位和噪声下的强时序基线</h3>
+              <p class="paper__subtitle">Exogenous Dropout: A Simple, Strong Baseline for Corruption-Robust Time Series Forecasting with Covariates</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-05。它不靠新架构，而是在训练期随机置零整条外生通道，让 forecasting 模型在协变量噪声、时间错位、整通道缺失下保持鲁棒；对 P1 的异步/缺失诊断通道很实用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hao Hu, Xue-shan Ai</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05452" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.05452" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.05452" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-05。它不靠新架构，而是在训练期随机置零整条外生通道，让 forecasting 模型在协变量噪声、时间错位、整通道缺失下保持鲁棒；对 P1 的异步/缺失诊断通道很实用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断时序通常由多套异步系统采集，某些外生量可能延迟、丢包、饱和或临时不可用。复杂融合结构如果默认所有协变量总是可信，在部署时会被缺失通道或时间错位拖垮。
+从本日报的选取理由看，新增 / arXiv 2026-07-05。它不靠新架构，而是在训练期随机置零整条外生通道，让 forecasting 模型在协变量噪声、时间错位、整通道缺失下保持鲁棒；对 P1 的异步/缺失诊断通道很实用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>是否必须设计带门控、残差 fallback 或专用 bounded fusion 的复杂结构，才能让使用外生协变量的时序预测模型对协变量腐蚀保持鲁棒？
+对当前主题的关键意义在于：可在现有聚变时序任务上按诊断通道做整通道 dropout、随机时间错位和缺失，比较 Transformer/Mamba/GRU-D 的 AUC、提前量、校准误差和低频/高频通道依赖变化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文提出 model-agnostic 的 exogenous dropout：训练时随机将整条外生通道置零，迫使模型同时学会使用协变量和回退到 endogenous backbone。作者还构造 BoundEx 作为强架构对照，包含可学习门控、内生残差和通道级 FiLM。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法在电价预测、水文和气象任务上能显著提升 Gaussian noise、temporal misalignment 和 fully missing channels 下的鲁棒性，同时保持 clean accuracy；在 dual-correlation network 上超过专门设计的 BoundEx。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法在电价预测、水文和气象任务上能显著提升 Gaussian noise、temporal misalignment 和 fully missing channels 下的鲁棒性，同时保持 clean accuracy；在 dual-correlation network 上超过专门设计的 BoundEx。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务仍是 forecasting，未直接覆盖不规则时间戳和分类式破裂预测；随机整通道置零若比例过高，可能压制本来关键但稀有的高频诊断。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为 P1 的“先跑基线”：在引入更复杂异步融合前，先验证简单通道 dropout 能否解决一大块模态缺失问题。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可在现有聚变时序任务上按诊断通道做整通道 dropout、随机时间错位和缺失，比较 Transformer/Mamba/GRU-D 的 AUC、提前量、校准误差和低频/高频通道依赖变化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Drift Happens：时间分布漂移下架构归纳偏置的实证审计</h3>
+              <p class="paper__subtitle">Drift Happens: An Empirical Study of Neural Architecture Robustness to Temporal Distribution Shift</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-07。它不只报告平均精度，而是用 temporal drift matrices 审计模型在过去/未来时间段之间的泛化，对跨装置、跨运行阶段的诊断模型选择很有用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Robin Holzinger, Riccardo Colletti</p>
+                <p class="muted">University of California, Berkeley</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05908" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.05908" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.05908" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-07。它不只报告平均精度，而是用 temporal drift matrices 审计模型在过去/未来时间段之间的泛化，对跨装置、跨运行阶段的诊断模型选择很有用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变实验的工况、壁条件、控制策略和传感器标定会随时间变化。一个在当前 shot 分布上很准的模型，可能只是抓住了局部高判别但短寿命的特征。
+从本日报的选取理由看，新增 / arXiv 2026-07-07。它不只报告平均精度，而是用 temporal drift matrices 审计模型在过去/未来时间段之间的泛化，对跨装置、跨运行阶段的诊断模型选择很有用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>不同神经网络架构及其归纳偏置，在真实时间演化导致的分布漂移下会表现出怎样的稳健性差异？
+对当前主题的关键意义在于：最小实验是按 shot 日期、campaign 或装置状态构建 drift matrix，比较 CNN/Transformer/Mamba/NCDE/TSFM 的近时、远时、跨装置性能退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e827bcb3f34bf297.png" alt="Figure 13: Cohort-mean Balanced MSE matrix M ¯ \bar{M} over the Amazon Reviews models. Cell ( i , j ) (i,j) is the mean across those models of the score from training through slice i i and evaluating on slice j j .">
+                    <figcaption>Figure 13: Cohort-mean Balanced MSE matrix M ¯ \bar{M} over the Amazon Reviews models. Cell ( i , j ) (i,j) is the mean across those models of the score from training through slice...</figcaption>
+                  </figure>
+                  <p>论文在图像分类、多标签文本分类和文本回归三个时间索引领域中，用累积历史训练、跨早晚时间段评估的 drift matrix 衡量 cross-temporal generalization，比较 MLP、CNN、RNN 和预训练 Transformer 编码器等模型族。
+阅读时需要把方法设计与主要结果一起看：摘要显示依赖局部强判别特征的模型 in-distribution accuracy 更高但漂移更快；预训练编码器依赖更粗粒度稳定表示，随时间退化更缓。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要显示依赖局部强判别特征的模型 in-distribution accuracy 更高但漂移更快；预训练编码器依赖更粗粒度稳定表示，随时间退化更缓。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>实验领域不是科学诊断，也没有直接处理真实连续时间采样；结论是经验性架构审计，不提供新的漂移修正算法。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合把“随机划分验证集”升级为“按时间和装置划分验证矩阵”，避免高估破裂预测或诊断代理模型的真实部署可靠性。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是按 shot 日期、campaign 或装置状态构建 drift matrix，比较 CNN/Transformer/Mamba/NCDE/TSFM 的近时、远时、跨装置性能退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断 / 预测</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>EAST 多模态蒸馏：训练用可见光 + 时序，推理只用时序</h3>
+              <p class="paper__subtitle">Hierarchical Multi-to-Single-Modal Knowledge Distillation for Disruption Prediction in EAST</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-05。它直接命中 P3：用 EAST 同步多模态数据训练可见光图像 + 时序 teacher，再把图结构、表示和决策知识蒸馏到时序 student，降低推理成本而保留多模态判别优势。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qiang Chen, Xiao Wang, Hao Si, Qingquan Yang, Meiwen Chen, Jianhua Yang, Xiaofeng Han, Yunhu Jia, Ran Chen, Liang Wang, Jin Tang, Guosheng Xu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.04241" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.04241" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.04241" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-05。它直接命中 P3：用 EAST 同步多模态数据训练可见光图像 + 时序 teacher，再把图结构、表示和决策知识蒸馏到时序 student，降低推理成本而保留多模态判别优势。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测需要利用可见光图像中的形变、局部亮化和辐射结构演化，但实时部署时图像分支通常带来更高计算和显存成本。KSTAR IVIS + 0D 已证明多模态有价值，下一步就是如何把视觉知识压进低延迟模型。
+从本日报的选取理由看，新增 / arXiv 2026-07-05。它直接命中 P3：用 EAST 同步多模态数据训练可见光图像 + 时序 teacher，再把图结构、表示和决策知识蒸馏到时序 student，降低推理成本而保留多模态判别优势。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不牺牲可见光图像带来的前兆判别信息的情况下，把多模态 teacher 的知识迁移到只依赖时序诊断的 student，从而降低 EAST 在线推理成本？
+对当前主题的关键意义在于：最小实验是复现 teacher-student 蒸馏框架，用现有可见光/诊断时序数据比较 multimodal teacher、time-series baseline、distilled student 的 AUC、提前量、延迟、显存和跨 shot 时间段泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0eaa8242ee85aca4.png" alt="Figure 3: Multimodal teacher–unimodal student framework and hierarchical knowledge distillation process for EAST disruption prediction. The upper part shows the multimodal teacher model, while the lower part shows the time-series student model. The student inherits the multimodal discriminative knowledge of the teacher through representation-level, decision-level, and structure-level distillation.">
+                    <figcaption>Figure 3: Multimodal teacher–unimodal student framework and hierarchical knowledge distillation process for EAST disruption prediction. The upper part shows the multimodal teacher ...</figcaption>
+                  </figure>
+                  <p>论文训练由 visible images 和 time-series signals 构成的 multimodal teacher，使用 Transformer-based encoders 和 prototype-guided spatiotemporal hypergraph module 学习破裂前兆；再通过 graph-structure-level、representation-level 和 decision-level distillation 迁移到 time-series student。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 640-discharge EAST synchronized multimodal dataset 上，student 能保留 multimodal learning 的判别优势，同时显著降低 inference cost；源码计划公开。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要未给出跨装置泛化结果；如果可见光 teacher 学到的是 EAST 特定视角或标定噪声，蒸馏到时序后可能固化装置偏差。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是 P3 今天首读。重点不是“多模态一定更强”，而是把视觉前兆蒸馏成可在线部署时序模型的路线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是复现 teacher-student 蒸馏框架，用现有可见光/诊断时序数据比较 multimodal teacher、time-series baseline、distilled student 的 AUC、提前量、延迟、显存和跨 shot 时间段泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>Fusion full-state reconstruction：少量传感器到全域等离子体状态</h3>
+              <p class="paper__subtitle">Machine-Learning-Enabled Full-State Reconstruction of Fusion Plasmas from Minimal Sensor Measurements</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-05。论文把稀疏传感器历史做 temporal encoding，再 spatial decoding 成完整 plasma-field maps；对诊断增强、实时状态估计和数据驱动数字孪生很直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Maryam Reza, Farbod Faraji</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.04390" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.04390" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.04390" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-05。论文把稀疏传感器历史做 temporal encoding，再 spatial decoding 成完整 plasma-field maps；对诊断增强、实时状态估计和数据驱动数字孪生很直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>反应堆级等离子体无法布满传感器，高保真仿真又难以实时运行。若能从少量可访问传感器重建全域状态，就可以为控制、异常预警和后续物理解释提供更完整的状态变量。
+从本日报的选取理由看，新增 / arXiv 2026-07-05。论文把稀疏传感器历史做 temporal encoding，再 spatial decoding 成完整 plasma-field maps；对诊断增强、实时状态估计和数据驱动数字孪生很直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从少量、可能随机位置的传感器历史中重建多个耦合等离子体量的全域时空分布？
+对当前主题的关键意义在于：最小实验是在已有仿真或 EAST/KSTAR 诊断数据上随机遮蔽传感器，用 temporal encoder + spatial decoder 重建关键剖面，再评估重建误差对破裂预测提前量的影响。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>模型先对 sparse sensor histories 做 temporal encoding，再通过 spatial decoding 生成 complete plasma-field maps。摘要强调使用 high-fidelity kinetic simulation data，并测试了 sparse and randomly located probes 下的鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告模型能从少量 density sensors 重建多个 coupled plasma quantities，并对稀疏和随机探针位置保持鲁棒。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前演示基于高保真 kinetic simulation data，不等于真实 tokamak 诊断；如果仿真与实验分布差异大，重建误差可能在控制闭环中放大。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为“少传感器全状态估计”的聚变主线补充，与破裂预测可形成上游状态重建 + 下游预警的组合。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在已有仿真或 EAST/KSTAR 诊断数据上随机遮蔽传感器，用 temporal encoder + spatial decoder 重建关键剖面，再评估重建误差对破裂预测提前量的影响。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>本轮未收录直接新增论文：跨装置可见光破裂预测与 RGB-Event 属性基准空缺</h3>
+              <p class="paper__subtitle">No qualified new direct paper in cross-device visible-light disruption prediction or RGB-Event attribute benchmark</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">skip</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。已检索 2026-07-08 UTC 最新批次和近几日候选，未发现新的 RGB-Event 属性识别基准、开放词表 RGB-Event 属性论文，或比 EAST 多模态蒸馏更直接的新跨装置可见光破裂预测论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。已检索 2026-07-08 UTC 最新批次和近几日候选，未发现新的 RGB-Event 属性识别基准、开放词表 RGB-Event 属性论文，或比 EAST 多模态蒸馏更直接的新跨装置可见光破裂预测论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 已有 EventPAR 作为直接基准，P3 已有 KSTAR IVIS + 0D 和本轮 EAST 蒸馏作为直接路线。今天的新候选更多是事件低光增强、自动驾驶传感器融合、token 压缩和聚变状态重建，属于机制启发而非直接替代基准。
+从本日报的选取理由看，本轮空缺判断。已检索 2026-07-08 UTC 最新批次和近几日候选，未发现新的 RGB-Event 属性识别基准、开放词表 RGB-Event 属性论文，或比 EAST 多模态蒸馏更直接的新跨装置可见光破裂预测论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>避免把弱相关的低光增强、自动驾驶融合或通用多模态论文伪装成“RGB-Event 属性识别”或“跨装置可见光破裂预测”的新增直接工作。
+对当前主题的关键意义在于：下一步优先跟踪 EventPAR 后续代码/数据、EAST 蒸馏源码，以及 tokamak visible/IR diagnostics + time-series fusion 的新期刊或会议版本。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明，不对应新方法；保留检索边界和不收录原因，供后续自动化去重。
+阅读时需要把方法设计与主要结果一起看：直接方向本轮无合格新增。可迁移启发已分别放入 EeveeDark、OmniFocus、CRISP 和 EAST 蒸馏条目。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接方向本轮无合格新增。可迁移启发已分别放入 EeveeDark、OmniFocus、CRISP 和 EAST 蒸馏条目。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>arXiv API 本轮定向检索出现 503 / rate exceeded，可能遗漏非 arXiv 或刚上线的项目页；后续应继续监测 CVF、期刊页和作者主页。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮不凑数。P2/P3 的新增机制可读，但直接基准或跨装置可见光破裂预测新论文仍需等待。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一步优先跟踪 EventPAR 后续代码/数据、EAST 蒸馏源码，以及 tokamak visible/IR diagnostics + time-series fusion 的新期刊或会议版本。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>P1：不规则时序与聚变高低频统一建模</h3>
+              <p class="paper__subtitle">Scalable Perturbation Learning for Online Self-Supervised Echo State Networks</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-07</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】它从 ESN 在线自监督学习中提出“只扰动 input-dependent component”的低维更新原则，对高频流式诊断的在线适配和硬件友好学习有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Taiki Yamada, Kantaro Fujiwara</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.05452" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.05452" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】它从 ESN 在线自监督学习中提出“只扰动 input-dependent component”的低维更新原则，对高频流式诊断的在线适配和硬件友好学习有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>原始应用领域是 echo state networks 的在线自监督学习。可迁移机制是把高维 reservoir 更新降到输入相关低维子空间；对应待解决问题是高频流式在线适配时显存和方差随状态维度膨胀。预期计算/显存影响是降低更新方差和在线学习开销，但不直接压缩前向状态。主要风险是 ESN 结构与深度 SSM/Transformer 差异较大。最小验证实验是在 Mamba/ESN 混合诊断模型上只更新低维 adapter 或输入相关门控，比较在线漂移适配速度和稳定性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>高维时序模型如何在在线自监督中避免更新维度过大导致方差和成本失控？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>通过正交分解 self-supervised learning cost，只扰动 input-dependent component，把有效扰动维度从 reservoir dimension 降到 input dimension。
+阅读时需要把方法设计与主要结果一起看：摘要认为该规则同时保留自监督适配、在线学习和标量反馈扰动学习，并避免 reservoir-size-dependent variance growth。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要认为该规则同时保留自监督适配、在线学习和标量反馈扰动学习，并避免 reservoir-size-dependent variance growth。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前是 ESN 场景，需要重新验证到深度连续时间模型和聚变诊断噪声。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 在线适配的轻量研究线，而不是替代主干模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">05</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>P2：RGB-Event 属性识别</h3>
+              <p class="paper__subtitle">EeveeDark: A Binary Neural Framework for Low-Light Video Enhancement via Event-Guided Sensor-Level Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是低光视频增强；可迁移模块是 RAW/Event 双编码、轻量 fusion block 和 event-guided skip gating；对应弱光、运动模糊、事件稀疏与区域可靠性动态加权问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Onur Eker, Erkut Erdem, Aykut Erdem</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.06217" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.06217" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是低光视频增强；可迁移模块是 RAW/Event 双编码、轻量 fusion block 和 event-guided skip gating；对应弱光、运动模糊、事件稀疏与区域可靠性动态加权问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>它没有做属性识别，但比把事件流固定成帧更接近原生事件利用。预期计算/显存影响较低，因为 BNN 量化权重和激活，适合边缘部署；风险是增强任务的事件门控不一定对属性语义最优。最小验证实验是在 EventPAR 或 TriPro-ReID 上引入 event-guided gating，对低光/模糊/模态缺失子集单独报告属性 mA、F1、ECE 和延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>RGB-Event 属性识别中如何按样本、区域和时间动态判断事件流是否可信？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8ea7955ac82707e6.png" alt="Figure 1: Comparison with state-of-the-art models. PSNR versus computational complexity is shown, with circle sizes indicating parameter count (millions). EeveeDark outperforms prior BNN methods BBCU and BRVE by a significant margin, and offers a favorable performance-efficiency trade-off against full-precision models, ShiftNet, FloRNN, and EvLight.">
+                    <figcaption>Figure 1: Comparison with state-of-the-art models. PSNR versus computational complexity is shown, with circle sizes indicating parameter count (millions). EeveeDark outperforms pri...</figcaption>
+                  </figure>
+                  <p>使用事件引导跳连门控，把事件时间精度用于 RAW 视频细节恢复；迁移时可改成属性 token 对区域特征的可靠性门控。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 synthetic 和 real-world 数据集上优于 BNN 低光增强方法，并保持效率优势。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 synthetic 和 real-world 数据集上优于 BNN 低光增强方法，并保持效率优势。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>缺少开放词表属性、软标签和跨模态对比预训练。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 今天可把它当作“事件可靠性门控模块”的最小替换方案。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">06</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>P3：可见光图像与诊断时序融合的破裂预测</h3>
+              <p class="paper__subtitle">CRISP: A Spatiotemporal Camera-Radar Backbone for Driving via Forecasting-Based World-Model Pretraining</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-05</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是自动驾驶 camera-radar fusion；可迁移模块是 forecasting-based world-model pretraining、radar-enhanced temporal self-attention 和 modality innovation gating；对应图像/诊断时序如何提取互补前兆并抑制无关视觉信息。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jingyu Song, Yi Liu, Katherine A. Skinner</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.04241" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.04241" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是自动驾驶 camera-radar fusion；可迁移模块是 forecasting-based world-model pretraining、radar-enhanced temporal self-attention 和 modality innovation gating；对应图像/诊断时序如何提取互补前兆并抑制无关视觉信息。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>CRISP 用历史多视角图像和 radar sweeps 预测未来 LiDAR point clouds，LiDAR 仅在预训练期作为 privileged supervision。迁移到聚变时，可把未来关键诊断状态或风险曲线作为预训练目标，用可见光和诊断历史学习共享状态。计算/显存影响取决于 BEV/图像 token 数，可用低分辨率风险 token 替代 dense BEV；风险是 driving BEV 几何先验不适用于 tokamak 视角。最小验证实验是用可见光片段 + 诊断窗口预测未来 50-200 ms 的关键诊断/破裂风险，再微调破裂分类。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样通过未来预测目标让图像和传感器时序学到可迁移的前兆状态，而不是只做监督分类拼接？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0eaa8242ee85aca4.png" alt="Figure 3: Multimodal teacher–unimodal student framework and hierarchical knowledge distillation process for EAST disruption prediction. The upper part shows the multimodal teacher model, while the lower part shows the time-series student model. The student inherits the multimodal discriminative knowledge of the teacher through representation-level, decision-level, and structure-level distillation.">
+                    <figcaption>Figure 3: Multimodal teacher–unimodal student framework and hierarchical knowledge distillation process for EAST disruption prediction. The upper part shows the multimodal teacher ...</figcaption>
+                  </figure>
+                  <p>引入预测式多模态预训练、传感器增强的 temporal self-attention 和 modality innovation gating，选择性注入各模态新信息。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 nuScenes 上提升 long-horizon point cloud forecasting，并迁移到检测、跟踪、在线地图、运动预测、未来占用和规划。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 nuScenes 上提升 long-horizon point cloud forecasting，并迁移到检测、跟踪、在线地图、运动预测、未来占用和规划。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>自动驾驶几何结构与聚变诊断差异很大，不能直接搬用 BEV 表示。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P3 的跨领域机制启发，重点迁移预测式预训练和 innovation gating。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
