@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-10</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-10 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-10 06:05:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇值得进入主推荐的新增论文，但没有新的直接 tokamak disruption / fusion diagnostics + AI 论文。P1 最值得看 The Key to Going Linear 和 ALER-TI：前者分析 softmax attention 线性化的状态更新机制，后者用历史模式检索增强缺失时序重建。时序分类侧 TimEE 证明纯合成任务预训练的 ICL 模型可以零微调做 TSC。多模态侧 CarbonCLIP 与 MedPMC 分别代表“训练期用重模态、推理期轻模态”和“可持续更新的高质量图文语料管线”。P2/P3 附加区不占主推荐名额：P2 收 ARGTCA 作为开放属性语义和校准启发，P3 收 CarbonCLIP 与 DualAlign 作为视觉/传感器时序融合机制启发；直接 RGB-Event 属性识别与直接聚变可见光破裂预测新稿本轮仍空缺。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 Going Linear：从状态更新机制解释 Transformer 线性化</a></li>
+              <li><a href="#paper-2">02 ALER-TI：用历史模式检索增强缺失时序插补</a></li>
+              <li><a href="#paper-3">03 TimEE：合成先验驱动的端到端时序分类 ICL</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断 / 预测</a>
+            <ul>
+              <li><a href="#paper-7">07 本轮未收录直接新增论文：tokamak disruption / fusion diagnostics + AI 空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-8">08 Going Linear：固定预算状态更新缓解高频长序列显存瓶颈</a></li>
+              <li><a href="#paper-9">09 ALER-TI：缺失模式对齐的历史片段检索增强</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-10">10 ARGTCA：属性图和校准目标补足开放属性语义</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-11">11 CarbonCLIP：训练期重模态蒸馏，推理期轻模态部署</a></li>
+              <li><a href="#paper-12">12 DualAlign：先稳定视觉多模态，再引入文本语义</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态学习 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-4">04 CarbonCLIP：多模态知识预训练，推理只用卫星图像</a></li>
+              <li><a href="#paper-5">05 MedPMC：可持续更新的医学多模态图文语料管线</a></li>
+              <li><a href="#paper-6">06 ARGTCA：结构化属性图提升 VLM 校准</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">Going Linear：从状态更新机制解释 Transformer 线性化</a></h3>
+              <p class="card__subtitle">The Key to Going Linear: Analysis-Driven Transformer Linearization</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-08。它不只是提出一个线性注意力替代，而是在 frozen-backbone 条件下拆解 softmax 的 key-dependent rank-1 orthogonal projections，并给出 sink token、短卷积和固定预算 cache routing，直接对应 P1 的长序列显存瓶颈。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">ALER-TI：用历史模式检索增强缺失时序插补</a></h3>
+              <p class="card__subtitle">ALER-TI: Aligned Latent Embedding Retrieval for Time Series Imputation</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-08。它把 corrupted query 与完整历史候选在 latent space 对齐，并允许历史 embedding 预计算缓存；对聚变稀疏诊断、非平稳 shot 片段和罕见前兆的补全很实用。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">TimEE：合成先验驱动的端到端时序分类 ICL</a></h3>
+              <p class="card__subtitle">TimEE: End-to-end Time Series Classification via In-Context Learning</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-08。4.5M 参数模型只用合成 TSC 任务 meta-train，推理时给 support set 和 query 单次前向输出类别分布；适合评估小样本诊断分类和跨装置快速适配。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">CarbonCLIP：多模态知识预训练，推理只用卫星图像</a></h3>
+              <p class="card__subtitle">CarbonCLIP: Enhance Carbon Prediction from Satellite Imagery via Integrated Street-View Semantics and Temporal Context Training</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-08。它用街景 LMM 语义和月份编码训练 satellite representation，推理期只保留卫星图像；与 P3 的“训练期利用图像/诊断重模态，在线推理保留轻输入”高度同构。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">MedPMC：可持续更新的医学多模态图文语料管线</a></h3>
+              <p class="card__subtitle">MedPMC: A Systematic Framework for Scaling High-Fidelity Medical Multimodal Data for Foundation Models</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-08。它从 610 万篇 PMC 文章构建 1100 万医学图文对，并显式评估筛选、分图、对齐和临床相关性；对科学图像/诊断图像基础模型的数据治理有借鉴价值。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Going Linear：从状态更新机制解释 Transformer 线性化</h3>
+              <p class="paper__subtitle">The Key to Going Linear: Analysis-Driven Transformer Linearization</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。它不只是提出一个线性注意力替代，而是在 frozen-backbone 条件下拆解 softmax 的 key-dependent rank-1 orthogonal projections，并给出 sink token、短卷积和固定预算 cache routing，直接对应 P1 的长序列显存瓶颈。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Anna Kuzina, Paul N. Whatmough, Babak Ehteshami Bejnordi</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07706" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07706" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07706" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。它不只是提出一个线性注意力替代，而是在 frozen-backbone 条件下拆解 softmax 的 key-dependent rank-1 orthogonal projections，并给出 sink token、短卷积和固定预算 cache routing，直接对应 P1 的长序列显存瓶颈。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长序列注意力的二次复杂度会在高频聚变诊断和长窗口事件流中迅速耗尽显存。已有线性化方法很多，但如果不知道哪些状态更新设计保留 softmax 的关键行为，迁移到诊断任务时容易只得到速度而损失罕见前兆召回。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。它不只是提出一个线性注意力替代，而是在 frozen-backbone 条件下拆解 softmax 的 key-dependent rank-1 orthogonal projections，并给出 sink token、短卷积和固定预算 cache routing，直接对应 P1 的长序列显存瓶颈。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在冻结原始 Transformer 主干或尽量少改结构的条件下，把 causal self-attention 线性化，同时保留长上下文检索和下游精度？
+对当前主题的关键意义在于：最小实验是在现有诊断长窗口模型上比较 softmax attention、线性 attention、Mamba/DeltaNet 类状态更新和固定预算 cache routing，在相同显存下报告 AUC、提前量、长间隔事件召回和吞吐。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2808cfc3cf374464.png" alt="Figure 1 : Attention replacement blocks evaluated in our strict frozen-backbone setting. Blue ❅ markers denote frozen pretrained parameters. The pretrained parameters including W q W_{q} , W k W_{k} , W v W_{v} , and RMSNorm parameters are kept frozen, while only the newly introduced mechanism-specific parameters are trained. (a) Standard Softmax. (b) Hedgehog [ 27 ] replaces the softmax kernel with learned feature maps φ \varphi . (c) GLA [ 23 ] introduces an input-dependent decay α i \alpha_{i} . (d) GDN [ 19 ] applies a key-dependent rank-1 delta update via β i \beta_{i} . σ \sigma denotes sigmoid function.">
+                    <figcaption>Figure 1 : Attention replacement blocks evaluated in our strict frozen-backbone setting. Blue ❅ markers denote frozen pretrained parameters. The pretrained parameters including W q...</figcaption>
+                  </figure>
+                  <p>论文分析 softmax attention 中 key-dependent、rank-1 orthogonal projection 的作用，指出纯门控累积的近似误差来源，并引入 sink tokens、short convolutions 与 fixed-budget cache routing 来缩小线性化差距。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法扩展到 LLaMA 和 Qwen 最高 32B 模型，在 MMLU 上超过既有 post hoc baselines，并匹配复杂 adaptive-caching 框架的长上下文检索能力。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法扩展到 LLaMA 和 Qwen 最高 32B 模型，在 MMLU 上超过既有 post hoc baselines，并匹配复杂 adaptive-caching 框架的长上下文检索能力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>实验对象是语言模型，不直接处理真实时间间隔、异步多通道或诊断噪声；P1 迁移时仍需额外加入 timestamp-aware 编码和高低频通道交互。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为 P1 长序列压缩/线性化的机制读物，重点看状态更新与固定预算缓存如何影响召回。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有诊断长窗口模型上比较 softmax attention、线性 attention、Mamba/DeltaNet 类状态更新和固定预算 cache routing，在相同显存下报告 AUC、提前量、长间隔事件召回和吞吐。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>ALER-TI：用历史模式检索增强缺失时序插补</h3>
+              <p class="paper__subtitle">ALER-TI: Aligned Latent Embedding Retrieval for Time Series Imputation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。它把 corrupted query 与完整历史候选在 latent space 对齐，并允许历史 embedding 预计算缓存；对聚变稀疏诊断、非平稳 shot 片段和罕见前兆的补全很实用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xuan-Thong Truong, Trung-Kien Le, Tung Kieu, Thi-Thu Nguyen, Nhat-Hai Nguyen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07640" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07640" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07640" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。它把 corrupted query 与完整历史候选在 latent space 对齐，并允许历史 embedding 预计算缓存；对聚变稀疏诊断、非平稳 shot 片段和罕见前兆的补全很实用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变 shot 中的缺失并不总能靠邻近窗口平滑恢复，尤其是低频控制量、高频诊断突变和罕见破裂前兆。若只依赖 corrupted input 的局部上下文，模型会在非平稳阶段错过历史相似工况。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。它把 corrupted query 与完整历史候选在 latent space 对齐，并允许历史 embedding 预计算缓存；对聚变稀疏诊断、非平稳 shot 片段和罕见前兆的补全很实用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在缺失模式不一致时利用完整历史片段，而不让 corrupted query 与 complete candidate 的表示分布错位破坏检索质量？
+对当前主题的关键意义在于：最小实验是在 EAST/KSTAR 诊断数据中构建历史片段库，对随机缺失、整通道缺失和高频稀疏采样分别测试 ALER-TI + 现有 backbone 的插补误差、下游破裂 AUC 和检索延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/75ad2cacfa5b1768.png" alt="Figure 2 : Overview of the ALER-TI pipeline. (Left) LEA aligns corrupted queries with clean candidates through late-stage masking and candidate-guided query encoding. (Right) The retrieved historical signals are integrated with the output of a frozen backbone model through lightweight fusion, followed by a MLP-based block for refined reconstruction.">
+                    <figcaption>Figure 2 : Overview of the ALER-TI pipeline. (Left) LEA aligns corrupted queries with clean candidates through late-stage masking and candidate-guided query encoding. (Right) The r...</figcaption>
+                  </figure>
+                  <p>ALER-TI 提出 retrieval-augmented imputation 框架，核心是 Latent Embedding Alignment。它在 latent space 做 post-hoc masking，使候选 embedding 对齐 query 的 missingness pattern，同时保留历史 embedding 预计算和缓存能力，并能接入不同插补 backbone。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 6 个真实数据集、不同缺失率下稳定提升强基线，并增强多种 imputation setting 的鲁棒性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文目标是插补，不是端到端破裂预测；历史库若包含装置状态漂移或错误标签，检索增强可能引入过时模式。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为“历史 shot 相似片段检索 + 缺失通道补全”的工程路线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 EAST/KSTAR 诊断数据中构建历史片段库，对随机缺失、整通道缺失和高频稀疏采样分别测试 ALER-TI + 现有 backbone 的插补误差、下游破裂 AUC 和检索延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>TimEE：合成先验驱动的端到端时序分类 ICL</h3>
+              <p class="paper__subtitle">TimEE: End-to-end Time Series Classification via In-Context Learning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。4.5M 参数模型只用合成 TSC 任务 meta-train，推理时给 support set 和 query 单次前向输出类别分布；适合评估小样本诊断分类和跨装置快速适配。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jaris Küken, Shi Bin Hoo, Martin Mráz, Frank Hutter, Lennart Purucker</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07500" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07500" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07500" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。4.5M 参数模型只用合成 TSC 任务 meta-train，推理时给 support set 和 query 单次前向输出类别分布；适合评估小样本诊断分类和跨装置快速适配。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>许多聚变诊断分类任务样本少、类别定义随实验阶段变化，传统预训练 encoder + 专用 classifier 需要重新训练，也难在推理时直接利用少量标注样本。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。4.5M 参数模型只用合成 TSC 任务 meta-train，推理时给 support set 和 query 单次前向输出类别分布；适合评估小样本诊断分类和跨装置快速适配。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否仅用合成时序任务训练一个小型 foundation model，使其在真实 TSC 数据上通过上下文样本直接分类？
+对当前主题的关键意义在于：最小实验是用合成聚变先验任务 meta-train 或直接用 TimEE 风格输入，把新 campaign 的少量标注 shot 放入 support set，比较零微调 AUC、FPR 和校准误差。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/437fca6f0dadd33b.png" alt="Figure 1 : We compare mean rank across all 128 UCR benchmark datasets. TimEE achieves the lowest mean rank on ROC AUC (left), outperforming all compared methods including task-specific and foundation model baselines, while ranking third on accuracy (right). DTW-1NN is excluded from the ROC AUC comparison as it does not produce calibrated probability scores.">
+                    <figcaption>Figure 1 : We compare mean rank across all 128 UCR benchmark datasets. TimEE achieves the lowest mean rank on ROC AUC (left), outperforming all compared methods including task-spec...</figcaption>
+                  </figure>
+                  <p>TimEE 是 4.5M 参数端到端 TSC ICL 模型，meta-train 阶段只使用合成任务；每个任务包含由结构化分布偏移产生的不同类，推理时输入 labeled support set 与 query，直接输出类别分布。
+阅读时需要把方法设计与主要结果一起看：摘要报告 TimEE 在 UCR benchmark 的 ROC AUC 排第一、accuracy 排第三，且预训练未见真实时序；代码公开。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 TimEE 在 UCR benchmark 的 ROC AUC 排第一、accuracy 排第三，且预训练未见真实时序；代码公开。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>UCR 多为短单变量/规整数据，尚未覆盖多通道异步诊断和极端类别不平衡破裂预警。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为少样本诊断分类和跨装置快速适配的思想储备。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用合成聚变先验任务 meta-train 或直接用 TimEE 风格输入，把新 campaign 的少量标注 shot 放入 support set，比较零微调 AUC、FPR 和校准误差。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断 / 预测</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>本轮未收录直接新增论文：tokamak disruption / fusion diagnostics + AI 空缺</h3>
+              <p class="paper__subtitle">No qualified new direct paper in tokamak disruption prediction or fusion diagnostics with AI</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">skip</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。已检索 2026-07-09 UTC 最新批次和近几日候选，physics.plasm-ph 当日新增主要是等离子体物理和激光等离子体条目，未发现新的 tokamak disruption prediction、visible/IR diagnostics + time-series fusion 或 fusion control + AI 直接论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。已检索 2026-07-09 UTC 最新批次和近几日候选，physics.plasm-ph 当日新增主要是等离子体物理和激光等离子体条目，未发现新的 tokamak disruption prediction、visible/IR diagnostics + time-series fusion 或 fusion control + AI 直接论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>7 月 9 日已收录 EAST 多模态蒸馏和 fusion full-state reconstruction，今天的新候选更多是通用时序、CV、多模态和科学图像数据管线。直接聚变 AI 方向不应为了每日数量而重复旧论文。
+从本日报的选取理由看，本轮空缺判断。已检索 2026-07-09 UTC 最新批次和近几日候选，physics.plasm-ph 当日新增主要是等离子体物理和激光等离子体条目，未发现新的 tokamak disruption prediction、visible/IR diagnostics + time-series fusion 或 fusion control + AI 直接论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>避免把纯物理 plasma 论文或弱相关多模态论文伪装成“聚变 AI 新增”。
+对当前主题的关键意义在于：下一步优先把本轮 P1 的长序列线性化和 ALER-TI 缺失插补接到现有聚变诊断基线，而不是等待直接聚变论文。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明，不对应新方法；保留检索边界和不收录原因，供后续去重。
+阅读时需要把方法设计与主要结果一起看：直接聚变 AI 新稿本轮无合格新增。可迁移机制已分别放在 P1/P2/P3 附加区。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接聚变 AI 新稿本轮无合格新增。可迁移机制已分别放在 P1/P2/P3 附加区。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏刚上线的期刊页、会议页或作者主页；后续应继续监测 EAST/KSTAR/DIII-D/ITER 相关项目页和 arXiv 交叉分类。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮不凑数。聚变侧建议继续跟进 7 月 9 日 EAST 蒸馏源码和 full-state reconstruction 后续版本。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一步优先把本轮 P1 的长序列线性化和 ALER-TI 缺失插补接到现有聚变诊断基线，而不是等待直接聚变论文。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>Going Linear：固定预算状态更新缓解高频长序列显存瓶颈</h3>
+              <p class="paper__subtitle">The Key to Going Linear: Analysis-Driven Transformer Linearization</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是长上下文语言模型推理；可迁移模块是 key-dependent 状态更新分析、sink tokens、short convolutions 和 fixed-budget cache routing；对应高频诊断长序列注意力显存爆炸问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Anna Kuzina, Paul N. Whatmough, Babak Ehteshami Bejnordi</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07706" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.07706" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是长上下文语言模型推理；可迁移模块是 key-dependent 状态更新分析、sink tokens、short convolutions 和 fixed-budget cache routing；对应高频诊断长序列注意力显存爆炸问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是把注意力缓存从随序列长度增长改为固定预算或近线性状态，但需保留罕见前兆召回。主要不成立条件是聚变诊断中的真实 Δt、异步通道和噪声模式无法被语言模型式 token 状态更新表达。最小验证实验是在同一诊断窗口长度下比较 full attention、linearized attention、Mamba 和固定预算 cache routing，记录显存、吞吐、AUC、提前量和高频事件召回。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在 million-length 或流式高频诊断中避免注意力显存随时间爆炸？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2808cfc3cf374464.png" alt="Figure 1 : Attention replacement blocks evaluated in our strict frozen-backbone setting. Blue ❅ markers denote frozen pretrained parameters. The pretrained parameters including W q W_{q} , W k W_{k} , W v W_{v} , and RMSNorm parameters are kept frozen, while only the newly introduced mechanism-specific parameters are trained. (a) Standard Softmax. (b) Hedgehog [ 27 ] replaces the softmax kernel with learned feature maps φ \varphi . (c) GLA [ 23 ] introduces an input-dependent decay α i \alpha_{i} . (d) GDN [ 19 ] applies a key-dependent rank-1 delta update via β i \beta_{i} . σ \sigma denotes sigmoid function.">
+                    <figcaption>Figure 1 : Attention replacement blocks evaluated in our strict frozen-backbone setting. Blue ❅ markers denote frozen pretrained parameters. The pretrained parameters including W q...</figcaption>
+                  </figure>
+                  <p>用机制分析选择更接近 softmax 行为的线性状态更新，并用固定预算缓存保留关键上下文。
+阅读时需要把方法设计与主要结果一起看：摘要报告在大语言模型上保持长上下文检索并优于既有 post hoc baselines。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在大语言模型上保持长上下文检索并优于既有 post hoc baselines。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>缺少 timestamp-aware 和多采样率实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可把它作为长序列主干压缩的机制基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>ALER-TI：缺失模式对齐的历史片段检索增强</h3>
+              <p class="paper__subtitle">ALER-TI: Aligned Latent Embedding Retrieval for Time Series Imputation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是通用 time series imputation；可迁移模块是 Latent Embedding Alignment 和历史 embedding 缓存；对应异步多通道缺失、弱局部相关和罕见前兆补全。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xuan-Thong Truong, Trung-Kien Le, Tung Kieu, Thi-Thu Nguyen, Nhat-Hai Nguyen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07640" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.07640" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是通用 time series imputation；可迁移模块是 Latent Embedding Alignment 和历史 embedding 缓存；对应异步多通道缺失、弱局部相关和罕见前兆补全。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是训练和推理额外增加检索库查询，但历史 embedding 可预计算，显存主要受候选数和 adapter 控制。风险是历史库中的跨装置漂移会返回错误相似片段。最小验证实验是在按 shot/campaign 建库后，分别对随机缺失、整通道缺失和时间错位做插补，再看下游破裂预测是否提升。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>缺失诊断不能靠邻近窗口恢复时，如何引入历史相似模式？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/75ad2cacfa5b1768.png" alt="Figure 2 : Overview of the ALER-TI pipeline. (Left) LEA aligns corrupted queries with clean candidates through late-stage masking and candidate-guided query encoding. (Right) The retrieved historical signals are integrated with the output of a frozen backbone model through lightweight fusion, followed by a MLP-based block for refined reconstruction.">
+                    <figcaption>Figure 2 : Overview of the ALER-TI pipeline. (Left) LEA aligns corrupted queries with clean candidates through late-stage masking and candidate-guided query encoding. (Right) The r...</figcaption>
+                  </figure>
+                  <p>将完整历史候选按 query 缺失模式做 latent 对齐，使检索增强可接入任意插补 backbone。
+阅读时需要把方法设计与主要结果一起看：摘要报告 6 个真实数据集上提升强基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 6 个真实数据集上提升强基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要额外设计跨装置检索过滤和时间间隔编码。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可把它作为“历史 shot 记忆库”的最小实现。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>ARGTCA：属性图和校准目标补足开放属性语义</h3>
+              <p class="paper__subtitle">When Prompts Ignore Structure: Graph-Based Attribute Reasoning for Calibrated VLMs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是 VLM test-time adaptation 校准；可迁移模块是 Symbolic Attribute Graph、GAT attribute embedding 和 ECE-oriented calibration；对应 RGB-Event 属性识别中的开放词表属性、属性依赖和不确定性输出。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tanay Sodha, Aditya Sharma, Ramya Hebbalaguppe, Vinti Agarwal, Pranav Murthy Yeluripaty</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07395" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.07395" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是 VLM test-time adaptation 校准；可迁移模块是 Symbolic Attribute Graph、GAT attribute embedding 和 ECE-oriented calibration；对应 RGB-Event 属性识别中的开放词表属性、属性依赖和不确定性输出。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>它没有使用 Event，因此不能解决原生事件表征和 RGB/Event 时间对齐。预期计算/显存影响主要来自小型属性图 GAT，远低于新增大视觉主干。主要风险是 LLM 生成属性图与事件可见动态属性不一致。最小验证实验是在 TriPro-ReID/EventPAR 上固定 RGB/Event backbone，仅替换属性语义头和校准损失，观察弱光、模糊、事件稀疏子集的 mA、F1、ECE。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免二值属性硬标签过度自信，并让属性之间的关系参与识别？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/65995a5abe25bb8e.png" alt="Figure 2: Overview of ArgTca attribute selection pipeline. ❶ An LLM generates M M candidate attributes per class. ❷ These are used to construct the Symbolic Attribute Graph (SAG) with intra-class ( E intra E_{\text{intra}} ) and inter-class ( E inter E_{\text{inter}} ) edges. ❸ A Graph Attention Network (GAT) is trained via supervised contrastive loss ( ℒ SupCon \mathcal{L}_{\text{SupCon}} ) to propagate structural relationships across the SAG, producing attribute embeddings. ❹ Two selection criteria — ArgTca-Div (intra-class diversity) and ArgTca-Disc (inter-class discrimination) — select the most informative M ′ M^{\prime} attributes per class. ❺ The final selected attributes form the matrix 𝐀 ∈ ℝ M ′ × K \mathbf{A}\in\mathbb{R}^{M^{\prime}\times K} , used for downstream prompt tuning.">
+                    <figcaption>Figure 2: Overview of ArgTca attribute selection pipeline. ❶ An LLM generates M M candidate attributes per class. ❷ These are used to construct the Symbolic Attribute Graph (SAG) w...</figcaption>
+                  </figure>
+                  <p>把 class-attribute pairs 建成图节点，用 GAT 和对比学习捕捉属性依赖，再用多样性/判别性策略选择属性。
+阅读时需要把方法设计与主要结果一起看：摘要报告 9 个 benchmark 上明显降低 ECE。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 9 个 benchmark 上明显降低 ECE。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>本轮未发现新的原生 RGB-Event 属性论文；事件分支、时间对齐和模态缺失仍需沿用 EventPAR/TriPro 路线。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 今日可读它的属性校准模块，不应把它当事件识别主干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>本轮空缺判断：无合格新增原生 RGB-Event 属性识别论文</h3>
+            </div>
+          </div>
+          <p>英文原标题：*No qualified new native RGB-Event attribute recognition paper*</p>
+          <p>作者/机构：本轮空缺判断</p>
+          <p>发布日期：2026-07-10</p>
+          <p>论文链接：[arXiv cs.CV recent](https://arxiv.org/list/cs.CV/recent)</p>
+          <p>选取理由：【P2】本轮检索 event camera、neuromorphic vision、RGB-Event fusion、attribute recognition、open-vocabulary attribute 等关键词后，未发现新的原生 RGB-Event 属性识别或比 EventPAR 更直接的基准论文。</p>
+          <p>研究背景：不把普通 VLM 属性校准、医学图像或遥感多模态论文伪装成 RGB-Event 直接工作。可迁移机制已由 ARGTCA 提供，但它只覆盖属性语义与校准。预期计算/显存影响、风险和最小实验见上条。</p>
+          <p>核心问题：等待真正处理异步 Event 表征、RGB/Event 对齐和模态缺失的新增工作。</p>
+          <p>方法与关键创新：本条为空缺说明，不对应新方法。</p>
+          <p>主要结果：直接方向本轮无合格新增。</p>
+          <p>局限性：可能遗漏刚上线的项目页或会议论文。</p>
+          <p>总结：P2 本轮只做机制启发，不凑直接基准。</p>
+          <p>是否值得精读：不建议本轮精读。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>CarbonCLIP：训练期重模态蒸馏，推理期轻模态部署</h3>
+              <p class="paper__subtitle">CarbonCLIP: Enhance Carbon Prediction from Satellite Imagery via Integrated Street-View Semantics and Temporal Context Training</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是遥感碳排放预测；可迁移模块是街景语义 + 时间先验到单一图像表示的多模态蒸馏；对应破裂预测中训练期利用图像/诊断重信息、推理期降低模态依赖和延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zeru Yang, Fang-Ying Gong, Steve H.L. Yim, Chau Yuen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07292" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.07292" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是遥感碳排放预测；可迁移模块是街景语义 + 时间先验到单一图像表示的多模态蒸馏；对应破裂预测中训练期利用图像/诊断重信息、推理期降低模态依赖和延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是训练期增加辅助分支，推理期减少输入模态和显存；风险是遥感月度先验与破裂毫秒级前兆尺度不同。最小验证实验是在可见光 + 诊断训练 teacher，然后蒸馏到低延迟诊断 student 或低分辨率图像 student，比较提前量、显存和跨装置泛化。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何利用多模态训练收益而不把全部模态带入在线推理？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/82aee4065288750f.png" alt="Figure 1: Comparison of frameworks for carbon emission prediction: (a) Simple transfer learning framework based on visual embeddings; (b) The proposed CarbonCLIP method enhanced via LMM-generated human-centric information from street-view imagery and temporal context with month indication.">
+                    <figcaption>Figure 1: Comparison of frameworks for carbon emission prediction: (a) Simple transfer learning framework based on visual embeddings; (b) The proposed CarbonCLIP method enhanced vi...</figcaption>
+                  </figure>
+                  <p>使用任务导向对比蒸馏，把辅助模态知识压入主模态表示。
+阅读时需要把方法设计与主要结果一起看：摘要报告北京和新加坡任务上优于基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告北京和新加坡任务上优于基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是破裂预测，时间尺度和物理约束需要重写。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可重点借鉴训练/推理模态解耦。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>DualAlign：先稳定视觉多模态，再引入文本语义</h3>
+              <p class="paper__subtitle">Two-Stage Multi-Modal Fusion with Adaptive Alignment for Action Quality Assessment</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是动作质量评估；可迁移模块是 two-stage fusion 和 adaptive alignment：先对 RGB、光流、骨架建立稳定视觉表示，再让文本语义补充而不破坏视觉流形；对应图像/诊断时序融合中的错位和不稳定融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Kanglei Zhou, Ruizhi Cai, Xinning Wang, Yijian Zheng, Liyuan Wang, Jianguo Li, Xiaohui Liang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07438" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.07438" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是动作质量评估；可迁移模块是 two-stage fusion 和 adaptive alignment：先对 RGB、光流、骨架建立稳定视觉表示，再让文本语义补充而不破坏视觉流形；对应图像/诊断时序融合中的错位和不稳定融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测中可见光局部前兆、运动/辐射变化和诊断时序不一定同步。预期计算/显存影响中等，主要来自多分支对齐和文本/语义分支；可通过离线语义或轻量 task token 降低推理成本。风险是动作骨架先验不能直接用于 tokamak 图像。最小验证实验是先对可见光 patch/光流/诊断窗口做 shared structural alignment，再加入物理状态文本或工况 token，比较缺失模态和低标签条件下的 AUC。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免异构模态直接拼接导致错位和融合不稳定？
+对当前主题的关键意义在于：</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/aabffb2470fd0661.png" alt="Figure 10 : Ablation results of different alignment strategies on MM–JDM. (a) SRCC (b) rMSE, and (c) Accuracy. The shaded regions indicate relative performance degradation compared with the full model (Ours), where \downarrow \downarrow and \uparrow \uparrow denote relative decrease and increase, respectively.">
+                    <figcaption>Figure 10 : Ablation results of different alignment strategies on MM–JDM. (a) SRCC (b) rMSE, and (c) Accuracy. The shaded regions indicate relative performance degradation compared...</figcaption>
+                  </figure>
+                  <p>先最大化 RGB、optical flow、skeleton 的 shared structural information，再在视觉表示稳定后引入 structured text，并构建含噪声、缺失和标签稀缺的多模态 benchmark。
+阅读时需要把方法设计与主要结果一起看：摘要报告 MM-JDM 平均相关性相对 SOTA 提升 21.16%，并在 missing-modality 和 label-scarce 条件下保持鲁棒。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 MM-JDM 平均相关性相对 SOTA 提升 21.16%，并在 missing-modality 和 label-scarce 条件下保持鲁棒。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有真实传感器时间戳和物理约束；迁移时需把 skeleton 替换为诊断时序或物理状态 token。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可把它作为“先对齐低层证据，再注入高层语义”的融合顺序参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>未提供</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>CarbonCLIP：多模态知识预训练，推理只用卫星图像</h3>
+              <p class="paper__subtitle">CarbonCLIP: Enhance Carbon Prediction from Satellite Imagery via Integrated Street-View Semantics and Temporal Context Training</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。它用街景 LMM 语义和月份编码训练 satellite representation，推理期只保留卫星图像；与 P3 的“训练期利用图像/诊断重模态，在线推理保留轻输入”高度同构。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zeru Yang, Fang-Ying Gong, Steve H.L. Yim, Chau Yuen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07292" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07292" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07292" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。它用街景 LMM 语义和月份编码训练 satellite representation，推理期只保留卫星图像；与 P3 的“训练期利用图像/诊断重模态，在线推理保留轻输入”高度同构。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>很多应用的重模态只在训练期可用，在线阶段只能拿到低成本或低延迟输入。P3 中可见光、红外和诊断时序也常有不同延迟、带宽和可用性。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。它用街景 LMM 语义和月份编码训练 satellite representation，推理期只保留卫星图像；与 P3 的“训练期利用图像/诊断重模态，在线推理保留轻输入”高度同构。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把地面视角语义和时间上下文转移到单一卫星图像表示，使推理阶段在缺少辅助模态时仍保持预测能力？
+对当前主题的关键意义在于：最小实验是训练期用可见光图像、低频诊断和高频诊断共同学习风险表示，推理期只保留低延迟诊断或低分辨率图像，比较 AUC、提前量、显存和跨装置退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/82aee4065288750f.png" alt="Figure 1: Comparison of frameworks for carbon emission prediction: (a) Simple transfer learning framework based on visual embeddings; (b) The proposed CarbonCLIP method enhanced via LMM-generated human-centric information from street-view imagery and temporal context with month indication.">
+                    <figcaption>Figure 1: Comparison of frameworks for carbon emission prediction: (a) Simple transfer learning framework based on visual embeddings; (b) The proposed CarbonCLIP method enhanced vi...</figcaption>
+                  </figure>
+                  <p>CarbonCLIP 使用任务导向多模态蒸馏。空间分支用 LMM 从街景生成细粒度文本语义，时间分支用 month encoder 表达月度变化先验，并通过双分支对比学习转移到统一 satellite representation。
+阅读时需要把方法设计与主要结果一起看：摘要报告在北京和新加坡城市碳排放预测中优于基线，且推理阶段只依赖卫星图像。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在北京和新加坡城市碳排放预测中优于基线，且推理阶段只依赖卫星图像。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务不是诊断时序融合；月份编码是粗时间先验，不能直接替代真实 Δt 或高频前兆建模。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可重点借鉴“训练期重模态蒸馏，推理期轻模态部署”的框架，而不是照搬遥感语义。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是训练期用可见光图像、低频诊断和高频诊断共同学习风险表示，推理期只保留低延迟诊断或低分辨率图像，比较 AUC、提前量、显存和跨装置退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>MedPMC：可持续更新的医学多模态图文语料管线</h3>
+              <p class="paper__subtitle">MedPMC: A Systematic Framework for Scaling High-Fidelity Medical Multimodal Data for Foundation Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。它从 610 万篇 PMC 文章构建 1100 万医学图文对，并显式评估筛选、分图、对齐和临床相关性；对科学图像/诊断图像基础模型的数据治理有借鉴价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hyunjae Kim, Dain Kim, Pan Xiao, Serina S. Applebaum, Younjoon Chung, Xuguang Ai, Yu Yin, Roy Jiang, Yuexi Du, Yawen Wei, Yiming Kong, Tuo Guo, Zhiyuan Cao, Mengmeng Du, Yuelei Fu, Yan Hu, Rui Shi, Gui Yang, Kevin W. Jin, Yuntian Liu, Yuxuan Tian, Jonathan Marquez, Zhen Chen, Sheng Zhang, Hoifung Poon, Hua Xu, Jaewoo Kang, Qingyu Chen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07673" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07673" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07673" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。它从 610 万篇 PMC 文章构建 1100 万医学图文对，并显式评估筛选、分图、对齐和临床相关性；对科学图像/诊断图像基础模型的数据治理有借鉴价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>科学图像基础模型的瓶颈往往不是模型结构，而是图像、图注、面板、实验条件和任务标签难以可靠对齐。聚变论文图、诊断图和实验报告也存在类似的多面板图与文本错配问题。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。它从 610 万篇 PMC 文章构建 1100 万医学图文对，并显式评估筛选、分图、对齐和临床相关性；对科学图像/诊断图像基础模型的数据治理有借鉴价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从大规模开放医学论文中持续构建高保真、可复现、临床相关的多模态训练数据，而不是依赖低质量 web 图文对？
+对当前主题的关键意义在于：最小实验是从聚变论文、实验报告和已有诊断图中抽取图文对，复用筛选/分图/对齐流程，训练小型 CLIP 对图像诊断类型、装置、工况和异常模式做检索。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/708cad4942b4c7d3.png" alt="Figure 1: MedPMC framework for dataset curation and its application to multimodal model training. a , Overview of the proposed five-step framework for constructing a large-scale medical image-text dataset from PMC articles. This pipeline yields 11M medical image-text pairs with improved data quality. b , Model development pipeline. A CLIP-style vision-language model is first trained on the curated dataset via contrastive learning. The resulting vision encoder is then used to initialize a large vision-language model following the LLaVA-Med training framework, enabling multimodal instruction tuning for downstream medical reasoning tasks. c , Evaluation across three complementary settings. The trained models are assessed through (i) zero-shot medical image classification across 26 datasets spanning 11 specialties, (ii) downstream medical QA with an MLLM, and (iii) morphology-to-skin image retrieval using internal patient data.">
+                    <figcaption>Figure 1: MedPMC framework for dataset curation and its application to multimodal model training. a , Overview of the proposed five-step framework for constructing a large-scale me...</figcaption>
+                  </figure>
+                  <p>MedPMC 从 PMC 文章中自动筛选图像、检测多面板、分离 figure/caption、做 caption alignment 和医学图像分类，并用人工评审验证医学相关性；还公开框架、语料、benchmark 和预训练模型。
+阅读时需要把方法设计与主要结果一起看：摘要报告从 610 万 PMC 文章中得到 1100 万医学图文对；MedPMC-trained CLIP-style 模型在 26 个 benchmark 上相对最强 biomedical CLIP baseline 平均 zero-shot AUC 提升 7.1 个百分点。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告从 610 万 PMC 文章中得到 1100 万医学图文对；MedPMC-trained CLIP-style 模型在 26 个 benchmark 上相对最强 biomedical CLIP baseline 平均 zero-shot AUC 提升 7.1 个百分点。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医学图像和聚变诊断图差异较大；迁移前需要建立聚变图像 taxonomy、图注解析和实验元数据标准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为“科学诊断图像基础模型数据工程”的参考，而不是直接模型替代。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是从聚变论文、实验报告和已有诊断图中抽取图文对，复用筛选/分图/对齐流程，训练小型 CLIP 对图像诊断类型、装置、工况和异常模式做检索。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>ARGTCA：结构化属性图提升 VLM 校准</h3>
+              <p class="paper__subtitle">When Prompts Ignore Structure: Graph-Based Attribute Reasoning for Calibrated VLMs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。它不处理事件相机，但把 class-attribute pairs 建成 Symbolic Attribute Graph，并用 GAT 和 contrastive objectives 降低 VLM 过置信，对 P2 的开放属性和不确定性校准有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tanay Sodha, Aditya Sharma, Ramya Hebbalaguppe, Vinti Agarwal, Pranav Murthy Yeluripaty</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07395" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07395" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07395" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。它不处理事件相机，但把 class-attribute pairs 建成 Symbolic Attribute Graph，并用 GAT 和 contrastive objectives 降低 VLM 过置信，对 P2 的开放属性和不确定性校准有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别不应只输出硬二值标签，还需要理解属性之间的依赖、冲突和不确定性。纯 prompt 或独立属性描述容易忽略“背包、上衣颜色、姿态、运动状态”等属性的结构关系。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。它不处理事件相机，但把 class-attribute pairs 建成 Symbolic Attribute Graph，并用 GAT 和 contrastive objectives 降低 VLM 过置信，对 P2 的开放属性和不确定性校准有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在 test-time adaptation 中利用属性之间的关系结构，改善 VLM 的准确率与置信度校准？
+对当前主题的关键意义在于：最小实验是在 EventPAR/TriPro-ReID 属性头后加入属性图校准，对低光、运动模糊、事件稀疏和模态缺失子集分别报告 mA、F1、ECE 与 attribute-level uncertainty。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/65995a5abe25bb8e.png" alt="Figure 2: Overview of ArgTca attribute selection pipeline. ❶ An LLM generates M M candidate attributes per class. ❷ These are used to construct the Symbolic Attribute Graph (SAG) with intra-class ( E intra E_{\text{intra}} ) and inter-class ( E inter E_{\text{inter}} ) edges. ❸ A Graph Attention Network (GAT) is trained via supervised contrastive loss ( ℒ SupCon \mathcal{L}_{\text{SupCon}} ) to propagate structural relationships across the SAG, producing attribute embeddings. ❹ Two selection criteria — ArgTca-Div (intra-class diversity) and ArgTca-Disc (inter-class discrimination) — select the most informative M ′ M^{\prime} attributes per class. ❺ The final selected attributes form the matrix 𝐀 ∈ ℝ M ′ × K \mathbf{A}\in\mathbb{R}^{M^{\prime}\times K} , used for downstream prompt tuning.">
+                    <figcaption>Figure 2: Overview of ArgTca attribute selection pipeline. ❶ An LLM generates M M candidate attributes per class. ❷ These are used to construct the Symbolic Attribute Graph (SAG) w...</figcaption>
+                  </figure>
+                  <p>ARGTCA 将 class 和 attribute 组合为图节点，使用 Symbolic Attribute Graph 与 GAT 学习结构化属性 embedding，并设计多样性与判别性两类属性选择策略。
+阅读时需要把方法设计与主要结果一起看：摘要报告 9 个 benchmark 上 ARGTCA-DIV 平均 ECE 约降 37%，ARGTCA-DISC 约降 17%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 9 个 benchmark 上 ARGTCA-DIV 平均 ECE 约降 37%，ARGTCA-DISC 约降 17%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有原生 Event 表征、RGB/Event 对齐或模态缺失训练；P2 迁移时只能作为属性语义头和校准模块。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合补 P2 的开放属性语义和校准短板，但不能替代事件分支。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 EventPAR/TriPro-ReID 属性头后加入属性图校准，对低光、运动模糊、事件稀疏和模态缺失子集分别报告 mA、F1、ECE 与 attribute-level uncertainty。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>本轮趋势</h3>
+          <p>1. P1 的新增重点从“更大模型”转向“固定预算状态、历史检索和合成先验”，这比单纯堆长上下文更适合高频诊断部署。</p>
+          <p>2. 多模态方向继续强调训练/推理解耦：训练期用重模态或辅助语义提升表示，推理期保留轻输入，是 P3 低延迟破裂预测的关键路线。</p>
+          <p>3. P2 本轮没有新的原生 RGB-Event 属性论文，但开放属性图和校准目标值得接到 EventPAR/TriPro 的属性头上做最小替换。</p>
+          <p>4. 直接聚变 AI 当日新增空缺，不应重复 7 月 9 日 EAST 蒸馏和 full-state reconstruction 作为“新增”。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
