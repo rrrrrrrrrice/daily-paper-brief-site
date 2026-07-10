@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-11</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-11 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-11 06:20:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇进入主推荐，其中 4 篇为 2026-07-09 arXiv 新增，1 篇为近几日直接聚变 AI 补录 / 非当日新增。P1 最值得看 RhyMix 与 FreMo：前者用多路径节律门控做线性复杂度长程预测，后者按频率选择跨模态协同，适合高低频诊断统一建模。P2 重点看 LongE2V 与 EVIS：一个处理原生事件长序列生成稳定性，一个提供物理仿真的高率事件流数据。P3 侧 FreMo 与 Cross-Modal ECG to Doppler 提供异步/错位多模态融合和互补成分解释启发。直接 tokamak disruption + 可见光/诊断时序融合新稿本轮仍空缺，但 Deep Learning Models for ADITYA-U MHD Equilibrium 值得作为聚变实时平衡代理补录。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 RhyMix：轻量多节律长程时序预测网络</a></li>
+              <li><a href="#paper-2">02 FreMo：频域多模态交通时序预测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断 / 预测</a>
+            <ul>
+              <li><a href="#paper-6">06 ADITYA-U MHD Equilibrium：聚变平衡参数与剖面的深度代理</a></li>
+              <li><a href="#paper-7">07 本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-8">08 RhyMix：多节律门控作为高低频统一建模的轻量主干</a></li>
+              <li><a href="#paper-9">09 FreMo：按频率选择跨模态协同，避免高低频负迁移</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-10">10 LongE2V：原生事件长序列生成先验和密度增强</a></li>
+              <li><a href="#paper-11">11 EVIS：可控合成事件流用于属性鲁棒性压力测试</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-12">12 FreMo：频域选择性融合用于图像摘要与诊断时序交互</a></li>
+              <li><a href="#paper-13">13 Cross-Modal ECG to Doppler：用注意力量化可恢复与不可恢复跨模态成分</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态学习 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-3">03 LongE2V：长时程事件流视频重建、预测与插帧</a></li>
+              <li><a href="#paper-4">04 MatBind：材料多模态共享嵌入空间</a></li>
+              <li><a href="#paper-5">05 EVIS：面向 Isaac Sim 的物理事件相机插件</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">RhyMix：轻量多节律长程时序预测网络</a></h3>
+              <p class="card__subtitle">RhyMix: A Lightweight Adaptive Multi-Rhythm Network for Long-Term Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它用 cyclic path、multi-scale depthwise dilated convolution 和多级 adaptive gates 分别处理季节、局部、多尺度和突变节律，保持对序列长度、通道数和预测步长的线性复杂度，直接对应 P1 的高低频统一建模。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">LongE2V：长时程事件流视频重建、预测与插帧</a></h3>
+              <p class="card__subtitle">LongE2V: Long-Horizon Event-based Video Reconstruction, Prediction, and Frame Interpolation with Video Diffusion Models</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它从稀疏原生事件流出发，借助视频扩散先验、autoregressive unrolling、adaptive context switching 和 event voxel density augmentation 维持长序列时间一致性，是 P2 原生 Event 表征与鲁棒增强的强候选。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">FreMo：频域多模态交通时序预测</a></h3>
+              <p class="card__subtitle">Frequency-Domain Multi-Modality Transportation Modeling</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它把多模态交通流的耦合拆到频域，用 modality-wise frequency filter 和 frequency-guided synergy integrator 选择性融合不同频率贡献；对聚变低频控制量和高频诊断量的交互建模很直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">MatBind：材料多模态共享嵌入空间</a></h3>
+              <p class="card__subtitle">MatBind: A Shared Embedding Space for Multimodal Materials Characterization</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它用晶体结构作为物理锚点，把结构、粉末 XRD、电子态密度和文本对齐到同一空间，并出现未直接配对模态之间的 zero-shot 检索；对科学多模态表征和物理锚定对齐有借鉴意义。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">ADITYA-U MHD Equilibrium：聚变平衡参数与剖面的深度代理</a></h3>
+              <p class="card__subtitle">Deep Learning Models for ADITYA-U MHD Equilibrium</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 等离子体控制 / 诊断 / 预测</span>
+                <span class="chip chip--muted">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>补录 / 非当日新增 / arXiv 2026-07-06。它基于 100,760 个 free-boundary equilibrium 合成样本训练 Dense/PCA/1D-2D CNN/PINN 与逆模型，面向 ADITYA-U 的实时平衡估计、控制和实验规划，是本轮最直接的聚变 AI 条目。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>RhyMix：轻量多节律长程时序预测网络</h3>
+              <p class="paper__subtitle">RhyMix: A Lightweight Adaptive Multi-Rhythm Network for Long-Term Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它用 cyclic path、multi-scale depthwise dilated convolution 和多级 adaptive gates 分别处理季节、局部、多尺度和突变节律，保持对序列长度、通道数和预测步长的线性复杂度，直接对应 P1 的高低频统一建模。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sumit Satishrao Shevtekar, Chandresh Kumar Maurya</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08234" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08234" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08234" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它用 cyclic path、multi-scale depthwise dilated convolution 和多级 adaptive gates 分别处理季节、局部、多尺度和突变节律，保持对序列长度、通道数和预测步长的线性复杂度，直接对应 P1 的高低频统一建模。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断时序通常同时含慢变化工况、周期性控制响应、高频扰动和突发前兆。单一路径模型容易在长依赖和局部变化之间取舍，Transformer 又可能带来显存压力，因而需要结构上区分多种节律的轻量模型。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它用 cyclic path、multi-scale depthwise dilated convolution 和多级 adaptive gates 分别处理季节、局部、多尺度和突变节律，保持对序列长度、通道数和预测步长的线性复杂度，直接对应 P1 的高低频统一建模。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保持线性复杂度和低延迟的同时，让一个长程预测模型按样本、通道和预测头自适应选择不同时间尺度的模式？
+对当前主题的关键意义在于：最小实验是在现有聚变诊断窗口中把低频控制量、高频磁探针/辐射信号分别送入多节律分支，比较 RhyMix、TCN、PatchTST、Mamba 在相同显存下的 AUC、提前量、长窗口吞吐和突发扰动召回。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/1096c507e08f46e9.png" alt="Figure 1 : RhyMix architecture.">
+                    <figcaption>Figure 1 : RhyMix architecture.</figcaption>
+                  </figure>
+                  <p>RhyMix 采用 Cyclic Path 注入显式季节/周期先验，并用 multi-scale depthwise dilated convolution + channel attention 捕捉多尺度局部依赖；path gate 在 Direct、Trend-Seasonal Decomposition、Local Convolution 和 Periodic Fusion 预测头之间动态组合，hybrid gate 则平衡周期分支和卷积分支。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 12 个真实长程预测数据集中 10 个达到 SOTA，模型约 40K 参数，复杂度随序列长度、通道数和预测步长线性增长，推理延迟低于 5ms。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文面向规整长程预测，不直接处理真实时间间隔、异步缺失和跨采样率通道；迁移到聚变还需补 timestamp-aware 编码和事件级评估。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是今天 P1 方向最实用的轻量结构候选，适合作为 Transformer/Mamba 之外的工程基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有聚变诊断窗口中把低频控制量、高频磁探针/辐射信号分别送入多节律分支，比较 RhyMix、TCN、PatchTST、Mamba 在相同显存下的 AUC、提前量、长窗口吞吐和突发扰动召回。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>FreMo：频域多模态交通时序预测</h3>
+              <p class="paper__subtitle">Frequency-Domain Multi-Modality Transportation Modeling</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它把多模态交通流的耦合拆到频域，用 modality-wise frequency filter 和 frequency-guided synergy integrator 选择性融合不同频率贡献；对聚变低频控制量和高频诊断量的交互建模很直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiewen Deng, Hangchen Liu, Junchen Li, Boyuan Zhang, Renhe Jiang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08475" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08475" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08475" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它把多模态交通流的耦合拆到频域，用 modality-wise frequency filter 和 frequency-guided synergy integrator 选择性融合不同频率贡献；对聚变低频控制量和高频诊断量的交互建模很直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多源交通与多源聚变诊断都存在共享时序模式和模态特异噪声。若只在时域直接拼接特征，低频工况、周期扰动和高频异常可能互相污染，导致融合模型在分布变化时不稳定。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它把多模态交通流的耦合拆到频域，用 modality-wise frequency filter 和 frequency-guided synergy integrator 选择性融合不同频率贡献；对聚变低频控制量和高频诊断量的交互建模很直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让多模态时序模型在频域内区分“本模态该保留哪些频率”和“跨模态该共享哪些频率”？
+对当前主题的关键意义在于：最小实验是把低频控制量、高频诊断和图像摘要 token 分别视作模态，比较时域 concat、cross-attention、FreMo 频域协同在跨 shot/campaign 上的 AUC、提前量、误报率和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b3edc58091baeb6c.png" alt="Figure 2. An overview of the proposed FreMo. Left: As a plug-and-play component, FreMo can be integrated into time series frameworks to enable cross-modality synergy. Right: Detailed design of FreMo. Modality-Wise Frequency Filter (MFF) adaptively learns modality-wise frequency weights w w from spectral amplitudes by incorporating spatial embedding E E , and applies them as soft gates to preserve informative frequency components while suppressing noise in a phase-preserving manner. Frequency-Guided Synergy Integrator (FSI) computes frequency-wise synergy weights α \alpha across modalities, aggregates the filtered spectra into a unified synergy consensus, and injects it back through a learnable scalar γ \gamma for residual calibration.">
+                    <figcaption>Figure 2. An overview of the proposed FreMo. Left: As a plug-and-play component, FreMo can be integrated into time series frameworks to enable cross-modality synergy. Right: Detail...</figcaption>
+                  </figure>
+                  <p>FreMo 提出可插拔的 Frequency-Domain Multi-Modality modeling。Modality-Wise Frequency Filter 自适应细化每个模态的谱分量，Frequency-Guided Synergy Integrator 按频率估计跨模态贡献并选择性聚合，从而减少粗粒度融合带来的负迁移。
+阅读时需要把方法设计与主要结果一起看：摘要报告在真实多模态交通数据和多种预测场景中优于 SOTA，且可与通用时序 backbone 结合；代码链接由论文摘要给出。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在真实多模态交通数据和多种预测场景中优于 SOTA，且可与通用时序 backbone 结合；代码链接由论文摘要给出。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>应用是交通预测，不处理非均匀采样时间戳和诊断硬件延迟；频域变换对短促非平稳前兆可能有平滑风险。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为高低频通道交互的核心机制参考，而不是只当交通论文看。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把低频控制量、高频诊断和图像摘要 token 分别视作模态，比较时域 concat、cross-attention、FreMo 频域协同在跨 shot/campaign 上的 AUC、提前量、误报率和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断 / 预测</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>ADITYA-U MHD Equilibrium：聚变平衡参数与剖面的深度代理</h3>
+              <p class="paper__subtitle">Deep Learning Models for ADITYA-U MHD Equilibrium</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">补录 / 非当日新增 / arXiv 2026-07-06。它基于 100,760 个 free-boundary equilibrium 合成样本训练 Dense/PCA/1D-2D CNN/PINN 与逆模型，面向 ADITYA-U 的实时平衡估计、控制和实验规划，是本轮最直接的聚变 AI 条目。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Udaya Maurya, Suman Aich, Indranil Bandyopadhyay, Daniel Raju</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.04865" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.04865" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.04865" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>补录 / 非当日新增 / arXiv 2026-07-06。它基于 100,760 个 free-boundary equilibrium 合成样本训练 Dense/PCA/1D-2D CNN/PINN 与逆模型，面向 ADITYA-U 的实时平衡估计、控制和实验规划，是本轮最直接的聚变 AI 条目。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>实时平衡估计和快速实验规划是聚变控制链路中的基础模块。传统求解器精确但较慢，纯数据模型又可能不满足 Grad-Shafranov 物理约束，因此合成平衡数据、降阶表示和物理残差约束的组合很有价值。
+从本日报的选取理由看，补录 / 非当日新增 / arXiv 2026-07-06。它基于 100,760 个 free-boundary equilibrium 合成样本训练 Dense/PCA/1D-2D CNN/PINN 与逆模型，面向 ADITYA-U 的实时平衡估计、控制和实验规划，是本轮最直接的聚变 AI 条目。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用深度模型在 ADITYA-U 的实际运行域内快速预测标量平衡量、一维安全因子剖面、二维极向磁通剖面，并支持从目标平衡反推 PF coil currents？
+对当前主题的关键意义在于：最小实验是把现有破裂预测或诊断融合模型加入平衡代理输出作为物理 token，比较是否提升跨 shot 泛化、解释性和提前量；同时测量代理推理延迟是否满足实时控制预算。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ea24fce8af47c6b7.png" alt="Figure 4 : Probability density distributions of experimentally measured β p \beta_{p} values from 39 discharges and model-generated β p \beta_{p} values for the 766-shot dataset. The density curves are normalized to maximum value 1 for visual comparison.">
+                    <figcaption>Figure 4 : Probability density distributions of experimentally measured β p \beta_{p} values from 39 discharges and model-generated β p \beta_{p} values for the 766-shot dataset. T...</figcaption>
+                  </figure>
+                  <p>论文用 pyIPREQ Grad-Shafranov solver 生成 100,760 个 free-boundary equilibrium 样本，输入来自 766 个 ADITYA-U plasma discharges，并比较 Dense 网络、PCA 降阶模型、1D/2D CNN、带 Grad-Shafranov residual constraints 的 PINN，以及用于线圈电流估计的逆模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告模型能在数据覆盖的 operational domain 内准确估计关键平衡参数和剖面，可作为传统平衡估计的高效替代，用于实时控制、快速分析和实验规划。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>数据限制在 ADITYA-U circular limiter flat-top 附近，跨装置、非圆截面、破裂前极端状态和真实传感器噪声仍需验证；摘要未给出跨 campaign 泛化细节。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它不是破裂预测论文，但可以作为 P3/P1 的物理状态锚和实时控制上下文。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把现有破裂预测或诊断融合模型加入平衡代理输出作为物理 token，比较是否提升跨 shot 泛化、解释性和提前量；同时测量代理推理延迟是否满足实时控制预算。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</h3>
+              <p class="paper__subtitle">No qualified new direct paper in tokamak disruption prediction with visible-diagnostic multimodal fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-11</span>
+                <span class="chip chip--accent">skip</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。已检索 2026-07-09 UTC 最新批次与近几日 tokamak / disruption / visible diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。已检索 2026-07-09 UTC 最新批次与近几日 tokamak / disruption / visible diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>本轮有 ADITYA-U MHD equilibrium 作为聚变 AI 补录，但它解决的是平衡估计，不是破裂预测或可见光-诊断时序融合。不能把纯等离子体物理、激光等离子体或通用多模态论文伪装成直接聚变破裂预测新增。
+从本日报的选取理由看，本轮空缺判断。已检索 2026-07-09 UTC 最新批次与近几日 tokamak / disruption / visible diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>保留检索边界，避免重复前几期 EAST 多模态蒸馏、fusion full-state reconstruction 和 experiment-free disruption prediction 的已介绍内容。
+对当前主题的关键意义在于：下一步优先把 FreMo 的频域协同、RhyMix 的多节律门控和 ADITYA-U 式平衡物理 token 接到现有破裂预测基线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明，不对应新方法；可迁移机制见 P1/P2/P3 附加分区。
+阅读时需要把方法设计与主要结果一起看：直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏刚上线的期刊页、会议页、作者主页或项目页；后续继续监测 EAST/KSTAR/DIII-D/ITER 相关关键词。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮不凑数。聚变侧新增价值主要来自 ADITYA-U 平衡代理和通用多模态/时序机制迁移。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一步优先把 FreMo 的频域协同、RhyMix 的多节律门控和 ADITYA-U 式平衡物理 token 接到现有破裂预测基线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>RhyMix：多节律门控作为高低频统一建模的轻量主干</h3>
+              <p class="paper__subtitle">RhyMix: A Lightweight Adaptive Multi-Rhythm Network for Long-Term Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是通用 long-term time series forecasting；可迁移模块是 cyclic path、multi-scale dilated convolution、path gate 和 hybrid gate；对应高低频、多尺度、突变和低延迟统一建模。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sumit Satishrao Shevtekar, Chandresh Kumar Maurya</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08234" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08234" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是通用 long-term time series forecasting；可迁移模块是 cyclic path、multi-scale dilated convolution、path gate 和 hybrid gate；对应高低频、多尺度、突变和低延迟统一建模。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是以线性复杂度和约 40K 参数替代部分注意力层，适合高频长窗口和边缘部署。主要不成立条件是诊断数据存在真实不规则时间戳、整通道缺失和跨设备采样率变化，而 RhyMix 摘要未处理这些条件。最小验证实验是在相同输入窗口下替换现有时序 backbone，按高频通道、低频通道和混合通道分别报告显存、吞吐、AUC、提前量和 abrupt-change recall。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让同一模型按样本和通道自适应分配周期、趋势、局部和突变模式？
+对当前主题的关键意义在于：原始领域是通用时序预测；迁移到聚变时，重点验证多节律门控能否减少高低频通道互相干扰，并在采样率变化下保持稳定。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/1096c507e08f46e9.png" alt="Figure 1 : RhyMix architecture.">
+                    <figcaption>Figure 1 : RhyMix architecture.</figcaption>
+                  </figure>
+                  <p>双路径编码 + 多预测头门控，让模型用轻量结构显式区分不同节律。
+阅读时需要把方法设计与主要结果一起看：摘要报告 12 个真实数据集中 10 个达到 SOTA，低延迟推理。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 12 个真实数据集中 10 个达到 SOTA，低延迟推理。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>缺少 irregular sampling 和 missingness 机制。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可把它作为“轻量多节律 backbone”的第一候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是通用时序预测；迁移到聚变时，重点验证多节律门控能否减少高低频通道互相干扰，并在采样率变化下保持稳定。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>FreMo：按频率选择跨模态协同，避免高低频负迁移</h3>
+              <p class="paper__subtitle">Frequency-Domain Multi-Modality Transportation Modeling</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是多模态交通流预测；可迁移模块是 Modality-Wise Frequency Filter 和 Frequency-Guided Synergy Integrator；对应多采样率诊断中高频压缩后与低频通道交互的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiewen Deng, Hangchen Liu, Junchen Li, Boyuan Zhang, Renhe Jiang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08475" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08475" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是多模态交通流预测；可迁移模块是 Modality-Wise Frequency Filter 和 Frequency-Guided Synergy Integrator；对应多采样率诊断中高频压缩后与低频通道交互的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响取决于频域变换和频率选择模块，通常低于全量 cross-attention，且可插入现有 backbone。风险是频域滤波可能抹掉破裂前短促非平稳尖峰，或在不规则采样下引入伪频谱。最小验证实验是对齐/重采样后先做 FreMo 基线，再加入真实 Δt 编码，比较低频控制量、高频诊断和多通道融合的性能与误报。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不同频率上决定哪些模态该独立保留，哪些模态该互相借信息？
+对当前主题的关键意义在于：原始领域是城市交通；迁移点是频率条件下的 selective fusion，对应聚变高低频通道耦合、显存控制和负迁移抑制。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b3edc58091baeb6c.png" alt="Figure 2. An overview of the proposed FreMo. Left: As a plug-and-play component, FreMo can be integrated into time series frameworks to enable cross-modality synergy. Right: Detailed design of FreMo. Modality-Wise Frequency Filter (MFF) adaptively learns modality-wise frequency weights w w from spectral amplitudes by incorporating spatial embedding E E , and applies them as soft gates to preserve informative frequency components while suppressing noise in a phase-preserving manner. Frequency-Guided Synergy Integrator (FSI) computes frequency-wise synergy weights α \alpha across modalities, aggregates the filtered spectra into a unified synergy consensus, and injects it back through a learnable scalar γ \gamma for residual calibration.">
+                    <figcaption>Figure 2. An overview of the proposed FreMo. Left: As a plug-and-play component, FreMo can be integrated into time series frameworks to enable cross-modality synergy. Right: Detail...</figcaption>
+                  </figure>
+                  <p>先做模态内频率细化，再按频率估计跨模态贡献并聚合。
+阅读时需要把方法设计与主要结果一起看：摘要报告在多种交通预测场景中优于 SOTA。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在多种交通预测场景中优于 SOTA。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有直接覆盖异步时间戳和聚变物理约束。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可把它作为高低频融合层，而不是全模型替换。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是城市交通；迁移点是频率条件下的 selective fusion，对应聚变高低频通道耦合、显存控制和负迁移抑制。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>LongE2V：原生事件长序列生成先验和密度增强</h3>
+              <p class="paper__subtitle">LongE2V: Long-Horizon Event-based Video Reconstruction, Prediction, and Frame Interpolation with Video Diffusion Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是 event-based video reconstruction/prediction/interpolation；可迁移模块是 autoregressive unrolling、adaptive context switching、cross residual correction 和 event voxel density augmentation；对应事件稀疏、噪声、长序列漂移和传感器分辨率变化。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Cheng-De Fan, Chun-Wei Tuan Mu, Chen-Wei Chang, Chin-Yang Lin, Kun-Ru Wu, Yu-Chee Tseng, Yu-Lun Liu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08770" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08770" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是 event-based video reconstruction/prediction/interpolation；可迁移模块是 autoregressive unrolling、adaptive context switching、cross residual correction 和 event voxel density augmentation；对应事件稀疏、噪声、长序列漂移和传感器分辨率变化。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响较高，因为视频扩散模型不适合直接在线推理；更现实的做法是离线预训练事件分支或生成辅助监督。主要风险是生成式重建偏向视觉真实感而非属性判别，可能引入伪外观。最小验证实验是只迁移事件密度增强和一致性损失，在 TriPro/EventPAR 上比较属性 F1、mA、ECE、弱光鲁棒性和推理延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让事件分支保留动态结构并避免长时程漂移？
+对当前主题的关键意义在于：原始领域是事件视频生成；迁移点是原生事件表征和扰动增强，对应 RGB-Event 属性识别中的弱光、模糊、稀疏和模态缺失。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3c69aae95f22455f.png" alt="Figure 1. Event-based video generation. We leverage pre-trained video diffusion priors to address three distinct inverse problems within a single architecture. Depending on the input condition, our model performs: (a) Video Reconstruction , recovering high-fidelity textures from sparse event streams, (b) Video Prediction , generating long-term sequences from a single start frame with minimal drift via our autoregressive unrolling strategy, and (c) Video Frame Interpolation , achieving zero-shot adaptation to synthesize intermediate frames by leveraging event dynamics as temporal guidance.">
+                    <figcaption>Figure 1. Event-based video generation. We leverage pre-trained video diffusion priors to address three distinct inverse problems within a single architecture. Depending on the inp...</figcaption>
+                  </figure>
+                  <p>用视频扩散先验和上下文切换稳定长事件序列重建。
+阅读时需要把方法设计与主要结果一起看：摘要报告三项事件视频任务均超过 SOTA 并具备零样本泛化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告三项事件视频任务均超过 SOTA 并具备零样本泛化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是属性识别，在线成本需要压缩。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 适合把它作为事件预训练/增强路线，而非直接部署模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是事件视频生成；迁移点是原生事件表征和扰动增强，对应 RGB-Event 属性识别中的弱光、模糊、稀疏和模态缺失。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>EVIS：可控合成事件流用于属性鲁棒性压力测试</h3>
+              <p class="paper__subtitle">EVIS: A Physics-Grounded Event Camera Plugin for NVIDIA Isaac Sim</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是机器人事件相机仿真；可迁移模块是 log-intensity contrast event model、per-pixel asynchronous reference update、噪声/运动模糊配置和 frame-perfect ground truth；对应 RGB/Event 弱同步、事件稀疏/噪声和可控退化评测。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Linli Shi, Ruijun Zhang, Ziyun Wang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08098" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08098" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是机器人事件相机仿真；可迁移模块是 log-intensity contrast event model、per-pixel asynchronous reference update、噪声/运动模糊配置和 frame-perfect ground truth；对应 RGB/Event 弱同步、事件稀疏/噪声和可控退化评测。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响主要发生在数据生成阶段，训练时可用少量合成退化做 domain randomization，不增加在线模型显存。风险是 Isaac 场景与行人属性或 ReID 域差距大，合成事件统计不匹配真实传感器。最小验证实验是生成不同事件阈值、噪声、RGB 掉帧和时间偏移版本，对固定 TriPro 模型做鲁棒性曲线，再训练 reliability-aware fusion。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何获得带真值、可控退化的事件流来验证 RGB-Event 属性模块？
+对当前主题的关键意义在于：原始领域是机器人仿真；迁移点是事件数据生成与退化控制，对应 TriPro 当前难系统评估的时钟不同步、低光、模态缺失和事件噪声。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8dc020811d6be73b.png" alt="Figure 3 : Qualitative overview of the downstream-task benchmark at one time instant. Columns: the full-render reference ( 1000 1000 Hz) and the three warp configs ( 500 × 2 500\!\times\!2 , 250 × 4 250\!\times\!4 , 125 × 8 125\!\times\!8 ), all at the same 1000 1000 Hz effective rate. Rows, top to bottom: rendered frame, events (ON red, OFF blue), E2VID reconstruction, and E-RAFT optical flow.">
+                    <figcaption>Figure 3 : Qualitative overview of the downstream-task benchmark at one time instant. Columns: the full-render reference ( 1000 1000 Hz) and the three warp configs ( 500 × 2 500\!\...</figcaption>
+                  </figure>
+                  <p>在物理仿真中直接产生异步事件，并保留逐帧真值和可配置传感器退化。
+阅读时需要把方法设计与主要结果一起看：摘要说明事件流可供预训练事件网络直接下游使用。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要说明事件流可供预训练事件网络直接下游使用。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>仍需真实数据校准和属性标签构造。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可先用它补齐“可控压力测试”，再决定是否改模型结构。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是机器人仿真；迁移点是事件数据生成与退化控制，对应 TriPro 当前难系统评估的时钟不同步、低光、模态缺失和事件噪声。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>FreMo：频域选择性融合用于图像摘要与诊断时序交互</h3>
+              <p class="paper__subtitle">Frequency-Domain Multi-Modality Transportation Modeling</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是多模态交通预测；可迁移模块是频域模态内滤波与跨模态选择性协同；对应可见光图像摘要 token、低频控制量和高频诊断量在不同频率上贡献不一致的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiewen Deng, Hangchen Liu, Junchen Li, Boyuan Zhang, Renhe Jiang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08475" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08475" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是多模态交通预测；可迁移模块是频域模态内滤波与跨模态选择性协同；对应可见光图像摘要 token、低频控制量和高频诊断量在不同频率上贡献不一致的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响比全 cross-attention 更可控，可先把图像局部证据压成少量时序 token 再做频域协同。主要风险是图像前兆不是稳定周期信号，频域处理可能抑制短暂异常。最小验证实验是先用轻量视觉 encoder 提取可见光局部亮斑/边缘/运动摘要，再和诊断时序用 FreMo 融合，比较 direct concat、cross-attention 和 gated fusion 的提前量、显存和缺失模态鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>时序如何选择图像局部证据，同时避免无关视觉信息污染诊断预测？
+对当前主题的关键意义在于：原始领域是交通；迁移点是频率条件下的选择性跨模态融合，对应破裂预测中的异步、多采样率和低显存部署。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b3edc58091baeb6c.png" alt="Figure 2. An overview of the proposed FreMo. Left: As a plug-and-play component, FreMo can be integrated into time series frameworks to enable cross-modality synergy. Right: Detailed design of FreMo. Modality-Wise Frequency Filter (MFF) adaptively learns modality-wise frequency weights w w from spectral amplitudes by incorporating spatial embedding E E , and applies them as soft gates to preserve informative frequency components while suppressing noise in a phase-preserving manner. Frequency-Guided Synergy Integrator (FSI) computes frequency-wise synergy weights α \alpha across modalities, aggregates the filtered spectra into a unified synergy consensus, and injects it back through a learnable scalar γ \gamma for residual calibration.">
+                    <figcaption>Figure 2. An overview of the proposed FreMo. Left: As a plug-and-play component, FreMo can be integrated into time series frameworks to enable cross-modality synergy. Right: Detail...</figcaption>
+                  </figure>
+                  <p>按频率估计不同模态贡献，让图像摘要和诊断信号只在有效频段共享信息。
+阅读时需要把方法设计与主要结果一起看：摘要报告跨多种交通预测场景泛化良好。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告跨多种交通预测场景泛化良好。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要补物理约束和真实时间戳处理。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可把它作为低成本融合层的第一实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是交通；迁移点是频率条件下的选择性跨模态融合，对应破裂预测中的异步、多采样率和低显存部署。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>Cross-Modal ECG to Doppler：用注意力量化可恢复与不可恢复跨模态成分</h3>
+              <p class="paper__subtitle">Cross-Modal Generative Framework for Signal Translation from Fetal-Maternal Electrocardiograms to Fetal Doppler Waveforms</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是胎儿/母体 ECG 到 Doppler waveform 的跨模态生理信号生成；可迁移模块是 dilated convolution、cross-modal attention、自注意力和 residual Doppler component analysis；对应诊断时序与可见光/成像证据之间“哪些前兆可互相解释、哪些必须保留独立模态”的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tongli Su, Alireza Rafiei, Marly van Assen, Reza Sameni, Gari D. Clifford, Faezeh Marzbanrad, Nasim Katebi</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08073" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08073" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08073" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是胎儿/母体 ECG 到 Doppler waveform 的跨模态生理信号生成；可迁移模块是 dilated convolution、cross-modal attention、自注意力和 residual Doppler component analysis；对应诊断时序与可见光/成像证据之间“哪些前兆可互相解释、哪些必须保留独立模态”的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响中等，模型主要是卷积与注意力；可作为离线对齐/解释模块，也可压缩为在线辅助头。主要风险是医学 ECG-Doppler 同步质量高于聚变图像与诊断，且没有图像模态。最小验证实验是用诊断时序预测图像摘要或反向预测，分析可恢复残差是否集中在破裂前特定阶段，并比较是否提升最终破裂预测。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何判断一个模态中哪些动态可由另一模态恢复，哪些是必须独立保留的互补前兆？
+对当前主题的关键意义在于：原始领域是医学生理信号；迁移点是跨模态注意力和残差成分解释，对应破裂预测的模态互补性、解释性和缺失模态训练。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/108e26affae90968.png" alt="Figure 1: Overview of the proposed cross-modal generative model. Dilated convolution layers extract features from fetal and maternal ECG, cross-modal attention selectively fuses maternal information based on fetal queries, and self-attention captures long-range dependencies to generate Doppler velocity envelopes.">
+                    <figcaption>Figure 1: Overview of the proposed cross-modal generative model. Dilated convolution layers extract features from fetal and maternal ECG, cross-modal attention selectively fuses ma...</figcaption>
+                  </figure>
+                  <p>用 cross-modal attention 选择性引入母体 ECG，用 self-attention 建模长程依赖，并分析 recoverable 与 residual Doppler components。
+阅读时需要把方法设计与主要结果一起看：摘要报告相对双通道基线 PSD MSE 降低 51%，cross-modal attention 相对 naive concatenation 带来 39% PSD MSE 降低。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告相对双通道基线 PSD MSE 降低 51%，cross-modal attention 相对 naive concatenation 带来 39% PSD MSE 降低。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是图像融合，也不是破裂预测；迁移时需把 Doppler residual 分析改写为图像/诊断互补前兆分析。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可借鉴它的“跨模态可恢复性”评估，而不是只比较最终 AUC。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是医学生理信号；迁移点是跨模态注意力和残差成分解释，对应破裂预测的模态互补性、解释性和缺失模态训练。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>LongE2V：长时程事件流视频重建、预测与插帧</h3>
+              <p class="paper__subtitle">LongE2V: Long-Horizon Event-based Video Reconstruction, Prediction, and Frame Interpolation with Video Diffusion Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它从稀疏原生事件流出发，借助视频扩散先验、autoregressive unrolling、adaptive context switching 和 event voxel density augmentation 维持长序列时间一致性，是 P2 原生 Event 表征与鲁棒增强的强候选。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Cheng-De Fan, Chun-Wei Tuan Mu, Chen-Wei Chang, Chin-Yang Lin, Kun-Ru Wu, Yu-Chee Tseng, Yu-Lun Liu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08770" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08770" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08770" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它从稀疏原生事件流出发，借助视频扩散先验、autoregressive unrolling、adaptive context switching 和 event voxel density augmentation 维持长序列时间一致性，是 P2 原生 Event 表征与鲁棒增强的强候选。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别中的 Event 模态优势来自高时间分辨率和弱光/运动条件下的动态边缘，但事件稀疏、噪声和长序列漂移会让简单 voxel/frame 表征失效。长时程事件建模需要同时避免纹理模糊和生成漂移。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它从稀疏原生事件流出发，借助视频扩散先验、autoregressive unrolling、adaptive context switching 和 event voxel density augmentation 维持长序列时间一致性，是 P2 原生 Event 表征与鲁棒增强的强候选。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从稀疏事件流中恢复、预测或插补长时程视频，同时保持时间一致性和跨传感器分辨率鲁棒性？
+对当前主题的关键意义在于：最小实验是在 TriPro-ReID/EventPAR 数据上用 LongE2V 式事件增强和 temporal consistency loss 预训练事件分支，再冻结或轻微微调属性头，比较弱光、运动模糊、事件稀疏和模态缺失子集的 mA、F1、ECE 和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3c69aae95f22455f.png" alt="Figure 1. Event-based video generation. We leverage pre-trained video diffusion priors to address three distinct inverse problems within a single architecture. Depending on the input condition, our model performs: (a) Video Reconstruction , recovering high-fidelity textures from sparse event streams, (b) Video Prediction , generating long-term sequences from a single start frame with minimal drift via our autoregressive unrolling strategy, and (c) Video Frame Interpolation , achieving zero-shot adaptation to synthesize intermediate frames by leveraging event dynamics as temporal guidance.">
+                    <figcaption>Figure 1. Event-based video generation. We leverage pre-trained video diffusion priors to address three distinct inverse problems within a single architecture. Depending on the inp...</figcaption>
+                  </figure>
+                  <p>LongE2V 微调预训练视频扩散模型，结合 Autoregressive Unrolling 与 Adaptive Context Switching 缓解长序列 temporal drift；Reencoding Alignment with Cross Residual Correction 提升插帧双向一致性；Event Voxel Density Augmentation 增强不同事件密度和传感器分辨率下的鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在真实 benchmark 的事件视频重建、预测和插帧三类任务上超过 SOTA，并展示更好的时间一致性与零样本泛化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是事件到视频生成，不是属性识别；视频扩散先验推理成本可能较高，不能直接作为实时属性分支。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可借鉴它的事件密度增强、长时程上下文切换和一致性约束，把生成式重建作为辅助训练而非在线主干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro-ReID/EventPAR 数据上用 LongE2V 式事件增强和 temporal consistency loss 预训练事件分支，再冻结或轻微微调属性头，比较弱光、运动模糊、事件稀疏和模态缺失子集的 mA、F1、ECE 和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>MatBind：材料多模态共享嵌入空间</h3>
+              <p class="paper__subtitle">MatBind: A Shared Embedding Space for Multimodal Materials Characterization</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它用晶体结构作为物理锚点，把结构、粉末 XRD、电子态密度和文本对齐到同一空间，并出现未直接配对模态之间的 zero-shot 检索；对科学多模态表征和物理锚定对齐有借鉴意义。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Le Yang, Anoop K. Chandran, Jona Östreicher, Evgenii Sovetkin, Adrian Mirza, Sebastien Bompas, Bashir Kazimi, Pascal Friederich, Stefan Kesselheim, Kevin Maik Jablonka, Stefan Sandfeld</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08470" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08470" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08470" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它用晶体结构作为物理锚点，把结构、粉末 XRD、电子态密度和文本对齐到同一空间，并出现未直接配对模态之间的 zero-shot 检索；对科学多模态表征和物理锚定对齐有借鉴意义。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>科学多模态数据常被分开存储和建模，导致结构、谱图、文本记录、实验条件和传感器读数难以互相查询。聚变诊断也存在类似问题：同一 shot 的磁、辐射、图像、控制和文字日志是同一物理状态的不同投影。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它用晶体结构作为物理锚点，把结构、粉末 XRD、电子态密度和文本对齐到同一空间，并出现未直接配对模态之间的 zero-shot 检索；对科学多模态表征和物理锚定对齐有借鉴意义。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不要求所有模态两两配对的情况下，把异构科学模态对齐到一个具有物理语义的共享空间？
+对当前主题的关键意义在于：最小实验是用平衡剖面或重建状态作为中心锚，对齐可见光帧、ECE/BES/磁诊断片段、控制参数和实验日志，测试跨模态检索、shot 相似性检索和异常前兆定位。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>MatBind 以晶体结构作为中心物理锚，使用对比学习对齐 crystal structure、powder X-ray diffraction、density of states 和 text；共享空间能诱导训练中未直接配对模态之间的 zero-shot cross-modal retrieval，并按物理属性组织材料。
+阅读时需要把方法设计与主要结果一起看：摘要报告组合多模态 query 时检索性能系统提升，且共享嵌入空间呈现物理意义上的组织结构。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告组合多模态 query 时检索性能系统提升，且共享嵌入空间呈现物理意义上的组织结构。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>材料结构与聚变等离子体状态不同；聚变迁移需要确定中心物理锚，例如平衡重建、shot-level latent state 或物理约束剖面。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为“物理锚定多模态对齐”的设计参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用平衡剖面或重建状态作为中心锚，对齐可见光帧、ECE/BES/磁诊断片段、控制参数和实验日志，测试跨模态检索、shot 相似性检索和异常前兆定位。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>EVIS：面向 Isaac Sim 的物理事件相机插件</h3>
+              <p class="paper__subtitle">EVIS: A Physics-Grounded Event Camera Plugin for NVIDIA Isaac Sim</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它提供可配置、带噪声和运动模糊的物理事件流生成器，能补 P2 数据稀缺与可控退化评测的短板。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Linli Shi, Ruijun Zhang, Ziyun Wang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08098" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08098" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/spikelab-jhu/isaac-sim-event-camera-plugin" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.08098" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它提供可配置、带噪声和运动模糊的物理事件流生成器，能补 P2 数据稀缺与可控退化评测的短板。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别最缺的不是单个融合层，而是可控的事件稀疏、噪声、运动模糊、时间偏移和模态缺失评测。真实采集成本高，合成事件若不符合物理触发机制又会误导模型。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它提供可配置、带噪声和运动模糊的物理事件流生成器，能补 P2 数据稀缺与可控退化评测的短板。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在物理仿真环境中低成本生成高率、全标注、可控退化的异步事件流？
+对当前主题的关键意义在于：最小实验是用 Isaac/EVIS 构造弱光、快速运动、事件稀疏、RGB 掉帧和时钟偏移场景，生成属性标签或伪标签，测试 TriPro/EventPAR 在样本级、区域级和属性级动态融合下的鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8dc020811d6be73b.png" alt="Figure 3 : Qualitative overview of the downstream-task benchmark at one time instant. Columns: the full-render reference ( 1000 1000 Hz) and the three warp configs ( 500 × 2 500\!\times\!2 , 250 × 4 250\!\times\!4 , 125 × 8 125\!\times\!8 ), all at the same 1000 1000 Hz effective rate. Rows, top to bottom: rendered frame, events (ON red, OFF blue), E2VID reconstruction, and E-RAFT optical flow.">
+                    <figcaption>Figure 3 : Qualitative overview of the downstream-task benchmark at one time instant. Columns: the full-render reference ( 1000 1000 Hz) and the three warp configs ( 500 × 2 500\!\...</figcaption>
+                  </figure>
+                  <p>EVIS 在 NVIDIA Isaac Sim / Isaac Lab 中实现 log-intensity contrast event model 与 per-pixel asynchronous reference update；可从普通 RGB 相机迁移，继承仿真器的物理和逐帧真值，并用双向 motion-vector warping 在稀疏关键帧之间合成事件以支持单 GPU 实时生成。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要说明生成事件流可直接供预训练事件网络使用，并支持传感器噪声和运动模糊配置。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>应用是机器人仿真，不含行人属性标签和真实 ReID 场景域；合成到真实仍需域随机化和真实子集校准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可把它作为数据和压力测试工具，而不是直接模型替代。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用 Isaac/EVIS 构造弱光、快速运动、事件稀疏、RGB 掉帧和时钟偏移场景，生成属性标签或伪标签，测试 TriPro/EventPAR 在样本级、区域级和属性级动态融合下的鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>本轮趋势</h3>
+          <p>1. P1 的新增从“大模型长上下文”转向轻量多节律和频域选择性融合，这更贴近聚变高频海量点和低频控制量共同建模的工程约束。</p>
+          <p>2. P2 本轮有真正原生事件流方向的新增，但更适合作为事件预训练、数据增强和压力测试，而不是直接替换 TriPro-ReID 的属性识别主干。</p>
+          <p>3. P3 仍缺直接 tokamak visible + diagnostics disruption 新稿，但跨领域已经给出三类可迁移机制：频域选择性融合、跨模态可恢复性分析、物理锚定共享表征。</p>
+          <p>4. 聚变侧值得补看 ADITYA-U MHD equilibrium：它可作为破裂预测前端的物理状态 token 或实时平衡代理，而不是与破裂分类模型竞争。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
