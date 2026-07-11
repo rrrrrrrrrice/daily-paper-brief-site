@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-12</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-12 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-12 06:35:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇进入主推荐，均为 arXiv 2026-07-09 提交、2026-07-10 recent 批次可见的新稿。P1 最值得看 CAAD：它把多变量时序异常检测改写为 Granger 因果一致性的连续验证，适合聚变高低频诊断中的前兆关系漂移检测。P2 重点看 TVTA 与 DHNet：前者在原生事件流中先做局部时间建模再聚合，后者面向未对齐 RGBT 视频构造局部对齐和时空/跨模态双超图。P3 侧重点是 Whareformer 与 ThermoField：一个提供长视频可更新记忆与局部证据跟踪，一个把时变热观测、几何和微分物理约束统一到神经场里。直接聚变破裂预测新稿本轮空缺，不用旧论文凑数。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 CAAD：因果一致性的多变量时序异常检测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断 / 预测</a>
+            <ul>
+              <li><a href="#paper-6">06 本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-7">07 CAAD：用因果一致性检测高低频诊断耦合失稳</a></li>
+              <li><a href="#paper-8">08 本轮 P1 第二篇空缺：无更强新增替代 RhyMix/FreMo/ALER-TI</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-9">09 TVTA：先时间后空间的原生事件属性分支</a></li>
+              <li><a href="#paper-10">10 DHNet：未对齐跨模态局部对齐与双超图融合</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-11">11 Whareformer：可见光局部前兆的长时记忆与查询</a></li>
+              <li><a href="#paper-12">12 ThermoField：物理约束的图像-时序场融合范式</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态学习 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-2">02 TVTA：事件唇读的轨迹感知时间聚合</a></li>
+              <li><a href="#paper-3">03 DHNet：未对齐 RGBT 视频检测的双相关超图融合</a></li>
+              <li><a href="#paper-4">04 Whareformer：长第一视角视频中的可更新目标记忆</a></li>
+              <li><a href="#paper-5">05 ThermoField：从时变热观测推断物理参数的神经场</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">CAAD：因果一致性的多变量时序异常检测</a></h3>
+              <p class="card__subtitle">CAAD: Causality-Aware Multivariate Time Series Anomaly Detection via Multi-Scale Alignment and Structural Causal Consistency</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它把异常定义为外生干预导致的动态演化和变量关系拓扑偏离，用多尺度对齐与梯度因果矩阵监控系统内部关系崩解，直接对应 P1 的高低频诊断耦合、异常前兆和分布变化问题。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">TVTA：事件唇读的轨迹感知时间聚合</a></h3>
+              <p class="card__subtitle">TVTA: Trajectory-Aware Viseme-Guided Temporal Aggregation for Event-Based Lip Reading</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它针对 event-based lip reading 中稀疏局部运动轨迹易被空间压缩抹掉的问题，先在每个空间位置做时间建模，再用 viseme-guided sequence supervision 聚合，对 P2 原生事件属性识别很贴近。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">DHNet：未对齐 RGBT 视频检测的双相关超图融合</a></h3>
+              <p class="card__subtitle">Dual-Correlation Hypergraph Network for Unaligned RGBT Video Object Detection and A Large-scale Benchmark</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它显式处理 RGB-Thermal 图像对的空间错位，用局部 patch 对齐和时间/跨模态双超图学习互补信息；对 RGB-Event 弱同步、模态质量变化和可见光-诊断融合都有可迁移机制。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Whareformer：长第一视角视频中的可更新目标记忆</a></h3>
+              <p class="card__subtitle">Whareformer: Learning to Track What is Where in Long Egocentric Videos</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它在长视频中维护可更新 track memory，同时推理物体外观和 3D 位置，即使目标离开视野也保留状态；对 P3 中可见光局部前兆如何被时序查询和长期跟踪有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">ThermoField：从时变热观测推断物理参数的神经场</a></h3>
+              <p class="card__subtitle">Beyond Thermal Imaging: Inferring Thermophysical Properties from Time-Resolved Thermal Observations</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-08。它把 time-resolved thermal observations、场景几何、可微热传导求解器和空间变化神经场结合，用物理约束恢复热扩散率和未来演化；适合作为 P3 科学图像-时序融合的物理可解释参考。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>CAAD：因果一致性的多变量时序异常检测</h3>
+              <p class="paper__subtitle">CAAD: Causality-Aware Multivariate Time Series Anomaly Detection via Multi-Scale Alignment and Structural Causal Consistency</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它把异常定义为外生干预导致的动态演化和变量关系拓扑偏离，用多尺度对齐与梯度因果矩阵监控系统内部关系崩解，直接对应 P1 的高低频诊断耦合、异常前兆和分布变化问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xin Wang, Yunshi Wen, Yanan He, Haotian Xu, Youlan Zhao, Michel Ferreira Cardia Haddad, Tengfei Ma</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08555" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08555" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08555" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它把异常定义为外生干预导致的动态演化和变量关系拓扑偏离，用多尺度对齐与梯度因果矩阵监控系统内部关系崩解，直接对应 P1 的高低频诊断耦合、异常前兆和分布变化问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>复杂工业系统和聚变装置的异常往往不只表现为单通道幅值越界，而是多个诊断量之间的响应关系、时滞结构和耦合拓扑发生变化。常见时序异常检测方法偏重表示相似性或预测残差，容易漏掉幅值不明显但内部关系已经失稳的前兆。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它把异常定义为外生干预导致的动态演化和变量关系拓扑偏离，用多尺度对齐与梯度因果矩阵监控系统内部关系崩解，直接对应 P1 的高低频诊断耦合、异常前兆和分布变化问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何连续验证多变量时序内部的因果关系是否保持一致，并把动态演化偏离和关系拓扑崩解都纳入异常判别？
+对当前主题的关键意义在于：最小实验是在现有聚变诊断窗口中构造正常段与破裂前段的通道因果矩阵，比较 CAAD、预测残差、masked reconstruction 和频域融合模型的提前量、误报率、跨 shot 泛化和对高频通道压缩的敏感性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/68261ee85ee705f6.png" alt="Figure 1 . The overall architecture of the CAAD framework, illustrating how multiscale alignment synchronizes causal logic for dual-view deviation quantification ( S D ​ C ​ S S_{DCS} and S R ​ C ​ S S_{RCS} ).">
+                    <figcaption>Figure 1 . The overall architecture of the CAAD framework, illustrating how multiscale alignment synchronizes causal logic for dual-view deviation quantification ( S D ​ C ​ S S_{D...</figcaption>
+                  </figure>
+                  <p>CAAD 将外生时序变量建模为 residuals，把异常视为外部干预导致的因果一致性偏离；框架使用 multi-scale alignment 内化系统动力学，再用 gradient-based matrix 监控内部因果关系破坏，同时量化动态演化和变量关系拓扑两类 causal deviations。
+阅读时需要把方法设计与主要结果一起看：摘要报告 CAAD 在真实工业数据集上实现高精度异常检测，并优于多数 SOTA baseline；论文已被 KDD 2026 Research Track 接收。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 CAAD 在真实工业数据集上实现高精度异常检测，并优于多数 SOTA baseline；论文已被 KDD 2026 Research Track 接收。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要未说明对真实不规则采样、跨采样率通道、缺失机制和在线低延迟报警的完整处理；Granger 风格因果关系在强非平稳或强隐藏变量场景下可能不稳定。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是今天 P1 方向最值得精读的新增论文，价值在于把“预测不准”推进到“关系结构失稳”。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有聚变诊断窗口中构造正常段与破裂前段的通道因果矩阵，比较 CAAD、预测残差、masked reconstruction 和频域融合模型的提前量、误报率、跨 shot 泛化和对高频通道压缩的敏感性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断 / 预测</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</h3>
+              <p class="paper__subtitle">No qualified new direct paper in tokamak disruption prediction with visible-diagnostic multimodal fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-12</span>
+                <span class="chip chip--accent">skip</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。已检索 2026-07-10 UTC 最新 physics.plasm-ph 批次与 tokamak / disruption / diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。已检索 2026-07-10 UTC 最新 physics.plasm-ph 批次与 tokamak / disruption / diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>本轮 physics.plasm-ph 的新增主要是高能量密度等离子体、heliotron perturbation、磁喷管、激光/加速器等物理论文；Machine-Learning-Enabled Full-State Reconstruction of Fusion Plasmas from Minimal Sensor Measurements 已在 2026-07-09 简报展开，本轮没有新版本或新实验，不重复作为新增。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>保留检索边界，避免把纯等离子体物理、传统诊断硬件或已介绍的 ML fusion plasma 论文伪装成今天的新增。
+对当前主题的关键意义在于：下一步优先做三个最小验证：CAAD 因果关系漂移检测、可见光局部 track memory、图像 token 与诊断时序的局部对齐/门控融合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明，不对应新方法；可迁移机制见 P1/P2/P3 附加分区。
+阅读时需要把方法设计与主要结果一起看：直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏刚上线的期刊页、会议页、作者主页或项目页；后续继续监测 EAST/KSTAR/DIII-D/ITER、visible diagnostics、ECEI/BES、full-state reconstruction 和 disruption prediction 关键词。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮不凑数。聚变侧可先把 CAAD 的因果异常、DHNet 的未对齐融合和 ThermoField 的物理约束融合迁移到现有数据。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一步优先做三个最小验证：CAAD 因果关系漂移检测、可见光局部 track memory、图像 token 与诊断时序的局部对齐/门控融合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>CAAD：用因果一致性检测高低频诊断耦合失稳</h3>
+              <p class="paper__subtitle">CAAD: Causality-Aware Multivariate Time Series Anomaly Detection via Multi-Scale Alignment and Structural Causal Consistency</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是复杂工业系统的 multivariate time series anomaly detection；可迁移模块是 multi-scale alignment、exogenous residual modeling 和 gradient-based causal matrix；对应高低频、多尺度诊断通道在破裂前关系结构变化的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xin Wang, Yunshi Wen, Yanan He, Haotian Xu, Youlan Zhao, Michel Ferreira Cardia Haddad, Tengfei Ma</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08555" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08555" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是复杂工业系统的 multivariate time series anomaly detection；可迁移模块是 multi-scale alignment、exogenous residual modeling 和 gradient-based causal matrix；对应高低频、多尺度诊断通道在破裂前关系结构变化的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响中等，主要增加因果/梯度关系矩阵和多尺度对齐开销，通常比长序列全注意力更可控。主要不成立条件是聚变诊断存在强隐藏变量、强非平稳放电阶段和真实不规则采样，导致 Granger 风格关系不稳定。最小验证实验是在固定显存下比较 CAAD 关系漂移分数、RhyMix/FreMo 预测分数和普通重构误差，对破裂前 10-100ms 的提前量、误报和跨 shot 泛化做分层评估。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何判断通道幅值未明显越界时，诊断通道之间的响应关系是否已经失稳？
+对当前主题的关键意义在于：原始领域是工业异常检测；迁移点是因果一致性验证，对应聚变高低频通道耦合、采样率变化和破裂前隐性关系漂移。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/68261ee85ee705f6.png" alt="Figure 1 . The overall architecture of the CAAD framework, illustrating how multiscale alignment synchronizes causal logic for dual-view deviation quantification ( S D ​ C ​ S S_{DCS} and S R ​ C ​ S S_{RCS} ).">
+                    <figcaption>Figure 1 . The overall architecture of the CAAD framework, illustrating how multiscale alignment synchronizes causal logic for dual-view deviation quantification ( S D ​ C ​ S S_{D...</figcaption>
+                  </figure>
+                  <p>把外生变量当作 residuals，用多尺度动力学对齐和因果矩阵监控动态与拓扑两类偏离。
+阅读时需要把方法设计与主要结果一起看：摘要报告真实工业数据集上优于多数 SOTA baseline。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告真实工业数据集上优于多数 SOTA baseline。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未直接覆盖 irregular sampling、multi-rate 和在线报警预算。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可先把它作为“关系结构异常分支”，与轻量预测模型并联。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是工业异常检测；迁移点是因果一致性验证，对应聚变高低频通道耦合、采样率变化和破裂前隐性关系漂移。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>本轮 P1 第二篇空缺：无更强新增替代 RhyMix/FreMo/ALER-TI</h3>
+              <p class="paper__subtitle">No second qualified new P1 paper beyond CAAD in this run</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-12</span>
+                <span class="chip chip--accent">skip</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】本轮空缺判断。除 CAAD 外，7 月 10 日批次没有比 2026-07-10/11 已收录的 Going Linear、ALER-TI、RhyMix、FreMo 更适合 P1 的新增论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.LG/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】本轮空缺判断。除 CAAD 外，7 月 10 日批次没有比 2026-07-10/11 已收录的 Going Linear、ALER-TI、RhyMix、FreMo 更适合 P1 的新增论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>本轮扫描到部分 long-context、compression 和 forecasting 相关条目，但机制要么偏 LLM 推理，要么与真实 Δt、多采样率诊断和线性显存长序列关系较弱。为避免重复旧论文，本子节不再重述已介绍工作。
+从本日报的选取理由看，【P1】本轮空缺判断。除 CAAD 外，7 月 10 日批次没有比 2026-07-10/11 已收录的 Going Linear、ALER-TI、RhyMix、FreMo 更适合 P1 的新增论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>避免用泛泛长上下文或普通预测论文填充 P1。
+对当前主题的关键意义在于：最小验证仍建议从 CAAD 与已有 RhyMix/FreMo/ALER-TI 基线对照开始，而不是扩展新模型池。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明。
+阅读时需要把方法设计与主要结果一起看：P1 今日除 CAAD 外无第二篇合格新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>P1 今日除 CAAD 外无第二篇合格新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏作者主页或会议页刚发布代码更新。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>今天 P1 的行动重点应集中在 CAAD 的因果关系漂移验证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证仍建议从 CAAD 与已有 RhyMix/FreMo/ALER-TI 基线对照开始，而不是扩展新模型池。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>TVTA：先时间后空间的原生事件属性分支</h3>
+              <p class="paper__subtitle">TVTA: Trajectory-Aware Viseme-Guided Temporal Aggregation for Event-Based Lip Reading</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是 event-based lip reading；可迁移模块是 Trajectory-Aware Differential Aggregation、viseme-guided gated aggregation、CTC sequence supervision 和 EMA teacher-student consistency；对应事件稀疏、局部动态、强扰动和固定长度转帧损失。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jingrong Zheng, Hongwei Ren, Xiangqian Wu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08236" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08236" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是 event-based lip reading；可迁移模块是 Trajectory-Aware Differential Aggregation、viseme-guided gated aggregation、CTC sequence supervision 和 EMA teacher-student consistency；对应事件稀疏、局部动态、强扰动和固定长度转帧损失。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响可控，因为 TDA 是局部时序建模与自适应聚合，不需要视频扩散式重模型；但若在高分辨事件图上逐位置建模，需要控制窗口和稀疏计算。风险是行人属性没有 viseme 标签，辅助监督需要替换为属性词、人体部位状态或事件轨迹伪标签。最小验证实验是在 TriPro/EventPAR 中只替换事件分支早期聚合顺序，保持 RGB 分支不变，报告 mA、F1、ECE、低光/模糊/事件稀疏子集和推理延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免事件流在早期空间压缩时丢掉细粒度属性所需的局部运动轨迹？
+对当前主题的关键意义在于：原始领域是事件视觉语音识别；迁移点是原生事件局部时间轨迹保留，对应 RGB-Event 属性识别的弱光、模糊、事件稀疏和开放属性语义监督。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a3edb3de0849f1d9.png" alt="Figure 2 . Overall framework of the proposed event-based lip-reading system. A weakly augmented view is processed by the EMA teacher, while a strongly augmented view is processed by the student. Both branches share the same architecture, consisting of an embedding layer, a DropPath-regularized spatial encoder, TDA, a word-level temporal encoder, VGA, and a classifier. The student is jointly optimized by cross-entropy, CTC supervision, and KL consistency, and only the student branch is used for inference.">
+                    <figcaption>Figure 2 . Overall framework of the proposed event-based lip-reading system. A weakly augmented view is processed by the EMA teacher, while a strongly augmented view is processed b...</figcaption>
+                  </figure>
+                  <p>先逐空间位置做时间差分聚合，再用序列结构监督和门控聚合形成识别表示。
+阅读时需要把方法设计与主要结果一起看：摘要报告 DVS-Lip 上 ablation 验证 TDA、VGA 和 teacher-student consistency 有效。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 DVS-Lip 上 ablation 验证 TDA、VGA 和 teacher-student consistency 有效。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务语义从唇读迁移到属性识别需要重新设计辅助标签。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可把它作为事件分支的最小结构替换。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是事件视觉语音识别；迁移点是原生事件局部时间轨迹保留，对应 RGB-Event 属性识别的弱光、模糊、事件稀疏和开放属性语义监督。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>DHNet：未对齐跨模态局部对齐与双超图融合</h3>
+              <p class="paper__subtitle">Dual-Correlation Hypergraph Network for Unaligned RGBT Video Object Detection and A Large-scale Benchmark</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是未对齐 RGB-Thermal video object detection；可迁移模块是 Patch-based Spatial Alignment Module、temporal hypergraph、multimodal hypergraph 和大规模退化场景 benchmark；对应 RGB/Event 时钟不同步、局部错位、模态缺失和区域级动态加权。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qishun Wang, Yapeng Li, Bin Luo, Zhengzheng Tu, Chenglong Li</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08191" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08191" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是未对齐 RGB-Thermal video object detection；可迁移模块是 Patch-based Spatial Alignment Module、temporal hypergraph、multimodal hypergraph 和大规模退化场景 benchmark；对应 RGB/Event 时钟不同步、局部错位、模态缺失和区域级动态加权。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响高于直接相加融合，尤其是超图构建随区域数和时间窗增长；可先用少量 patch 和低秩/稀疏邻接实现。风险是热红外与事件流差异大，空间错位处理不能自动解决异步时间戳。最小验证实验是仅引入 PSAM 式局部对齐，再逐步加入 temporal/multimodal hypergraph，比较 TriPro 的区域级融合、属性级融合和缺失模态 robustness。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免 RGB 与 Event 局部不一致时错误融合，同时利用时间和跨模态高阶关系？
+对当前主题的关键意义在于：原始领域是 RGB-Thermal 视频检测；迁移点是未对齐多模态融合，对应 TriPro 当前可能过度依赖固定对齐和特征相加的问题。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2c8ad3e4f66cf495.png" alt="Figure 2: The core architecture of DHNet. The PSAM first performs local spatial alignment on the two input feature maps in a region-by-region manner. Subsequently, we utilize LBP to extract global object location information from F t R ​ G ​ B F_{t}^{RGB} and inject it into F t T F_{t}^{T} to achieve global calibration. Following this, the proposed DHFM constructs high-order correlations among temporally adjacent and cross-modal features via hypergraph learning.">
+                    <figcaption>Figure 2: The core architecture of DHNet. The PSAM first performs local spatial alignment on the two input feature maps in a region-by-region manner. Subsequently, we utilize LBP t...</figcaption>
+                  </figure>
+                  <p>先做局部 patch 对齐，再用两类超图分别建模连续帧和跨模态相关。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 VT-VOD50 和 DVT-VOD1000 上达到 SOTA，且新 benchmark 包含 103,464 对 RGBT 图像。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 VT-VOD50 和 DVT-VOD1000 上达到 SOTA，且新 benchmark 包含 103,464 对 RGBT 图像。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要把 RGBT 空间对齐扩展为 RGB-Event 时空对齐。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可把它作为 reliability-aware fusion 的局部对齐骨架。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是 RGB-Thermal 视频检测；迁移点是未对齐多模态融合，对应 TriPro 当前可能过度依赖固定对齐和特征相加的问题。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>Whareformer：可见光局部前兆的长时记忆与查询</h3>
+              <p class="paper__subtitle">Whareformer: Learning to Track What is Where in Long Egocentric Videos</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是 egocentric long-video object tracking；可迁移模块是 updatable track memory、track assignment、relative distance representation 和 New Track token；对应可见光局部证据如何被诊断时序选择、长期维护和避免全局背景污染的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jacob Chalk, Saptarshi Sinha, Dima Damen, Yannis Kalantidis, Diane Larlus</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08537" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08537" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是 egocentric long-video object tracking；可迁移模块是 updatable track memory、track assignment、relative distance representation 和 New Track token；对应可见光局部证据如何被诊断时序选择、长期维护和避免全局背景污染的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响取决于维护的 track 数量，通常比保留全部帧级 ViT token 更可控；可把局部亮斑、边界扰动或运动区域压缩成少量 track token。风险是聚变可见光中的前兆不一定是稳定可跟踪对象，且缺少显式 3D 位置标签。最小验证实验是用简单视觉前景/边缘检测生成候选 track，再让诊断时序 query track memory，比较全帧 pooling、cross-attention 和 track-memory fusion 的提前量、误报率、显存与解释热区。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让时序模型只读取与破裂前兆相关的图像局部证据，而不是被整帧背景噪声主导？
+对当前主题的关键意义在于：原始领域是第一视角长视频；迁移点是局部证据记忆和查询，对应破裂预测中的无关视觉信息抑制、低显存部署和解释性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/76368d5fcbb04398.png" alt="Figure 1 : Overview of Whareformer. In the OSNOM task, the goal is to assign the current observation (highlighted in yellow in the current frame) of a 3D egocentric scene with one of the known objects (which respectively correspond to a kettle in red , a knife in green , or a tin of chopped tomatoes in blue ). We propose Whareformer, a model that jointly reasons about the appearance and the location of objects to decide whether to associate the observation with an existing track or initialise a new one.">
+                    <figcaption>Figure 1 : Overview of Whareformer. In the OSNOM task, the goal is to assign the current observation (highlighted in yellow in the current frame) of a 3D egocentric scene with one ...</figcaption>
+                  </figure>
+                  <p>维护随时间更新的 what/where 记忆，并用 assignment module 在线绑定新观测与已有 track。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 260 个长测试视频上显著超过 prior work。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 260 个长测试视频上显著超过 prior work。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要把对象级跟踪改成物理前兆区域跟踪。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可先把它抽象成“局部视觉证据缓存”而不是完整视频跟踪模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是第一视角长视频；迁移点是局部证据记忆和查询，对应破裂预测中的无关视觉信息抑制、低显存部署和解释性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>ThermoField：物理约束的图像-时序场融合范式</h3>
+              <p class="paper__subtitle">Beyond Thermal Imaging: Inferring Thermophysical Properties from Time-Resolved Thermal Observations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是 time-resolved thermal observations 中的 thermophysical property inference；可迁移模块是 spatially varying neural fields、differentiable physics solver、temporal observation constraint 和未见环境下演化预测；对应可见光/红外诊断与时序信号融合中的物理可解释和跨装置泛化问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Chenghao Xu, Malcolm Mielle, Olga Fink</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07962" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.07962" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是 time-resolved thermal observations 中的 thermophysical property inference；可迁移模块是 spatially varying neural fields、differentiable physics solver、temporal observation constraint 和未见环境下演化预测；对应可见光/红外诊断与时序信号融合中的物理可解释和跨装置泛化问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响较高，尤其是可微物理求解器和神经场优化；更现实的迁移方式是离线预训练物理状态 encoder 或加入轻量物理一致性 loss。风险是热传导物理与等离子体 MHD/辐射机制不同，错误物理约束会降低性能。最小验证实验是先不做完整求解器，只把图像摘要 token 约束到平衡代理、辐射剖面或边界演化等低维物理状态，评估跨 shot/campaign AUC、提前量和可解释性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让图像-时序融合模型学习物理状态，而不是学习装置背景或相机条件？
+对当前主题的关键意义在于：原始领域是热成像/逆热传导；迁移点是物理约束场表示，对应破裂预测中的可见光证据解释、跨装置泛化和缺失模态训练。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8df20212b5f5546d.png" alt="Figure 1: ThermoField overview. ThermoField couples surface neural fields with differentiable transient heat-transfer simulation to infer thermophysical properties from surface thermal observations. The framework takes reconstructed object geometry, surface temperature sequences, and external heating or cooling conditions as input. Neural fields defined on sparse surface control points parameterize latent physical quantities, including thermal diffusivity, convective exchange, and radiative exchange coefficients. These quantities drive a differentiable forward solver that propagates heat diffusion and surface boundary exchange to produce simulated thermal transients. The simulated surface temperatures are matched to observed thermal sequences, and the resulting loss is backpropagated through the solver to update the neural physical fields.">
+                    <figcaption>Figure 1: ThermoField overview. ThermoField couples surface neural fields with differentiable transient heat-transfer simulation to infer thermophysical properties from surface the...</figcaption>
+                  </figure>
+                  <p>用时间观测、几何和物理方程共同约束神经场，恢复可解释的潜在物理参数。
+阅读时需要把方法设计与主要结果一起看：摘要报告可联合重建几何、估计空间变化热扩散率，并预测未见环境条件下热演化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告可联合重建几何、估计空间变化热扩散率，并预测未见环境条件下热演化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是聚变破裂预测，物理约束需要替换。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可借鉴它的物理约束训练目标，作为跨装置泛化的正则项。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是热成像/逆热传导；迁移点是物理约束场表示，对应破裂预测中的可见光证据解释、跨装置泛化和缺失模态训练。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>TVTA：事件唇读的轨迹感知时间聚合</h3>
+              <p class="paper__subtitle">TVTA: Trajectory-Aware Viseme-Guided Temporal Aggregation for Event-Based Lip Reading</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它针对 event-based lip reading 中稀疏局部运动轨迹易被空间压缩抹掉的问题，先在每个空间位置做时间建模，再用 viseme-guided sequence supervision 聚合，对 P2 原生事件属性识别很贴近。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jingrong Zheng, Hongwei Ren, Xiangqian Wu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08236" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08236" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08236" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它针对 event-based lip reading 中稀疏局部运动轨迹易被空间压缩抹掉的问题，先在每个空间位置做时间建模，再用 viseme-guided sequence supervision 聚合，对 P2 原生事件属性识别很贴近。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机的优势来自高时间分辨率和对局部运动的敏感性，但事件属性识别中常把事件转成固定帧或 voxel 后再用 RGB 式网络处理。这样的预处理可能在早期就丢掉稀疏、短促、局部的动态线索，尤其影响弱光、运动模糊和细粒度属性判断。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它针对 event-based lip reading 中稀疏局部运动轨迹易被空间压缩抹掉的问题，先在每个空间位置做时间建模，再用 viseme-guided sequence supervision 聚合，对 P2 原生事件属性识别很贴近。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在事件流空间压缩之前保留局部运动轨迹，并用更细粒度的序列监督约束最终识别表示？
+对当前主题的关键意义在于：最小实验是在 TriPro-ReID / EventPAR 的事件分支中替换早期 voxel-frame 聚合为 TDA 式局部时间聚合，再用属性词或部位属性构造弱 CTC/序列辅助头，比较 mA、F1、ECE、弱光和事件稀疏子集表现。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a3edb3de0849f1d9.png" alt="Figure 2 . Overall framework of the proposed event-based lip-reading system. A weakly augmented view is processed by the EMA teacher, while a strongly augmented view is processed by the student. Both branches share the same architecture, consisting of an embedding layer, a DropPath-regularized spatial encoder, TDA, a word-level temporal encoder, VGA, and a classifier. The student is jointly optimized by cross-entropy, CTC supervision, and KL consistency, and only the student branch is used for inference.">
+                    <figcaption>Figure 2 . Overall framework of the proposed event-based lip-reading system. A weakly augmented view is processed by the EMA teacher, while a strongly augmented view is processed b...</figcaption>
+                  </figure>
+                  <p>TVTA 提出 Trajectory-Aware Differential Aggregation，在每个空间位置先进行局部时间建模，再做自适应空间聚合；Viseme-Guided Aggregation 结合 CTC decoder 和 viseme-guided gated aggregation，把发音结构监督注入时间聚合；同时用 EMA teacher-student 训练增强强事件扰动下的鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 DVS-Lip benchmark 上验证了 TDA、VGA 和 teacher-student consistency 的有效性，定性解码显示模型能从事件流中学习有意义的 viseme-aware 结构。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是唇读而不是属性识别；viseme 监督在行人属性场景中没有天然标签，需要改成属性短语、动作原语或伪时序标签。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 不应只借鉴它的任务结果，而应借鉴“先时间、后空间”的事件聚合顺序。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro-ReID / EventPAR 的事件分支中替换早期 voxel-frame 聚合为 TDA 式局部时间聚合，再用属性词或部位属性构造弱 CTC/序列辅助头，比较 mA、F1、ECE、弱光和事件稀疏子集表现。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>DHNet：未对齐 RGBT 视频检测的双相关超图融合</h3>
+              <p class="paper__subtitle">Dual-Correlation Hypergraph Network for Unaligned RGBT Video Object Detection and A Large-scale Benchmark</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它显式处理 RGB-Thermal 图像对的空间错位，用局部 patch 对齐和时间/跨模态双超图学习互补信息；对 RGB-Event 弱同步、模态质量变化和可见光-诊断融合都有可迁移机制。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qishun Wang, Yapeng Li, Bin Luo, Zhengzheng Tu, Chenglong Li</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08191" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08191" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08191" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它显式处理 RGB-Thermal 图像对的空间错位，用局部 patch 对齐和时间/跨模态双超图学习互补信息；对 RGB-Event 弱同步、模态质量变化和可见光-诊断融合都有可迁移机制。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态视频检测在夜间、雨雪和遮挡场景中依赖 RGB 与热红外互补，但真实传感器安装、视角、时间戳和成像机制差异会带来空间错位。直接 concat 或全局 attention 可能把错误区域强行融合，造成互补信息变成噪声。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它显式处理 RGB-Thermal 图像对的空间错位，用局部 patch 对齐和时间/跨模态双超图学习互补信息；对 RGB-Event 弱同步、模态质量变化和可见光-诊断融合都有可迁移机制。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在跨模态局部错位存在时，同时利用连续帧时间相关和跨模态空间相关来增强目标判别？
+对当前主题的关键意义在于：最小实验是在 RGB-Event 属性识别中用 PSAM 式局部对齐替代全局对齐，再用样本/区域 reliability gate 选择 RGB 或 Event 贡献；在 P3 中可把可见光局部 patch 与诊断时间片构成跨模态超图，测试显存、提前量和缺失模态鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2c8ad3e4f66cf495.png" alt="Figure 2: The core architecture of DHNet. The PSAM first performs local spatial alignment on the two input feature maps in a region-by-region manner. Subsequently, we utilize LBP to extract global object location information from F t R ​ G ​ B F_{t}^{RGB} and inject it into F t T F_{t}^{T} to achieve global calibration. Following this, the proposed DHFM constructs high-order correlations among temporally adjacent and cross-modal features via hypergraph learning.">
+                    <figcaption>Figure 2: The core architecture of DHNet. The PSAM first performs local spatial alignment on the two input feature maps in a region-by-region manner. Subsequently, we utilize LBP t...</figcaption>
+                  </figure>
+                  <p>DHNet 先用 Patch-based Spatial Alignment Module 进行局部区域级顺序对齐，再用 Dual Hypergraph Fusion Module 分别构造 temporal hypergraph 和 multimodal hypergraph，从连续帧相关性与跨模态高阶相关性两侧增强表示；论文还构建 DVT-VOD1000，含 1,000 个 RGBT 视频序列和 103,464 对图像。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 DHNet 在 VT-VOD50 与 DVT-VOD1000 上达到 SOTA 检测准确率，数据集覆盖校园、公园、交通、乡村、夜间、雨雪等多场景。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>RGBT 的空间错位不等于 RGB-Event 的异步事件流，也不等于聚变图像与诊断时序错位；超图模块的显存和延迟需要实测。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是 P2/P3 的“未对齐多模态融合”强参考，尤其适合做局部对齐模块替换实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 RGB-Event 属性识别中用 PSAM 式局部对齐替代全局对齐，再用样本/区域 reliability gate 选择 RGB 或 Event 贡献；在 P3 中可把可见光局部 patch 与诊断时间片构成跨模态超图，测试显存、提前量和缺失模态鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>Whareformer：长第一视角视频中的可更新目标记忆</h3>
+              <p class="paper__subtitle">Whareformer: Learning to Track What is Where in Long Egocentric Videos</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它在长视频中维护可更新 track memory，同时推理物体外观和 3D 位置，即使目标离开视野也保留状态；对 P3 中可见光局部前兆如何被时序查询和长期跟踪有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jacob Chalk, Saptarshi Sinha, Dima Damen, Yannis Kalantidis, Diane Larlus</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08537" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08537" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08537" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它在长视频中维护可更新 track memory，同时推理物体外观和 3D 位置，即使目标离开视野也保留状态；对 P3 中可见光局部前兆如何被时序查询和长期跟踪有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测里的可见光图像往往包含大量无关背景，真正有价值的可能是局部亮斑、边界变化、杂质辐射或运动模式。若每帧独立提取全局特征，模型很难记住某个局部证据在离开视野、被遮挡或短暂消失后的演化轨迹。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它在长视频中维护可更新 track memory，同时推理物体外观和 3D 位置，即使目标离开视野也保留状态；对 P3 中可见光局部前兆如何被时序查询和长期跟踪有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在线维护长视频中的对象或局部证据记忆，在目标离开视野或被遮挡后仍能更新其状态？
+对当前主题的关键意义在于：最小实验是把可见光视频中的局部高亮/边缘/运动 token 作为 track，维护短 memory 后由诊断时序 query 选择相关 track，比较全局 ViT token、帧级 pooling 和 track-memory fusion 的提前量、误报率与显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/76368d5fcbb04398.png" alt="Figure 1 : Overview of Whareformer. In the OSNOM task, the goal is to assign the current observation (highlighted in yellow in the current frame) of a 3D egocentric scene with one of the known objects (which respectively correspond to a kettle in red , a knife in green , or a tin of chopped tomatoes in blue ). We propose Whareformer, a model that jointly reasons about the appearance and the location of objects to decide whether to associate the observation with an existing track or initialise a new one.">
+                    <figcaption>Figure 1 : Overview of Whareformer. In the OSNOM task, the goal is to assign the current observation (highlighted in yellow in the current frame) of a 3D egocentric scene with one ...</figcaption>
+                  </figure>
+                  <p>Whareformer 包含可更新 track memory 和 feed-forward track assignment module，联合建模 evolving object appearance 与 updated 3D location；使用 relative distances、evolving track representations 和 New Track token 来处理新对象与已有 track 的分配。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告模型仅用 56 个训练视频，却在 EPIC-KITCHENS-100、IT3DEgo 和 HD-EPIC 的 260 个长测试视频上超过已有 OSNOM 方法，并取得显著绝对提升。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>第一视角物体跟踪与托卡马克可见光监控差异大；3D location 先验在聚变可见光中可能不可用，需要替换成图像平面区域、等离子体边界或物理坐标映射。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可借鉴它的可更新局部证据记忆，而不是照搬 egocentric tracking 任务。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把可见光视频中的局部高亮/边缘/运动 token 作为 track，维护短 memory 后由诊断时序 query 选择相关 track，比较全局 ViT token、帧级 pooling 和 track-memory fusion 的提前量、误报率与显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>ThermoField：从时变热观测推断物理参数的神经场</h3>
+              <p class="paper__subtitle">Beyond Thermal Imaging: Inferring Thermophysical Properties from Time-Resolved Thermal Observations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。它把 time-resolved thermal observations、场景几何、可微热传导求解器和空间变化神经场结合，用物理约束恢复热扩散率和未来演化；适合作为 P3 科学图像-时序融合的物理可解释参考。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Chenghao Xu, Malcolm Mielle, Olga Fink</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07962" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07962" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07962" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。它把 time-resolved thermal observations、场景几何、可微热传导求解器和空间变化神经场结合，用物理约束恢复热扩散率和未来演化；适合作为 P3 科学图像-时序融合的物理可解释参考。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>科学图像中的动态纹理和热演化不只是视觉模式，还受物理方程约束。聚变可见光、红外或辐射图像也常需要从图像变化反推潜在物理状态。如果只做黑箱视频分类，模型可能抓住设备背景或拍摄条件，而不是可解释的等离子体演化。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。它把 time-resolved thermal observations、场景几何、可微热传导求解器和空间变化神经场结合，用物理约束恢复热扩散率和未来演化；适合作为 P3 科学图像-时序融合的物理可解释参考。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从时变热观测中同时恢复几何、空间变化物理参数和未来热演化，并让估计结果受物理方程约束？
+对当前主题的关键意义在于：最小实验是在可见光/红外诊断中把图像 token 映射到低维物理场或边界参数，再用简单能量守恒、平滑演化或 MHD surrogate 约束训练，比较是否减少跨装置背景偏差并提升解释性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/8df20212b5f5546d.png" alt="Figure 1: ThermoField overview. ThermoField couples surface neural fields with differentiable transient heat-transfer simulation to infer thermophysical properties from surface thermal observations. The framework takes reconstructed object geometry, surface temperature sequences, and external heating or cooling conditions as input. Neural fields defined on sparse surface control points parameterize latent physical quantities, including thermal diffusivity, convective exchange, and radiative exchange coefficients. These quantities drive a differentiable forward solver that propagates heat diffusion and surface boundary exchange to produce simulated thermal transients. The simulated surface temperatures are matched to observed thermal sequences, and the resulting loss is backpropagated through the solver to update the neural physical fields.">
+                    <figcaption>Figure 1: ThermoField overview. ThermoField couples surface neural fields with differentiable transient heat-transfer simulation to infer thermophysical properties from surface the...</figcaption>
+                  </figure>
+                  <p>ThermoField 用空间变化 neural fields 表示热物理参数与场景量，并通过 scene geometry、governing heat-transfer physics 和 temporal thermal observations 共同约束；框架整合 differentiable heat-transfer simulation，用于估计 thermal diffusivity 与预测未见环境条件下的 thermal evolution。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 ThermoField 能联合重建几何、估计空间变化热扩散率，并预测此前未见环境条件下的热演化，建立热场重建与逆热传导分析之间的桥接。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>应用是热成像和热传导，不是等离子体破裂；热传导方程与托卡马克辐射/磁流体演化相差很大，迁移时必须替换物理约束。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这篇适合作为 P3 的物理约束融合范式，不适合作为直接模型基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在可见光/红外诊断中把图像 token 映射到低维物理场或边界参数，再用简单能量守恒、平滑演化或 MHD surrogate 约束训练，比较是否减少跨装置背景偏差并提升解释性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>本轮趋势</h3>
+          <p>1. P1 本轮没有新的长上下文模型胜过前几天的 RhyMix/FreMo/ALER-TI，但 CAAD 把异常检测从重构误差推进到因果关系一致性，适合补足破裂前“关系失稳”的评估维度。</p>
+          <p>2. P2 的新增从事件生成和仿真转向事件判别侧的时间聚合，以及未对齐跨模态融合；这更贴近 TriPro-ReID 的可验证替换路径。</p>
+          <p>3. P3 仍缺直接 tokamak visible + diagnostics disruption 新稿，但跨领域机制更清晰：局部视觉证据记忆、未对齐多模态局部融合、物理约束场表示。</p>
+          <p>4. 聚变原始新稿本轮不适合强行入主推荐；应继续把通用机制迁移到现有 EAST/KSTAR/DIII-D 或自有诊断数据上做最小验证。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
