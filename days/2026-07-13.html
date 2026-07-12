@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-13</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-13 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-13 05:15:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇进入主推荐，均为 arXiv 原始页核验的 2026-07-04 至 2026-07-09 提交论文。P1 最值得看 PGD-NO 与 LLT：前者通过预计算几何分解把千万级 3D 网格神经算子的显存压力移出在线查询阶段，后者把线性全局注意力和局部空间混合结合，适合思考聚变高频诊断和物理场代理模型的线性显存路线。P2 本轮没有新的原生 RGB-Event 属性识别强稿，LEEVLA 只作为任务相关区域动态优先级和潜在演化训练目标的跨领域启发。P3 重点看 SAM-MT 与 Latent Drift：一个把视频多目标记忆从目标数线性复制中解耦，另一个在低信号纵向医学图像中预测缓慢进展，对可见光局部前兆缓存和破裂前微弱演化建模有可迁移价值。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 PGD-NO：面向千万级 3D 物理仿真的预计算几何分解神经算子</a></li>
+              <li><a href="#paper-2">02 LLT：PDE 算子学习的局部线性 Transformer</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断 / 预测</a>
+            <ul>
+              <li><a href="#paper-6">06 本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-7">07 PGD-NO：高频海量点的几何 token 预压缩</a></li>
+              <li><a href="#paper-8">08 LLT：局部物理偏置加线性全局注意力</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-9">09 LEEVLA：属性相关区域的动态优先级与潜在演化</a></li>
+              <li><a href="#paper-10">10 本轮 P2 第二篇空缺：无新的原生 RGB-Event 属性强稿</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-11">11 SAM-MT：多个局部可见光前兆的共享记忆</a></li>
+              <li><a href="#paper-12">12 Latent Drift：破裂前微弱视觉变化的低维漂移目标</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态学习 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-3">03 LEEVLA：面向动态场景的任务关键视觉证据选择</a></li>
+              <li><a href="#paper-4">04 SAM-MT：实时交互式多目标视频分割</a></li>
+              <li><a href="#paper-5">05 Latent Drift：低信号纵向医学图像的潜在漂移预测</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">PGD-NO：面向千万级 3D 物理仿真的预计算几何分解神经算子</a></h3>
+              <p class="card__subtitle">PGD-NO: A Neural Operator with Precomputed Geometry Decomposition for 3D Million-scale Physics Simulations</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它把几何编码开销迁移到确定性预计算阶段，用 geometry tokens 解耦特征提取和解查询，并报告线性显存扩展到 1000 万节点以上；对 P1 的高频海量点压缩和聚变 3D 物理场代理建模最直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">LLT：PDE 算子学习的局部线性 Transformer</a></h3>
+              <p class="card__subtitle">LLT: Local Linear Transformer for PDE Operator Learning</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-04</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-04。它针对 PDE operator learning 中标准注意力二次复杂度和缺少局部物理偏置的问题，用 linear global attention 加 local spatial mixing；适合作为长序列/大网格物理建模的轻量结构参考。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">LEEVLA：面向动态场景的任务关键视觉证据选择</a></h3>
+              <p class="card__subtitle">LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09。它不是事件相机论文，但提出 drift-guided dynamic prioritization 和 structured feature flow，让 VLA 模型只看任务关键区域并建模潜在环境演化；可迁移到 P2 的样本/区域/属性动态加权。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">SAM-MT：实时交互式多目标视频分割</a></h3>
+              <p class="card__subtitle">SAM-MT: Real-Time Interactive Multi-Target Video Segmentation</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09 / ECCV 2026。它在 SAM2 上用显式目标 queries、共享全局上下文、解耦 masked attention 和 sparse memory，把多目标视频分割延迟从目标数增长中解耦；对 P3 的局部可见光前兆记忆很有工程启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">Latent Drift：低信号纵向医学图像的潜在漂移预测</a></h3>
+              <p class="card__subtitle">Progression as Latent Drift: Generative Forecasting of Slow-Evolving Pathologies</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-09 / ECCV 2026。它把慢演化病理预测改成压缩语义空间中的 latent drift 学习，避免全分辨率图像预测被静态身份信息主导；对 P3 破裂前微弱视觉变化和跨 shot 背景偏差抑制有启发。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>PGD-NO：面向千万级 3D 物理仿真的预计算几何分解神经算子</h3>
+              <p class="paper__subtitle">PGD-NO: A Neural Operator with Precomputed Geometry Decomposition for 3D Million-scale Physics Simulations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它把几何编码开销迁移到确定性预计算阶段，用 geometry tokens 解耦特征提取和解查询，并报告线性显存扩展到 1000 万节点以上；对 P1 的高频海量点压缩和聚变 3D 物理场代理建模最直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Weiheng Zhong, Jing Bi, Victor Oancea, Hadi Meidani</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08025" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08025" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08025" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它把几何编码开销迁移到确定性预计算阶段，用 geometry tokens 解耦特征提取和解查询，并报告线性显存扩展到 1000 万节点以上；对 P1 的高频海量点压缩和聚变 3D 物理场代理建模最直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变代理模型和高频诊断建模都容易遇到同一个瓶颈：空间网格或时间点数非常大，而标准注意力、图神经算子或稠密几何编码把显存消耗锁在单卡上。若不能把几何、时间或通道结构提前压缩成稳定 token，模型很难同时保留高分辨率物理细节和工程可部署性。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它把几何编码开销迁移到确定性预计算阶段，用 geometry tokens 解耦特征提取和解查询，并报告线性显存扩展到 1000 万节点以上；对 P1 的高频海量点压缩和聚变 3D 物理场代理建模最直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让神经算子处理千万级 3D 网格，同时避免在线训练/推理阶段被几何编码和单卡显存限制？
+对当前主题的关键意义在于：最小实验是在已有 2D/3D 聚变场代理或诊断剖面任务中预计算空间/传感器 geometry tokens，再比较 PGD-NO 式查询、普通 FNO/Transformer 和时序压缩模型在显存、误差、跨 shot 泛化与高分辨率网格外推上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b56132938a5e54a5.png" alt="Figure 2 : PGD-NO architecture and layer variants. (Top) Model pipeline: a pre-computed segmentation matrix extracts geometry tokens from the point cloud, which are refined by stacked layers to capture multi-scale physics. (Bottom Left) Layer configurations: Variants 1 and 2 use multi-head attention to project features from tokens back to nodes, while Variant 3 uses a transposed segmentation matrix for high-efficiency surface mapping.">
+                    <figcaption>Figure 2 : PGD-NO architecture and layer variants. (Top) Model pipeline: a pre-computed segmentation matrix extracts geometry tokens from the point cloud, which are refined by stac...</figcaption>
+                  </figure>
+                  <p>PGD-NO 使用 iterative geometry decomposition 提取 geometry tokens，把几何编码从在线特征抽取中解耦到确定性预计算阶段；在线阶段主要执行 solution querying，从而让特征抽取和解查询分离，并通过 attention 提供一定的内在可解释性。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法能在超过 1000 万节点的网格上保持线性显存扩展，并在多种工业 benchmark 上取得有竞争力的预测精度。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法能在超过 1000 万节点的网格上保持线性显存扩展，并在多种工业 benchmark 上取得有竞争力的预测精度。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文目标是大规模 3D 工程仿真，不直接处理真实不规则时间戳、异步诊断通道或破裂预警；预计算几何 token 对快速变化边界和放电阶段漂移的适应性需要验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可把它视为“高频海量点先结构化压缩，再与低频通道交互”的物理场版本。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在已有 2D/3D 聚变场代理或诊断剖面任务中预计算空间/传感器 geometry tokens，再比较 PGD-NO 式查询、普通 FNO/Transformer 和时序压缩模型在显存、误差、跨 shot 泛化与高分辨率网格外推上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>LLT：PDE 算子学习的局部线性 Transformer</h3>
+              <p class="paper__subtitle">LLT: Local Linear Transformer for PDE Operator Learning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-04</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-04。它针对 PDE operator learning 中标准注意力二次复杂度和缺少局部物理偏置的问题，用 linear global attention 加 local spatial mixing；适合作为长序列/大网格物理建模的轻量结构参考。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Oded Ovadia, Eli Turkel</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07718" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.07718" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.07718" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-04。它针对 PDE operator learning 中标准注意力二次复杂度和缺少局部物理偏置的问题，用 linear global attention 加 local spatial mixing；适合作为长序列/大网格物理建模的轻量结构参考。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>PDE operator learning 常需要同时建模局部守恒/扩散关系和远距离边界影响。标准 Transformer 虽然能学长程依赖，但对节点数二次增长，且缺少局部物理归纳偏置；纯卷积或局部图方法又可能看不到全局耦合。
+从本日报的选取理由看，新增 / arXiv 2026-07-04。它针对 PDE operator learning 中标准注意力二次复杂度和缺少局部物理偏置的问题，用 linear global attention 加 local spatial mixing；适合作为长序列/大网格物理建模的轻量结构参考。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在结构化与非结构化网格上用低复杂度注意力学习 PDE 解映射，同时保留局部物理交互？
+对当前主题的关键意义在于：最小实验是在磁面参数、剖面重建或 MHD surrogate 上用 LLT 替代全注意力块，记录相同误差下显存、吞吐和网格分辨率上限，再测试其输出能否作为诊断时序融合中的物理状态 token。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/cb2c65733958b337.png" alt="Figure 1: Architecture of LLT. Input coordinates and field values at N N points are encoded in parallel through distance-based, Fourier, and convolutional branch channels, concatenated, and projected by a multilayer perceptron (MLP) into a fixed-width feature vector per point. A stack of L L Transformer encoder blocks then refines this representation; each layer normalizes its input (RMSNorm), applies a global information-exchange step across all points together with a local spatial mixing step, and adds the result back to the input through a residual path, followed by a second normalization and a pointwise nonlinear transformation (SwiGLU). The decoder merges the processed output with a direct connection from the initial embedding and maps the result through a final MLP to produce the predicted solution field.">
+                    <figcaption>Figure 1: Architecture of LLT. Input coordinates and field values at N N points are encoded in parallel through distance-based, Fourier, and convolutional branch channels, concaten...</figcaption>
+                  </figure>
+                  <p>LLT 组合 linear global attention、local spatial mixing、coordinate/geometry information，在弹性、塑性、翼型流、管流和 Darcy flow 等任务上评估，并覆盖有限元、有限体积、有限差分等不同离散方式。
+阅读时需要把方法设计与主要结果一起看：摘要报告 LLT 相比已有 neural operator 和 Transformer baseline 取得有竞争力或更低的相对 L2 误差；在匹配结构化离散上训练迭代时间下降。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 LLT 相比已有 neural operator 和 Transformer baseline 取得有竞争力或更低的相对 L2 误差；在匹配结构化离散上训练迭代时间下降。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文侧重空间 PDE 解算，不直接覆盖多采样率时序诊断和真实缺失机制；局部窗口大小、几何编码和线性注意力核对复杂磁拓扑的适配需要单独调参。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>LLT 适合成为 P1/P3 物理代理模型的轻量 baseline，而不是直接替代破裂预测模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在磁面参数、剖面重建或 MHD surrogate 上用 LLT 替代全注意力块，记录相同误差下显存、吞吐和网格分辨率上限，再测试其输出能否作为诊断时序融合中的物理状态 token。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断 / 预测</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</h3>
+              <p class="paper__subtitle">No qualified new direct paper in tokamak disruption prediction with visible-diagnostic multimodal fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。已检索最新 2026-07-10 UTC physics.plasm-ph 批次和 tokamak / disruption / diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。已检索最新 2026-07-10 UTC physics.plasm-ph 批次和 tokamak / disruption / diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>本轮 physics.plasm-ph 最新条目主要涉及激光驱动磁场、高能量密度等离子体、heliotron perturbation、磁喷管、等离子体尾场加速和空间等离子体等方向；它们本身不构成 AI 破裂预测或多模态诊断融合论文。
+从本日报的选取理由看，本轮空缺判断。已检索最新 2026-07-10 UTC physics.plasm-ph 批次和 tokamak / disruption / diagnostics / fusion plasma + AI 候选，未发现新的直接处理可见光图像与诊断时序融合破裂预测的高质量论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>保留检索边界，避免把纯物理、硬件或空间等离子体工作当作聚变 AI 新增。
+对当前主题的关键意义在于：下一步优先测试三类模块：高分辨物理场 token 压缩、局部可见光证据 query/memory、低信号 latent drift 与诊断时序融合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明，不对应新方法；可迁移机制见 PGD-NO、LLT、SAM-MT 与 Latent Drift。
+阅读时需要把方法设计与主要结果一起看：直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏刚发布在期刊页、会议页或作者主页但尚未进入 arXiv 的论文；后续仍需监测 EAST/KSTAR/DIII-D/ITER、visible diagnostics、ECEI/BES、full-state reconstruction 和 disruption prediction。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮聚变侧不凑数，重点转向可迁移机制的最小验证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一步优先测试三类模块：高分辨物理场 token 压缩、局部可见光证据 query/memory、低信号 latent drift 与诊断时序融合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>PGD-NO：高频海量点的几何 token 预压缩</h3>
+              <p class="paper__subtitle">PGD-NO: A Neural Operator with Precomputed Geometry Decomposition for 3D Million-scale Physics Simulations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是 3D million-scale physics simulation；可迁移模块是 precomputed geometry decomposition、geometry tokens 和 decoupled solution querying；对应聚变高频海量诊断点或大网格物理场在统一模型中导致显存爆炸的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Weiheng Zhong, Jing Bi, Victor Oancea, Hadi Meidani</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08025" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08025" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是 3D million-scale physics simulation；可迁移模块是 precomputed geometry decomposition、geometry tokens 和 decoupled solution querying；对应聚变高频海量诊断点或大网格物理场在统一模型中导致显存爆炸的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是把一部分开销前移到离线预计算，在线训练/推理显存应显著低于全量节点注意力，但会增加缓存和几何 token 维护成本。主要不成立条件是诊断几何或采样拓扑随 shot 快速变化，使预计算 token 不能复用。最小验证实验是在固定显存下比较全量高频 token、固定下采样、PGD-NO 式几何 token 查询三种方案，对破裂前 10-100ms 预测、重建误差和跨 shot 泛化做分层评估。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何保留高频通道局部结构，同时让低频诊断能与压缩后的高频表示交互？
+对当前主题的关键意义在于：原始领域是大规模工业/物理仿真；迁移点是几何 token 压缩，对应高频诊断显存控制和多尺度通道交互。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b56132938a5e54a5.png" alt="Figure 2 : PGD-NO architecture and layer variants. (Top) Model pipeline: a pre-computed segmentation matrix extracts geometry tokens from the point cloud, which are refined by stacked layers to capture multi-scale physics. (Bottom Left) Layer configurations: Variants 1 and 2 use multi-head attention to project features from tokens back to nodes, while Variant 3 uses a transposed segmentation matrix for high-efficiency surface mapping.">
+                    <figcaption>Figure 2 : PGD-NO architecture and layer variants. (Top) Model pipeline: a pre-computed segmentation matrix extracts geometry tokens from the point cloud, which are refined by stac...</figcaption>
+                  </figure>
+                  <p>用预计算几何分解先提取结构 token，再让在线模型查询解或状态，避免每次都对全量节点做重几何编码。
+阅读时需要把方法设计与主要结果一起看：摘要报告可扩展到超过 1000 万节点并保持线性显存。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告可扩展到超过 1000 万节点并保持线性显存。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未直接处理真实时间间隔、缺失机制和异步多通道。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可把它作为“空间/传感器结构压缩层”，再接连续时间或 SSM 时序模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是大规模工业/物理仿真；迁移点是几何 token 压缩，对应高频诊断显存控制和多尺度通道交互。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>LLT：局部物理偏置加线性全局注意力</h3>
+              <p class="paper__subtitle">LLT: Local Linear Transformer for PDE Operator Learning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-04</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是 PDE operator learning；可迁移模块是 linear global attention、local spatial mixing、coordinate/geometry embedding；对应长序列/大网格建模中既要全局耦合又要低显存的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Oded Ovadia, Eli Turkel</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.07718" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.07718" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是 PDE operator learning；可迁移模块是 linear global attention、local spatial mixing、coordinate/geometry embedding；对应长序列/大网格建模中既要全局耦合又要低显存的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响低于全注意力，局部混合会引入窗口相关开销但可控。主要风险是线性注意力核未必保留破裂前稀有长程依赖，局部窗口如果过小会漏掉跨通道耦合。最小验证实验是在同一聚变剖面/场重建任务上替换全注意力为 LLT block，比较显存、吞吐、误差和下游破裂预测 AUC。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在线性显存预算内同时建模局部物理相互作用和全局边界/拓扑影响？
+对当前主题的关键意义在于：原始领域是 PDE 算子学习；迁移点是低复杂度全局-局部耦合，对应聚变高低频统一模型的显存约束。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/cb2c65733958b337.png" alt="Figure 1: Architecture of LLT. Input coordinates and field values at N N points are encoded in parallel through distance-based, Fourier, and convolutional branch channels, concatenated, and projected by a multilayer perceptron (MLP) into a fixed-width feature vector per point. A stack of L L Transformer encoder blocks then refines this representation; each layer normalizes its input (RMSNorm), applies a global information-exchange step across all points together with a local spatial mixing step, and adds the result back to the input through a residual path, followed by a second normalization and a pointwise nonlinear transformation (SwiGLU). The decoder merges the processed output with a direct connection from the initial embedding and maps the result through a final MLP to produce the predicted solution field.">
+                    <figcaption>Figure 1: Architecture of LLT. Input coordinates and field values at N N points are encoded in parallel through distance-based, Fourier, and convolutional branch channels, concaten...</figcaption>
+                  </figure>
+                  <p>用 linear global attention 处理远程关系，用 local spatial mixing 注入局部物理偏置，并显式加入坐标与几何信息。
+阅读时需要把方法设计与主要结果一起看：摘要报告在多类 PDE benchmark 上达到有竞争力或更低的相对 L2 误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在多类 PDE benchmark 上达到有竞争力或更低的相对 L2 误差。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>缺少真实 irregular/multi-rate time series 实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可用它验证“局部物理偏置 + 线性注意力”是否优于纯 SSM 或纯 Transformer。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是 PDE 算子学习；迁移点是低复杂度全局-局部耦合，对应聚变高低频统一模型的显存约束。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>LEEVLA：属性相关区域的动态优先级与潜在演化</h3>
+              <p class="paper__subtitle">LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是机器人 VLA；可迁移模块是 drift-guided dynamic prioritization、semantic drift guidance、structured feature flow generation 和 mutual-neighborhood contrastive loss；对应 RGB/Event 属性识别中不同区域、模态和属性重要性随样本变化的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qi Lyu, Baicheng Liu, Xudong Wang, Jiahua Dong, Lianqing Liu, Zhi Han</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08182" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08182" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是机器人 VLA；可迁移模块是 drift-guided dynamic prioritization、semantic drift guidance、structured feature flow generation 和 mutual-neighborhood contrastive loss；对应 RGB/Event 属性识别中不同区域、模态和属性重要性随样本变化的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响中等，主要增加区域优先级打分、潜在演化预测和对比约束；若只在少量人体部位或候选区域上计算，可比全局 cross-attention 更省。风险是 VLA 的动作/指令监督不等于属性语义，事件流原生时间戳也未被直接建模。最小验证实验是在 TriPro 中以属性文本或人体部位 token 替代指令，让 RGB/Event 区域 token 经过 DGDP 式筛选后再融合，比较固定相加、门控融合和动态优先级融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免事件噪声或 RGB 背景主导属性判断，并让不同属性读取不同区域/模态证据？
+对当前主题的关键意义在于：原始领域是 VLA；迁移点是区域/任务动态加权，对应 TriPro 当前可能存在的固定长度采样和直接融合问题。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>用动态位置优先级和语义漂移指导模型看关键区域，再用潜在特征流预测维持演化结构。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法用于复杂动态场景下强调任务关键证据。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法用于复杂动态场景下强调任务关键证据。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是事件相机工作；必须另接原生事件编码器或 TVTA 式时间聚合。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可把它作为属性级 reliability-aware fusion 的训练目标。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是 VLA；迁移点是区域/任务动态加权，对应 TriPro 当前可能存在的固定长度采样和直接融合问题。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>本轮 P2 第二篇空缺：无新的原生 RGB-Event 属性强稿</h3>
+              <p class="paper__subtitle">No second qualified new P2 paper for native RGB-Event attribute recognition in this run</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】本轮空缺判断。7 月 10 日批次中事件相关强稿已在 7 月 11/12 覆盖 LongE2V、EVIS、TVTA；剩余候选没有同时满足原生事件表征、RGB/Event 时间对齐、属性识别和动态可靠融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】本轮空缺判断。7 月 10 日批次中事件相关强稿已在 7 月 11/12 覆盖 LongE2V、EVIS、TVTA；剩余候选没有同时满足原生事件表征、RGB/Event 时间对齐、属性识别和动态可靠融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>本轮可借鉴 LEEVLA 的动态证据选择，但它不是事件相机论文，不能替代 RGB-Event 属性识别新增。为避免重复旧论文，本子节不再重述 TVTA、EventPAR 或 TriPro-ReID。
+从本日报的选取理由看，【P2】本轮空缺判断。7 月 10 日批次中事件相关强稿已在 7 月 11/12 覆盖 LongE2V、EVIS、TVTA；剩余候选没有同时满足原生事件表征、RGB/Event 时间对齐、属性识别和动态可靠融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>避免把普通视频、VLA 或图像生成论文误写成 RGB-Event 属性识别进展。
+对当前主题的关键意义在于：最小验证仍建议从 TriPro/EventPAR 的事件分支和属性级融合头开始。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明。
+阅读时需要把方法设计与主要结果一起看：P2 今日除 LEEVLA 的跨领域机制启发外，无第二篇合格新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>P2 今日除 LEEVLA 的跨领域机制启发外，无第二篇合格新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏作者主页或会议页刚发布的事件属性数据集/代码更新。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>今天 P2 的行动重点应是把 TVTA 的事件聚合与 LEEVLA 的动态区域优先级组合成最小替换实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证仍建议从 TriPro/EventPAR 的事件分支和属性级融合头开始。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>SAM-MT：多个局部可见光前兆的共享记忆</h3>
+              <p class="paper__subtitle">SAM-MT: Real-Time Interactive Multi-Target Video Segmentation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是 interactive multi-target video segmentation；可迁移模块是 explicit target queries、shared global context、decoupled masked attention 和 sparse memory；对应可见光局部前兆需要实时多区域跟踪、低显存部署和解释的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ruiqi Shen, Chang Liu, Henghui Ding</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08688" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08688" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是 interactive multi-target video segmentation；可迁移模块是 explicit target queries、shared global context、decoupled masked attention 和 sparse memory；对应可见光局部前兆需要实时多区域跟踪、低显存部署和解释的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响优于为每个候选区域复制完整视频分割网络，但高于简单全局 pooling；可通过限制 query 数和 memory 长度控制。风险是聚变可见光前兆不一定有稳定边界，交互提示也不可用于实时报警。最小验证实验是自动生成局部亮斑/边界扰动候选 query，使用共享上下文和稀疏 memory 维护其状态，再由诊断时序 query 选择相关前兆。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在实时预算下保留多个局部视觉证据，而不让目标数量拖垮延迟？
+对当前主题的关键意义在于：原始领域是视频目标分割；迁移点是多局部证据共享记忆，对应破裂预测中的低延迟、低显存和可解释局部证据。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/02820305b341cf52.png" alt="Figure 2 : Overview of SAM-MT. Our framework uses queries to represent individual targets, in parallel with a shared representation for global context. We introduce decoupled masked attention to prevent cross-target interference while maintaining access to the global context. A sparse memory stores historical queries of different targets, which are processed by an identity transformer for robust per-frame target re-identification.">
+                    <figcaption>Figure 2 : Overview of SAM-MT. Our framework uses queries to represent individual targets, in parallel with a shared representation for global context. We introduce decoupled maske...</figcaption>
+                  </figure>
+                  <p>显式目标 query 并行读取共享上下文，用解耦 attention 和稀疏记忆保持身份与时间演化。
+阅读时需要把方法设计与主要结果一起看：摘要报告 10 个目标时仍超过 36 FPS。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 10 个目标时仍超过 36 FPS。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要把交互式分割改成自动前兆候选生成。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可把 SAM-MT 抽象成局部视觉证据缓存层。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是视频目标分割；迁移点是多局部证据共享记忆，对应破裂预测中的低延迟、低显存和可解释局部证据。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>Latent Drift：破裂前微弱视觉变化的低维漂移目标</h3>
+              <p class="paper__subtitle">Progression as Latent Drift: Generative Forecasting of Slow-Evolving Pathologies</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是神经退行性疾病纵向 MRI 预测；可迁移模块是 latent drift、identity collapse / interpolation trap 诊断和压缩语义变化预测；对应可见光图像中破裂前微弱变化被静态背景和设备差异淹没的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yuxiang Feng, Juncheng Wang, Chao Xu, Wenlong Hou, Huihan Wang, Yijie Qian, Yang Liu, Baigui Sun, Yong Liu, Shujun Wan</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08270" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08270" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是神经退行性疾病纵向 MRI 预测；可迁移模块是 latent drift、identity collapse / interpolation trap 诊断和压缩语义变化预测；对应可见光图像中破裂前微弱变化被静态背景和设备差异淹没的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响取决于 encoder 和 latent 维度，通常低于全分辨率视频预测；适合先离线训练视觉 encoder，再在线预测低维 drift。风险是压缩 latent 若不保留局部等离子体现象，会把有用前兆也一起滤掉。最小验证实验是比较帧级分类、未来帧预测、latent delta prediction 三种视觉辅助任务，再与诊断时序融合评估提前量、误报率和跨装置泛化。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让视觉模型学习破裂前变化本身，而不是记住当前 shot 的静态外观？
+对当前主题的关键意义在于：原始领域是医学影像；迁移点是低信号变化建模，对应破裂预测中的背景抑制、早期前兆和跨装置泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f2968c69d816d341.png" alt="Figure 4 : The Progression Latent Drift Framework. Our two-stage architecture explicitly disentangles sparse biological progression from stationary anatomy and dense imaging noise. First-Stage (Latent Drift Tokenizer): Longitudinal MRI scans are patchified and compressed into continuous latent representations ( z z ). To escape Identity Collapse, a Drifting Module computes the temporal residual ( Δ ​ z 1 = z 2 − z 1 \Delta z_{1}=z_{2}-z_{1} ). Finite Scalar Quantization (FSQ) discretizes this continuous drift, acting as a topological dead-zone filter to strictly suppress non-semantic nuisance noise. The future scan is then reconstructed by fusing the quantized drift ( Δ ​ z 1 q \Delta z^{q}_{1} ) with the baseline latent ( z 1 z_{1} ) via cross-attention. Second-Stage (Generator Training): With the biological trajectory successfully isolated, an autoregressive sequence model learns to forecast the discrete drift tokens, conditionally guided by the baseline anatomy ( z t 1 z_{t_{1}} ), patient demographics, and the target temporal horizon ( t 2 − t 1 t_{2}-t_{1} ).">
+                    <figcaption>Figure 4 : The Progression Latent Drift Framework. Our two-stage architecture explicitly disentangles sparse biological progression from stationary anatomy and dense imaging noise....</figcaption>
+                  </figure>
+                  <p>把预测目标从全图像改为压缩语义 latent 的变化，减少身份信息对训练目标的主导。
+阅读时需要把方法设计与主要结果一起看：摘要报告用于慢演化病理预测，并针对低信号进展提出理论失败模式分析。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告用于慢演化病理预测，并针对低信号进展提出理论失败模式分析。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医学慢病进展和聚变破裂前快速非线性演化不同，时间尺度需重设。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可用 latent drift 作为视觉预训练/辅助损失，而不是主预测器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是医学影像；迁移点是低信号变化建模，对应破裂预测中的背景抑制、早期前兆和跨装置泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>LEEVLA：面向动态场景的任务关键视觉证据选择</h3>
+              <p class="paper__subtitle">LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09。它不是事件相机论文，但提出 drift-guided dynamic prioritization 和 structured feature flow，让 VLA 模型只看任务关键区域并建模潜在环境演化；可迁移到 P2 的样本/区域/属性动态加权。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qi Lyu, Baicheng Liu, Xudong Wang, Jiahua Dong, Lianqing Liu, Zhi Han</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08182" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08182" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08182" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09。它不是事件相机论文，但提出 drift-guided dynamic prioritization 和 structured feature flow，让 VLA 模型只看任务关键区域并建模潜在环境演化；可迁移到 P2 的样本/区域/属性动态加权。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别和可见光-诊断融合都不应把整幅图像或整段事件流平均看待。真正有用的可能只是局部区域、短时动态或某个属性相关片段；如果模型缺少动态证据选择机制，事件噪声、背景和无关运动会压过关键线索。
+从本日报的选取理由看，新增 / arXiv 2026-07-09。它不是事件相机论文，但提出 drift-guided dynamic prioritization 和 structured feature flow，让 VLA 模型只看任务关键区域并建模潜在环境演化；可迁移到 P2 的样本/区域/属性动态加权。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让多模态模型在动态环境中自动识别任务相关区域，并保持潜在表示随时间演化的结构一致性？
+对当前主题的关键意义在于：最小实验是在 TriPro/EventPAR 中加入区域级动态优先权分支，用属性词或部位 token 作为 query，比较固定融合、全局 cross-attention 和 DGDP 式区域筛选在 mA、F1、低光/模糊/事件稀疏子集和 ECE 上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>LEEVLA 引入 Drift-Guided Dynamic Prioritization，将 Dynamic Position Prioritization 与 Semantic Drift Guidance 结合，引导模型关注指令相关和动态显著区域；Structured Feature Flow Generation 用 prototype-to-periphery prediction 建模优先特征在潜在空间中的演化，Mutual-Neighborhood Contrastive loss 维持邻域拓扑一致性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 DGDP 与 SFFG 组成 task-aware 的 where-how 训练机制，用于复杂动态场景中的 VLA 推理。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始任务是机器人 VLA，不是事件属性识别；需要把语言指令替换为属性词、部位提示或诊断时序 query，且论文摘要未给出事件流或模态缺失实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可借鉴它的“哪里重要、如何演化”训练目标，而不是照搬 VLA 架构。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro/EventPAR 中加入区域级动态优先权分支，用属性词或部位 token 作为 query，比较固定融合、全局 cross-attention 和 DGDP 式区域筛选在 mA、F1、低光/模糊/事件稀疏子集和 ECE 上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>SAM-MT：实时交互式多目标视频分割</h3>
+              <p class="paper__subtitle">SAM-MT: Real-Time Interactive Multi-Target Video Segmentation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09 / ECCV 2026。它在 SAM2 上用显式目标 queries、共享全局上下文、解耦 masked attention 和 sparse memory，把多目标视频分割延迟从目标数增长中解耦；对 P3 的局部可见光前兆记忆很有工程启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ruiqi Shen, Chang Liu, Henghui Ding</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08688" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08688" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08688" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09 / ECCV 2026。它在 SAM2 上用显式目标 queries、共享全局上下文、解耦 masked attention 和 sparse memory，把多目标视频分割延迟从目标数增长中解耦；对 P3 的局部可见光前兆记忆很有工程启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测中的可见光视频可能同时存在多个局部前兆区域，如边界扰动、亮斑、杂质辐射或局部遮挡。如果每个区域都独立跑一次重模型，实时性会很快失控；如果只做全帧 pooling，又会丢掉局部解释性。
+从本日报的选取理由看，新增 / arXiv 2026-07-09 / ECCV 2026。它在 SAM2 上用显式目标 queries、共享全局上下文、解耦 masked attention 和 sparse memory，把多目标视频分割延迟从目标数增长中解耦；对 P3 的局部可见光前兆记忆很有工程启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保持多目标身份和时间记忆的同时，让视频分割延迟不随目标数量线性增长？
+对当前主题的关键意义在于：最小实验是在可见光视频中用简单阈值/运动/边缘候选初始化 4-16 个局部前兆 query，替代全帧 ViT token，比较 query 数量增加时显存、延迟、提前量、误报率和解释热区稳定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/02820305b341cf52.png" alt="Figure 2 : Overview of SAM-MT. Our framework uses queries to represent individual targets, in parallel with a shared representation for global context. We introduce decoupled masked attention to prevent cross-target interference while maintaining access to the global context. A sparse memory stores historical queries of different targets, which are processed by an identity transformer for robust per-frame target re-identification.">
+                    <figcaption>Figure 2 : Overview of SAM-MT. Our framework uses queries to represent individual targets, in parallel with a shared representation for global context. We introduce decoupled maske...</figcaption>
+                  </figure>
+                  <p>SAM-MT 基于 SAM2，将目标表示为显式 queries，并与共享全局上下文并行；使用 decoupled masked attention 区分目标身份和跨目标干扰，使用 sparse memory 保持时间演化稳定，并加入遮挡处理和重叠防止策略。
+阅读时需要把方法设计与主要结果一起看：摘要报告 SAM-MT 在 10 个目标时仍达到超过 36 FPS，速度接近单目标 baseline，同时保持 SAM2 的视频分割能力。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 SAM-MT 在 10 个目标时仍达到超过 36 FPS，速度接近单目标 baseline，同时保持 SAM2 的视频分割能力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它依赖交互式目标指定和自然视频分割设定；聚变可见光前兆可能没有清晰对象边界，需要自动候选生成或弱监督掩码。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可把它抽象成“多个局部视觉证据共享上下文和稀疏记忆”的工程结构。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在可见光视频中用简单阈值/运动/边缘候选初始化 4-16 个局部前兆 query，替代全帧 ViT token，比较 query 数量增加时显存、延迟、提前量、误报率和解释热区稳定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>Latent Drift：低信号纵向医学图像的潜在漂移预测</h3>
+              <p class="paper__subtitle">Progression as Latent Drift: Generative Forecasting of Slow-Evolving Pathologies</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-09</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-09 / ECCV 2026。它把慢演化病理预测改成压缩语义空间中的 latent drift 学习，避免全分辨率图像预测被静态身份信息主导；对 P3 破裂前微弱视觉变化和跨 shot 背景偏差抑制有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yuxiang Feng, Juncheng Wang, Chao Xu, Wenlong Hou, Huihan Wang, Yijie Qian, Yang Liu, Baigui Sun, Yong Liu, Shujun Wan</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08270" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08270" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08270" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-09 / ECCV 2026。它把慢演化病理预测改成压缩语义空间中的 latent drift 学习，避免全分辨率图像预测被静态身份信息主导；对 P3 破裂前微弱视觉变化和跨 shot 背景偏差抑制有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>在纵向医学影像中，真正的病理进展信号很弱，大量像素只是稳定个体解剖和噪声。破裂预测中的可见光序列也类似：设备背景和常态放电纹理占主导，破裂前可迁移的视觉变化可能只是局部、缓慢、低信噪比的漂移。
+从本日报的选取理由看，新增 / arXiv 2026-07-09 / ECCV 2026。它把慢演化病理预测改成压缩语义空间中的 latent drift 学习，避免全分辨率图像预测被静态身份信息主导；对 P3 破裂前微弱视觉变化和跨 shot 背景偏差抑制有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免生成式时序预测被当前图像身份信息主导，从而学不到细微但关键的时间变化？
+对当前主题的关键意义在于：最小实验是先训练可见光帧的自监督 encoder，再只预测局部/全局 latent delta，并与直接帧预测、全局 pooling 分类和诊断时序融合模型比较提前量、跨装置泛化和背景偏差。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f2968c69d816d341.png" alt="Figure 4 : The Progression Latent Drift Framework. Our two-stage architecture explicitly disentangles sparse biological progression from stationary anatomy and dense imaging noise. First-Stage (Latent Drift Tokenizer): Longitudinal MRI scans are patchified and compressed into continuous latent representations ( z z ). To escape Identity Collapse, a Drifting Module computes the temporal residual ( Δ ​ z 1 = z 2 − z 1 \Delta z_{1}=z_{2}-z_{1} ). Finite Scalar Quantization (FSQ) discretizes this continuous drift, acting as a topological dead-zone filter to strictly suppress non-semantic nuisance noise. The future scan is then reconstructed by fusing the quantized drift ( Δ ​ z 1 q \Delta z^{q}_{1} ) with the baseline latent ( z 1 z_{1} ) via cross-attention. Second-Stage (Generator Training): With the biological trajectory successfully isolated, an autoregressive sequence model learns to forecast the discrete drift tokens, conditionally guided by the baseline anatomy ( z t 1 z_{t_{1}} ), patient demographics, and the target temporal horizon ( t 2 − t 1 t_{2}-t_{1} ).">
+                    <figcaption>Figure 4 : The Progression Latent Drift Framework. Our two-stage architecture explicitly disentangles sparse biological progression from stationary anatomy and dense imaging noise....</figcaption>
+                  </figure>
+                  <p>论文分析了 identity collapse 和 continuous interpolation trap 两种失败模式，提出 Latent Drift，在压缩语义表示中预测变化而不是直接合成全分辨率解剖，从而移除像素级身份负担并把模型容量集中在进展信号上。
+阅读时需要把方法设计与主要结果一起看：摘要称该框架面向 slow-evolving neurodegenerative diseases 的未来解剖预测，并通过压缩语义空间提升对微弱变化的建模可靠性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称该框架面向 slow-evolving neurodegenerative diseases 的未来解剖预测，并通过压缩语义空间提升对微弱变化的建模可靠性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医学 MRI 与托卡马克可见光差异显著；若压缩空间丢掉破裂前局部小尺度现象，latent drift 反而会抹平关键证据。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可把它用于设计视觉前兆的低维变化目标，而不是直接做图像生成。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是先训练可见光帧的自监督 encoder，再只预测局部/全局 latent delta，并与直接帧预测、全局 pooling 分类和诊断时序融合模型比较提前量、跨装置泛化和背景偏差。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>本轮趋势</h3>
+          <p>1. 最新 arXiv 可见批次仍停在 2026-07-10 UTC，今天的新增不是新批次，而是对 7 月 10 日批次中尚未展开的高相关论文做补录。</p>
+          <p>2. P1 从通用长上下文时序模型转向大规模物理场/神经算子的显存结构设计：预计算几何 token、线性全局注意力和局部物理偏置比单纯追求更长窗口更值得验证。</p>
+          <p>3. P2 没有新的原生 RGB-Event 属性强稿，短期应组合 TVTA 的事件时间聚合与 LEEVLA 的动态证据优先级，而不是继续扩大候选模型池。</p>
+          <p>4. P3 的跨领域机制更具体：多局部视觉 query 共享稀疏记忆、低维 latent drift 预测、再由诊断时序选择相关视觉证据。</p>
+          <p>5. 直接 tokamak disruption + visible/diagnostic multimodal fusion 仍空缺，聚变侧应优先做最小迁移实验，而不是等待完全同题论文。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
