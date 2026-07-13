@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-14</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-14 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-14 05:20:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇进入主推荐。P1 最值得看 GatedLinear 与 CoCoT-EEG：前者用可解释门控在线路由趋势、漂移和相位循环三类线性基，适合作为高低频诊断的轻量强基线；后者用多尺度卷积输入和对比预训练处理高噪声、窄频带 EEG，对高频诊断信号的预训练目标更贴近。P2 重点看 Foveated Dynamic Transformer：它用 fixation/foveation 做动态视觉 token 选择，可迁移到 RGB-Event 属性识别中的区域和属性级可靠性筛选。P3 重点看 4DR360 和 HemoPIC：一个把雷达-相机占用状态当作可传播中间状态，另一个把灌注影像时序解释为物理约束数字孪生，分别对应异步视觉-传感器融合和物理可解释破裂前兆建模。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-1">01 GatedLinear：时间序列预测中的互补线性基自适应路由</a></li>
+              <li><a href="#paper-2">02 CoCoT-EEG：面向 EEG 解码的对比预训练多尺度卷积 Transformer</a></li>
+              <li><a href="#paper-3">03 COBS：长上下文注意力的二阶块稀疏选择参考</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">可控核聚变 / 等离子体控制 / 诊断 / 预测</a>
+            <ul>
+              <li><a href="#paper-6">06 HemoPIC：物理约束灌注影像数字孪生</a></li>
+              <li><a href="#paper-7">07 本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-8">08 GatedLinear：高低频诊断动态类型的轻量门控路由</a></li>
+              <li><a href="#paper-9">09 CoCoT-EEG：高噪声窄频带诊断的多尺度对比预训练</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-10">10 FDT：面向 RGB/Event 属性证据的动态 fixation 与多尺度 token</a></li>
+              <li><a href="#paper-11">11 本轮 P2 原生 RGB-Event 属性识别新增空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-12">12 4DR360：把跨模态融合结果建成可传播状态</a></li>
+              <li><a href="#paper-13">13 HemoPIC：物理一致 latent state 与反事实模拟</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态学习 / 图像与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-4">04 FDT：具备鲁棒性的 foveation-guided 动态视觉 token 选择</a></li>
+              <li><a href="#paper-5">05 4DR360：4D 雷达-相机全场景感知的跨模态状态推理</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-1">GatedLinear：时间序列预测中的互补线性基自适应路由</a></h3>
+              <p class="card__subtitle">GatedLinear: Adaptive Routing of Complementary Linear Bases for Time Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-10</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-10。它不用堆叠重型注意力或频域模块，而是用 Tri-Factorized Fusion Gate 在通道、预测步长和相位索引上动态选择趋势、漂移和周期线性基；适合做 P1 高低频统一建模的强轻量基线。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-2">CoCoT-EEG：面向 EEG 解码的对比预训练多尺度卷积 Transformer</a></h3>
+              <p class="card__subtitle">CoCoT-EEG: Contrastive-Pretrained Multiscale Convolutional Transformer for EEG Decoding</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-10。它指出高噪声、信息集中在窄频带的信号不一定适合 masked reconstruction 预训练，并用多尺度时序卷积加 Transformer 和对比目标提升异构电极配置解码；对聚变高频诊断的预训练策略有直接启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">FDT：具备鲁棒性的 foveation-guided 动态视觉 token 选择</a></h3>
+              <p class="card__subtitle">Foveation-Guided Dynamic Token Selection for Robust and Efficient Vision Transformers</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-10。它用 fixation 模块过滤无关信息、foveation 模块生成多尺度 token，在 50% fixation budget 下提升准确率并减少约 34.57% MACs；适合迁移到 P2 的事件噪声抑制和属性相关区域选择。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">4DR360：4D 雷达-相机全场景感知的跨模态状态推理</a></h3>
+              <p class="card__subtitle">4DR360: State Reasoning for Joint 3D Detection and Occupancy Prediction in 4D Radar-Camera Full-Scene Perception</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像与计算机视觉</span>
+                <span class="chip chip--muted">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-10。它把语义占用建模为可在阶段间传播的 persistent scene state，并用 Doppler-guided Temporal Fusion 保存长时证据；对 P3 中可见光图像和诊断时序的中间状态融合很有参考价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">HemoPIC：物理约束灌注影像数字孪生</a></h3>
+              <p class="card__subtitle">HemoPIC: A Physics-Informed Cerebral Hemodynamics Digital Twin for Brain Perfusion</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变 / 等离子体控制 / 诊断 / 预测</span>
+                <span class="chip chip--muted">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-08。它用示踪剂质量守恒和集中参数血流动力学模型，从灌注影像时序联合估计 latent states 与数字孪生参数；对 P3 的物理可解释视觉-时序融合是很好的跨领域范式。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>GatedLinear：时间序列预测中的互补线性基自适应路由</h3>
+              <p class="paper__subtitle">GatedLinear: Adaptive Routing of Complementary Linear Bases for Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-10。它不用堆叠重型注意力或频域模块，而是用 Tri-Factorized Fusion Gate 在通道、预测步长和相位索引上动态选择趋势、漂移和周期线性基；适合做 P1 高低频统一建模的强轻量基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qitai Tan, Ruiwen Gu, Yilin Su, Mo Li, Xu Lin, Xiao-Ping Zhang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09537" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.09537" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.09537" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-10。它不用堆叠重型注意力或频域模块，而是用 Tri-Factorized Fusion Gate 在通道、预测步长和相位索引上动态选择趋势、漂移和周期线性基；适合做 P1 高低频统一建模的强轻量基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>真实诊断时序往往同时包含慢趋势、突发漂移、周期或准周期行为。标准 Transformer、频域模型或单一路径 MLP 容易把这些互斥动态压进同一个 backbone，导致高低频通道和不同预测 horizon 的最优处理方式被混合。
+从本日报的选取理由看，新增 / arXiv 2026-07-10。它不用堆叠重型注意力或频域模块，而是用 Tri-Factorized Fusion Gate 在通道、预测步长和相位索引上动态选择趋势、漂移和周期线性基；适合做 P1 高低频统一建模的强轻量基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不引入重型长序列注意力的情况下，让模型按通道、时间步和相位选择不同预测机制？
+对当前主题的关键意义在于：最小实验是在现有诊断时序数据上用 GatedLinear 替代全注意力预测头，保留真实时间标记和通道标记，比较高频通道压缩前后在显存、提前量、NLL、校准误差和跨 shot 采样率变化上的表现。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/77c7abfea7b089f8.png" alt="Figure 3: Overview of the proposed GatedLinear framework. The input sequence is processed by three complementary linear forecasting bases. A Tri-Factorized Fusion Gate uses horizon, channel, and future phase indices to select among the three bases for each future point.">
+                    <figcaption>Figure 3: Overview of the proposed GatedLinear framework. The input sequence is processed by three complementary linear forecasting bases. A Tri-Factorized Fusion Gate uses horizon...</figcaption>
+                  </figure>
+                  <p>GatedLinear 构建三类专门线性基：global trend-seasonal basis、difference-based incremental basis、phase-aligned recurrence basis；Tri-Factorized Fusion Gate 将路由拆成 channel-specific preferences、horizon-aware offsets 和由未来时间标记给出的 phase-indexed biases。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法在标准预测 benchmark 上达到 SOTA 或有竞争力精度，同时参数量显著小于复杂 foundation model，并提供可解释 routing patterns。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文面向规则时间序列预测，不直接处理真实不规则采样、异步传感器或缺失机制；如果聚变诊断高频通道存在强非线性耦合，线性基可能只能作为强基线而非最终模型。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 可把它作为“先用轻量门控判别动态类型，再决定是否进入重模型”的路线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有诊断时序数据上用 GatedLinear 替代全注意力预测头，保留真实时间标记和通道标记，比较高频通道压缩前后在显存、提前量、NLL、校准误差和跨 shot 采样率变化上的表现。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>CoCoT-EEG：面向 EEG 解码的对比预训练多尺度卷积 Transformer</h3>
+              <p class="paper__subtitle">CoCoT-EEG: Contrastive-Pretrained Multiscale Convolutional Transformer for EEG Decoding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-10。它指出高噪声、信息集中在窄频带的信号不一定适合 masked reconstruction 预训练，并用多尺度时序卷积加 Transformer 和对比目标提升异构电极配置解码；对聚变高频诊断的预训练策略有直接启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Gabriel Mahuas, Victoria Shevchenko, Ugo Tanielian, Yassir Bendou, Richard Gao</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09543" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.09543" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.09543" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-10。它指出高噪声、信息集中在窄频带的信号不一定适合 masked reconstruction 预训练，并用多尺度时序卷积加 Transformer 和对比目标提升异构电极配置解码；对聚变高频诊断的预训练策略有直接启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变高频诊断与 EEG 有相似建模难点：信号噪声幅度高、有效信息可能集中在局部频带或短时窗口，传感器配置又可能随实验条件变化。若直接照搬 masked reconstruction，模型可能把容量用在重建噪声而不是判别相关动态。
+从本日报的选取理由看，新增 / arXiv 2026-07-10。它指出高噪声、信息集中在窄频带的信号不一定适合 masked reconstruction 预训练，并用多尺度时序卷积加 Transformer 和对比目标提升异构电极配置解码；对聚变高频诊断的预训练策略有直接启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>高噪声、多通道、高频信号的基础模型预训练，应优先重建原始波形，还是学习跨视图、跨尺度的一致判别表示？
+对当前主题的关键意义在于：最小实验是把高频磁探针、ECE 或可见光派生曲线切成多尺度视图，用对比目标学习 shot 内局部一致性和 shot 间状态区分，再与 masked reconstruction、监督端到端和固定下采样方案比较。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f9bc6584bfd23c1d.png" alt="Figure 1: CoCoT-EEG. A. Raw EEG signals are processed through a bank of 1D convolutions with varying kernel sizes ( k = 3 k=3 to 121 121 ). The resulting multiscale feature maps are patchified into temporal tokens via L2 pooling, followed by the addition of a Fourier positional encoding. B. Self-attention is applied to the tokens to produce EEG embeddings ( z z ). A residual MLP head with two GLU blocks is used for the downstream classification or regression. C. For pretraining, a MoCo-style contrastive learning framework He2019-jw is employed, where query x q ​ u ​ e ​ r ​ y x^{query} and key x k ​ e ​ y x^{key} samples are generated via EEG augmentations. The encoder and momentum encoder produce embeddings ( z q z^{q} and z + k z^{k}_{+} ), which are trained with InfoNCE van-den-Oord2018-nh against a queue of negative samples z i k z^{k}_{i} . GLU: gated linear unit; MH: multi-head, MoCo: momentum contrast; N: number of transformer blocks; PE: positional encoding.">
+                    <figcaption>Figure 1: CoCoT-EEG. A. Raw EEG signals are processed through a bank of 1D convolutions with varying kernel sizes ( k = 3 k=3 to 121 121 ). The resulting multiscale feature maps ar...</figcaption>
+                  </figure>
+                  <p>CoCoT 使用 multiscale temporal convolution input layers 抽取局部频带和时间尺度特征，再接 Transformer encoder blocks，并采用 contrastive pretraining 替代单纯 masked reconstruction；论文还系统比较架构和预训练目标。
+阅读时需要把方法设计与主要结果一起看：摘要报告 CoCoT 在广泛 EEG decoding benchmark 上匹配或超过 reconstruction-pretrained EEG model，并在异构电极配置下显示较好数据效率；从头训练也能超过既有单任务解码模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 CoCoT 在广泛 EEG decoding benchmark 上匹配或超过 reconstruction-pretrained EEG model，并在异构电极配置下显示较好数据效率；从头训练也能超过既有单任务解码模型。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>EEG 与聚变诊断的物理机制不同，电极配置异构不等价于多诊断系统异步；论文未直接处理百万级序列长度或高低频通道联合输入。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P1 更应借鉴其预训练目标和多尺度输入层，而不是照搬 EEG 解码头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把高频磁探针、ECE 或可见光派生曲线切成多尺度视图，用对比目标学习 shot 内局部一致性和 shot 间状态区分，再与 masked reconstruction、监督端到端和固定下采样方案比较。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>COBS：长上下文注意力的二阶块稀疏选择参考</h3>
+              <p class="paper__subtitle">COBS: Cumulant Order Block Sparse Attention</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-10。它不是时序预测论文，但把 block sparse attention 的选择问题化成 attention mass 估计，并用每块二阶统计压缩 KV 读取；可作为 P1 长上下文高频 token 选择的工程参考。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Alexander Tian, Aditya Ghai, Sanjit Neelam, Zaal Vasania, Akshay Mishra</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09052" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.09052" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.09052" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-10。它不是时序预测论文，但把 block sparse attention 的选择问题化成 attention mass 估计，并用每块二阶统计压缩 KV 读取；可作为 P1 长上下文高频 token 选择的工程参考。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>当高频诊断被展开成长序列 token 后，瓶颈不只在计算 FLOPs，也在 KV 或历史状态读取。简单稀疏选择若只依赖一阶近似，容易漏掉关键块；全量读取又回到显存和带宽爆炸。
+从本日报的选取理由看，新增 / arXiv 2026-07-10。它不是时序预测论文，但把 block sparse attention 的选择问题化成 attention mass 估计，并用每块二阶统计压缩 KV 读取；可作为 P1 长上下文高频 token 选择的工程参考。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用紧凑块级统计近似关键 attention mass，从而在长上下文中只读取少量高价值历史块？
+对当前主题的关键意义在于：最小实验是把高频诊断按真实时间窗口分块，为每块缓存均值、方差或协方差统计，让低频诊断 query 选择历史块，再与均匀窗口、top-k attention 和 Mamba/SSM 压缩比较显存、召回关键前兆和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f2728c27685b4a74.png" alt="Figure 1: COBS approaches dense accuracy at a fraction of the KV cache read traffic. Accuracy on 32k RULER versus per-decode-step KV cache read traffic (KiB per layer, log scale; see Table ˜ 3 ). The plotted FP4 COBS configurations lie on the Pareto frontier (dashed); the highlighted star is COBS (adaptive s ≈ 85 s{\approx}85 , r = 4 r{=}4 , FP4), which recovers most of the gap between dense and NSA MLP at 1.21 × 1.21\times NSA MLP’s KV cache read traffic. NSA MLP and NSA Quest are dominated; NSA mean-pool anchors the low-traffic end of the frontier, and OSA buys its accuracy by re-reading all keys.">
+                    <figcaption>Figure 1: COBS approaches dense accuracy at a fraction of the KV cache read traffic. Accuracy on 32k RULER versus per-decode-step KV cache read traffic (KiB per layer, log scale; s...</figcaption>
+                  </figure>
+                  <p>COBS 以 Native Sparse Attention 为代表分析块选择，将目标简化为按 attention mass 排序，并通过 cumulant expansion 说明一阶近似不足；其 selector 为每个块存储压缩二阶统计以改进选择质量。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 32k RULER long-context retrieval 中，COBS 将 NSA baseline 均分从 0.2999 提升到 0.8195，接近 dense attention 0.9040，同时 KV cache read traffic 仅为 NSA 的 1.21 倍、比 dense 少 15.15 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 32k RULER long-context retrieval 中，COBS 将 NSA baseline 均分从 0.2999 提升到 0.8195，接近 dense attention 0.9040，同时 KV cache read traffic 仅为 NSA 的 1.21 倍、比 dense 少 15.15 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始评估是 LLM 长上下文检索，不是连续时间诊断；二阶统计是否能捕捉物理事件前兆，需要重新定义块和查询。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1 的长序列 token pruning / block retrieval 组件候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把高频诊断按真实时间窗口分块，为每块缓存均值、方差或协方差统计，让低频诊断 query 选择历史块，再与均匀窗口、top-k attention 和 Mamba/SSM 压缩比较显存、召回关键前兆和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>可控核聚变 / 等离子体控制 / 诊断 / 预测</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>HemoPIC：物理约束灌注影像数字孪生</h3>
+              <p class="paper__subtitle">HemoPIC: A Physics-Informed Cerebral Hemodynamics Digital Twin for Brain Perfusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-08。它用示踪剂质量守恒和集中参数血流动力学模型，从灌注影像时序联合估计 latent states 与数字孪生参数；对 P3 的物理可解释视觉-时序融合是很好的跨领域范式。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yi-Chen Lee, Peirong Liu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08799" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.08799" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.08799" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-08。它用示踪剂质量守恒和集中参数血流动力学模型，从灌注影像时序联合估计 latent states 与数字孪生参数；对 P3 的物理可解释视觉-时序融合是很好的跨领域范式。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测不仅需要判断风险，还需要解释哪些视觉和诊断前兆对应可理解的物理状态变化。医学灌注影像同样从动态影像序列推断不可直接观测的生理状态，因此其物理约束数字孪生框架可提供跨领域结构参考。
+从本日报的选取理由看，新增 / arXiv 2026-07-08。它用示踪剂质量守恒和集中参数血流动力学模型，从灌注影像时序联合估计 latent states 与数字孪生参数；对 P3 的物理可解释视觉-时序融合是很好的跨领域范式。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让图像时序融合模型输出可模拟、可反事实分析的 latent physical state，而不是黑盒风险分数？
+对当前主题的关键意义在于：最小实验是在可见光-诊断融合模型中加入少量可解释中间变量，如辐射增强、边界扰动或剖面代理状态，用物理一致性损失约束其时序演化，再与纯分类模型比较提前量、误报率和专家可解释性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ccaf1cba338c2978.png" alt="Figure 1: HemoPIC overview. Given measured tracer dynamics, HemoPIC estimates regional blood inflow ( f in r f^{r}_{\mathrm{in}} ) and outflow ( f out r f^{r}_{\mathrm{out}} ) without requiring AIF, by coupling tracer transport with patient-specific hemodynamics in a physics-grounded formulation.">
+                    <figcaption>Figure 1: HemoPIC overview. Given measured tracer dynamics, HemoPIC estimates regional blood inflow ( f in r f^{r}_{\mathrm{in}} ) and outflow ( f out r f^{r}_{\mathrm{out}} ) with...</figcaption>
+                  </figure>
+                  <p>HemoPIC 通过 tracer mass conservation 和 lumped parameter hemodynamic model 解释 perfusion time series，求解 constrained inverse problem，联合估计数字孪生参数与 latent states，并直接生成临床可用 perfusion maps。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 HemoPIC 能重建 tracer dynamics，生成具有生理一致性的 perfusion maps，满足 central volume consistency，并支持 forward simulation 与 counterfactual intervention analysis；代码已公开。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>脑灌注动力学与托卡马克破裂动力学差异很大；如果没有可靠物理参数化，强行套用数字孪生会引入错误约束。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可把它作为“物理一致 latent state + 反事实仿真”的设计蓝本。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在可见光-诊断融合模型中加入少量可解释中间变量，如辐射增强、边界扰动或剖面代理状态，用物理一致性损失约束其时序演化，再与纯分类模型比较提前量、误报率和专家可解释性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变 / 等离子体控制 / 诊断 / 预测</p>
+              <h3>本轮未收录直接新增论文：tokamak disruption + visible diagnostics fusion 空缺</h3>
+              <p class="paper__subtitle">No qualified new direct paper in tokamak disruption prediction with visible-diagnostic multimodal fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。已检索 2026-07-13 UTC physics.plasm-ph 批次和 tokamak / disruption / diagnostics / fusion plasma + AI 候选；Comparison of DBS measurements... 是有价值的 synthetic diagnostic / 单 shot DBS wavenumber spectra 工作，但不是 AI 破裂预测或可见光-诊断时序融合论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。已检索 2026-07-13 UTC physics.plasm-ph 批次和 tokamak / disruption / diagnostics / fusion plasma + AI 候选；Comparison of DBS measurements... 是有价值的 synthetic diagnostic / 单 shot DBS wavenumber spectra 工作，但不是 AI 破裂预测或可见光-诊断时序融合论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>本轮聚变新稿主要涉及等离子体羽流、实验室磁湍流、stellarator equilibrium、DBS 湍流谱测量和 kinetic simulation 等方向。它们可为诊断设计或物理背景提供参考，但不能替代 AI 融合建模论文。
+从本日报的选取理由看，本轮空缺判断。已检索 2026-07-13 UTC physics.plasm-ph 批次和 tokamak / disruption / diagnostics / fusion plasma + AI 候选；Comparison of DBS measurements... 是有价值的 synthetic diagnostic / 单 shot DBS wavenumber spectra 工作，但不是 AI 破裂预测或可见光-诊断时序融合论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>保留聚变检索边界，避免把纯物理诊断或硬件论文当作 AI 交叉新增。
+对当前主题的关键意义在于：下一步优先测试三类模块：高频诊断多尺度对比预训练、视觉/事件动态 token 选择、可传播物理 state 与诊断时序融合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明，不对应新方法；可迁移机制见 GatedLinear、CoCoT-EEG、FDT、4DR360 与 HemoPIC。
+阅读时需要把方法设计与主要结果一起看：直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接 tokamak disruption + visible/diagnostic multimodal fusion 新稿本轮无合格新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏刚发布在会议页、期刊页或作者主页但尚未进入 arXiv 的论文；后续仍需监测 EAST/KSTAR/DIII-D/ITER、visible diagnostics、ECEI/BES、DBS、full-state reconstruction 和 disruption prediction。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮聚变侧不凑数，重点转向可迁移机制的最小验证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一步优先测试三类模块：高频诊断多尺度对比预训练、视觉/事件动态 token 选择、可传播物理 state 与诊断时序融合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>GatedLinear：高低频诊断动态类型的轻量门控路由</h3>
+              <p class="paper__subtitle">GatedLinear: Adaptive Routing of Complementary Linear Bases for Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是通用时间序列预测；可迁移模块是 trend-seasonal / incremental / phase-aligned recurrence 三类线性基和 Tri-Factorized Fusion Gate；对应待解决问题是同一模型内不同通道、频率和预测 horizon 需要不同处理机制。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qitai Tan, Ruiwen Gu, Yilin Su, Mo Li, Xu Lin, Xiao-Ping Zhang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09537" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.09537" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是通用时间序列预测；可迁移模块是 trend-seasonal / incremental / phase-aligned recurrence 三类线性基和 Tri-Factorized Fusion Gate；对应待解决问题是同一模型内不同通道、频率和预测 horizon 需要不同处理机制。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是显著低于全注意力和大型 TSFM，适合先做高频压缩后的轻量路由；风险是规则时间标记和线性基无法覆盖真实不规则采样与非线性耦合。最小验证实验是在现有破裂预测或剖面预测任务中加入通道/步长/相位门控，与 MLP、PatchTST、Mamba 和全注意力比较显存、提前量和跨采样率鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让低频稀疏观测和高频海量诊断在进入统一模型前先按动态类型分流？
+对当前主题的关键意义在于：可先在现有代码中替换预测头，不改动数据管线，记录门控模式和破裂前状态变化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/77c7abfea7b089f8.png" alt="Figure 3: Overview of the proposed GatedLinear framework. The input sequence is processed by three complementary linear forecasting bases. A Tri-Factorized Fusion Gate uses horizon, channel, and future phase indices to select among the three bases for each future point.">
+                    <figcaption>Figure 3: Overview of the proposed GatedLinear framework. The input sequence is processed by three complementary linear forecasting bases. A Tri-Factorized Fusion Gate uses horizon...</figcaption>
+                  </figure>
+                  <p>把不同通道的预测残差分解到互补线性基中，门控输出可作为解释信号，观察哪些诊断在破裂前从周期/趋势路由切换到漂移路由。
+阅读时需要把方法设计与主要结果一起看：原文报告标准 benchmark 精度有竞争力且参数量较小；对聚变需重新评估异常段、跨装置和高频段。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告标准 benchmark 精度有竞争力且参数量较小；对聚变需重新评估异常段、跨装置和高频段。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不直接支持异步缺失，需要额外加入真实 Δt embedding、mask-aware gate 或连续时间插值。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 的第一阶段强基线，而不是终局统一模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可先在现有代码中替换预测头，不改动数据管线，记录门控模式和破裂前状态变化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>CoCoT-EEG：高噪声窄频带诊断的多尺度对比预训练</h3>
+              <p class="paper__subtitle">CoCoT-EEG: Contrastive-Pretrained Multiscale Convolutional Transformer for EEG Decoding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是 EEG decoding；可迁移模块是 multiscale temporal convolution input layers 与 contrastive pretraining；对应待解决问题是高频诊断噪声大、有效信息窄频带、采样配置变化时 masked reconstruction 容易学噪声。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Gabriel Mahuas, Victoria Shevchenko, Ugo Tanielian, Yassir Bendou, Richard Gao</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09543" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.09543" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是 EEG decoding；可迁移模块是 multiscale temporal convolution input layers 与 contrastive pretraining；对应待解决问题是高频诊断噪声大、有效信息窄频带、采样配置变化时 masked reconstruction 容易学噪声。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是前端卷积先局部压缩再进入 Transformer，可降低长序列 token 数，但会增加多尺度卷积缓存；风险是对比正负样本构造不当会把 shot 身份当作主信号。最小验证实验是构造同一 shot 不同时间增强视图和不同 shot 负样本，比较对比预训练、重建预训练和监督训练在少标注破裂预测中的表现。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何保留真实时间间隔和多尺度频带信息，同时避免模型把高频噪声当作重建目标？
+对当前主题的关键意义在于：最小落地是只预训练 encoder，再冻结接入现有破裂分类器，看低标注和跨 shot 泛化是否改善。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f9bc6584bfd23c1d.png" alt="Figure 1: CoCoT-EEG. A. Raw EEG signals are processed through a bank of 1D convolutions with varying kernel sizes ( k = 3 k=3 to 121 121 ). The resulting multiscale feature maps are patchified into temporal tokens via L2 pooling, followed by the addition of a Fourier positional encoding. B. Self-attention is applied to the tokens to produce EEG embeddings ( z z ). A residual MLP head with two GLU blocks is used for the downstream classification or regression. C. For pretraining, a MoCo-style contrastive learning framework He2019-jw is employed, where query x q ​ u ​ e ​ r ​ y x^{query} and key x k ​ e ​ y x^{key} samples are generated via EEG augmentations. The encoder and momentum encoder produce embeddings ( z q z^{q} and z + k z^{k}_{+} ), which are trained with InfoNCE van-den-Oord2018-nh against a queue of negative samples z i k z^{k}_{i} . GLU: gated linear unit; MH: multi-head, MoCo: momentum contrast; N: number of transformer blocks; PE: positional encoding.">
+                    <figcaption>Figure 1: CoCoT-EEG. A. Raw EEG signals are processed through a bank of 1D convolutions with varying kernel sizes ( k = 3 k=3 to 121 121 ). The resulting multiscale feature maps ar...</figcaption>
+                  </figure>
+                  <p>用多尺度时序卷积承接原始高频波形，再通过 Transformer 编码长程关系，对比目标负责学习跨窗口稳定表征。
+阅读时需要把方法设计与主要结果一起看：原文报告其 EEG 解码匹配或超过 reconstruction-pretrained model，并在异构电极配置中有效。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告其 EEG 解码匹配或超过 reconstruction-pretrained model，并在异构电极配置中有效。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要为聚变诊断重新设计增强、正负样本和频带先验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合做高频诊断 foundation encoder 的预训练目标候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小落地是只预训练 encoder，再冻结接入现有破裂分类器，看低标注和跨 shot 泛化是否改善。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>FDT：面向 RGB/Event 属性证据的动态 fixation 与多尺度 token</h3>
+              <p class="paper__subtitle">Foveation-Guided Dynamic Token Selection for Robust and Efficient Vision Transformers</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是 RGB ViT 分类；可迁移模块是 fixation module、foveated embeddings 和动态 token selection；对应待解决问题是 RGB-Event 属性识别中事件噪声、弱光、运动模糊和无关背景 token 稀释属性证据。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ibrahim Batuhan Akkaya, Kishaan Jeeveswaran, Bahram Zonooz, Elahe Arani</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09480" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.09480" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是 RGB ViT 分类；可迁移模块是 fixation module、foveated embeddings 和动态 token selection；对应待解决问题是 RGB-Event 属性识别中事件噪声、弱光、运动模糊和无关背景 token 稀释属性证据。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是在保留关键区域的同时减少 token 和 MACs，尤其适合事件体素或 time-surface 数量较大时；风险是 fixation 若只依赖 RGB 静态显著性，会错过事件中的短时动态属性。最小验证实验是在 TriPro-ReID 中新增 event-guided/attribute-guided token scorer，比较固定长度事件帧、全 token cross-attention 和动态 token selection。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何按样本、区域和属性动态决定 RGB 与 Event 哪些 token 进入融合？
+对当前主题的关键意义在于：评价应加入低光、模糊、事件稀疏/噪声、RGB 缺失和 Event 缺失子集，并报告 mA、F1、ECE 与推理延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/7a56829e23b785e9.png" alt="Figure 1: Illustration comparing the fixations of the human visual system (left; Yarbus et al. [ 1967 ] ) and an ANN (right; our method). Areas outside the fixations are blurred to highlight regions of interest. The sequence of eye movements is indicated by numbers. Notably, the ANN exhibits overlapping fixation points, as shown by multiple numbers at the same location, separated by commas.">
+                    <figcaption>Figure 1: Illustration comparing the fixations of the human visual system (left; Yarbus et al. [ 1967 ] ) and an ANN (right; our method). Areas outside the fixations are blurred to...</figcaption>
+                  </figure>
+                  <p>把 FDT 的 fixation 分支改成由属性词、部位 token 或事件活动强度共同驱动，再用 foveation 分支保留多尺度上下文。
+阅读时需要把方法设计与主要结果一起看：原文在 50% fixation budget 下准确率高于 DeiT-S 且 MACs 降低 34.57%，说明动态 token 可以同时提升效率和鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在 50% fixation budget 下准确率高于 DeiT-S 且 MACs 降低 34.57%，说明动态 token 可以同时提升效率和鲁棒性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原文没有 RGB/Event 对齐、缺失模态和属性不确定性实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是对 TriPro 模块最小可验证替换：先替换固定 token 采样，不改分类头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>评价应加入低光、模糊、事件稀疏/噪声、RGB 缺失和 Event 缺失子集，并报告 mA、F1、ECE 与推理延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>本轮 P2 原生 RGB-Event 属性识别新增空缺</h3>
+              <p class="paper__subtitle">No qualified new native RGB-Event attribute recognition paper</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。FDT 仅作为动态 token 选择和鲁棒性机制启发，不能替代 TriPro-ReID 或 EventPAR 方向的直接工作。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。FDT 仅作为动态 token 选择和鲁棒性机制启发，不能替代 TriPro-ReID 或 EventPAR 方向的直接工作。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机方向本轮没有看到同时满足原生异步事件表征、RGB/Event 时间对齐、属性监督和模态缺失鲁棒性的新增论文。
+从本日报的选取理由看，【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。FDT 仅作为动态 token 选择和鲁棒性机制启发，不能替代 TriPro-ReID 或 EventPAR 方向的直接工作。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>避免把普通 RGB token pruning 或通用视觉分类论文误写成 RGB-Event 属性识别新增。
+对当前主题的关键意义在于：最小实验仍建议从 FDT 式 token scorer 入手，因为它对现有 TriPro 模块改动最小。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明；可迁移机制集中在动态 token selection、attribute-query fixation 和 reliability-aware fusion。
+阅读时需要把方法设计与主要结果一起看：原生 RGB-Event 属性识别新稿本轮空缺。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原生 RGB-Event 属性识别新稿本轮空缺。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏作者主页或会议页刚发布但未入 arXiv 的工作。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>继续监测 event camera、neuromorphic vision、RGB-Event ReID/PAR、open-vocabulary attribute 与 missing modality。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验仍建议从 FDT 式 token scorer 入手，因为它对现有 TriPro 模块改动最小。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>4DR360：把跨模态融合结果建成可传播状态</h3>
+              <p class="paper__subtitle">4DR360: State Reasoning for Joint 3D Detection and Occupancy Prediction in 4D Radar-Camera Full-Scene Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是自动驾驶 4D radar-camera perception；可迁移模块是 persistent occupancy state、State-guided BEV Enhancement 和 Doppler-guided Temporal Fusion；对应待解决问题是异步图像和诊断时序需要形成持续更新的中间物理状态，而不是末端特征拼接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xiaokai Bai, Lianqing Zheng, Runwei Guan, Songkai Wang, Siyuan Cao, Hui-liang Shen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09629" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.09629" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是自动驾驶 4D radar-camera perception；可迁移模块是 persistent occupancy state、State-guided BEV Enhancement 和 Doppler-guided Temporal Fusion；对应待解决问题是异步图像和诊断时序需要形成持续更新的中间物理状态，而不是末端特征拼接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响取决于 state 分辨率，若用低维局部 state 替代全帧 token 可降低长视频融合成本；风险是自动驾驶 BEV/occupancy 先验迁移到托卡马克可见光时物理含义不成立。最小验证实验是构造 8-32 个可见光局部 state token，并由诊断时序 query 更新，比较 late fusion 与 state propagation。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>时序如何选择图像局部证据，并抑制无关视觉信息？
+对当前主题的关键意义在于：最小实现是复用现有可见光 encoder，只新增 state tokens 和 gated update，报告缺失图像/缺失诊断时的退化曲线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d016fc432cce03ad.png" alt="Figure 2: Overall framework of 4DR360 ∘ . The pipeline first extracts multi-view image BEV features and 4D radar BEV features, fuses them into a shared BEV representation, reasons over coarse-to-fine occupancy states with SBE and DTF, and decodes joint 3D detection and semantic occupancy outputs.">
+                    <figcaption>Figure 2: Overall framework of 4DR360 ∘ . The pipeline first extracts multi-view image BEV features and 4D radar BEV features, fuses them into a shared BEV representation, reasons ...</figcaption>
+                  </figure>
+                  <p>将语义状态作为融合核心，让视觉和传感器证据围绕状态更新，而不是在最后一层简单相加。
+阅读时需要把方法设计与主要结果一起看：原文建立 radar-camera 检测和占用联合评估，覆盖鲁棒性和效率。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文建立 radar-camera 检测和占用联合评估，覆盖鲁棒性和效率。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要定义聚变场景中的 state，如边界扰动、局部辐射、亮斑、杂质羽流或剖面代理量。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合 P3 设计“诊断时序 query 图像 state”的融合骨架。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实现是复用现有可见光 encoder，只新增 state tokens 和 gated update，报告缺失图像/缺失诊断时的退化曲线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>HemoPIC：物理一致 latent state 与反事实模拟</h3>
+              <p class="paper__subtitle">HemoPIC: A Physics-Informed Cerebral Hemodynamics Digital Twin for Brain Perfusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-08</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是医学灌注影像；可迁移模块是 constrained inverse problem、physics-informed latent states 和 forward/counterfactual simulation；对应待解决问题是破裂预测模型需要物理可解释性和跨装置泛化，而不是只输出风险分数。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yi-Chen Lee, Peirong Liu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.08799" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.08799" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是医学灌注影像；可迁移模块是 constrained inverse problem、physics-informed latent states 和 forward/counterfactual simulation；对应待解决问题是破裂预测模型需要物理可解释性和跨装置泛化，而不是只输出风险分数。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响主要来自求解或近似物理约束逆问题，若 latent state 维度较低，在线推理可控；风险是物理约束定义错误会压制数据中真实但未建模的前兆。最小验证实验是在融合模型中引入少量可解释 latent state，并用弱物理约束或守恒/平滑约束训练。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让可见光和诊断时序共同估计可解释的破裂前状态，并支持反事实分析？
+对当前主题的关键意义在于：最小实现是在现有破裂模型中新增一个低维 state head，预测可解释 proxy，如辐射上升、边界活动或剖面异常，并检查这些 proxy 是否提升跨装置泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ccaf1cba338c2978.png" alt="Figure 1: HemoPIC overview. Given measured tracer dynamics, HemoPIC estimates regional blood inflow ( f in r f^{r}_{\mathrm{in}} ) and outflow ( f out r f^{r}_{\mathrm{out}} ) without requiring AIF, by coupling tracer transport with patient-specific hemodynamics in a physics-grounded formulation.">
+                    <figcaption>Figure 1: HemoPIC overview. Given measured tracer dynamics, HemoPIC estimates regional blood inflow ( f in r f^{r}_{\mathrm{in}} ) and outflow ( f out r f^{r}_{\mathrm{out}} ) with...</figcaption>
+                  </figure>
+                  <p>借鉴 HemoPIC 的 digital twin 思路，把观测序列解释为 latent state 驱动的 forward process，同时保留对最终预警目标的监督。
+阅读时需要把方法设计与主要结果一起看：原文显示其能重建动态、生成一致 summary maps，并支持反事实干预。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文显示其能重建动态、生成一致 summary maps，并支持反事实干预。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>聚变系统的可解释 state 需要由物理专家约束，不能凭视觉 embedding 自行命名。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 解释性损失和中间变量设计参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实现是在现有破裂模型中新增一个低维 state head，预测可解释 proxy，如辐射上升、边界活动或剖面异常，并检查这些 proxy 是否提升跨装置泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>FDT：具备鲁棒性的 foveation-guided 动态视觉 token 选择</h3>
+              <p class="paper__subtitle">Foveation-Guided Dynamic Token Selection for Robust and Efficient Vision Transformers</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-10。它用 fixation 模块过滤无关信息、foveation 模块生成多尺度 token，在 50% fixation budget 下提升准确率并减少约 34.57% MACs；适合迁移到 P2 的事件噪声抑制和属性相关区域选择。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ibrahim Batuhan Akkaya, Kishaan Jeeveswaran, Bahram Zonooz, Elahe Arani</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09480" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.09480" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.09480" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-10。它用 fixation 模块过滤无关信息、foveation 模块生成多尺度 token，在 50% fixation budget 下提升准确率并减少约 34.57% MACs；适合迁移到 P2 的事件噪声抑制和属性相关区域选择。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别中，事件流常包含背景运动、稀疏噪声和弱光伪迹；如果所有 patch、事件体素或时间面都等权进入融合，关键属性证据会被无关视觉 token 稀释。动态 token 选择比固定长度采样更贴近原生事件的不均匀信息密度。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在降低视觉 token 数量的同时保留属性相关和鲁棒性相关的局部证据？
+对当前主题的关键意义在于：最小实验是在 TriPro-ReID 或 EventPAR 风格模型中增加属性 query 引导的 fixation 分支，对 RGB patch 和 event voxel/token 分别打分，再比较固定 token、随机 token、显著性 token 和 FDT 式 token 在 mA、F1、低光/运动模糊/事件稀疏子集上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/7a56829e23b785e9.png" alt="Figure 1: Illustration comparing the fixations of the human visual system (left; Yarbus et al. [ 1967 ] ) and an ANN (right; our method). Areas outside the fixations are blurred to highlight regions of interest. The sequence of eye movements is indicated by numbers. Notably, the ANN exhibits overlapping fixation points, as shown by multiple numbers at the same location, separated by commas.">
+                    <figcaption>Figure 1: Illustration comparing the fixations of the human visual system (left; Yarbus et al. [ 1967 ] ) and an ANN (right; our method). Areas outside the fixations are blurred to...</figcaption>
+                  </figure>
+                  <p>FDT 使用 fixation module 识别 fixation points 以过滤无关信息，再用 foveation module 生成包含多尺度信息的 foveated embeddings，形成动态 token-selection ViT 架构。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 50% fixation-budget 下，FDT 准确率高于 DeiT-S 81.9% vs. 80.9%，同时 MACs 降低 34.57%，并对多类噪声和对抗攻击表现出较强韧性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 50% fixation-budget 下，FDT 准确率高于 DeiT-S 81.9% vs. 80.9%，同时 MACs 降低 34.57%，并对多类噪声和对抗攻击表现出较强韧性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文是 RGB 图像分类，不处理事件时间戳、RGB/Event 对齐或属性开放词表；如果 fixation 只学到静态显著性，可能忽略事件中的短时动态属性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可把它改成 attribute-query/event-guided fixation，而不是直接作为分类 backbone。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro-ReID 或 EventPAR 风格模型中增加属性 query 引导的 fixation 分支，对 RGB patch 和 event voxel/token 分别打分，再比较固定 token、随机 token、显著性 token 和 FDT 式 token 在 mA、F1、低光/运动模糊/事件稀疏子集上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像与计算机视觉</p>
+              <h3>4DR360：4D 雷达-相机全场景感知的跨模态状态推理</h3>
+              <p class="paper__subtitle">4DR360: State Reasoning for Joint 3D Detection and Occupancy Prediction in 4D Radar-Camera Full-Scene Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-10</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-10。它把语义占用建模为可在阶段间传播的 persistent scene state，并用 Doppler-guided Temporal Fusion 保存长时证据；对 P3 中可见光图像和诊断时序的中间状态融合很有参考价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xiaokai Bai, Lianqing Zheng, Runwei Guan, Songkai Wang, Siyuan Cao, Hui-liang Shen</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.09629" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.09629" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.09629" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-10。它把语义占用建模为可在阶段间传播的 persistent scene state，并用 Doppler-guided Temporal Fusion 保存长时证据；对 P3 中可见光图像和诊断时序的中间状态融合很有参考价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测中的可见光图像、诊断时序和可能的局部图像证据并不同步，且每个模态的密度不同。若只在最后拼接特征，模型难以形成持续更新的物理状态；若只做视觉检测，则不能让诊断时序指导图像证据保留。
+从本日报的选取理由看，新增 / arXiv 2026-07-10。它把语义占用建模为可在阶段间传播的 persistent scene state，并用 Doppler-guided Temporal Fusion 保存长时证据；对 P3 中可见光图像和诊断时序的中间状态融合很有参考价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把稀疏传感器和 dense image 的融合结果变成可跨时间传播的中间状态，而不是一次性分类特征？
+对当前主题的关键意义在于：最小实验是把可见光帧编码成局部视觉 state，把 ECE/磁探针/辐射诊断作为 temporal guidance，比较 late fusion、cross-attention fusion 和 persistent state fusion 在提前量、跨装置泛化、缺失模态和解释热区稳定性上的表现。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d016fc432cce03ad.png" alt="Figure 2: Overall framework of 4DR360 ∘ . The pipeline first extracts multi-view image BEV features and 4D radar BEV features, fuses them into a shared BEV representation, reasons over coarse-to-fine occupancy states with SBE and DTF, and decodes joint 3D detection and semantic occupancy outputs.">
+                    <figcaption>Figure 2: Overall framework of 4DR360 ∘ . The pipeline first extracts multi-view image BEV features and 4D radar BEV features, fuses them into a shared BEV representation, reasons ...</figcaption>
+                  </figure>
+                  <p>4DR360 提出 cross-modal state reasoning，将 semantic occupancy 作为 persistent scene state；State-guided BEV Enhancement 加强帧内 BEV 表示，Doppler-guided Temporal Fusion 保留更长时间范围的状态证据，并统一检测与占用预测评估。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要说明实验覆盖准确率、鲁棒性、消融和效率，并建立 radar-camera multi-task evaluation framework；代码和标签将在接收后释放。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始应用是自动驾驶 4D 雷达-相机，不是托卡马克；BEV 占用状态不等价于等离子体物理状态，Doppler 先验需要替换为诊断时序或物理量先验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可借鉴“状态先行、任务输出随后”的多模态融合范式。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把可见光帧编码成局部视觉 state，把 ECE/磁探针/辐射诊断作为 temporal guidance，比较 late fusion、cross-attention fusion 和 persistent state fusion 在提前量、跨装置泛化、缺失模态和解释热区稳定性上的表现。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
