@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-15</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-15 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-15 05:20:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天有 5 篇进入最近新增主推荐。P1 最值得看 Exact State Usage Instrument for Selective SSMs 与 Bet on Features：前者给出 Mamba/选择性 SSM 中逐输入状态模式使用的精确测量，可用于高频诊断 token/状态剪枝前的可解释审计；后者提供非 i.i.d. 数据流中的条件分位数校准审计，适合破裂风险和多步预测的在线可靠性监控。P2 重点看 JEAT：它用 NIS 统计和自适应扩展卡尔曼滤波动态估计 RGB/Event 测量噪声，比简单拼接更贴近弱光、运动模糊和事件可靠性变化。P3 重点看 E-VQA 与 LMV-Net：前者要求视频模型输出可验证的时空证据，后者把多视角图像放入显式纵向对齐框架，分别对应可见光局部证据约束和异步图像-时序前兆融合。按固定规则，另补 2 篇“2025-2026 顶会/顶刊回看推荐”：ISTS-PLM 与 Time-VLM，它们不占用主推荐名额。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 ISTS-PLM：面向不规则采样时序的预训练语言模型适配</a></li>
+              <li><a href="#paper-2">02 Time-VLM：用视觉-语言模型桥接时序图像和文本上下文</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-3">03 选择性 SSM 状态使用审计：Mamba 模式剪枝前先量化哪些状态真的有用</a></li>
+              <li><a href="#paper-4">04 Bet on Features：非 i.i.d. 数据流中的分位数预测在线校准审计</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-8">08 本轮直接聚变破裂预测与可见光-诊断融合新增空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-9">09 选择性 SSM 状态使用审计：输入驱动的状态模式迁移</a></li>
+              <li><a href="#paper-10">10 Bet on Features：风险预测上线后的特征级校准监控</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-11">11 JEAT：用测量噪声估计替代固定 RGB/Event 融合权重</a></li>
+              <li><a href="#paper-12">12 本轮 P2 原生 RGB-Event 属性识别新增空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-13">13 E-VQA：把破裂预测的视觉证据变成可验证输出</a></li>
+              <li><a href="#paper-14">14 LMV-Net：多视角图像的纵向显式对齐用于风险建模</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-5">05 JEAT：夜间高速场景的 Event-RGB 自适应测量噪声融合</a></li>
+              <li><a href="#paper-6">06 E-VQA：视频问答必须给出像素级时空证据</a></li>
+              <li><a href="#paper-7">07 LMV-Net：纵向多视角医学图像风险预测</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">选择性 SSM 状态使用审计：Mamba 模式剪枝前先量化哪些状态真的有用</a></h3>
+              <p class="card__subtitle">An Exact Instrument for State Usage in Selective State-Space Models, and the Input-Driven Migration It Reveals</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-13。它给出选择性状态空间模型中 per-mode 输出贡献和 drop-subset 误差的精确测量，能在高频诊断长序列上先判断哪些状态模式随输入迁移，再谈线性内存压缩。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">JEAT：夜间高速场景的 Event-RGB 自适应测量噪声融合</a></h3>
+              <p class="card__subtitle">Event-RGB Adaptive Tracking for Nighttime Highway Perception</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-13。它把异步事件流和 RGB 帧放进联合数据关联，并用 NIS 统计连续估计测量噪声权重；对 P2 的模态可靠性、弱光和运动模糊鲁棒融合非常直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">E-VQA：视频问答必须给出像素级时空证据</a></h3>
+              <p class="card__subtitle">Evidence-Backed Video Question Answering</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-13；ECCV 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-13 / ECCV 2026。它把视频回答和时间段、跟踪 masklet 证据绑定，揭示 QA 准确率和真实视觉感知会脱钩；对 P3 的可见光局部前兆解释很有价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">LMV-Net：纵向多视角医学图像风险预测</a></h3>
+              <p class="card__subtitle">Longitudinal Multi-View Breast Cancer Risk Prediction</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-13；MICCAI 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-13 / MICCAI 2026。它把互补视角和纵向显式对齐结合，用于风险预测；适合作为 P3 可见光图像序列与诊断时序对齐融合的跨领域模板。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Bet on Features：非 i.i.d. 数据流中的分位数预测在线校准审计</a></h3>
+              <p class="card__subtitle">Bet on Features: Anytime-Valid and Feature-Aware Auditing of Conditional Quantile Forecasters</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-13</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-13。它用 game-theoretic evidence process 按可用特征连续审计条件分位数预测器，在 Chronos-2 上发现多特征失校准；适合风险预警模型上线后的特征级可靠性监测。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>ISTS-PLM：面向不规则采样时序的预训练语言模型适配</h3>
+              <p class="paper__subtitle">Unleashing The Power of Pre-Trained Language Models for Irregularly Sampled Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；KDD 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。KDD 2025；它明确把不规则采样间隔、缺失和变量维度纳入 PLM 表示设计，对 P1 的“真实 Δt + 异步多通道 + 少样本迁移”仍是强参考。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Weijia Zhang, Chenlong Yin, Hao Liu, Hui Xiong</p>
+                <p class="muted">HKUST (GZ), HKUST</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://kdd.org/kdd2025/research-track-papers-2/" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。KDD 2025；它明确把不规则采样间隔、缺失和变量维度纳入 PLM 表示设计，对 P1 的“真实 Δt + 异步多通道 + 少样本迁移”仍是强参考。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>很多时序基础模型默认规则网格，把缺失和不等间隔留给预处理。聚变诊断恰好相反：采样率、通道可用性和事件密度本身带有物理含义，不能简单补齐成等间隔序列。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。KDD 2025；它明确把不规则采样间隔、缺失和变量维度纳入 PLM 表示设计，对 P1 的“真实 Δt + 异步多通道 + 少样本迁移”仍是强参考。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让大模型式表示学习处理不规则采样时序，同时保留时间间隔、变量身份和跨任务迁移能力？
+对当前主题的关键意义在于：最小实验是在现有不规则诊断数据上比较三种输入：补齐网格、Δt embedding、time-aware/variable-aware embedding；固定下游破裂预测头，报告跨采样率、缺失机制和 leave-one-device-out 性能。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文提出 ISTS-PLM，比较不规则时序表示方案，并引入 time-aware 与 variable-aware PLM 处理 intra-series 与 inter-series 建模；输入 embedding 和任务头用于分类、插补、外推以及少样本/零样本任务。
+阅读时需要把方法设计与主要结果一起看：KDD 2025 研究论文列表和 ACM DOI 已核验；arXiv 摘要报告其在多类 ISTS benchmark 上取得 SOTA 或有竞争力表现，并覆盖 healthcare、biomechanics 等科学数据。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>KDD 2025 研究论文列表和 ACM DOI 已核验；arXiv 摘要报告其在多类 ISTS benchmark 上取得 SOTA 或有竞争力表现，并覆盖 healthcare、biomechanics 等科学数据。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>PLM 适配的计算成本和 token 化方式未必适合 MHz 级诊断；如果先把高频信号粗暴文本化或离散化，会丢掉关键相位和瞬态。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1 的“表示层回看”，不是直接替代高频 SSM/卷积前端。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有不规则诊断数据上比较三种输入：补齐网格、Δt embedding、time-aware/variable-aware embedding；固定下游破裂预测头，报告跨采样率、缺失机制和 leave-one-device-out 性能。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Time-VLM：用视觉-语言模型桥接时序图像和文本上下文</h3>
+              <p class="paper__subtitle">Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICML 2025 / PMLR 267</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。ICML 2025；它把数值时序、时序图像和文本上下文共同送入冻结 VLM，对 P3 的“可见光图像 + 诊断时序 + 运行状态描述”有可迁移融合框架。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Siru Zhong, Weilin Ruan, Ming Jin, Huan Li, Qingsong Wen, Yuxuan Liang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.mlr.press/v267/zhong25a.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。ICML 2025；它把数值时序、时序图像和文本上下文共同送入冻结 VLM，对 P3 的“可见光图像 + 诊断时序 + 运行状态描述”有可迁移融合框架。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变破裂预测不仅有数值诊断，也常伴随实验工况、控制设置、可见光或红外图像。纯时序模型难以利用文本/元数据，纯视觉模型又缺少细粒度数值动态。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。ICML 2025；它把数值时序、时序图像和文本上下文共同送入冻结 VLM，对 P3 的“可见光图像 + 诊断时序 + 运行状态描述”有可迁移融合框架。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把时序数值、由时序转换的视觉模式和文本上下文合并，而不是只在末端拼接特征？
+对当前主题的关键意义在于：最小实验是将诊断时序图、可见光帧和 shot 元数据构造成三模态输入，比较纯数值、数值+图像、数值+图像+文本元数据在提前量、误报率和跨装置测试上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Time-VLM 包含 Retrieval-Augmented Learner、Vision-Augmented Learner 和 Text-Augmented Learner，用冻结 VLM 桥接 temporal、visual、textual modalities，再与时序特征融合预测。
+阅读时需要把方法设计与主要结果一起看：PMLR 页面核验其为 ICML 2025 论文；摘要报告在多数据集预测中提升 few-shot 和 zero-shot 场景表现。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>PMLR 页面核验其为 ICML 2025 论文；摘要报告在多数据集预测中提升 few-shot 和 zero-shot 场景表现。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>把时序转图像可能弱化真实 Δt；VLM 冻结特征未必理解物理图像和诊断曲线，需要小规模校准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 的多模态组织方式回看，尤其是把实验元数据作为第三模态。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是将诊断时序图、可见光帧和 shot 元数据构造成三模态输入，比较纯数值、数值+图像、数值+图像+文本元数据在提前量、误报率和跨装置测试上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>选择性 SSM 状态使用审计：Mamba 模式剪枝前先量化哪些状态真的有用</h3>
+              <p class="paper__subtitle">An Exact Instrument for State Usage in Selective State-Space Models, and the Input-Driven Migration It Reveals</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-13。它给出选择性状态空间模型中 per-mode 输出贡献和 drop-subset 误差的精确测量，能在高频诊断长序列上先判断哪些状态模式随输入迁移，再谈线性内存压缩。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Raktim Bhattacharya</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11796" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.11796" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.11796" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-13。它给出选择性状态空间模型中 per-mode 输出贡献和 drop-subset 误差的精确测量，能在高频诊断长序列上先判断哪些状态模式随输入迁移，再谈线性内存压缩。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 需要处理稀疏不规则观测与高频海量点的统一建模。Mamba/SSM 的线性时间特性很诱人，但如果不知道状态空间中哪些 mode 真正承载信号，剪枝、压缩和解释都容易变成事后猜测。
+从本日报的选取理由看，新增 / arXiv 2026-07-13。它给出选择性状态空间模型中 per-mode 输出贡献和 drop-subset 误差的精确测量，能在高频诊断长序列上先判断哪些状态模式随输入迁移，再谈线性内存压缩。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>选择性 SSM 的状态维度是否可以按输入动态使用和剪枝？如果可以，怎样在不重新部署模型的情况下精确估计 drop-subset 输出误差？
+对当前主题的关键意义在于：最小实验是在现有 Mamba/SSM 时序 baseline 上记录各诊断通道、窗口和采样率下的 mode 使用，比较静态剪枝、按通道剪枝和按输入剪枝对 NLL、提前量、显存峰值和鲁棒性的影响。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/486b4e2ab78d0834.png" alt="Figure 1: Migration gap ρ ​ ( 8 ) = E oracle / E static \rho(8)=E_{\mathrm{oracle}}/E_{\mathrm{static}} (left) and effective order (right) versus relative depth, over six models (Mamba-1 130M–2.8B and Falcon-Mamba-7B). Coloured lines are individual models (shared legend); the bold black line is the across-model median with an interquartile ribbon; the shaded region is the migrating band (relative depth 0.4 0.4 – 0.75 0.75 ). Left: ρ < 1 \rho<1 (dashed) means a per-input oracle reconstructs the layer output with less error than any fixed mode set; the median dips through the band and each model’s strongest layer, marked by a dot in the model’s colour, reaches ρ ≈ 0.5 \rho\approx 0.5 : the static set’s error is twice the oracle’s at the same budget. Right: the participation ratio rises from about two modes at the ends of the network to five–eight in the same band, so migration concentrates in the layers that spread their output over more modes.">
+                    <figcaption>Figure 1: Migration gap ρ ​ ( 8 ) = E oracle / E static \rho(8)=E_{\mathrm{oracle}}/E_{\mathrm{static}} (left) and effective order (right) versus relative depth, over six models (M...</figcaption>
+                  </figure>
+                  <p>论文利用对角状态矩阵，把每个通道输出精确分解为 per-mode contributions，并构造 per-layer、per-channel、per-window 的 Gram tensor，离线计算任意 mode 子集丢弃后的输出误差；随后做 input-scheduled mode pruning。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 Mamba-1 family 上相对误差达到 2.3e-7，能预测 4,464 个部署剪枝配置的误差；在 Mamba-1、Falcon-Mamba 7B 和 Mamba-2 上发现状态使用会随上下文迁移，半状态预算可匹配未剪枝模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 Mamba-1 family 上相对误差达到 2.3e-7，能预测 4,464 个部署剪枝配置的误差；在 Mamba-1、Falcon-Mamba 7B 和 Mamba-2 上发现状态使用会随上下文迁移，半状态预算可匹配未剪枝模型。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>作者明确说该 scheduler 需要第一遍读取窗口状态，当前只展示可实现的 headroom，不声称已带来实际部署计算或显存节省；聚变高频信号上的 mode 迁移还需验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合先做 P1 的状态审计工具，再决定是否引入动态状态压缩。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有 Mamba/SSM 时序 baseline 上记录各诊断通道、窗口和采样率下的 mode 使用，比较静态剪枝、按通道剪枝和按输入剪枝对 NLL、提前量、显存峰值和鲁棒性的影响。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Bet on Features：非 i.i.d. 数据流中的分位数预测在线校准审计</h3>
+              <p class="paper__subtitle">Bet on Features: Anytime-Valid and Feature-Aware Auditing of Conditional Quantile Forecasters</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-13。它用 game-theoretic evidence process 按可用特征连续审计条件分位数预测器，在 Chronos-2 上发现多特征失校准；适合风险预警模型上线后的特征级可靠性监测。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ivane Antonov, Sohom Mukherjee, Richard Pibernik, Yo Joong Choe</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11653" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.11653" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.11653" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-13。它用 game-theoretic evidence process 按可用特征连续审计条件分位数预测器，在 Chronos-2 上发现多特征失校准；适合风险预警模型上线后的特征级可靠性监测。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂风险、极端事件预测和诊断异常预警常需要概率输出。离线 test set 校准不能保证上线后仍可靠，因为工况、采样、控制策略和装置状态会连续变化。
+从本日报的选取理由看，新增 / arXiv 2026-07-13。它用 game-theoretic evidence process 按可用特征连续审计条件分位数预测器，在 Chronos-2 上发现多特征失校准；适合风险预警模型上线后的特征级可靠性监测。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>当数据流非 i.i.d. 且审计者掌握不同粒度的特征时，如何持续判断条件分位数预测器是否失校准？
+对当前主题的关键意义在于：最小实验是把破裂提前量或风险分数转换为条件分位数区间，按装置、采样率、密度区间、加热功率和诊断缺失模式做 feature-aware audit，定位哪些工况下模型最早失校准。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/1e02b282e447cd42.png" alt="Figure 7 : Per-feature rejection rate vs. quantile α \alpha for Chronos-2 with a 30-day sliding window (FTRL betting on both pipelines). Companion to Figure 5 .">
+                    <figcaption>Figure 7 : Per-feature rejection rate vs. quantile α \alpha for Chronos-2 with a 30-day sliding window (FTRL betting on both pipelines). Companion to Figure 5 .</figcaption>
+                  </figure>
+                  <p>论文提出 distribution-free、game-theoretic testing framework，用 evidence process 连续审计黑盒 conditional quantile forecasters；contextual bets 可按审计特征给出有限时间检测保证和特征级失校准证据。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法在模拟和真实数据上有效，并发现 Chronos-2 在多个相关特征维度上存在明显失校准。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法在模拟和真实数据上有效，并发现 Chronos-2 在多个相关特征维度上存在明显失校准。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它只审计分位数校准，不自动修正模型；如果破裂风险输出不是分位数形式，需要先定义可审计的风险区间或 conformal wrapper。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1/P3 模型上线前后的可靠性监控层。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把破裂提前量或风险分数转换为条件分位数区间，按装置、采样率、密度区间、加热功率和诊断缺失模式做 feature-aware audit，定位哪些工况下模型最早失校准。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>本轮直接聚变破裂预测与可见光-诊断融合新增空缺</h3>
+              <p class="paper__subtitle">No qualified new tokamak disruption or visible-diagnostic fusion AI paper in this round</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-15</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。2026-07-14 physics.plasm-ph 新稿包含 tokamak turbulence、fusion design platform、EAST impurity transport 等，但没有新的机器学习破裂预测、可见光图像-诊断时序融合或跨装置 AI 预测论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。2026-07-14 physics.plasm-ph 新稿包含 tokamak turbulence、fusion design platform、EAST impurity transport 等，但没有新的机器学习破裂预测、可见光图像-诊断时序融合或跨装置 AI 预测论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变物理新稿仍可作为领域背景，但本简报的主线是 AI 机制与可迁移建模；将纯物理湍流或输运论文写成 AI 破裂预测新增会误导实验优先级。
+从本日报的选取理由看，本轮空缺判断。2026-07-14 physics.plasm-ph 新稿包含 tokamak turbulence、fusion design platform、EAST impurity transport 等，但没有新的机器学习破裂预测、可见光图像-诊断时序融合或跨装置 AI 预测论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>区分“聚变领域新增”与“聚变 AI 可落地新增”，避免为了覆盖聚变主题而降低选取门槛。
+对当前主题的关键意义在于：最小动作是把 JEAT 的 reliability-aware fusion 与 E-VQA 的 evidence supervision 拆成两个小实验，不等待完全同题聚变论文出现。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明；本轮可迁移机制来自 SSM 状态审计、Event-RGB 可靠性融合、视频证据约束和纵向多视角风险建模。
+阅读时需要把方法设计与主要结果一起看：直接 tokamak disruption + visible diagnostics + AI fusion 新稿本轮空缺。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接 tokamak disruption + visible diagnostics + AI fusion 新稿本轮空缺。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏作者主页、会议 early access 或尚未进入 arXiv 的团队报告。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>短期应推进跨领域机制验证，同时继续监测 disruption prediction、plasma diagnostics、cross-device transfer 和 synthetic diagnostic。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小动作是把 JEAT 的 reliability-aware fusion 与 E-VQA 的 evidence supervision 拆成两个小实验，不等待完全同题聚变论文出现。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>选择性 SSM 状态使用审计：输入驱动的状态模式迁移</h3>
+              <p class="paper__subtitle">An Exact Instrument for State Usage in Selective State-Space Models, and the Input-Driven Migration It Reveals</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是 Mamba/选择性 SSM 解释与剪枝；可迁移模块是 per-mode contribution、Gram tensor 和 input-scheduled mode pruning；对应待解决问题是高频海量点进入 SSM 后，如何在保留动态状态的同时减少无效状态维度。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Raktim Bhattacharya</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11796" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.11796" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是 Mamba/选择性 SSM 解释与剪枝；可迁移模块是 per-mode contribution、Gram tensor 和 input-scheduled mode pruning；对应待解决问题是高频海量点进入 SSM 后，如何在保留动态状态的同时减少无效状态维度。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是先离线审计 mode 使用，再设计静态或动态低状态预算模型；在线若仍需两遍 forward，节省不会直接兑现。主要风险是 LLM/Mamba 语言模型中的 mode 迁移规律不等于聚变诊断中的物理模式迁移。最小验证实验是在高频诊断 SSM baseline 上对不同采样率、通道和工况计算 mode 使用热图，再比较剪枝前后的显存、延迟和破裂提前量。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免长序列注意力显存爆炸，同时不把真正承载瞬态前兆的状态模式剪掉？
+对当前主题的关键意义在于：最小落地是只在离线验证集上做状态审计，不改训练代码；若发现 mode 使用随采样率或工况稳定分群，再考虑训练轻量 mode scheduler。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/486b4e2ab78d0834.png" alt="Figure 1: Migration gap ρ ​ ( 8 ) = E oracle / E static \rho(8)=E_{\mathrm{oracle}}/E_{\mathrm{static}} (left) and effective order (right) versus relative depth, over six models (Mamba-1 130M–2.8B and Falcon-Mamba-7B). Coloured lines are individual models (shared legend); the bold black line is the across-model median with an interquartile ribbon; the shaded region is the migrating band (relative depth 0.4 0.4 – 0.75 0.75 ). Left: ρ < 1 \rho<1 (dashed) means a per-input oracle reconstructs the layer output with less error than any fixed mode set; the median dips through the band and each model’s strongest layer, marked by a dot in the model’s colour, reaches ρ ≈ 0.5 \rho\approx 0.5 : the static set’s error is twice the oracle’s at the same budget. Right: the participation ratio rises from about two modes at the ends of the network to five–eight in the same band, so migration concentrates in the layers that spread their output over more modes.">
+                    <figcaption>Figure 1: Migration gap ρ ​ ( 8 ) = E oracle / E static \rho(8)=E_{\mathrm{oracle}}/E_{\mathrm{static}} (left) and effective order (right) versus relative depth, over six models (M...</figcaption>
+                  </figure>
+                  <p>先把 SSM 状态空间当作可审计对象，按窗口和通道估计每个 mode 的输出贡献，再将 mode 预算分配给实际需要的输入片段。
+阅读时需要把方法设计与主要结果一起看：原文报告精确预测剪枝误差，并发现 per-input oracle 可显著降低输出误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告精确预测剪枝误差，并发现 per-input oracle 可显著降低输出误差。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前论文不提供直接部署节省，需要二次工程化为单遍动态路由或训练期稀疏约束。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1 的“压缩前诊断仪”，优先级高于直接盲目缩小 state size。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小落地是只在离线验证集上做状态审计，不改训练代码；若发现 mode 使用随采样率或工况稳定分群，再考虑训练轻量 mode scheduler。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>Bet on Features：风险预测上线后的特征级校准监控</h3>
+              <p class="paper__subtitle">Bet on Features: Anytime-Valid and Feature-Aware Auditing of Conditional Quantile Forecasters</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是条件分位数预测器审计；可迁移模块是 anytime-valid evidence process 与 feature-aware contextual bets；对应待解决问题是采样率、缺失机制和工况变化下，高低频统一模型的概率输出是否仍可靠。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ivane Antonov, Sohom Mukherjee, Richard Pibernik, Yo Joong Choe</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11653" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.11653" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是条件分位数预测器审计；可迁移模块是 anytime-valid evidence process 与 feature-aware contextual bets；对应待解决问题是采样率、缺失机制和工况变化下，高低频统一模型的概率输出是否仍可靠。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响很小，主要是在线记录预测、真实结果和特征并更新 evidence process；风险是它发现失校准但不提供修正策略，且需要定义合理的风险分位数。最小验证实验是用历史 shot 流模拟在线部署，按采样率、诊断缺失、密度/功率区间监测分位数失校准。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在数据流非 i.i.d. 时，如何判断模型风险区间不是只在平均意义上校准，而是在关键工况子群中也校准？
+对当前主题的关键意义在于：最小落地是给现有模型输出 conformal/quantile 风险带，并按特征子群画 evidence 曲线，找出最需要再训练或域自适应的工况。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/1e02b282e447cd42.png" alt="Figure 7 : Per-feature rejection rate vs. quantile α \alpha for Chronos-2 with a 30-day sliding window (FTRL betting on both pipelines). Companion to Figure 5 .">
+                    <figcaption>Figure 7 : Per-feature rejection rate vs. quantile α \alpha for Chronos-2 with a 30-day sliding window (FTRL betting on both pipelines). Companion to Figure 5 .</figcaption>
+                  </figure>
+                  <p>用可解释的特征线性下注构造证据过程，持续累积失校准证据，并定位对应特征。
+阅读时需要把方法设计与主要结果一起看：原文在真实数据中发现 Chronos-2 对多个相关特征失校准，提示基础时序模型也需要上线审计。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在真实数据中发现 Chronos-2 对多个相关特征失校准，提示基础时序模型也需要上线审计。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要足够长的在线序列积累证据；对罕见破裂事件，检测延迟可能偏长。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合放在 P1/P3 系统评估层，而不是作为模型结构替代。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小落地是给现有模型输出 conformal/quantile 风险带，并按特征子群画 evidence 曲线，找出最需要再训练或域自适应的工况。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>JEAT：用测量噪声估计替代固定 RGB/Event 融合权重</h3>
+              <p class="paper__subtitle">Event-RGB Adaptive Tracking for Nighttime Highway Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是夜间高速公路目标跟踪；可迁移模块是 joint Event-RGB data association、NIS-based measurement noise estimation 和 adaptive EKF fusion；对应待解决问题是 RGB-Event 属性识别在弱光、运动模糊、事件噪声和模态缺失下需要按样本/区域动态加权。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Haidong Wang, Hengxing Cai, Wanlei Li, Xiaogang Xiong, Renxin Zhong</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11646" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.11646" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是夜间高速公路目标跟踪；可迁移模块是 joint Event-RGB data association、NIS-based measurement noise estimation 和 adaptive EKF fusion；对应待解决问题是 RGB-Event 属性识别在弱光、运动模糊、事件噪声和模态缺失下需要按样本/区域动态加权。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响较小，因为可靠性估计可以作为轻量 head 或外部统计量，不必增加大规模 cross-attention；风险是跟踪中的运动状态噪声不等价于属性识别中的语义可靠性。最小验证实验是在 TriPro-ReID 中加入 RGB blur/illumination、event density、prediction entropy 三类质量特征，训练属性级 gate。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免事件分支只作为固定补充，而让它在 RGB 失效时真正接管关键属性证据？
+对当前主题的关键意义在于：最小实验报告 mA、F1、ECE、低光子集、运动模糊子集、事件稀疏/噪声子集和单模态缺失子集，检查 gate 是否与真实失效模式一致。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/940f27f29729862d.png" alt="Figure 2 : The architecture of our JEAT framework">
+                    <figcaption>Figure 2 : The architecture of our JEAT framework</figcaption>
+                  </figure>
+                  <p>把模态可靠性从手工规则改为随时间更新的测量噪声估计，再把该估计映射为区域或属性级融合权重。
+阅读时需要把方法设计与主要结果一起看：原文描述 JEAT 能在暗光或高速时更依赖事件，在明亮或静止时更依赖 RGB，并提供 SEHN 合成 RGB/Event 数据。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文描述 JEAT 能在暗光或高速时更依赖事件，在明亮或静止时更依赖 RGB，并提供 SEHN 合成 RGB/Event 数据。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有开放词表属性、不确定标签和事件原生 token 设计；直接迁移只能验证 reliability-aware fusion。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是对 TriPro 模块最小可验证的替换路线：先替换固定融合权重，不改属性分类头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验报告 mA、F1、ECE、低光子集、运动模糊子集、事件稀疏/噪声子集和单模态缺失子集，检查 gate 是否与真实失效模式一致。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>本轮 P2 原生 RGB-Event 属性识别新增空缺</h3>
+              <p class="paper__subtitle">No qualified new native RGB-Event attribute recognition paper</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-15</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。JEAT 是跟踪论文，只能作为可靠性估计和模态动态加权机制启发，不能替代 EventPAR、TriPro-ReID 或开放属性识别直接工作。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。JEAT 是跟踪论文，只能作为可靠性估计和模态动态加权机制启发，不能替代 EventPAR、TriPro-ReID 或开放属性识别直接工作。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机方向本轮有 Event-RGB highway tracking、asynchronous UAV detection 等候选，但没有同时满足属性监督、原生异步事件表征、RGB/Event 时间对齐和模态缺失鲁棒性的新增论文。
+从本日报的选取理由看，【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。JEAT 是跟踪论文，只能作为可靠性估计和模态动态加权机制启发，不能替代 EventPAR、TriPro-ReID 或开放属性识别直接工作。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>避免把普通 RGB/Event tracking 或 detection 论文写成属性识别新增。
+对当前主题的关键意义在于：最小实验仍建议从 JEAT 式可靠性 gate 入手，因为它对现有 TriPro 模块改动最小。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明；可迁移机制集中在 reliability-aware fusion、event-guided weighting 和噪声估计。
+阅读时需要把方法设计与主要结果一起看：原生 RGB-Event 属性识别新稿本轮空缺。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原生 RGB-Event 属性识别新稿本轮空缺。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏作者主页或会议页刚发布但未进入 arXiv 的工作。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>继续监测 event camera、neuromorphic vision、RGB-Event ReID/PAR、open-vocabulary attribute 与 missing modality。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验仍建议从 JEAT 式可靠性 gate 入手，因为它对现有 TriPro 模块改动最小。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>E-VQA：把破裂预测的视觉证据变成可验证输出</h3>
+              <p class="paper__subtitle">Evidence-Backed Video Question Answering</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13；ECCV 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是视频问答；可迁移模块是 temporal segment + tracked masklet evidence supervision 和 grounded instruction tuning；对应待解决问题是破裂预测模型要说明时序 query 选择了哪些可见光局部证据，并抑制无关背景。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shijie Wang, Honglu Zhou, Ziyang Wang, Ran Xu, Caiming Xiong, Silvio Savarese, Chen Sun, Juan Carlos Niebles</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11862" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.11862" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是视频问答；可迁移模块是 temporal segment + tracked masklet evidence supervision 和 grounded instruction tuning；对应待解决问题是破裂预测模型要说明时序 query 选择了哪些可见光局部证据，并抑制无关背景。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响取决于证据粒度；若只监督少量 ROI/masklet 或 heatmap，比全帧长视频 cross-attention 更可控。风险是聚变可见光前兆标注稀缺，证据监督可能引入主观偏差。最小验证实验是先标注 50-100 个 shot 的局部前兆时间段和区域，训练 auxiliary evidence head。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>时序风险模型如何证明它依赖的是破裂前兆区域，而不是 shot 阶段、曝光或背景结构？
+对当前主题的关键意义在于：最小实现是复用现有可见光 encoder，新增 evidence head 和 time segment head，比较有无证据监督时跨装置误报、提前量和专家可解释性评分。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/21c2bcdce57699a7.png" alt="Figure 1 : E-VQA: Evidence-Backed Video Question Answering . Models provide textual answers to video questions while grounding their reasoning in spatio-temporal evidence, including relevant temporal video segments and densely tracked segmentation masks that highlight the spatio-temporal visual regions supporting the answer.">
+                    <figcaption>Figure 1 : E-VQA: Evidence-Backed Video Question Answering . Models provide textual answers to video questions while grounding their reasoning in spatio-temporal evidence, includin...</figcaption>
+                  </figure>
+                  <p>将最终风险输出与 temporal evidence、局部 mask/heatmap 或 ROI score 绑定，训练时同时优化风险和证据一致性。
+阅读时需要把方法设计与主要结果一起看：原文显示现有 Video LLM 的回答准确率与视觉 grounding 会脱钩，grounded 数据可显著提升时空证据质量。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文显示现有 Video LLM 的回答准确率与视觉 grounding 会脱钩，grounded 数据可显著提升时空证据质量。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>P3 不需要完整 VQA 生成系统，重点应抽取证据监督和评估协议；否则计算成本会过高。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合设计“破裂风险 + 局部证据”双输出模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实现是复用现有可见光 encoder，新增 evidence head 和 time segment head，比较有无证据监督时跨装置误报、提前量和专家可解释性评分。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>LMV-Net：多视角图像的纵向显式对齐用于风险建模</h3>
+              <p class="paper__subtitle">Longitudinal Multi-View Breast Cancer Risk Prediction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13；MICCAI 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是乳腺癌风险预测；可迁移模块是 longitudinal explicit alignment 与 multi-view complementary modeling；对应待解决问题是可见光图像、多个视角和诊断时序异步出现时，需要对齐随时间变化的局部证据。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Solveig Thrun, Zijun Sun, Suaiba A. Salahuddin, Kristoffer Wickstrøm, Elisabeth Wetzer, Stine Hansen, Robert Jenssen, Michael Kampffmeyer</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11343" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.11343" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是乳腺癌风险预测；可迁移模块是 longitudinal explicit alignment 与 multi-view complementary modeling；对应待解决问题是可见光图像、多个视角和诊断时序异步出现时，需要对齐随时间变化的局部证据。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响可通过固定 ROI 或低维区域 token 控制，不必保存全分辨率全视频；风险是医学视角对齐依赖稳定解剖结构，而托卡马克图像需要磁面、边界或相机标定辅助。最小验证实验是把可见光区域 token 与诊断窗口按相对破裂时间对齐，比较显式对齐和 late fusion。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样让模型关注同一物理区域随时间的演化，而不是把不同时间、不同视角图像当作无序帧集合？
+对当前主题的关键意义在于：最小实现是建立 8-32 个稳定区域 token，由诊断时序 query 选择和更新这些 token，评估缺失图像、缺失诊断和跨装置测试。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/64f9785aac3a6d95.png" alt="Figure 1 : Schematic overview of the proposed LMV-Net.">
+                    <figcaption>Figure 1 : Schematic overview of the proposed LMV-Net.</figcaption>
+                  </figure>
+                  <p>把多视角互补信息和纵向变化共同建模，使用显式对齐框架抽取风险相关的动态变化。
+阅读时需要把方法设计与主要结果一起看：原文在 EMBED 和 CSAW-CC 上优于既有风险预测方法，并在多个子组中保持改进。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在 EMBED 和 CSAW-CC 上优于既有风险预测方法，并在多个子组中保持改进。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>直接迁移需要重新定义视角、ROI 和时间对齐；如果可见光相机视场变化大，固定 ROI 可能失效。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合 P3 的第一版多视角/多时间融合结构。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实现是建立 8-32 个稳定区域 token，由诊断时序 query 选择和更新这些 token，评估缺失图像、缺失诊断和跨装置测试。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>JEAT：夜间高速场景的 Event-RGB 自适应测量噪声融合</h3>
+              <p class="paper__subtitle">Event-RGB Adaptive Tracking for Nighttime Highway Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-13。它把异步事件流和 RGB 帧放进联合数据关联，并用 NIS 统计连续估计测量噪声权重；对 P2 的模态可靠性、弱光和运动模糊鲁棒融合非常直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Haidong Wang, Hengxing Cai, Wanlei Li, Xiaogang Xiong, Renxin Zhong</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11646" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.11646" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.11646" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-13。它把异步事件流和 RGB 帧放进联合数据关联，并用 NIS 统计连续估计测量噪声权重；对 P2 的模态可靠性、弱光和运动模糊鲁棒融合非常直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 方法常把事件转帧后与 RGB 特征相加，默认两种模态质量稳定。但真实夜间、高速和低照度场景中，RGB 与 Event 的可靠性随时间、区域和运动状态显著变化。
+从本日报的选取理由看，新增 / arXiv 2026-07-13。它把异步事件流和 RGB 帧放进联合数据关联，并用 NIS 统计连续估计测量噪声权重；对 P2 的模态可靠性、弱光和运动模糊鲁棒融合非常直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在同一个跟踪/识别流程中动态决定何时信任 RGB、何时信任 Event，而不是手工指定固定优先级？
+对当前主题的关键意义在于：最小实验是在 TriPro-ReID/EventPAR 管线中加入按样本或区域的 reliability head，用事件活动强度、RGB blur/illumination 指标和属性预测不确定性共同估计模态权重，比较固定融合、modality dropout 和 JEAT 式动态权重。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/940f27f29729862d.png" alt="Figure 2 : The architecture of our JEAT framework">
+                    <figcaption>Figure 2 : The architecture of our JEAT framework</figcaption>
+                  </figure>
+                  <p>JEAT 将异步事件流和 RGB 帧放入 joint data association optimization，并用 Adaptive Extended Kalman Filter 通过 NIS statistics 连续估计 measurement noise，从而动态加权融合两种模态；同时提出 SEHN 合成数据集，覆盖不同光照和交通密度。
+阅读时需要把方法设计与主要结果一起看：摘要报告其在暗光或高速运动时更多利用事件流，在明亮或静态条件下利用 RGB，并计划公开代码和数据集。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告其在暗光或高速运动时更多利用事件流，在明亮或静态条件下利用 RGB，并计划公开代码和数据集。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是 highway tracking，不是行人属性识别；事件和 RGB 仍有同步数据集设定，原生异步事件 token 与开放词表属性监督需要另行设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 可先迁移它的可靠性估计，而不是迁移跟踪器本身。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro-ReID/EventPAR 管线中加入按样本或区域的 reliability head，用事件活动强度、RGB blur/illumination 指标和属性预测不确定性共同估计模态权重，比较固定融合、modality dropout 和 JEAT 式动态权重。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>E-VQA：视频问答必须给出像素级时空证据</h3>
+              <p class="paper__subtitle">Evidence-Backed Video Question Answering</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13；ECCV 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-13 / ECCV 2026。它把视频回答和时间段、跟踪 masklet 证据绑定，揭示 QA 准确率和真实视觉感知会脱钩；对 P3 的可见光局部前兆解释很有价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shijie Wang, Honglu Zhou, Ziyang Wang, Ran Xu, Caiming Xiong, Silvio Savarese, Chen Sun, Juan Carlos Niebles</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11862" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.11862" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.11862" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-13 / ECCV 2026。它把视频回答和时间段、跟踪 masklet 证据绑定，揭示 QA 准确率和真实视觉感知会脱钩；对 P3 的可见光局部前兆解释很有价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可见光破裂预测如果只输出风险分数，很难判断模型是否看到了边界活动、亮斑、辐射结构、杂质羽流等局部前兆，还是只记住了 shot 阶段和采集条件。
+从本日报的选取理由看，新增 / arXiv 2026-07-13 / ECCV 2026。它把视频回答和时间段、跟踪 masklet 证据绑定，揭示 QA 准确率和真实视觉感知会脱钩；对 P3 的可见光局部前兆解释很有价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>多模态视频模型能否同时给出语义判断和精确时空证据，并证明回答不是脱离视觉感知的语言猜测？
+对当前主题的关键意义在于：最小实验是在破裂预测数据中为少量样本标注或弱标注可见光前兆区域，训练风险预测同时输出 temporal evidence 和局部 heatmap，检查证据质量与提前量、误报率是否一致。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/21c2bcdce57699a7.png" alt="Figure 1 : E-VQA: Evidence-Backed Video Question Answering . Models provide textual answers to video questions while grounding their reasoning in spatio-temporal evidence, including relevant temporal video segments and densely tracked segmentation masks that highlight the spatio-temporal visual regions supporting the answer.">
+                    <figcaption>Figure 1 : E-VQA: Evidence-Backed Video Question Answering . Models provide textual answers to video questions while grounding their reasoning in spatio-temporal evidence, includin...</figcaption>
+                  </figure>
+                  <p>论文提出 E-VQA 任务，要求输出 answer、temporal segments 和 tracked object segmentation masklets；构建 ST-Evidence 人工核验 benchmark，并用自动生成管线产生 160k 规模 ST-Evidence-Instruct 数据训练 grounded Video LLM。
+阅读时需要把方法设计与主要结果一起看：摘要报告现有 Video LLM 的 QA 准确率与真实视觉感知脱钩；grounded fine-tuning 在 7B 模型上相对 UniPixel baseline 提升 +27.2 t-mean 和 +13.8 J&F。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告现有 Video LLM 的 QA 准确率与真实视觉感知脱钩；grounded fine-tuning 在 7B 模型上相对 UniPixel baseline 提升 +27.2 t-mean 和 +13.8 J&F。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是通用视频问答，不含诊断时序；masklet 标注成本高，聚变可见光中“前兆区域”的监督定义需要重新设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可把它作为证据约束训练范式，而不是直接使用 VQA 问答形式。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在破裂预测数据中为少量样本标注或弱标注可见光前兆区域，训练风险预测同时输出 temporal evidence 和局部 heatmap，检查证据质量与提前量、误报率是否一致。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>LMV-Net：纵向多视角医学图像风险预测</h3>
+              <p class="paper__subtitle">Longitudinal Multi-View Breast Cancer Risk Prediction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13；MICCAI 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-13 / MICCAI 2026。它把互补视角和纵向显式对齐结合，用于风险预测；适合作为 P3 可见光图像序列与诊断时序对齐融合的跨领域模板。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Solveig Thrun, Zijun Sun, Suaiba A. Salahuddin, Kristoffer Wickstrøm, Elisabeth Wetzer, Stine Hansen, Robert Jenssen, Michael Kampffmeyer</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11343" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.11343" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.11343" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-13 / MICCAI 2026。它把互补视角和纵向显式对齐结合，用于风险预测；适合作为 P3 可见光图像序列与诊断时序对齐融合的跨领域模板。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 的可见光图像与诊断时序通常不同步，且可能有多个视角或局部区域。简单逐帧编码无法利用“同一结构随时间变化”的证据，容易被单帧噪声误导。
+从本日报的选取理由看，新增 / arXiv 2026-07-13 / MICCAI 2026。它把互补视角和纵向显式对齐结合，用于风险预测；适合作为 P3 可见光图像序列与诊断时序对齐融合的跨领域模板。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何同时利用多视角空间互补性和纵向时间变化，让模型关注风险相关的变化而不是静态外观差异？
+对当前主题的关键意义在于：最小实验是为可见光图像建立少量固定区域或磁面相关 ROI token，与诊断时序按 shot 时间对齐，比较无对齐 late fusion、显式纵向对齐和诊断 query 图像 ROI 三种方案。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/64f9785aac3a6d95.png" alt="Figure 1 : Schematic overview of the proposed LMV-Net.">
+                    <figcaption>Figure 1 : Schematic overview of the proposed LMV-Net.</figcaption>
+                  </figure>
+                  <p>LMV-Net 把解剖互补的 CC 与 MLO views 放入显式对齐的 longitudinal framework，联合建模多视角空间信息和跨时间变化。
+阅读时需要把方法设计与主要结果一起看：摘要报告其在 EMBED 与 CSAW-CC 数据集上优于既有乳腺癌风险预测方法，并在不同密度和癌症子组中保持改进；代码可用。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告其在 EMBED 与 CSAW-CC 数据集上优于既有乳腺癌风险预测方法，并在不同密度和癌症子组中保持改进；代码可用。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医学乳腺图像的对齐先验与托卡马克可见光不同；聚变图像可能没有稳定解剖对应，需要用磁面、边界、视场标定或区域 token 近似对齐。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 可借鉴“多视角 + 纵向显式对齐”的问题组织方式。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是为可见光图像建立少量固定区域或磁面相关 ROI token，与诊断时序按 shot 时间对齐，比较无对齐 late fusion、显式纵向对齐和诊断 query 图像 ROI 三种方案。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
