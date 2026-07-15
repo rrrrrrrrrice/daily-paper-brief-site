@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-16</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-16 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-16 05:04:55 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天最值得先看 GyroFlow、ReDiTT、The Spectrum Is Not Enough、GMM-EVA 和 DynTrace。GyroFlow 把 flow matching 用于 5D gyrokinetic turbulence 饱和态分布建模，是本轮最强聚变 AI 交叉；ReDiTT 直接面向 asynchronous time series 的下一事件时间/类型预测，可迁移到不规则诊断事件流；The Spectrum Is Not Enough 给出“何时需要上下文/检索/基础模型”的无标签诊断，适合避免盲目拉长高频序列上下文；GMM-EVA 用事件级结构分配长视频视觉 token 预算；DynTrace 用动态轨迹和 trace graph 维持连续物体证据。固定回看分区补充 Timer-XL（ICLR 2025）和 EZSR（CVPR 2025），分别服务 P1 长上下文时序和 P2 事件开放语义识别。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 Timer-XL：长上下文 Transformer 统一时序预测</a></li>
+              <li><a href="#paper-2">02 EZSR：事件相机零样本识别中的语义对齐</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-3">03 ReDiTT：异步时间序列的检索增强条件扩散 Transformer</a></li>
+              <li><a href="#paper-4">04 The Spectrum Is Not Enough：上下文价值的无标签诊断</a></li>
+              <li><a href="#paper-5">05 EnCF：隐式观测下的受控流数据同化</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-9">09 GyroFlow：统计稳态 gyrokinetic turbulence 的生成式代理</a></li>
+              <li><a href="#paper-10">10 本轮直接 tokamak disruption + 可见光诊断时序融合新增空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-11">11 ReDiTT：把异步事件序列作为可生成对象，而不是补齐网格</a></li>
+              <li><a href="#paper-12">12 The Spectrum Is Not Enough：决定哪些诊断通道值得长上下文</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-13">13 ASUMOT：原生异步事件流的运动一致性聚合</a></li>
+              <li><a href="#paper-14">14 本轮 P2 原生 RGB-Event 属性识别新增空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-15">15 GMM-EVA：给可见光前兆分配有限视觉 token</a></li>
+              <li><a href="#paper-16">16 DynTrace：把视觉前兆组织成可审计动态证据链</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-6">06 GMM-EVA：长视频理解中的事件级视觉 token 分配</a></li>
+              <li><a href="#paper-7">07 DynTrace：4D 时空推理的动态证据链</a></li>
+              <li><a href="#paper-8">08 ADAPT：视觉上下文与运动时序的稀疏跨模态融合</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-9">GyroFlow：统计稳态 gyrokinetic turbulence 的生成式代理</a></h3>
+              <p class="card__subtitle">A Shortcut to Statistically Steady-State Turbulence with Flow Matching</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变与 AI 交叉</span>
+                <span class="chip chip--muted">2026-07-14</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-14。它是本轮最强聚变 AI 交叉，直接在 5D gyrokinetic turbulence 上用 latent generative model 估计饱和态统计，避免自回归 surrogate 累积误差。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">ReDiTT：异步时间序列的检索增强条件扩散 Transformer</a></h3>
+              <p class="card__subtitle">ReDiTT: Retrieval Augmented Conditional Diffusion Transformers for Asynchronous Time Series</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-14；TMLR 2026</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-14 / TMLR 2026。它直接预测 next inter-event time 与 event type，用结构相似历史片段做 cross-attention 条件，适合 P1 的不规则事件流和高低频事件压缩验证。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">The Spectrum Is Not Enough：上下文价值的无标签诊断</a></h3>
+              <p class="card__subtitle">The Spectrum Is Not Enough: When Context Helps Time-Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-14</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-14。它证明频谱可预测性不能回答“长上下文、检索或基础模型是否有用”，并给出 label-free coverage deficit 诊断，适合高频诊断长上下文部署前筛查。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">GMM-EVA：长视频理解中的事件级视觉 token 分配</a></h3>
+              <p class="card__subtitle">Gaussian Mixture Modeling for Event-Aware Visual Allocation in Long Video Understanding</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-14；PRCV 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-14 / PRCV 2026。它把长视频帧按事件结构建模，再给关键事件保留高分辨率 token、给背景保留低预算上下文，对 P3 的可见光前兆局部证据选择直接有用。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">DynTrace：4D 时空推理的动态证据链</a></h3>
+              <p class="card__subtitle">DynTrace: Tracking Dynamic Object Evidence for 4D Spatio-Temporal Reasoning in MLLMs</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-14；ACM MM 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-14 / ACM MM 2026。它用轨迹可视化和 Dynamic Trace Graph 维持连续动态证据，可迁移为 P3 可见光局部前兆随时间演化的可解释证据链。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Timer-XL：长上下文 Transformer 统一时序预测</h3>
+              <p class="paper__subtitle">Timer-XL: Long-Context Transformers for Unified Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。ICLR 2025；它把时序预测统一成 multivariate next-token generation，并用 TimeAttention 处理长上下文和变量维度，适合重新映射到 P1 的“高频压缩后与低频通道交互”。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yong Liu, Guo Qin, Xiangdong Huang, Jianmin Wang, Mingsheng Long</p>
+                <p class="muted">清华大学等</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=KMCJXjlDDr" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/thuml/Timer-XL" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。ICLR 2025；它把时序预测统一成 multivariate next-token generation，并用 TimeAttention 处理长上下文和变量维度，适合重新映射到 P1 的“高频压缩后与低频通道交互”。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断既有稀疏低频通道，也有高频连续信号。传统 Transformer 的窗口较短，容易看不到慢变量背景；完全拉长窗口又会带来显存压力。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。ICLR 2025；它把时序预测统一成 multivariate next-token generation，并用 TimeAttention 处理长上下文和变量维度，适合重新映射到 P1 的“高频压缩后与低频通道交互”。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用统一生成式时序框架建模单变量、多变量、外生变量和长上下文，而不是为每类任务写不同结构？
+对当前主题的关键意义在于：最小实验是用同一诊断数据构造三种输入：低频全量、高频下采样、高频事件压缩 token；比较 Timer-XL/SSM/ReDiTT 在提前量、显存峰值和跨采样率泛化上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Timer-XL 使用 decoder-only Transformer，把多变量 patch 展平成带变量位置和时间位置的 token，并通过 TimeAttention 同时建模变量内与变量间依赖。
+阅读时需要把方法设计与主要结果一起看：OpenReview/作者项目页核验其为 ICLR 2025；论文报告在多类时序预测 benchmark 和零样本预测中取得有竞争力结果。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview/作者项目页核验其为 ICLR 2025；论文报告在多类时序预测 benchmark 和零样本预测中取得有竞争力结果。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>长上下文注意力仍会随 token 数增长，不能直接承受 MHz 级诊断全量点；真实 Δt 与异步缺失需要额外编码。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1 长上下文时序基线，而不是高频诊断最终解。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用同一诊断数据构造三种输入：低频全量、高频下采样、高频事件压缩 token；比较 Timer-XL/SSM/ReDiTT 在提前量、显存峰值和跨采样率泛化上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>EZSR：事件相机零样本识别中的语义对齐</h3>
+              <p class="paper__subtitle">EZSR: Event-based Zero-Shot Recognition</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。CVPR 2025；它针对 event embedding 与 CLIP text embedding 的语义错位提出 scalar-wise modulation 和合成 event-RGB 训练，对 P2 的开放属性语义监督更直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yan Yang, Liyuan Pan, Dongxu Li, Liu Liu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Yang_EZSR_Event-based_Zero-Shot_Recognition_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/Yan98/Event-based-Zero-Shot-Recognition" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。CVPR 2025；它针对 event embedding 与 CLIP text embedding 的语义错位提出 scalar-wise modulation 和合成 event-RGB 训练，对 P2 的开放属性语义监督更直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别若只把事件转帧再接 CLIP，容易保留运动边缘却丢失属性语义；开放词表属性更依赖 event/text/RGB 表示对齐。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。CVPR 2025；它针对 event embedding 与 CLIP text embedding 的语义错位提出 scalar-wise modulation 和合成 event-RGB 训练，对 P2 的开放属性语义监督更直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>事件流稀疏、异步且缺少大规模配对数据时，如何让事件编码器与开放词表文本语义对齐？
+对当前主题的关键意义在于：最小实验是用 TriPro/EventPAR 数据构造属性文本 prompt，冻结 RGB CLIP 分支，训练事件分支做 scalar-wise 对齐，再比较闭集属性、开放词表属性和低光/模糊子集的 mA、F1 与 ECE。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>EZSR 不依赖重建网络，而是用合成 event-RGB 对扩展训练数据，并通过 scalar-wise regularization 对齐 event 与 RGB/文本嵌入，缓解全局相似度目标的自由度问题。
+阅读时需要把方法设计与主要结果一起看：CVF 页面核验其为 CVPR 2025；arXiv 摘要报告在多种 event benchmark 上取得有竞争力的零样本识别性能。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 页面核验其为 CVPR 2025；arXiv 摘要报告在多种 event benchmark 上取得有竞争力的零样本识别性能。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是对象类别识别，不是多标签属性；属性级不确定性、模态缺失和时间对齐仍需二次设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合给 P2 提供“事件开放语义对齐”训练目标，而不是直接替换 TriPro 的属性头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用 TriPro/EventPAR 数据构造属性文本 prompt，冻结 RGB CLIP 分支，训练事件分支做 scalar-wise 对齐，再比较闭集属性、开放词表属性和低光/模糊子集的 mA、F1 与 ECE。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>ReDiTT：异步时间序列的检索增强条件扩散 Transformer</h3>
+              <p class="paper__subtitle">ReDiTT: Retrieval Augmented Conditional Diffusion Transformers for Asynchronous Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14；TMLR 2026</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-14 / TMLR 2026。它直接预测 next inter-event time 与 event type，用结构相似历史片段做 cross-attention 条件，适合 P1 的不规则事件流和高低频事件压缩验证。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Saiyue Lyu, Zhitian Zhang, Ruizhi Deng, Thibaut Durand</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12391" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.12391" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.12391" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-14 / TMLR 2026。它直接预测 next inter-event time 与 event type，用结构相似历史片段做 cross-attention 条件，适合 P1 的不规则事件流和高低频事件压缩验证。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>不规则诊断、报警、控制事件和缺失模式本身携带信息。若统一转成固定采样网格，模型会把真实 Δt、事件密度和长尾事件结构都弱化。
+从本日报的选取理由看，新增 / arXiv 2026-07-14 / TMLR 2026。它直接预测 next inter-event time 与 event type，用结构相似历史片段做 cross-attention 条件，适合 P1 的不规则事件流和高低频事件压缩验证。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在事件时间和事件类型高度不确定时，稳定做长时域 next-event forecasting，并避免扩散模型只学到局部噪声？
+对当前主题的关键意义在于：最小实验是把破裂前诊断异常、控制动作、ELM/报警等离散事件做成 (Δt, type) 序列，比较 ReDiTT、Hawkes、Transformer 和 Mamba 的 next-event NLL、提前预警召回和跨 shot 泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/dbffd1149b63a626.png" alt="Figure 1: Overview of ReDiTT framework. Given an observed event history, we retrieve the similar sequences from a token memory bank. The retrieved references are injected into diffusion transformer to guide denoising for future forecasting.">
+                    <figcaption>Figure 1: Overview of ReDiTT framework. Given an observed event history, we retrieve the similar sequences from a token memory bank. The retrieved references are injected into diff...</figcaption>
+                  </figure>
+                  <p>ReDiTT 在 latent space 中做条件扩散 Transformer，从 memory bank 检索结构相似的历史 latent sequence，并通过 cross-attention 作为参考条件，提供全局结构引导。
+阅读时需要把方法设计与主要结果一起看：arXiv 摘要报告其在 7 个真实数据集上 next-event prediction 和 long-horizon forecasting 达到 SOTA，代码链接指向 BorealisAI/ReDiTT。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>arXiv 摘要报告其在 7 个真实数据集上 next-event prediction 和 long-horizon forecasting 达到 SOTA，代码链接指向 BorealisAI/ReDiTT。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>论文主要是事件序列预测，不直接处理多采样率连续高频波形；检索库规模、近邻质量和跨装置相似性会影响延迟与泛化。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合 P1 中“低频事件流/告警流”的生成式基线，也可作为高频片段检索条件。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把破裂前诊断异常、控制动作、ELM/报警等离散事件做成 (Δt, type) 序列，比较 ReDiTT、Hawkes、Transformer 和 Mamba 的 next-event NLL、提前预警召回和跨 shot 泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>The Spectrum Is Not Enough：上下文价值的无标签诊断</h3>
+              <p class="paper__subtitle">The Spectrum Is Not Enough: When Context Helps Time-Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-14。它证明频谱可预测性不能回答“长上下文、检索或基础模型是否有用”，并给出 label-free coverage deficit 诊断，适合高频诊断长上下文部署前筛查。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mert Onur Cakiroglu, Mehmet Dalkilic, Hasan Kurban</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.13006" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.13006" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.13006" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-14。它证明频谱可预测性不能回答“长上下文、检索或基础模型是否有用”，并给出 label-free coverage deficit 诊断，适合高频诊断长上下文部署前筛查。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 常会自然走向“更长窗口、更大模型、更强检索”。但高频诊断若二阶结构已足够，长上下文可能只增加显存和延迟，不一定增加有效信息。
+从本日报的选取理由看，新增 / arXiv 2026-07-14。它证明频谱可预测性不能回答“长上下文、检索或基础模型是否有用”，并给出 label-free coverage deficit 诊断，适合高频诊断长上下文部署前筛查。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>什么时候上下文、检索或预训练模型能提供超越频谱/线性结构的收益？
+对当前主题的关键意义在于：最小实验是对每个诊断通道和时间窗计算 coverage deficit，再只给高 deficit 通道启用长上下文或检索，比较全量长上下文与选择性上下文的显存、延迟和性能。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文用相同频谱和边际分布的 surrogate pairs 证明频谱指标无法回答上下文价值问题，并提出 label-free coverage deficit，用 analog prediction 相对 linear prediction 的收益衡量 beyond-spectrum structure。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 7 个 benchmark 上验证诊断有效；window-keyed retrieval 在 surrogate pairs 上收益可从正转负，而频谱指标保持不变。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 7 个 benchmark 上验证诊断有效；window-keyed retrieval 在 surrogate pairs 上收益可从正转负，而频谱指标保持不变。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它是部署诊断，不是预测器；需要先定义可比较的 analog/linear operating point，对强非平稳聚变数据需谨慎解释。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合放在 P1 模型选择前，决定哪些通道需要长上下文、哪些只需低阶模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是对每个诊断通道和时间窗计算 coverage deficit，再只给高 deficit 通道启用长上下文或检索，比较全量长上下文与选择性上下文的显存、延迟和性能。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>EnCF：隐式观测下的受控流数据同化</h3>
+              <p class="paper__subtitle">Ensemble Controlled-Flow Filtering for Implicit Data Assimilation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-14。它处理 many-to-one、non-smooth、simulation-defined observation 的数据同化，适合诊断时序与仿真状态之间没有显式似然的场景。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhuoyuan Li, Yue Zhao, Ming Li</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12975" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.12975" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.12975" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-14。它处理 many-to-one、non-smooth、simulation-defined observation 的数据同化，适合诊断时序与仿真状态之间没有显式似然的场景。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断观测经常是间接、非线性、多模态的，同一观测可对应多个等离子体状态。Kalman 型滤波在高斯、平滑观测下有效，但未必适合隐式诊断和仿真耦合。
+从本日报的选取理由看，新增 / arXiv 2026-07-14。它处理 many-to-one、non-smooth、simulation-defined observation 的数据同化，适合诊断时序与仿真状态之间没有显式似然的场景。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>没有显式残差结构或似然函数时，如何把观测信息稳定注入动力系统状态估计？
+对当前主题的关键意义在于：最小实验是把可见光图像或 ECEI/BES 局部特征当作 implicit observation，用 EnCF/EnKF/粒子滤波更新低维等离子体状态，比较校准误差、提前量和计算延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e5466a7626b278fa.png" alt="Figure 1: Illustration of the ensemble controlled-flow framework.">
+                    <figcaption>Figure 1: Illustration of the ensemble controlled-flow framework.</figcaption>
+                  </figure>
+                  <p>论文定义 implicit data assimilation，把 analysis law 表示为 forecast distribution 的 energy tilt；EnCF 用 stochastic controlled flow 实现更新，并通过 adjoint matching 从 terminal energy gradients 学 observation-dependent control。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告其在非高斯、many-to-one、多模态和隐式观测场景优于 Kalman-type filters；平滑加性高斯观测下 Kalman 仍更合适。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>计算复杂度取决于 ensemble 数量、受控流求解和能量代理；真实聚变闭环低延迟部署需要简化。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1/P3 的状态估计和诊断融合理论候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把可见光图像或 ECEI/BES 局部特征当作 implicit observation，用 EnCF/EnKF/粒子滤波更新低维等离子体状态，比较校准误差、提前量和计算延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>GyroFlow：统计稳态 gyrokinetic turbulence 的生成式代理</h3>
+              <p class="paper__subtitle">A Shortcut to Statistically Steady-State Turbulence with Flow Matching</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-14。它是本轮最强聚变 AI 交叉，直接在 5D gyrokinetic turbulence 上用 latent generative model 估计饱和态统计，避免自回归 surrogate 累积误差。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Gianluca Galletti, Gerald Gutenbrunner, William Hornsby, Lorenzo Zanisi, Naomi Carey, Stanislas Pamela, Johannes Brandstetter, Fabian Paischer</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.13022" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.13022" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.13022" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-14。它是本轮最强聚变 AI 交叉，直接在 5D gyrokinetic turbulence 上用 latent generative model 估计饱和态统计，避免自回归 surrogate 累积误差。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>gyrokinetic 仿真需要解析高维相空间和长瞬态过程，计算成本高。自回归 surrogate 容易误差累积，直接影响通量预测和稳态分析。
+从本日报的选取理由看，新增 / arXiv 2026-07-14。它是本轮最强聚变 AI 交叉，直接在 5D gyrokinetic turbulence 上用 latent generative model 估计饱和态统计，避免自回归 surrogate 累积误差。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在不显式演化完整瞬态的情况下，直接生成统计稳态样本，并保持下游物理量可信？
+对当前主题的关键意义在于：最小实验是把现有 EAST/仿真数据中可得到的稳态或准稳态窗口做 latent distribution matching，比较 flow matching、扩散和自回归 surrogate 对通量/剖面统计的误差与 warm-start 效果。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>GyroFlow 在 latent space 中建模饱和态分布，条件为无量纲运行参数；论文还提出 FGyD 分布度量，用预训练 gyrokinetic 模型 latent space 评估生成质量，并关联 flux accuracy 与 solver convergence。
+阅读时需要把方法设计与主要结果一起看：摘要报告 GyroFlow 优于自回归、降阶和其他生成式方法，提供显著加速，并可 warm-start 数值代码。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 GyroFlow 优于自回归、降阶和其他生成式方法，提供显著加速，并可 warm-start 数值代码。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目标是稳态湍流统计，不是破裂预警或可见光诊断；ergodicity assumption 与训练分布外工况需要重点核验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是聚变 AI 仿真方向的强新增，但不能替代 tokamak disruption 预测论文。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把现有 EAST/仿真数据中可得到的稳态或准稳态窗口做 latent distribution matching，比较 flow matching、扩散和自回归 surrogate 对通量/剖面统计的误差与 warm-start 效果。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>本轮直接 tokamak disruption + 可见光诊断时序融合新增空缺</h3>
+              <p class="paper__subtitle">No qualified new tokamak disruption and visible-diagnostic fusion AI paper in this round</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。2026-07-15 physics.plasm-ph 页面包含 GyroFlow、runaway electron transport、helicon heating reduced model 等；其中 GyroFlow 是聚变 AI 仿真强稿，但没有新的 tokamak disruption prediction、visible/IR diagnostics 与诊断时序融合原始论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。2026-07-15 physics.plasm-ph 页面包含 GyroFlow、runaway electron transport、helicon heating reduced model 等；其中 GyroFlow 是聚变 AI 仿真强稿，但没有新的 tokamak disruption prediction、visible/IR diagnostics 与诊断时序融合原始论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变 AI 与聚变物理新增不能混为一谈。仿真稳态生成对科学计算很重要，但用户当前 P3 是实时破裂预测和图像-诊断时序融合。
+从本日报的选取理由看，本轮空缺判断。2026-07-15 physics.plasm-ph 页面包含 GyroFlow、runaway electron transport、helicon heating reduced model 等；其中 GyroFlow 是聚变 AI 仿真强稿，但没有新的 tokamak disruption prediction、visible/IR diagnostics 与诊断时序融合原始论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>保持聚变主题覆盖，同时避免把纯物理或非破裂预测论文凑成 P3 直接证据。
+对当前主题的关键意义在于：最小动作是用 GMM-EVA 做视觉 token 预算、用 DynTrace 做证据链、用 EnCF 做隐式观测同化，分别与现有破裂预测 baseline 做可控消融。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明；本轮 P3 机制主要来自 GMM-EVA、DynTrace、ADAPT 和 EnCF。
+阅读时需要把方法设计与主要结果一起看：直接 tokamak disruption + visible diagnostics + AI fusion 新稿本轮空缺。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接 tokamak disruption + visible diagnostics + AI fusion 新稿本轮空缺。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏尚未上 arXiv 的作者主页、会议 early access 或内部报告。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>短期应把跨领域机制拆成最小实验推进，同时继续监测 disruption prediction、plasma diagnostics、cross-device transfer 和 synthetic diagnostic。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小动作是用 GMM-EVA 做视觉 token 预算、用 DynTrace 做证据链、用 EnCF 做隐式观测同化，分别与现有破裂预测 baseline 做可控消融。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>ReDiTT：把异步事件序列作为可生成对象，而不是补齐网格</h3>
+              <p class="paper__subtitle">ReDiTT: Retrieval Augmented Conditional Diffusion Transformers for Asynchronous Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是 asynchronous event time series prediction；可迁移模块是 latent diffusion、结构相似序列检索和 cross-attention conditioning；对应待解决问题是保留真实 Δt、事件类型和长时域结构，而不是把不规则观测补齐。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Saiyue Lyu, Zhitian Zhang, Ruizhi Deng, Thibaut Durand</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12391" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.12391" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是 asynchronous event time series prediction；可迁移模块是 latent diffusion、结构相似序列检索和 cross-attention conditioning；对应待解决问题是保留真实 Δt、事件类型和长时域结构，而不是把不规则观测补齐。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响取决于检索库和 cross-attention 长度；如果只检索少量相似片段，可比全量长上下文更省。主要风险是高频连续诊断不是稀疏事件序列，必须先设计事件化或片段化方式。最小验证实验是将高频信号的阈值变化、异常片段、控制动作和报警转成事件流，比较 ReDiTT 与 Hawkes/Transformer/Mamba 的 NLL、提前预警和跨采样率鲁棒性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让模型同时处理常规稀疏不规则观测与由高频信号压缩出来的事件序列？
+对当前主题的关键意义在于：最小落地是在现有破裂预测数据上新增一个事件化分支，最后与连续波形分支做 gated fusion。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/dbffd1149b63a626.png" alt="Figure 1: Overview of ReDiTT framework. Given an observed event history, we retrieve the similar sequences from a token memory bank. The retrieved references are injected into diffusion transformer to guide denoising for future forecasting.">
+                    <figcaption>Figure 1: Overview of ReDiTT framework. Given an observed event history, we retrieve the similar sequences from a token memory bank. The retrieved references are injected into diff...</figcaption>
+                  </figure>
+                  <p>用检索增强条件扩散为未来事件提供结构先验，并在 latent space 生成不确定、多样的未来事件路径。
+阅读时需要把方法设计与主要结果一起看：原文报告 7 个真实数据集上的 next-event 和 long-horizon forecasting SOTA。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告 7 个真实数据集上的 next-event 和 long-horizon forecasting SOTA。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>检索库可能泄漏同一装置/同一工况模式；跨装置时相似历史片段未必存在。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>优先作为 P1 的事件级分支，与连续高频 SSM 分支并行。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小落地是在现有破裂预测数据上新增一个事件化分支，最后与连续波形分支做 gated fusion。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>The Spectrum Is Not Enough：决定哪些诊断通道值得长上下文</h3>
+              <p class="paper__subtitle">The Spectrum Is Not Enough: When Context Helps Time-Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用是时序预测部署诊断；可迁移模块是 coverage deficit 与 surrogate pair 验证；对应待解决问题是避免所有通道都拉长上下文导致显存爆炸。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mert Onur Cakiroglu, Mehmet Dalkilic, Hasan Kurban</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.13006" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.13006" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用是时序预测部署诊断；可迁移模块是 coverage deficit 与 surrogate pair 验证；对应待解决问题是避免所有通道都拉长上下文导致显存爆炸。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是前置筛查后只对高 beyond-spectrum 通道使用长上下文、检索或基础模型；风险是 label-free 指标与破裂预测标签收益不完全一致。最小验证实验是按诊断通道计算 coverage deficit，再做通道级长上下文开关消融。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>长上下文的收益来自真实高阶结构，还是只是更大的模型容量和数据集偏差？
+对当前主题的关键意义在于：最小落地是把高 deficit 通道分配给 Timer-XL/SSM，低 deficit 通道走轻量线性或卷积分支。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>通过固定频谱和边际分布的 surrogate 对照，区分二阶结构收益和超越频谱的上下文收益。
+阅读时需要把方法设计与主要结果一起看：原文显示检索和 foundation model 的收益会在 surrogate pair 中分裂，频谱指标无法捕获。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文显示检索和 foundation model 的收益会在 surrogate pair 中分裂，频谱指标无法捕获。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不处理真实 Δt，需要和不规则时间编码或事件化方法组合。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 的“是否启用长上下文”判别器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小落地是把高 deficit 通道分配给 Timer-XL/SSM，低 deficit 通道走轻量线性或卷积分支。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>ASUMOT：原生异步事件流的运动一致性聚合</h3>
+              <p class="paper__subtitle">ASUMOT: Motion-Consistency-Based Asynchronous UAV Detection and Tracking with Event Cameras</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-13</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用是 event camera UAV detection/tracking；可迁移模块是 raw-event asynchronous processing、local motion-consistency estimator、multi-task verifier 和 motion-consistency clustering；对应待解决问题是事件稀疏/噪声下一个语义目标被拆成多个 blob。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Baofeng Jia, Xiaoyu Chen, Jingyuan Zhang, Zongze Wu, Haochen li, Jing Han, Lianfa Bai</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.11303" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.11303" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用是 event camera UAV detection/tracking；可迁移模块是 raw-event asynchronous processing、local motion-consistency estimator、multi-task verifier 和 motion-consistency clustering；对应待解决问题是事件稀疏/噪声下一个语义目标被拆成多个 blob。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响较小，因为它先在事件层做候选触发与聚合，可减少后续 RGB/Event 融合 token 数；风险是 UAV 运动一致性不等于行人属性语义一致性。最小验证实验是在 TriPro/EventPAR 前端加入事件 blob 聚合，把稀疏事件先合成身份一致或区域一致 token，再做属性分类。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免把事件流固定成帧后丢掉异步运动线索，同时降低噪声 blob 对属性识别的干扰？
+对当前主题的关键意义在于：最小实验报告固定 event voxel、ASUMOT 式 blob token、RGB-only 和 RGB+blob token 在低光、运动模糊、事件噪声、模态缺失下的 mA/F1/ECE。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/55da030bed8a8177.jpg" alt="Figure 4: Overview of the proposed asynchronous UAV detection and tracking framework. ASUMOT operates directly on raw event streams and consists of event-level association, motion-consistency estimation, candidate verification, dynamic initialization, and UAV-level motion-consistency clustering.">
+                    <figcaption>Figure 4: Overview of the proposed asynchronous UAV detection and tracking framework. ASUMOT operates directly on raw event streams and consists of event-level association, motion-...</figcaption>
+                  </figure>
+                  <p>按运动一致性而非固定窗口聚合事件，先找可靠候选，再用轻量 verifier 和 clustering 汇总碎片化响应。
+阅读时需要把方法设计与主要结果一起看：摘要报告 ASUMOT 在公开 UAV tracking 和 ES-UAV benchmark 上改善精度-效率权衡，并保持异步事件处理。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 ASUMOT 在公开 UAV tracking 和 ES-UAV benchmark 上改善精度-效率权衡，并保持异步事件处理。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是 RGB-Event 属性识别；没有开放词表属性、属性不确定性或 RGB/Event 时间对齐模块。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合替换 P2 的事件前端，而不是替换属性语义头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验报告固定 event voxel、ASUMOT 式 blob token、RGB-only 和 RGB+blob token 在低光、运动模糊、事件噪声、模态缺失下的 mA/F1/ECE。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>本轮 P2 原生 RGB-Event 属性识别新增空缺</h3>
+              <p class="paper__subtitle">No qualified new native RGB-Event attribute recognition paper</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。ASUMOT 是事件异步跟踪，EZSR 是事件零样本识别回看，二者只能提供事件前端和开放语义对齐机制，不能替代属性识别直接论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。ASUMOT 是事件异步跟踪，EZSR 是事件零样本识别回看，二者只能提供事件前端和开放语义对齐机制，不能替代属性识别直接论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>最新批次中事件相关条目主要涉及异步 UAV tracking、长视频事件结构和通用事件/动态推理；没有同时满足属性监督、RGB/Event 时间对齐、事件原生表示、模态缺失鲁棒和开放词表属性的新增论文。
+从本日报的选取理由看，【P2】本轮未发现新的原生 RGB-Event 属性识别强稿。ASUMOT 是事件异步跟踪，EZSR 是事件零样本识别回看，二者只能提供事件前端和开放语义对齐机制，不能替代属性识别直接论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>避免把 event tracking、event detection 或通用 video event allocation 论文写成属性识别新增。
+对当前主题的关键意义在于：最小动作是将 ASUMOT 式事件 token 与 EZSR 式 scalar-wise semantic alignment 组合到 TriPro，先验证属性 mA/F1 和模态缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明；本轮可迁移机制集中在 raw-event motion-consistency aggregation、event/text semantic alignment 和 reliability-aware fusion。
+阅读时需要把方法设计与主要结果一起看：原生 RGB-Event 属性识别新增空缺。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原生 RGB-Event 属性识别新增空缺。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏未进入 arXiv 的会议 early access 或项目页。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 今天应推进“事件前端 + 开放语义属性头”的最小替换实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小动作是将 ASUMOT 式事件 token 与 EZSR 式 scalar-wise semantic alignment 组合到 TriPro，先验证属性 mA/F1 和模态缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>GMM-EVA：给可见光前兆分配有限视觉 token</h3>
+              <p class="paper__subtitle">Gaussian Mixture Modeling for Event-Aware Visual Allocation in Long Video Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是长视频 LVLM 视觉 token 预算；可迁移模块是 GMM event-level structure modeling 和 differentiated visual allocation；对应待解决问题是实时破裂预测中可见光帧太多、关键前兆短暂且局部。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yifan Lu, Ziqi Zhang, Chunfeng Yuan, Jun Gao, Bing Li, Weiming Hu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12557" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.12557" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是长视频 LVLM 视觉 token 预算；可迁移模块是 GMM event-level structure modeling 和 differentiated visual allocation；对应待解决问题是实时破裂预测中可见光帧太多、关键前兆短暂且局部。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是减少约半数视觉 token 或把高分辨率预算集中到疑似事件片段；风险是通用视频事件边界未必等于物理前兆边界。最小验证实验是用可见光视频先做 GMM-EVA 采样，再与诊断时序融合，比较均匀采样和高亮度/光流采样。
+从本日报的选取理由看，【P3】原始应用是长视频 LVLM 视觉 token 预算；可迁移模块是 GMM event-level structure modeling 和 differentiated visual allocation；对应待解决问题是实时破裂预测中可见光帧太多、关键前兆短暂且局部。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让时序模型查询少量关键视觉证据，而不是吞下整段视频？
+对当前主题的关键意义在于：最小落地是将视觉 token 数作为预算变量，画出 token 数、显存、延迟、提前量和误报率的 Pareto 曲线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/39bc862ba7ddcef2.png" alt="Figure 2: Overview of the proposed GMM-EVA pipeline. 1) A cross-modal embedding model computes frame-wise query-relevance scores. 2) A Gaussian Mixture Model (GMM), fitted via the EM algorithm, decomposes the score distribution into multiple latent semantic events. 3) An event-aware allocation strategy differentiates visual budgets, designating one high-resolution primary keyframe and multiple low-resolution secondary keyframes per event. The keyframes in the two sets are then fed into a downstream LVLM for answer generation.">
+                    <figcaption>Figure 2: Overview of the proposed GMM-EVA pipeline. 1) A cross-modal embedding model computes frame-wise query-relevance scores. 2) A Gaussian Mixture Model (GMM), fitted via the ...</figcaption>
+                  </figure>
+                  <p>先用事件结构把长视频分段，再给每段分配不同分辨率和 token 预算，保留关键帧细节与低成本上下文。
+阅读时需要把方法设计与主要结果一起看：原文报告约半视觉 token 预算下保持可比性能。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告约半视觉 token 预算下保持可比性能。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不自带模态缺失训练和物理可解释性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 的可见光 token 压缩前端。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小落地是将视觉 token 数作为预算变量，画出 token 数、显存、延迟、提前量和误报率的 Pareto 曲线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-16" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>DynTrace：把视觉前兆组织成可审计动态证据链</h3>
+              <p class="paper__subtitle">DynTrace: Tracking Dynamic Object Evidence for 4D Spatio-Temporal Reasoning in MLLMs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用是动态场景 4D MLLM 推理；可迁移模块是 Dynamic Trajectory Visualization、DT-Token 和 Dynamic Trace Graph；对应待解决问题是可见光前兆需要随时间解释，而不是只给单帧热力图。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Rongxin Gao, Yuzhi Huang, Dongxuan Liu, Chu Li, Zhenye Wang, Jie Wu, Shuzhao Xie, Jingyan Jiang, Xinghao Ding, Xiaotong Tu, Yue Huang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12503" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.12503" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用是动态场景 4D MLLM 推理；可迁移模块是 Dynamic Trajectory Visualization、DT-Token 和 Dynamic Trace Graph；对应待解决问题是可见光前兆需要随时间解释，而不是只给单帧热力图。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响中等，trace token 可压缩成少量结构化证据，但若每帧都追踪高分辨率区域会增加延迟；风险是聚变图像没有现成对象轨迹。最小验证实验是把边界亮斑、辐射局部增强或杂质羽流弱标注成 ROI trace，训练风险预测同时输出 trace 一致性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样抑制无关视觉背景，让风险预测绑定到连续局部证据？
+对当前主题的关键意义在于：最小落地是在已有可见光帧上生成 ROI track/heatmap 伪标签，比较无证据监督、单帧 heatmap 和 DynTrace 式 trace consistency 的跨装置泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/657aff117586524f.png" alt="Figure 2 : Overview of DynTrace. Given a video and a language query, DynTrace follows three stages: (1) Dynamic Objects Extraction identifies query-relevant and independently moving instances, producing temporally consistent dynamic masks; (2) Spatio-Temporal Dynamics Encoding lifts tracked instances into a shared world frame to reconstruct Geometry-Grounded Dynamic Evidence, including Object Trajectory, Camera Behavior, and Relation Evolution, from which it derives DTV through World-to-Image Reprojection and converts Dynamic Cues, Trace Evolution, and Key Moments into object-side and relation-side DT-Tokens before organizing them into a DTG; and (3) Representation Integration & Reasoning feeds DTV, DTG, and the query into the target MLLM for 4D spatio-temporal reasoning.">
+                    <figcaption>Figure 2 : Overview of DynTrace. Given a video and a language query, DynTrace follows three stages: (1) Dynamic Objects Extraction identifies query-relevant and independently movin...</figcaption>
+                  </figure>
+                  <p>用结构化 trace graph 保存对象动态线索、演化和关键时刻，让模型查询持续证据而不是离散帧。
+阅读时需要把方法设计与主要结果一起看：原文在多个 4D benchmark 上提升 MLLM。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在多个 4D benchmark 上提升 MLLM。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要把等离子体局部结构抽象为可跟踪 token，标注和伪标签质量决定上限。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 的解释与证据监督模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小落地是在已有可见光帧上生成 ROI track/heatmap 伪标签，比较无证据监督、单帧 heatmap 和 DynTrace 式 trace consistency 的跨装置泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>GMM-EVA：长视频理解中的事件级视觉 token 分配</h3>
+              <p class="paper__subtitle">Gaussian Mixture Modeling for Event-Aware Visual Allocation in Long Video Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14；PRCV 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-14 / PRCV 2026。它把长视频帧按事件结构建模，再给关键事件保留高分辨率 token、给背景保留低预算上下文，对 P3 的可见光前兆局部证据选择直接有用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yifan Lu, Ziqi Zhang, Chunfeng Yuan, Jun Gao, Bing Li, Weiming Hu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12557" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.12557" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.12557" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-14 / PRCV 2026。它把长视频帧按事件结构建模，再给关键事件保留高分辨率 token、给背景保留低预算上下文，对 P3 的可见光前兆局部证据选择直接有用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可见光破裂预测不能把所有帧都高分辨率送入 VLM 或视频模型。均匀采样会错过短暂前兆，也会浪费大量 token 在稳定背景。
+从本日报的选取理由看，新增 / arXiv 2026-07-14 / PRCV 2026。它把长视频帧按事件结构建模，再给关键事件保留高分辨率 token、给背景保留低预算上下文，对 P3 的可见光前兆局部证据选择直接有用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在长视频中按事件结构分配视觉 token，使关键片段保留细节、非关键片段保留低成本上下文？
+对当前主题的关键意义在于：最小实验是在破裂前可见光视频上比较均匀采样、光流/亮度阈值采样和 GMM-EVA 事件采样，再把选中帧接入同一诊断时序融合模型，报告 token 数、延迟、提前量和误报率。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/39bc862ba7ddcef2.png" alt="Figure 2: Overview of the proposed GMM-EVA pipeline. 1) A cross-modal embedding model computes frame-wise query-relevance scores. 2) A Gaussian Mixture Model (GMM), fitted via the EM algorithm, decomposes the score distribution into multiple latent semantic events. 3) An event-aware allocation strategy differentiates visual budgets, designating one high-resolution primary keyframe and multiple low-resolution secondary keyframes per event. The keyframes in the two sets are then fed into a downstream LVLM for answer generation.">
+                    <figcaption>Figure 2: Overview of the proposed GMM-EVA pipeline. 1) A cross-modal embedding model computes frame-wise query-relevance scores. 2) A Gaussian Mixture Model (GMM), fitted via the ...</figcaption>
+                  </figure>
+                  <p>GMM-EVA 用 Gaussian Mixture Models 从离散帧观测中建模 event-level structure，再采用 differentiated allocation：每个事件保留一个高分辨率关键帧，辅以低分辨率次要帧维持时间上下文。
+阅读时需要把方法设计与主要结果一起看：摘要报告其在多个长视频 benchmark 上优于均匀采样，并能以约一半视觉 token 预算达到可比性能。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告其在多个长视频 benchmark 上优于均匀采样，并能以约一半视觉 token 预算达到可比性能。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>事件结构来自通用视频相关性而非物理前兆；若前兆是低对比、局部弱信号，GMM 聚类可能漏掉。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 的低成本帧/区域预筛，而不是最终风险预测器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在破裂前可见光视频上比较均匀采样、光流/亮度阈值采样和 GMM-EVA 事件采样，再把选中帧接入同一诊断时序融合模型，报告 token 数、延迟、提前量和误报率。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>DynTrace：4D 时空推理的动态证据链</h3>
+              <p class="paper__subtitle">DynTrace: Tracking Dynamic Object Evidence for 4D Spatio-Temporal Reasoning in MLLMs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14；ACM MM 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-14 / ACM MM 2026。它用轨迹可视化和 Dynamic Trace Graph 维持连续动态证据，可迁移为 P3 可见光局部前兆随时间演化的可解释证据链。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Rongxin Gao, Yuzhi Huang, Dongxuan Liu, Chu Li, Zhenye Wang, Jie Wu, Shuzhao Xie, Jingyan Jiang, Xinghao Ding, Xiaotong Tu, Yue Huang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12503" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.12503" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.12503" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-14 / ACM MM 2026。它用轨迹可视化和 Dynamic Trace Graph 维持连续动态证据，可迁移为 P3 可见光局部前兆随时间演化的可解释证据链。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>通用 MLLM 常依赖稀疏帧，容易把相机运动、背景变化和真实目标运动混淆。聚变可见光同样需要区分视角/曝光变化和真实等离子体结构变化。
+从本日报的选取理由看，新增 / arXiv 2026-07-14 / ACM MM 2026。它用轨迹可视化和 Dynamic Trace Graph 维持连续动态证据，可迁移为 P3 可见光局部前兆随时间演化的可解释证据链。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在动态场景中持续追踪物体级证据，而不是只凭离散帧做静态判断？
+对当前主题的关键意义在于：最小实验是把可见光前兆区域表示成 ROI trace token，与诊断时序交叉注意力融合，输出风险同时输出 trace graph，检查高风险判断是否对应连续局部证据。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/657aff117586524f.png" alt="Figure 2 : Overview of DynTrace. Given a video and a language query, DynTrace follows three stages: (1) Dynamic Objects Extraction identifies query-relevant and independently moving instances, producing temporally consistent dynamic masks; (2) Spatio-Temporal Dynamics Encoding lifts tracked instances into a shared world frame to reconstruct Geometry-Grounded Dynamic Evidence, including Object Trajectory, Camera Behavior, and Relation Evolution, from which it derives DTV through World-to-Image Reprojection and converts Dynamic Cues, Trace Evolution, and Key Moments into object-side and relation-side DT-Tokens before organizing them into a DTG; and (3) Representation Integration & Reasoning feeds DTV, DTG, and the query into the target MLLM for 4D spatio-temporal reasoning.">
+                    <figcaption>Figure 2 : Overview of DynTrace. Given a video and a language query, DynTrace follows three stages: (1) Dynamic Objects Extraction identifies query-relevant and independently movin...</figcaption>
+                  </figure>
+                  <p>DynTrace 包含 Dynamic Trajectory Visualization 与 Dynamic Trace Token/Graph：前者把世界坐标轨迹重投影到图像平面，后者保存对象动态线索、演化和关键时刻。
+阅读时需要把方法设计与主要结果一起看：摘要报告 DynTrace 在 Dyn-Bench、VLM4D 和 DSI-Bench 上提升多种开源 MLLM，说明连续动态证据对 4D 推理有价值。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 DynTrace 在 Dyn-Bench、VLM4D 和 DSI-Bench 上提升多种开源 MLLM，说明连续动态证据对 4D 推理有价值。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>依赖几何或轨迹先验；托卡马克可见光未必有稳定 3D 轨迹，需要用 ROI、磁面、边界或伪轨迹替代。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合 P3 的解释层和证据约束层。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把可见光前兆区域表示成 ROI trace token，与诊断时序交叉注意力融合，输出风险同时输出 trace graph，检查高风险判断是否对应连续局部证据。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>ADAPT：视觉上下文与运动时序的稀疏跨模态融合</h3>
+              <p class="paper__subtitle">Adaptive Cross-Modal Fusion with Sparse Attention for Pedestrian Crossing Intention Prediction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-14</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-14。它把 RGB、depth、semantic map、ego speed、bbox、skeleton 等多源信息做稀疏跨模态注意力，适合 P3 的异步图像-诊断时序融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Md Mahfuzur Rahman, Pengzhan Zhou, A F M Abdun Noor, Md Imam Ahasan, Kah Ong Michael Goh, S. M. Hasan Mahmud, Md Mustafizur Rahman, Kaixin Gao</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.12293" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.12293" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.12293" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-14。它把 RGB、depth、semantic map、ego speed、bbox、skeleton 等多源信息做稀疏跨模态注意力，适合 P3 的异步图像-诊断时序融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态融合常因交互过密而引入冗余，实时系统更需要只保留高价值跨模态交互。聚变可见光和诊断时序也有类似问题：视觉背景信息多，真正前兆局部少。
+从本日报的选取理由看，新增 / arXiv 2026-07-14。它把 RGB、depth、semantic map、ego speed、bbox、skeleton 等多源信息做稀疏跨模态注意力，适合 P3 的异步图像-诊断时序融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不牺牲实时性的情况下选择最有信息量的跨模态交互？
+对当前主题的关键意义在于：最小实验是用图像 ROI token、关键诊断通道和控制量构造多源输入，比较 dense cross-attention、late fusion 和 sparse cross-modal attention 的延迟、显存和提前预警性能。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/408d55195448e2da.png" alt="Figure 1: Overview of the proposed ADAPT framework for pedestrian crossing intention prediction. The model takes a sequence of observed frames and processes four spatially aligned visual modalities (RGB, global depth, global semantic map, and local depth) along with kinematic signals (ego-vehicle speed, pedestrian bounding boxes, and skeleton pose). Visual features are extracted via the Visual Feature Encoding (VFE) module and refined using Cross-Modality Guided Attention (CMGA). Motion dynamics are encoded by the Motion Feature Encoding (MFE) module. A Sparse Cross-Modal Attention (SCMA) module selectively integrates visual and motion representations, and the Temporal Feature Fusion (TFF) module aggregates temporal information to predict the crossing intention.">
+                    <figcaption>Figure 1: Overview of the proposed ADAPT framework for pedestrian crossing intention prediction. The model takes a sequence of observed frames and processes four spatially aligned ...</figcaption>
+                  </figure>
+                  <p>ADAPT 使用 Cross-Modality Guided Attention 做层级视觉融合，用 Mamba-based Motion Feature Encoding 建模运动时序，再用 Sparse Cross-Modal Attention 选择性保留跨模态交互。
+阅读时需要把方法设计与主要结果一起看：摘要报告其在 JAAD 和 PIE pedestrian crossing intention benchmark 上优于既有方法，并实现 17.23 ms/sample 推理。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告其在 JAAD 和 PIE pedestrian crossing intention benchmark 上优于既有方法，并实现 17.23 ms/sample 推理。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>自动驾驶场景的模态同步和空间对齐比聚变诊断更直接；论文 under review，证据质量低于已接收论文。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为 P3 的工程模板，但不应高估其领域证据。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用图像 ROI token、关键诊断通道和控制量构造多源输入，比较 dense cross-attention、late fusion 和 sparse cross-modal attention 的延迟、显存和提前预警性能。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
