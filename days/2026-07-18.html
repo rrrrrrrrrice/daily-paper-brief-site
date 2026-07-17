@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-18</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-18 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-18 05:20:00 +08:00</p>
+      <div class="hero__overview">
+        <p>本轮结论：今天最值得先看 RTS Smoother-Guided Neural Differential Models、LongStraw、Video = World + Event Stream、ESAR 和 MCF-Net。RTS smoother 把已知 ODE 结构、部分观测状态估计和神经缺失项学习拆成可解释两阶段流程，适合 P1/P3 的物理约束诊断时序；LongStraw 虽来自长上下文 RL，但给出固定 GPU 预算下百万级上下文训练的执行栈，对高频诊断长窗训练有工程启发；Video = World + Event Stream 把流式视频拆成稳定世界状态和事件流，可迁移到 P3 的可见光前兆记忆；ESAR 是原生事件相机反问题建模，适合 P2 避免简单转帧；MCF-Net 用运动条件多视角融合定位心肌梗死，为图像局部证据与时序诊断互补提供 P3 近邻模板。固定回看分区补充 RE-VLM（CVPR 2026）与 MamEVSR（CVPR 2025）。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 RE-VLM：事件增强视觉语言模型</a></li>
+              <li><a href="#paper-2">02 MamEVSR：基于状态空间模型的事件视频超分</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-3">03 RTS smoother 引导的物理神经微分模型</a></li>
+              <li><a href="#paper-4">04 LongStraw：长上下文训练的显存执行栈</a></li>
+              <li><a href="#paper-5">05 DynaBase：极简可解释动态系统重建</a></li>
+              <li><a href="#paper-6">06 GAttNHP：带分组注意力的 Neural Hawkes Process</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-11">11 本轮直接 tokamak disruption + 可见光诊断时序融合新增空缺</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发：P1 不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-12">12 RTS smoother 神经微分模型：物理骨架下学习缺失动力学</a></li>
+              <li><a href="#paper-13">13 LongStraw：共享长上下文的状态保存与分支回放</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发：P2 RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-14">14 ESAR：原生事件反问题表征</a></li>
+              <li><a href="#paper-15">15 RE-VLM：RGB-Event-Text 语义对齐</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-16">16 MCF-Net：用运动先验选择图像局部证据</a></li>
+              <li><a href="#paper-17">17 Video = World + Event Stream：低延迟可见光前兆记忆</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-7">07 Video = World + Event Stream</a></li>
+              <li><a href="#paper-8">08 ESAR：事件相机合成孔径反问题重建</a></li>
+              <li><a href="#paper-9">09 MCF-Net：运动条件多视角融合</a></li>
+              <li><a href="#paper-10">10 ViPS：多视觉先验动态融合的空间理解 MLLM</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">RTS smoother 引导的物理神经微分模型</a></h3>
+              <p class="card__subtitle">RTS Smoother-Guided Learning of Physics-Based Neural Differential Models</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-16。它保留已知 ODE 方程，用 RTS smoother 先重建潜状态，再反向传播学习未知动力学项，适合把聚变诊断中的物理先验、缺失状态和长程预测连起来。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">LongStraw：长上下文训练的显存执行栈</a></h3>
+              <p class="card__subtitle">LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-16。它把共享长 prompt 的前向计算和短 response 分支回放解耦，报告 2.1M 位置训练图可在固定 H20 预算下完成；P1 可借鉴其“长公共上下文只保存必要状态”的显存策略。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">Video = World + Event Stream</a></h3>
+              <p class="card__subtitle">Video = World + Event Stream</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-16。它把视频理解重新组织成稳定 world state 与持续变化 event stream，并给出 160 ms streaming unit、约 200 ms 模型侧响应延迟的实时设计，对 P3 的可见光证据缓存很贴近。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">ESAR：事件相机合成孔径反问题重建</a></h3>
+              <p class="card__subtitle">ESAR: Event-Based Synthetic Aperture Reconstruction</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-16。它直接把异步 polarity events 建成 signed temporal contrast measurement，而不是转成普通帧；对 P2 的原生事件表征、噪声建模和几何约束融合都有参考价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-9">MCF-Net：运动条件多视角融合</a></h3>
+              <p class="card__subtitle">Motion-Conditioned Multi-View Fusion for Myocardial Infarction Localization from Echocardiography</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-16。它用极稀疏运动监督提取 segment-aware soft masks，再让运动条件跨视角融合修正视觉基础模型表征，是 P3 “时序选择图像局部证据”的近邻应用。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>RE-VLM：事件增强视觉语言模型</h3>
+              <p class="paper__subtitle">RE-VLM: Event-Augmented Vision-Language Model for Scene Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026；CVPR 2026</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。CVPR 2026；它是 RGB 与 event 双流 VLM，并用 RGB-Event-Text 数据构建解决监督稀缺，对 P2 的开放词表属性识别和事件语义对齐很直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hanqing Liu, Mingjie Liu, Luoping Cui, Endian Lin, Donghong Jiang, Chuang Zhu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2026/html/Liu_RE-VLM_Event-Augmented_Vision-Language_Model_for_Scene_Understanding_CVPR_2026_paper.html" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/bupt-ai-cz/RE-VLM" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。CVPR 2026；它是 RGB 与 event 双流 VLM，并用 RGB-Event-Text 数据构建解决监督稀缺，对 P2 的开放词表属性识别和事件语义对齐很直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 不应只把 Event 转成灰度帧再接 RGB 属性分类器。事件流在弱光、强动态和运动模糊下补足 RGB，但缺少与自然语言属性标签对齐的监督。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。CVPR 2026；它是 RGB 与 event 双流 VLM，并用 RGB-Event-Text 数据构建解决监督稀缺，对 P2 的开放词表属性识别和事件语义对齐很直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让 RGB 和原生事件流共同进入可解释的语义空间，并在困难成像条件下保持理解能力？
+对当前主题的关键意义在于：最小实验是用 RE-VLM 式双流编码器替换 TriPro 的 RGB/Event backbone，加入属性文本 prompt 与 modality dropout，对比 mA、F1、ECE 和弱光子集。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>CVF 页面核验其为 CVPR 2026。论文采用并行 RGB/event 编码器和渐进式训练，把异构视觉特征对齐到语言；同时用场景图合成 RGB-Event-Text caption 与 QA 监督。
+阅读时需要把方法设计与主要结果一起看：CVF 摘要报告在 captioning 与 VQA 上超过 RGB-only 和 event-only 模型，困难条件下收益更明显。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 摘要报告在 captioning 与 VQA 上超过 RGB-only 和 event-only 模型，困难条件下收益更明显。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它面向场景理解，不是行人/目标属性识别；属性级不确定性和时钟不同步仍需另设模块。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P2 从闭集属性头走向 event-text/open-vocabulary 属性监督的首选回看。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用 RE-VLM 式双流编码器替换 TriPro 的 RGB/Event backbone，加入属性文本 prompt 与 modality dropout，对比 mA、F1、ECE 和弱光子集。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>MamEVSR：基于状态空间模型的事件视频超分</h3>
+              <p class="paper__subtitle">Event-based Video Super-Resolution via State Space Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。CVPR 2025；它用 interleaved Mamba 做跨帧传播，用 cross-modality Mamba 融合 event 与 RGB，正好对应 P1/P2 的线性复杂度时序融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zeyu Xiao, Xinchao Wang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Xiao_Event-based_Video_Super-Resolution_via_State_Space_Models_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。CVPR 2025；它用 interleaved Mamba 做跨帧传播，用 cross-modality Mamba 融合 event 与 RGB，正好对应 P1/P2 的线性复杂度时序融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别和聚变可见光前兆分析都需要把高频事件/视觉变化与低频外观信息融合。Transformer 跨帧交互成本高，卷积局部性又容易漏掉长程运动。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。CVPR 2025；它用 interleaved Mamba 做跨帧传播，用 cross-modality Mamba 融合 event 与 RGB，正好对应 P1/P2 的线性复杂度时序融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用 SSM 同时处理跨帧时序传播和 RGB/Event 跨模态交互？
+对当前主题的关键意义在于：最小实验是把 TriPro 或 P3 可见光分支中的跨帧 Transformer 换成 iMamba/cMamba，比较显存、延迟、属性 F1 或破裂提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>CVF 页面核验其为 CVPR 2025。论文提出 iMamba block 交错相邻帧 token 做多方向选择性状态空间建模，并用 cMamba block 聚合事件与图像互补信息。
+阅读时需要把方法设计与主要结果一起看：CVF 摘要称该方法在多个事件视频超分数据集上取得定量和定性优势，并保持线性复杂度的全局感受野。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 摘要称该方法在多个事件视频超分数据集上取得定量和定性优势，并保持线性复杂度的全局感受野。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是视频复原，不直接输出属性或风险；事件噪声、模态缺失和不确定性仍需另外评估。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P2 事件-图像融合和 P1 高频视觉序列线性建模的实用骨干参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把 TriPro 或 P3 可见光分支中的跨帧 Transformer 换成 iMamba/cMamba，比较显存、延迟、属性 F1 或破裂提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>RTS smoother 引导的物理神经微分模型</h3>
+              <p class="paper__subtitle">RTS Smoother-Guided Learning of Physics-Based Neural Differential Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它保留已知 ODE 方程，用 RTS smoother 先重建潜状态，再反向传播学习未知动力学项，适合把聚变诊断中的物理先验、缺失状态和长程预测连起来。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ahmet Demirkaya, Georgios Stratis, Tales Imbiriba, Zachary D. Danziger, Deniz Erdogmus</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15180" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.15180" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.15180" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它保留已知 ODE 方程，用 RTS smoother 先重建潜状态，再反向传播学习未知动力学项，适合把聚变诊断中的物理先验、缺失状态和长程预测连起来。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断中大量状态不可直接观测，已知 MHD 或传输关系也往往只覆盖部分动力学。直接用深度模型拟合端到端预测，会损失物理可解释性并放大分布外风险。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它保留已知 ODE 方程，用 RTS smoother 先重建潜状态，再反向传播学习未知动力学项，适合把聚变诊断中的物理先验、缺失状态和长程预测连起来。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在部分观测条件下保留已知机理，并学习缺失动力学项用于长程预测？
+对当前主题的关键意义在于：最小实验是在已有诊断时序中选 2-3 个有明确物理关系的通道，把未观测状态作为 latent，用 RTS smoother 预估后训练缺失动力学项，对比纯 Neural ODE/SSM 的提前量、ECE 和跨 shot 泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d0425a1b778d2a07.png" alt="Figure 11 : Hodgkin–Huxley neuron: RTS smoothed state estimates across measurement noise levels (SNR). Black curves show ground truth; colored curves show smoothed estimates from noisy observations. Even at low SNR, RTS produces stable latent trajectories that support robust hybrid-model learning.">
+                    <figcaption>Figure 11 : Hodgkin–Huxley neuron: RTS smoothed state estimates across measurement noise levels (SNR). Black curves show ground truth; colored curves show smoothed estimates from n...</figcaption>
+                  </figure>
+                  <p>论文采用两阶段迭代：已知参数时用 Rauch-Tung-Striebel smoother 从测量中估计潜在状态；再把平滑后的轨迹当作监督信号，用反向传播估计神经网络参数。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法在包含线性、非线性和 stiff dynamics 的 benchmark 上提升潜状态重建和长时域预测，同时保留可解释机理结构。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法在包含线性、非线性和 stiff dynamics 的 benchmark 上提升潜状态重建和长时域预测，同时保留可解释机理结构。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目前是通用动力系统 benchmark，尚未证明能处理高频多通道、大缺失和跨装置工况漂移。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是 P1/P3 中“物理骨架 + 神经缺失项 + 状态平滑”的优先 baseline。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在已有诊断时序中选 2-3 个有明确物理关系的通道，把未观测状态作为 latent，用 RTS smoother 预估后训练缺失动力学项，对比纯 Neural ODE/SSM 的提前量、ECE 和跨 shot 泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>LongStraw：长上下文训练的显存执行栈</h3>
+              <p class="paper__subtitle">LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它把共享长 prompt 的前向计算和短 response 分支回放解耦，报告 2.1M 位置训练图可在固定 H20 预算下完成；P1 可借鉴其“长公共上下文只保存必要状态”的显存策略。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Changhai Zhou, Kieran Liu, Yuhua Zhou, Qian Qiao, Jun Gao 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.14952" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.14952" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.14952" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它把共享长 prompt 的前向计算和短 response 分支回放解耦，报告 2.1M 位置训练图可在固定 H20 预算下完成；P1 可借鉴其“长公共上下文只保存必要状态”的显存策略。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变高频诊断若按原始采样点展开，长窗 attention 或反向传播会迅速显存爆炸。只做离线压缩又可能丢失临近破裂的稀有瞬态。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它把共享长 prompt 的前向计算和短 response 分支回放解耦，报告 2.1M 位置训练图可在固定 H20 预算下完成；P1 可借鉴其“长公共上下文只保存必要状态”的显存策略。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把超长公共上下文与少量任务分支解耦，减少训练时必须保留的活动图？
+对当前主题的关键意义在于：最小实验是把长 shot 拆成共享高频上下文和少量预测窗口分支，只对分支保留梯度，比较完整 BPTT、checkpointing、chunk replay 的显存和预测指标。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>LongStraw 对共享 prompt 做无 autograd 评估，只保留后续 token 所需状态，再逐条回放短 response 分支；论文在混合 recurrent/full-attention 模型上验证 2.1M 位置执行容量。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 8 张 H20 上完成 Qwen3.6-27B grouped scoring 与 response backward，group size 增大时峰值显存只增加 0.21 GB，stress test 达到 4.46M positions。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 8 张 H20 上完成 Qwen3.6-27B grouped scoring 与 response backward，group size 增大时峰值显存只增加 0.21 GB，stress test 达到 4.46M positions。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>作者明确说明这是执行容量验证而非完整训练正确性；机制来自 LLM RL，不可直接替代时序模型。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它更适合作为 P1 长窗训练系统设计启发，而不是模型本体。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把长 shot 拆成共享高频上下文和少量预测窗口分支，只对分支保留梯度，比较完整 BPTT、checkpointing、chunk replay 的显存和预测指标。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>DynaBase：极简可解释动态系统重建</h3>
+              <p class="paper__subtitle">A Minimal Interpretable Architecture for Zero-Shot Reconstruction of Dynamical Systems</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它把动态系统 foundation model 简化成当前 latent state 与最近邻上下文后继的线性混合，给 P1 提供了一个“强基线是否足够”的审计工具。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Christoph Jürgen Hemmer, Florian Plaswig, Daniel Durstewitz</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.14937" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.14937" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.14937" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它把动态系统 foundation model 简化成当前 latent state 与最近邻上下文后继的线性混合，给 P1 提供了一个“强基线是否足够”的审计工具。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>在高复杂度时序 foundation model 之前，必须先确认性能是否来自真正的长程机制，还是来自上下文最近邻复制、局部平滑或训练数据重复。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它把动态系统 foundation model 简化成当前 latent state 与最近邻上下文后继的线性混合，给 P1 提供了一个“强基线是否足够”的审计工具。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>零样本动态系统重建需要多复杂的模型，最小机制是什么？
+对当前主题的关键意义在于：最小实验是在 shot-level 检索相似历史片段，用 DynaBase 式 nearest-context successor 预测风险或诊断轨迹，检验复杂模型是否真的超过最近邻动力基线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/20d708dad8df16b7.png" alt="Figure 1 : DSR performance across all 54 54 test DS used in [ 44 ] . Minimal models (red: DynaBase training variants and pure context parroting), custom-trained DSR models (gray), and pretrained zero-shot foundation models including a zero-shot variant of DynaBase (blue) are compared for the same context length T C = 2000 T_{C}=2000 (values for custom-trained and foundation models taken from [ 44 ] ). Median ± \pm MAD of D stsp D_{\mathrm{stsp}} (left, geometrical disagreement), D H D_{H} (center, temporal disagreement) and MASE (right, 10 10 -step prediction error).">
+                    <figcaption>Figure 1 : DSR performance across all 54 54 test DS used in [ 44 ] . Minimal models (red: DynaBase training variants and pure context parroting), custom-trained DSR models (gray), ...</figcaption>
+                  </figure>
+                  <p>论文把 DynaMix 逐步削减为 DynaBase，两参数形式在线性混合当前 latent 与最近 in-context neighbor 的后继状态，并给出一族可解析映射。
+阅读时需要把方法设计与主要结果一起看：摘要称 DynaBase 在 chaotic 与 cyclic systems 上能以极少参数取得有竞争力的零样本重建，并揭示短期预测与动力系统重建目标之间的策略差异。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称 DynaBase 在 chaotic 与 cyclic systems 上能以极少参数取得有竞争力的零样本重建，并揭示短期预测与动力系统重建目标之间的策略差异。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它对高维异步多通道和观测缺失没有直接工程方案；若物理系统发生 regime shift，最近邻上下文可能误导。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1/P3 的可解释强基线和模型复杂度审计。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 shot-level 检索相似历史片段，用 DynaBase 式 nearest-context successor 预测风险或诊断轨迹，检验复杂模型是否真的超过最近邻动力基线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>GAttNHP：带分组注意力的 Neural Hawkes Process</h3>
+              <p class="paper__subtitle">GAttNHP: Group Attention Neural Hawkes Process for Extrapolation Reasoning in Temporal Knowledge Graphs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它用连续时间点过程、语义软分组和非交叉分位数头建模稀疏长尾事件，对 P1 的异步事件化诊断有可迁移模块。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xiangni Tian, Kaixian Yu, Runpeng Dai, Niansheng Tang, Hongtu Zhu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.14733" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.14733" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.14733" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它用连续时间点过程、语义软分组和非交叉分位数头建模稀疏长尾事件，对 P1 的异步事件化诊断有可迁移模块。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>一些诊断信号可以被事件化为阈值越界、控制动作、异常脉冲或图像局部前兆。事件间隔重尾、链路互激和稀疏观测会让固定步长预测不稳定。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它用连续时间点过程、语义软分组和非交叉分位数头建模稀疏长尾事件，对 P1 的异步事件化诊断有可迁移模块。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在连续时间事件序列中表达长程互激、跨链路耦合和不确定的下一事件时间？
+对当前主题的关键意义在于：最小实验是把高频诊断超过物理阈值、控制变化和图像 ROI 事件离散成 marked point process，用 GAttNHP 预测下一异常事件时间和破裂风险。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/6bc389881a40e6dc.png" alt="Figure 2: Ablation study results across ICEWS14, ICEWS18, and ICEWS05-15 datasets. We compare the Base model (Self-Attn Only) with the inclusion of Group Mutual Excitation, and further analyze the Full Model using Non-Crossing Quantile (NCQ) regression versus Mean Squared Error (MSE) for time prediction.">
+                    <figcaption>Figure 2: Ablation study results across ICEWS14, ICEWS18, and ICEWS05-15 datasets. We compare the Base model (Self-Attn Only) with the inclusion of Group Mutual Excitation, and fur...</figcaption>
+                  </figure>
+                  <p>GAttNHP 把每条 subject-relation chain 建成连续时间点过程，用语义软分组生成解析 cross-attention mask，再用 Non-Crossing Quantile head 输出有序分位数时间预测。
+阅读时需要把方法设计与主要结果一起看：摘要报告在六个 TKG benchmark 上同时提升 entity prediction 和 time prediction，长尾事件链收益最大。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在六个 TKG benchmark 上同时提升 entity prediction 和 time prediction，长尾事件链收益最大。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原应用是 temporal knowledge graph，不是连续传感器；事件定义和通道语义分组需要按诊断物理重新设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1 的异步事件流建模支线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把高频诊断超过物理阈值、控制变化和图像 ROI 事件离散成 marked point process，用 GAttNHP 预测下一异常事件时间和破裂风险。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>本轮直接 tokamak disruption + 可见光诊断时序融合新增空缺</h3>
+              <p class="paper__subtitle">No qualified new tokamak disruption and visible-diagnostic fusion AI paper in this round</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-18</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">本轮空缺判断。2026-07-17 physics.plasm-ph 新增主要是 total-f gyrokinetic turbulence 初始瞬态缓解、five-moment plasma-MHD solver、stellarator edge island 计算、p-11B 旋转等离子体扫描等纯物理或数值模型；未见新的 tokamak disruption prediction、visible/IR diagnostics 与诊断时序融合 AI 原始论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/physics.plasm-ph/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>本轮空缺判断。2026-07-17 physics.plasm-ph 新增主要是 total-f gyrokinetic turbulence 初始瞬态缓解、five-moment plasma-MHD solver、stellarator edge island 计算、p-11B 旋转等离子体扫描等纯物理或数值模型；未见新的 tokamak disruption prediction、visible/IR diagnostics 与诊断时序融合 AI 原始论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变方向仍需监测，但不能把纯物理仿真或装置运行论文伪装成聚变 AI 新方法。本轮 P3 的可迁移机制主要来自运动条件视觉融合、流式视频事件流和物理神经微分模型。
+从本日报的选取理由看，本轮空缺判断。2026-07-17 physics.plasm-ph 新增主要是 total-f gyrokinetic turbulence 初始瞬态缓解、five-moment plasma-MHD solver、stellarator edge island 计算、p-11B 旋转等离子体扫描等纯物理或数值模型；未见新的 tokamak disruption prediction、visible/IR diagnostics 与诊断时序融合 AI 原始论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在直接聚变 AI 新稿缺席时，如何保留对 P3 真问题有迁移价值的外域机制，同时避免凑数？
+对当前主题的关键意义在于：最小动作是把现有破裂预测 pipeline 扩展为可见光 ROI、诊断通道缺失、采样率变化和跨装置评估的统一脚本。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>本条为空缺说明；本轮不纳入直接聚变 AI 新论文。
+阅读时需要把方法设计与主要结果一起看：直接 tokamak disruption + visible diagnostics + AI fusion 新稿本轮空缺。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>直接 tokamak disruption + visible diagnostics + AI fusion 新稿本轮空缺。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏尚未上 arXiv 的作者主页、会议 early access 或机构内部报告。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>短期应继续用 TokaMark 鲁棒性基准作为 P3 底线，同时把本轮 MCF-Net 和 Video/Event Stream 的机制做小规模验证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小动作是把现有破裂预测 pipeline 扩展为可见光 ROI、诊断通道缺失、采样率变化和跨装置评估的统一脚本。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发：P1 不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>RTS smoother 神经微分模型：物理骨架下学习缺失动力学</h3>
+              <p class="paper__subtitle">RTS Smoother-Guided Learning of Physics-Based Neural Differential Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用领域是部分观测动力系统学习；可迁移模块是 RTS smoother latent-state estimation、显式 ODE 物理骨架和神经缺失项；对应待解决问题是真实诊断中状态不可全观测、采样不完备且需要保留物理结构。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ahmet Demirkaya 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15180" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.15180" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用领域是部分观测动力系统学习；可迁移模块是 RTS smoother latent-state estimation、显式 ODE 物理骨架和神经缺失项；对应待解决问题是真实诊断中状态不可全观测、采样不完备且需要保留物理结构。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是增加平滑步骤和 ODE 求解成本，但可减少端到端黑箱长窗训练对大模型容量的依赖；风险是 RTS smoother 假设与噪声模型不匹配时会引入偏差。最小验证实验是在现有诊断数据上选择部分已知耦合通道，先做 latent smoothing，再训练神经缺失项，比较纯 SSM/Neural ODE 的显存、长程误差和跨 shot 泛化。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何同时利用已知物理关系、部分观测和神经网络表达能力？
+对当前主题的关键意义在于：将真实 Δt 作为 ODE 时间变量，并把高频通道先压缩成事件或局部统计，再与低频诊断共同参与 latent smoothing。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d0425a1b778d2a07.png" alt="Figure 11 : Hodgkin–Huxley neuron: RTS smoothed state estimates across measurement noise levels (SNR). Black curves show ground truth; colored curves show smoothed estimates from noisy observations. Even at low SNR, RTS produces stable latent trajectories that support robust hybrid-model learning.">
+                    <figcaption>Figure 11 : Hodgkin–Huxley neuron: RTS smoothed state estimates across measurement noise levels (SNR). Black curves show ground truth; colored curves show smoothed estimates from n...</figcaption>
+                  </figure>
+                  <p>先估计潜在状态轨迹，再基于平滑轨迹学习未知动力学项，使模型结构保持可解释。
+阅读时需要把方法设计与主要结果一起看：原文报告在非线性和 stiff dynamics 上提升潜状态重建与长程预测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告在非线性和 stiff dynamics 上提升潜状态重建与长程预测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>尚未覆盖高频百万点序列、异步多通道和大规模缺失。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>优先作为 P1 的物理约束连续时间 baseline。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>将真实 Δt 作为 ODE 时间变量，并把高频通道先压缩成事件或局部统计，再与低频诊断共同参与 latent smoothing。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P1 不规则时序与聚变高低频统一建模</p>
+              <h3>LongStraw：共享长上下文的状态保存与分支回放</h3>
+              <p class="paper__subtitle">LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用领域是 LLM 长上下文 RL post-training；可迁移模块是共享上下文无梯度评估、必要状态保存和短分支逐条回放；对应待解决问题是高频海量点与长窗训练导致显存爆炸。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Changhai Zhou 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.14952" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.14952" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用领域是 LLM 长上下文 RL post-training；可迁移模块是共享上下文无梯度评估、必要状态保存和短分支逐条回放；对应待解决问题是高频海量点与长窗训练导致显存爆炸。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是显存大幅下降但训练时间增加，因为需要分支回放；风险是时序预测中的共享上下文并不总能 detach，梯度截断可能损害前兆表示学习。最小验证实验是把长 shot 编码为共享上下文缓存，只对末端预测窗口回放反传，对比 full BPTT、gradient checkpointing 和 chunked training。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>哪些长历史状态必须保留梯度，哪些只需作为检索或缓存上下文？
+对当前主题的关键意义在于：先在小模型上测定 detach 共享上下文对破裂提前量和异常召回的影响，再决定是否扩大到高频多通道。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>把长公共段与短任务段解耦，在固定 GPU 预算下扩展有效上下文长度。
+阅读时需要把方法设计与主要结果一起看：原文报告 2.1M 位置执行容量和 4.46M positions stress test。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告 2.1M 位置执行容量和 4.46M positions stress test。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不保证完整训练正确性，迁移到时序需要重新验证梯度近似。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 长窗工程优化思路。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在小模型上测定 detach 共享上下文对破裂提前量和异常召回的影响，再决定是否扩大到高频多通道。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发：P2 RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>ESAR：原生事件反问题表征</h3>
+              <p class="paper__subtitle">ESAR: Event-Based Synthetic Aperture Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用领域是 event-based synthetic aperture reconstruction；可迁移模块是 signed temporal contrast、运动投影约束和正则化反演；对应待解决问题是避免只把 Event 转成帧，并显式处理事件噪声与几何一致性。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Harbir Antil 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15073" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.15073" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用领域是 event-based synthetic aperture reconstruction；可迁移模块是 signed temporal contrast、运动投影约束和正则化反演；对应待解决问题是避免只把 Event 转成帧，并显式处理事件噪声与几何一致性。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是训练或预处理阶段增加反演/辅助损失成本，但推理可蒸馏为轻量事件编码器；风险是静态场景假设不适用于行人属性和动态遮挡。最小验证实验是在 TriPro/EventPAR 中加入事件时间差分一致性辅助头，比较原始 voxel、time-surface 和 ESAR-inspired 表征在弱光、运动模糊、事件稀疏下的 mA/F1。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>事件流是否能先以传感器物理一致的方式组织，再进入属性识别？
+对当前主题的关键意义在于：把事件重建质量、属性置信度和模态质量估计联动，测试事件噪声高时动态降权是否优于直接融合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a77d4439ff00bbf8.png" alt="Figure 4 : Regularization ablation study. Rows correspond to the regularization parameter λ ∈ { 0.1 , 0.2 , 0.3 , 0.4 , 0.5 } \lambda\in\{0.1,0.2,0.3,0.4,0.5\} , while columns compare TV and quadratic L 2 L^{2} regularization on the same reconstruction task. All reconstructions are super-resolved to 1920 × 1440 1920\times 1440 using a 5 × 5 5\times 5 kernel. As λ \lambda increases, both models become smoother, with TV preserving sharper scene boundaries and L 2 L^{2} producing more diffuse transitions.">
+                    <figcaption>Figure 4 : Regularization ablation study. Rows correspond to the regularization parameter λ ∈ { 0.1 , 0.2 , 0.3 , 0.4 , 0.5 } \lambda\in\{0.1,0.2,0.3,0.4,0.5\} , while columns comp...</figcaption>
+                  </figure>
+                  <p>将事件观测写成 AP theta = b + eta，分离运动投影和时间差分。
+阅读时需要把方法设计与主要结果一起看：原文在模拟和真实 event 数据上恢复连贯大尺度结构。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在模拟和真实 event 数据上恢复连贯大尺度结构。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是属性识别模型，也未处理开放词表语义监督。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P2 事件分支的物理一致性辅助训练。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>把事件重建质量、属性置信度和模态质量估计联动，测试事件噪声高时动态降权是否优于直接融合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P2 RGB-Event 属性识别</p>
+              <h3>RE-VLM：RGB-Event-Text 语义对齐</h3>
+              <p class="paper__subtitle">RE-VLM: Event-Augmented Vision-Language Model for Scene Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026；CVPR 2026</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】原始应用领域是 RGB-Event 场景理解；可迁移模块是双流 RGB/event 编码、渐进式跨模态语言对齐和 RGB-Event-Text 数据合成；对应待解决问题是属性识别中的开放词表语义监督和模态缺失鲁棒性。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hanqing Liu 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2026/html/Liu_RE-VLM_Event-Augmented_Vision-Language_Model_for_Scene_Understanding_CVPR_2026_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】原始应用领域是 RGB-Event 场景理解；可迁移模块是双流 RGB/event 编码、渐进式跨模态语言对齐和 RGB-Event-Text 数据合成；对应待解决问题是属性识别中的开放词表语义监督和模态缺失鲁棒性。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是引入双流编码器和文本对齐训练，推理可只保留属性 prompt 所需子模块；风险是 scene graph 生成的文本监督可能过粗，无法覆盖细粒度服饰或行为属性。最小验证实验是把属性标签转写为 prompt，加入 event-text contrastive loss 和 modality dropout，对比闭集 BCE、多标签 prompt learning 与 RE-VLM 式训练。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让事件分支不只是补边缘，而是能贡献属性语义？
+对当前主题的关键意义在于：先冻结 RGB CLIP，训练事件分支和轻量 prompt adapter，观察事件在低光/模糊属性上的动态权重。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>并行 RGB/event 编码器先对齐低层异构特征，再通过文本监督学习语义层。
+阅读时需要把方法设计与主要结果一起看：CVF 摘要报告困难条件下 VQA/captioning 收益明显。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 摘要报告困难条件下 VQA/captioning 收益明显。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要重新构造属性级文本监督和时钟偏差扰动。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P2 开放词表属性识别的中期路线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先冻结 RGB CLIP，训练事件分支和轻量 prompt adapter，观察事件在低光/模糊属性上的动态权重。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-16" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>MCF-Net：用运动先验选择图像局部证据</h3>
+              <p class="paper__subtitle">Motion-Conditioned Multi-View Fusion for Myocardial Infarction Localization from Echocardiography</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用领域是医学超声多视角病灶定位；可迁移模块是 motion-derived segment-aware soft masks 与 motion-conditioned fusion；对应待解决问题是时序如何选择图像局部证据、怎样抑制无关视觉信息。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Guang Yang 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15268" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.15268" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用领域是医学超声多视角病灶定位；可迁移模块是 motion-derived segment-aware soft masks 与 motion-conditioned fusion；对应待解决问题是时序如何选择图像局部证据、怎样抑制无关视觉信息。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是多一个轻量运动/ROI 分支，但可减少全帧 token 融合开销；风险是心肌周期运动与等离子体可见光前兆不同，ROI 先验错误会漏掉异常。最小验证实验是用光流、亮度变化或人工 ROI 生成 soft mask，让诊断时序 query 只融合局部视觉 token，对比全帧 cross-attention 的显存、延迟、提前量和误报。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>图像分支应该把哪些区域交给时序风险模型？
+对当前主题的关键意义在于：把可见光局部证据、诊断通道和报警输出同时记录，评估解释区域是否稳定出现在破裂前窗口。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/eb12d59afe52ea30.png" alt="Figure 1: Overview of MCF-Net. (1) Sparse Motion Modeling extracts motion embeddings ( h 2 , h 4 h^{2},h^{4} ) via CoTracker3. (2) Dual View Fusion modulates frozen EchoPrime visual features with motion via FiLM gating (Eq. 4). (3) Motion Query Attention fuses representations using Joint Motion as Q Q and Visual as K , V K,V to predict 12 segment MI distribution, optimized via ℒ c ​ l ​ s \mathcal{L}_{cls} .">
+                    <figcaption>Figure 1: Overview of MCF-Net. (1) Sparse Motion Modeling extracts motion embeddings ( h 2 , h 4 h^{2},h^{4} ) via CoTracker3. (2) Dual View Fusion modulates frozen EchoPrime visua...</figcaption>
+                  </figure>
+                  <p>用极稀疏监督初始化运动跟踪，生成 segment-aware masks，再跨视角融合视觉和运动线索。
+阅读时需要把方法设计与主要结果一起看：原文报告 segment-level 定位 F1 达 72.4%，优于单模态和普通融合 baseline。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告 segment-level 定位 F1 达 72.4%，优于单模态和普通融合 baseline。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医学图像数据结构与 tokamak 可见光差异大，需要物理 ROI 约束。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是 P3 本轮最可落地的图像-时序融合模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>把可见光局部证据、诊断通道和报警输出同时记录，评估解释区域是否稳定出现在破裂前窗口。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-17" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发：P3 可见光图像与诊断时序融合的破裂预测</p>
+              <h3>Video = World + Event Stream：低延迟可见光前兆记忆</h3>
+              <p class="paper__subtitle">Video = World + Event Stream</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用领域是实时音视频交互；可迁移模块是 world state、event stream、streaming unit 和低延迟响应设计；对应待解决问题是实时破裂预测中保留可见光局部前兆、低显存部署和解释。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lianghua Huang 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15038" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.15038" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用领域是实时音视频交互；可迁移模块是 world state、event stream、streaming unit 和低延迟响应设计；对应待解决问题是实时破裂预测中保留可见光局部前兆、低显存部署和解释。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>预期计算/显存影响是把稳定背景压缩为长期 world cache，只对新事件做高频更新；风险是语义事件抽取错误会丢失小尺度物理前兆。最小验证实验是将可见光视频拆成稳定背景、ROI event stream 和诊断时序输入，比较全视频 Transformer、FOLIO 式记忆和 world/event 结构的延迟、显存、提前量与证据召回。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>实时系统是否必须重复处理每一帧的全部背景？
+对当前主题的关键意义在于：先在离线数据上做 world/event 分解，确认事件 token 是否覆盖已知破裂前兆区域，再进入实时部署评估。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/45e2480dffb466ff.png" alt="Figure 2 : The world context is tokenized and prefilled once before streaming. Language, audio, and video inputs and outputs then share a causal timeline coordinated by block-causal attention. The model maps this world and streaming multimodal user input to language-form speech and behavior actions. These predicted tokens condition synchronized audio-video generation. In the agent text stream, phrases inside parentheses denote free-form behavior, while text outside parentheses is spoken by the agent.">
+                    <figcaption>Figure 2 : The world context is tokenized and prefilled once before streaming. Language, audio, and video inputs and outputs then share a causal timeline coordinated by block-causa...</figcaption>
+                  </figure>
+                  <p>将持久上下文和变化事件分离，并以固定 streaming unit 在线更新。
+阅读时需要把方法设计与主要结果一起看：原文报告 160 ms streaming unit 和约 200 ms 模型侧响应延迟。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文报告 160 ms streaming unit 和约 200 ms 模型侧响应延迟。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要把通用语义 world/event 改造成物理可解释结构。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 可见光在线记忆层。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在离线数据上做 world/event 分解，确认事件 token 是否覆盖已知破裂前兆区域，再进入实时部署评估。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>Video = World + Event Stream</h3>
+              <p class="paper__subtitle">Video = World + Event Stream</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它把视频理解重新组织成稳定 world state 与持续变化 event stream，并给出 160 ms streaming unit、约 200 ms 模型侧响应延迟的实时设计，对 P3 的可见光证据缓存很贴近。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lianghua Huang, Zhi-Fan Wu, Yupeng Shi, Wei Wang, Mengyang Feng, Cheng Yu 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15038" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.15038" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它把视频理解重新组织成稳定 world state 与持续变化 event stream，并给出 160 ms streaming unit、约 200 ms 模型侧响应延迟的实时设计，对 P3 的可见光证据缓存很贴近。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 可见光视频里的背景结构、视角和装置状态相对稳定，真正用于提前报警的是局部亮度、边界、碎裂或运动事件。全量帧序列建模浪费显存，也不利于解释。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它把视频理解重新组织成稳定 world state 与持续变化 event stream，并给出 160 ms streaming unit、约 200 ms 模型侧响应延迟的实时设计，对 P3 的可见光证据缓存很贴近。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何将长视频历史组织成稳定背景与动态事件，使模型在低延迟下持续响应？
+对当前主题的关键意义在于：最小实验是把可见光帧分解成 shot-level world state、短期 ROI event stream 和诊断时序 token，比较全帧输入与 world/event 输入的延迟、显存、提前量和解释质量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/45e2480dffb466ff.png" alt="Figure 2 : The world context is tokenized and prefilled once before streaming. Language, audio, and video inputs and outputs then share a causal timeline coordinated by block-causal attention. The model maps this world and streaming multimodal user input to language-form speech and behavior actions. These predicted tokens condition synchronized audio-video generation. In the agent text stream, phrases inside parentheses denote free-form behavior, while text outside parentheses is spoken by the agent.">
+                    <figcaption>Figure 2 : The world context is tokenized and prefilled once before streaming. Language, audio, and video inputs and outputs then share a causal timeline coordinated by block-causa...</figcaption>
+                  </figure>
+                  <p>论文提出 Wan-Streamer v0.3，将 world 定义为环境、主体、声音等持久上下文，将 event stream 定义为时变行为、场景变化和声音变化，并用通用预训练任务学习实时响应。
+阅读时需要把方法设计与主要结果一起看：摘要给出 640x368、25 FPS、160 ms streaming unit，模型侧响应约 200 ms，总交互延迟约 550 ms 的运行点。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要给出 640x368、25 FPS、160 ms streaming unit，模型侧响应约 200 ms，总交互延迟约 550 ms 的运行点。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是科学诊断模型，且 event stream 是语义事件而非 event camera 原始事件；需要把语义 world/event 映射成物理 ROI 和诊断事件。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P3 可见光长视频记忆组织方案。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把可见光帧分解成 shot-level world state、短期 ROI event stream 和诊断时序 token，比较全帧输入与 world/event 输入的延迟、显存、提前量和解释质量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>ESAR：事件相机合成孔径反问题重建</h3>
+              <p class="paper__subtitle">ESAR: Event-Based Synthetic Aperture Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它直接把异步 polarity events 建成 signed temporal contrast measurement，而不是转成普通帧；对 P2 的原生事件表征、噪声建模和几何约束融合都有参考价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Harbir Antil, Daniel Blauvelt, David Sayre</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15073" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.15073" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.15073" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它直接把异步 polarity events 建成 signed temporal contrast measurement，而不是转成普通帧；对 P2 的原生事件表征、噪声建模和几何约束融合都有参考价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 的关键门槛是保留原生异步事件的信息。若直接 voxelize 或固定长度采样，可能把事件时间结构和几何约束抹平。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它直接把异步 polarity events 建成 signed temporal contrast measurement，而不是转成普通帧；对 P2 的原生事件表征、噪声建模和几何约束融合都有参考价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何利用事件相机的运动和时间差分机制，恢复稳定场景结构并显式建模噪声？
+对当前主题的关键意义在于：最小实验是在 EventPAR/TriPro 中加入基于事件时间差分的一致性损失或局部几何重建辅助头，比较转帧、voxel 和反问题约束表征的属性鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a77d4439ff00bbf8.png" alt="Figure 4 : Regularization ablation study. Rows correspond to the regularization parameter λ ∈ { 0.1 , 0.2 , 0.3 , 0.4 , 0.5 } \lambda\in\{0.1,0.2,0.3,0.4,0.5\} , while columns compare TV and quadratic L 2 L^{2} regularization on the same reconstruction task. All reconstructions are super-resolved to 1920 × 1440 1920\times 1440 using a 5 × 5 5\times 5 kernel. As λ \lambda increases, both models become smoother, with TV preserving sharper scene boundaries and L 2 L^{2} producing more diffuse transitions.">
+                    <figcaption>Figure 4 : Regularization ablation study. Rows correspond to the regularization parameter λ ∈ { 0.1 , 0.2 , 0.3 , 0.4 , 0.5 } \lambda\in\{0.1,0.2,0.3,0.4,0.5\} , while columns comp...</figcaption>
+                  </figure>
+                  <p>论文把地面域 log-radiance field 记为固定场 theta，通过运动相关投影 P 和时间差分算子 A 建成 AP theta = b + eta，再做正则化反演。
+阅读时需要把方法设计与主要结果一起看：摘要报告在模拟数据和真实 near-nadir Falcon Neuro event 数据上恢复了连贯的大尺度空间结构，同时抑制细纹理。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在模拟数据和真实 near-nadir Falcon Neuro event 数据上恢复了连贯的大尺度空间结构，同时抑制细纹理。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它面向静态地面域重建，不直接处理动态行人属性；反演式方法在实时识别中可能偏慢。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它提供了 P2 原生事件表示的物理/几何约束视角。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 EventPAR/TriPro 中加入基于事件时间差分的一致性损失或局部几何重建辅助头，比较转帧、voxel 和反问题约束表征的属性鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>MCF-Net：运动条件多视角融合</h3>
+              <p class="paper__subtitle">Motion-Conditioned Multi-View Fusion for Myocardial Infarction Localization from Echocardiography</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它用极稀疏运动监督提取 segment-aware soft masks，再让运动条件跨视角融合修正视觉基础模型表征，是 P3 “时序选择图像局部证据”的近邻应用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Guang Yang, Wentian Xu, Siyu Wang, Betty Raman, Lei Li, Vicente Grau</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15268" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.15268" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.15268" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它用极稀疏运动监督提取 segment-aware soft masks，再让运动条件跨视角融合修正视觉基础模型表征，是 P3 “时序选择图像局部证据”的近邻应用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测中的可见光图像也有视角依赖、局部前兆和稀疏标注问题。视觉基础模型能提外观，但不一定知道哪些局部运动或结构变化与风险相关。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它用极稀疏运动监督提取 segment-aware soft masks，再让运动条件跨视角融合修正视觉基础模型表征，是 P3 “时序选择图像局部证据”的近邻应用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在弱监督下提取运动先验，并让它约束多视角视觉特征融合？
+对当前主题的关键意义在于：最小实验是用少量人工 ROI 或光流/亮度变化初始化可见光局部 mask，让诊断时序 query 融合 ROI 表征，对比全帧平均、cross-attention 和 motion-conditioned fusion。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/eb12d59afe52ea30.png" alt="Figure 1: Overview of MCF-Net. (1) Sparse Motion Modeling extracts motion embeddings ( h 2 , h 4 h^{2},h^{4} ) via CoTracker3. (2) Dual View Fusion modulates frozen EchoPrime visual features with motion via FiLM gating (Eq. 4). (3) Motion Query Attention fuses representations using Joint Motion as Q Q and Visual as K , V K,V to predict 12 segment MI distribution, optimized via ℒ c ​ l ​ s \mathcal{L}_{cls} .">
+                    <figcaption>Figure 1: Overview of MCF-Net. (1) Sparse Motion Modeling extracts motion embeddings ( h 2 , h 4 h^{2},h^{4} ) via CoTracker3. (2) Dual View Fusion modulates frozen EchoPrime visua...</figcaption>
+                  </figure>
+                  <p>MCF-Net 使用 EchoPrime 作为共享视觉基础模型，通过单个 annotated template frame 初始化点跟踪，以 motion-derived segment-aware soft masks 作为空间先验，再做 motion-conditioned fusion。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 segment-level MI localization 上达到 72.4% F1 和 84.9% accuracy，优于 motion-only、vision-only 和融合 baseline。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 segment-level MI localization 上达到 72.4% F1 和 84.9% accuracy，优于 motion-only、vision-only 和融合 baseline。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医学超声的周期运动与 tokamak 可见光前兆不同；segment mask 需要替换为磁面、边界、亮斑或人工 ROI。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P3 图像局部证据选择的强近邻模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用少量人工 ROI 或光流/亮度变化初始化可见光局部 mask，让诊断时序 query 融合 ROI 表征，对比全帧平均、cross-attention 和 motion-conditioned fusion。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>ViPS：多视觉先验动态融合的空间理解 MLLM</h3>
+              <p class="paper__subtitle">Beyond Single Expert: Harmonizing Diverse Visual Priors in MLLMs for Spatial Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-16</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-16。它发现不同基础模型提供互补空间先验，并用动态融合注入 MLLM，可迁移到 P3 多视觉诊断先验融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xiao Lin, Xiaohu Huang, Kai Han</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.15054" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.15054" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-16。它发现不同基础模型提供互补空间先验，并用动态融合注入 MLLM，可迁移到 P3 多视觉诊断先验融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可见光、IR、分割模型、深度/边界模型都可能提供局部前兆线索。固定选择单一视觉 backbone 容易在某些工况下失效。
+从本日报的选取理由看，新增 / arXiv 2026-07-16。它发现不同基础模型提供互补空间先验，并用动态融合注入 MLLM，可迁移到 P3 多视觉诊断先验融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何以较小额外开销引入多个视觉专家，并按上下文动态选择有效先验？
+对当前主题的关键意义在于：最小实验是让分割、光流、亮度异常和基础视觉编码器各自产生 proxy token，由诊断时序 query 动态选择，比较是否抑制无关视觉信息。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2c7ba1909c9bbd41.png" alt="Figure 1: Comparison of Existing Single-Expert Paradigms and Our Multi-Prior Framework. Top-left: Existing paradigms typically rely on a single external encoder (e.g., VGGT) to provide visual priors for MLLMs. Bottom-left: In contrast, our approach integrates diverse knowledge from multiple expert models into the MLLM. Middle and right: Extensive evaluations demonstrate that our method achieves state-of-the-art performance across multiple benchmarks.">
+                    <figcaption>Figure 1: Comparison of Existing Single-Expert Paradigms and Our Multi-Prior Framework. Top-left: Existing paradigms typically rely on a single external encoder (e.g., VGGT) to pro...</figcaption>
+                  </figure>
+                  <p>ViPS 用 Efficient Prior Proxy 生成多个基础先验，再通过 Dynamic Prior Fusion 做 context-aware 注入，避免直接运行多个完整专家造成高开销。
+阅读时需要把方法设计与主要结果一起看：摘要报告其在多个复杂空间推理和 3D 空间理解 benchmark 上达到新 SOTA。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告其在多个复杂空间推理和 3D 空间理解 benchmark 上达到新 SOTA。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>空间推理 benchmark 与聚变物理前兆差距大；动态融合权重需要受物理质量或不确定性约束。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 多视觉先验融合的远期模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是让分割、光流、亮度异常和基础视觉编码器各自产生 proxy token，由诊断时序 query 动态选择，比较是否抑制无关视觉信息。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
