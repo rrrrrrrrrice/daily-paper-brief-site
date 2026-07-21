@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-22</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-22 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-22 05:12:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- 今天有新的 arXiv 批次，主推荐不需要回看补位。最值得先看的是：不规则时序因果发现把 PCMCI+ 从固定离散 lag 改成时间窗口聚合，直接贴近稀疏异步诊断因果图；Adaptive Mamba Neural Operators 把 SSM 与可解释核表示结合，适合高维 PDE/等离子体代理的线性序列骨干；GigaPath-Flash 用蒸馏和 LongNet 把超大病理切片推理成本压低，给 P3 的高分辨率可见光证据压缩提供工程模板；O-VAD 用对象状态轨迹和 VLM 推理做工业视频异常检测，贴近破裂前兆的局部视觉证据选择；ORB5X 展示了 AI 辅助 Fortran 到 C++/Kokkos 的聚变 PIC 代码迁移和逐项验证流程。固定顶会/顶刊回看分区独立保留 Time-MoE（ICLR 2025）和 Efficient Event Camera Data Pretraining with Adaptive Prompt Fusion（ICCV 2025）。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 Time-MoE：十亿级时序基础模型的专家路由</a></li>
+              <li><a href="#paper-2">02 Adaptive Prompt Fusion：事件相机数据的高效预训练</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-3">03 Causal Discovery on Irregular Time Series：不规则事件流因果图</a></li>
+              <li><a href="#paper-4">04 Adaptive Mamba Neural Operators：SSM 神经算子</a></li>
+              <li><a href="#paper-5">05 Feature Attribution PPM：长事件轨迹的分段 SHAP 解释</a></li>
+              <li><a href="#paper-6">06 Diff-Logic EEG：面向边缘设备的布尔逻辑分类器</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-10">10 ORB5X：AI 辅助聚变 PIC 代码迁移与验证</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发</a>
+            <ul>
+              <li><a href="#paper-11">11 P1-1. Causal Discovery on Irregular Time Series</a></li>
+              <li><a href="#paper-12">12 P1-2. Adaptive Mamba Neural Operators</a></li>
+              <li><a href="#paper-13">13 P2-1. PFM-VEPAR：RGB-Event PAR 的事件提示器</a></li>
+              <li><a href="#paper-14">14 P2-2. Adaptive Prompt Fusion：事件相机高效预训练</a></li>
+              <li><a href="#paper-15">15 P3-1. O-VAD：对象轨迹驱动的视频异常解释</a></li>
+              <li><a href="#paper-16">16 P3-2. GigaPath-Flash / GigaTIME-Flash：高分辨率视觉 token 压缩</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-7">07 GigaPath-Flash / GigaTIME-Flash：可部署的超大图像基础模型</a></li>
+              <li><a href="#paper-8">08 O-VAD：对象中心工业视频异常检测</a></li>
+              <li><a href="#paper-9">09 Robust Multimodal Dynamic Object Segmentation：多线索动态对象分割</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">Causal Discovery on Irregular Time Series：不规则事件流因果图</a></h3>
+              <p class="card__subtitle">Causal Discovery on Irregular Time Series</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-20。它不再假设规则采样和固定 lag，而是把因果影响聚合到预定义时间窗口，对稀疏异步传感器、医疗事件流和金融交易流更合适，适合作为 P1 诊断通道因果结构发现的轻量基线。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Adaptive Mamba Neural Operators：SSM 神经算子</a></h3>
+              <p class="card__subtitle">Adaptive Mamba Neural Operators</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-20，评论标注 ICLR 2026 accepted。它把 Takenaka-Malmquist 系统和 reproducing kernels 引入 SSM 神经算子，在点云、结构网格和不规则区域 PDE 上提升相对误差，对聚变湍流代理和高低频统一建模都有直接机制启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">GigaPath-Flash / GigaTIME-Flash：可部署的超大图像基础模型</a></h3>
+              <p class="card__subtitle">GigaPath-Flash and GigaTIME-Flash: Efficient Pathology Foundation Models for Whole-Slide and Tumor Microenvironment Analysis</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-20。它用 22M ViT-S tile encoder、21M LongNet slide encoder 和大模型蒸馏，在保留接近原 GigaPath slide-level 性能的同时显著降低计算量；对 P3 高分辨率可见光图像局部证据压缩很有参考价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">O-VAD：对象中心工业视频异常检测</a></h3>
+              <p class="card__subtitle">O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-20</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-20，评论标注 ECCV 2026 accepted。它用对象状态演化轨迹和训练无关的 agentic VLM 推理识别工业过程异常，强调物理和工序约束下的可解释异常报告，适合作为 P3 可见光前兆解释模块参考。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-10">ORB5X：AI 辅助聚变 PIC 代码迁移与验证</a></h3>
+              <p class="card__subtitle">ORB5X v1.0: a performance-portable global electromagnetic gyrokinetic PIC code in C++/Kokkos built using Agentic AI</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变与 AI 交叉</span>
+                <span class="chip chip--muted">2026-07-19</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-19。本轮聚变 AI 工程链路最强相关条目；它把 ORB5 用 AI 辅助流程迁移为 C++17/Kokkos，并用 ITG、ITPA、chirping 初测证明与 Fortran 参考接近机器精度一致。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Time-MoE：十亿级时序基础模型的专家路由</h3>
+              <p class="paper__subtitle">Time-MoE: Billion-Scale Time Series Foundation Models with Mixture of Experts</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。ICLR 2025；今天用它重新映射 Adaptive Mamba Neural Operators：P1 需要在长上下文中动态分配模型容量，MoE 路由可作为高频诊断压缩后再与低频通道交互的对照骨干。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>OpenReview 页面核验</p>
+                <p class="muted">作者与机构以会议页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=e1wDDFmlVu" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。ICLR 2025；今天用它重新映射 Adaptive Mamba Neural Operators：P1 需要在长上下文中动态分配模型容量，MoE 路由可作为高频诊断压缩后再与低频通道交互的对照骨干。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>大规模时序基础模型开始从单一密集 Transformer 转向可扩展和可路由结构。聚变诊断数据既有常规低频控制量，也有高频海量波形，统一模型如果所有 token 都走同一容量会浪费显存。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。ICLR 2025；今天用它重新映射 Adaptive Mamba Neural Operators：P1 需要在长上下文中动态分配模型容量，MoE 路由可作为高频诊断压缩后再与低频通道交互的对照骨干。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在大规模时序预训练中按输入片段和任务动态调用专家，提升容量利用率和跨任务迁移能力？
+对当前主题的关键意义在于：最小实验是在现有诊断时序上对比 dense backbone、按采样率分专家 MoE、按通道族分专家 MoE，记录 AUC、提前量、显存和吞吐。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文使用稀疏 MoE 架构进行时序预测，让不同专家学习不同频段、形态或任务族的模式，并通过路由机制降低每次前向的有效计算。
+阅读时需要把方法设计与主要结果一起看：OpenReview 核验其为 ICLR 2025 论文；论文报告十亿级 TSFM 在多数据集预测上具有较强泛化能力。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 核验其为 ICLR 2025 论文；论文报告十亿级 TSFM 在多数据集预测上具有较强泛化能力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它主要面向规则或统一切片后的预测，不直接处理真实时间间隔、异步通道和在线报警延迟。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1 长序列容量路由和 P3 多模态分支路由的顶会回看基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有诊断时序上对比 dense backbone、按采样率分专家 MoE、按通道族分专家 MoE，记录 AUC、提前量、显存和吞吐。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Adaptive Prompt Fusion：事件相机数据的高效预训练</h3>
+              <p class="paper__subtitle">Efficient Event Camera Data Pretraining with Adaptive Prompt Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICCV 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。ICCV 2025；今天用它重新映射 P2 的事件前端：它强调在保留事件时空结构的同时减少稀疏区域干扰，比简单事件成帧后接 RGB backbone 更适合作为 TriPro-ReID 的轻量事件预训练替换项。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF 页面核验</p>
+                <p class="muted">作者与机构以 CVF 论文页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/ICCV2025/html/Liang_Efficient_Event_Camera_Data_Pretraining_with_Adaptive_Prompt_Fusion_ICCV_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。ICCV 2025；今天用它重新映射 P2 的事件前端：它强调在保留事件时空结构的同时减少稀疏区域干扰，比简单事件成帧后接 RGB backbone 更适合作为 TriPro-ReID 的轻量事件预训练替换项。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机在低光、高速和 HDR 场景中有优势，但事件流稀疏、噪声高、与 RGB 语义空间不一致。直接把事件转成帧会丢掉异步触发结构。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。ICCV 2025；今天用它重新映射 P2 的事件前端：它强调在保留事件时空结构的同时减少稀疏区域干扰，比简单事件成帧后接 RGB backbone 更适合作为 TriPro-ReID 的轻量事件预训练替换项。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用较小训练成本得到可迁移的事件表征，并支持分类、分割、光流等下游任务？
+对当前主题的关键意义在于：最小实验是在 EventPAR 或 TriPro 事件分支中替换为 prompt-fusion 预训练 encoder，固定 RGB 分支，对比属性 mA、低光子集和缺事件鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文使用自适应 prompt 融合做事件数据预训练，在稀疏事件区域和细粒度结构之间做表征调节，降低训练参数和 epoch 需求。
+阅读时需要把方法设计与主要结果一起看：CVF 页面核验其为 ICCV 2025；页面摘要报告 N-ImageNet top-1 提升且只使用更少预训练参数和训练轮次。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 页面核验其为 ICCV 2025；页面摘要报告 N-ImageNet top-1 提升且只使用更少预训练参数和训练轮次。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是属性识别论文，也没有直接处理 RGB/Event 时钟不同步、模态缺失和属性不确定性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P2 原生事件预训练和轻量迁移的优先回看项。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 EventPAR 或 TriPro 事件分支中替换为 prompt-fusion 预训练 encoder，固定 RGB 分支，对比属性 mA、低光子集和缺事件鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Causal Discovery on Irregular Time Series：不规则事件流因果图</h3>
+              <p class="paper__subtitle">Causal Discovery on Irregular Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-20。它不再假设规则采样和固定 lag，而是把因果影响聚合到预定义时间窗口，对稀疏异步传感器、医疗事件流和金融交易流更合适，适合作为 P1 诊断通道因果结构发现的轻量基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Martim Penim, Ricardo Ribeiro Pereira, Jacopo Bono, Hugo Ferreira, Mário A.T. Figueiredo, Pedro Bizarro</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18226" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.18226" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.18226" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-20。它不再假设规则采样和固定 lag，而是把因果影响聚合到预定义时间窗口，对稀疏异步传感器、医疗事件流和金融交易流更合适，适合作为 P1 诊断通道因果结构发现的轻量基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断通道之间既有物理耦合，也有采样率、延迟和缺失机制差异。常见时序因果发现要求规则采样和固定离散滞后，容易把采样制度误当成物理因果。
+从本日报的选取理由看，新增 / arXiv 2026-07-20。它不再假设规则采样和固定 lag，而是把因果影响聚合到预定义时间窗口，对稀疏异步传感器、医疗事件流和金融交易流更合适，适合作为 P1 诊断通道因果结构发现的轻量基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在事件时间不规则、采样间隔不一致的多变量序列上恢复因果图？
+对当前主题的关键意义在于：先在 EAST/DIII-D 诊断小通道集合上按物理延迟设 3-5 个窗口，比较规则重采样 PCMCI+、窗口 PCMCI+ 和深度图模型的因果边稳定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/07f9aae987236182.png" alt="Figure 5 : Illustration of the window configurations utilized in Experiment 1.">
+                    <figcaption>Figure 5 : Illustration of the window configurations utilized in Experiment 1.</figcaption>
+                  </figure>
+                  <p>论文扩展 PCMCI+，不再用固定 lag 依赖建模因果边，而是在预定义时间窗口内聚合因果影响，从而适配不规则事件流。
+阅读时需要把方法设计与主要结果一起看：摘要报告在已知因果结构的合成不规则事件流上，在不同信噪比下能稳定恢复底层因果图，并显著优于标准 PCMCI+。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在已知因果结构的合成不规则事件流上，在不同信噪比下能稳定恢复底层因果图，并显著优于标准 PCMCI+。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>窗口边界需要人工设定；目前验证集中在合成事件流，对高频海量诊断和强非平稳工况还需测试。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1 中“保留真实时间间隔并建模异步通道耦合”的直接候选工具。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在 EAST/DIII-D 诊断小通道集合上按物理延迟设 3-5 个窗口，比较规则重采样 PCMCI+、窗口 PCMCI+ 和深度图模型的因果边稳定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Adaptive Mamba Neural Operators：SSM 神经算子</h3>
+              <p class="paper__subtitle">Adaptive Mamba Neural Operators</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-20，评论标注 ICLR 2026 accepted。它把 Takenaka-Malmquist 系统和 reproducing kernels 引入 SSM 神经算子，在点云、结构网格和不规则区域 PDE 上提升相对误差，对聚变湍流代理和高低频统一建模都有直接机制启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zeyuan Song, Zheyu Jiang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18043" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.18043" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.18043" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-20，评论标注 ICLR 2026 accepted。它把 Takenaka-Malmquist 系统和 reproducing kernels 引入 SSM 神经算子，在点云、结构网格和不规则区域 PDE 上提升相对误差，对聚变湍流代理和高低频统一建模都有直接机制启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变等离子体模拟常见高维 PDE、复杂几何和非均匀网格。传统 FNO 在规则网格上有效，但面对点云、不规则边界和跨几何泛化时受限。
+从本日报的选取理由看，新增 / arXiv 2026-07-20，评论标注 ICLR 2026 accepted。它把 Takenaka-Malmquist 系统和 reproducing kernels 引入 SSM 神经算子，在点云、结构网格和不规则区域 PDE 上提升相对误差，对聚变湍流代理和高低频统一建模都有直接机制启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何构造既有线性序列复杂度潜力、又能表达复杂 PDE 解流形的神经算子？
+对当前主题的关键意义在于：最小实验是用现有 Braginskii 或 MHD surrogate 数据，把 FNO/KNO 与 AMO 在同一网格和跨网格设置下比较误差、显存和 rollout 能量漂移。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>AMO 用 reproducing kernels for SSMs 替代传统 SSM kernel integral 视角，并构造 Takenaka-Malmquist 系统，使模型与 adaptive Fourier decomposition 理论对齐。
+阅读时需要把方法设计与主要结果一起看：摘要报告在流体、固体和金融 PDE benchmark 上，覆盖点云、结构网格、规则网格和不规则区域，并在相对 L2 误差上优于已有求解器。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在流体、固体和金融 PDE benchmark 上，覆盖点云、结构网格、规则网格和不规则区域，并在相对 L2 误差上优于已有求解器。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要未给出长程 rollout 稳定性和显存曲线；从通用 PDE 到托卡马克边界湍流还需要物理量守恒和约束测试。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它可作为高频压缩后连续场代理的 Mamba/SSM 神经算子强基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用现有 Braginskii 或 MHD surrogate 数据，把 FNO/KNO 与 AMO 在同一网格和跨网格设置下比较误差、显存和 rollout 能量漂移。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Feature Attribution PPM：长事件轨迹的分段 SHAP 解释</h3>
+              <p class="paper__subtitle">Feature Attribution-Based Explainability Analysis of Deep Learning Models in Predictive Process Monitoring</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它把长事件轨迹按控制流分段后做 segment-level SHAP，避免逐事件解释复杂度过高，也比整条 trace 聚合更能定位状态转折。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Kseniya Sahatova, Rafael Seidi Oyamada, Xuefei Lu, Johannes De Smedt</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.17783" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.17783" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.17783" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它把长事件轨迹按控制流分段后做 segment-level SHAP，避免逐事件解释复杂度过高，也比整条 trace 聚合更能定位状态转折。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测和工业过程监测都需要解释“哪一段前兆”推动了报警。逐采样点归因在长序列上昂贵，整段归因又会掩盖关键转折。
+从本日报的选取理由看，新增。它把长事件轨迹按控制流分段后做 segment-level SHAP，避免逐事件解释复杂度过高，也比整条 trace 聚合更能定位状态转折。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在长事件序列预测中兼顾解释粒度、计算成本和控制流语义？
+对当前主题的关键意义在于：最小实验是把一次放电脉冲切成 ramp-up、flat-top、异常爬升和终止前窗口，对现有破裂模型做窗口级 SHAP，与专家标注前兆段对齐评估。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文提出 control-flow-aware segmentation，把轨迹划分成有意义片段，再计算片段级 SHAP，用于识别影响预测的阶段和 change point。
+阅读时需要把方法设计与主要结果一起看：摘要报告在已知过程逻辑的合成数据上能验证 change point，并在贷款和市政管理真实事件日志上展示实用性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在已知过程逻辑的合成数据上能验证 change point，并在贷款和市政管理真实事件日志上展示实用性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>应用领域是业务过程事件日志，不是连续高频传感器；分段算法需要改造才能处理多采样率诊断。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P3 报警解释的后处理候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把一次放电脉冲切成 ramp-up、flat-top、异常爬升和终止前窗口，对现有破裂模型做窗口级 SHAP，与专家标注前兆段对齐评估。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Diff-Logic EEG：面向边缘设备的布尔逻辑分类器</h3>
+              <p class="paper__subtitle">Differentiable Logic Gate Networks for Low-Latency EEG Classification on Edge Devices</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / PMLR 2026。它把神经分类器编译为布尔电路，在低功耗 Jetson CPU 上获得更小模型和更低延迟，对 P3 实时报警边缘部署有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shyamal Y. Dharia, Stephen D. Smith, Camilo E. Valderrama</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18149" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.18149" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.18149" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / PMLR 2026。它把神经分类器编译为布尔电路，在低功耗 Jetson CPU 上获得更小模型和更低延迟，对 P3 实时报警边缘部署有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂早预警部署常受延迟、功耗和可维护性约束。即使离线模型精度较高，在线控制链路也需要可预测的推理时间和很小内存占用。
+从本日报的选取理由看，新增 / PMLR 2026。它把神经分类器编译为布尔电路，在低功耗 Jetson CPU 上获得更小模型和更低延迟，对 P3 实时报警边缘部署有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用硬件原生逻辑网络替代浮点 MLP，在保持可用精度的同时降低延迟和模型大小？
+对当前主题的关键意义在于：最小实验是在冻结时序编码器后，把 MLP 分类头替换为 Diff-Logic head，比较提前量、误报率、CPU 延迟和模型大小。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5cc987da96d7a398.png" alt="Table 1 . Impact of Model Scale on Classification Performance (Macro F1-Score).">
+                    <figcaption>Table 1 . Impact of Model Scale on Classification Performance (Macro F1-Score).</figcaption>
+                  </figure>
+                  <p>论文研究 Differentiable Logic Gate Networks，将模型编译成通过 bitwise CPU 操作执行的布尔电路，并与等参数 MLP/BNN 比较。
+阅读时需要把方法设计与主要结果一起看：摘要报告 dementia EEG 任务上 Macro F1 达 80.2%，较 MLP 高 6.8%；情绪识别中 MLP略优但延迟高 2.3 倍、模型大 14 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 dementia EEG 任务上 Macro F1 达 80.2%，较 MLP 高 6.8%；情绪识别中 MLP略优但延迟高 2.3 倍、模型大 14 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是 EEG 分类，不涉及多模态融合和不规则采样；逻辑门模型容量可能限制复杂前兆模式。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它可作为实时破裂预测最后一层轻量判别头的工程备选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在冻结时序编码器后，把 MLP 分类头替换为 Diff-Logic head，比较提前量、误报率、CPU 延迟和模型大小。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>ORB5X：AI 辅助聚变 PIC 代码迁移与验证</h3>
+              <p class="paper__subtitle">ORB5X v1.0: a performance-portable global electromagnetic gyrokinetic PIC code in C++/Kokkos built using Agentic AI</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-19</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-19。本轮聚变 AI 工程链路最强相关条目；它把 ORB5 用 AI 辅助流程迁移为 C++17/Kokkos，并用 ITG、ITPA、chirping 初测证明与 Fortran 参考接近机器精度一致。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mohsen Sadr, Emmanuel Lanti, Alexey Mishchenko, Xin Wang, Laurent Villard</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.17363" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.17363" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.17363" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-19。本轮聚变 AI 工程链路最强相关条目；它把 ORB5 用 AI 辅助流程迁移为 C++17/Kokkos，并用 ITG、ITPA、chirping 初测证明与 Fortran 参考接近机器精度一致。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变 AI 不只需要训练代理模型，也需要可维护、可移植、可验证的高性能仿真代码。老 Fortran 代码迁移到 GPU/HPC 友好框架时，最难的是保持物理和数值等价。
+从本日报的选取理由看，新增 / arXiv 2026-07-19。本轮聚变 AI 工程链路最强相关条目；它把 ORB5 用 AI 辅助流程迁移为 C++17/Kokkos，并用 ITG、ITPA、chirping 初测证明与 Fortran 参考接近机器精度一致。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用 AI 辅助迁移复杂回旋动理学 PIC 代码，同时确保数学模型、数值算法和诊断输出与参考实现一致？
+对当前主题的关键意义在于：最小实验是抽取一个 Fortran 诊断预处理或 MHD 数据转换模块，用 LLM 辅助迁移到 C++/Python 并建立逐样本数值一致性、性能和边界条件回归测试。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/33fc0976f02347b8.png" alt="Figure 2 . Agentic-AI workflow used in the ORB5X translation. The structure reflects current coding-agent practice, i.e. a core LLM thread is supplied with compacted project context, memory, specialized agents, permissioned developer tools, language-server and compiler feedback, and automated execution results. In ORB5X, acceptance remained tied to developer review and numerical evidence, especially HDF5 parity against the Fortran reference across CPU, GPU, and multi-rank configurations.">
+                    <figcaption>Figure 2 . Agentic-AI workflow used in the ORB5X translation. The structure reflects current coding-agent practice, i.e. a core LLM thread is supplied with compacted project contex...</figcaption>
+                  </figure>
+                  <p>ORB5X 将 ORB5 迁移为 C++17/Kokkos，保留 Lagrangian gyrokinetic formulation、marker particles、finite-element B-spline fields、Fourier filtering、MPI domain decomposition、HDF5 diagnostic output，并用 typed classes、Kokkos Views/kernels 实现性能可移植。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 ITG、ITPA 和 chirping 初测中，静电和电磁场分量与 ORB5 达到几乎机器精度一致；代码可在个人 Linux/Mac 和 LUMI、ALPS、CINECA、Discoverer 等 HPC 平台编译运行。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它没有提出新的学习算法，也不解决破裂预测；AI 辅助代码迁移的可复现流程和错误审计仍需细读全文。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合纳入聚变 AI 工程基础设施阅读线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是抽取一个 Fortran 诊断预处理或 MHD 数据转换模块，用 LLM 辅助迁移到 C++/Python 并建立逐样本数值一致性、性能和边界条件回归测试。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>直接破裂预测 + 可见光/诊断时序融合：本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>英文原标题：本轮空缺判断</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-07-22 检索截止前</p>
+          <p>论文链接：[检索空缺记录](https://arxiv.org/list/physics.plasm-ph/recent)</p>
+          <p>选取理由：本轮空缺判断。已补查 tokamak disruption prediction、plasma diagnostics、visible diagnostics、vision time series fusion、multimodal disruption prediction 等组合，未发现 2026-07-21 批次中有高质量新增或实质更新的直接论文。</p>
+          <p>研究背景：近期聚变 AI 新稿更多集中在湍流代理、数值代码和诊断鲁棒性评估，直接把可见光图像与诊断时序融合用于实时破裂预测的工作仍稀缺。</p>
+          <p>核心问题：缺少同时满足异步多采样率、多模态缺失、低延迟部署和跨装置评估的新增论文。</p>
+          <p>方法与关键创新：不适用；本条仅记录检索空缺，避免用泛化视频异常或普通图像融合论文冒充破裂预测进展。</p>
+          <p>主要结果：不适用。</p>
+          <p>局限性：空缺判断依赖本轮检索窗口；可能漏掉尚未被 arXiv 索引或仅在会议系统中更新的工作。</p>
+          <p>总结：P3 今日应读取跨领域机制论文，而不是等待直接同题论文。</p>
+          <p>研究相关性：后续继续监测 DIII-D、JET、KSTAR、EAST、ITER 相关诊断融合与 disruption prediction 更新。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-1. Causal Discovery on Irregular Time Series</h3>
+              <p class="paper__subtitle">Causal Discovery on Irregular Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。原始应用领域是不规则事件流因果发现；可迁移模块是时间窗口因果影响聚合和 PCMCI+ 条件独立检验扩展；对应待解决问题是保留真实 Δt 并发现异步诊断通道耦合。计算/显存影响预计低于深度长序列注意力，主要成本来自窗口数和条件检验次数；不成立风险是窗口设定错误或强非线性耦合超出方法假设。最小验证实验是在 8-16 个聚变诊断通道上比较规则重采样因果图与窗口因果图的稳定性和物理可解释性。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Martim Penim, Ricardo Ribeiro Pereira, Jacopo Bono, Hugo Ferreira, Mário A.T. Figueiredo, Pedro Bizarro</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18226" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.18226" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。原始应用领域是不规则事件流因果发现；可迁移模块是时间窗口因果影响聚合和 PCMCI+ 条件独立检验扩展；对应待解决问题是保留真实 Δt 并发现异步诊断通道耦合。计算/显存影响预计低于深度长序列注意力，主要成本来自窗口数和条件检验次数；不成立风险是窗口设定错误或强非线性耦合超出方法假设。最小验证实验是在 8-16 个聚变诊断通道上比较规则重采样因果图与窗口因果图的稳定性和物理可解释性。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 的难点不是只做预测，而是让模型知道哪些高频和低频通道在真实时间上有先后影响。窗口化因果发现能先给出可审计的结构先验。
+从本日报的选取理由看，【P1】新增。原始应用领域是不规则事件流因果发现；可迁移模块是时间窗口因果影响聚合和 PCMCI+ 条件独立检验扩展；对应待解决问题是保留真实 Δt 并发现异步诊断通道耦合。计算/显存影响预计低于深度长序列注意力，主要成本来自窗口数和条件检验次数；不成立风险是窗口设定错误或强非线性耦合超出方法假设。最小验证实验是在 8-16 个聚变诊断通道上比较规则重采样因果图与窗口因果图的稳定性和物理可解释性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在采样间隔不固定的多变量事件序列上恢复跨通道影响关系？
+对当前主题的关键意义在于：先产出通道因果边，再作为 graph prior 加入现有时序模型，检查跨采样率测试集鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/07f9aae987236182.png" alt="Figure 5 : Illustration of the window configurations utilized in Experiment 1.">
+                    <figcaption>Figure 5 : Illustration of the window configurations utilized in Experiment 1.</figcaption>
+                  </figure>
+                  <p>把固定 lag 因果关系替换为时间窗口内影响聚合，使 PCMCI+ 能处理不规则采样。
+阅读时需要把方法设计与主要结果一起看：摘要报告合成不规则事件流上稳定恢复因果图，并优于标准 PCMCI+。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告合成不规则事件流上稳定恢复因果图，并优于标准 PCMCI+。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>窗口选择敏感；不能直接替代端到端高频模型。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合先作为诊断通道图结构生成器，再输入高低频统一模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先产出通道因果边，再作为 graph prior 加入现有时序模型，检查跨采样率测试集鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-2. Adaptive Mamba Neural Operators</h3>
+              <p class="paper__subtitle">Adaptive Mamba Neural Operators</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。原始应用领域是科学工程 PDE 求解；可迁移模块是 SSM/Mamba 神经算子和可解释核基表示；对应待解决问题是避免长序列注意力显存爆炸，同时在复杂几何和多尺度场上保留长程依赖。计算/显存影响预计接近线性序列骨干，但 PDE operator 部分会引入网格/点云投影成本；风险是它未证明高频诊断点流和低频通道的联合建模。最小验证实验是在同一 Braginskii/KNO 数据上比较 AMO、KNO、FNO 的跨网格误差、显存和 rollout 稳定性。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zeyuan Song, Zheyu Jiang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18043" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.18043" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。原始应用领域是科学工程 PDE 求解；可迁移模块是 SSM/Mamba 神经算子和可解释核基表示；对应待解决问题是避免长序列注意力显存爆炸，同时在复杂几何和多尺度场上保留长程依赖。计算/显存影响预计接近线性序列骨干，但 PDE operator 部分会引入网格/点云投影成本；风险是它未证明高频诊断点流和低频通道的联合建模。最小验证实验是在同一 Braginskii/KNO 数据上比较 AMO、KNO、FNO 的跨网格误差、显存和 rollout 稳定性。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高频聚变诊断可以视作连续场或高密度时间-空间采样，Mamba/SSM 的线性复杂度适合长序列，但需要科学算子结构来避免纯序列模型丢物理。
+从本日报的选取理由看，【P1】新增。原始应用领域是科学工程 PDE 求解；可迁移模块是 SSM/Mamba 神经算子和可解释核基表示；对应待解决问题是避免长序列注意力显存爆炸，同时在复杂几何和多尺度场上保留长程依赖。计算/显存影响预计接近线性序列骨干，但 PDE operator 部分会引入网格/点云投影成本；风险是它未证明高频诊断点流和低频通道的联合建模。最小验证实验是在同一 Braginskii/KNO 数据上比较 AMO、KNO、FNO 的跨网格误差、显存和 rollout 稳定性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把线性状态空间骨干扩展为可解释、跨几何的 PDE 神经算子？
+对当前主题的关键意义在于：在现有高频诊断片段上加入 Δt embedding 和采样率 token，测试 AMO 是否比 Transformer 更省显存且保持预测提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>用 Takenaka-Malmquist 系统构造 SSM reproducing kernel，使模型与 adaptive Fourier decomposition 理论相连。
+阅读时需要把方法设计与主要结果一起看：摘要报告多类 PDE benchmark 上相对 L2 误差优于已有求解器。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告多类 PDE benchmark 上相对 L2 误差优于已有求解器。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>暂未看到在线 streaming、缺失通道和真实 Δt 的验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为高频压缩和连续场代理的强候选，但需要与时间戳编码结合。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在现有高频诊断片段上加入 Δt embedding 和采样率 token，测试 AMO 是否比 Transformer 更省显存且保持预测提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-1. PFM-VEPAR：RGB-Event PAR 的事件提示器</h3>
+              <p class="paper__subtitle">PFM-VEPAR: Prompting Foundation Models for RGB-Event Camera based Pedestrian Attribute Recognition</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-03-20</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】非当日新增 / 回看推荐；本轮 RGB-Event 属性新增强稿空缺。原始应用领域是 RGB-Event pedestrian attribute recognition；可迁移模块是 DCT/IDCT 轻量 Event Prompter、Hopfield memory bank 和 cross-attention 融合；对应待解决问题是避免昂贵双 backbone 和直接特征相加。计算/显存影响预计显著低于独立事件 backbone；风险是频域事件提示仍可能弱化原生异步时间。最小验证实验是在 TriPro-ReID 中只替换 event 分支为 Event Prompter，冻结 RGB backbone，对比 mA、F1、低光和运动模糊子集。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Minghe Xu, Rouying Wu, ChiaWei Chu, Xiao Wang, Yu Li</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2603.19565" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2603.19565" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】非当日新增 / 回看推荐；本轮 RGB-Event 属性新增强稿空缺。原始应用领域是 RGB-Event pedestrian attribute recognition；可迁移模块是 DCT/IDCT 轻量 Event Prompter、Hopfield memory bank 和 cross-attention 融合；对应待解决问题是避免昂贵双 backbone 和直接特征相加。计算/显存影响预计显著低于独立事件 backbone；风险是频域事件提示仍可能弱化原生异步时间。最小验证实验是在 TriPro-ReID 中只替换 event 分支为 Event Prompter，冻结 RGB backbone，对比 mA、F1、低光和运动模糊子集。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>TriPro-ReID 类方法若直接接入事件分支，容易增加大量计算并依赖事件成帧质量。PFM-VEPAR 的价值在于用很轻的事件提示给 RGB foundation model 补动态线索。
+从本日报的选取理由看，【P2】非当日新增 / 回看推荐；本轮 RGB-Event 属性新增强稿空缺。原始应用领域是 RGB-Event pedestrian attribute recognition；可迁移模块是 DCT/IDCT 轻量 Event Prompter、Hopfield memory bank 和 cross-attention 融合；对应待解决问题是避免昂贵双 backbone 和直接特征相加。计算/显存影响预计显著低于独立事件 backbone；风险是频域事件提示仍可能弱化原生异步时间。最小验证实验是在 TriPro-ReID 中只替换 event 分支为 Event Prompter，冻结 RGB backbone，对比 mA、F1、低光和运动模糊子集。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在 RGB-Event 属性识别中用低成本事件特征增强 RGB，而不是维护昂贵的双流模型？
+对当前主题的关键意义在于：先不改训练任务，只替换事件提示模块，测计算量、显存、属性维度收益和事件缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0e1082c911003f5d.png" alt="Figure 2: An overview of our proposed RGB-Event pedestrian attribute recognition framework, i.e., PFM-VEPAR. In this paper, we propose a lightweight, frequency-aware Event Prompter that enhances RGB feature learning with minimal computational cost. Given an RGB-Event pair, non-overlapping patches are fed into a ViT backbone and the Event Prompter. An associative memory–enhanced context mining strategy strengthens multi-modal representation, followed by cross-attention fusion and a feed-forward network for attribute prediction.">
+                    <figcaption>Figure 2: An overview of our proposed RGB-Event pedestrian attribute recognition framework, i.e., PFM-VEPAR. In this paper, we propose a lightweight, frequency-aware Event Prompter...</figcaption>
+                  </figure>
+                  <p>用 DCT/IDCT 从事件数据中提取频域事件特征，结合外部记忆库和 Hopfield 网络提供跨样本上下文，再用 cross-attention 做属性预测。
+阅读时需要把方法设计与主要结果一起看：摘要报告多个 benchmark 验证 RGB-Event PAR 框架有效，代码计划发布到 OpenPAR。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告多个 benchmark 验证 RGB-Event PAR 框架有效，代码计划发布到 OpenPAR。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是今天新增；事件频域处理可能仍依赖窗口化，开放词表和属性不确定性未充分解决。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是现有 TriPro 模块最小可替换实验的优先回看。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先不改训练任务，只替换事件提示模块，测计算量、显存、属性维度收益和事件缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-2. Adaptive Prompt Fusion：事件相机高效预训练</h3>
+              <p class="paper__subtitle">Efficient Event Camera Data Pretraining with Adaptive Prompt Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICCV 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】非当日新增 / 顶会顶刊回看推荐。原始应用领域是事件相机预训练；可迁移模块是 adaptive prompt fusion 和稀疏事件区域调节；对应待解决问题是原生事件表征和低成本预训练。计算/显存影响预计低于大规模 RGB-Event 双流预训练；风险是下游属性语义监督不足。最小验证实验是在 EventPAR 上用该预训练 encoder 初始化事件分支，再加入属性文本 prompt contrastive loss。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF 页面核验</p>
+                <p class="muted">作者与机构以 CVF 论文页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/ICCV2025/html/Liang_Efficient_Event_Camera_Data_Pretraining_with_Adaptive_Prompt_Fusion_ICCV_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】非当日新增 / 顶会顶刊回看推荐。原始应用领域是事件相机预训练；可迁移模块是 adaptive prompt fusion 和稀疏事件区域调节；对应待解决问题是原生事件表征和低成本预训练。计算/显存影响预计低于大规模 RGB-Event 双流预训练；风险是下游属性语义监督不足。最小验证实验是在 EventPAR 上用该预训练 encoder 初始化事件分支，再加入属性文本 prompt contrastive loss。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 不应只把 event stream 转成固定长度帧。事件预训练如果能保留时空结构，就能给属性识别提供更稳的动态 cue。
+从本日报的选取理由看，【P2】非当日新增 / 顶会顶刊回看推荐。原始应用领域是事件相机预训练；可迁移模块是 adaptive prompt fusion 和稀疏事件区域调节；对应待解决问题是原生事件表征和低成本预训练。计算/显存影响预计低于大规模 RGB-Event 双流预训练；风险是下游属性语义监督不足。最小验证实验是在 EventPAR 上用该预训练 encoder 初始化事件分支，再加入属性文本 prompt contrastive loss。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让事件表征既高效又能跨任务迁移？
+对当前主题的关键意义在于：先做 encoder 初始化实验，再逐步加 reliability-aware fusion 和属性文本监督，避免一次性重写模型。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>通过自适应 prompt 融合减少稀疏区域影响并强化细粒度结构，在保持事件时空结构的同时降低预训练成本。
+阅读时需要把方法设计与主要结果一起看：CVF 页面报告其在分类、语义分割和光流任务上超过已有方法，并以更少参数和 epoch 获得 N-ImageNet 提升。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 页面报告其在分类、语义分割和光流任务上超过已有方法，并以更少参数和 epoch 获得 N-ImageNet 提升。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>还需加入属性层面的不确定性和开放词表监督。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合做 P2 事件 encoder 初始化，不宜直接替代完整属性融合策略。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先做 encoder 初始化实验，再逐步加 reliability-aware fusion 和属性文本监督，避免一次性重写模型。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">05</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-1. O-VAD：对象轨迹驱动的视频异常解释</h3>
+              <p class="paper__subtitle">O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增。原始应用领域是工业视频异常检测；可迁移模块是对象级状态轨迹、训练无关 VLM 推理和 grounded anomaly report；对应待解决问题是让时序选择图像局部证据并解释异常前兆。计算/显存影响较高，VLM 推理不适合直接进实时控制环；风险是等离子体图像没有稳定对象概念。最小验证实验是离线生成可见光 pseudo-object 轨迹报告，再把报告 embedding 与诊断时序融合，比较只用全帧 CNN 的破裂预测解释性。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mei Yuan, Qi Long, Qifeng Wu, Zhenyang Li, Yizhou Zhao, Lei Wang, Yang Liu, Min Xu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18142" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.18142" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增。原始应用领域是工业视频异常检测；可迁移模块是对象级状态轨迹、训练无关 VLM 推理和 grounded anomaly report；对应待解决问题是让时序选择图像局部证据并解释异常前兆。计算/显存影响较高，VLM 推理不适合直接进实时控制环；风险是等离子体图像没有稳定对象概念。最小验证实验是离线生成可见光 pseudo-object 轨迹报告，再把报告 embedding 与诊断时序融合，比较只用全帧 CNN 的破裂预测解释性。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂前可见光图像中的局部异常未必占全图主导。对象轨迹思路可把“哪些区域发生状态变化”作为时序模型查询的视觉证据。
+从本日报的选取理由看，【P3】新增。原始应用领域是工业视频异常检测；可迁移模块是对象级状态轨迹、训练无关 VLM 推理和 grounded anomaly report；对应待解决问题是让时序选择图像局部证据并解释异常前兆。计算/显存影响较高，VLM 推理不适合直接进实时控制环；风险是等离子体图像没有稳定对象概念。最小验证实验是离线生成可见光 pseudo-object 轨迹报告，再把报告 embedding 与诊断时序融合，比较只用全帧 CNN 的破裂预测解释性。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从视频中抽取可解释、可定位的异常对象和状态转折？
+对当前主题的关键意义在于：先对历史放电视频离线生成局部异常候选，再训练轻量图像 token selector 复现这些候选。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5400a627d340f1f9.png" alt="Figure 1 : Why object state evolution matters for industrial anomaly detection. The toothpaste tube undergoes pressing and deformation before a subtle leakage emerges. Traditional methods predict binary classifications. VLM prompting fails to detect it due to the lack of evidence. O-VAD tracks object-wise state changes and produces an open-ended anomaly report with in-depth analysis.">
+                    <figcaption>Figure 1 : Why object state evolution matters for industrial anomaly detection. The toothpaste tube undergoes pressing and deformation before a subtle leakage emerges. Traditional ...</figcaption>
+                  </figure>
+                  <p>跟踪对象状态演化，再用 VLM/agentic 推理基于对象轨迹判断异常类型和帧位置。
+阅读时需要把方法设计与主要结果一起看：摘要报告三个工业 VAD 数据集上超过多类 VLM 和传统 VAD。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告三个工业 VAD 数据集上超过多类 VLM 和传统 VAD。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>在线部署成本高；pseudo-object 定义需要针对聚变图像重新设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>更适合作为离线标签生成和解释增强工具，而不是直接实时模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先对历史放电视频离线生成局部异常候选，再训练轻量图像 token selector 复现这些候选。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-16" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">06</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-2. GigaPath-Flash / GigaTIME-Flash：高分辨率视觉 token 压缩</h3>
+              <p class="paper__subtitle">GigaPath-Flash and GigaTIME-Flash: Efficient Pathology Foundation Models for Whole-Slide and Tumor Microenvironment Analysis</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增。原始应用领域是病理全切片和空间蛋白预测；可迁移模块是 tile-level 蒸馏、LongNet 长上下文 slide encoder 和轻量化超大图聚合；对应待解决问题是抑制无关视觉信息、降低显存并保留局部前兆。计算/显存影响预计显著低于全帧大 ViT；风险是病理 tile 与等离子体帧区域的语义差异很大。最小验证实验是用可见光帧 tile encoder + 时序 query attention，只读取 top-k 高风险 tile，再与诊断时序融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Naoto Usuyama 等</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18218" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.18218" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增。原始应用领域是病理全切片和空间蛋白预测；可迁移模块是 tile-level 蒸馏、LongNet 长上下文 slide encoder 和轻量化超大图聚合；对应待解决问题是抑制无关视觉信息、降低显存并保留局部前兆。计算/显存影响预计显著低于全帧大 ViT；风险是病理 tile 与等离子体帧区域的语义差异很大。最小验证实验是用可见光帧 tile encoder + 时序 query attention，只读取 top-k 高风险 tile，再与诊断时序融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 的图像分支需要看局部证据而不是整帧平均。全切片病理模型的 tile-then-aggregate 机制可迁移为可见光局部区域选择。
+从本日报的选取理由看，【P3】新增。原始应用领域是病理全切片和空间蛋白预测；可迁移模块是 tile-level 蒸馏、LongNet 长上下文 slide encoder 和轻量化超大图聚合；对应待解决问题是抑制无关视觉信息、降低显存并保留局部前兆。计算/显存影响预计显著低于全帧大 ViT；风险是病理 tile 与等离子体帧区域的语义差异很大。最小验证实验是用可见光帧 tile encoder + 时序 query attention，只读取 top-k 高风险 tile，再与诊断时序融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在高分辨率图像上做低成本、可解释的局部证据聚合？
+对当前主题的关键意义在于：用历史可见光帧训练 tile-level risk scorer，保留 top-k tile 与低频诊断 cross-attention，测显存、延迟和提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e7ec615af7fa68e7.png" alt="Figure 1 : Overview of the GigaPath/GigaTIME model family. GigaPath-Flash provides efficient tile and slide encoders at 22M parameters. GigaTIME predicts spatial proteomics from H&E, scaling from CNN (9M) to ViT backbones.">
+                    <figcaption>Figure 1 : Overview of the GigaPath/GigaTIME model family. GigaPath-Flash provides efficient tile and slide encoders at 22M parameters. GigaTIME predicts spatial proteomics from H&...</figcaption>
+                  </figure>
+                  <p>小 tile encoder 由大 teacher 蒸馏，长上下文 encoder 汇聚超多 tile，并用任务分支预测空间微环境。
+阅读时需要把方法设计与主要结果一起看：摘要报告 50 倍少计算保留 97% slide-level 性能，GigaTIME-Flash 快 6 倍且少 8 倍 GPU 显存。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 50 倍少计算保留 97% slide-level 性能，GigaTIME-Flash 快 6 倍且少 8 倍 GPU 显存。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>静态图像到实时视频需要加入时间一致性和诊断时序查询。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为 P3 低显存视觉 token selector 的主要参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>用历史可见光帧训练 tile-level risk scorer，保留 top-k tile 与低频诊断 cross-attention，测显存、延迟和提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>GigaPath-Flash / GigaTIME-Flash：可部署的超大图像基础模型</h3>
+              <p class="paper__subtitle">GigaPath-Flash and GigaTIME-Flash: Efficient Pathology Foundation Models for Whole-Slide and Tumor Microenvironment Analysis</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-20。它用 22M ViT-S tile encoder、21M LongNet slide encoder 和大模型蒸馏，在保留接近原 GigaPath slide-level 性能的同时显著降低计算量；对 P3 高分辨率可见光图像局部证据压缩很有参考价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Naoto Usuyama, Jeya Maria Jose Valanarasu, Sicong Yao, Hanwen Xu, Jaspreet Bagga, Guanghui Qin, Robert E. Kramer, Cliff Wong, Soohee Lee, Hao Qiu, Theodore Zhengde Zhao, Racheli Ben Shimol, Angela Crabtree, Kevin Matlock, Eduardo Alejandro Lozano Garcia, Naiteek Sangani, Alberto Santamaria-Pang, Jason Entenmann, Alexandra Q. Bartlett, Bill J. Wright, Bernard A. Fox, Brian Piening, Sheng Zhang, Sheng Wang, Tristan Naumann, Carlo Bifulco, Hoifung Poon</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18218" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.18218" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.18218" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-20。它用 22M ViT-S tile encoder、21M LongNet slide encoder 和大模型蒸馏，在保留接近原 GigaPath slide-level 性能的同时显著降低计算量；对 P3 高分辨率可见光图像局部证据压缩很有参考价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可见光破裂预测可能需要在大幅图像或视频帧中定位少量前兆区域。全图高分辨率处理成本高，简单下采样又可能丢掉边缘、热点或局部扰动。
+从本日报的选取理由看，新增 / arXiv 2026-07-20。它用 22M ViT-S tile encoder、21M LongNet slide encoder 和大模型蒸馏，在保留接近原 GigaPath slide-level 性能的同时显著降低计算量；对 P3 高分辨率可见光图像局部证据压缩很有参考价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在超大图像上用较低计算成本保留全局上下文和局部细节？
+对当前主题的关键意义在于：最小实验是把可见光帧切成固定 tile，用蒸馏小 encoder + 长序列聚合器替代全帧 ViT，比较破裂预测 AUC、显存和局部热图稳定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e7ec615af7fa68e7.png" alt="Figure 1 : Overview of the GigaPath/GigaTIME model family. GigaPath-Flash provides efficient tile and slide encoders at 22M parameters. GigaTIME predicts spatial proteomics from H&E, scaling from CNN (9M) to ViT backbones.">
+                    <figcaption>Figure 1 : Overview of the GigaPath/GigaTIME model family. GigaPath-Flash provides efficient tile and slide encoders at 22M parameters. GigaTIME predicts spatial proteomics from H&...</figcaption>
+                  </figure>
+                  <p>GigaPath-Flash 使用 22M 参数 ViT-S tile encoder 和 21M 参数 LongNet slide encoder，tile encoder 从十亿级 GigaPath teacher 蒸馏；GigaTIME-Flash 扩展该骨干从 H&E 图像预测肿瘤免疫微环境。
+阅读时需要把方法设计与主要结果一起看：摘要报告 GigaPath-Flash 以 50 倍更少计算保留 97% 原 GigaPath 平均 slide-level 性能；GigaTIME-Flash 比原 CNN 版更准、速度快 6 倍、GPU 显存少 8 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 GigaPath-Flash 以 50 倍更少计算保留 97% 原 GigaPath 平均 slide-level 性能；GigaTIME-Flash 比原 CNN 版更准、速度快 6 倍、GPU 显存少 8 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>病理切片是静态图像，不包含实时视频、物理约束和诊断时序同步；迁移到可见光等离子体图像需要重新定义 tile 语义。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P3 高分辨率视觉分支降算力的强工程模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把可见光帧切成固定 tile，用蒸馏小 encoder + 长序列聚合器替代全帧 ViT，比较破裂预测 AUC、显存和局部热图稳定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>O-VAD：对象中心工业视频异常检测</h3>
+              <p class="paper__subtitle">O-VAD: Industrial Video Anomaly Detection through Object-Centric Tracking and Reasoning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-20，评论标注 ECCV 2026 accepted。它用对象状态演化轨迹和训练无关的 agentic VLM 推理识别工业过程异常，强调物理和工序约束下的可解释异常报告，适合作为 P3 可见光前兆解释模块参考。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mei Yuan, Qi Long, Qifeng Wu, Zhenyang Li, Yizhou Zhao, Lei Wang, Yang Liu, Min Xu</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18142" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.18142" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.18142" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-20，评论标注 ECCV 2026 accepted。它用对象状态演化轨迹和训练无关的 agentic VLM 推理识别工业过程异常，强调物理和工序约束下的可解释异常报告，适合作为 P3 可见光前兆解释模块参考。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>工业和聚变视频都存在复杂交互、工况约束和少量异常样本。纯 VLM 推理容易忽略时间状态变化，传统 VAD 又依赖大量正常视频微调。
+从本日报的选取理由看，新增 / arXiv 2026-07-20，评论标注 ECCV 2026 accepted。它用对象状态演化轨迹和训练无关的 agentic VLM 推理识别工业过程异常，强调物理和工序约束下的可解释异常报告，适合作为 P3 可见光前兆解释模块参考。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在缺少领域重训的情况下，把视频异常定位到具体对象、具体帧和具体状态变化？
+对当前主题的关键意义在于：最小实验是对可见光帧中亮斑、边界、喷流或杂散光区域建立 pseudo-object 轨迹，用 O-VAD 式轨迹报告与破裂前 50-200 ms 标签对齐。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5400a627d340f1f9.png" alt="Figure 1 : Why object state evolution matters for industrial anomaly detection. The toothpaste tube undergoes pressing and deformation before a subtle leakage emerges. Traditional methods predict binary classifications. VLM prompting fails to detect it due to the lack of evidence. O-VAD tracks object-wise state changes and produces an open-ended anomaly report with in-depth analysis.">
+                    <figcaption>Figure 1 : Why object state evolution matters for industrial anomaly detection. The toothpaste tube undergoes pressing and deformation before a subtle leakage emerges. Traditional ...</figcaption>
+                  </figure>
+                  <p>论文构建训练无关的 agentic 框架，跟踪检测对象的时空动态和状态变换，再基于对象级时间轨迹推理异常对象、帧和异常类型。
+阅读时需要把方法设计与主要结果一起看：摘要报告在三个工业视频异常检测数据集上，超过前沿 VLM、agentic 框架和针对数据集微调的传统 VAD，并给出可解释报告。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在三个工业视频异常检测数据集上，超过前沿 VLM、agentic 框架和针对数据集微调的传统 VAD，并给出可解释报告。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它依赖对象检测和 VLM 推理，在线低延迟部署成本可能较高；等离子体可见光未必有稳定对象边界。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P3 可见光异常解释和弱监督前兆挖掘模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是对可见光帧中亮斑、边界、喷流或杂散光区域建立 pseudo-object 轨迹，用 O-VAD 式轨迹报告与破裂前 50-200 ms 标签对齐。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>Robust Multimodal Dynamic Object Segmentation：多线索动态对象分割</h3>
+              <p class="paper__subtitle">Robust Multimodal Dynamic Object Segmentation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-20</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / ICRA 2026。它融合 2D point tracks、3D reconstruction 和语义信息，并让模型自适应决定哪类特征主导，适合 P3 图像局部证据和退化线索融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhe Xin, Hanzhi Chang, Penghui Huang, Yinian Mao, Guoquan Huang</p>
+                <p class="muted">机构待核验</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18153" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.18153" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.18153" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / ICRA 2026。它融合 2D point tracks、3D reconstruction 和语义信息，并让模型自适应决定哪类特征主导，适合 P3 图像局部证据和退化线索融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>动态场景中单一光流、单一 3D 重建或单一语义分割都会受边界、重建误差和遮挡影响。可见光诊断也可能有遮挡、反光和局部退化。
+从本日报的选取理由看，新增 / ICRA 2026。它融合 2D point tracks、3D reconstruction 和语义信息，并让模型自适应决定哪类特征主导，适合 P3 图像局部证据和退化线索融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不同视觉线索质量变化时稳定分割动态对象，并避免退化线索主导结果？
+对当前主题的关键意义在于：最小实验是把可见光帧的光流、边缘、亮度变化和分割 mask 作为多线索输入，学习低延迟动态区域 token，再接诊断时序 query 做融合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/131b451197d57b1d.png" alt="Figure 2: Overall Architecture. Given a video clip with N N frames, we first employ MonST3R [ 27 ] to perform coarse 3D reconstruction of the dynamic scene, obtaining depth information, camera parameters, and attention maps. Simultaneously, we use CoTracker [ 8 ] to densely sample 2D points on the images and obtain their motion trajectories across frames. These 2D point trajectories are then associated with corresponding 3D reconstruction features and semantic features are extracted from SAM [ 15 ] feature maps. These combined features are fed into our network consisting of a Transformer module and two aggregation networks. This network ultimately outputs static/dynamic classification results for each feature trajectory. To obtain the final high-quality dynamic masks, we apply our proposed SAM-based post-processing method to refine the initial dynamic masks.">
+                    <figcaption>Figure 2: Overall Architecture. Given a video clip with N N frames, we first employ MonST3R [ 27 ] to perform coarse 3D reconstruction of the dynamic scene, obtaining depth informa...</figcaption>
+                  </figure>
+                  <p>论文把 2D 点轨迹、3D 重建和语义信息构成多模态特征轨迹，用 Transformer 和 feature clustering aggregation 做静态/动态分类，并使用 point-query SAM 后处理处理多个对象。
+阅读时需要把方法设计与主要结果一起看：摘要报告在动态对象分割和静态场景重建任务上取得 SOTA 表现。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在动态对象分割和静态场景重建任务上取得 SOTA 表现。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是传感器时序融合模型，且依赖几何重建；聚变相机可能缺少可用 3D 几何。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它可作为 P3 视觉前端“按质量选择线索”的参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把可见光帧的光流、边缘、亮度变化和分割 mask 作为多线索输入，学习低延迟动态区域 token，再接诊断时序 query 做融合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
