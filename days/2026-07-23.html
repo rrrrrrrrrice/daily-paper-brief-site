@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-23</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-23 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-23 05:12:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- 今天有可用新增，但没有直接聚变破裂预测强稿。最值得先看的是：NAPTIME 用 neural process 直接建模稀疏不规则多波段告警；Incomplete Observations 用连续状态 HMM + masked Gaussian emission 从稀疏观测学习物理场演化；OmniReasoner 用低成本全局预览 + 时间锚定 zoom-in 工具把高保真计算集中到关键片段；IMMoE 用 mixture of view experts 处理多视角异常检测中的局部缺失；NGPS 给出异步多频传感器按时间优先队列融合的工程范式。固定顶会/顶刊回看分区独立保留 Geometric and Physical Constraints for Neural PDE Surrogates（ICML 2025）和 EventFly（CVPR 2025）。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 Geometric and Physical Constraints：几何/物理约束协同增强 PDE surrogate</a></li>
+              <li><a href="#paper-2">02 EventFly：事件相机跨平台感知适配</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-3">03 NAPTIME：稀疏多波段告警流 neural process</a></li>
+              <li><a href="#paper-4">04 Incomplete Observations：从稀疏观测学习连续物理场</a></li>
+              <li><a href="#paper-5">05 MASHT：随机卷积特征 + 表格基础模型的时序分类</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-9">09 SHRED-ROM：少量传感器读数驱动实时最优控制</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发</a>
+            <ul>
+              <li><a href="#paper-10">10 P1-1. NAPTIME：真实时间稀疏观测下的概率重建与早期分类</a></li>
+              <li><a href="#paper-11">11 P1-2. Incomplete Observations：masked emission 连续状态空间</a></li>
+              <li><a href="#paper-12">12 P2-1. EventFly：事件跨平台适配用于 RGB-Event 属性泛化</a></li>
+              <li><a href="#paper-13">13 P2-2. 本轮原生 RGB-Event 属性识别新增空缺</a></li>
+              <li><a href="#paper-14">14 P3-1. OmniReasoner：从全局预览到局部高保真视觉证据</a></li>
+              <li><a href="#paper-15">15 P3-2. NGPS：异步多频融合与质量自适应协方差</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-6">06 OmniReasoner：长音视频中的稀疏证据定位</a></li>
+              <li><a href="#paper-7">07 IMMoE：缺失多视角异常检测</a></li>
+              <li><a href="#paper-8">08 CURE/HyFuse：异构医疗多模态的轻量几何注意力融合</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">NAPTIME：稀疏多波段告警流 neural process</a></h3>
+              <p class="card__subtitle">NAPTIME: A Neural-Process Framework for Rubin Alert Classification</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-21。它直接处理高容量、稀疏、部分观测的多波段天文告警流，把概率光变曲线重建、分类和元数据上下文合在 neural process 框架中，对 P1 的真实 Δt、早期低上下文判断和缺失观测很贴近。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Incomplete Observations：从稀疏观测学习连续物理场</a></h3>
+              <p class="card__subtitle">Incomplete Observations Boost Evolutionary Performance in Ocean Modeling</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-21。它把海洋物理量作为连续隐状态，用 masked Gaussian emission 连接稀疏观测，并通过 EM + Langevin dynamics 交替重建和学习转移模型，适合作为 P1/P3 “稀疏诊断到连续状态”的生成式基线。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">OmniReasoner：长音视频中的稀疏证据定位</a></h3>
+              <p class="card__subtitle">OmniReasoner: Thinking with Long Audio-Video via Native Tool Use</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-21。它先看低成本全局预览，再学习何时、在哪个时间段调用高保真 zoom-in，并用 TimeAnchor 保证不同采样粒度下的时间参数一致；对 P3 的“先粗筛，再局部读图”很有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">IMMoE：缺失多视角异常检测</a></h3>
+              <p class="card__subtitle">IMMoE: Incomplete Multi-View Anomaly Detection via Mixture of View Experts Fusion</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-21；ECCV 2026 accepted</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-21，评论标注 ECCV 2026 accepted。它专门设定多视角局部缺失异常检测，用 multi-view expert fusion 和 local anomaly enhancement encoder 抵抗遮挡/缺视图，适合 P3 模态缺失训练和视觉异常局部增强。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-15">P3-2. NGPS：异步多频融合与质量自适应协方差</a></h3>
+              <p class="card__subtitle">NGPS: GPS-Denied Aerial Geo-Localization and 2.5D Reconstruction via Deep Satellite Image Matching and Multi-Rate Sensor Fusion</p>
+              <div class="chip-row">
+                <span class="chip">在研课题启发</span>
+                <span class="chip chip--muted">2026-07-21；IROS 2026 accepted</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-21，评论标注 IROS 2026 accepted。它把 1-2 Hz 绝对图像匹配、10-20 Hz VIO 和 100-200 Hz IMU 通过时间优先队列融合，并按匹配质量自适应调 UKF 协方差，对 P1/P3 多采样率诊断融合很直接。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Geometric and Physical Constraints：几何/物理约束协同增强 PDE surrogate</h3>
+              <p class="paper__subtitle">Geometric and Physical Constraints Synergistically Enhance Neural PDE Surrogates</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICML 2025 / PMLR 267</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。ICML 2025；今天用它重新映射 Incomplete Observations 与 Adaptive Mamba Neural Operators：P1 需要的不只是低误差 surrogate，还需要几何边界和物理约束共同限制长程漂移。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yunfei Huang, David S. Greenberg</p>
+                <p class="muted">Helmholtz Centre Hereon / Helmholtz AI</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.mlr.press/v267/huang25j.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。ICML 2025；今天用它重新映射 Incomplete Observations 与 Adaptive Mamba Neural Operators：P1 需要的不只是低误差 surrogate，还需要几何边界和物理约束共同限制长程漂移。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>神经 PDE surrogate 在规则 benchmark 上容易取得好误差，但跨几何、跨边界和长程 rollout 时会出现不守恒或不物理的解。聚变湍流、MHD 和剖面演化任务尤其需要把几何与物理约束同时纳入。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。ICML 2025；今天用它重新映射 Incomplete Observations 与 Adaptive Mamba Neural Operators：P1 需要的不只是低误差 surrogate，还需要几何边界和物理约束共同限制长程漂移。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让神经 PDE surrogate 在复杂几何和物理约束下保持可泛化、可解释和稳定？
+对当前主题的关键意义在于：最小实验是在现有 MHD/Braginskii surrogate 上加入边界 mask、守恒残差和几何编码，对比纯数据模型的短窗误差、谱一致性、显存和长程漂移。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文系统研究几何约束与物理约束的协同作用，把结构先验和物理一致性训练目标用于增强 PDE surrogate，而不是只依赖数据拟合。
+阅读时需要把方法设计与主要结果一起看：PMLR 页面核验其为 ICML 2025 论文；论文报告几何与物理约束联用能提升 surrogate 泛化与稳定性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>PMLR 页面核验其为 ICML 2025 论文；论文报告几何与物理约束联用能提升 surrogate 泛化与稳定性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是直接聚变数据论文；约束构造需要领域方程和边界条件支持。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1 物理场代理和 P3 物理可解释融合的顶会回看基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有 MHD/Braginskii surrogate 上加入边界 mask、守恒残差和几何编码，对比纯数据模型的短窗误差、谱一致性、显存和长程漂移。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>EventFly：事件相机跨平台感知适配</h3>
+              <p class="paper__subtitle">EventFly: Event Camera Perception from Ground to the Sky</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。CVPR 2025；今天用它重新映射 P2 的跨场景事件属性识别：事件相机部署平台变化会改变运动、视角和类别分布，正对应 TriPro/EventPAR 中低光、运动模糊和数据域偏移风险。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF 页面核验</p>
+                <p class="muted">作者与机构以 CVF 论文页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Kong_EventFly_Event_Camera_Perception_from_Ground_to_the_Sky_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。CVPR 2025；今天用它重新映射 P2 的跨场景事件属性识别：事件相机部署平台变化会改变运动、视角和类别分布，正对应 TriPro/EventPAR 中低光、运动模糊和数据域偏移风险。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别不只面对模态融合，还面对事件触发分布在不同平台、速度和视角下变化。只在单一采集设置训练的事件分支容易跨域失效。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。CVPR 2025；今天用它重新映射 P2 的跨场景事件属性识别：事件相机部署平台变化会改变运动、视角和类别分布，正对应 TriPro/EventPAR 中低光、运动模糊和数据域偏移风险。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让事件相机感知模型在车辆、无人机、机器人等平台之间迁移？
+对当前主题的关键意义在于：最小实验是在 EventPAR/TriPro 数据上构造速度、照度、事件密度分层，做 source-domain event encoder 到 target-domain encoder 的适配，对比 mA、F1 和事件缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文提出面向事件感知的跨平台适配框架，围绕事件流动态、视角和类别分布差异做鲁棒迁移。
+阅读时需要把方法设计与主要结果一起看：CVF 页面核验其为 CVPR 2025 论文；页面摘要指出该工作关注 event-based dense perception 的跨平台适配。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 页面核验其为 CVPR 2025 论文；页面摘要指出该工作关注 event-based dense perception 的跨平台适配。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不是属性识别论文，也没有直接解决 RGB/Event 时钟不同步和开放词表属性监督。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P2 事件域泛化和跨平台鲁棒性评估的顶会回看项。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 EventPAR/TriPro 数据上构造速度、照度、事件密度分层，做 source-domain event encoder 到 target-domain encoder 的适配，对比 mA、F1 和事件缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>NAPTIME：稀疏多波段告警流 neural process</h3>
+              <p class="paper__subtitle">NAPTIME: A Neural-Process Framework for Rubin Alert Classification</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-21。它直接处理高容量、稀疏、部分观测的多波段天文告警流，把概率光变曲线重建、分类和元数据上下文合在 neural process 框架中，对 P1 的真实 Δt、早期低上下文判断和缺失观测很贴近。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Nicholas Earl, Siddharth Chaini, K. Decker French, Jason T. Hinkle, Yashasvi Moon, Margaret Shepherd</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19236" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.19236" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.19236" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-21。它直接处理高容量、稀疏、部分观测的多波段天文告警流，把概率光变曲线重建、分类和元数据上下文合在 neural process 框架中，对 P1 的真实 Δt、早期低上下文判断和缺失观测很贴近。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断中的高低频通道与天文 transient 告警相似：观测不完整、时间间隔真实重要、早期低上下文判断比完整序列分类更困难。传统重采样模型容易丢掉观测时间结构。
+从本日报的选取理由看，新增 / arXiv 2026-07-21。它直接处理高容量、稀疏、部分观测的多波段天文告警流，把概率光变曲线重建、分类和元数据上下文合在 neural process 框架中，对 P1 的真实 Δt、早期低上下文判断和缺失观测很贴近。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在只看到少量稀疏观测时，同时重建潜在曲线并给出可靠分类？
+对当前主题的关键意义在于：最小实验是在破裂前窗口只暴露前 10%、25%、50% 诊断观测，比较 neural process、GRU-D、Mamba 和重采样 Transformer 的提前量、校准和缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/390ba83b7f6f4d06.png" alt="Figure 1: Symbolic architecture of NAPTIME. Context photometry 𝒞 \mathcal{C} and host photo- z z are encoded into per-observation features 𝐡 i \mathbf{h}_{i} , projected to a regular temporal representation 𝐫 ​ ( g ) \mathbf{r}(g) , and processed into backbone features 𝐅 ​ ( g ) \mathbf{F}(g) . A global latent path produces 𝐳 \mathbf{z} , host metadata are encoded as 𝐦 \mathbf{m} , and the model jointly produces a predictive flux distribution and a family-level class posterior under the training objective shown at bottom. The variables and operations shown here are defined in Section IV .">
+                    <figcaption>Figure 1: Symbolic architecture of NAPTIME. Context photometry 𝒞 \mathcal{C} and host photo- z z are encoded into per-observation features 𝐡 i \mathbf{h}_{i} , projected to a regul...</figcaption>
+                  </figure>
+                  <p>NAPTIME 使用 neural process 直接建模不规则 multiband light curves，将概率光变曲线重建、分类、host-galaxy context 和 photometric-redshift 信息整合到同一框架。
+阅读时需要把方法设计与主要结果一起看：摘要报告 ELAsTiCC2 15-family 任务上 metadata-aware model 达到 macro F1 0.903、macro AUROC 0.991；早期 10% 观测下 metadata 可明显提升低上下文分类。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 ELAsTiCC2 15-family 任务上 metadata-aware model 达到 macro F1 0.903、macro AUROC 0.991；早期 10% 观测下 metadata 可明显提升低上下文分类。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>应用领域是天文 transient，不是多通道等离子体诊断；高频海量点仍需要压缩或 streaming 机制。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1 稀疏不规则观测建模和早期报警的高质量跨领域候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在破裂前窗口只暴露前 10%、25%、50% 诊断观测，比较 neural process、GRU-D、Mamba 和重采样 Transformer 的提前量、校准和缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Incomplete Observations：从稀疏观测学习连续物理场</h3>
+              <p class="paper__subtitle">Incomplete Observations Boost Evolutionary Performance in Ocean Modeling</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-21。它把海洋物理量作为连续隐状态，用 masked Gaussian emission 连接稀疏观测，并通过 EM + Langevin dynamics 交替重建和学习转移模型，适合作为 P1/P3 “稀疏诊断到连续状态”的生成式基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yangyang Kong, Yutong Jiang, Yanhai Gan, Junyu Dong, Feng Gao, Xiaopei Lin</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19147" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.19147" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.19147" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-21。它把海洋物理量作为连续隐状态，用 masked Gaussian emission 连接稀疏观测，并通过 EM + Langevin dynamics 交替重建和学习转移模型，适合作为 P1/P3 “稀疏诊断到连续状态”的生成式基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变实验通常没有完整物理场，只能观测少量诊断投影。若先插值成规则全状态再训练，会把补全误差当成真实动力学。
+从本日报的选取理由看，新增 / arXiv 2026-07-21。它把海洋物理量作为连续隐状态，用 masked Gaussian emission 连接稀疏观测，并通过 EM + Langevin dynamics 交替重建和学习转移模型，适合作为 P1/P3 “稀疏诊断到连续状态”的生成式基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从不完整、稀疏、噪声观测中学习连续隐状态和状态转移？
+对当前主题的关键意义在于：最小实验是把多个诊断通道视为 masked emission，用 EM-style latent reconstruction 训练低维 plasma state，再接破裂风险头，比较先插值重采样基线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/28dcc9a2641ec9cc.png" alt="Figure 2 : Schematic of the generative state-space modeling framework. a , Probabilistic graphical model illustrating the hidden Markov process. Latent complete physical states ( S S ) evolve temporally and emit partial observations ( O O ) via the observation model. b , c , Neural architectures for the generator components. b , The Initial State Model ( p θ ​ ( 𝐬 0 ) p_{\theta}(\mathbf{s}_{0}) ) utilizes a StyleGAN2-ADA backbone with modulated depthwise separable convolutions (DWConv + PWConv) to map latent code 𝐰 \mathbf{w} to spatial fields. c , The State Transition Model ( p θ ​ ( 𝐬 t + 1 | 𝐬 t ) p_{\theta}(\mathbf{s}_{t+1}|\mathbf{s}_{t}) ) employs a stochastic U-Net that processes concatenated inputs ( cat ​ ( 𝐱 , 𝐳 ) \text{cat}(\mathbf{x},\mathbf{z}) ) with multi-scale skip connections and noise injection ( N N ). d , Optimization workflow based on the Expectation-Maximization (EM) algorithm. The pipeline begins with model initialization using a pre-training dataset. In the main loop, raw satellite swath data serve as the primary training dataset. The E-step infers the posterior of hidden states ( S S ) via Langevin dynamics sampling (Sampled Field), which are subsequently used in the M-step to update model parameters θ \theta according to the maximization objective shown in the bottom panel.">
+                    <figcaption>Figure 2 : Schematic of the generative state-space modeling framework. a , Probabilistic graphical model illustrating the hidden Markov process. Latent complete physical states ( S...</figcaption>
+                  </figure>
+                  <p>论文构造连续状态 HMM，物理量为 hidden state，观测为 masked Gaussian emission；通过 EM 框架交替用 Langevin dynamics 重建高保真状态并优化神经转移模型。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 CMIP6 和 FY-3D 卫星数据上实现高保真重建和预测，并表明稀疏观测可直接改善动力表征。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 CMIP6 和 FY-3D 卫星数据上实现高保真重建和预测，并表明稀疏观测可直接改善动力表征。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>效率假设依赖 stationary、ergodic、Markovian 过程和长度为 2 的状态序列；聚变放电强非平稳阶段需要额外阶段条件。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为“诊断稀疏观测到连续等离子体隐状态”的生成式路线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把多个诊断通道视为 masked emission，用 EM-style latent reconstruction 训练低维 plasma state，再接破裂风险头，比较先插值重采样基线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>MASHT：随机卷积特征 + 表格基础模型的时序分类</h3>
+              <p class="paper__subtitle">In-Context Time Series Classification with Random Convolutional Features</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它用 MultiRocket/Hydra 随机卷积特征加 pretrained tabular foundation model，几乎绕开任务特定训练，是一个很强的轻量时序分类对照。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Joscha Cüppers, Jilles Vreeken</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19234" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.19234" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.19234" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它用 MultiRocket/Hydra 随机卷积特征加 pretrained tabular foundation model，几乎绕开任务特定训练，是一个很强的轻量时序分类对照。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测新模型若没有和强传统/随机特征基线比较，很难判断深度融合的实际收益。随机卷积特征对局部形状、频率和时间偏移非常敏感。
+从本日报的选取理由看，新增。它用 MultiRocket/Hydra 随机卷积特征加 pretrained tabular foundation model，几乎绕开任务特定训练，是一个很强的轻量时序分类对照。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>预训练表格基础模型能否比线性分类器更好利用随机卷积时序特征？
+对当前主题的关键意义在于：最小实验是在现有破裂片段上抽 MultiRocket/Hydra 特征，和当前深度模型比较 AUC、提前量、训练时间和跨装置迁移。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/76174235180fc7cf.png" alt="Figure 1: Critical-difference diagram for accuracy on UTF-112. Methods connected by a horizontal bar are not significantly different under the Wilcoxon–Holm comparison.">
+                    <figcaption>Figure 1: Critical-difference diagram for accuracy on UTF-112. Methods connected by a horizontal bar are not significantly different under the Wilcoxon–Holm comparison.</figcaption>
+                  </figure>
+                  <p>MASHT 将 MultiRocket 和 Hydra 特征映射为固定维表格表示，然后用 in-context tabular foundation model 直接推理，无需任务特定模型训练。
+阅读时需要把方法设计与主要结果一起看：摘要报告单变量任务平均 rank 低于 HIVE-COTE 2.0，多变量任务也接近最强参考方法。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告单变量任务平均 rank 低于 HIVE-COTE 2.0，多变量任务也接近最强参考方法。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它不直接处理真实 Δt 和异步多采样率；多变量高频诊断特征维度可能导致表格模型输入受限。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它应作为 P1/P3 小样本分类和快速 sanity check 的强基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有破裂片段上抽 MultiRocket/Hydra 特征，和当前深度模型比较 AUC、提前量、训练时间和跨装置迁移。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>SHRED-ROM：少量传感器读数驱动实时最优控制</h3>
+              <p class="paper__subtitle">Real-time optimal control with shallow recurrent decoder networks</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它不是聚变论文，但直接面向高维参数化动力系统的实时闭环控制，用少量 state sensor readings 学习 expert demonstrator 的分布式控制动作。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Matteo Tomasetto, Francesco Braghin, J. Nathan Kutz, Andrea Manzoni</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19302" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.19302" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.19302" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它不是聚变论文，但直接面向高维参数化动力系统的实时闭环控制，用少量 state sensor readings 学习 expert demonstrator 的分布式控制动作。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变控制和破裂缓解都需要在有限传感器、可能延迟或失效的条件下快速决策。高维 PDE 控制若每次在线求解最优控制，成本通常不可接受。
+从本日报的选取理由看，新增。它不是聚变论文，但直接面向高维参数化动力系统的实时闭环控制，用少量 state sensor readings 学习 expert demonstrator 的分布式控制动作。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用低维传感器读数和少量专家最优示例，合成可实时运行的闭环控制器？
+对当前主题的关键意义在于：最小实验是用少量诊断通道训练 latent forecaster，模拟某些传感器延迟/丢失，测试风险头或控制建议是否比普通 RNN 稳定。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文用 SHallow REcurrent Decoder networks-based Reduced Order Modeling 学习控制策略，并训练 sensor forecaster 在 latent level 闭环，缓解传感器故障或延迟。
+阅读时需要把方法设计与主要结果一起看：摘要报告在参数化密度控制和流体流动控制三类高维案例上评估了策略表现。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在参数化密度控制和流体流动控制三类高维案例上评估了策略表现。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它未包含托卡马克装置约束、破裂标签和多模态图像输入；expert demonstrator 的质量决定上限。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为聚变实时控制和 P3 低延迟部署的旁支阅读。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用少量诊断通道训练 latent forecaster，模拟某些传感器延迟/丢失，测试风险头或控制建议是否比普通 RNN 稳定。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>直接破裂预测 + 可见光/诊断时序融合：本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>英文原标题：*No qualified new tokamak disruption and visible-diagnostic fusion AI paper in this round*</p>
+          <p>作者/机构：本轮空缺判断</p>
+          <p>发布日期：2026-07-23 检索截止前</p>
+          <p>论文链接：[arXiv physics.plasm-ph recent](https://arxiv.org/list/physics.plasm-ph/recent)，[arXiv cs.LG recent](https://arxiv.org/list/cs.LG/recent)，[arXiv cs.CV recent](https://arxiv.org/list/cs.CV/recent)</p>
+          <p>选取理由：本轮空缺判断。已补查 tokamak disruption prediction、plasma diagnostics、visible diagnostics、vision time series fusion、multimodal disruption prediction、ECEI/BES 等组合；未发现 2026-07-21 批次中有高质量新增或实质更新的直接论文。</p>
+          <p>研究背景：近期新增更集中在跨领域时序建模、视觉局部证据选择和异步传感器融合。直接破裂预测方向需要同时满足托卡马克场景、诊断时序或可见光/红外模态、AI 建模和可核验原始来源。</p>
+          <p>核心问题：没有新的原始论文能同时支撑可见光图像、诊断时序、实时破裂预测和跨装置泛化四项要求。</p>
+          <p>方法与关键创新：不适用；本条为空缺说明，避免用普通视频异常检测或 UAV 融合论文凑数。</p>
+          <p>主要结果：直接 tokamak disruption + visible diagnostics + diagnostic time series fusion 新稿本轮空缺。</p>
+          <p>局限性：可能遗漏尚未被 arXiv 索引的会议 early access、装置团队报告或作者主页更新。</p>
+          <p>总结：P3 今日应吸收跨领域机制，而不是等待同题论文。</p>
+          <p>研究相关性：下一轮继续监测 DIII-D、JET、KSTAR、EAST、ITER 相关 disruption prediction、visible/IR diagnostics、ECEI/BES、uncertainty 和 cross-device transfer 更新。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-1. NAPTIME：真实时间稀疏观测下的概率重建与早期分类</h3>
+              <p class="paper__subtitle">NAPTIME: A Neural-Process Framework for Rubin Alert Classification</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。原始应用领域是天文 Rubin alert 稀疏多波段 transient 分类；可迁移模块是 neural process 概率曲线重建、低上下文分类和 metadata-aware fusion；对应待解决问题是保留真实 Δt、适配稀疏不规则观测并在早期低上下文下报警。预期计算/显存影响低于长序列全注意力，主要成本随 context/target 点数增长；风险是高频海量诊断点仍需先做压缩。最小验证实验是在现有破裂窗口上只给前 10%/25%/50% 观测，比较 neural process 与重采样 Mamba/Transformer 的校准、AUC 和提前量。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Nicholas Earl 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19236" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.19236" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。原始应用领域是天文 Rubin alert 稀疏多波段 transient 分类；可迁移模块是 neural process 概率曲线重建、低上下文分类和 metadata-aware fusion；对应待解决问题是保留真实 Δt、适配稀疏不规则观测并在早期低上下文下报警。预期计算/显存影响低于长序列全注意力，主要成本随 context/target 点数增长；风险是高频海量诊断点仍需先做压缩。最小验证实验是在现有破裂窗口上只给前 10%/25%/50% 观测，比较 neural process 与重采样 Mamba/Transformer 的校准、AUC 和提前量。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 需要一个能直接吃真实时间点的模型，而不是先粗暴重采样。neural process 的 context-target 表述天然适合不同观测密度。
+从本日报的选取理由看，【P1】新增。原始应用领域是天文 Rubin alert 稀疏多波段 transient 分类；可迁移模块是 neural process 概率曲线重建、低上下文分类和 metadata-aware fusion；对应待解决问题是保留真实 Δt、适配稀疏不规则观测并在早期低上下文下报警。预期计算/显存影响低于长序列全注意力，主要成本随 context/target 点数增长；风险是高频海量诊断点仍需先做压缩。最小验证实验是在现有破裂窗口上只给前 10%/25%/50% 观测，比较 neural process 与重采样 Mamba/Transformer 的校准、AUC 和提前量。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在观测不完整且采样时间不固定时给出概率预测和不确定性？
+对当前主题的关键意义在于：先把低频通道作为 context，高频通道压缩成少量事件点，检查模型对缺失机制变化的鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/390ba83b7f6f4d06.png" alt="Figure 1: Symbolic architecture of NAPTIME. Context photometry 𝒞 \mathcal{C} and host photo- z z are encoded into per-observation features 𝐡 i \mathbf{h}_{i} , projected to a regular temporal representation 𝐫 ​ ( g ) \mathbf{r}(g) , and processed into backbone features 𝐅 ​ ( g ) \mathbf{F}(g) . A global latent path produces 𝐳 \mathbf{z} , host metadata are encoded as 𝐦 \mathbf{m} , and the model jointly produces a predictive flux distribution and a family-level class posterior under the training objective shown at bottom. The variables and operations shown here are defined in Section IV .">
+                    <figcaption>Figure 1: Symbolic architecture of NAPTIME. Context photometry 𝒞 \mathcal{C} and host photo- z z are encoded into per-observation features 𝐡 i \mathbf{h}_{i} , projected to a regul...</figcaption>
+                  </figure>
+                  <p>用 neural process 学习从 context observations 到目标曲线和类别的分布映射，并可接入额外元数据。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 ELAsTiCC2 上 macro F1 0.903、AUROC 0.991，早期低上下文中 metadata 尤其有价值。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 ELAsTiCC2 上 macro F1 0.903、AUROC 0.991，早期低上下文中 metadata 尤其有价值。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有高频压缩、异步多装置泛化和控制实时性测试。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 稀疏观测早期分类的第一候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先把低频通道作为 context，高频通道压缩成少量事件点，检查模型对缺失机制变化的鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-2. Incomplete Observations：masked emission 连续状态空间</h3>
+              <p class="paper__subtitle">Incomplete Observations Boost Evolutionary Performance in Ocean Modeling</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。原始应用领域是海洋建模；可迁移模块是连续隐状态 HMM、masked Gaussian emission、EM + Langevin reconstruction；对应待解决问题是从稀疏诊断观测学习连续等离子体状态，并避免把插值误差当成真值。预期计算/显存影响主要在离线重建阶段，推理可转为低维 latent transition；风险是聚变非平稳阶段违反 stationarity/Markov 假设。最小验证实验是用 masked diagnostics 学 latent plasma state，再比较完整重采样训练与直接 sparse observation training 的跨 shot 表现。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yangyang Kong 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19147" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.19147" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。原始应用领域是海洋建模；可迁移模块是连续隐状态 HMM、masked Gaussian emission、EM + Langevin reconstruction；对应待解决问题是从稀疏诊断观测学习连续等离子体状态，并避免把插值误差当成真值。预期计算/显存影响主要在离线重建阶段，推理可转为低维 latent transition；风险是聚变非平稳阶段违反 stationarity/Markov 假设。最小验证实验是用 masked diagnostics 学 latent plasma state，再比较完整重采样训练与直接 sparse observation training 的跨 shot 表现。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变很多关键状态不可直接全量观测。把每个诊断视作 emission，比把稀疏观测补全为规则表格更贴近物理。
+从本日报的选取理由看，【P1】新增。原始应用领域是海洋建模；可迁移模块是连续隐状态 HMM、masked Gaussian emission、EM + Langevin reconstruction；对应待解决问题是从稀疏诊断观测学习连续等离子体状态，并避免把插值误差当成真值。预期计算/显存影响主要在离线重建阶段，推理可转为低维 latent transition；风险是聚变非平稳阶段违反 stationarity/Markov 假设。最小验证实验是用 masked diagnostics 学 latent plasma state，再比较完整重采样训练与直接 sparse observation training 的跨 shot 表现。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何同时做状态重建和动力学习？
+对当前主题的关键意义在于：把可见光 ROI 统计和诊断通道统一写成 emission，测试 missing modality 下 latent 是否稳定。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/28dcc9a2641ec9cc.png" alt="Figure 2 : Schematic of the generative state-space modeling framework. a , Probabilistic graphical model illustrating the hidden Markov process. Latent complete physical states ( S S ) evolve temporally and emit partial observations ( O O ) via the observation model. b , c , Neural architectures for the generator components. b , The Initial State Model ( p θ ​ ( 𝐬 0 ) p_{\theta}(\mathbf{s}_{0}) ) utilizes a StyleGAN2-ADA backbone with modulated depthwise separable convolutions (DWConv + PWConv) to map latent code 𝐰 \mathbf{w} to spatial fields. c , The State Transition Model ( p θ ​ ( 𝐬 t + 1 | 𝐬 t ) p_{\theta}(\mathbf{s}_{t+1}|\mathbf{s}_{t}) ) employs a stochastic U-Net that processes concatenated inputs ( cat ​ ( 𝐱 , 𝐳 ) \text{cat}(\mathbf{x},\mathbf{z}) ) with multi-scale skip connections and noise injection ( N N ). d , Optimization workflow based on the Expectation-Maximization (EM) algorithm. The pipeline begins with model initialization using a pre-training dataset. In the main loop, raw satellite swath data serve as the primary training dataset. The E-step infers the posterior of hidden states ( S S ) via Langevin dynamics sampling (Sampled Field), which are subsequently used in the M-step to update model parameters θ \theta according to the maximization objective shown in the bottom panel.">
+                    <figcaption>Figure 2 : Schematic of the generative state-space modeling framework. a , Probabilistic graphical model illustrating the hidden Markov process. Latent complete physical states ( S...</figcaption>
+                  </figure>
+                  <p>EM 交替估计隐状态和神经转移模型，观测缺失由 masked Gaussian emission 处理。
+阅读时需要把方法设计与主要结果一起看：摘要报告 CMIP6/FY-3D 上能完成高保真重建和预测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 CMIP6/FY-3D 上能完成高保真重建和预测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>Langevin 重建可能成本高，且需要处理放电阶段切换。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 连续状态建模与 P3 图像/时序共同 latent 的生成式骨架。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>把可见光 ROI 统计和诊断通道统一写成 emission，测试 missing modality 下 latent 是否稳定。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-1. EventFly：事件跨平台适配用于 RGB-Event 属性泛化</h3>
+              <p class="paper__subtitle">EventFly: Event Camera Perception from Ground to the Sky</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】非当日新增 / 顶会回看重新映射。本轮原生 RGB-Event 属性识别新增强稿空缺。原始应用领域是 event camera dense perception 跨平台适配；可迁移模块是跨运动/视角/分布的事件域适配训练；对应待解决问题是 TriPro/EventPAR 在低光、运动模糊、事件稀疏和采集平台变化下的属性稳定性。预期计算/显存影响主要在训练期适配，推理可保留轻量 encoder；风险是 dense perception 域适配不一定迁移到细粒度属性。最小验证实验是按事件密度、速度和视角划分 target domain，测试事件 encoder 适配前后的属性 mA/F1。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF 页面核验</p>
+                <p class="muted">作者与机构以 CVF 论文页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Kong_EventFly_Event_Camera_Perception_from_Ground_to_the_Sky_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】非当日新增 / 顶会回看重新映射。本轮原生 RGB-Event 属性识别新增强稿空缺。原始应用领域是 event camera dense perception 跨平台适配；可迁移模块是跨运动/视角/分布的事件域适配训练；对应待解决问题是 TriPro/EventPAR 在低光、运动模糊、事件稀疏和采集平台变化下的属性稳定性。预期计算/显存影响主要在训练期适配，推理可保留轻量 encoder；风险是 dense perception 域适配不一定迁移到细粒度属性。最小验证实验是按事件密度、速度和视角划分 target domain，测试事件 encoder 适配前后的属性 mA/F1。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 的事件分支不能只在固定采集条件下验证。事件触发分布变化会让动态属性 cue 失真。
+从本日报的选取理由看，【P2】非当日新增 / 顶会回看重新映射。本轮原生 RGB-Event 属性识别新增强稿空缺。原始应用领域是 event camera dense perception 跨平台适配；可迁移模块是跨运动/视角/分布的事件域适配训练；对应待解决问题是 TriPro/EventPAR 在低光、运动模糊、事件稀疏和采集平台变化下的属性稳定性。预期计算/显存影响主要在训练期适配，推理可保留轻量 encoder；风险是 dense perception 域适配不一定迁移到细粒度属性。最小验证实验是按事件密度、速度和视角划分 target domain，测试事件 encoder 适配前后的属性 mA/F1。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让事件表征跨平台和跨运动分布保持稳定？
+对当前主题的关键意义在于：先在 TriPro 或 EventPAR 上做 domain split，再加入 event domain adapter，不改 RGB 分支，观察低光和运动模糊属性收益。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>EventFly 聚焦 event-based dense perception 的跨平台适配，把地面到空中平台的 motion/view/domain shift 纳入训练和评估。
+阅读时需要把方法设计与主要结果一起看：CVPR 2025 来源已核验。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVPR 2025 来源已核验。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是 RGB-Event PAR；开放词表属性和属性不确定性需要另加。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P2 事件域泛化评估和适配训练的模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在 TriPro 或 EventPAR 上做 domain split，再加入 event domain adapter，不改 RGB 分支，观察低光和运动模糊属性收益。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-2. 本轮原生 RGB-Event 属性识别新增空缺</h3>
+              <p class="paper__subtitle">No qualified new native RGB-Event attribute recognition paper in this round</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23 检索截止前</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】本轮空缺判断。已检索 event camera、event stream、RGB-Event、pedestrian attribute recognition、open-vocabulary attribute、modality dropout、event foundation model 等关键词，未发现 2026-07-21 批次有高质量新增且直接命中 RGB-Event 属性识别的论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】本轮空缺判断。已检索 event camera、event stream、RGB-Event、pedestrian attribute recognition、open-vocabulary attribute、modality dropout、event foundation model 等关键词，未发现 2026-07-21 批次有高质量新增且直接命中 RGB-Event 属性识别的论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>今天的事件相关新增更偏天文/光子/跨平台或普通视觉，不足以替代 PFM-VEPAR、EZSR、Adaptive Prompt Fusion 等已核验基线。
+从本日报的选取理由看，【P2】本轮空缺判断。已检索 event camera、event stream、RGB-Event、pedestrian attribute recognition、open-vocabulary attribute、modality dropout、event foundation model 等关键词，未发现 2026-07-21 批次有高质量新增且直接命中 RGB-Event 属性识别的论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>缺少同时覆盖原生事件表征、RGB/Event 时间对齐、属性不确定性和开放词表监督的新论文。
+对当前主题的关键意义在于：下一轮继续监测 EventPAR、OpenPAR、TriPro-ReID、neuromorphic vision 和 event foundation model 更新。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>不适用；本条仅记录空缺。
+阅读时需要把方法设计与主要结果一起看：本轮 P2 不凑普通 RGB 或普通事件分类论文。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>本轮 P2 不凑普通 RGB 或普通事件分类论文。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能漏掉会议系统或项目页更新。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 今天应以 EventFly 做泛化启发，并继续保留 PFM-VEPAR/EZSR/APF 作为核心替换实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一轮继续监测 EventPAR、OpenPAR、TriPro-ReID、neuromorphic vision 和 event foundation model 更新。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">05</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-1. OmniReasoner：从全局预览到局部高保真视觉证据</h3>
+              <p class="paper__subtitle">OmniReasoner: Thinking with Long Audio-Video via Native Tool Use</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增。原始应用领域是长音视频多模态推理；可迁移模块是 global preview、TimeAnchor 和按需 zoom-in tool use；对应待解决问题是时序如何选择图像局部证据，并抑制无关视觉信息。预期计算/显存影响是把高保真视觉计算从全序列降为少量窗口，但训练期大模型后训练成本高；风险是 VLM 工具调用难以满足实时控制延迟。最小验证实验是离线训练轻量 selector 复现 zoom-in 决策，再在破裂预测中只编码 top-k 视觉窗口。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yu Chen 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19339" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.19339" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增。原始应用领域是长音视频多模态推理；可迁移模块是 global preview、TimeAnchor 和按需 zoom-in tool use；对应待解决问题是时序如何选择图像局部证据，并抑制无关视觉信息。预期计算/显存影响是把高保真视觉计算从全序列降为少量窗口，但训练期大模型后训练成本高；风险是 VLM 工具调用难以满足实时控制延迟。最小验证实验是离线训练轻量 selector 复现 zoom-in 决策，再在破裂预测中只编码 top-k 视觉窗口。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 不应把所有可见光帧等价输入。破裂前兆往往集中在少数时间段和局部区域。
+从本日报的选取理由看，【P3】新增。原始应用领域是长音视频多模态推理；可迁移模块是 global preview、TimeAnchor 和按需 zoom-in tool use；对应待解决问题是时序如何选择图像局部证据，并抑制无关视觉信息。预期计算/显存影响是把高保真视觉计算从全序列降为少量窗口，但训练期大模型后训练成本高；风险是 VLM 工具调用难以满足实时控制延迟。最小验证实验是离线训练轻量 selector 复现 zoom-in 决策，再在破裂预测中只编码 top-k 视觉窗口。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在多采样率视觉序列中保持时间参数一致，并把算力集中到关键证据？
+对当前主题的关键意义在于：用诊断风险粗筛时间窗，再让高分辨率视觉 encoder 只读这些窗口，测显存、延迟、提前量和局部热图一致性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>TimeAnchor 让稀疏预览与密集局部片段之间的时间请求保持 round-trip consistency。
+阅读时需要把方法设计与主要结果一起看：摘要报告 temporal grounding 和答案准确率提升。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 temporal grounding 和答案准确率提升。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需蒸馏成轻量模型，不能直接在线部署。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 视觉 token selector 的训练信号或离线 teacher。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>用诊断风险粗筛时间窗，再让高分辨率视觉 encoder 只读这些窗口，测显存、延迟、提前量和局部热图一致性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">06</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-2. NGPS：异步多频融合与质量自适应协方差</h3>
+              <p class="paper__subtitle">NGPS: GPS-Denied Aerial Geo-Localization and 2.5D Reconstruction via Deep Satellite Image Matching and Multi-Rate Sensor Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21；IROS 2026 accepted</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-21，评论标注 IROS 2026 accepted。它把 1-2 Hz 绝对图像匹配、10-20 Hz VIO 和 100-200 Hz IMU 通过时间优先队列融合，并按匹配质量自适应调 UKF 协方差，对 P1/P3 多采样率诊断融合很直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sanket Sharma</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.18936" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/snktshrma/ngps_flight" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.18936" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-21，评论标注 IROS 2026 accepted。它把 1-2 Hz 绝对图像匹配、10-20 Hz VIO 和 100-200 Hz IMU 通过时间优先队列融合，并按匹配质量自适应调 UKF 协方差，对 P1/P3 多采样率诊断融合很直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 的融合系统需要处理 1-10 Hz 图像、kHz 诊断和更高频事件。先对齐到固定帧率会损失信息或引入滞后。
+从本日报的选取理由看，新增 / arXiv 2026-07-21，评论标注 IROS 2026 accepted。它把 1-2 Hz 绝对图像匹配、10-20 Hz VIO 和 100-200 Hz IMU 通过时间优先队列融合，并按匹配质量自适应调 UKF 协方差，对 P1/P3 多采样率诊断融合很直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让不同频率、不同可靠性的传感器按真实时间顺序融合？
+对当前主题的关键意义在于：先做无深度端到端的融合基线：每个模态输出风险和置信度，按时间队列进入滤波器，再与深度 cross-attention 融合对比。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a2276edb0607ddf6.png" alt="Figure 1: NGPS system architecture: visual geo-localization provides absolute corrections (1–2 Hz) fused with VIO (10–20 Hz) via UKF, feeding ArduPilot’s EKF (100–400 Hz).">
+                    <figcaption>Figure 1: NGPS system architecture: visual geo-localization provides absolute corrections (1–2 Hz) fused with VIO (10–20 Hz) via UKF, feeding ArduPilot’s EKF (100–400 Hz).</figcaption>
+                  </figure>
+                  <p>NGPS 用时间优先队列交错 absolute position、VIO 和 IMU 更新，并按 RANSAC inlier、重投影误差和匹配置信度调协方差。
+阅读时需要把方法设计与主要结果一起看：摘要报告五段飞行序列上位置 RMSE 2.94 m，较 monocular VIO 改善 3.5 倍，并可在 Jetson Orin NX 实时运行。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告五段飞行序列上位置 RMSE 2.94 m，较 monocular VIO 改善 3.5 倍，并可在 Jetson Orin NX 实时运行。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>UAV 定位与破裂预测目标不同，滤波状态和观测模型需重建。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P3 异步融合工程层的优先参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先做无深度端到端的融合基线：每个模态输出风险和置信度，按时间队列进入滤波器，再与深度 cross-attention 融合对比。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>OmniReasoner：长音视频中的稀疏证据定位</h3>
+              <p class="paper__subtitle">OmniReasoner: Thinking with Long Audio-Video via Native Tool Use</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-21。它先看低成本全局预览，再学习何时、在哪个时间段调用高保真 zoom-in，并用 TimeAnchor 保证不同采样粒度下的时间参数一致；对 P3 的“先粗筛，再局部读图”很有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yu Chen, Caorui Li, Ziyu Xiong, Yidong Wang, Mingqi Gao, Shuman Liu, Biao Liu, Chunfeng Yang, Anxiang Zeng, Haibo Zhang, Chaofan Chen</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19339" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.19339" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/RockyChen0205/OmniReasoner" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.19339" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-21。它先看低成本全局预览，再学习何时、在哪个时间段调用高保真 zoom-in，并用 TimeAnchor 保证不同采样粒度下的时间参数一致；对 P3 的“先粗筛，再局部读图”很有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 中可见光视频的关键前兆稀疏，不能每帧、每区域都用高分辨率模型处理。需要一种机制让时序模型先低成本定位疑似时段，再精读局部图像证据。
+从本日报的选取理由看，新增 / arXiv 2026-07-21。它先看低成本全局预览，再学习何时、在哪个时间段调用高保真 zoom-in，并用 TimeAnchor 保证不同采样粒度下的时间参数一致；对 P3 的“先粗筛，再局部读图”很有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在长视频中保持时间定位准确，同时避免全量高保真视觉/音频输入的计算浪费？
+对当前主题的关键意义在于：最小实验是先用低分辨率帧和诊断风险粗筛 top-k 时间窗，再对这些窗口做高分辨率 ROI 编码，比较全帧 ViT、均匀采样和 zoom-in selector 的显存与提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>OmniReasoner 通过 SFT 和 RL 训练 omnimodal LLM 决定是否调用 zoom-in tool，并提出 TimeAnchor，使工具的时间参数在稀疏预览和密集局部片段之间保持一致。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法在 omnimodal 和 video benchmark 上提升答案准确率和 temporal grounding，同时把高保真计算集中在信息区域。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法在 omnimodal 和 video benchmark 上提升答案准确率和 temporal grounding，同时把高保真计算集中在信息区域。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它是大模型后训练框架，不适合直接放进毫秒级控制环；P3 需要蒸馏成轻量 token selector。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P3 “粗到细视觉证据读取”的机制模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是先用低分辨率帧和诊断风险粗筛 top-k 时间窗，再对这些窗口做高分辨率 ROI 编码，比较全帧 ViT、均匀采样和 zoom-in selector 的显存与提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>IMMoE：缺失多视角异常检测</h3>
+              <p class="paper__subtitle">IMMoE: Incomplete Multi-View Anomaly Detection via Mixture of View Experts Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21；ECCV 2026 accepted</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-21，评论标注 ECCV 2026 accepted。它专门设定多视角局部缺失异常检测，用 multi-view expert fusion 和 local anomaly enhancement encoder 抵抗遮挡/缺视图，适合 P3 模态缺失训练和视觉异常局部增强。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lei Hu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19032" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.19032" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/HULEI7/IMMoE" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.19032" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-21，评论标注 ECCV 2026 accepted。它专门设定多视角局部缺失异常检测，用 multi-view expert fusion 和 local anomaly enhancement encoder 抵抗遮挡/缺视图，适合 P3 模态缺失训练和视觉异常局部增强。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可见光、IR、ECEI/BES 或多相机诊断都可能存在遮挡、饱和、坏点、视角缺失。简单模态 dropout 只能模拟整模态缺失，不能覆盖局部区域缺失。
+从本日报的选取理由看，新增 / arXiv 2026-07-21，评论标注 ECCV 2026 accepted。它专门设定多视角局部缺失异常检测，用 multi-view expert fusion 和 local anomaly enhancement encoder 抵抗遮挡/缺视图，适合 P3 模态缺失训练和视觉异常局部增强。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在部分视图区域被 mask 或损坏时，仍利用多视角一致性做异常检测？
+对当前主题的关键意义在于：最小实验是在可见光/IR 帧上随机遮挡局部 ROI 或模拟坏相机，用 view experts 重建风险相关区域，再与诊断时序融合测试模态缺失 AUC。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/35403a42d135f679.png" alt="Figure 3 : The overall architecture of the IMMoE framework. Our reconstruction-based pipeline centers on two synergistic modules: the Local Anomaly Enhancement Encoder (LAEE), which prevents overfitting to masked regions by simulating anomaly patterns through stochastic feature discarding, and the Multi-view Expert Fusion (MVEF), which adaptively aggregates cross-view complementary information via a Mixture-of-Experts mechanism. Together, they ensure robust feature restoration and inter-view consistency, enabling precise anomaly localization even under severe information deficiency.">
+                    <figcaption>Figure 3 : The overall architecture of the IMMoE framework. Our reconstruction-based pipeline centers on two synergistic modules: the Local Anomaly Enhancement Encoder (LAEE), whic...</figcaption>
+                  </figure>
+                  <p>IMMoE 提出 Multi-View Expert Fusion 引导单视图重建，并用 Local Anomaly Enhancement Encoder 对局部特征施加 dropout，避免模型过拟合 mask 区域。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 RIMAD 和 Real-IAD 上达到 SOTA，RIMAD pixel-level 和 image-level 指标分别提升 11.8% 和 2.8%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 RIMAD 和 Real-IAD 上达到 SOTA，RIMAD pixel-level 和 image-level 指标分别提升 11.8% 和 2.8%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>工业多视角图像与聚变诊断图像差异明显；论文不处理诊断时序和实时延迟。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P3 多图像模态缺失训练和异常局部增强模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在可见光/IR 帧上随机遮挡局部 ROI 或模拟坏相机，用 view experts 重建风险相关区域，再与诊断时序融合测试模态缺失 AUC。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>CURE/HyFuse：异构医疗多模态的轻量几何注意力融合</h3>
+              <p class="paper__subtitle">Advancing Multimodal Fusion on Heterogeneous Medical Data with Hybrid Geometry Attention</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-21；KDD 2026</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / KDD 2026。它面向影像、临床记录和组学等异构模态，强调逐步融合、模态顺序不变和大幅降计算，对 P3 异构诊断融合有机制价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Joy Dhar, Manish Kumar Pandey, Nayyar Zaidi, Chen Chen, Maryam Haghighat, Ferdous Sohel, Puneet Goyal</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.19086" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.19086" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.19086" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / KDD 2026。它面向影像、临床记录和组学等异构模态，强调逐步融合、模态顺序不变和大幅降计算，对 P3 异构诊断融合有机制价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>诊断时序、可见光图像、运行参数和物理先验属于不同模态配置，不同装置可用模态也不同。固定两模态模型很难跨装置复用。
+从本日报的选取理由看，新增 / KDD 2026。它面向影像、临床记录和组学等异构模态，强调逐步融合、模态顺序不变和大幅降计算，对 P3 异构诊断融合有机制价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在异构、多数量、可能变化的模态集合上做低成本统一融合？
+对当前主题的关键意义在于：最小实验是按低频诊断、高频压缩 token、可见光 ROI、物理阶段 token 逐层接入 HyFuse，与一次性 concat/cross-attention 比较显存、延迟和跨装置缺模态性能。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/309dba74121023a0.png" alt="Figure 1. Comparative high-level overview of various MFL methods – (Left) architecture of intermediate or late fusion methods (e.g., DRIFA-Net ( Dhar et al . , 2025b ) , MuMu ( Islam and Iqbal , 2022 ) , MOTCAT ( Xu and Chen , 2023 ) ) and (Right) architecture of our proposed CURE framework.">
+                    <figcaption>Figure 1. Comparative high-level overview of various MFL methods – (Left) architecture of intermediate or late fusion methods (e.g., DRIFA-Net ( Dhar et al . , 2025b ) , MuMu ( Isl...</figcaption>
+                  </figure>
+                  <p>CURE 使用 cascaded unified representation learning，每个 HyFuse 层顺序接入一个模态；hybrid-space attention mixer 学习 coarse-to-fine 结构线索，并结合 late-fusion 与共享信息细化。
+阅读时需要把方法设计与主要结果一起看：摘要报告 16 个公开数据集上较领先融合方法最高提升 3.97%，计算成本最高降低 87.8%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 16 个公开数据集上较领先融合方法最高提升 3.97%，计算成本最高降低 87.8%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医疗数据多为离线预测，缺少实时控制链路；模态顺序和物理约束需要针对聚变重设。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P3 异构诊断和图像模态逐步接入的轻量融合参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是按低频诊断、高频压缩 token、可见光 ROI、物理阶段 token 逐层接入 HyFuse，与一次性 concat/cross-attention 比较显存、延迟和跨装置缺模态性能。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
