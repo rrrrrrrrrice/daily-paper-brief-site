@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-25</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-25 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-25 05:12:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- 今天最贴近聚变主线的是 Cycle-Consistent and Uncertainty-Aware Neural Surrogates for Tokamak Edge Plasmas：它不是破裂预测，但把 SOLPS-ITER 边界等离子体 surrogate、反演一致性和不确定性合在一个可毫秒级推理的框架里，对数字孪生和控制前端很直接。</p>
+        <p>- P1 的新增重点从通用 long-context 转向“概率结构拆分”和“解释必要性”：SPECTRA 将确定性趋势、频域残差和外生上下文解耦，TimePNS 用反事实必要性约束时间片解释，hydrological diffusion 则补上稀疏监测场景的概率插补/预测。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 FlexTSF：可处理规则与不规则时序的通用预测模型</a></li>
+              <li><a href="#paper-2">02 Time-MoE：十亿级混合专家时序基础模型</a></li>
+              <li><a href="#paper-3">03 EZSR：事件相机零样本识别</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-4">04 SPECTRA：状态空间外生上下文与时频分辨概率预测</a></li>
+              <li><a href="#paper-5">05 TimePNS：反事实必要性驱动的时序解释</a></li>
+              <li><a href="#paper-6">06 Hydrological diffusion TS：水文稀疏监测的概率插补与预测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-9">09 Cycle-consistent tokamak edge surrogate：边界等离子体数字孪生代理</a></li>
+              <li><a href="#paper-10">10 yancc：JAX 可微 neoclassical transport 求解器</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发</a>
+            <ul>
+              <li><a href="#paper-11">11 P1-1. SPECTRA：高低频诊断与外生工况的概率分流建模</a></li>
+              <li><a href="#paper-12">12 P1-2. TimePNS：必要性解释用于破裂前兆审计</a></li>
+              <li><a href="#paper-13">13 P2-1. QAAF：RGB/Event 属性识别的质量可靠性门控</a></li>
+              <li><a href="#paper-14">14 P2-2. 本轮原生 RGB-Event 属性识别新增空缺</a></li>
+              <li><a href="#paper-15">15 P3-1. Cycle-consistent tokamak edge surrogate：物理一致反演与不确定性融合</a></li>
+              <li><a href="#paper-16">16 P3-2. QAAF：可见光/诊断时序缺模态鲁棒融合</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-7">07 QAAF：质量感知自适应多模态融合</a></li>
+              <li><a href="#paper-8">08 DINOde：连续 ODE 轨迹的视觉-文本开放词表分割对齐</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-9">Cycle-consistent tokamak edge surrogate：边界等离子体数字孪生代理</a></h3>
+              <p class="card__subtitle">Cycle-Consistent and Uncertainty-Aware Neural Surrogates for Tokamak Edge Plasmas</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变与 AI 交叉</span>
+                <span class="chip chip--muted">2026-07-23</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-23。它直接面向 tokamak edge plasma，把 conditional U-Net 正向预测、冻结前向网络上的优化式反演和 ensemble 不确定性合在一起，摘要报告 2D 场毫秒级推理；对聚变数字孪生、控制前端和 P3 的物理约束融合最直接。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">SPECTRA：状态空间外生上下文与时频分辨概率预测</a></h3>
+              <p class="card__subtitle">SPECTRA: State-Space Exogenous Context and Temporal-Frequency Resolution Architecture for Probabilistic Energy Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-22</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-22。SPECTRA 把趋势周期、残差高频和外生扰动分开建模，再用 temporal-frequency SSM 输出有序分位数；对 P1 的高低频统一建模、外生工况注入和尾部风险校准有清晰可迁移机制。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">TimePNS：反事实必要性驱动的时序解释</a></h3>
+              <p class="card__subtitle">Beyond Sufficiency: Time Series Explanation with Counterfactual Necessity</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-23。它不只找足以维持预测的片段，而是干预时间因子判断哪些片段对原预测是 necessary；对破裂预测中“哪些前兆真正不可替代”的解释和告警审计很有价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">Hydrological diffusion TS：水文稀疏监测的概率插补与预测</a></h3>
+              <p class="card__subtitle">Transformer-based Diffusion models for Hydrological Time Series Probabilistic Imputation and Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-23。它用 transformer-based diffusion 同时做变量缺失下的 imputation 和 forecasting，应用虽是水文，但与聚变多诊断缺失、传感器漂移和稀疏站点联合建模的问题结构相近。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">QAAF：质量感知自适应多模态融合</a></h3>
+              <p class="card__subtitle">Quality-Aware Multimodal Fusion Reveals Implicit Identity in Valence-Arousal Features</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-23。QAAF 在音视频动态表征中估计每样本、每模态可靠性，并配合 quality-dependent dropout；可迁移到 P2 的 RGB/Event 质量动态加权和 P3 的可见光/诊断缺模态训练。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>FlexTSF：可处理规则与不规则时序的通用预测模型</h3>
+              <p class="paper__subtitle">A universal forecasting model for time series with variable regularities</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。ICLR 2025；今天用它重新约束 SPECTRA 和 hydrological diffusion：P1 不能只靠固定频率 patch，应显式区分规则、稀疏和不规则通道的时间结构。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>OpenReview 页面记录作者信息</p>
+                <p class="muted">具体机构以论文页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=LuLzcBsp5c" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。ICLR 2025；今天用它重新约束 SPECTRA 和 hydrological diffusion：P1 不能只靠固定频率 patch，应显式区分规则、稀疏和不规则通道的时间结构。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断既有规律采样的控制量，也有事件触发、缺测和不同频率的诊断流。把所有信号重采样到同一网格会丢失真实时间间隔。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。ICLR 2025；今天用它重新约束 SPECTRA 和 hydrological diffusion：P1 不能只靠固定频率 patch，应显式区分规则、稀疏和不规则通道的时间结构。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让同一预测模型同时处理 regular 与 irregular time series，而不把不规则性当作预处理噪声？
+对当前主题的关键意义在于：最小实验是把已有诊断按规则低频、事件稀疏和高频压缩三类输入分别编码，比较统一模型与重采样 Transformer 在采样率扰动下的 AUC、提前量和校准误差。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文提出面向 variable regularities 的通用预测模型，核心价值在于将采样规律性纳入模型设计，而不是只在数据层插值。
+阅读时需要把方法设计与主要结果一起看：OpenReview 检索页核验其为 ICLR 2025 相关论文；方法定位直接覆盖规则/不规则时序预测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 检索页核验其为 ICLR 2025 相关论文；方法定位直接覆盖规则/不规则时序预测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>公开摘要级信息不足以确认其在高频海量点和多装置聚变数据上的显存行为。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1 “统一 regular/irregular 输入协议”的顶会回看基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把已有诊断按规则低频、事件稀疏和高频压缩三类输入分别编码，比较统一模型与重采样 Transformer 在采样率扰动下的 AUC、提前量和校准误差。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Time-MoE：十亿级混合专家时序基础模型</h3>
+              <p class="paper__subtitle">Billion-Scale Time Series Foundation Models with Mixture of Experts</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025 Spotlight</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。ICLR 2025 Spotlight；今天用它映射 SPECTRA 的 deterministic/residual 分流：如果不同诊断频段和工况对应不同专家，MoE 路由可能比单一 backbone 更自然。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>OpenReview 页面记录作者信息</p>
+                <p class="muted">具体机构以论文页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=e1wDDFmlVu" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。ICLR 2025 Spotlight；今天用它映射 SPECTRA 的 deterministic/residual 分流：如果不同诊断频段和工况对应不同专家，MoE 路由可能比单一 backbone 更自然。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变时序中低频控制、MHD 高频扰动、边界诊断和图像压缩 token 的统计结构不同。统一大模型若不分流，容易在容量和鲁棒性上互相牵制。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。ICLR 2025 Spotlight；今天用它映射 SPECTRA 的 deterministic/residual 分流：如果不同诊断频段和工况对应不同专家，MoE 路由可能比单一 backbone 更自然。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>时序基础模型如何扩展到大容量，同时避免所有样本都走同一组参数？
+对当前主题的关键意义在于：最小实验是在现有模型上加入轻量 MoE adapter，路由输入包含采样率、诊断类型和运行阶段，比较单专家、固定分组专家和可学习路由的显存、吞吐、AUC 与路由可解释性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Time-MoE 采用 mixture-of-experts 架构扩展时序基础模型，让不同序列模式可由不同专家处理。
+阅读时需要把方法设计与主要结果一起看：OpenReview 页面核验其为 ICLR 2025 Spotlight 论文；论文定位为十亿级 TSFM。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 页面核验其为 ICLR 2025 Spotlight 论文；论文定位为十亿级 TSFM。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>MoE 会带来路由稳定性、负载均衡和部署复杂度；小数据聚变任务未必能训练可靠专家。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1/P3 “按诊断频段或工况路由”的顶会回看项。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有模型上加入轻量 MoE adapter，路由输入包含采样率、诊断类型和运行阶段，比较单专家、固定分组专家和可学习路由的显存、吞吐、AUC 与路由可解释性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>EZSR：事件相机零样本识别</h3>
+              <p class="paper__subtitle">EZSR: Event-based Zero-Shot Recognition</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。CVPR 2025；今天用它补 P2 的开放词表属性监督：事件分支不应只服务闭集检测，也应能与文本属性语义对齐。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF 页面记录作者信息</p>
+                <p class="muted">具体机构以论文页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Yang_EZSR_Event-based_Zero-Shot_Recognition_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。CVPR 2025；今天用它补 P2 的开放词表属性监督：事件分支不应只服务闭集检测，也应能与文本属性语义对齐。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别常受属性标签二值化、长尾属性和缺事件模态影响。开放词表语义可帮助新属性、弱标签和跨数据集迁移。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。CVPR 2025；今天用它补 P2 的开放词表属性监督：事件分支不应只服务闭集检测，也应能与文本属性语义对齐。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把 RGB 预训练视觉语言知识迁移到事件相机识别，而不完全依赖事件数据闭集标注？
+对当前主题的关键意义在于：最小实验是在 TriPro/EventPAR 上冻结 RGB CLIP 文本属性原型，训练事件 encoder 对齐属性文本，并比较闭集二值头、文本原型头和 modality dropout 下的 mA/F1。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>EZSR 研究 event-based zero-shot recognition，利用 RGB 图像预训练语义引导事件识别。
+阅读时需要把方法设计与主要结果一起看：CVF Open Access 页面核验其为 CVPR 2025 正式论文。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF Open Access 页面核验其为 CVPR 2025 正式论文。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>零样本目标识别不等于行人属性识别；事件/RGB 时间对齐和属性级置信度仍需额外模块。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P2 开放词表事件属性识别的顶会回看基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro/EventPAR 上冻结 RGB CLIP 文本属性原型，训练事件 encoder 对齐属性文本，并比较闭集二值头、文本原型头和 modality dropout 下的 mA/F1。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>SPECTRA：状态空间外生上下文与时频分辨概率预测</h3>
+              <p class="paper__subtitle">SPECTRA: State-Space Exogenous Context and Temporal-Frequency Resolution Architecture for Probabilistic Energy Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-22</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-22。SPECTRA 把趋势周期、残差高频和外生扰动分开建模，再用 temporal-frequency SSM 输出有序分位数；对 P1 的高低频统一建模、外生工况注入和尾部风险校准有清晰可迁移机制。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hang Ye, Xinyan Jiang, Yuedong Shi, Yangxin Zhu, Jianming Wei, Tian Zheng, Xiaoying Zheng, Yongxin Zhu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.20587" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.20587" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.20587" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-22。SPECTRA 把趋势周期、残差高频和外生扰动分开建模，再用 temporal-frequency SSM 输出有序分位数；对 P1 的高低频统一建模、外生工况注入和尾部风险校准有清晰可迁移机制。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>能源预测中的负荷、价格、太阳能和风电同时受周期趋势、高频扰动和外生天气/市场影响。聚变诊断同样存在慢变运行点、高频前兆和外部控制输入耦合。
+从本日报的选取理由看，新增 / arXiv 2026-07-22。SPECTRA 把趋势周期、残差高频和外生扰动分开建模，再用 temporal-frequency SSM 输出有序分位数；对 P1 的高低频统一建模、外生工况注入和尾部风险校准有清晰可迁移机制。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把确定性趋势、随机残差和外生上下文分开建模，并输出可校准的概率预测区间？
+对当前主题的关键意义在于：最小实验是把聚变诊断拆成慢趋势、高频残差和外生控制三路，用 SSM 分流后预测破裂风险分位数，比较单流 Transformer 的显存、ECE、tail-risk recall 和提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3608335919264d6b.png" alt="Figure 1: Architecture of SPECTRA. The main pipeline contains six stages from normalization to quantile-aware denormalization, while insets (a)–(d) detail MTPD, ECS, STSSE, and SBE, respectively. The deterministic and residual streams follow specialized paths and are fused for quantile forecasting.">
+                    <figcaption>Figure 1: Architecture of SPECTRA. The main pipeline contains six stages from normalization to quantile-aware denormalization, while insets (a)–(d) detail MTPD, ECS, STSSE, and SBE...</figcaption>
+                  </figure>
+                  <p>SPECTRA 自适应分离 deterministic stream 与 residual stream，用 multi-resolution spectral-temporal state-space modeling 精炼确定性主干，并从互补表示估计有序分位数边界。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 load、price、solar、wind 预测 18 个设置中 14 个取得最优 CRPS，平均 CRPS 降低 5.74%，upper-tail quantile risk 降低 7.27%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 load、price、solar、wind 预测 18 个设置中 14 个取得最优 CRPS，平均 CRPS 降低 5.74%，upper-tail quantile risk 降低 7.27%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>应用是能源预测，不直接处理真实异步时间戳；高频诊断压缩后是否仍能保持相位信息需要验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1 高低频分流、外生上下文注入和尾部风险建模的优先候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把聚变诊断拆成慢趋势、高频残差和外生控制三路，用 SSM 分流后预测破裂风险分位数，比较单流 Transformer 的显存、ECE、tail-risk recall 和提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>TimePNS：反事实必要性驱动的时序解释</h3>
+              <p class="paper__subtitle">Beyond Sufficiency: Time Series Explanation with Counterfactual Necessity</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-23。它不只找足以维持预测的片段，而是干预时间因子判断哪些片段对原预测是 necessary；对破裂预测中“哪些前兆真正不可替代”的解释和告警审计很有价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hongnan Ma, Yiwei Shi, Mengyue Yang, Weiru Liu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21573" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.21573" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.21573" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-23。它不只找足以维持预测的片段，而是干预时间因子判断哪些片段对原预测是 necessary；对破裂预测中“哪些前兆真正不可替代”的解释和告警审计很有价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测模型常能输出高风险，但难以说明哪些时间片或诊断扰动真正决定预测。只展示 attention 或足够支持预测的片段，可能把伴随变量误当作因果前兆。
+从本日报的选取理由看，新增 / arXiv 2026-07-23。它不只找足以维持预测的片段，而是干预时间因子判断哪些片段对原预测是 necessary；对破裂预测中“哪些前兆真正不可替代”的解释和告警审计很有价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何识别不仅“足以支持预测”、而且“移除后会破坏预测”的关键时间因子？
+对当前主题的关键意义在于：最小实验是对已训练破裂分类器运行 TimePNS，移除被判为 necessary 的时间片或通道后检查风险是否下降，并与物理前兆标注和专家规则对齐。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/15dcb6bb2cab5402.png" alt="(a) Disagreement-set ablation.">
+                    <figcaption>(a) Disagreement-set ablation.</figcaption>
+                  </figure>
+                  <p>TimePNS 两阶段训练：先学习可识别因果生成过程和 sufficiency mask，再对 temporal factors 做 counterfactual interventions，产生 necessity signals 监督 temporal gate，压制非必要片段。
+阅读时需要把方法设计与主要结果一起看：摘要报告在合成和真实时序 benchmark 上更准确定位决策关键子序列，并提升 sufficiency-necessity trade-off。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在合成和真实时序 benchmark 上更准确定位决策关键子序列，并提升 sufficiency-necessity trade-off。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它解释的是黑盒分类器，解释真实性依赖生成过程可识别性；物理因果不等同于模型决策必要性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合做破裂预测和异常检测的解释审计，而不是直接提升预测精度的主模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是对已训练破裂分类器运行 TimePNS，移除被判为 necessary 的时间片或通道后检查风险是否下降，并与物理前兆标注和专家规则对齐。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Hydrological diffusion TS：水文稀疏监测的概率插补与预测</h3>
+              <p class="paper__subtitle">Transformer-based Diffusion models for Hydrological Time Series Probabilistic Imputation and Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-23。它用 transformer-based diffusion 同时做变量缺失下的 imputation 和 forecasting，应用虽是水文，但与聚变多诊断缺失、传感器漂移和稀疏站点联合建模的问题结构相近。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ferdinand Bhavsar, Lionel Benoit, Maxime Savatier, Edith Gabriel</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21200" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.21200" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.21200" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-23。它用 transformer-based diffusion 同时做变量缺失下的 imputation 和 forecasting，应用虽是水文，但与聚变多诊断缺失、传感器漂移和稀疏站点联合建模的问题结构相近。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>水文监测站点稀疏、变量质量不均和长期传感器故障，与聚变实验中诊断缺失、漂移和跨 shot 条件变化有相似数据问题。
+从本日报的选取理由看，新增 / arXiv 2026-07-23。它用 transformer-based diffusion 同时做变量缺失下的 imputation 和 forecasting，应用虽是水文，但与聚变多诊断缺失、传感器漂移和稀疏站点联合建模的问题结构相近。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在观测缺口不固定、多个站点和多个变量联合存在时，生成合理的缺失时序并预测未来状态？
+对当前主题的关键意义在于：最小实验是对破裂数据随机遮蔽关键诊断，用 diffusion imputer 生成多样补全，再将补全样本输入风险模型，比较直接 masking、均值插补和 diffusion 补全的校准与提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文将 transformer-based diffusion 用于水量/水质时间序列的联合模拟、重建和预测，在缺失观测条件下采样可能的时序分布。
+阅读时需要把方法设计与主要结果一起看：摘要称模型在三处相邻流域六个站点、超过 15 年数据上，与常用时序 baseline 比较，能更好复现时序特征并处理变量缺失下的 forecasting/imputation。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称模型在三处相邻流域六个站点、超过 15 年数据上，与常用时序 baseline 比较，能更好复现时序特征并处理变量缺失下的 forecasting/imputation。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>扩散采样可能带来较高推理延迟；若用于实时破裂预测，需要蒸馏或只作为离线缺失增强器。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P1/P3 缺诊断补全和不确定性训练数据增强的实用候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是对破裂数据随机遮蔽关键诊断，用 diffusion imputer 生成多样补全，再将补全样本输入风险模型，比较直接 masking、均值插补和 diffusion 补全的校准与提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>Cycle-consistent tokamak edge surrogate：边界等离子体数字孪生代理</h3>
+              <p class="paper__subtitle">Cycle-Consistent and Uncertainty-Aware Neural Surrogates for Tokamak Edge Plasmas</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-23。它直接面向 tokamak edge plasma，把 conditional U-Net 正向预测、冻结前向网络上的优化式反演和 ensemble 不确定性合在一起，摘要报告 2D 场毫秒级推理；对聚变数字孪生、控制前端和 P3 的物理约束融合最直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Abdourahmane Diaw, Sebastian De Pascuale, Jae-Sun Park, Ivan Paradela Perez, Jeremy D. Lore, Stefan Dasbach</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21407" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.21407" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.21407" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-23。它直接面向 tokamak edge plasma，把 conditional U-Net 正向预测、冻结前向网络上的优化式反演和 ensemble 不确定性合在一起，摘要报告 2D 场毫秒级推理；对聚变数字孪生、控制前端和 P3 的物理约束融合最直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>边界和 divertor 等离子体决定功率/粒子排出、热通量、靶板状态和 detachment 起点。SOLPS-ITER 等高保真边界模拟太慢，难以用于实时控制、参数扫描或在线优化。
+从本日报的选取理由看，新增 / arXiv 2026-07-23。它直接面向 tokamak edge plasma，把 conditional U-Net 正向预测、冻结前向网络上的优化式反演和 ensemble 不确定性合在一起，摘要报告 2D 场毫秒级推理；对聚变数字孪生、控制前端和 P3 的物理约束融合最直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用机器学习代理快速预测边界等离子体 2D 场，同时从观测反推控制参数并知道预测何时不可靠？
+对当前主题的关键意义在于：最小实验是把已有边界/剖面诊断或简化 SOLPS 数据训练正向代理，再用观测剖面反演控制参数，报告反演误差、不确定性-误差相关性和毫秒级推理延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bd28c5fc78b8018d.png" alt="Figure 1: Surrogate model architecture: the three-stage inference cycle. (a) Stage 1 (forward model) : a conditional U-Net maps a single-channel geometry mask, with the five scalar control parameters injected via FiLM, to the four-channel plasma state ( T e , T i , n e , u a T_{e},T_{i},n_{e},u_{a} ); the fields are outputs of the model, not inputs. (b) Stage 2 (inverse model) : the control parameters are recovered from a target field by optimizing through the frozen forward model, warm-started by the learned pseudo-inverse G ψ G_{\psi} (Fig. 2 ) evaluated on the observed fields. (c) Stage 3 (cycle consistency) : the recovered parameters are passed back through the frozen model; the cycle loss validates that the round-trip preserves the target field, a self-supervised metric requiring no ground-truth parameters. The forward model F θ F_{\theta} and pseudo-inverse G ψ G_{\psi} used here are produced beforehand by the training-time regularizer of Fig. 2 .">
+                    <figcaption>Figure 1: Surrogate model architecture: the three-stage inference cycle. (a) Stage 1 (forward model) : a conditional U-Net maps a single-channel geometry mask, with the five scalar...</figcaption>
+                  </figure>
+                  <p>正向模型用 conditional U-Net 将五个控制参数映射到 SOLPS-ITER mesh 上的二维 plasma-state fields；反问题在冻结前向网络上优化输入参数，并用 cycle consistency 作为无标签推理时的自监督质量检查；MLP ensemble 给出 midplane 和 divertor profiles 的不确定性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 forward NRMSE 低于 2.6%、Pearson 相关高于 0.95；cycle consistency 将平均 cyclical R^2 从 0.59 提升到 0.99；五个控制参数恢复 Pearson r >= 0.97；约 400 万参数可在毫秒级输出完整 2D 预测，比 SOLPS-ITER 快 5-6 个数量级。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是 edge plasma surrogate，不是破裂预测；训练数据来自模拟，真实装置诊断噪声、缺测和跨装置泛化仍需验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是聚变 AI 数字孪生、边界控制和 P3 物理约束融合的本轮最强直接新增。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把已有边界/剖面诊断或简化 SOLPS 数据训练正向代理，再用观测剖面反演控制参数，报告反演误差、不确定性-误差相关性和毫秒级推理延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>yancc：JAX 可微 neoclassical transport 求解器</h3>
+              <p class="paper__subtitle">yancc: A GPU-accelerated, differentiable solver for neoclassical transport in tokamaks and stellarators</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它不是神经网络论文，但 JAX 可微、GPU 加速、低内存的 drift kinetic solver 对 physics-informed surrogate、profile prediction 和不确定性优化很有工程价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Rory Conlin, Matt Landreman</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.20861" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.20861" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.20861" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它不是神经网络论文，但 JAX 可微、GPU 加速、低内存的 drift kinetic solver 对 physics-informed surrogate、profile prediction 和不确定性优化很有工程价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变优化和 profile prediction 常需要快速计算 neoclassical transport fluxes、flows 和 currents。传统求解器在多参数扫描、敏感性分析和嵌入学习框架时成本较高。
+从本日报的选取理由看，新增。它不是神经网络论文，但 JAX 可微、GPU 加速、低内存的 drift kinetic solver 对 physics-informed surrogate、profile prediction 和不确定性优化很有工程价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保持物理求解精度的同时获得可微、低内存、可嵌入优化循环的 neoclassical transport 求解器？
+对当前主题的关键意义在于：最小实验是将 yancc 生成的 transport flux/profile sensitivity 作为 neural surrogate 的辅助监督，比较无物理层、有离线特征和端到端可微约束三种设置。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/877134ca814ac127.png" alt="Figure 1: Smoothing factor r r for the block diagonal smoothers in each coordinate, comparing the widened upwind stencil used in yancc against the QUICK scheme on the monoenergetic problem, as a function of collisionality. Using a wider stencil with a larger diagonal significantly improves the smoothing property.">
+                    <figcaption>Figure 1: Smoothing factor r r for the block diagonal smoothers in each coordinate, comparing the widened upwind stencil used in yancc against the QUICK scheme on the monoenergetic...</figcaption>
+                  </figure>
+                  <p>yancc 求解完整四维 drift kinetic equation 和 monoenergetic 简化形式，使用 Maxwell polynomial speed grid、pitch/flux coordinates finite differences、改进 upwind stencil，以及 multigrid-preconditioned Krylov method；JAX 实现使其支持梯度优化和 adjoint sensitivity。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告与 MONKES、SFINCS 在多碰撞率、几何和多物种配置下 1% 内一致；相对 SFINCS 每次扫描约一个数量级加速且内存低一个数量级。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它是数值物理求解器，不直接输出诊断风险；与深度模型耦合时需要处理梯度稳定性和边界条件一致性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它可作为聚变 AI 中“可微物理层”或 surrogate 数据生成/约束源。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是将 yancc 生成的 transport flux/profile sensitivity 作为 neural surrogate 的辅助监督，比较无物理层、有离线特征和端到端可微约束三种设置。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>直接破裂预测 + 可见光/诊断时序融合：本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>英文原标题：*No qualified new tokamak disruption and visible-diagnostic fusion AI paper in this round*</p>
+          <p>作者/机构：本轮空缺判断</p>
+          <p>发布日期：2026-07-25 检索截止前</p>
+          <p>论文链接：[arXiv physics.plasm-ph recent](https://arxiv.org/list/physics.plasm-ph/recent)，[arXiv cs.LG recent](https://arxiv.org/list/cs.LG/recent)，[arXiv cs.CV recent](https://arxiv.org/list/cs.CV/recent)</p>
+          <p>选取理由：本轮空缺判断。已补查 tokamak disruption prediction、plasma diagnostics、visible diagnostics、vision time series fusion、multimodal disruption prediction、ECEI/BES、cross-device transfer 等组合；Fri, 24 Jul 2026 可见批次中未发现高质量新增或实质更新的直接论文。</p>
+          <p>研究背景：本轮聚变新增主要是边界等离子体 surrogate、可微输运求解器和基础等离子体测量/物理问题，尚未覆盖可见光图像、诊断时序和实时破裂预测的完整组合。</p>
+          <p>核心问题：没有新的原始论文能同时支撑可见光图像、诊断时序、实时破裂预测、跨装置泛化和解释五项要求。</p>
+          <p>方法与关键创新：不适用；本条为空缺说明，避免用普通多模态视频或普通聚变数值物理论文冒充直接破裂预测进展。</p>
+          <p>主要结果：直接 tokamak disruption + visible diagnostics + diagnostic time series fusion 新稿本轮空缺。</p>
+          <p>局限性：可能遗漏尚未进入 arXiv 的装置团队报告、会议 early access 或作者主页更新。</p>
+          <p>总结：P3 今天应吸收 cross-domain 质量感知融合、时序解释和聚变 surrogate 机制，继续等待直接同题论文。</p>
+          <p>研究相关性：下一轮继续监测 DIII-D、JET、EAST、KSTAR、HL-3、ITER、SPARC 相关 disruption prediction、visible/IR diagnostics、ECEI/BES、uncertainty 和 cross-device transfer 更新。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-1. SPECTRA：高低频诊断与外生工况的概率分流建模</h3>
+              <p class="paper__subtitle">SPECTRA: State-Space Exogenous Context and Temporal-Frequency Resolution Architecture for Probabilistic Energy Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-22</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。原始应用领域是能源概率预测；可迁移模块是 deterministic/residual stream 分离、外生上下文双路对齐和 temporal-frequency SSM；对应待解决问题是同一模型如何同时处理聚变慢变工况、高频诊断扰动和不确定尾部风险。预期计算/显存影响低于全量 cross-attention，因为高频残差可在频域/SSM 分支中压缩；风险是固定频率分解不能保留真实异步 Delta t。最小验证实验是将高频诊断拆成趋势与残差两路，再与低频工程量对齐，评估显存、AUC、提前量和 tail recall。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hang Ye 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.20587" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.20587" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。原始应用领域是能源概率预测；可迁移模块是 deterministic/residual stream 分离、外生上下文双路对齐和 temporal-frequency SSM；对应待解决问题是同一模型如何同时处理聚变慢变工况、高频诊断扰动和不确定尾部风险。预期计算/显存影响低于全量 cross-attention，因为高频残差可在频域/SSM 分支中压缩；风险是固定频率分解不能保留真实异步 Delta t。最小验证实验是将高频诊断拆成趋势与残差两路，再与低频工程量对齐，评估显存、AUC、提前量和 tail recall。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 的难点不是单一频段预测，而是慢变量、高频前兆和外生控制的耦合。
+从本日报的选取理由看，【P1】新增。原始应用领域是能源概率预测；可迁移模块是 deterministic/residual stream 分离、外生上下文双路对齐和 temporal-frequency SSM；对应待解决问题是同一模型如何同时处理聚变慢变工况、高频诊断扰动和不确定尾部风险。预期计算/显存影响低于全量 cross-attention，因为高频残差可在频域/SSM 分支中压缩；风险是固定频率分解不能保留真实异步 Delta t。最小验证实验是将高频诊断拆成趋势与残差两路，再与低频工程量对齐，评估显存、AUC、提前量和 tail recall。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在概率输出中区分基线轨迹和高频扰动造成的不确定性？
+对当前主题的关键意义在于：先在现有破裂预测数据中加入 quantile risk head，比较单点风险和分位数风险对早期假阳性的影响。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3608335919264d6b.png" alt="Figure 1: Architecture of SPECTRA. The main pipeline contains six stages from normalization to quantile-aware denormalization, while insets (a)–(d) detail MTPD, ECS, STSSE, and SBE, respectively. The deterministic and residual streams follow specialized paths and are fused for quantile forecasting.">
+                    <figcaption>Figure 1: Architecture of SPECTRA. The main pipeline contains six stages from normalization to quantile-aware denormalization, while insets (a)–(d) detail MTPD, ECS, STSSE, and SBE...</figcaption>
+                  </figure>
+                  <p>SPECTRA 用 state-space temporal-frequency backbone 处理确定性分量，用残差与外生上下文控制分位数边界。
+阅读时需要把方法设计与主要结果一起看：能源数据上 CRPS 和上尾风险均优于强基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>能源数据上 CRPS 和上尾风险均优于强基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要改造为 timestamp-aware 才能完整处理异步通道。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1 高低频分流骨架。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在现有破裂预测数据中加入 quantile risk head，比较单点风险和分位数风险对早期假阳性的影响。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-2. TimePNS：必要性解释用于破裂前兆审计</h3>
+              <p class="paper__subtitle">Beyond Sufficiency: Time Series Explanation with Counterfactual Necessity</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。原始应用领域是时序分类解释；可迁移模块是 counterfactual necessity intervention 和 temporal gate；对应待解决问题是保留真实时间间隔后，如何判断某段高频/低频变化是否真为模型决策必要前兆。预期计算/显存影响主要发生在离线解释阶段，训练/推理主模型无需显著变大；风险是生成式反事实不符合等离子体物理约束。最小验证实验是对已有破裂分类器做必要性遮蔽，检查被识别片段是否对应已知 MHD 或辐射前兆。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hongnan Ma 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21573" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.21573" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。原始应用领域是时序分类解释；可迁移模块是 counterfactual necessity intervention 和 temporal gate；对应待解决问题是保留真实时间间隔后，如何判断某段高频/低频变化是否真为模型决策必要前兆。预期计算/显存影响主要发生在离线解释阶段，训练/推理主模型无需显著变大；风险是生成式反事实不符合等离子体物理约束。最小验证实验是对已有破裂分类器做必要性遮蔽，检查被识别片段是否对应已知 MHD 或辐射前兆。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长序列模型容易依赖伪相关背景，解释必须能区分充分片段和必要片段。
+从本日报的选取理由看，【P1】新增。原始应用领域是时序分类解释；可迁移模块是 counterfactual necessity intervention 和 temporal gate；对应待解决问题是保留真实时间间隔后，如何判断某段高频/低频变化是否真为模型决策必要前兆。预期计算/显存影响主要发生在离线解释阶段，训练/推理主模型无需显著变大；风险是生成式反事实不符合等离子体物理约束。最小验证实验是对已有破裂分类器做必要性遮蔽，检查被识别片段是否对应已知 MHD 或辐射前兆。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>哪些时间片或通道一旦被反事实干预，模型高风险判断就不再成立？
+对当前主题的关键意义在于：最小实验是对不同采样率窗口运行 TimePNS，比较 necessary segments 在时间偏移、缺测和下采样下是否稳定。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/15dcb6bb2cab5402.png" alt="(a) Disagreement-set ablation.">
+                    <figcaption>(a) Disagreement-set ablation.</figcaption>
+                  </figure>
+                  <p>用因果生成过程和反事实干预信号监督 temporal gate，从 sufficiency mask 中剔除非必要部分。
+阅读时需要把方法设计与主要结果一起看：摘要报告解释定位和 sufficiency-necessity trade-off 优于强基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告解释定位和 sufficiency-necessity trade-off 优于强基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>解释的是模型机制，不自动等同于真实物理因果。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合做 P1/P3 的解释和数据审计工具。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是对不同采样率窗口运行 TimePNS，比较 necessary segments 在时间偏移、缺测和下采样下是否稳定。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-1. QAAF：RGB/Event 属性识别的质量可靠性门控</h3>
+              <p class="paper__subtitle">Quality-Aware Multimodal Fusion Reveals Implicit Identity in Valence-Arousal Features</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】新增。原始应用领域是音视频 valence-arousal 与软生物特征；可迁移模块是 per-sample/per-modality reliability estimation、soft gating 和 quality-dependent dropout；对应待解决问题是 RGB-Event 属性识别在弱光、运动模糊、事件稀疏/噪声和模态缺失时如何按样本动态加权。预期计算/显存影响较小，只增加轻量质量估计头和门控参数；风险是音视频质量指标不能直接转化为事件流可靠性。最小验证实验是在 TriPro/EventPAR 上增加 RGB/Event reliability gate，构造事件稀疏、时间偏移和低光增强，比较 mA/F1 与校准误差。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jisu Kim 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21347" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.21347" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】新增。原始应用领域是音视频 valence-arousal 与软生物特征；可迁移模块是 per-sample/per-modality reliability estimation、soft gating 和 quality-dependent dropout；对应待解决问题是 RGB-Event 属性识别在弱光、运动模糊、事件稀疏/噪声和模态缺失时如何按样本动态加权。预期计算/显存影响较小，只增加轻量质量估计头和门控参数；风险是音视频质量指标不能直接转化为事件流可靠性。最小验证实验是在 TriPro/EventPAR 上增加 RGB/Event reliability gate，构造事件稀疏、时间偏移和低光增强，比较 mA/F1 与校准误差。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 当前最危险的简化是固定融合或特征相加，无法表达每个样本的模态可信度。
+从本日报的选取理由看，【P2】新增。原始应用领域是音视频 valence-arousal 与软生物特征；可迁移模块是 per-sample/per-modality reliability estimation、soft gating 和 quality-dependent dropout；对应待解决问题是 RGB-Event 属性识别在弱光、运动模糊、事件稀疏/噪声和模态缺失时如何按样本动态加权。预期计算/显存影响较小，只增加轻量质量估计头和门控参数；风险是音视频质量指标不能直接转化为事件流可靠性。最小验证实验是在 TriPro/EventPAR 上增加 RGB/Event reliability gate，构造事件稀疏、时间偏移和低光增强，比较 mA/F1 与校准误差。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何按样本、区域或属性动态判断 RGB 与事件分支谁更可信？
+对当前主题的关键意义在于：先只替换融合层，不改 RGB/Event encoder，报告不同退化条件下每个属性的权重分布和性能变化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5d060190f9d38af5.png" alt="Figure 1 : Overview of the proposed approach in comparison with existing face recognition paradigms. ArcFace [ 12 ] trains an embedding network for identity without quality awareness; AdaFace [ 19 ] introduces quality awareness explicitly via norm-based margins; our approach trains a multimodal model with Quality-Aware Adaptive Fusion (QAAF) on valence-arousal (VA) estimation from face video and audio, where backbone features emerge as a soft biometric signal with implicit, learned quality awareness. These features correctly distinguish impostor pairs that ArcFace false-accepts, showing that VA training implicitly encodes identity-discriminative information complementary to static appearance.">
+                    <figcaption>Figure 1 : Overview of the proposed approach in comparison with existing face recognition paradigms. ArcFace [ 12 ] trains an embedding network for identity without quality awarene...</figcaption>
+                  </figure>
+                  <p>用质量估计驱动软门控和 dropout，让模型训练时主动经历质量退化与模态缺失。
+阅读时需要把方法设计与主要结果一起看：单模态缺失下仍保持相对稳定的 VA 估计性能。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>单模态缺失下仍保持相对稳定的 VA 估计性能。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有原生事件 encoder，也没有开放属性文本监督。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 TriPro 的最小融合模块替换。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先只替换融合层，不改 RGB/Event encoder，报告不同退化条件下每个属性的权重分布和性能变化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-2. 本轮原生 RGB-Event 属性识别新增空缺</h3>
+              <p class="paper__subtitle">No qualified new native RGB-Event attribute recognition paper in this round</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-25 检索截止前</span>
+                <span class="chip chip--accent">empty</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】本轮空缺判断。已检索 event camera、event stream、RGB-Event、pedestrian attribute recognition、open-vocabulary attribute、prompt learning、event foundation model、missing modality 等关键词；Fri, 24 Jul 2026 批次中未发现高质量新增且直接命中 RGB-Event 属性识别的论文。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>本轮空缺判断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】本轮空缺判断。已检索 event camera、event stream、RGB-Event、pedestrian attribute recognition、open-vocabulary attribute、prompt learning、event foundation model、missing modality 等关键词；Fri, 24 Jul 2026 批次中未发现高质量新增且直接命中 RGB-Event 属性识别的论文。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>本轮事件相关新增不集中在属性识别；可用机制主要来自质量感知融合和开放词表视觉语义对齐。
+从本日报的选取理由看，【P2】本轮空缺判断。已检索 event camera、event stream、RGB-Event、pedestrian attribute recognition、open-vocabulary attribute、prompt learning、event foundation model、missing modality 等关键词；Fri, 24 Jul 2026 批次中未发现高质量新增且直接命中 RGB-Event 属性识别的论文。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>仍缺少同时覆盖原生事件表征、RGB/Event 时间对齐、属性不确定性和开放词表监督的新论文。
+对当前主题的关键意义在于：下一轮继续监测 TriPro-ReID、EventPAR、PFM-VEPAR、OpenPAR、neuromorphic vision 和 RGB-Event attribute 更新。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>不适用；本条仅记录空缺。
+阅读时需要把方法设计与主要结果一起看：本轮 P2 不用普通视觉、多模态情绪或分割论文凑成属性识别 SOTA。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>本轮 P2 不用普通视觉、多模态情绪或分割论文凑成属性识别 SOTA。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>可能遗漏尚未进入 arXiv 的会议 early access 或项目页更新。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 今日应做最小模块替换，而不是重定义问题。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>下一轮继续监测 TriPro-ReID、EventPAR、PFM-VEPAR、OpenPAR、neuromorphic vision 和 RGB-Event attribute 更新。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">05</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-1. Cycle-consistent tokamak edge surrogate：物理一致反演与不确定性融合</h3>
+              <p class="paper__subtitle">Cycle-Consistent and Uncertainty-Aware Neural Surrogates for Tokamak Edge Plasmas</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增。原始应用领域是 tokamak edge plasma surrogate；可迁移模块是 forward-inverse cycle consistency、self-supervised inference quality check 和 ensemble uncertainty；对应待解决问题是可见光图像与诊断时序融合后，如何保证预测可反演、可审计且知道何时不可靠。预期计算/显存影响较低，约百万级 U-Net/MLP 代理可毫秒级推理；风险是模拟代理在真实破裂前兆上存在 sim-to-real 偏移。最小验证实验是把诊断时序风险头与简化边界/可见光代理输出联合训练，检查不确定性是否预示跨装置失败。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Abdourahmane Diaw 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21407" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.21407" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增。原始应用领域是 tokamak edge plasma surrogate；可迁移模块是 forward-inverse cycle consistency、self-supervised inference quality check 和 ensemble uncertainty；对应待解决问题是可见光图像与诊断时序融合后，如何保证预测可反演、可审计且知道何时不可靠。预期计算/显存影响较低，约百万级 U-Net/MLP 代理可毫秒级推理；风险是模拟代理在真实破裂前兆上存在 sim-to-real 偏移。最小验证实验是把诊断时序风险头与简化边界/可见光代理输出联合训练，检查不确定性是否预示跨装置失败。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 不应只追求多模态融合准确率，还要给控制系统可用的不确定性和反演一致性。
+从本日报的选取理由看，【P3】新增。原始应用领域是 tokamak edge plasma surrogate；可迁移模块是 forward-inverse cycle consistency、self-supervised inference quality check 和 ensemble uncertainty；对应待解决问题是可见光图像与诊断时序融合后，如何保证预测可反演、可审计且知道何时不可靠。预期计算/显存影响较低，约百万级 U-Net/MLP 代理可毫秒级推理；风险是模拟代理在真实破裂前兆上存在 sim-to-real 偏移。最小验证实验是把诊断时序风险头与简化边界/可见光代理输出联合训练，检查不确定性是否预示跨装置失败。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>融合模型的预测能否反推到合理物理参数或状态，并标出低可信区域？
+对当前主题的关键意义在于：最小实验是将可见光 ROI 风险、低频诊断和边界 surrogate 状态连接，通过 cycle loss 约束可解释中间状态。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bd28c5fc78b8018d.png" alt="Figure 1: Surrogate model architecture: the three-stage inference cycle. (a) Stage 1 (forward model) : a conditional U-Net maps a single-channel geometry mask, with the five scalar control parameters injected via FiLM, to the four-channel plasma state ( T e , T i , n e , u a T_{e},T_{i},n_{e},u_{a} ); the fields are outputs of the model, not inputs. (b) Stage 2 (inverse model) : the control parameters are recovered from a target field by optimizing through the frozen forward model, warm-started by the learned pseudo-inverse G ψ G_{\psi} (Fig. 2 ) evaluated on the observed fields. (c) Stage 3 (cycle consistency) : the recovered parameters are passed back through the frozen model; the cycle loss validates that the round-trip preserves the target field, a self-supervised metric requiring no ground-truth parameters. The forward model F θ F_{\theta} and pseudo-inverse G ψ G_{\psi} used here are produced beforehand by the training-time regularizer of Fig. 2 .">
+                    <figcaption>Figure 1: Surrogate model architecture: the three-stage inference cycle. (a) Stage 1 (forward model) : a conditional U-Net maps a single-channel geometry mask, with the five scalar...</figcaption>
+                  </figure>
+                  <p>用冻结 forward surrogate 约束 inverse recovery，并用 cycle consistency 作为无标签质量检查。
+阅读时需要把方法设计与主要结果一起看：摘要报告 2D 场预测毫秒级，参数恢复相关性高。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 2D 场预测毫秒级，参数恢复相关性高。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>尚未纳入可见光图像和破裂标签。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 物理一致融合框架的一部分。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是将可见光 ROI 风险、低频诊断和边界 surrogate 状态连接，通过 cycle loss 约束可解释中间状态。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-16" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">06</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-2. QAAF：可见光/诊断时序缺模态鲁棒融合</h3>
+              <p class="paper__subtitle">Quality-Aware Multimodal Fusion Reveals Implicit Identity in Valence-Arousal Features</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增。原始应用领域是音视频动态表征；可迁移模块是 quality-aware soft gate 与 missing-modality dropout；对应待解决问题是异步、多采样率、可能缺失的可见光图像和诊断时序如何稳定融合。预期计算/显存影响小，可作为现有融合层替换；风险是质量估计如果只学到模态存在性，会忽略物理有效性。最小验证实验是训练图像、低频诊断、高频压缩三路 gate，按模态缺失和退化分层报告 AUC、提前量和 ECE。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jisu Kim 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21347" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.21347" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增。原始应用领域是音视频动态表征；可迁移模块是 quality-aware soft gate 与 missing-modality dropout；对应待解决问题是异步、多采样率、可能缺失的可见光图像和诊断时序如何稳定融合。预期计算/显存影响小，可作为现有融合层替换；风险是质量估计如果只学到模态存在性，会忽略物理有效性。最小验证实验是训练图像、低频诊断、高频压缩三路 gate，按模态缺失和退化分层报告 AUC、提前量和 ECE。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测在线部署中某些诊断失效或图像质量下降是常态。
+从本日报的选取理由看，【P3】新增。原始应用领域是音视频动态表征；可迁移模块是 quality-aware soft gate 与 missing-modality dropout；对应待解决问题是异步、多采样率、可能缺失的可见光图像和诊断时序如何稳定融合。预期计算/显存影响小，可作为现有融合层替换；风险是质量估计如果只学到模态存在性，会忽略物理有效性。最小验证实验是训练图像、低频诊断、高频压缩三路 gate，按模态缺失和退化分层报告 AUC、提前量和 ECE。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让融合模型在每个时间窗动态决定依赖图像还是诊断时序？
+对当前主题的关键意义在于：最小实验是在现有 P3 数据上构造图像遮挡、诊断缺失和时钟偏移，比较固定拼接、cross-attention 和 QAAF gate。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5d060190f9d38af5.png" alt="Figure 1 : Overview of the proposed approach in comparison with existing face recognition paradigms. ArcFace [ 12 ] trains an embedding network for identity without quality awareness; AdaFace [ 19 ] introduces quality awareness explicitly via norm-based margins; our approach trains a multimodal model with Quality-Aware Adaptive Fusion (QAAF) on valence-arousal (VA) estimation from face video and audio, where backbone features emerge as a soft biometric signal with implicit, learned quality awareness. These features correctly distinguish impostor pairs that ArcFace false-accepts, showing that VA training implicitly encodes identity-discriminative information complementary to static appearance.">
+                    <figcaption>Figure 1 : Overview of the proposed approach in comparison with existing face recognition paradigms. ArcFace [ 12 ] trains an embedding network for identity without quality awarene...</figcaption>
+                  </figure>
+                  <p>用可靠性预测、软门控和质量相关 dropout 强化缺模态鲁棒性。
+阅读时需要把方法设计与主要结果一起看：音视频缺模态场景下性能下降受控。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>音视频缺模态场景下性能下降受控。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>缺少物理解释约束和跨装置验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合先作为 P3 融合层的低风险工程替换。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在现有 P3 数据上构造图像遮挡、诊断缺失和时钟偏移，比较固定拼接、cross-attention 和 QAAF gate。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>QAAF：质量感知自适应多模态融合</h3>
+              <p class="paper__subtitle">Quality-Aware Multimodal Fusion Reveals Implicit Identity in Valence-Arousal Features</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-23。QAAF 在音视频动态表征中估计每样本、每模态可靠性，并配合 quality-dependent dropout；可迁移到 P2 的 RGB/Event 质量动态加权和 P3 的可见光/诊断缺模态训练。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jisu Kim, Benjamin S. Riggan</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21347" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2607.21347" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2607.21347" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-23。QAAF 在音视频动态表征中估计每样本、每模态可靠性，并配合 quality-dependent dropout；可迁移到 P2 的 RGB/Event 质量动态加权和 P3 的可见光/诊断缺模态训练。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB/Event、可见光/诊断时序都存在低光、运动模糊、事件稀疏、噪声、遮挡和单模态缺失。固定融合权重或简单加和无法表达“这一个样本哪一路可信”。
+从本日报的选取理由看，新增 / arXiv 2026-07-23。QAAF 在音视频动态表征中估计每样本、每模态可靠性，并配合 quality-dependent dropout；可迁移到 P2 的 RGB/Event 质量动态加权和 P3 的可见光/诊断缺模态训练。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在多模态输入质量变化和模态缺失时，按样本动态估计每个模态的贡献？
+对当前主题的关键意义在于：最小实验是在 TriPro/EventPAR 中为 RGB、事件和属性文本分支加入 reliability gate，并用低光、事件稀疏和缺模态增强训练，比较固定融合、cross-attention 与 QAAF 式融合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5d060190f9d38af5.png" alt="Figure 1 : Overview of the proposed approach in comparison with existing face recognition paradigms. ArcFace [ 12 ] trains an embedding network for identity without quality awareness; AdaFace [ 19 ] introduces quality awareness explicitly via norm-based margins; our approach trains a multimodal model with Quality-Aware Adaptive Fusion (QAAF) on valence-arousal (VA) estimation from face video and audio, where backbone features emerge as a soft biometric signal with implicit, learned quality awareness. These features correctly distinguish impostor pairs that ArcFace false-accepts, showing that VA training implicitly encodes identity-discriminative information complementary to static appearance.">
+                    <figcaption>Figure 1 : Overview of the proposed approach in comparison with existing face recognition paradigms. ArcFace [ 12 ] trains an embedding network for identity without quality awarene...</figcaption>
+                  </figure>
+                  <p>QAAF 将 multimodal valence-arousal estimation 作为预训练任务，估计每样本、每模态可靠性，通过 soft gating 和 quality-dependent dropout 自适应融合音视频动态表征。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 Aff-wild2 上平均 CCC 从 baseline ensemble 的 0.415 提升到 0.472；单模态缺失时相对下降为 7.5%-34.4%，表现出更强缺模态韧性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 Aff-wild2 上平均 CCC 从 baseline ensemble 的 0.415 提升到 0.472；单模态缺失时相对下降为 7.5%-34.4%，表现出更强缺模态韧性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>应用领域是音视频情绪/身份线索，不是事件相机；Event 的异步表征和属性文本监督需要另行设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P2/P3 的动态可靠性融合模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro/EventPAR 中为 RGB、事件和属性文本分支加入 reliability gate，并用低光、事件稀疏和缺模态增强训练，比较固定融合、cross-attention 与 QAAF 式融合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>DINOde：连续 ODE 轨迹的视觉-文本开放词表分割对齐</h3>
+              <p class="paper__subtitle">DINOde: Continuous Vision-Text Alignment for Open-Vocabulary Semantic Segmentation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-23</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。它把 CLIP text embedding 通过 ODE 连续流对齐到 DINO visual manifold，对 P2 的开放词表属性语义和 P3 的局部视觉证据命名有迁移价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sung-Hoon Yoon, Hoyong Kwon, Changgyoon Oh, Kuk-Jin Yoon</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.21371" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/yoon307/DINOde" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.21371" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。它把 CLIP text embedding 通过 ODE 连续流对齐到 DINO visual manifold，对 P2 的开放词表属性语义和 P3 的局部视觉证据命名有迁移价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>开放词表分割要求把文本语义映射到视觉局部区域。聚变可见光前兆和 RGB-Event 属性也需要从自然语言属性、物理现象描述或专家词表中获得弱监督。
+从本日报的选取理由看，新增。它把 CLIP text embedding 通过 ODE 连续流对齐到 DINO visual manifold，对 P2 的开放词表属性语义和 P3 的局部视觉证据命名有迁移价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何避免离散 MLP 投影造成跨模态 manifold entanglement，让文本语义连续对齐到强视觉表征？
+对当前主题的关键意义在于：最小实验是构造“bright spot、vertical displacement、impurity radiation、motion blur、dark clothing”等属性/物理词表，将文本原型对齐到 RGB/Event 或可见光 ROI 特征，检查开放属性识别和局部证据热图。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c4b7d29c81130122.png" alt="Figure 1 : Overview of the DINOde framework for OVSS . We propose a continuous alignment strategy that bridges the gap between text embeddings and DINO visual features. The illustration depicts how a text embedding is progressively transformed into a DINO-aligned text embedding through an ODE-based trajectory on the unit sphere, resulting in step-by-step refinement of the semantic segmentation.">
+                    <figcaption>Figure 1 : Overview of the DINOde framework for OVSS . We propose a continuous alignment strategy that bridges the gap between text embeddings and DINO visual features. The illustr...</figcaption>
+                  </figure>
+                  <p>DINOde 包含 Semantic Text Flow 与 Global Context Flow，用 ODE 轨迹演化文本 embedding 和 DINO CLS token，并用 Velocity Tangent Projection 约束超球面几何。
+阅读时需要把方法设计与主要结果一起看：摘要报告在多个 OVSS benchmark 上稳定优于已有方法，并达到新的 SOTA。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在多个 OVSS benchmark 上稳定优于已有方法，并达到新的 SOTA。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>开放词表语义分割不是事件属性识别；文本-视觉对齐对聚变物理词表可能需要专家标注或伪标签。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它可作为 P2/P3 “属性/前兆词表到局部视觉证据”的语义对齐参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是构造“bright spot、vertical displacement、impurity radiation、motion blur、dark clothing”等属性/物理词表，将文本原型对齐到 RGB/Event 或可见光 ROI 特征，检查开放属性识别和局部证据热图。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
