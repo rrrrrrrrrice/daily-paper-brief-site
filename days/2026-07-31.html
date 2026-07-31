@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-07-31</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-07-31 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-07-31 09:44:03 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- P1 最值得先看 WrapFlow 与 IB-Forecast：前者绕开插值和训练期 ODE 求解器，后者把预测性能与解释忠实度放进同一训练目标。</p>
+        <p>- P2 的直接增量是 ENCORE：它不是属性识别论文，但对 RGB 与事件流的共同/特有运动分解、冗余抑制和能量路由具有很强的可迁移性。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 FlexTSF：可处理规则与不规则时序的通用预测模型</a></li>
+              <li><a href="#paper-2">02 Time-MoE：十亿级混合专家时序基础模型</a></li>
+              <li><a href="#paper-3">03 EZSR：事件相机零样本识别</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-4">04 WrapFlow：无需训练期 ODE 求解器的不规则时序连续建模</a></li>
+              <li><a href="#paper-5">05 IB-Forecast：以信息瓶颈约束忠实时序预测解释</a></li>
+              <li><a href="#paper-6">06 Orca：用于连续时间因果推理的神经算子</a></li>
+              <li><a href="#paper-7">07 ABF-T-GLCP：门控局部化的非平稳预测与保序校准</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-11">11 L-H 转迁随机动力学：用 PINN 求解准势与最可能稀有路径</a></li>
+              <li><a href="#paper-12">12 参数化耦合 PDE 的 FNO 扩展：含电容耦合等离子体基准</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发</a>
+            <ul>
+              <li><a href="#paper-13">13 P1-1. WrapFlow：连续时间 token 与轻量 flow 输出头</a></li>
+              <li><a href="#paper-14">14 P1-2. IB-Forecast：用稀疏忠实解释审计破裂前兆</a></li>
+              <li><a href="#paper-15">15 P2-1. ENCORE：事件分支只在“活跃且非冗余”处修正 RGB</a></li>
+              <li><a href="#paper-16">16 P2-2. EZSR：用文本属性原型扩展事件开放词表识别</a></li>
+              <li><a href="#paper-17">17 P3-1. TIER-MoE：将传感器风险变成显式路由变量</a></li>
+              <li><a href="#paper-18">18 P3-2. L-H PINN + 参数化 FNO：物理转迁路径与快速代理双层约束</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-8">08 ENCORE：RGB-事件互补运动细化的视频压缩框架</a></li>
+              <li><a href="#paper-9">09 ObjectStream：以潜在对象为记忆锚点的流式视频理解</a></li>
+              <li><a href="#paper-10">10 TIER-MoE：用条件模态风险驱动专家路由</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">WrapFlow：无需训练期 ODE 求解器的不规则时序连续建模</a></h3>
+              <p class="card__subtitle">Enhancing Irregular Time Series Forecasting with Continuous-Time Modeling Framework</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-30。连续时间 token、显式 gap token 与 residual flow matching 同时回应 P1 的异步采样、长空窗和连续预测问题；标准 Transformer 可直接承接，迁移成本低于专用 Neural ODE。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">ENCORE：RGB-事件互补运动细化的视频压缩框架</a></h3>
+              <p class="card__subtitle">ENCORE: Event-Assisted Complementary Motion Refinement for Learned Video Compression</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-30。共同/模态特有运动分解、事件新颖性校准与能量感知路由，可直接迁移到 P2 的 RGB-Event 特征融合；BS-ERGB 上最高报告 20.80% PSNR-RGB BD-rate 节省。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-9">ObjectStream：以潜在对象为记忆锚点的流式视频理解</a></h3>
+              <p class="card__subtitle">ObjectStream: Latent Objects as Memory Anchors for Streaming Video Understanding</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-30。训练免费、有界记忆且不依赖外部检测器；摘要报告 OVO-Bench 提升 10.0 分、峰值显存和 TTFT 约减半，并丢弃 82.5% 视觉 token 后仍超过全 token 基线。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-10">TIER-MoE：用条件模态风险驱动专家路由</a></h3>
+              <p class="card__subtitle">TIER-MoE: Trust-Informed Expert Routing via Conditional Modality Risk for Multimodal Fusion in Biomedical Classification</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-29</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-29。它把“模态是否可靠”定义为独立单模态预测器的期望损失，再与专家子空间兼容性联合稀疏路由；对 P3 的缺失、退化和跨装置模态失配比普通注意力权重更可审计。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-11">L-H 转迁随机动力学：用 PINN 求解准势与最可能稀有路径</a></h3>
+              <p class="card__subtitle">Stochastic Dynamics of the Two-Dimensional Low-to-High Transition System Driven by Multiplicative Noise</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变与 AI 交叉</span>
+                <span class="chip chip--muted">2026-07-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-25。论文直接研究 tokamak 边缘带状流—湍流耦合的 L-H 转迁，利用物理信息神经网络求解 Hamilton-Jacobi 方程并恢复稀有转迁路径，是今天最直接的聚变 AI 新稿。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>FlexTSF：可处理规则与不规则时序的通用预测模型</h3>
+              <p class="paper__subtitle">A Universal Forecasting Model for Time Series with Variable Regularities</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会回看。用它检验 WrapFlow 是否真正处理了不同通道的采样规则差异，而不仅是给时间戳增加位置编码。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>OpenReview 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=LuLzcBsp5c" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会回看。用它检验 WrapFlow 是否真正处理了不同通道的采样规则差异，而不仅是给时间戳增加位置编码。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>现实传感器同时包含规则、稀疏与不规则序列，统一模型需要显式尊重不同时间结构。
+从本日报的选取理由看，非当日新增 / 顶会回看。用它检验 WrapFlow 是否真正处理了不同通道的采样规则差异，而不仅是给时间戳增加位置编码。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>一个预测器如何在不同采样规则之间共享能力，同时避免插值损失？
+对当前主题的关键意义在于：P1 应按采样规则、缺失长度和跨变量异步程度分层比较 FlexTSF、插值 Transformer 与 WrapFlow。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>从变量规则性出发构建统一预测框架，面向规则与不规则时序共享建模能力。
+阅读时需要把方法设计与主要结果一起看：OpenReview 正式页面核验其为 ICLR 2025 论文，方法定位直接覆盖变量规则性时序预测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 正式页面核验其为 ICLR 2025 论文，方法定位直接覆盖变量规则性时序预测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>顶会回看条目不代表 2026-07-31 新增，且需在 P1 数据规模和缺失模式上重新复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是评估 WrapFlow 与 P1 不规则建模收益时应保留的强基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>P1 应按采样规则、缺失长度和跨变量异步程度分层比较 FlexTSF、插值 Transformer 与 WrapFlow。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Time-MoE：十亿级混合专家时序基础模型</h3>
+              <p class="paper__subtitle">Billion-Scale Time Series Foundation Models with Mixture of Experts</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025 Spotlight</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会回看。今天用它审视 TIER-MoE 的路由思想能否从多模态可靠性扩展到 P1 的不同频段、工况与预测跨度专家。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>OpenReview 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=e1wDDFmlVu" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会回看。今天用它审视 TIER-MoE 的路由思想能否从多模态可靠性扩展到 P1 的不同频段、工况与预测跨度专家。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>时序基础模型扩展时，稀疏专家可以增加容量而不同比例增加单次推理计算。
+从本日报的选取理由看，非当日新增 / 顶会回看。今天用它审视 TIER-MoE 的路由思想能否从多模态可靠性扩展到 P1 的不同频段、工况与预测跨度专家。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>大规模时序模型如何通过专家分工覆盖异质数据与尺度？
+对当前主题的关键意义在于：最小实验可把高频、低频与缺失模式设为 3–4 个轻量专家，比较准确率与激活计算量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>以混合专家架构扩展时序基础模型，并通过稀疏路由分配样本。
+阅读时需要把方法设计与主要结果一起看：OpenReview 正式页面核验其为 ICLR 2025 Spotlight，论文定位为十亿级时序基础模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 正式页面核验其为 ICLR 2025 Spotlight，论文定位为十亿级时序基础模型。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>模型规模大，路由规律未必能直接解释为传感器可靠性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合为 P1 的小规模可靠性专家实验提供上限参照，而非直接照搬规模。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验可把高频、低频与缺失模式设为 3–4 个轻量专家，比较准确率与激活计算量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>EZSR：事件相机零样本识别</h3>
+              <p class="paper__subtitle">EZSR: Event-based Zero-Shot Recognition</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会回看。ENCORE 解决运动互补，EZSR 则补充事件表征与文本类别语义对齐，对 P2 的开放词表属性识别更直接。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF Open Access 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Yang_EZSR_Event-based_Zero-Shot_Recognition_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会回看。ENCORE 解决运动互补，EZSR 则补充事件表征与文本类别语义对齐，对 P2 的开放词表属性识别更直接。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机标注稀缺且类别快速变化，闭集检测难覆盖开放属性。
+从本日报的选取理由看，非当日新增 / 顶会回看。ENCORE 解决运动互补，EZSR 则补充事件表征与文本类别语义对齐，对 P2 的开放词表属性识别更直接。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把稀疏异步事件映射到可泛化的视觉—语言语义空间？
+对当前主题的关键意义在于：可将属性名称和描述作为文本原型，比较 RGB、Event 与联合分支的 seen/unseen mAP。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>面向事件数据构建零样本识别框架，用语义原型支持未见类别。
+阅读时需要把方法设计与主要结果一起看：CVF Open Access 正式页面核验其为 CVPR 2025 正式论文。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF Open Access 正式页面核验其为 CVPR 2025 正式论文。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>零样本类别识别与行人多标签属性仍有任务差异，需验证细粒度属性组合。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P2 将 ENCORE 式融合扩展到文本属性监督时的关键参照。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可将属性名称和描述作为文本原型，比较 RGB、Event 与联合分支的 seen/unseen mAP。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>WrapFlow：无需训练期 ODE 求解器的不规则时序连续建模</h3>
+              <p class="paper__subtitle">Enhancing Irregular Time Series Forecasting with Continuous-Time Modeling Framework</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-30。连续时间 token、显式 gap token 与 residual flow matching 同时回应 P1 的异步采样、长空窗和连续预测问题；标准 Transformer 可直接承接，迁移成本低于专用 Neural ODE。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tianen Shen, Zhengyu Li, Yutong Li, Xiangfei Qiu, Xingjian Wu, Bin Yang, Jilin Hu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28035" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28035" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-30。连续时间 token、显式 gap token 与 residual flow matching 同时回应 P1 的异步采样、长空窗和连续预测问题；标准 Transformer 可直接承接，迁移成本低于专用 Neural ODE。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>异步观测、不均匀间隔和长时间无观测会让插值破坏连续时间语义，而 Neural ODE 又带来专用结构与数值求解成本。
+从本日报的选取理由看，新增 / arXiv 2026-07-30。连续时间 token、显式 gap token 与 residual flow matching 同时回应 P1 的异步采样、长空窗和连续预测问题；标准 Transformer 可直接承接，迁移成本低于专用 Neural ODE。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何不离散化原始事件，也不在训练期反向传播 ODE 求解器，却实现高质量连续预测？
+对当前主题的关键意义在于：最小验证是在 P1 同一 backbone 上只替换 tokenization 与输出头，按采样间隔分位数报告 MAE、提前量、训练时间和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0679d6962c4866d7.png" alt="Figure 1: WrapFlow architecture. (a) Continuous-Time Tokenization and Backbone convert irregular observations into typed continuous-time tokens and encode them into variable-wise memory. (b) Query-Based Decoder maps value-free future and masked-history queries to temporal context for generating base future predictions and base historical reconstructions. (c) Flow-Matching Refinement directly regresses the target vector field over flow time during training, and during inference, it produces smooth residual correction trajectories via a small number of fixed-step Euler rollouts.">
+                    <figcaption>Figure 1: WrapFlow architecture. (a) Continuous-Time Tokenization and Backbone convert irregular observations into typed continuous-time tokens and encode them into variable-wise m...</figcaption>
+                  </figure>
+                  <p>Continuous-Time Tokenization 编码原始观测并用 gap token 表示长空窗；标准 Transformer 捕获依赖；Residual Flow Matching 围绕基础预测学习条件残差向量场，训练时免模拟，推理仅需少量固定 rollout。
+阅读时需要把方法设计与主要结果一起看：作者在多个真实数据集上报告达到 SOTA；摘要未披露统一提升幅度和完整计算开销。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>作者在多个真实数据集上报告达到 SOTA；摘要未披露统一提升幅度和完整计算开销。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要核查固定 rollout 步数对突变前兆的平滑偏差，以及超长高频序列的 token 数增长。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P1 今天最优先的架构候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 P1 同一 backbone 上只替换 tokenization 与输出头，按采样间隔分位数报告 MAE、提前量、训练时间和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>IB-Forecast：以信息瓶颈约束忠实时序预测解释</h3>
+              <p class="paper__subtitle">Information Bottleneck Learning for Faithful Time Series Forecasting Explanations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。与只展示 attention 或内部周期结构不同，它用可控稀疏预算和忠实度协议验证哪些历史观测真正驱动预测，对破裂前兆审计很重要。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xu Zheng, Wei Cheng, Zhuomin Chen, Mo Sha, Jingchao Ni, Dongsheng Luo</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28124" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28124" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。与只展示 attention 或内部周期结构不同，它用可控稀疏预算和忠实度协议验证哪些历史观测真正驱动预测，对破裂前兆审计很重要。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可解释预测器的内部结构并不自动等于忠实解释，分类后验解释协议又不能直接覆盖连续预测。
+从本日报的选取理由看，新增。与只展示 attention 或内部周期结构不同，它用可控稀疏预算和忠实度协议验证哪些历史观测真正驱动预测，对破裂前兆审计很重要。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否让预测模型在不增加推理解释成本的情况下，只保留真正必要的历史证据？
+对当前主题的关键意义在于：在现有破裂预测器上增加预算从 10% 到 30% 的掩码头，比较预测 AUC、解释删除曲线和跨放电稳定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/fb1a57bf7238f901.png" alt="Figure 1: Overview of IB-Forecast. Stage 1 normalizes the input X X and removes the learned periodic profile Q Q to obtain the deviation D D . Stage 2 partitions D D into tokens and scores each with a small transformer gate network. Stage 3 samples a hard binary gate for each token to form the mask m m . Stage 4 computes the forecast from the masked deviations m ¯ ⊙ D \bar{m}\odot D and remaps the output back to the original space. The mask m m , profile Q Q , and normalization information constitute the explanation E E .">
+                    <figcaption>Figure 1: Overview of IB-Forecast. Stage 1 normalizes the input X X and removes the learned periodic profile Q Q to obtain the deviation D D . Stage 2 partitions D D into tokens an...</figcaption>
+                  </figure>
+                  <p>把预测拆成学习的周期项和由输入 token 可解释掩码计算的残差项，并通过预算约束信息瓶颈端到端控制解释稀疏度。
+阅读时需要把方法设计与主要结果一起看：摘要报告预测误差匹配领先黑盒；在相同稀疏预算下胜过梯度、遮挡与优化式解释，使用 14%–20% 观测仍保持低误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告预测误差匹配领先黑盒；在相同稀疏预算下胜过梯度、遮挡与优化式解释，使用 14%–20% 观测仍保持低误差。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>稀疏掩码的稳定性、跨工况一致性和对因果必要性的保证仍需额外验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1/P3 的“性能不降、解释可审计”辅助头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在现有破裂预测器上增加预算从 10% 到 30% 的掩码头，比较预测 AUC、解释删除曲线和跨放电稳定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>Orca：用于连续时间因果推理的神经算子</h3>
+              <p class="paper__subtitle">Orca: Neural Operators for Causal Reasoning in Continuous Time</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。把因果图节点提升为时间函数、机制提升为函数空间映射，允许不规则观测和反馈回路，为工况干预与反事实轨迹提供新的表述。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Gerrit Großmann, David A. Selby, Sebastian J. Vollmer</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.27867" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/gerritgr/orca" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.27867" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。把因果图节点提升为时间函数、机制提升为函数空间映射，允许不规则观测和反馈回路，为工况干预与反事实轨迹提供新的表述。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>静态结构因果模型通常只描述单次测量且避免循环依赖，不适合连续演化和带反馈的物理系统。
+从本日报的选取理由看，新增。把因果图节点提升为时间函数、机制提升为函数空间映射，允许不规则观测和反馈回路，为工况干预与反事实轨迹提供新的表述。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在尊重时间箭头的同时，对连续轨迹执行干预和反事实推理？
+对当前主题的关键意义在于：可先在可控仿真上设加热功率干预，检查模型能否恢复转迁时间和关键诊断的反事实轨迹。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/053b47ae1ddb6bbd.png" alt="Figure 1: Schematic of Orca using the illustrative example of the age, exercise, and health relationship. Left : Health and exercise trajectories are recorded for each subject at irregular time points. Center : In addition, Orca receives the directed causal graph as input. It treats every node as a function of time and learns each structural equation as a neural operator that respects both the graph and the temporal priority principle. Right : Orca equips this data modality with causal semantics. The trained model answers causal queries, including interventional causal-effect estimation, individual counterfactual trajectories, and recovery of the underlying mechanism, here a decaying exercise-effect kernel.">
+                    <figcaption>Figure 1: Schematic of Orca using the illustrative example of the age, exercise, and health relationship. Left : Health and exercise trajectories are recorded for each subject at i...</figcaption>
+                  </figure>
+                  <p>用神经算子表示函数到函数的因果机制，将潜在外生噪声也建模为可推断并可在反事实中复用的函数。
+阅读时需要把方法设计与主要结果一起看：论文给出模型形式化，并在合成连续时间例子上展示反事实推理；尚无真实大规模装置数据结果。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文给出模型形式化，并在合成连续时间例子上展示反事实推理；尚无真实大规模装置数据结果。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>因果图结构与机制仍需先验或学习，合成验证不足以证明真实 tokamak 反馈回路可识别。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>概念新颖，但应先做小规模受控验证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可先在可控仿真上设加热功率干预，检查模型能否恢复转迁时间和关键诊断的反事实轨迹。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>ABF-T-GLCP：门控局部化的非平稳预测与保序校准</h3>
+              <p class="paper__subtitle">Adaptive Multi-Scale Forecasting and Gate-Localized Conformal Prediction for Multivariate Nonstationary Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。预测和不确定性共享同一门控状态，让校准残差按预测工况局部选择，比全局 conformal 更适合强非平稳放电阶段。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ziling Ma, Junshu Jiang, Ángel López-Oriona, Ying Sun, Hernando Ombao</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.23165" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.23165" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。预测和不确定性共享同一门控状态，让校准残差按预测工况局部选择，比全局 conformal 更适合强非平稳放电阶段。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>非平稳多变量序列中，全局残差池会混合不同动态状态，导致区间过宽或局部失覆盖。
+从本日报的选取理由看，新增。预测和不确定性共享同一门控状态，让校准残差按预测工况局部选择，比全局 conformal 更适合强非平稳放电阶段。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>点预测与预测区间如何随工况同步适应，同时维持近似覆盖率？
+对当前主题的关键意义在于：按放电阶段或门控隐状态建校准池，比较全局 conformal、滑窗 conformal 与 GLCP 的覆盖率、宽度和告警提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/95aedcc3315dfb77.png" alt="Figure 5 : Coverage–width trade-off for all conformal prediction methods across forecasting horizons. Compared with the coverage–interval score comparison reported in the main paper, this figure directly illustrates the trade-off between calibration accuracy and interval sharpness.">
+                    <figcaption>Figure 5 : Coverage–width trade-off for all conformal prediction methods across forecasting horizons. Compared with the coverage–interval score comparison reported in the main pape...</figcaption>
+                  </figure>
+                  <p>按预测跨度组合时间专家，利用稀疏跨序列迁移修正预测；GLCP 再结合门控状态与时间近邻选择局部校准残差。
+阅读时需要把方法设计与主要结果一起看：高频商品基准上报告点预测持续改进，区间显著变窄且经验覆盖接近名义水平；摘要称结果可扩展到其他应用。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>高频商品基准上报告点预测持续改进，区间显著变窄且经验覆盖接近名义水平；摘要称结果可扩展到其他应用。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要实证来自金融数据，近似局部覆盖依赖稳定性条件，极端转迁样本可能稀缺。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合 P1/P3 的在线置信区间与工况分层校准。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>按放电阶段或门控隐状态建校准池，比较全局 conformal、滑窗 conformal 与 GLCP 的覆盖率、宽度和告警提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>L-H 转迁随机动力学：用 PINN 求解准势与最可能稀有路径</h3>
+              <p class="paper__subtitle">Stochastic Dynamics of the Two-Dimensional Low-to-High Transition System Driven by Multiplicative Noise</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-25。论文直接研究 tokamak 边缘带状流—湍流耦合的 L-H 转迁，利用物理信息神经网络求解 Hamilton-Jacobi 方程并恢复稀有转迁路径，是今天最直接的聚变 AI 新稿。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yongzhi Li, Shenglan Yuan</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.23186" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.23186" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-25。论文直接研究 tokamak 边缘带状流—湍流耦合的 L-H 转迁，利用物理信息神经网络求解 Hamilton-Jacobi 方程并恢复稀有转迁路径，是今天最直接的聚变 AI 新稿。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>L-H 转迁受边缘湍流与带状流耦合影响，乘性噪声下的稀有转迁路径对启动阶段理解和控制具有意义。
+从本日报的选取理由看，新增 / arXiv 2026-07-25。论文直接研究 tokamak 边缘带状流—湍流耦合的 L-H 转迁，利用物理信息神经网络求解 Hamilton-Jacobi 方程并恢复稀有转迁路径，是今天最直接的聚变 AI 新稿。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从二维随机耦合系统恢复准势景观与最可能转迁路径？
+对当前主题的关键意义在于：将模型准势或路径距离作为辅助标签，检验其能否改善跨放电阶段的风险排序和提前量。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/42f7141a051f49e4.png" alt="Figure 2: Quasipotential landscape of the two-dimensional L-H model with the H-mode (blue circle) and L-mode (green square). The saddle point is marked with an orange triangle.">
+                    <figcaption>Figure 2: Quasipotential landscape of the two-dimensional L-H model with the H-mode (blue circle) and L-mode (green square). The saddle point is marked with an orange triangle.</figcaption>
+                  </figure>
+                  <p>推导对应 Hamilton-Jacobi 方程，并用带向量场分解损失的物理信息神经网络求解准势，再计算最可能稀有事件路径。
+阅读时需要把方法设计与主要结果一起看：论文建立了比经典二维 L-H 模型更便于实验测量、物理基础更完整的系统，并能自洽描述 tokamak 启动阶段动力学；摘要未给出与实验放电的定量误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>论文建立了比经典二维 L-H 模型更便于实验测量、物理基础更完整的系统，并能自洽描述 tokamak 启动阶段动力学；摘要未给出与实验放电的定量误差。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>仍是低维现象模型，尚未证实对真实高维诊断和不同装置的外推能力。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 的物理中间状态与转迁路径约束，而非直接破裂分类器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>将模型准势或路径距离作为辅助标签，检验其能否改善跨放电阶段的风险排序和提前量。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>参数化耦合 PDE 的 FNO 扩展：含电容耦合等离子体基准</h3>
+              <p class="paper__subtitle">Extending Fourier Neural Operators for Modeling Parameterized and Coupled PDEs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-26</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增。用小幅结构改动同时覆盖物理参数条件化和耦合变量交互，并在电容耦合等离子体方程上验证，适合作为聚变 surrogate 的轻量机制库。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Cheng Jing, Uvini Balasuriya Mudiyanselage, Abhishek Verma, Kallol Bera, Shahid Rauf, Kookjin Lee</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.23466" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.23466" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增。用小幅结构改动同时覆盖物理参数条件化和耦合变量交互，并在电容耦合等离子体方程上验证，适合作为聚变 surrogate 的轻量机制库。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>科学系统常同时具有参数变化和多个耦合场，而标准 FNO 对两者的统一处理有限。
+从本日报的选取理由看，新增。用小幅结构改动同时覆盖物理参数条件化和耦合变量交互，并在电容耦合等离子体方程上验证，适合作为聚变 surrogate 的轻量机制库。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何保留标准 FNO 效率，同时让算子随物理参数变化并建模变量间耦合？
+对当前主题的关键意义在于：先在简化输运或边缘场数据上比较参数拼接、FiLM 与 hypernetwork-FNO 的误差、参数量和跨工况外推。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/45cc743cb856428b.png" alt="Figure 1: The proposed hpFNO architecture. The hypernetwork produces a parameter-dependent ‘shift’ term, s ​ ( μ , x ) s(\mu,x) , which acts as a parameter-dependent bias term in each Fourier layer.">
+                    <figcaption>Figure 1: The proposed hpFNO architecture. The hypernetwork produces a parameter-dependent ‘shift’ term, s ​ ( μ , x ) s(\mu,x) , which acts as a parameter-dependent bias term in e...</figcaption>
+                  </figure>
+                  <p>用 hypernetwork 调制算子以注入物理参数，并系统比较共享结构与跨变量交互的耦合架构选择。
+阅读时需要把方法设计与主要结果一起看：在一维电容耦合等离子体与 Gray-Scott 基准上，相对强基线最高降低 55%–72% 误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在一维电容耦合等离子体与 Gray-Scott 基准上，相对强基线最高降低 55%–72% 误差。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>电容耦合等离子体与磁约束 tokamak 的维度、边界和多尺度性质差异显著。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可用于低成本筛选 P3 物理状态代理的条件化与耦合方式。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在简化输运或边缘场数据上比较参数拼接、FiLM 与 hypernetwork-FNO 的误差、参数量和跨工况外推。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>直接破裂预测 + 可见光/诊断时序融合：本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>本轮补查 tokamak disruption prediction、visible/IR diagnostics、diagnostic time series fusion、multimodal disruption、cross-device transfer 与 calibration 等组合，未发现 2026-07-25 基线之后同时覆盖可见光、诊断时序与实时破裂预测的高质量原始新稿。</p>
+          <p>因此本期不以普通视频、多模态医疗或一般等离子体物理论文冒充直接进展；P3 仅吸收 TIER-MoE、ObjectStream、L-H PINN 与 FNO 的可迁移模块。</p>
+          <p>下一轮继续监测 DIII-D、JET、EAST、KSTAR、HL-3、ITER、SPARC 及 ECEI/BES/可见光诊断相关更新。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发</h2>
+        </div>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-1. WrapFlow：连续时间 token 与轻量 flow 输出头</h3>
+              <p class="paper__subtitle">Enhancing Irregular Time Series Forecasting with Continuous-Time Modeling Framework</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。可迁移模块是连续时间事件 token、gap token 和免训练期模拟的 residual flow；计算影响为 token 数随事件数增长，输出端仅少量固定 rollout；风险是高频长序列 token 膨胀和突变过平滑；最小实验是固定 backbone 做逐模块消融。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tianen Shen 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28035" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28035" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。可迁移模块是连续时间事件 token、gap token 和免训练期模拟的 residual flow；计算影响为 token 数随事件数增长，输出端仅少量固定 rollout；风险是高频长序列 token 膨胀和突变过平滑；最小实验是固定 backbone 做逐模块消融。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 需要在不规则采样下统一高低频诊断，又要控制连续时间模型成本。
+从本日报的选取理由看，【P1】新增。可迁移模块是连续时间事件 token、gap token 和免训练期模拟的 residual flow；计算影响为 token 数随事件数增长，输出端仅少量固定 rollout；风险是高频长序列 token 膨胀和突变过平滑；最小实验是固定 backbone 做逐模块消融。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>在相同 Transformer 预算下，时间事件化是否比插值/聚合更保留破裂前兆？
+对当前主题的关键意义在于：报告 MAE/AUC、提前量、训练时长、峰值显存，并按 gap 长度和采样率分层。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/0679d6962c4866d7.png" alt="Figure 1: WrapFlow architecture. (a) Continuous-Time Tokenization and Backbone convert irregular observations into typed continuous-time tokens and encode them into variable-wise memory. (b) Query-Based Decoder maps value-free future and masked-history queries to temporal context for generating base future predictions and base historical reconstructions. (c) Flow-Matching Refinement directly regresses the target vector field over flow time during training, and during inference, it produces smooth residual correction trajectories via a small number of fixed-step Euler rollouts.">
+                    <figcaption>Figure 1: WrapFlow architecture. (a) Continuous-Time Tokenization and Backbone convert irregular observations into typed continuous-time tokens and encode them into variable-wise m...</figcaption>
+                  </figure>
+                  <p>只替换输入 tokenization 与输出 residual flow，保留现有主干以隔离机制收益。
+阅读时需要把方法设计与主要结果一起看：原文在多个真实数据集报告 SOTA，但 P1 上的收益和显存仍需实测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在多个真实数据集报告 SOTA，但 P1 上的收益和显存仍需实测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未直接验证 tokamak 高频长序列。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>优先做一周内可完成的最小架构替换实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>报告 MAE/AUC、提前量、训练时长、峰值显存，并按 gap 长度和采样率分层。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P1-2. IB-Forecast：用稀疏忠实解释审计破裂前兆</h3>
+              <p class="paper__subtitle">Information Bottleneck Learning for Faithful Time Series Forecasting Explanations</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。可迁移模块是预算约束信息瓶颈与 token 掩码；推理无额外解释成本；风险是掩码可能不稳定或只选择相关而非因果信号；最小实验是 10%/20%/30% 预算下测性能—忠实度曲线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xu Zheng 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28124" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28124" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。可迁移模块是预算约束信息瓶颈与 token 掩码；推理无额外解释成本；风险是掩码可能不稳定或只选择相关而非因果信号；最小实验是 10%/20%/30% 预算下测性能—忠实度曲线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 不仅要预测准，还要说明哪些高低频片段不可替代。
+从本日报的选取理由看，【P1】新增。可迁移模块是预算约束信息瓶颈与 token 掩码；推理无额外解释成本；风险是掩码可能不稳定或只选择相关而非因果信号；最小实验是 10%/20%/30% 预算下测性能—忠实度曲线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否以很少观测维持预测，并让删除所选观测显著破坏预测？
+对当前主题的关键意义在于：同时报告 sufficiency、comprehensiveness、跨随机种子 Jaccard 与预测性能。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/fb1a57bf7238f901.png" alt="Figure 1: Overview of IB-Forecast. Stage 1 normalizes the input X X and removes the learned periodic profile Q Q to obtain the deviation D D . Stage 2 partitions D D into tokens and scores each with a small transformer gate network. Stage 3 samples a hard binary gate for each token to form the mask m m . Stage 4 computes the forecast from the masked deviations m ¯ ⊙ D \bar{m}\odot D and remaps the output back to the original space. The mask m m , profile Q Q , and normalization information constitute the explanation E E .">
+                    <figcaption>Figure 1: Overview of IB-Forecast. Stage 1 normalizes the input X X and removes the learned periodic profile Q Q to obtain the deviation D D . Stage 2 partitions D D into tokens an...</figcaption>
+                  </figure>
+                  <p>在周期/残差分解上学习解释掩码，以信息预算控制稀疏性。
+阅读时需要把方法设计与主要结果一起看：原文仅用 14%–20% 观测仍保持低误差，并优于多类后验解释基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文仅用 14%–20% 观测仍保持低误差，并优于多类后验解释基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>对提前预警分类和跨装置稳定性尚无证据。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合与现有 P1 主模型并行增加解释头。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>同时报告 sufficiency、comprehensiveness、跨随机种子 Jaccard 与预测性能。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-1. ENCORE：事件分支只在“活跃且非冗余”处修正 RGB</h3>
+              <p class="paper__subtitle">ENCORE: Event-Assisted Complementary Motion Refinement for Learned Video Compression</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】新增。可迁移模块是 CMR、SERIC 与 EAR；额外计算集中在中层校准和路由，显存影响预计中等；风险是压缩运动线索不覆盖静态属性；最小实验是在 EventPAR/TriPro 单层插入模块并按属性类型分组消融。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shuhan Ye 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28020" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28020" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】新增。可迁移模块是 CMR、SERIC 与 EAR；额外计算集中在中层校准和路由，显存影响预计中等；风险是压缩运动线索不覆盖静态属性；最小实验是在 EventPAR/TriPro 单层插入模块并按属性类型分组消融。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 的 RGB 与事件流既互补又冗余，固定融合容易把事件噪声带入静态语义。
+从本日报的选取理由看，【P2】新增。可迁移模块是 CMR、SERIC 与 EAR；额外计算集中在中层校准和路由，显存影响预计中等；风险是压缩运动线索不覆盖静态属性；最小实验是在 EventPAR/TriPro 单层插入模块并按属性类型分组消融。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否让事件只修正 RGB 在高速、低照与遮挡区域的不足？
+对当前主题的关键意义在于：比较低照/高速属性 mAP、全体 mAP、FLOPs 与显存，并检查 event-only 静态属性退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/433547b213858d44.png" alt="Figure 1: Overview of ENCORE . CMR decomposes aligned RGB–event features, SERIC calibrates complementary event evidence to predict Δ ​ 𝐯 t \Delta\mathbf{v}_{t} , and EAR routes this correction to obtain the refined flow 𝐯 ~ t \widetilde{\mathbf{v}}_{t} for subsequent RGB coding.">
+                    <figcaption>Figure 1: Overview of ENCORE . CMR decomposes aligned RGB–event features, SERIC calibrates complementary event evidence to predict Δ ​ 𝐯 t \Delta\mathbf{v}_{t} , and EAR routes thi...</figcaption>
+                  </figure>
+                  <p>分解共同/特有表示，用相对 RGB 的事件能量和新颖性控制修正位置及强度。
+阅读时需要把方法设计与主要结果一起看：原文跨三数据集和多 GOP 长度持续改善视频压缩率失真表现。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文跨三数据集和多 GOP 长度持续改善视频压缩率失真表现。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需单独核验身份/属性语义是否随运动细化被保留。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>先作为轻量中层融合插件，不改完整 P2 主干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>比较低照/高速属性 mAP、全体 mAP、FLOPs 与显存，并检查 event-only 静态属性退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-16" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P2-2. EZSR：用文本属性原型扩展事件开放词表识别</h3>
+              <p class="paper__subtitle">EZSR: Event-based Zero-Shot Recognition</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】非当日新增 / 顶会机制迁移。可迁移模块是事件—文本语义对齐与未见类别原型；计算影响主要在训练期文本编码，可缓存；风险是类别级零样本不等于多标签属性组合；最小实验是 seen/unseen 属性拆分。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF Open Access 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Yang_EZSR_Event-based_Zero-Shot_Recognition_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】非当日新增 / 顶会机制迁移。可迁移模块是事件—文本语义对齐与未见类别原型；计算影响主要在训练期文本编码，可缓存；风险是类别级零样本不等于多标签属性组合；最小实验是 seen/unseen 属性拆分。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 的属性集合会变化，闭集分类头难以支持新属性和自然语言描述。
+从本日报的选取理由看，【P2】非当日新增 / 顶会机制迁移。可迁移模块是事件—文本语义对齐与未见类别原型；计算影响主要在训练期文本编码，可缓存；风险是类别级零样本不等于多标签属性组合；最小实验是 seen/unseen 属性拆分。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否让 ENCORE 改善后的事件表示对齐到可组合文本属性？
+对当前主题的关键意义在于：构造未见属性拆分，报告 seen/unseen mAP、harmonic mean 和文本模板敏感性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>以事件零样本识别框架连接事件表征与语义原型。
+阅读时需要把方法设计与主要结果一起看：正式 CVPR 2025 论文提供了事件开放类别识别参照。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>正式 CVPR 2025 论文提供了事件开放类别识别参照。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要为多标签属性和 RGB-event 联合表征重新设计损失。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>与 ENCORE 互补：一个改善融合，一个扩展语义空间。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>构造未见属性拆分，报告 seen/unseen mAP、harmonic mean 和文本模板敏感性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-17" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">05</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-1. TIER-MoE：将传感器风险变成显式路由变量</h3>
+              <p class="paper__subtitle">TIER-MoE: Trust-Informed Expert Routing via Conditional Modality Risk for Multimodal Fusion in Biomedical Classification</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-29</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增。可迁移模块是 out-of-fold 模态风险、子空间兼容性和共享保底路径；训练成本增加来自 K 折单模态预测器，在线稀疏路由可控；风险是历史损失未必反映实时硬件质量；最小实验是合成缺失、噪声、漂移与时钟偏移。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yu Chang 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.27289" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.27289" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增。可迁移模块是 out-of-fold 模态风险、子空间兼容性和共享保底路径；训练成本增加来自 K 折单模态预测器，在线稀疏路由可控；风险是历史损失未必反映实时硬件质量；最小实验是合成缺失、噪声、漂移与时钟偏移。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 的图像和诊断时序质量随放电与设备状态变化，融合权重不应被当成可靠性解释。
+从本日报的选取理由看，【P3】新增。可迁移模块是 out-of-fold 模态风险、子空间兼容性和共享保底路径；训练成本增加来自 K 折单模态预测器，在线稀疏路由可控；风险是历史损失未必反映实时硬件质量；最小实验是合成缺失、噪声、漂移与时钟偏移。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否把每个样本的模态失败风险显式估计并校准，再决定专家激活？
+对当前主题的关键意义在于：按退化类型分层报告 AUC、ECE、Brier、提前量和专家激活率。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c11e0b5575004a0a.png" alt="Figure 2: Overview of TIER-MoE . (a) Calibrated unimodal predictions form a risk-weighted reliability branch, while shared context and risk-guided sparse experts form an interaction branch; their predictions are mixed by γ \gamma . (b) The risk estimator is trained on grouped OOF evidence and realized Brier-loss targets, then frozen. (c) Positive risk-adjusted subspace-affinity scores select Top- K K modality–expert routes whose weighted residuals augment the shared path.">
+                    <figcaption>Figure 2: Overview of TIER-MoE . (a) Calibrated unimodal predictions form a risk-weighted reliability branch, while shared context and risk-guided sparse experts form an interactio...</figcaption>
+                  </figure>
+                  <p>用不含当前样本训练信息的单模态预测损失监督风险头，并与专家兼容性联合路由。
+阅读时需要把方法设计与主要结果一起看：原文在四个生物医学数据集上同时改善 Macro-F1、Brier score，并报告外部队列零样本泛化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>原文在四个生物医学数据集上同时改善 Macro-F1、Brier score，并报告外部队列零样本泛化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>K 折成本与装置在线质量标签定义需要工程化处理。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P3 优先级最高的融合层替换实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>按退化类型分层报告 AUC、ECE、Brier、提前量和专家激活率。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-18" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">06</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>P3-2. L-H PINN + 参数化 FNO：物理转迁路径与快速代理双层约束</h3>
+              <p class="paper__subtitle">Stochastic Dynamics of the Two-Dimensional Low-to-High Transition System Driven by Multiplicative Noise*；*Extending Fourier Neural Operators for Modeling Parameterized and Coupled PDEs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-25；2026-07-26</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增组合。可迁移模块是准势/最可能路径物理中间量与 hypernetwork-FNO 条件代理；离线求路径成本较高、FNO 在线推理较低；风险是低维模型与真实装置偏差叠加；最小实验是先在仿真工况建立双层辅助任务。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yongzhi Li, Shenglan Yuan</p>
+                <p class="muted">Cheng Jing 等</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.23186" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.23186" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增组合。可迁移模块是准势/最可能路径物理中间量与 hypernetwork-FNO 条件代理；离线求路径成本较高、FNO 在线推理较低；风险是低维模型与真实装置偏差叠加；最小实验是先在仿真工况建立双层辅助任务。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>纯判别融合缺少可解释物理状态，纯 PINN 又难承担高吞吐在线预测。
+从本日报的选取理由看，【P3】新增组合。可迁移模块是准势/最可能路径物理中间量与 hypernetwork-FNO 条件代理；离线求路径成本较高、FNO 在线推理较低；风险是低维模型与真实装置偏差叠加；最小实验是先在仿真工况建立双层辅助任务。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否离线用 PINN 提供转迁路径约束，在线用条件神经算子快速近似物理状态？
+对当前主题的关键意义在于：先在简化仿真上比较无物理辅助、路径辅助、FNO 辅助和双辅助四组，再评估跨工况泛化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/42f7141a051f49e4.png" alt="Figure 2: Quasipotential landscape of the two-dimensional L-H model with the H-mode (blue circle) and L-mode (green square). The saddle point is marked with an orange triangle.">
+                    <figcaption>Figure 2: Quasipotential landscape of the two-dimensional L-H model with the H-mode (blue circle) and L-mode (green square). The saddle point is marked with an orange triangle.</figcaption>
+                  </figure>
+                  <p>把准势/路径距离作为融合模型辅助目标，再用参数条件化耦合 FNO 产生快速物理代理特征。
+阅读时需要把方法设计与主要结果一起看：L-H 论文展示准势与稀有路径求解；FNO 论文在含等离子体的 PDE 基准上最高降低 55%–72% 误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>L-H 论文展示准势与稀有路径求解；FNO 论文在含等离子体的 PDE 基准上最高降低 55%–72% 误差。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>组合方案为本简报提出的推断，未经原论文联合验证，也未覆盖真实破裂数据。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合中期研究路线，不应直接替代短期可靠性融合实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先在简化仿真上比较无物理辅助、路径辅助、FNO 辅助和双辅助四组，再评估跨工况泛化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>ENCORE：RGB-事件互补运动细化的视频压缩框架</h3>
+              <p class="paper__subtitle">ENCORE: Event-Assisted Complementary Motion Refinement for Learned Video Compression</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-30。共同/模态特有运动分解、事件新颖性校准与能量感知路由，可直接迁移到 P2 的 RGB-Event 特征融合；BS-ERGB 上最高报告 20.80% PSNR-RGB BD-rate 节省。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shuhan Ye, Hongbin Yu, Chenqi Kong, Pingchuan Ma, Chong Wang, Jun Wan, Qixin Zhang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28020" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28020" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-30。共同/模态特有运动分解、事件新颖性校准与能量感知路由，可直接迁移到 P2 的 RGB-Event 特征融合；BS-ERGB 上最高报告 20.80% PSNR-RGB BD-rate 节省。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>仅从离散 RGB 帧估计运动，容易在高速、模糊、遮挡、弱纹理、低照与亮度突变时失败；事件流提供帧间异步变化证据。
+从本日报的选取理由看，新增 / arXiv 2026-07-30。共同/模态特有运动分解、事件新颖性校准与能量感知路由，可直接迁移到 P2 的 RGB-Event 特征融合；BS-ERGB 上最高报告 20.80% PSNR-RGB BD-rate 节省。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何只在事件信息活跃、非冗余且可信的位置修正 RGB 运动，而不让事件噪声污染主干？
+对当前主题的关键意义在于：将 SERIC/EAR 放在 TriPro/EventPAR 中层特征，按高速、低照、遮挡和静态属性分组报告 mAP 与额外 FLOPs。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/433547b213858d44.png" alt="Figure 1: Overview of ENCORE . CMR decomposes aligned RGB–event features, SERIC calibrates complementary event evidence to predict Δ ​ 𝐯 t \Delta\mathbf{v}_{t} , and EAR routes this correction to obtain the refined flow 𝐯 ~ t \widetilde{\mathbf{v}}_{t} for subsequent RGB coding.">
+                    <figcaption>Figure 1: Overview of ENCORE . CMR decomposes aligned RGB–event features, SERIC calibrates complementary event evidence to predict Δ ​ 𝐯 t \Delta\mathbf{v}_{t} , and EAR routes thi...</figcaption>
+                  </figure>
+                  <p>CMR 分解共同与模态特有运动；SERIC 用空间能量和相对冗余筛选事件响应；EAR 决定修正位置和强度，RGB 仍是唯一编码与重建目标。
+阅读时需要把方法设计与主要结果一起看：在 BS-ERGB、HQ-EVFI、CED 与多种 GOP 长度上持续改进；BS-ERGB 最高实现 20.80% PSNR-RGB 和 22.14% MS-SSIM-RGB BD-rate 节省。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 BS-ERGB、HQ-EVFI、CED 与多种 GOP 长度上持续改进；BS-ERGB 最高实现 20.80% PSNR-RGB 和 22.14% MS-SSIM-RGB BD-rate 节省。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>压缩指标不等于属性识别收益；需要验证事件修正是否保留服饰、姿态和携带物等静态/低频属性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>P2 今日最值得迁移的 RGB-Event 融合模块。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>将 SERIC/EAR 放在 TriPro/EventPAR 中层特征，按高速、低照、遮挡和静态属性分组报告 mAP 与额外 FLOPs。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>ObjectStream：以潜在对象为记忆锚点的流式视频理解</h3>
+              <p class="paper__subtitle">ObjectStream: Latent Objects as Memory Anchors for Streaming Video Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-30。训练免费、有界记忆且不依赖外部检测器；摘要报告 OVO-Bench 提升 10.0 分、峰值显存和 TTFT 约减半，并丢弃 82.5% 视觉 token 后仍超过全 token 基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mingkang Dong, Muxin Pu, Jie Li, Bohan Guo, Songruo Chen, Bin Ren, Xu Zheng, Chen Zhao, Tianwen Qian, Mohamed Elhoseiny, Yuqian Fu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28312" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28312" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-30。训练免费、有界记忆且不依赖外部检测器；摘要报告 OVO-Bench 提升 10.0 分、峰值显存和 TTFT 约减半，并丢弃 82.5% 视觉 token 后仍超过全 token 基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>流式视频在问题未知时也需保留未来可能有用的证据，视觉上下文随时间增长会拖累显存与首 token 延迟。
+从本日报的选取理由看，新增 / arXiv 2026-07-30。训练免费、有界记忆且不依赖外部检测器；摘要报告 OVO-Bench 提升 10.0 分、峰值显存和 TTFT 约减半，并丢弃 82.5% 视觉 token 后仍超过全 token 基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在固定记忆预算下保留对象身份、交互和状态变化，而不依赖额外检测/分割器？
+对当前主题的关键意义在于：P3 可将 ROI、等离子体边界与异常热点设为软锚点，比较固定窗口、token pruning 与对象记忆的提前量/显存曲线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/b5719176f9933278.png" alt="Figure 1: Comparison between existing streaming memory and ObjectStream. Existing methods compress streaming observations into coarse latent representations, whereas ObjectStream organizes memory around latent objects to preserve fine-grained object evidence for long-term reasoning.">
+                    <figcaption>Figure 1: Comparison between existing streaming memory and ObjectStream. Existing methods compress streaming observations into coarse latent representations, whereas ObjectStream o...</figcaption>
+                  </figure>
+                  <p>从冻结 Video-LLM 表征中诱导空间一致潜在对象，跨帧关联为持久锚点，并维护对象历史、瞬时变化与近期上下文。
+阅读时需要把方法设计与主要结果一起看：Qwen2.5-VL-7B 在 OVO-Bench 实时视觉感知提升 10.0 分，峰值显存和 TTFT 约降低 50%；离线长视频丢弃 82.5% 视觉 token 后超过全 token 基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>Qwen2.5-VL-7B 在 OVO-Bench 实时视觉感知提升 10.0 分，峰值显存和 TTFT 约降低 50%；离线长视频丢弃 82.5% 视觉 token 后超过全 token 基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>潜在对象在强遮挡、视角突变和非对象型全局等离子体纹理上的稳定性未知。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合在线长序列压缩，但需防止把全局物理模式误拆成对象。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>P3 可将 ROI、等离子体边界与异常热点设为软锚点，比较固定窗口、token pruning 与对象记忆的提前量/显存曲线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>TIER-MoE：用条件模态风险驱动专家路由</h3>
+              <p class="paper__subtitle">TIER-MoE: Trust-Informed Expert Routing via Conditional Modality Risk for Multimodal Fusion in Biomedical Classification</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-29</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-29。它把“模态是否可靠”定义为独立单模态预测器的期望损失，再与专家子空间兼容性联合稀疏路由；对 P3 的缺失、退化和跨装置模态失配比普通注意力权重更可审计。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yu Chang, Anzhe Cheng, Chenwei Wu, Zhuoran Wang, Jiahao Chen, Tamoghna Chattopadhyay, Sophia I. Thomopoulos, Paul M. Thompson, Liyue Shen, Paul Bogdan</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.27289" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.27289" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-29。它把“模态是否可靠”定义为独立单模态预测器的期望损失，再与专家子空间兼容性联合稀疏路由；对 P3 的缺失、退化和跨装置模态失配比普通注意力权重更可审计。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>更多模态不一定更好；注意力权重无法说明某模态是不可靠、冗余，还是与某个专家不匹配。
+从本日报的选取理由看，新增 / arXiv 2026-07-29。它把“模态是否可靠”定义为独立单模态预测器的期望损失，再与专家子空间兼容性联合稀疏路由；对 P3 的缺失、退化和跨装置模态失配比普通注意力权重更可审计。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用不泄漏当前训练样本的信息估计模态风险，并据此稀疏选择专家？
+对当前主题的关键意义在于：用传感器质量规则与 out-of-fold 损失共同监督风险头，比较固定拼接、cross-attention、QAAF 与 TIER 路由的 AUC/ECE/缺模态鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c11e0b5575004a0a.png" alt="Figure 2: Overview of TIER-MoE . (a) Calibrated unimodal predictions form a risk-weighted reliability branch, while shared context and risk-guided sparse experts form an interaction branch; their predictions are mixed by γ \gamma . (b) The risk estimator is trained on grouped OOF evidence and realized Brier-loss targets, then frozen. (c) Positive risk-adjusted subspace-affinity scores select Top- K K modality–expert routes whose weighted residuals augment the shared path.">
+                    <figcaption>Figure 2: Overview of TIER-MoE . (a) Calibrated unimodal predictions form a risk-weighted reliability branch, while shared context and risk-guided sparse experts form an interactio...</figcaption>
+                  </figure>
+                  <p>以未见过对应样本的单模态模型产生 out-of-fold 预测损失作为风险监督，再结合专家子空间兼容性路由；始终激活共享路径保留互补信息。
+阅读时需要把方法设计与主要结果一起看：四个生物医学多模态数据集上报告 Macro-F1 与 Brier score 持续提升，并对外部队列具有较强零样本泛化。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>四个生物医学多模态数据集上报告 Macro-F1 与 Brier score 持续提升，并对外部队列具有较强零样本泛化。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>训练多个 out-of-fold 单模态预测器增加离线成本，临床模态风险不等价于物理诊断可靠性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P3 当前最值得尝试的可靠性融合层。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>用传感器质量规则与 out-of-fold 损失共同监督风险头，比较固定拼接、cross-attention、QAAF 与 TIER 路由的 AUC/ECE/缺模态鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 连续时间建模正在从专用求解器转向可插拔 token 与算子</h3>
+          <p>WrapFlow 让标准 Transformer 接收连续时间事件，Operator/causal neural operator 则把预测和因果机制提升到函数空间。短期工程路线更适合先验证 tokenization，长期研究路线再引入函数空间和反事实结构。</p>
+        </article>
+        <article class="trend">
+          <h3>2. “注意力权重即解释/可靠性”正在被更严格的目标替代</h3>
+          <p>IB-Forecast 用干预式忠实度和信息预算约束解释，TIER-MoE 用 out-of-fold 损失定义模态风险。两者共同提示 P1/P3 应把解释、可靠性和概率校准作为独立可测目标。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 多模态融合从全局拼接转向局部互补与有界记忆</h3>
+          <p>ENCORE 只在事件证据活跃且非冗余的位置修正 RGB，ObjectStream 则围绕持久对象压缩长期视觉证据。两者都强调保留“变化”与“身份/状态历史”，而非平均对待所有 token。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 聚变 AI 新增更偏物理代理和转迁机理，直接破裂多模态论文仍稀缺</h3>
+          <p>L-H PINN 与参数化耦合 FNO 提供物理中间量和快速代理机制，但不能替代真实装置上的可见光—诊断时序破裂预测验证。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
