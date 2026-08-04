@@ -1,0 +1,1094 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-08-04</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-08-04 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-08-04 05:15:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- 本轮不是纯空缺，但新增主要来自跨域机制：低光 RGB-NIR、UHD 高效 SSM、长文档证据路由、长历史 VLA 采样和 tokamak 边缘湍流回归。</p>
+        <p>- P1 最值得看 EOMR 与 CoDe-SSM：前者在 Hasegawa-Wakatani tokamak edge 数据上报告线性复杂度的特征子集/子空间学习，后者用固定数量聚类中心把 UHD 图像上下文建模成本从分辨率中解耦。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 FlexTSF：可处理规则与不规则时序的通用预测模型</a></li>
+              <li><a href="#paper-2">02 Time-MoE：十亿级混合专家时序基础模型</a></li>
+              <li><a href="#paper-3">03 EZSR：事件相机零样本识别</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-4">04 EOMR：非平稳回归中的特征子集与子空间联合学习</a></li>
+              <li><a href="#paper-5">05 FibVLA：Fibonacci 采样的长历史视觉-语言-动作模型</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-10">10 EOMR：Hasegawa-Wakatani tokamak edge 数据上的低维回归描述</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发</a>
+            <ul>
+              <li><a href="#paper-11">11 EOMR：用低维子空间约束高低频诊断建模</a></li>
+              <li><a href="#paper-12">12 CoDe-SSM：固定 K 中心与局部残差的高频压缩模板</a></li>
+              <li><a href="#paper-13">13 Sequence-SOD：连续事件状态保留而非逐窗口重置</a></li>
+              <li><a href="#paper-14">14 Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark：弱光互补模态与无 clean RGB 监督</a></li>
+              <li><a href="#paper-15">15 FibVLA：密近疏远的长历史多模态采样</a></li>
+              <li><a href="#paper-16">16 HierDoc：时序查询驱动的图像局部证据路由</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-6">06 Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark：暗光 RGB-NIR 三维感知融合</a></li>
+              <li><a href="#paper-7">07 CoDe-SSM：面向 UHD 图像恢复的上下文-细节解耦状态空间模型</a></li>
+              <li><a href="#paper-8">08 HierDoc：长文档视觉问答的页到区域证据路由</a></li>
+              <li><a href="#paper-9">09 Sequence-SOD：事件相机的序列感知脉冲目标检测</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">EOMR：非平稳回归中的特征子集与子空间联合学习</a></h3>
+              <p class="card__subtitle">On a joint simultaneous learning of relevant feature subsets and subspaces in regression-like problems</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-30；arXiv v2</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv v2 2026-07-30。它在 Hasegawa-Wakatani tokamak edge 数据上讨论线性迭代和内存复杂度的低维回归描述，虽不是深度模型主线，但对 P1 的高维诊断压缩、物理可解释变量筛选和小样本跨炮次建模有直接参考价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">CoDe-SSM：面向 UHD 图像恢复的上下文-细节解耦状态空间模型</a></h3>
+              <p class="card__subtitle">CoDe-SSM: Context-Detail Decoupled State Space Model for Efficient UHD Image Restoration</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-31</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-31。它把输入相关聚类中心上的 selective SSM 与局部高频残差专家分开处理，核心价值是把全局上下文成本从空间分辨率中解耦，可迁移到 P1 的高频压缩 token 与 P3 的可见光局部证据筛选。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark：暗光 RGB-NIR 三维感知融合</a></h3>
+              <p class="card__subtitle">Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-31</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-31，提交时间晚于上一期截止。它不依赖 clean RGB 监督，把极噪 RGB 与 NIR 线索放入 3D-aware neural modeling，对 P2 的弱光属性识别和 P3 的可见光退化建模都有明确启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">HierDoc：长文档视觉问答的页到区域证据路由</a></h3>
+              <p class="card__subtitle">HierDoc: Hierarchical Page-to-Region Evidence Routing for Long-Document Visual Question Answering</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-07-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-31。它用两阶段 set prediction 先选页再选区域，避免把完整长文档全部交给下游模型；对 P3 的“时序查询图像局部证据”和高显存视觉 token 剪枝有可迁移机制。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">FibVLA：Fibonacci 采样的长历史视觉-语言-动作模型</a></h3>
+              <p class="card__subtitle">FibVLA: An Efficient Temporal Vision-Language-Action Model with Fibonacci Sampling</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-07-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-07-31。它用对数 hindsight sampling 捕获长历史视觉帧和本体状态，避免把全部视频历史送入 VLA；对 P1/P3 的实时长上下文压缩和多采样率历史选择很实用。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>FlexTSF：可处理规则与不规则时序的通用预测模型</h3>
+              <p class="paper__subtitle">A Universal Forecasting Model for Time Series with Variable Regularities</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。今天用它作为 EOMR 和 FibVLA 的不规则采样基线，检查候选方法是否真的保留真实时间间隔、缺失机制和变量规则性，而不是只做稀疏取样。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>OpenReview 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=LuLzcBsp5c" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。今天用它作为 EOMR 和 FibVLA 的不规则采样基线，检查候选方法是否真的保留真实时间间隔、缺失机制和变量规则性，而不是只做稀疏取样。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>现实传感器同时包含规则、稀疏和不规则序列，统一预测模型必须同时保留时间间隔、缺失机制和变量规则性，否则跨装置迁移时容易把采样制度当成物理信号。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。今天用它作为 EOMR 和 FibVLA 的不规则采样基线，检查候选方法是否真的保留真实时间间隔、缺失机制和变量规则性，而不是只做稀疏取样。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>一个预测器如何在规则、不规则和变量规则性变化的数据之间共享能力，同时避免插值和固定网格带来的时间语义损失？
+对当前主题的关键意义在于：最小验证是在同一 P1 数据上并排比较 FlexTSF、EOMR、FibVLA 式稀疏历史采样和普通 Transformer，按采样间隔分位数报告 MAE、提前量、显存峰值和失效样本。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文面向 variable regularities 构建统一预测框架，让模型在不同采样规则下共享时序表示和预测能力。对本期的迁移价值是把真实 Δt、缺失长度、通道异步程度和采样率变化作为显式评测维度。
+阅读时需要把方法设计与主要结果一起看：OpenReview 正式页面核验其为 ICLR 2025 论文；本期只作为已核验回看，不标记为 2026-08-04 新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 正式页面核验其为 ICLR 2025 论文；本期只作为已核验回看，不标记为 2026-08-04 新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未直接覆盖 MHz 级聚变诊断和百万长度高频序列；需要单独报告显存峰值、吞吐和高频压缩后的信息损失。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P1 不规则统一建模绕不开的回看基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在同一 P1 数据上并排比较 FlexTSF、EOMR、FibVLA 式稀疏历史采样和普通 Transformer，按采样间隔分位数报告 MAE、提前量、显存峰值和失效样本。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Time-MoE：十亿级混合专家时序基础模型</h3>
+              <p class="paper__subtitle">Billion-Scale Time Series Foundation Models with Mixture of Experts</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025 Spotlight</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。今天用它审视 CoDe-SSM 的局部高频专家和 P3 的模态可靠性路由能否统一成频段、工况、模态和预测跨度专家。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>OpenReview 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=e1wDDFmlVu" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。今天用它审视 CoDe-SSM 的局部高频专家和 P3 的模态可靠性路由能否统一成频段、工况、模态和预测跨度专家。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>时序基础模型面对多领域、多频段和多预测跨度时，单一共享骨干容易在容量、泛化和计算预算之间互相牵制。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。今天用它审视 CoDe-SSM 的局部高频专家和 P3 的模态可靠性路由能否统一成频段、工况、模态和预测跨度专家。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何通过稀疏专家在增加模型容量的同时控制单次推理成本，并让专家分工覆盖异质时序模式？
+对当前主题的关键意义在于：最小验证是设置 3-4 个小专家，分别处理高频、低频、缺失和疑似破裂前兆窗口，比较全共享模型、硬分组模型和稀疏路由模型的性能与激活 FLOPs。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Time-MoE 以混合专家架构扩展时序基础模型，通过稀疏路由激活部分专家。对本课题的迁移点是把专家从“数据域”改成“高频诊断、低频诊断、缺失模态、临近破裂工况”等可解释组。
+阅读时需要把方法设计与主要结果一起看：OpenReview 正式页面核验其为 ICLR 2025 Spotlight；本期只做回看和机制映射。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 正式页面核验其为 ICLR 2025 Spotlight；本期只做回看和机制映射。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>大模型规模不适合直接搬到实时破裂预测；路由可解释性也不等同于物理因果，需要小模型可控实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P1/P3 轻量专家路由实验的设计参照。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是设置 3-4 个小专家，分别处理高频、低频、缺失和疑似破裂前兆窗口，比较全共享模型、硬分组模型和稀疏路由模型的性能与激活 FLOPs。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>EZSR：事件相机零样本识别</h3>
+              <p class="paper__subtitle">EZSR: Event-based Zero-Shot Recognition</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。P2 今天的新事件候选偏连续状态检测，EZSR 补足事件表征与文本语义对齐，是开放词表属性识别仍要保留的回看基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF Open Access 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Yang_EZSR_Event-based_Zero-Shot_Recognition_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。P2 今天的新事件候选偏连续状态检测，EZSR 补足事件表征与文本语义对齐，是开放词表属性识别仍要保留的回看基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机数据标注稀缺，闭集类别或硬标签属性难覆盖真实场景中的组合属性和长尾状态。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。P2 今天的新事件候选偏连续状态检测，EZSR 补足事件表征与文本语义对齐，是开放词表属性识别仍要保留的回看基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把稀疏异步事件映射到可泛化的视觉-语言语义空间，并支持未见类别或开放属性？
+对当前主题的关键意义在于：最小验证是在现有 TriPro-ReID 分支上加入属性文本原型，对 seen/unseen 属性分别报告 mAP、ECE 和模态缺失下的性能下降。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>EZSR 面向事件数据构建零样本识别框架，用语义原型支持未见类别。对 TriPro-ReID 派生课题的迁移点是把属性名称、属性描述和模态可靠性一起纳入监督。
+阅读时需要把方法设计与主要结果一起看：CVF Open Access 正式页面核验其为 CVPR 2025 正式论文；本期只做回看。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF Open Access 正式页面核验其为 CVPR 2025 正式论文；本期只做回看。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>零样本类别识别和多标签行人属性识别仍有任务差异；事件稀疏时文本原型可能过度支配输出。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P2 从 RGB-Event 融合走向开放词表属性语义的关键参照。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在现有 TriPro-ReID 分支上加入属性文本原型，对 seen/unseen 属性分别报告 mAP、ECE 和模态缺失下的性能下降。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>EOMR：非平稳回归中的特征子集与子空间联合学习</h3>
+              <p class="paper__subtitle">On a joint simultaneous learning of relevant feature subsets and subspaces in regression-like problems</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30；arXiv v2</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv v2 2026-07-30。它在 Hasegawa-Wakatani tokamak edge 数据上讨论线性迭代和内存复杂度的低维回归描述，虽不是深度模型主线，但对 P1 的高维诊断压缩、物理可解释变量筛选和小样本跨炮次建模有直接参考价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Illia Horenko</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28080" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28080" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv v2 2026-07-30。它在 Hasegawa-Wakatani tokamak edge 数据上讨论线性迭代和内存复杂度的低维回归描述，虽不是深度模型主线，但对 P1 的高维诊断压缩、物理可解释变量筛选和小样本跨炮次建模有直接参考价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变边缘湍流、混沌系统和高维诊断数据常处在“小样本、高维、非平稳”的组合困难中。深度模型可以拟合，但未必能给出低维、稳定、因果方向清楚的变量组合。
+从本日报的选取理由看，新增 / arXiv v2 2026-07-30。它在 Hasegawa-Wakatani tokamak edge 数据上讨论线性迭代和内存复杂度的低维回归描述，虽不是深度模型主线，但对 P1 的高维诊断压缩、物理可解释变量筛选和小样本跨炮次建模有直接参考价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在非平稳回归问题中同时识别相关特征子集与低维子空间，并保持迭代和内存复杂度近似线性？
+对当前主题的关键意义在于：最小验证是在已有聚变高低频诊断中先抽取统计、频域和高频压缩特征，用 EOMR 学习低维子空间，再比较其与 Transformer/SSM 在跨炮次预测、变量稳定性和内存占用上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bfc3a27d111d0f58.png" alt="Figure 2: Analysis results for the modified Hasegawa-Wakatani model. Explanations can be found in the Sec. 3.2 .">
+                    <figcaption>Figure 2: Analysis results for the modified Hasegawa-Wakatani model. Explanations can be found in the Sec. 3.2 .</figcaption>
+                  </figure>
+                  <p>EOMR 将熵最优流形聚类扩展到回归式问题，联合学习特征子集、子空间和低维预测关系。对 P1 的迁移价值是把高频诊断压缩前先做变量子集筛选，再用低维状态接入连续时间或 SSM 主干。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 Lorenz-96 强混沌与 Hasegawa-Wakatani tokamak edge 数据上，相比作者测试的随机森林、深度网络和 TabPFN v0.3 得到更低误差和更小模型复杂度；tokamak 示例中给出 8 参数的 EOF 动力学描述。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 Lorenz-96 强混沌与 Hasegawa-Wakatani tokamak edge 数据上，相比作者测试的随机森林、深度网络和 TabPFN v0.3 得到更低误差和更小模型复杂度；tokamak 示例中给出 8 参数的 EOF 动力学描述。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>单作者 arXiv 结果需要独立复现；方法不是端到端深度时序基础模型，面对强噪声多诊断异步数据时可能依赖特征工程和窗口选择。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合当作 P1 的低维变量筛选和物理可解释回归基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在已有聚变高低频诊断中先抽取统计、频域和高频压缩特征，用 EOMR 学习低维子空间，再比较其与 Transformer/SSM 在跨炮次预测、变量稳定性和内存占用上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>FibVLA：Fibonacci 采样的长历史视觉-语言-动作模型</h3>
+              <p class="paper__subtitle">FibVLA: An Efficient Temporal Vision-Language-Action Model with Fibonacci Sampling</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-31。它用对数 hindsight sampling 捕获长历史视觉帧和本体状态，避免把全部视频历史送入 VLA；对 P1/P3 的实时长上下文压缩和多采样率历史选择很实用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Li Lin, Wujun Xu, Weiwei Meng, Kaiwen Xia, Kang Hao Cheong, Shuai Wang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29596" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.29596" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-31。它用对数 hindsight sampling 捕获长历史视觉帧和本体状态，避免把全部视频历史送入 VLA；对 P1/P3 的实时长上下文压缩和多采样率历史选择很实用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>真实控制和预警任务往往需要长期历史，但完整视频或高频诊断窗口会快速推高 token 数、显存和延迟。固定步长采样又容易漏掉远期慢变量或近端突变。
+从本日报的选取理由看，新增 / arXiv 2026-07-31。它用对数 hindsight sampling 捕获长历史视觉帧和本体状态，避免把全部视频历史送入 VLA；对 P1/P3 的实时长上下文压缩和多采样率历史选择很实用。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在实时推理中保留长历史信息，同时避免把完整历史送入大模型或长序列注意力？
+对当前主题的关键意义在于：最小验证是在 P1/P3 数据上比较固定间隔、指数间隔、Fibonacci 间隔和变化率触发采样，报告 AUC/MAE、提前量、显存峰值和漏报的短瞬态比例。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ff7915227c68e087.png" alt="Figure 7 : Overview of experimental setups and task specifications. The evaluation encompasses three simulation benchmarks and real-world robotic tasks across diverse platforms, including the Franka Panda (LIBERO-Long and MIKASA-Robo), WidowX 250 (SimplerEnv-Bridge), and Google Robot (SimplerEnv-Fractal), and the Piper manipulator (Real-world evaluation).">
+                    <figcaption>Figure 7 : Overview of experimental setups and task specifications. The evaluation encompasses three simulation benchmarks and real-world robotic tasks across diverse platforms, in...</figcaption>
+                  </figure>
+                  <p>FibVLA 使用 logarithmic hindsight sampling 选择历史视觉帧与本体状态，并通过 Fibonacci recurrent inference 生成长程规划步骤。对聚变任务的迁移点是用密近疏远的时间锚点组合高频压缩 token 与低频原始通道。
+阅读时需要把方法设计与主要结果一起看：摘要报告无需重新训练大规模视觉编码器即可改善动作平滑度、成功率和真实环境响应速度；具体数值需正文核验。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告无需重新训练大规模视觉编码器即可改善动作平滑度、成功率和真实环境响应速度；具体数值需正文核验。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>机器人动作闭环和聚变破裂预警不同；Fibonacci 采样是否优于按物理事件或诊断变化率自适应采样，需要实证比较。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是长上下文压缩的轻量候选，不应替代真实 Δt 编码。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 P1/P3 数据上比较固定间隔、指数间隔、Fibonacci 间隔和变化率触发采样，报告 AUC/MAE、提前量、显存峰值和漏报的短瞬态比例。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>EOMR：Hasegawa-Wakatani tokamak edge 数据上的低维回归描述</h3>
+              <p class="paper__subtitle">On a joint simultaneous learning of relevant feature subsets and subspaces in regression-like problems</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30；arXiv v2</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv v2 2026-07-30。它是本轮少数直接出现 tokamak edge 数据的 AI/统计建模条目，虽然不是破裂预测，但对边缘湍流低维变量筛选和可解释代理建模值得看。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Illia Horenko</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28080" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28080" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv v2 2026-07-30。它是本轮少数直接出现 tokamak edge 数据的 AI/统计建模条目，虽然不是破裂预测，但对边缘湍流低维变量筛选和可解释代理建模值得看。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>Hasegawa-Wakatani 模型常用于边缘漂移波湍流研究，数据维度高、动力学非平稳。若能提取少量稳定变量和低阶关系，可帮助后续深度模型做解释约束。
+从本日报的选取理由看，新增 / arXiv v2 2026-07-30。它是本轮少数直接出现 tokamak edge 数据的 AI/统计建模条目，虽然不是破裂预测，但对边缘湍流低维变量筛选和可解释代理建模值得看。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否从复杂边缘等离子体数据中蒸馏出少参数、弱平稳、因果方向更清楚的回归描述？
+对当前主题的关键意义在于：最小验证是在 EAST 或公开聚变诊断数据中计算低维 EOF/latent，再用 EOMR 筛选变量并评估跨炮次稳定性，与现有深度模型的 attention/feature importance 对比。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bfc3a27d111d0f58.png" alt="Figure 2: Analysis results for the modified Hasegawa-Wakatani model. Explanations can be found in the Sec. 3.2 .">
+                    <figcaption>Figure 2: Analysis results for the modified Hasegawa-Wakatani model. Explanations can be found in the Sec. 3.2 .</figcaption>
+                  </figure>
+                  <p>EOMR 同时学习相关特征子集与子空间，并强调线性迭代和内存复杂度。对聚变 AI 的价值在于为深度预测器提供变量筛选、EOF 动力学对照和低维解释基线。
+阅读时需要把方法设计与主要结果一起看：摘要称 Hasegawa-Wakatani 示例中可用 8 参数线性因果弱平稳自回归过程描述 leading EOF dynamics。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称 Hasegawa-Wakatani 示例中可用 8 参数线性因果弱平稳自回归过程描述 leading EOF dynamics。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>该结果来自模型数据而非真实装置诊断；未覆盖破裂预警、跨装置泛化或图像-时序融合。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是聚变交叉方向的“低维解释”新增，不应被夸大为破裂预测进展。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 EAST 或公开聚变诊断数据中计算低维 EOF/latent，再用 EOMR 筛选变量并评估跨炮次稳定性，与现有深度模型的 attention/feature importance 对比。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>直接可见光图像与诊断时序融合破裂预测本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>本轮围绕 tokamak disruption prediction、plasma diagnostics、visible/IR diagnostics、vision-time-series fusion 与 asynchronous multimodal fusion 检索后，未见新的高质量原始论文同时满足“可见光图像 + 诊断时序 + 实时破裂预测 + 跨装置验证”。</p>
+          <p>检索到的 plasma 新稿主要集中在 runaway electron、phase contrast imaging、热盾实验和磁镜约束优化等物理或诊断硬件方向。本期不把普通等离子体物理论文包装为 AI 破裂预测主推荐。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>EOMR：用低维子空间约束高低频诊断建模</h3>
+              <p class="paper__subtitle">On a joint simultaneous learning of relevant feature subsets and subspaces in regression-like problems</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-30；arXiv v2</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增 / arXiv v2 2026-07-30。原始应用领域是非平稳回归、混沌系统和 tokamak edge 模型数据；可迁移模块是相关特征子集与低维子空间联合学习。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Illia Horenko</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.28080" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.28080" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增 / arXiv v2 2026-07-30。原始应用领域是非平稳回归、混沌系统和 tokamak edge 模型数据；可迁移模块是相关特征子集与低维子空间联合学习。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P1 需要同一模型兼容常规稀疏观测和高频海量点，但并非所有高频变量都应进入长上下文主干。先做可解释低维筛选，可以减少后续 SSM/Transformer 的输入压力。
+从本日报的选取理由看，【P1】新增 / arXiv v2 2026-07-30。原始应用领域是非平稳回归、混沌系统和 tokamak edge 模型数据；可迁移模块是相关特征子集与低维子空间联合学习。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>对应的待解决问题是如何在高维异步诊断中筛掉冗余或不稳定变量，并保留与物理状态变化相关的低维动态。
+对当前主题的关键意义在于：最小验证实验是在现有高低频诊断中对不同时间窗运行 EOMR，检查入选变量/子空间是否在跨炮次稳定，并把筛选后输入接入现有 SSM 或 Transformer 比较显存峰值和预警 AUC。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bfc3a27d111d0f58.png" alt="Figure 2: Analysis results for the modified Hasegawa-Wakatani model. Explanations can be found in the Sec. 3.2 .">
+                    <figcaption>Figure 2: Analysis results for the modified Hasegawa-Wakatani model. Explanations can be found in the Sec. 3.2 .</figcaption>
+                  </figure>
+                  <p>可迁移模块是 EOMR 的联合 feature subset/subspace learning；预期计算/显存影响是前处理或轻量在线筛选增加少量 CPU/GPU 成本，但可减少深度主干输入维度和注意力/SSM token 数。
+阅读时需要把方法设计与主要结果一起看：摘要报告 Hasegawa-Wakatani tokamak edge 示例中得到 8 参数 leading EOF 动力学描述。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 Hasegawa-Wakatani tokamak edge 示例中得到 8 参数 leading EOF 动力学描述。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要不成立条件是真实诊断噪声、缺失和非平稳性超过低维线性回归可表达范围；模型数据上的简洁关系不保证能迁移到实验炮。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>建议把它作为高低频统一模型前的变量筛选和解释审计层。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是在现有高低频诊断中对不同时间窗运行 EOMR，检查入选变量/子空间是否在跨炮次稳定，并把筛选后输入接入现有 SSM 或 Transformer 比较显存峰值和预警 AUC。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>CoDe-SSM：固定 K 中心与局部残差的高频压缩模板</h3>
+              <p class="paper__subtitle">CoDe-SSM: Context-Detail Decoupled State Space Model for Efficient UHD Image Restoration</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增 / arXiv 2026-07-31。原始应用领域是 UHD 图像恢复；可迁移模块是输入相关 K 个聚类中心、selective SSM 全局扫描和局部高频残差专家。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiaxu Su, Zhijian Wu, Jun Li, Bo Zhang, Yefeng Zheng</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29595" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.29595" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增 / arXiv 2026-07-31。原始应用领域是 UHD 图像恢复；可迁移模块是输入相关 K 个聚类中心、selective SSM 全局扫描和局部高频残差专家。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高频聚变诊断的显存问题与 UHD 图像类似：全量 token 过多，粗暴下采样又会丢掉局部突变。CoDe-SSM 的中心/残差拆分提供了一种“保留少数全局状态 + 局部异常补偿”的结构。
+从本日报的选取理由看，【P1】新增 / arXiv 2026-07-31。原始应用领域是 UHD 图像恢复；可迁移模块是输入相关 K 个聚类中心、selective SSM 全局扫描和局部高频残差专家。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>对应的待解决问题是避免长序列注意力显存爆炸，同时让高频压缩后仍能与低频通道交互。
+对当前主题的关键意义在于：最小验证实验是把高频诊断切窗后聚成 K 个中心并保留高频残差 mask，与均匀降采样、patch pooling、linear attention 对比显存、延迟和短瞬态召回。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e87bf079ed621cc7.png" alt="Figure 2: Architecture of CoDe-SSM. (a) The overall framework is an asymmetric U-Net with CoDeBlocks deployed at each encoder-decoder level. (b) The CoDeBlock clusters input features into K K centers, processes them through dual-branch GCSM along with LHFM pathways, and fuses the outputs via a GDFN. (c) The High-Frequency Energy (HFE) Filter extracts high-frequency maps from a single-channel grayscale reference using Laplacian and Sobel operators. (d) The Local High-Frequency Module (LHFM) applies an HFE mask to isolate structural details from the clustering residual, routes them through E = 4 E=4 sparse convolutional experts with distinct receptive fields, and modulates the aggregated output via a channel-wise attention.">
+                    <figcaption>Figure 2: Architecture of CoDe-SSM. (a) The overall framework is an asymmetric U-Net with CoDeBlocks deployed at each encoder-decoder level. (b) The CoDeBlock clusters input featur...</figcaption>
+                  </figure>
+                  <p>可迁移模块是 GCSM/LHFM；预期计算/显存影响是主干只处理固定 K 个摘要 token，显存更可控，但残差专家会增加局部计算。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 5 个 UHD benchmark 和 5 类退化上取得质量与效率收益。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 5 个 UHD benchmark 和 5 类退化上取得质量与效率收益。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要风险是聚类中心会平滑掉短促破裂前兆；需要用事件触发或高频 mask 防止异常被平均。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可作为 P1 的高频压缩结构支线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是把高频诊断切窗后聚成 K 个中心并保留高频残差 mask，与均匀降采样、patch pooling、linear attention 对比显存、延迟和短瞬态召回。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>Sequence-SOD：连续事件状态保留而非逐窗口重置</h3>
+              <p class="paper__subtitle">Sequence-SOD: Bio-inspired Sequence-aware Spiking Object Detection for Event Cameras</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-29</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】新增 / arXiv 2026-07-29。原始应用领域是事件相机目标检测；可迁移模块是 extended event sequence 训练、多时间点标签和序列内 membrane state 保留。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Katharina Bendig, René Schuster, Didier Stricker</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.26703" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.26703" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】新增 / arXiv 2026-07-29。原始应用领域是事件相机目标检测；可迁移模块是 extended event sequence 训练、多时间点标签和序列内 membrane state 保留。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别不能只把事件变成固定帧后与 RGB 相加，尤其在运动模糊和事件稀疏场景下，事件分支需要记住跨窗口动态证据。
+从本日报的选取理由看，【P2】新增 / arXiv 2026-07-29。原始应用领域是事件相机目标检测；可迁移模块是 extended event sequence 训练、多时间点标签和序列内 membrane state 保留。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>对应的待解决问题是原生异步事件表征和事件稀疏/噪声下的稳定属性证据提取。
+对当前主题的关键意义在于：最小验证实验是在 TriPro 事件分支增加跨窗口状态缓存，比较 reset voxel、GRU state 和 SNN membrane state，在弱光、模态缺失和事件稀疏子集上报告属性 mAP、ECE、延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>可迁移模块是 SNN 状态缓存与序列感知训练；预期计算/显存影响是保持膜电位状态会增加少量状态存储，但事件稀疏计算可降低 dense frame 处理成本。
+阅读时需要把方法设计与主要结果一起看：摘要报告 Gen1 上 sequence-aware training 将 mAP 从 23.38 提升至 25.30，无增强；事件增强后 26.88，理论预测频率 40 Hz。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 Gen1 上 sequence-aware training 将 mAP 从 23.38 提升至 25.30，无增强；事件增强后 26.88，理论预测频率 40 Hz。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要不成立条件是属性标签不随短时运动变化，或 SNN 状态把噪声事件也积累起来；仍需 RGB 分支提供外观语义。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 TriPro 事件前端的最小替换实验。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是在 TriPro 事件分支增加跨窗口状态缓存，比较 reset voxel、GRU state 和 SNN membrane state，在弱光、模态缺失和事件稀疏子集上报告属性 mAP、ECE、延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark：弱光互补模态与无 clean RGB 监督</h3>
+              <p class="paper__subtitle">Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】新增 / arXiv 2026-07-31。原始应用领域是 RGB-NIR 暗光成像；可迁移模块是极噪 RGB 与互补传感器的 3D-aware 融合和无 clean RGB 监督训练。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Muyao Niu, Mingze Ma, Yifan Zhan, Qingtian Zhu, Zhihang Zhong, Wei Guo, Chang Wen Chen, Yinqiang Zheng</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29684" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/MyNiuuu/3DarkFusion" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.29684" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】新增 / arXiv 2026-07-31。原始应用领域是 RGB-NIR 暗光成像；可迁移模块是极噪 RGB 与互补传感器的 3D-aware 融合和无 clean RGB 监督训练。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P2 的弱光和运动模糊问题不一定只能依赖事件；NIR、Event 或几何一致性都可作为外观恢复的辅助约束。关键是避免需要昂贵的干净配对标签。
+从本日报的选取理由看，【P2】新增 / arXiv 2026-07-31。原始应用领域是 RGB-NIR 暗光成像；可迁移模块是极噪 RGB 与互补传感器的 3D-aware 融合和无 clean RGB 监督训练。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>对应的待解决问题是弱光下 RGB 外观属性不可靠时，如何用互补模态恢复外观并维持属性语义。
+对当前主题的关键意义在于：最小验证实验是在 RGB-Event 属性数据上构造 low-light/noisy RGB，训练一个轻量恢复或特征增强头，再比较是否改善 attribute mAP、uncertainty calibration 和模态缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/77b1f07d6179fbca.jpeg" alt="Figure 1. Top: Given extremely noisy multi-view RGB observations in darkness, the proposed method recovers the clean RGB scene using Near-Infrared. NO clean RGB is used for optimizing the model. Bottom: Visual comparisons against methods from various paradigms on two scenes respectively from the synthetic dataset ( “ROVER” ) and the real-captured dataset ( “SAKANA” ).">
+                    <figcaption>Figure 1. Top: Given extremely noisy multi-view RGB observations in darkness, the proposed method recovers the clean RGB scene using Near-Infrared. NO clean RGB is used for optimiz...</figcaption>
+                  </figure>
+                  <p>可迁移模块是 3D-aware neural modeling 与跨模态隐式融合；预期计算/显存影响是训练期成本上升，但推理期可蒸馏成轻量增强前端。
+阅读时需要把方法设计与主要结果一起看：摘要报告 synthetic 与 real data 上泛化到不同噪声等级，并提供项目代码。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 synthetic 与 real data 上泛化到不同噪声等级，并提供项目代码。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要风险是 NIR 与 Event 不是同一传感机制；若没有多视角或几何约束，3D-aware 训练目标难以直接复用。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P2 弱光属性识别的数据增强和前端恢复分支参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是在 RGB-Event 属性数据上构造 low-light/noisy RGB，训练一个轻量恢复或特征增强头，再比较是否改善 attribute mAP、uncertainty calibration 和模态缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">05</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>FibVLA：密近疏远的长历史多模态采样</h3>
+              <p class="paper__subtitle">FibVLA: An Efficient Temporal Vision-Language-Action Model with Fibonacci Sampling</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增 / arXiv 2026-07-31。原始应用领域是机器人 VLA；可迁移模块是 logarithmic hindsight sampling、视觉帧/状态同步抽样和闭环 recurrent inference。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Li Lin, Wujun Xu, Weiwei Meng, Kaiwen Xia, Kang Hao Cheong, Shuai Wang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29596" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.29596" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增 / arXiv 2026-07-31。原始应用领域是机器人 VLA；可迁移模块是 logarithmic hindsight sampling、视觉帧/状态同步抽样和闭环 recurrent inference。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测需要远期慢变量、近期突变和异步图像证据共同参与，但实时系统不能把所有高频诊断和全部可见光帧送进模型。
+从本日报的选取理由看，【P3】新增 / arXiv 2026-07-31。原始应用领域是机器人 VLA；可迁移模块是 logarithmic hindsight sampling、视觉帧/状态同步抽样和闭环 recurrent inference。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>对应的待解决问题是低延迟、低显存部署下如何选择长历史图像和诊断时序证据。
+对当前主题的关键意义在于：最小验证实验是在破裂前 1 s、500 ms、100 ms 设置不同采样密度，比较均匀采样、Fibonacci 采样和变化率触发采样的 AUC、提前量、显存、延迟和漏报样本。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ff7915227c68e087.png" alt="Figure 7 : Overview of experimental setups and task specifications. The evaluation encompasses three simulation benchmarks and real-world robotic tasks across diverse platforms, including the Franka Panda (LIBERO-Long and MIKASA-Robo), WidowX 250 (SimplerEnv-Bridge), and Google Robot (SimplerEnv-Fractal), and the Piper manipulator (Real-world evaluation).">
+                    <figcaption>Figure 7 : Overview of experimental setups and task specifications. The evaluation encompasses three simulation benchmarks and real-world robotic tasks across diverse platforms, in...</figcaption>
+                  </figure>
+                  <p>可迁移模块是 Fibonacci/对数历史采样；预期计算/显存影响是显著减少历史 token 数，但采样策略本身不增加模型容量。
+阅读时需要把方法设计与主要结果一起看：摘要报告真实机器人评估中实时响应优于视频基线，并改善动作平滑度与成功率。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告真实机器人评估中实时响应优于视频基线，并改善动作平滑度与成功率。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要不成立条件是破裂前兆集中在很短瞬态，密近疏远采样仍可能漏掉关键尖峰；需要事件触发采样补充。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 的长历史采样基线，而不是最终融合模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是在破裂前 1 s、500 ms、100 ms 设置不同采样密度，比较均匀采样、Fibonacci 采样和变化率触发采样的 AUC、提前量、显存、延迟和漏报样本。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-16" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">06</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发</p>
+              <h3>HierDoc：时序查询驱动的图像局部证据路由</h3>
+              <p class="paper__subtitle">HierDoc: Hierarchical Page-to-Region Evidence Routing for Long-Document Visual Question Answering</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增 / arXiv 2026-07-31。原始应用领域是长文档视觉问答；可迁移模块是 page-to-region 两级证据路由和 structured-set reward。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Rongjian Gu, Wengang Zhou, Junyu Xiong, Yonghui Wang, Bing Yin, Bei Wang, Houqiang Li</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29638" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.29638" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增 / arXiv 2026-07-31。原始应用领域是长文档视觉问答；可迁移模块是 page-to-region 两级证据路由和 structured-set reward。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可见光图像中并非所有区域都与破裂前兆有关，直接全帧融合会放大无关背景、等离子体亮度整体变化或视角偏差。
+从本日报的选取理由看，【P3】新增 / arXiv 2026-07-31。原始应用领域是长文档视觉问答；可迁移模块是 page-to-region 两级证据路由和 structured-set reward。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>对应的待解决问题是时序如何选择图像局部证据，以及怎样抑制无关视觉信息。
+对当前主题的关键意义在于：最小验证实验是用诊断时序 embedding 查询可见光帧，先选 top-k 帧再选 top-m 区域，比较全帧融合、中心裁剪和路由融合的 AUC、显存、延迟与可解释热区稳定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/84fa03c466ca7b93.png" alt="Figure 1: Overview of HierDoc inference. A trainable page policy selects evidence pages from fixed-size windows and routes them both to semantic parsing and directly to grounded answering. MinerU2.5-Pro converts the selected pages into typed semantic regions with bounding boxes and OCR or table metadata, after which a trainable region policy retains the relevant region crops and associated text. The answer model jointly consumes the selected full pages, region crops, and textual metadata. Flame badges denote trainable selectors.">
+                    <figcaption>Figure 1: Overview of HierDoc inference. A trainable page policy selects evidence pages from fixed-size windows and routes them both to semantic parsing and directly to grounded an...</figcaption>
+                  </figure>
+                  <p>可迁移模块是先选关键帧再选关键区域的两级 policy；预期计算/显存影响是增加路由器推理，但显著减少进入 cross-attention 的图像 token。
+阅读时需要把方法设计与主要结果一起看：摘要报告长文档 VQA 中区域证据使 page-only 系统 accuracy/F1 提升 5.51%/4.82%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告长文档 VQA 中区域证据使 page-only 系统 accuracy/F1 提升 5.51%/4.82%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要风险是缺少像 VQA 那样的答案监督，破裂预测的区域 reward 需要用遮挡敏感性、物理先验或专家标注构造。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 视觉证据选择模块的跨域模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是用诊断时序 embedding 查询可见光帧，先选 top-k 帧再选 top-m 区域，比较全帧融合、中心裁剪和路由融合的 AUC、显存、延迟与可解释热区稳定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark：暗光 RGB-NIR 三维感知融合</h3>
+              <p class="paper__subtitle">Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-31，提交时间晚于上一期截止。它不依赖 clean RGB 监督，把极噪 RGB 与 NIR 线索放入 3D-aware neural modeling，对 P2 的弱光属性识别和 P3 的可见光退化建模都有明确启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Muyao Niu, Mingze Ma, Yifan Zhan, Qingtian Zhu, Zhihang Zhong, Wei Guo, Chang Wen Chen, Yinqiang Zheng</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29684" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/MyNiuuu/3DarkFusion" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2607.29684" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-31，提交时间晚于上一期截止。它不依赖 clean RGB 监督，把极噪 RGB 与 NIR 线索放入 3D-aware neural modeling，对 P2 的弱光属性识别和 P3 的可见光退化建模都有明确启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>弱光、运动模糊和传感器噪声会让 RGB 外观属性不稳定，而近红外或事件等互补传感器可提供结构线索。问题在于真实场景很难收集干净配对监督，固定监督式融合容易跨场景失效。
+从本日报的选取理由看，新增 / arXiv 2026-07-31，提交时间晚于上一期截止。它不依赖 clean RGB 监督，把极噪 RGB 与 NIR 线索放入 3D-aware neural modeling，对 P2 的弱光属性识别和 P3 的可见光退化建模都有明确启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>没有 clean RGB ground truth 时，如何从极噪 RGB 和 NIR 中恢复稳定外观，并跨噪声等级泛化？
+对当前主题的关键意义在于：最小验证是在 TriPro 或可见光诊断数据中构造低照度退化，比较 RGB-only、RGB+Event 固定融合和 3D/几何一致性辅助融合的属性 mAP、校准误差与失效案例。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/77b1f07d6179fbca.jpeg" alt="Figure 1. Top: Given extremely noisy multi-view RGB observations in darkness, the proposed method recovers the clean RGB scene using Near-Infrared. NO clean RGB is used for optimizing the model. Bottom: Visual comparisons against methods from various paradigms on two scenes respectively from the synthetic dataset ( “ROVER” ) and the real-captured dataset ( “SAKANA” ).">
+                    <figcaption>Figure 1. Top: Given extremely noisy multi-view RGB observations in darkness, the proposed method recovers the clean RGB scene using Near-Infrared. NO clean RGB is used for optimiz...</figcaption>
+                  </figure>
+                  <p>论文把 RGB-NIR 融合放入 3D-aware neural modeling，让模型在三维空间中隐式融合噪声 RGB 与 NIR cues。对 P2/P3 的迁移点是把“干净图像监督”替换成几何或时序一致性约束，减少弱光数据采集负担。
+阅读时需要把方法设计与主要结果一起看：摘要报告 synthetic 与 real data 上优于现有方法，并声明代码可用；具体指标需读正文核验。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 synthetic 与 real data 上优于现有方法，并声明代码可用；具体指标需读正文核验。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>NIR 与 Event 的物理信号不同，不能直接证明 RGB-Event 属性识别有效；3D 建模可能增加训练成本，也可能依赖多视角或位姿质量。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为弱光模态互补和无 clean RGB 监督的前端参考。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 TriPro 或可见光诊断数据中构造低照度退化，比较 RGB-only、RGB+Event 固定融合和 3D/几何一致性辅助融合的属性 mAP、校准误差与失效案例。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>CoDe-SSM：面向 UHD 图像恢复的上下文-细节解耦状态空间模型</h3>
+              <p class="paper__subtitle">CoDe-SSM: Context-Detail Decoupled State Space Model for Efficient UHD Image Restoration</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-31。它把输入相关聚类中心上的 selective SSM 与局部高频残差专家分开处理，核心价值是把全局上下文成本从空间分辨率中解耦，可迁移到 P1 的高频压缩 token 与 P3 的可见光局部证据筛选。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiaxu Su, Zhijian Wu, Jun Li, Bo Zhang, Yefeng Zheng</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29595" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.29595" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-31。它把输入相关聚类中心上的 selective SSM 与局部高频残差专家分开处理，核心价值是把全局上下文成本从空间分辨率中解耦，可迁移到 P1 的高频压缩 token 与 P3 的可见光局部证据筛选。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>UHD 图像恢复需要全局退化上下文和局部纹理细节。下采样、窗口注意力或普通 token reduction 往往降低成本但损失边缘、纹理和小目标，这与高频诊断压缩中的前兆丢失问题相似。
+从本日报的选取理由看，新增 / arXiv 2026-07-31。它把输入相关聚类中心上的 selective SSM 与局部高频残差专家分开处理，核心价值是把全局上下文成本从空间分辨率中解耦，可迁移到 P1 的高频压缩 token 与 P3 的可见光局部证据筛选。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把全局上下文建模成本从空间分辨率中解耦，同时保留不适合聚类平均的局部高频细节？
+对当前主题的关键意义在于：最小验证是把高频诊断窗口或可见光图像 patch 聚成固定 K 个中心，中心走 SSM、残差走轻量局部专家，比较全 token attention、均匀下采样和 CoDe-SSM-lite 的显存、延迟与前兆保留率。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e87bf079ed621cc7.png" alt="Figure 2: Architecture of CoDe-SSM. (a) The overall framework is an asymmetric U-Net with CoDeBlocks deployed at each encoder-decoder level. (b) The CoDeBlock clusters input features into K K centers, processes them through dual-branch GCSM along with LHFM pathways, and fuses the outputs via a GDFN. (c) The High-Frequency Energy (HFE) Filter extracts high-frequency maps from a single-channel grayscale reference using Laplacian and Sobel operators. (d) The Local High-Frequency Module (LHFM) applies an HFE mask to isolate structural details from the clustering residual, routes them through E = 4 E=4 sparse convolutional experts with distinct receptive fields, and modulates the aggregated output via a channel-wise attention.">
+                    <figcaption>Figure 2: Architecture of CoDe-SSM. (a) The overall framework is an asymmetric U-Net with CoDeBlocks deployed at each encoder-decoder level. (b) The CoDeBlock clusters input featur...</figcaption>
+                  </figure>
+                  <p>GCSM 将特征聚合为 K 个输入相关 cluster centers，并在固定顺序序列上做 selective SSM；LHFM 对 clustering residual 用高频 mask 与稀疏卷积专家恢复细节。迁移到 P1/P3 时，可把 K 个中心视为高频诊断或图像局部证据的有界摘要。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 5 个 UHD benchmark 和 5 类退化上取得质量与效率收益。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 5 个 UHD benchmark 和 5 类退化上取得质量与效率收益。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它是图像恢复模型，不处理真实时间间隔；聚类中心顺序如何对应物理时间或诊断通道，需要重新设计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是高分辨率视觉和高频信号压缩的可迁移 SSM 结构候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是把高频诊断窗口或可见光图像 patch 聚成固定 K 个中心，中心走 SSM、残差走轻量局部专家，比较全 token attention、均匀下采样和 CoDe-SSM-lite 的显存、延迟与前兆保留率。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>HierDoc：长文档视觉问答的页到区域证据路由</h3>
+              <p class="paper__subtitle">HierDoc: Hierarchical Page-to-Region Evidence Routing for Long-Document Visual Question Answering</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-31</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-31。它用两阶段 set prediction 先选页再选区域，避免把完整长文档全部交给下游模型；对 P3 的“时序查询图像局部证据”和高显存视觉 token 剪枝有可迁移机制。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Rongjian Gu, Wengang Zhou, Junyu Xiong, Yonghui Wang, Bing Yin, Bei Wang, Houqiang Li</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.29638" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.29638" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-31。它用两阶段 set prediction 先选页再选区域，避免把完整长文档全部交给下游模型；对 P3 的“时序查询图像局部证据”和高显存视觉 token 剪枝有可迁移机制。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长文档 VQA 的有效证据通常很稀疏，直接输入全部页面会造成 token 浪费。聚变可见光视频或多视角图像也类似：真正有用的前兆可能只在少数帧、少数区域出现。
+从本日报的选取理由看，新增 / arXiv 2026-07-31。它用两阶段 set prediction 先选页再选区域，避免把完整长文档全部交给下游模型；对 P3 的“时序查询图像局部证据”和高显存视觉 token 剪枝有可迁移机制。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把粗粒度选择和细粒度选择串成可训练的证据路由流程，并让下游模型既看到全局上下文又聚焦关键区域？
+对当前主题的关键意义在于：最小验证是用诊断时序状态作为 query，先选关键帧再选图像区域，与全帧 cross-attention 和随机区域裁剪比较 AUC、显存、可解释热区稳定性和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/84fa03c466ca7b93.png" alt="Figure 1: Overview of HierDoc inference. A trainable page policy selects evidence pages from fixed-size windows and routes them both to semantic parsing and directly to grounded answering. MinerU2.5-Pro converts the selected pages into typed semantic regions with bounding boxes and OCR or table metadata, after which a trainable region policy retains the relevant region crops and associated text. The answer model jointly consumes the selected full pages, region crops, and textual metadata. Flame badges denote trainable selectors.">
+                    <figcaption>Figure 1: Overview of HierDoc inference. A trainable page policy selects evidence pages from fixed-size windows and routes them both to semantic parsing and directly to grounded an...</figcaption>
+                  </figure>
+                  <p>HierDoc 先用 page policy 从全量文档选 evidence pages，再解析 semantic elements，并用 region policy 选区域；两级 answer-agnostic policy 以 stage-wise GRPO 和 structured-set rewards 优化。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 LongDocURL 上相对最强 open-weight baseline 提升 16.87%，区域证据使 page-only 系统 accuracy/F1 分别提升 5.51%/4.82%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 LongDocURL 上相对最强 open-weight baseline 提升 16.87%，区域证据使 page-only 系统 accuracy/F1 分别提升 5.51%/4.82%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>文档页面和可见光视频帧的时序约束不同；GRPO 奖励需要构造可验证证据标签，不能直接套到无标注破裂预警。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 “时序查询图像局部证据”的路由模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是用诊断时序状态作为 query，先选关键帧再选图像区域，与全帧 cross-attention 和随机区域裁剪比较 AUC、显存、可解释热区稳定性和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>Sequence-SOD：事件相机的序列感知脉冲目标检测</h3>
+              <p class="paper__subtitle">Sequence-SOD: Bio-inspired Sequence-aware Spiking Object Detection for Event Cameras</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-07-29</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-07-29，本地历史未收录。它不做属性识别，但直接处理连续 event sequence，并在序列内保留膜电位状态，回应 P2 中“不要只把 Event 转成独立帧”的关键约束。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Katharina Bendig, René Schuster, Didier Stricker</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2607.26703" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2607.26703" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-07-29，本地历史未收录。它不做属性识别，但直接处理连续 event sequence，并在序列内保留膜电位状态，回应 P2 中“不要只把 Event 转成独立帧”的关键约束。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机天然输出异步稀疏事件，很多检测模型把事件积累成短窗口并在每个窗口重置状态，导致跨窗口运动线索和事件历史被切断。
+从本日报的选取理由看，新增 / arXiv 2026-07-29，本地历史未收录。它不做属性识别，但直接处理连续 event sequence，并在序列内保留膜电位状态，回应 P2 中“不要只把 Event 转成独立帧”的关键约束。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在事件检测中利用 extended event sequences 和多个时间点标签，让模型状态随事件流演化而不是逐窗口独立预测？
+对当前主题的关键意义在于：最小验证是在 TriPro 的事件分支中加入跨窗口状态保留或 SNN 状态缓存，比较 reset、GRU 状态和 SNN membrane 状态三种方案在事件稀疏、运动模糊和模态缺失下的属性 mAP 与延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Sequence-SOD 将事件积累为短间隔、离散成 temporal steps，输入 SSD-style Spiking DenseNet，并在序列内保留 membrane potentials。对 P2 的迁移点是把事件分支改成带状态记忆的动态属性证据提取器。
+阅读时需要把方法设计与主要结果一起看：摘要报告 Gen1 Automotive Detection Dataset 上 mAP 从单间隔训练的 23.38 提升到 25.30，无增强；加入事件增强后为 26.88，理论预测频率 40 Hz。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 Gen1 Automotive Detection Dataset 上 mAP 从单间隔训练的 23.38 提升到 25.30，无增强；加入事件增强后为 26.88，理论预测频率 40 Hz。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>目标检测和多标签属性识别不同；事件积累仍是短间隔离散化，未完全保留原生逐事件时间戳。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P2 事件分支“状态保留训练”的轻量实验候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 TriPro 的事件分支中加入跨窗口状态保留或 SNN 状态缓存，比较 reset、GRU 状态和 SNN membrane 状态三种方案在事件稀疏、运动模糊和模态缺失下的属性 mAP 与延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 新增批次偏机制迁移，直接聚变 AI 仍稀缺</h3>
+          <p>- 2026-08-04 早间没有新的高质量 2608 批次可用；本轮真正可用的新增来自上一期截止后未覆盖的 2026-07-31 晚间条目。</p>
+          <p>- 聚变方向的直接新增仍偏物理或诊断硬件，AI 破裂预测、图像-时序融合和跨装置泛化没有合格新稿。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 高效视觉 token 与长历史采样正在收敛</h3>
+          <p>- CoDe-SSM、HierDoc 和 FibVLA 都在解决“全量上下文太贵”的问题，但分别从聚类中心、证据路由和对数历史采样入手。</p>
+          <p>- 对当前课题更务实的路线是先把 token 数、延迟和显存作为一等指标，而不是只比较 AUC 或 MAE。</p>
+        </article>
+        <article class="trend">
+          <h3>3. P2 的关键空白仍是属性语义监督</h3>
+          <p>- Sequence-SOD 保留事件状态，RGB-NIR 暗光成像改善外观恢复，但二者都没有直接解决多标签属性、开放词表属性和不确定性校准。</p>
+          <p>- 因此 P2 的下一步应把事件动态前端与 EZSR 式文本属性原型结合，而不是只替换事件输入格式。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
