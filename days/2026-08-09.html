@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-08-09</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-08-09 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-08-09 18:30:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- 本轮主推荐优先看 HiSC、CARVE、DIVE、EvReflection 与 Millisecond-Scale Neural Operator Surrogates，分别对应 3D 场景 token 结构压缩、3D 医学体数据跨切片预算重分配、prompt-conditioned 动态证据构造、事件驱动微动态 RGB 去反射，以及毫秒级 Grad-Shafranov 平衡代理。</p>
+        <p>- P4 是本轮最强新增：HiSC 与 CARVE 都是 training-free 压缩，但前者强调 3D 空间聚类与跨视角覆盖，后者强调深度轴非均匀预算；它们可作为 OmniPack 之后的第二组压缩基线。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 MambaVision：混合 Mamba-Transformer 视觉骨干</a></li>
+              <li><a href="#paper-2">02 Efficient Event Camera Data Pretraining with Adaptive Prompt Fusion：自适应提示融合的事件相机数据预训练</a></li>
+              <li><a href="#paper-3">03 PVC：统一图像和视频理解的渐进式视觉 Token 压缩</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-6">06 HiSC：高效 3D 场景理解的层次空间聚类 Token 压缩</a></li>
+              <li><a href="#paper-7">07 CARVE：面向 3D 医学体理解的跨切片各向异性视觉证据重分配</a></li>
+              <li><a href="#paper-8">08 DIVE：高效 VLM 的动态迭代视觉证据构造</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">可控核聚变与 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-9">09 Millisecond-Scale Neural Operator Surrogates：双零点自由边界 Grad-Shafranov 平衡的毫秒级神经算子代理</a></li>
+              <li><a href="#paper-10">10 PC-FDON：从 EFISH 测量重建电场的偏振条件 Fourier-enhanced DeepONet</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发 - P1：不规则时序与聚变高低频统一建模</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">在研课题启发 - P2：RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-11">11 EvReflection：事件驱动微动态用于 RGB 图像去反射</a></li>
+              <li><a href="#paper-12">12 Engram-E2VID：基于参考的事件到视频重建</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-13">13 Millisecond-Scale Neural Operator Surrogates：双零点自由边界 Grad-Shafranov 平衡的毫秒级神经算子代理</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-8">在研课题启发 - P4：Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-14">14 HiSC：高效 3D 场景理解的层次空间聚类 Token 压缩</a></li>
+              <li><a href="#paper-15">15 CARVE：面向 3D 医学体理解的跨切片各向异性视觉证据重分配</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-9">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-4">04 EvReflection：事件驱动微动态用于 RGB 图像去反射</a></li>
+              <li><a href="#paper-5">05 Engram-E2VID：基于参考的事件到视频重建</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">HiSC：高效 3D 场景理解的层次空间聚类 Token 压缩</a></h3>
+              <p class="card__subtitle">HiSC: Hierarchical Spatial Clustering Token Compression for Efficient 3D Scene Understanding</p>
+              <div class="chip-row">
+                <span class="chip">Token 压缩与筛选</span>
+                <span class="chip chip--muted">2026-08-05；ACM MM 2026</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-05，ACM MM 2026。它把 3D VLM 的 token 压缩从单点选择提升到空间簇级处理，用几何和语义共同维持跨视角覆盖，在超过 90% token reduction 下报告较小性能退化，是 P4 本轮最值得先复现的新增。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">CARVE：面向 3D 医学体理解的跨切片各向异性视觉证据重分配</a></h3>
+              <p class="card__subtitle">CARVE: Cross-Slice Anisotropic Reallocation of Visual Evidence for Efficient 3D Medical Volume Understanding</p>
+              <div class="chip-row">
+                <span class="chip">Token 压缩与筛选</span>
+                <span class="chip chip--muted">2026-08-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-05。它把 3D medical VQA 的 token reduction 建模为 budget-constrained 2.5D allocation，在深度轴上按跨切片证据非均匀分配预算；对 P4 的多频诊断、图像 patch 和高频 token 预算控制很有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">DIVE：高效 VLM 的动态迭代视觉证据构造</a></h3>
+              <p class="card__subtitle">DIVE: Dynamic Iterative Visual Evidence Construction for Efficient Vision-Language Models</p>
+              <div class="chip-row">
+                <span class="chip">Token 压缩与筛选</span>
+                <span class="chip chip--muted">2026-08-05</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-05。它指出一次性 token scoring 无法反映“已保留证据”后的边际贡献，转而用 residual-conditioned select-update-re-evaluate 构造互补证据集合；适合 P4 和 P3 的 query-aware 图像局部证据筛选。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">EvReflection：事件驱动微动态用于 RGB 图像去反射</a></h3>
+              <p class="card__subtitle">EvReflection: Event-Driven Micro-Dynamics for Reflection Removal</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-08-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-06。它用事件流捕捉 transmission/reflection 两层的差异运动，再以 Micro-Dynamics Decoupler 和 Parallax-Attention Rectifier 指导 RGB 去反射；对 P2 的 RGB-Event 动态可靠性融合有直接机制启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-9">Millisecond-Scale Neural Operator Surrogates：双零点自由边界 Grad-Shafranov 平衡的毫秒级神经算子代理</a></h3>
+              <p class="card__subtitle">Millisecond-Scale Neural Operator Surrogates for Double-Null Free-Boundary Grad-Shafranov Equilibria</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变与 AI 交叉</span>
+                <span class="chip chip--muted">2026-08-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-06。它用几何条件 Fourier Neural Operator 学习双零点自由边界 Grad-Shafranov 平衡，GPU 单次推理约 2.77 ms，可为 P3 的实时破裂预测提供低延迟 equilibrium latent 或物理一致性特征。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>MambaVision：混合 Mamba-Transformer 视觉骨干</h3>
+              <p class="paper__subtitle">MambaVision: A Hybrid Mamba-Transformer Vision Backbone</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。本轮用它作为 HiSC、CARVE 和 DIVE 之外的 backbone 侧效率参照：P1/P4 不能只压 token，还要判断压缩后进入的是注意力骨干、SSM 骨干还是混合骨干。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF Open Access 正式页面记录作者信息</p>
+                <p class="muted">NVIDIA</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Hatamizadeh_MambaVision_A_Hybrid_Mamba-Transformer_Vision_Backbone_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/NVlabs/MambaVision" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。本轮用它作为 HiSC、CARVE 和 DIVE 之外的 backbone 侧效率参照：P1/P4 不能只压 token，还要判断压缩后进入的是注意力骨干、SSM 骨干还是混合骨干。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长序列视觉与高频诊断都面临 token 数、局部细节和长程依赖的折中。纯 Transformer 容易在 token 数上爆显存，纯 SSM 又可能弱化局部高频细节，因此混合骨干值得回看。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。本轮用它作为 HiSC、CARVE 和 DIVE 之外的 backbone 侧效率参照：P1/P4 不能只压 token，还要判断压缩后进入的是注意力骨干、SSM 骨干还是混合骨干。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在视觉骨干内同时保留局部建模、长程信息流和较低复杂度，并作为 token 压缩后的下游承载模块？
+对当前主题的关键意义在于：最小验证是在同一图像或诊断 token 压缩预算下比较 ViT、MambaVision-style hybrid、纯 SSM 和轻量 Transformer，报告 AUC/mAP、峰值显存、吞吐和短暂关键事件召回。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文将 Mamba 式序列建模与 Transformer 注意力结合。对本课题的新映射是把压缩模块前端与 MambaVision-style backbone 后端拆开评测，避免把收益全部归因给 pruning。
+阅读时需要把方法设计与主要结果一起看：CVF Open Access 核验其为 CVPR 2025 正式论文；本期仅作为回看推荐，不标记为新增。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF Open Access 核验其为 CVPR 2025 正式论文；本期仅作为回看推荐，不标记为新增。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>视觉骨干结果不能直接代表不规则多变量时序；高频诊断中的真实 delta t、异步通道和缺失机制仍需额外编码。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P1/P4 判断“压缩后送入什么骨干”的必要回看。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在同一图像或诊断 token 压缩预算下比较 ViT、MambaVision-style hybrid、纯 SSM 和轻量 Transformer，报告 AUC/mAP、峰值显存、吞吐和短暂关键事件召回。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Efficient Event Camera Data Pretraining with Adaptive Prompt Fusion：自适应提示融合的事件相机数据预训练</h3>
+              <p class="paper__subtitle">Efficient Event Camera Data Pretraining with Adaptive Prompt Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICCV 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。本轮用它约束 EvReflection 与 Engram-E2VID：P2 不能只把事件转成帧，还要让事件预训练、提示融合和下游属性语义形成可验证链路。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF Open Access 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/ICCV2025/html/Liang_Efficient_Event_Camera_Data_Pretraining_with_Adaptive_Prompt_Fusion_ICCV_2025_paper.html" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/Lqm26/STP" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。本轮用它约束 EvReflection 与 Engram-E2VID：P2 不能只把事件转成帧，还要让事件预训练、提示融合和下游属性语义形成可验证链路。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件数据标注稀缺且任务分散，从零训练 TriPro 类事件分支容易过拟合具体场景。高效预训练可以把事件流的动态边缘、时序结构和语义提示提前组织起来。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。本轮用它约束 EvReflection 与 Engram-E2VID：P2 不能只把事件转成帧，还要让事件预训练、提示融合和下游属性语义形成可验证链路。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用轻量预训练和自适应提示融合提升事件编码器的迁移能力，并支持属性识别中的模态缺失和开放语义？
+对当前主题的关键意义在于：最小验证是在 TriPro-ReID 上用该类事件预训练初始化事件编码器，再加入属性文本 prompt 和 modality dropout，比较 from-scratch、RGB-only、Event-only 和动态融合的 mAP、ECE、缺失模态退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>可迁移模块是事件数据预训练和 adaptive prompt fusion。新的课题映射是把属性文本或质量提示作为 prompt，驱动事件分支按样本选择可靠动态证据。
+阅读时需要把方法设计与主要结果一起看：CVF Open Access 核验其为 ICCV 2025 正式论文；本期作为已核验回看。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF Open Access 核验其为 ICCV 2025 正式论文；本期作为已核验回看。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>预训练目标与 RGB-Event 属性识别不完全一致；提示融合若不校准，可能在弱光或事件稀疏时过度相信事件分支。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P2 从“事件重建/归因”走向“事件属性预训练”的关键回看。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 TriPro-ReID 上用该类事件预训练初始化事件编码器，再加入属性文本 prompt 和 modality dropout，比较 from-scratch、RGB-only、Event-only 和动态融合的 mAP、ECE、缺失模态退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>PVC：统一图像和视频理解的渐进式视觉 Token 压缩</h3>
+              <p class="paper__subtitle">PVC: Progressive Visual Token Compression for Unified Image and Video Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。本轮 P4 新增多为 training-free 压缩，PVC 提供已发表的 progressive compression 参照，适合检查 HiSC/CARVE/DIVE 是否只是 2D/3D 场景特化。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>CVF Open Access 正式页面记录作者信息</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Yang_PVC_Progressive_Visual_Token_Compression_for_Unified_Image_and_Video_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。本轮 P4 新增多为 training-free 压缩，PVC 提供已发表的 progressive compression 参照，适合检查 HiSC/CARVE/DIVE 是否只是 2D/3D 场景特化。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>图像和视频统一理解会产生大量视觉 token，不同层的 token 冗余和语义粒度不同。一次性前端删除容易漏掉后续层才显现的任务相关证据。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。本轮 P4 新增多为 training-free 压缩，PVC 提供已发表的 progressive compression 参照，适合检查 HiSC/CARVE/DIVE 是否只是 2D/3D 场景特化。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在图像和视频任务中渐进压缩视觉 token，同时保持跨任务泛化和低预算下的细节召回？
+对当前主题的关键意义在于：最小验证是把 PVC-style progressive compression、OmniPack-lite、HiSC-style clustering 和 DIVE-style residual selection 放在同一预算下比较 FLOPs、峰值显存、端到端延迟、关键事件召回和跨数据集退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文提供 progressive visual token compression 思路。对 P4 的新映射是把压缩位置作为变量：encoder 前、backbone 内、LLM 前和跨模态块后分别做预算-性能曲线。
+阅读时需要把方法设计与主要结果一起看：CVF Open Access 核验其为 CVPR 2025 正式论文；本期只作为回看基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF Open Access 核验其为 CVPR 2025 正式论文；本期只作为回看基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>图像/视频压缩不等同于原生事件流或高频诊断；对短暂关键事件的召回需要额外指标。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P4 设计压缩位置消融时应纳入的已发表基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是把 PVC-style progressive compression、OmniPack-lite、HiSC-style clustering 和 DIVE-style residual selection 放在同一预算下比较 FLOPs、峰值显存、端到端延迟、关键事件召回和跨数据集退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>HiSC：高效 3D 场景理解的层次空间聚类 Token 压缩</h3>
+              <p class="paper__subtitle">HiSC: Hierarchical Spatial Clustering Token Compression for Efficient 3D Scene Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-05；ACM MM 2026</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-05，ACM MM 2026。它把 3D VLM 的 token 压缩从单点选择提升到空间簇级处理，用几何和语义共同维持跨视角覆盖，在超过 90% token reduction 下报告较小性能退化，是 P4 本轮最值得先复现的新增。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiuhe Qu, Yingping Liang, Ying Fu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.04610" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/elecreak/HiSC" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.04610" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-05，ACM MM 2026。它把 3D VLM 的 token 压缩从单点选择提升到空间簇级处理，用几何和语义共同维持跨视角覆盖，在超过 90% token reduction 下报告较小性能退化，是 P4 本轮最值得先复现的新增。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多视角场景、聚变可见光多相机、事件云和高频诊断都存在“重复观测 + 大片无信息区域 + 少量关键局部”的组合问题。单纯 top-k pruning 容易丢掉空间覆盖，单纯 merge 又可能破坏实例完整性。
+从本日报的选取理由看，新增 / arXiv 2026-08-05，ACM MM 2026。它把 3D VLM 的 token 压缩从单点选择提升到空间簇级处理，用几何和语义共同维持跨视角覆盖，在超过 90% token reduction 下报告较小性能退化，是 P4 本轮最值得先复现的新增。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在大幅减少 token 的同时保持空间结构、对象完整性和重要区域细节？
+对当前主题的关键意义在于：最小验证是在多相机可见光或事件云上构造 geometry-aware clusters，与 OmniPack-lite、纯 top-k、纯 merge 和均匀池化比较 mAP/AUC、关键局部召回、峰值显存、FLOPs、端到端延迟和跨视角缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/73c5b7d9741a6819.png" alt="Figure 2 . Overview of the HiSC framework. (a) Overall pipeline showing graph-based token merging before LLM inference and hierarchical spatial clustering-based pruning in LLM. (b) Spatial Graph-based Merging groups and merges spatially connected redundant tokens to preserve consistent regions. (c) Hierarchical Spatial Clustering-based Pruning organizes tokens into object-centric clusters and performs structured allocation, ensuring object-level coverage while retaining fine-grained details.">
+                    <figcaption>Figure 2 . Overview of the HiSC framework. (a) Overall pipeline showing graph-based token merging before LLM inference and hierarchical spatial clustering-based pruning in LLM. (b)...</figcaption>
+                  </figure>
+                  <p>HiSC 先用 joint geometric and semantic cues 组织 spatially grounded clusters；SGraM 把跨视角冗余建成空间连接并合并物理一致区域；SCluP 在 LLM 推理内做跨簇和簇内层次压缩。
+阅读时需要把方法设计与主要结果一起看：摘要报告在多种 3D reasoning benchmark 上验证有效，尤其在高 pruning ratio 下稳健，并达到超过 90% token reduction 且性能退化较小。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在多种 3D reasoning benchmark 上验证有效，尤其在高 pruning ratio 下稳健，并达到超过 90% token reduction 且性能退化较小。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要风险是聚变诊断和事件流没有可靠 3D 几何或相机标定；聚类成本本身在百万 token 上可能不可忽略。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响是显著减少进入 LLM/融合层的 token 数，但需单独计量空间聚类、图合并和层内压缩开销。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在多相机可见光或事件云上构造 geometry-aware clusters，与 OmniPack-lite、纯 top-k、纯 merge 和均匀池化比较 mAP/AUC、关键局部召回、峰值显存、FLOPs、端到端延迟和跨视角缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>CARVE：面向 3D 医学体理解的跨切片各向异性视觉证据重分配</h3>
+              <p class="paper__subtitle">CARVE: Cross-Slice Anisotropic Reallocation of Visual Evidence for Efficient 3D Medical Volume Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-05。它把 3D medical VQA 的 token reduction 建模为 budget-constrained 2.5D allocation，在深度轴上按跨切片证据非均匀分配预算；对 P4 的多频诊断、图像 patch 和高频 token 预算控制很有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhenyu Yi, Qiang Hu, Zhenhao Li, Jiaxuan Zhao, Yusong Sun, Lichi Zhang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.04515" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.04515" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-05。它把 3D medical VQA 的 token reduction 建模为 budget-constrained 2.5D allocation，在深度轴上按跨切片证据非均匀分配预算；对 P4 的多频诊断、图像 patch 和高频 token 预算控制很有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>3D medical VQA 中，把体数据切成 2D slices 会产生数千视觉 token，邻近切片证据高度重叠；高频诊断沿时间轴也有类似冗余，直接增大预算通常带来收益饱和。
+从本日报的选取理由看，新增 / arXiv 2026-08-05。它把 3D medical VQA 的 token reduction 建模为 budget-constrained 2.5D allocation，在深度轴上按跨切片证据非均匀分配预算；对 P4 的多频诊断、图像 patch 和高频 token 预算控制很有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何按跨切片或跨时间证据非均匀分配 token 预算，而不是固定保留率或均匀采样？
+对当前主题的关键意义在于：最小验证是把高频诊断时间轴看成 CARVE 的 depth axis，按窗口证据分配 5/10/20% token 预算，比较均匀采样、OmniPack-lite、HiSC-style clustering 和 CARVE-style allocation 在破裂提前量、关键前兆召回、显存峰值和延迟上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ea35d3376410c4cd.png" alt="Figure 1: Quality–latency trade-off on AMOS-MM report generation with Hulu-Med-7B at a 20% target keep ratio. Labels give the retained visual token count (#Tok) per volume; quality averages relative retention over the four report metrics of Table 1 . CARVE establishes the strongest quality–efficiency frontier among compressed methods.">
+                    <figcaption>Figure 1: Quality–latency trade-off on AMOS-MM report generation with Hulu-Med-7B at a 20% target keep ratio. Labels give the retained visual token count (#Tok) per volume; quality...</figcaption>
+                  </figure>
+                  <p>CARVE 是 training-free pre-LLM 压缩框架；它沿 depth axis 划分 coherent windows，按 normalized cross-slice evidence 分配预算，在代表切片上建立 spatial anchors，从全体积检索局部变化证据，并把剩余 eligible tokens 合并到邻近 anchors。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 Hulu-Med-7B 上移除约 80% visual tokens 后，在 AMOS-MM 报告生成指标上领先压缩 baselines，并相对最强 baseline 多保留 6.2 points full-token quality。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要不成立条件是关键前兆不是跨切片/跨时间证据的局部变化，而是低幅度全局分布变化；anchor 选择也可能压掉短暂异常。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响是减少 LLM 输入 token 与注意力成本，但需要计量 window partition、anchor retrieval 和 merge 的前端开销。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是把高频诊断时间轴看成 CARVE 的 depth axis，按窗口证据分配 5/10/20% token 预算，比较均匀采样、OmniPack-lite、HiSC-style clustering 和 CARVE-style allocation 在破裂提前量、关键前兆召回、显存峰值和延迟上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>DIVE：高效 VLM 的动态迭代视觉证据构造</h3>
+              <p class="paper__subtitle">DIVE: Dynamic Iterative Visual Evidence Construction for Efficient Vision-Language Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-05</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-05。它指出一次性 token scoring 无法反映“已保留证据”后的边际贡献，转而用 residual-conditioned select-update-re-evaluate 构造互补证据集合；适合 P4 和 P3 的 query-aware 图像局部证据筛选。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Chen Zhong, Xiao An, Zijie Wang, Jiepan Li, Guangyi Yang, Wei He</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.04496" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/Zhong-Chenchen/DIVE.git" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.04496" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-05。它指出一次性 token scoring 无法反映“已保留证据”后的边际贡献，转而用 residual-conditioned select-update-re-evaluate 构造互补证据集合；适合 P4 和 P3 的 query-aware 图像局部证据筛选。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>很多 token pruning 方法只做单次重要性评分，但真实任务中，一个局部 token 的价值取决于当前证据集合是否已经覆盖同一对象、同一时间段或同一模态。高频诊断和 RGB-Event 也有同样的边际证据问题。
+从本日报的选取理由看，新增 / arXiv 2026-08-05。它指出一次性 token scoring 无法反映“已保留证据”后的边际贡献，转而用 residual-conditioned select-update-re-evaluate 构造互补证据集合；适合 P4 和 P3 的 query-aware 图像局部证据筛选。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在固定 token 预算下选择互补、查询相关、覆盖充分的证据集合？
+对当前主题的关键意义在于：最小验证是在 P3 图像-时序融合中让时序 query 迭代选择图像 patch，并在 P2 中让属性文本 query 选择事件/RGB token，报告 token 预算、端到端延迟、短暂关键事件召回和模态缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>DIVE 反复选择 residual-conditioned score 最高的剩余 token，更新 visual residual 和 prompt residual 以折扣已解释证据，再重新评估剩余 token，形成 select-update-re-evaluate 的动态证据构造。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 8 个图像理解 benchmark 上保持稳定，在减少 88.9% visual tokens 时保留 uncompressed model 平均性能的 98.2%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 8 个图像理解 benchmark 上保持稳定，在减少 88.9% visual tokens 时保留 uncompressed model 平均性能的 98.2%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>迭代选择本身可能增加延迟；如果 query 在早期预警中不稳定，残差条件评分会偏向已知显著模式。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响是大幅降低后续视觉 token，但选择过程要按迭代次数单独计时。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 P3 图像-时序融合中让时序 query 迭代选择图像 patch，并在 P2 中让属性文本 query 选择事件/RGB token，报告 token 预算、端到端延迟、短暂关键事件召回和模态缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>本轮空缺判断：直接不规则/异步多变量时序新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for direct irregular/asynchronous multivariate time-series modeling*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-09 检索判断</p>
+          <p>论文链接：[arXiv irregular time series 检索](https://arxiv.org/search/?query=irregular+time+series+continuous-time+asynchronous+multivariate&searchtype=all)</p>
+          <p>选取理由：本轮空缺判断。2026-08-05 至 2026-08-09 可见新增中，未发现同时强覆盖 irregular/asynchronous multivariate time series、真实 delta t、缺失机制、多速率通道和可控复杂度的高质量论文。</p>
+          <p>研究背景：P1 需要的不是泛泛连续时间或普通视频/图像 ODE，而是能承受聚变高频诊断 token 爆炸、保留真实时间间隔并与低频稀疏通道交互的统一建模机制。</p>
+          <p>核心问题：本轮是否有新增能替代 WrapFlow、ClinPRISM、FlexTSF 或 Timer-XL 成为 P1 主线？答案是否定的。</p>
+          <p>方法与关键创新：本条不作为论文收录，只记录筛选边界。MT-GNN 等连续时间图形态预测虽有机制启发，但原始任务与多变量异步诊断距离较远，本轮不纳入主推荐。</p>
+          <p>主要结果：未发现合格直接新增；P1 本周应继续复现上一轮已核验候选，并把 token 压缩新增作为高频前端补充。</p>
+          <p>局限性：arXiv 索引可能延迟；若会议或作者主页先发布代码，下轮继续核验。</p>
+          <p>总结：P1 不凑数，保留空缺判断更能避免误导。</p>
+          <p>研究相关性：下轮最小检索仍以 irregular/asynchronous multivariate time series、continuous-time、selective SSM、streaming、multi-rate 和 token compression 组合召回，并要求报告复杂度和真实 delta t 处理。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>Millisecond-Scale Neural Operator Surrogates：双零点自由边界 Grad-Shafranov 平衡的毫秒级神经算子代理</h3>
+              <p class="paper__subtitle">Millisecond-Scale Neural Operator Surrogates for Double-Null Free-Boundary Grad-Shafranov Equilibria</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-06。它用几何条件 Fourier Neural Operator 学习双零点自由边界 Grad-Shafranov 平衡，GPU 单次推理约 2.77 ms，可为 P3 的实时破裂预测提供低延迟 equilibrium latent 或物理一致性特征。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Plamen G. Krastev</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.05555" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.05555" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-06。它用几何条件 Fourier Neural Operator 学习双零点自由边界 Grad-Shafranov 平衡，GPU 单次推理约 2.77 ms，可为 P3 的实时破裂预测提供低延迟 equilibrium latent 或物理一致性特征。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>自由边界 Grad-Shafranov 求解是 diverted equilibrium 建模、优化和控制循环中的核心步骤。传统 Picard iteration 成本和样本相关延迟较高，不利于实时融合模型调用。
+从本日报的选取理由看，新增 / arXiv 2026-08-06。它用几何条件 Fourier Neural Operator 学习双零点自由边界 Grad-Shafranov 平衡，GPU 单次推理约 2.77 ms，可为 P3 的实时破裂预测提供低延迟 equilibrium latent 或物理一致性特征。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用神经算子在固定机器几何和指定拓扑下快速预测 poloidal-flux field，同时保持物理一致性？
+对当前主题的关键意义在于：最小验证是在现有破裂样本中离线或在线计算 equilibrium surrogate features，与诊断时序和可见光图像 token 融合，比较无物理特征、慢求解特征和 FNO surrogate 的 AUC、提前量、跨炮次泛化、延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文训练 geometrically conditioned Fourier Neural Operator，从空间坐标、运行参数和 X-point 位置映射到 poloidal-flux field，并用外部 finite-difference GS residual 做物理一致性诊断。
+阅读时需要把方法设计与主要结果一起看：摘要报告最佳模型 mean relative L2 error 为 0.05%，X-points 误差小于 0.2 cm，O-point 约 0.03 cm；GPU 2.77 ms、CPU 25.6 ms，分别约 640 倍和 69 倍于配置中的 FreeGS。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告最佳模型 mean relative L2 error 为 0.05%，X-points 误差小于 0.2 cm，O-point 约 0.03 cm；GPU 2.77 ms、CPU 25.6 ms，分别约 640 倍和 69 倍于配置中的 FreeGS。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要不成立条件是训练分布固定于单一机器几何和指定拓扑；跨装置、异常构型和破裂前非平衡阶段可能失效。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P3 低延迟物理特征的强候选，但不能被误写成直接破裂预测模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在现有破裂样本中离线或在线计算 equilibrium surrogate features，与诊断时序和可见光图像 token 融合，比较无物理特征、慢求解特征和 FNO surrogate 的 AUC、提前量、跨炮次泛化、延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>PC-FDON：从 EFISH 测量重建电场的偏振条件 Fourier-enhanced DeepONet</h3>
+              <p class="paper__subtitle">Polarization-Conditioned Fourier-enhanced DeepONet for Electric Field Reconstruction from EFISH Measurements</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-06</span>
+                <span class="chip chip--accent">conditional</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-06。原始应用是 plasma EFISH diagnostic electric-field reconstruction；可迁移机制是偏振条件算子学习、物理一致性 loss 和 OOD 不确定性指标，对诊断反演可靠性有参考价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhijian Yang, Edwin Setiadi Sugeng, Yaqi Zhang, Anbang Sun, Tat Loon Chng</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.05937" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.05937" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-06。原始应用是 plasma EFISH diagnostic electric-field reconstruction；可迁移机制是偏振条件算子学习、物理一致性 loss 和 OOD 不确定性指标，对诊断反演可靠性有参考价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P3 需要融合视觉与诊断时序，但诊断本身可能是 path-integrated、噪声或缺失的反演结果。若前端反演没有不确定性，融合模型会把伪信号当成强证据。
+从本日报的选取理由看，新增 / arXiv 2026-08-06。原始应用是 plasma EFISH diagnostic electric-field reconstruction；可迁移机制是偏振条件算子学习、物理一致性 loss 和 OOD 不确定性指标，对诊断反演可靠性有参考价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不完整和噪声测量下重建物理场，并给出可用于融合门控的置信度或 OOD 指标？
+对当前主题的关键意义在于：最小验证是在诊断通道前端加入不确定性估计，把高不确定性通道通过 gating 降权，比较固定融合、uncertainty-aware fusion 和缺失模态训练在跨炮次 AUC、提前量与校准误差上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d6ab52d37a5075f0.png" alt="Figure 5: Experimental electrostatic field reconstruction via PC-FDON for (a, c) disk–disk and (b, d) sphere–sphere electrode configurations. Panels (a, b) show the reconstructed vertical field profile E y ′ E_{y}^{\prime} and panels (c, d) show the horizontal field profile E x ′ E_{x}^{\prime} , both benchmarked against simulations. The focusing lens focal lengths are f = 50 f=50 cm (disk–disk) and f = 25 f=25 cm (sphere–sphere). Sub-panels within each case show (2) out-of-distribution (OOD) detection results via the exceedance fraction ℱ ( p ) \mathcal{F}^{(p)} and (3) epistemic uncertainty forwarded into the EFISH signal space.">
+                    <figcaption>Figure 5: Experimental electrostatic field reconstruction via PC-FDON for (a, c) disk–disk and (b, d) sphere–sphere electrode configurations. Panels (a, b) show the reconstructed v...</figcaption>
+                  </figure>
+                  <p>PC-FDON 用 Fourier-enhanced branch 建模 Gouy phase shift 和 wave-vector mismatch，用 polarization-conditioning branch 通过 FiLM 和 gated units 统一两类偏振，并用 physics-informed loss 强化自一致性。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 noise-free、incomplete 和 noisy inputs 下均有较好重建，MC dropout 的逐点 epistemic uncertainty 可用于 OOD detection。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 noise-free、incomplete 和 noisy inputs 下均有较好重建，MC dropout 的逐点 epistemic uncertainty 可用于 OOD detection。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>EFISH 与 tokamak 可见光/磁诊断不同；算子学习的物理方程和数据分布需要重建，不能直接迁移。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 诊断通道可靠性估计和 uncertainty-aware fusion 的方法参照。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在诊断通道前端加入不确定性估计，把高不确定性通道通过 gating 降权，比较固定融合、uncertainty-aware fusion 和缺失模态训练在跨炮次 AUC、提前量与校准误差上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发 - P1：不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>本轮空缺判断：P1 直接新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for P1 direct new paper*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-09 检索判断</p>
+          <p>论文链接：[arXiv P1 检索](https://arxiv.org/search/?query=irregular+asynchronous+multivariate+time+series+continuous-time+state+space+token+compression&searchtype=all)</p>
+          <p>选取理由：【P1】本轮空缺判断。未发现新增论文同时满足真实 delta t、异步多变量、多速率通道、高频压缩、线性或近线性复杂度和分布/采样率变化鲁棒性。</p>
+          <p>研究背景：原始应用领域不适用。当前最接近的新增是 token 压缩和连续时间视觉/图模型，但它们不能替代 P1 所需的不规则诊断时序统一建模。</p>
+          <p>核心问题：如何让同一模型同时适配稀疏不规则观测与聚变高频海量点，同时保留真实时间间隔并避免显存爆炸？本轮没有新的直接答案。</p>
+          <p>方法与关键创新：本条不作为论文收录。可迁移方向是把 HiSC/CARVE/DIVE 的预算控制作为高频前端，继续接入 WrapFlow、ClinPRISM、FlexTSF、Timer-XL 或 SSM 骨干。</p>
+          <p>主要结果：无新增结果；保留空缺判断。</p>
+          <p>局限性：可能漏掉尚未被 arXiv API 索引的作者主页或项目页更新；下轮继续核验。</p>
+          <p>总结：预期计算/显存影响不能凭弱相关论文推断；需在本地数据上用已有基线实测。</p>
+          <p>研究相关性：最小验证实验是先复现 OmniPack-lite/CARVE-style 压缩高频诊断，再接 WrapFlow 或 SSM，报告关键前兆召回、峰值显存、延迟和采样率外推。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>在研课题启发 - P2：RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>EvReflection：事件驱动微动态用于 RGB 图像去反射</h3>
+              <p class="paper__subtitle">EvReflection: Event-Driven Micro-Dynamics for Reflection Removal</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】新增 / arXiv 2026-08-06。原始应用领域是事件辅助 RGB 去反射；可迁移模块是事件微动态解耦和视差注意力校正，可对应 TriPro 中 RGB 证据污染、弱光/反光和动态可靠性门控。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiaxiao Wang, Dachun Kai, Huyue Zhu, Quanquan Hu, Zhenyang Xu, Xiaoyan Sun</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.06184" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/JiaxiaoWang/EvReflection" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.06184" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】新增 / arXiv 2026-08-06。原始应用领域是事件辅助 RGB 去反射；可迁移模块是事件微动态解耦和视差注意力校正，可对应 TriPro 中 RGB 证据污染、弱光/反光和动态可靠性门控。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别需要在 RGB 外观、事件动态和模态质量之间动态选择。EvReflection 显示事件流可以提供层分离和伪影抑制线索，而不是只作为额外图像帧。
+从本日报的选取理由看，【P2】新增 / arXiv 2026-08-06。原始应用领域是事件辅助 RGB 去反射；可迁移模块是事件微动态解耦和视差注意力校正，可对应 TriPro 中 RGB 证据污染、弱光/反光和动态可靠性门控。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在 RGB 局部证据不可靠时，用事件微动态判断哪些区域应降权或重构？
+对当前主题的关键意义在于：最小验证实验是在 TriPro 中加入 event-guided reliability map，对反光、弱光、运动模糊子集分别报告属性 mAP、ECE、模态缺失退化和可视化热区。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f08a505f7be02e2a.png" alt="Figure 3: Overview of the EvReflection framework. Event streams are voxelized into a spatiotemporal representation. The Micro-Dynamics Decoupler disentangles mixed event dynamics into layer-specific transmission and reflection priors. These priors are fed into the Parallax-Attention Rectifier, which leverages cross-modal attention to spatially modulate RGB features and remove reflection artifacts.">
+                    <figcaption>Figure 3: Overview of the EvReflection framework. Event streams are voxelized into a spatiotemporal representation. The Micro-Dynamics Decoupler disentangles mixed event dynamics i...</figcaption>
+                  </figure>
+                  <p>可迁移模块是 Micro-Dynamics Decoupler 与 Parallax-Attention Rectifier。对应待解决问题是原生事件表征、区域级动态加权和属性证据可靠性校准。
+阅读时需要把方法设计与主要结果一起看：摘要报告合成和真实去反射 benchmark 上 PSNR 超过最强对比方法 1.6 dB 和 1.2 dB 以上。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告合成和真实去反射 benchmark 上 PSNR 超过最强对比方法 1.6 dB 和 1.2 dB 以上。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要不成立条件是行人属性数据没有明显反光/动态伪影，或事件噪声与属性无关；去反射损失不能直接监督属性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响是增加轻量事件微动态分支，但可减少后续 RGB token 的错误关注。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是在 TriPro 中加入 event-guided reliability map，对反光、弱光、运动模糊子集分别报告属性 mAP、ECE、模态缺失退化和可视化热区。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>Engram-E2VID：基于参考的事件到视频重建</h3>
+              <p class="paper__subtitle">Engram-E2VID: Reference-Based Event-to-Video Reconstruction via Generative Activation of Appearance Engrams</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】新增 / arXiv 2026-08-06。原始应用领域是事件到视频重建；可迁移机制是 reference appearance engrams 与 event-induced structure scaffold，可对应 RGB/Event 时钟不同步和外观/动态解耦。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Feiyu Ji, Xiang Li, Hao Ma, Tianxiang Huang, Qingxin Lu, Mengqi Ji, Lei Han, Xiaokang Yang, Xiaoyun Yuan</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.05728" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.05728" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】新增 / arXiv 2026-08-06。原始应用领域是事件到视频重建；可迁移机制是 reference appearance engrams 与 event-induced structure scaffold，可对应 RGB/Event 时钟不同步和外观/动态解耦。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>TriPro 类方法若依赖同步 RGB 和固定事件窗口，在长间隔或缺失 RGB 时会失去外观参照。外观记忆与事件结构分离可以让模型在不完全同步时仍选择属性相关证据。
+从本日报的选取理由看，【P2】新增 / arXiv 2026-08-06。原始应用领域是事件到视频重建；可迁移机制是 reference appearance engrams 与 event-induced structure scaffold，可对应 RGB/Event 时钟不同步和外观/动态解耦。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从事件中提取目标时刻结构，再从参考 RGB 中激活相关外观属性？
+对当前主题的关键意义在于：最小验证实验是缓存 RGB appearance tokens，以事件 structure query 做属性 cross-attention，比较严格同步、时间错位和 RGB 缺失下的 mAP、ECE、延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/06015fa4e7c7f1ba.png" alt="Figure 1 : (a) Overview of the Engram-E2VID framework. The Scaffold U-Net estimates a target-time motion-structure scaffold from I t 0 I_{t_{0}} and V V , which interacts with the reference latent through LIA modules within a one-step diffusion backbone for target-frame reconstruction. (b) Spatiotemporal event voxel generation. Events in E t 0 → t k E_{t_{0}\rightarrow t_{k}} are divided into N N temporal bins to form V ∈ ℝ N × H × W V\in\mathbb{R}^{N\times H\times W} . (c) Latent Interaction Attention. LIA rearranges the scaffold and reference latents into a joint token sequence for latent interaction and then restores their spatial organization.">
+                    <figcaption>Figure 1 : (a) Overview of the Engram-E2VID framework. The Scaffold U-Net estimates a target-time motion-structure scaffold from I t 0 I_{t_{0}} and V V , which interacts with the ...</figcaption>
+                  </figure>
+                  <p>可迁移模块是 token-space appearance engrams、motion-structure scaffold 和跨层激活。对应待解决问题是异步对齐、事件稀疏和模态缺失。
+阅读时需要把方法设计与主要结果一起看：摘要报告在三个 benchmark 上最高提升 3.29 dB PSNR、降低 0.08 LPIPS，并且长间隔退化更慢。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在三个 benchmark 上最高提升 3.29 dB PSNR、降低 0.08 LPIPS，并且长间隔退化更慢。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要风险是 diffusion reconstruction 延迟过高，且生成式补全可能引入属性幻觉。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响取决于是否使用完整 diffusion；建议只迁移 appearance memory 与结构 query，避免端到端重建。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是缓存 RGB appearance tokens，以事件 structure query 做属性 cross-attention，比较严格同步、时间错位和 RGB 缺失下的 mAP、ECE、延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>Millisecond-Scale Neural Operator Surrogates：双零点自由边界 Grad-Shafranov 平衡的毫秒级神经算子代理</h3>
+              <p class="paper__subtitle">Millisecond-Scale Neural Operator Surrogates for Double-Null Free-Boundary Grad-Shafranov Equilibria</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增 / arXiv 2026-08-06。原始应用领域是 tokamak free-boundary equilibrium surrogate；可迁移模块是几何条件 FNO 和 GS residual 物理一致性诊断，可对应破裂预测中的低延迟物理特征与跨构型约束。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Plamen G. Krastev</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.05555" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.05555" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增 / arXiv 2026-08-06。原始应用领域是 tokamak free-boundary equilibrium surrogate；可迁移模块是几何条件 FNO 和 GS residual 物理一致性诊断，可对应破裂预测中的低延迟物理特征与跨构型约束。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>可见光图像与诊断时序融合容易学习装置纹理或采样制度偏差。平衡场和 X-point/O-point 等物理状态可以作为约束变量，帮助融合模型区分真实前兆和观察角度噪声。
+从本日报的选取理由看，【P3】新增 / arXiv 2026-08-06。原始应用领域是 tokamak free-boundary equilibrium surrogate；可迁移模块是几何条件 FNO 和 GS residual 物理一致性诊断，可对应破裂预测中的低延迟物理特征与跨构型约束。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在实时预算内为图像-时序融合提供 equilibrium latent，并支持跨炮次或跨构型解释？
+对当前主题的关键意义在于：最小验证实验是把 FNO equilibrium latent 与可见光 patch、诊断时序一起输入 gated/cross-attention fusion，比较跨炮次 AUC、提前量、模态缺失退化、延迟和注意力热区稳定性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>可迁移模块是 geometrically conditioned FNO、X-point 条件和外部 GS residual 检查。对应待解决问题是低延迟、物理可解释性和无关视觉信息抑制。
+阅读时需要把方法设计与主要结果一起看：摘要报告 GPU 2.77 ms、CPU 25.6 ms，并相对 FreeGS 获得约 640 倍和 69 倍速度提升；mean relative L2 error 为 0.05%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 GPU 2.77 ms、CPU 25.6 ms，并相对 FreeGS 获得约 640 倍和 69 倍速度提升；mean relative L2 error 为 0.05%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要不成立条件是固定机器几何和指定拓扑限制跨装置泛化，或破裂前非平衡阶段超出训练分布。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响是增加一个低延迟物理特征前端，但可能减少融合模型为学习平衡状态所需的容量。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是把 FNO equilibrium latent 与可见光 patch、诊断时序一起输入 gated/cross-attention fusion，比较跨炮次 AUC、提前量、模态缺失退化、延迟和注意力热区稳定性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>本轮空缺判断：直接可见光图像 + 诊断时序破裂预测新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for direct tokamak disruption prediction with visible-image and diagnostic time-series fusion*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-09 检索判断</p>
+          <p>论文链接：[arXiv tokamak disruption prediction 检索](https://arxiv.org/search/?query=tokamak+disruption+prediction+vision+time+series+fusion&searchtype=all)</p>
+          <p>选取理由：【P3】本轮空缺判断。2026-08-05 至 2026-08-09 可见新增中没有同时满足“可见光图像、诊断时序、异步/多采样率融合、实时破裂预测、跨装置评估”的高质量论文。</p>
+          <p>研究背景：本课题真正需要的是可见光局部证据与诊断时序前兆互补，而不是普通平衡求解、单模态诊断反演或无破裂标签的物理代理。</p>
+          <p>核心问题：是否存在新增论文能直接回答 P3 的异步多模态融合、低延迟部署、模态缺失训练和跨装置泛化？本轮答案是否定的。</p>
+          <p>方法与关键创新：本条不作为论文收录，只记录筛选边界。Millisecond-scale FNO 与 PC-FDON 只能作为物理/诊断前端启发，不能替代直接破裂预测论文。</p>
+          <p>主要结果：本轮未发现合格直接新增；不以普通聚变物理论文或弱相关跨域多模态论文凑数。</p>
+          <p>局限性：arXiv 批次可能存在索引延迟；若作者项目页先于 arXiv 更新，需下轮继续核验。</p>
+          <p>总结：P3 主线本轮应读机制启发，不应误判为直接方法进展。</p>
+          <p>研究相关性：下轮继续用 tokamak disruption prediction、visible/IR diagnostics、asynchronous multimodal fusion、cross-device transfer 组合召回，并只在原始来源明确同时覆盖图像和诊断时序时纳入直接新增。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-8">
+        <div class="panel__head">
+          <h2>在研课题启发 - P4：Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>HiSC：高效 3D 场景理解的层次空间聚类 Token 压缩</h3>
+              <p class="paper__subtitle">HiSC: Hierarchical Spatial Clustering Token Compression for Efficient 3D Scene Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-05；ACM MM 2026</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】新增 / arXiv 2026-08-05。原始应用领域是 3D VLM 场景推理；可迁移机制是 spatial graph-based merging 和 spatial clustering-based pruning，可对应高频诊断、原生 Event、图像 patch 与多视角融合的结构覆盖问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiuhe Qu, Yingping Liang, Ying Fu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.04610" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/elecreak/HiSC" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.04610" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】新增 / arXiv 2026-08-05。原始应用领域是 3D VLM 场景推理；可迁移机制是 spatial graph-based merging 和 spatial clustering-based pruning，可对应高频诊断、原生 Event、图像 patch 与多视角融合的结构覆盖问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P4 需要可控 token 预算，同时不能漏掉稀疏且短暂的关键证据。HiSC 的簇级处理比单 token pruning 更适合保留空间或物理区域完整性。
+从本日报的选取理由看，【P4】新增 / arXiv 2026-08-05。原始应用领域是 3D VLM 场景推理；可迁移机制是 spatial graph-based merging 和 spatial clustering-based pruning，可对应高频诊断、原生 Event、图像 patch 与多视角融合的结构覆盖问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在高压缩率下同时保留覆盖度、对象完整性和局部关键细节？
+对当前主题的关键意义在于：最小验证实验是在现有 RGB-Event 或多相机诊断数据中实现 geometry/semantic clustering token compression，比较全 token、OmniPack-lite、CARVE-style window allocation 和 HiSC-style clustering 的 AUC/mAP、关键事件召回、峰值显存、FLOPs、端到端延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/73c5b7d9741a6819.png" alt="Figure 2 . Overview of the HiSC framework. (a) Overall pipeline showing graph-based token merging before LLM inference and hierarchical spatial clustering-based pruning in LLM. (b) Spatial Graph-based Merging groups and merges spatially connected redundant tokens to preserve consistent regions. (c) Hierarchical Spatial Clustering-based Pruning organizes tokens into object-centric clusters and performs structured allocation, ensuring object-level coverage while retaining fine-grained details.">
+                    <figcaption>Figure 2 . Overview of the HiSC framework. (a) Overall pipeline showing graph-based token merging before LLM inference and hierarchical spatial clustering-based pruning in LLM. (b)...</figcaption>
+                  </figure>
+                  <p>可迁移模块是 SGraM 和 SCluP。对应待解决问题是 encoder 前/LLM 内压缩位置、覆盖度与相似性联合、以及被删 token 的合并回收。
+阅读时需要把方法设计与主要结果一起看：摘要报告超过 90% token reduction 且性能退化较小。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告超过 90% token reduction 且性能退化较小。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要风险是几何/语义簇在事件流或诊断时序中定义不稳定，聚类成本在百万长度序列上可能抵消收益。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响是降低后续注意力 FLOPs 和峰值显存，但必须实测聚类和图合并自身延迟。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是在现有 RGB-Event 或多相机诊断数据中实现 geometry/semantic clustering token compression，比较全 token、OmniPack-lite、CARVE-style window allocation 和 HiSC-style clustering 的 AUC/mAP、关键事件召回、峰值显存、FLOPs、端到端延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-15" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>CARVE：面向 3D 医学体理解的跨切片各向异性视觉证据重分配</h3>
+              <p class="paper__subtitle">CARVE: Cross-Slice Anisotropic Reallocation of Visual Evidence for Efficient 3D Medical Volume Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-05</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】新增 / arXiv 2026-08-05。原始应用领域是 3D medical volume understanding；可迁移机制是 depth-axis window、normalized cross-slice evidence、spatial anchors 和 token merge，可对应高频时序与多切片诊断的预算分配。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhenyu Yi, Qiang Hu, Zhenhao Li, Jiaxuan Zhao, Yusong Sun, Lichi Zhang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.04515" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.04515" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】新增 / arXiv 2026-08-05。原始应用领域是 3D medical volume understanding；可迁移机制是 depth-axis window、normalized cross-slice evidence、spatial anchors 和 token merge，可对应高频时序与多切片诊断的预算分配。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高频时序和体数据都有沿时间/深度轴的大量冗余。固定保留率会浪费预算在稳定区域，纯显著性选择又可能漏掉低幅度但持续扩散的前兆。
+从本日报的选取理由看，【P4】新增 / arXiv 2026-08-05。原始应用领域是 3D medical volume understanding；可迁移机制是 depth-axis window、normalized cross-slice evidence、spatial anchors 和 token merge，可对应高频时序与多切片诊断的预算分配。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何根据跨时间或跨切片证据动态分配 token 预算，并在极低预算下保留短暂关键证据？
+对当前主题的关键意义在于：最小验证实验是把诊断时间轴分窗口，按 cross-window evidence 分配 token 预算，并报告关键前兆召回率、AUC、提前量、峰值显存、FLOPs、端到端延迟、采样率变化和模态缺失鲁棒性。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ea35d3376410c4cd.png" alt="Figure 1: Quality–latency trade-off on AMOS-MM report generation with Hulu-Med-7B at a 20% target keep ratio. Labels give the retained visual token count (#Tok) per volume; quality averages relative retention over the four report metrics of Table 1 . CARVE establishes the strongest quality–efficiency frontier among compressed methods.">
+                    <figcaption>Figure 1: Quality–latency trade-off on AMOS-MM report generation with Hulu-Med-7B at a 20% target keep ratio. Labels give the retained visual token count (#Tok) per volume; quality...</figcaption>
+                  </figure>
+                  <p>可迁移模块是 budget-constrained 2.5D allocation、representative slice anchors 和 local evidence retrieval。对应待解决问题是 adaptive token budget、coverage selection 与信息保留合并。
+阅读时需要把方法设计与主要结果一起看：摘要报告移除约 80% visual tokens 后仍优于压缩 baselines，并多保留 6.2 points full-token quality。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告移除约 80% visual tokens 后仍优于压缩 baselines，并多保留 6.2 points full-token quality。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>主要风险是 normalized evidence 对异常前兆不敏感，或者时间窗口划分与物理事件边界错位。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>预期计算/显存影响是减少 LLM 或融合层输入 token，但会增加前端窗口证据估计和 anchor 检索。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证实验是把诊断时间轴分窗口，按 cross-window evidence 分配 token 预算，并报告关键前兆召回率、AUC、提前量、峰值显存、FLOPs、端到端延迟、采样率变化和模态缺失鲁棒性。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-9">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>EvReflection：事件驱动微动态用于 RGB 图像去反射</h3>
+              <p class="paper__subtitle">EvReflection: Event-Driven Micro-Dynamics for Reflection Removal</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-06</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-06。它用事件流捕捉 transmission/reflection 两层的差异运动，再以 Micro-Dynamics Decoupler 和 Parallax-Attention Rectifier 指导 RGB 去反射；对 P2 的 RGB-Event 动态可靠性融合有直接机制启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiaxiao Wang, Dachun Kai, Huyue Zhu, Quanquan Hu, Zhenyang Xu, Xiaoyan Sun</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.06184" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/JiaxiaoWang/EvReflection" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.06184" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-06。它用事件流捕捉 transmission/reflection 两层的差异运动，再以 Micro-Dynamics Decoupler 和 Parallax-Attention Rectifier 指导 RGB 去反射；对 P2 的 RGB-Event 动态可靠性融合有直接机制启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>RGB-Event 属性识别面临弱光、运动模糊、反光和模态不可靠问题。若事件分支只被转成固定帧并与 RGB 特征相加，模型很难知道哪些局部 RGB 证据被反射或动态伪影污染。
+从本日报的选取理由看，新增 / arXiv 2026-08-06。它用事件流捕捉 transmission/reflection 两层的差异运动，再以 Micro-Dynamics Decoupler 和 Parallax-Attention Rectifier 指导 RGB 去反射；对 P2 的 RGB-Event 动态可靠性融合有直接机制启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用原生事件的微动态信息辅助 RGB 局部证据去伪影和可靠性判断？
+对当前主题的关键意义在于：最小验证是在 TriPro 的 RGB 分支前加入 event-guided artifact mask 或 reliability map，比较原始 RGB、事件固定帧融合、微动态门控融合在反光/弱光子集上的 mAP、ECE 和属性级误差。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f08a505f7be02e2a.png" alt="Figure 3: Overview of the EvReflection framework. Event streams are voxelized into a spatiotemporal representation. The Micro-Dynamics Decoupler disentangles mixed event dynamics into layer-specific transmission and reflection priors. These priors are fed into the Parallax-Attention Rectifier, which leverages cross-modal attention to spatially modulate RGB features and remove reflection artifacts.">
+                    <figcaption>Figure 3: Overview of the EvReflection framework. Event streams are voxelized into a spatiotemporal representation. The Micro-Dynamics Decoupler disentangles mixed event dynamics i...</figcaption>
+                  </figure>
+                  <p>论文设计 Micro-Dynamics Decoupler 从事件流解耦层特定运动先验，再用 Parallax-Attention Rectifier 清除 RGB 反射伪影，并构建 EVR2 真实数据集。
+阅读时需要把方法设计与主要结果一起看：摘要报告在合成和真实 benchmark 上超过最强对比方法，PSNR 分别提升超过 1.6 dB 和 1.2 dB，并发布代码、数据和预训练模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在合成和真实 benchmark 上超过最强对比方法，PSNR 分别提升超过 1.6 dB 和 1.2 dB，并发布代码、数据和预训练模型。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>去反射不是属性识别；如果属性主要依赖静态外观而非动态伪影，事件微动态分支可能收益有限。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P2 的 RGB 局部可靠性门控模块，而不是直接作为属性识别完整模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 TriPro 的 RGB 分支前加入 event-guided artifact mask 或 reliability map，比较原始 RGB、事件固定帧融合、微动态门控融合在反光/弱光子集上的 mAP、ECE 和属性级误差。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>Engram-E2VID：基于参考的事件到视频重建</h3>
+              <p class="paper__subtitle">Engram-E2VID: Reference-Based Event-to-Video Reconstruction via Generative Activation of Appearance Engrams</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-06</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-06。它把参考帧编码为 token-space appearance engrams，再让事件诱导的结构 scaffold 跨层激活相关外观，对 P2 的事件-RGB 时间错位和外观/动态互补很有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Feiyu Ji, Xiang Li, Hao Ma, Tianxiang Huang, Qingxin Lu, Mengqi Ji, Lei Han, Xiaokang Yang, Xiaoyun Yuan</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.05728" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.05728" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-06。它把参考帧编码为 token-space appearance engrams，再让事件诱导的结构 scaffold 跨层激活相关外观，对 P2 的事件-RGB 时间错位和外观/动态互补很有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>原生事件记录的是异步亮度变化而不是绝对外观。RGB-Event 属性识别也常在时钟不同步、事件稀疏或参考帧过旧时失效，需要把事件结构变化与 RGB 外观记忆分开建模。
+从本日报的选取理由看，新增 / arXiv 2026-08-06。它把参考帧编码为 token-space appearance engrams，再让事件诱导的结构 scaffold 跨层激活相关外观，对 P2 的事件-RGB 时间错位和外观/动态互补很有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让事件流提供目标时刻结构变化，同时从参考 RGB 中检索相关外观，而不依赖严格像素级同步？
+对当前主题的关键意义在于：最小验证是把 RGB reference tokens 缓存为 appearance memory，用事件分支生成属性相关结构 query，比较同步/错位/缺失 RGB 下的属性 mAP、延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/06015fa4e7c7f1ba.png" alt="Figure 1 : (a) Overview of the Engram-E2VID framework. The Scaffold U-Net estimates a target-time motion-structure scaffold from I t 0 I_{t_{0}} and V V , which interacts with the reference latent through LIA modules within a one-step diffusion backbone for target-frame reconstruction. (b) Spatiotemporal event voxel generation. Events in E t 0 → t k E_{t_{0}\rightarrow t_{k}} are divided into N N temporal bins to form V ∈ ℝ N × H × W V\in\mathbb{R}^{N\times H\times W} . (c) Latent Interaction Attention. LIA rearranges the scaffold and reference latents into a joint token sequence for latent interaction and then restores their spatial organization.">
+                    <figcaption>Figure 1 : (a) Overview of the Engram-E2VID framework. The Scaffold U-Net estimates a target-time motion-structure scaffold from I t 0 I_{t_{0}} and V V , which interacts with the ...</figcaption>
+                  </figure>
+                  <p>论文在 one-step diffusion backbone 中构建 target-time motion-structure scaffold，并让结构 token 逐层激活 reference appearance engrams，补足复杂运动和长间隔下的外观不确定性。
+阅读时需要把方法设计与主要结果一起看：摘要报告在三个 benchmark 上相对最强 same-input baseline 最高提升 3.29 dB PSNR、降低 0.08 LPIPS，且随重建间隔增长退化更慢。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在三个 benchmark 上相对最强 same-input baseline 最高提升 3.29 dB PSNR、降低 0.08 LPIPS，且随重建间隔增长退化更慢。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>重建质量提升不必然转化为属性识别提升；diffusion prior 可能增加延迟，不适合直接上实时属性头。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可迁移价值在 token-space 外观记忆与事件结构 scaffold，而不是完整重建流程。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是把 RGB reference tokens 缓存为 appearance memory，用事件分支生成属性相关结构 query，比较同步/错位/缺失 RGB 下的属性 mAP、延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
