@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-08-11</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-08-11 核心论文简报</h1>
+      <p class="hero__meta">面向对象：计算机科学与可控核聚变博士生</p>
+      <p class="hero__meta">信息检索截止时间：2026-08-11 05:05:19 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- 主推荐 5 篇均为 2026-08-07 新稿：AutoPrune、RoRA、MCCF、KReF 与 LiFTER。</p>
+        <p>- P1 收 KReF 与 LiFTER，分别提供训练免费历史检索分布和连续时间可执行规则；但仍没有同时满足真实 Δt、异步多变量、高低频交互和线性显存的统一模型。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 Timer-XL：长上下文 Transformer 统一时序预测</a></li>
+              <li><a href="#paper-2">02 ACGR：帧与事件的异步协作图表示</a></li>
+              <li><a href="#paper-3">03 几何与物理约束协同增强神经 PDE 代理</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-7">07 AutoPrune：用 LLM 自动设计视觉 Token 剪枝策略</a></li>
+              <li><a href="#paper-8">08 RoRA：面向区域证据覆盖的视觉 Token 剪枝</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-4">04 KReF：训练免费长期时序检索预测与不确定性</a></li>
+              <li><a href="#paper-5">05 LiFTER：连续时间动态图的可执行神经符号预测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">可控核聚变与 AI 交叉</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发 - P1：不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-9">09 KReF：历史炮次的局部经验预测分布</a></li>
+              <li><a href="#paper-10">10 LiFTER：事件化诊断的可执行时间规则头</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">在研课题启发 - P2：RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-11">11 MCCF：按模态存在模式校准 RGB-Event 置信度</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-12">12 MCCF：图像/诊断缺失组合的覆盖校准</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-8">在研课题启发 - P4：Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-13">13 AutoPrune：联合压缩策略的结构化自动搜索</a></li>
+              <li><a href="#paper-14">14 RoRA：语义核心、上下文和细节的角色预算</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-9">多模态学习 / 图像 / 计算机视觉</a>
+            <ul>
+              <li><a href="#paper-6">06 MCCF：缺失模态下的条件保形融合</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">AutoPrune：用 LLM 自动设计视觉 Token 剪枝策略</a></h3>
+              <p class="card__subtitle">An AI4AI Framework for Visual Token Pruning</p>
+              <div class="chip-row">
+                <span class="chip">Token 压缩与筛选</span>
+                <span class="chip chip--muted">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-07。它把预算控制、重要性评分、选择约束和 token 重组编码成 131 个可组合原子，并由 LLM 在强基线的残差策略空间中搜索；比单一显著性硬删更接近 P4 所需的联合决策。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">RoRA：面向区域证据覆盖的视觉 Token 剪枝</a></h3>
+              <p class="card__subtitle">RoRA: Role-Oriented Regional Allocation for Visual Token Pruning in MLLMs</p>
+              <div class="chip-row">
+                <span class="chip">Token 压缩与筛选</span>
+                <span class="chip chip--muted">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-07。它不把保留 token 视为同质集合，而是按语义核心、互补上下文和局部细节分配预算，并显式追踪已覆盖对象区域；对短暂关键证据召回和极低预算性能很有价值。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">MCCF：缺失模态下的条件保形融合</a></h3>
+              <p class="card__subtitle">Conformal Fusion Under Missing Modalities</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉</span>
+                <span class="chip chip--muted">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-07。它把 modality dropout、逐模态证据头、空缺模态的 vacuous evidence 与按模态存在掩码分组的 Mondrian conformal calibration 连成一体，直接回答融合模型缺模态时置信度是否仍可信。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">KReF：训练免费长期时序检索预测与不确定性</a></h3>
+              <p class="card__subtitle">KReF: Training-Free Retrieval for Long-Term Time-Series Forecasting and Predictive Uncertainty</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-07。它把历史相似 lookback-future 对直接构成局部经验预测分布，可输出质量、分位数、CRPS 和点预测；对跨炮号历史片段检索与不确定性估计比只做 point forecast 更完整。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">LiFTER：连续时间动态图的可执行神经符号预测</a></h3>
+              <p class="card__subtitle">LiFTER: A Grounded Neuro-Symbolic Microscope for Continuous-Time Dynamic Graph Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-08-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>新增 / arXiv 2026-08-07。它保留原始交互为带时间的事实，通过可执行时间规则给出可独立复算和干预的预测证据；虽然不是常规多变量时序模型，但对 P1/P3 的可解释前兆链路有独特价值。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Timer-XL：长上下文 Transformer 统一时序预测</h3>
+              <p class="paper__subtitle">Timer-XL: Long-Context Transformers for Unified Time Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICLR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。今天值得重读，是因为 KReF 与 LiFTER分别引入检索分布和可执行时间规则，需要一个统一长上下文生成式骨干作为可控对照。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yong Liu, Guo Qin, Xiangdong Huang, Jianmin Wang, Mingsheng Long</p>
+                <p class="muted">清华大学等</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openreview.net/forum?id=KMCJXjlDDr" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/thuml/Timer-XL" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。今天值得重读，是因为 KReF 与 LiFTER分别引入检索分布和可执行时间规则，需要一个统一长上下文生成式骨干作为可控对照。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>聚变诊断既有稀疏低频通道，也有高频连续信号。传统短窗口模型看不到慢变量背景，直接扩展注意力窗口又会增加显存和延迟。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。今天值得重读，是因为 KReF 与 LiFTER分别引入检索分布和可执行时间规则，需要一个统一长上下文生成式骨干作为可控对照。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用统一生成式框架同时处理单变量、多变量、外生变量与长上下文预测？
+对当前主题的关键意义在于：最小验证是固定输入时间跨度，对比 Timer-XL 原始 patch、KReF reference token 与高频压缩 token 三种输入，报告提前量、峰值显存和跨采样率退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Timer-XL 使用 decoder-only Transformer，将多变量 patch 展平为带变量位置和时间位置的 token，并以 TimeAttention 联合建模变量内和变量间依赖。
+阅读时需要把方法设计与主要结果一起看：OpenReview 核验其为 ICLR 2025 正式论文；论文报告在多类时序预测和零样本预测设置中取得有竞争力结果。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>OpenReview 核验其为 ICLR 2025 正式论文；论文报告在多类时序预测和零样本预测设置中取得有竞争力结果。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>长上下文注意力仍随 token 数增加，不能直接吞入 MHz 诊断全量点；真实 Δt 与异步缺失需要额外编码。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它适合作为 P1 的统一预测骨干基线，而非高频压缩最终方案。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是固定输入时间跨度，对比 Timer-XL 原始 patch、KReF reference token 与高频压缩 token 三种输入，报告提前量、峰值显存和跨采样率退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>ACGR：帧与事件的异步协作图表示</h3>
+              <p class="paper__subtitle">Asynchronous Collaborative Graph Representation for Frames and Events</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。本轮 P2 只有缺失模态校准新增，ACGR 可补齐原生事件异步表示与 RGB/Event 对齐这一关键机制。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Dianze Li, Jianing Li, Xu Liu, Xiaopeng Fan, Yonghong Tian</p>
+                <p class="muted">北京大学、哈尔滨工业大学、鹏城实验室</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Li_Asynchronous_Collaborative_Graph_Representation_for_Frames_and_Events_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。本轮 P2 只有缺失模态校准新增，ACGR 可补齐原生事件异步表示与 RGB/Event 对齐这一关键机制。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>把事件流转成固定帧会损失微秒时间结构，也把系统推理频率锁定到 RGB 帧率；双分支直接相加还忽视异步对应关系。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。本轮 P2 只有缺失模态校准新增，ACGR 可补齐原生事件异步表示与 RGB/Event 对齐这一关键机制。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在不强制同步、不完全栅格化事件的情况下统一帧和事件证据？
+对当前主题的关键意义在于：最小验证是在 TriPro-ReID 中以局部 event graph 替换事件帧分支，用属性 token 查询 RGB region graph 与 event graph，测试低光、稀疏事件和不同步扰动下的 mA、F1、延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文构造 frame graph 与 event graph，通过异步协作对齐模块形成统一图表示，并用域对齐约束缩小模态差异。
+阅读时需要把方法设计与主要结果一起看：CVF 核验其为 CVPR 2025 正式论文；论文在检测和深度估计任务上报告有竞争力性能与最高 200 Hz 的实时推理能力。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 核验其为 CVPR 2025 正式论文；论文在检测和深度估计任务上报告有竞争力性能与最高 200 Hz 的实时推理能力。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原任务不是属性识别，图构造在大规模 ReID/PAR 批处理中的成本需重新测量。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是 P2 原生异步融合最直接的已发表基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在 TriPro-ReID 中以局部 event graph 替换事件帧分支，用属性 token 查询 RGB region graph 与 event graph，测试低光、稀疏事件和不同步扰动下的 mA、F1、延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>几何与物理约束协同增强神经 PDE 代理</h3>
+              <p class="paper__subtitle">Geometric and Physical Constraints Synergistically Enhance Neural PDE Surrogates</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；ICML 2025 / PMLR 267</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。P3 本轮没有直接破裂预测新增，因此回看一个能约束诊断重建和跨装置代理模型长程漂移的正式发表方法更有价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yunfei Huang, David S. Greenberg</p>
+                <p class="muted">Helmholtz Centre Hereon / Helmholtz AI</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.mlr.press/v267/huang25j.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。P3 本轮没有直接破裂预测新增，因此回看一个能约束诊断重建和跨装置代理模型长程漂移的正式发表方法更有价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>神经 PDE surrogate 在规则 benchmark 上可能误差较低，但跨几何、边界或长程 rollout 时容易产生不守恒和不物理解。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。P3 本轮没有直接破裂预测新增，因此回看一个能约束诊断重建和跨装置代理模型长程漂移的正式发表方法更有价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让代理模型在复杂几何与物理约束下保持泛化、稳定和可解释？
+对当前主题的关键意义在于：最小验证是在现有诊断重建网络加入边界 mask、守恒残差与几何编码，比较跨装置误差、谱一致性、峰值显存及长程漂移。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>论文系统联合结构几何先验和物理一致性训练目标，使两类约束协同作用，而不是仅靠数据拟合。
+阅读时需要把方法设计与主要结果一起看：PMLR 核验其为 ICML 2025 正式论文；论文报告联合约束可改善 PDE surrogate 的泛化与稳定性。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>PMLR 核验其为 ICML 2025 正式论文；论文报告联合约束可改善 PDE surrogate 的泛化与稳定性。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>并非直接聚变数据论文，约束设计依赖可用方程、边界和诊断几何。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P3 视觉/诊断融合前的物理一致性正则基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小验证是在现有诊断重建网络加入边界 mask、守恒残差与几何编码，比较跨装置误差、谱一致性、峰值显存及长程漂移。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>AutoPrune：用 LLM 自动设计视觉 Token 剪枝策略</h3>
+              <p class="paper__subtitle">An AI4AI Framework for Visual Token Pruning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-07。它把预算控制、重要性评分、选择约束和 token 重组编码成 131 个可组合原子，并由 LLM 在强基线的残差策略空间中搜索；比单一显著性硬删更接近 P4 所需的联合决策。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhen Liu, Wenli Huang, Wei Song, Yuhan Liu, Zhiqin Yang, Jingwen Fu</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.07193" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.07193" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-07。它把预算控制、重要性评分、选择约束和 token 重组编码成 131 个可组合原子，并由 LLM 在强基线的残差策略空间中搜索；比单一显著性硬删更接近 P4 所需的联合决策。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视觉 token 剪枝方法常靠固定手工启发式；当模型、预算和目标变化时，专家逐个调策略成本高且难迁移。
+从本日报的选取理由看，新增 / arXiv 2026-08-07。它把预算控制、重要性评分、选择约束和 token 重组编码成 131 个可组合原子，并由 LLM 在强基线的残差策略空间中搜索；比单一显著性硬删更接近 P4 所需的联合决策。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>LLM 能否在可验证、可执行的结构化空间内自动设计 token reduction policy？
+对当前主题的关键意义在于：将 OmniPack 的重要性/覆盖/合并、RoRA 区域预算和事件时间密度编码为小型 DSL，在同一保留率下搜索 mAP、关键事件召回、峰值显存与端到端延迟的 Pareto 策略。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/300795d1a566d762.png" alt="Figure 2: Overview of AutoPrune . TPDSL represents each candidate as a structured residual search state α = ( B , S , C , R ) \alpha=(B,S,C,R) over a strong base policy, enabling executable and budget-compliant policy design. A pre-trained LLM iteratively proposes, validates, and evaluates candidate states using search-history feedback. The selected state performs constrained residual refinement, preserving dominant selections while revising only uncertain decisions.">
+                    <figcaption>Figure 2: Overview of AutoPrune . TPDSL represents each candidate as a structured residual search state α = ( B , S , C , R ) \alpha=(B,S,C,R) over a strong base policy, enabling e...</figcaption>
+                  </figure>
+                  <p>论文提出含 131 个复用原子的 TPDSL，并把搜索状态表示为强基线策略上的残差修改，使 LLM 聚焦真正影响性能的组件；整个策略搜索和应用无需训练目标模型。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 14 个多模态 benchmark、3 个 MLLM 骨干上，删除 94.4% 视觉 token 时保留超过 99% 全 token 性能，FLOPs 降低 9.9 倍，prefill 延迟加速 6.4 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 14 个多模态 benchmark、3 个 MLLM 骨干上，删除 94.4% 视觉 token 时保留超过 99% 全 token 性能，FLOPs 降低 9.9 倍，prefill 延迟加速 6.4 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>搜索本身的 LLM 调用成本和泛化边界需单独计量；视觉问答性能不保证短暂事件或聚变异常证据的召回。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为自动组合 P4 策略的上层搜索器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>将 OmniPack 的重要性/覆盖/合并、RoRA 区域预算和事件时间密度编码为小型 DSL，在同一保留率下搜索 mAP、关键事件召回、峰值显存与端到端延迟的 Pareto 策略。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>RoRA：面向区域证据覆盖的视觉 Token 剪枝</h3>
+              <p class="paper__subtitle">RoRA: Role-Oriented Regional Allocation for Visual Token Pruning in MLLMs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-07。它不把保留 token 视为同质集合，而是按语义核心、互补上下文和局部细节分配预算，并显式追踪已覆盖对象区域；对短暂关键证据召回和极低预算性能很有价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qiyanhui Lu, Han Wu, Rongjian Xu, Tingzhang Luo, Cheng Fan, Xinghao Chen, Minjing Dong, Jufeng Yang, Jianyuan Guo</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.07088" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.07088" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-07。它不把保留 token 视为同质集合，而是按语义核心、互补上下文和局部细节分配预算，并显式追踪已覆盖对象区域；对短暂关键证据召回和极低预算性能很有价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>训练免费剪枝常依据重要性、多样性或空间覆盖，但不追踪哪些对象区域已被支持，也把所有保留 token 当成相同角色。
+从本日报的选取理由看，新增 / arXiv 2026-08-07。它不把保留 token 视为同质集合，而是按语义核心、互补上下文和局部细节分配预算，并显式追踪已覆盖对象区域；对短暂关键证据召回和极低预算性能很有价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>极低预算下如何同时保留任务核心、未覆盖上下文和局部细节？
+对当前主题的关键意义在于：把 AAR 改成事件时空簇或诊断异常区间，比较显著性剪枝、相似度合并、RoRA 与 OmniPack 在极低预算下的关键事件召回、峰值显存、选择开销和端到端延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ed09087b31d9edd8.png" alt="Figure 2: Overview of RoRA. RoRA decomposes the retained visual token budget into a protected semantic core , complementary context , and fine-grained details . Attention-Anchored Regions represent object-related spatial support already covered by high-confidence evidence, guiding outside-AAR context exploration and inside-AAR detail repair.">
+                    <figcaption>Figure 2: Overview of RoRA. RoRA decomposes the retained visual token budget into a protected semantic core , complementary context , and fine-grained details . Attention-Anchored ...</figcaption>
+                  </figure>
+                  <p>RoRA 用文本条件注意力、位置先验和 prompt-calibrated object prior 得到核心锚点，构建 Attention-Anchored Regions；上下文优先从区域外探索，再用小预算恢复区域内细节，相似度只在上下文去冗余阶段使用。
+阅读时需要把方法设计与主要结果一起看：摘要报告 LLaVA-1.5 在 88.9% 剪枝率保留 96.5% 全量性能；Qwen3-VL 在 75%-90% 剪枝率相对 D2Pruner 提升约 5%；66.7% 剪枝时选择开销 0.7 ms，端到端时间降低 24.6%，相当于 H800 上 1.33 倍加速。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 LLaVA-1.5 在 88.9% 剪枝率保留 96.5% 全量性能；Qwen3-VL 在 75%-90% 剪枝率相对 D2Pruner 提升约 5%；66.7% 剪枝时选择开销 0.7 ms，端到端时间降低 24.6%，相当于 H800 上 1.33 倍加速。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>对象区域先验可能漏掉无明确对象但短暂关键的事件；结果主要来自 MLLM，事件流、时序和跨模态缺失尚未验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它是覆盖感知 token 预算的强工程候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>把 AAR 改成事件时空簇或诊断异常区间，比较显著性剪枝、相似度合并、RoRA 与 OmniPack 在极低预算下的关键事件召回、峰值显存、选择开销和端到端延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>KReF：训练免费长期时序检索预测与不确定性</h3>
+              <p class="paper__subtitle">KReF: Training-Free Retrieval for Long-Term Time-Series Forecasting and Predictive Uncertainty</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-07。它把历史相似 lookback-future 对直接构成局部经验预测分布，可输出质量、分位数、CRPS 和点预测；对跨炮号历史片段检索与不确定性估计比只做 point forecast 更完整。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yang Zhang, Rui Su</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.06748" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.06748" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-07。它把历史相似 lookback-future 对直接构成局部经验预测分布，可输出质量、分位数、CRPS 和点预测；对跨炮号历史片段检索与不确定性估计比只做 point forecast 更完整。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长期时序的概率预测通常需要训练模型；基于既有点预测器的 conformal 区间不直接给出完整分布，长预测跨度还会带来延迟反馈。
+从本日报的选取理由看，新增 / arXiv 2026-08-07。它把历史相似 lookback-future 对直接构成局部经验预测分布，可输出质量、分位数、CRPS 和点预测；对跨炮号历史片段检索与不确定性估计比只做 point forecast 更完整。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>历史相似片段能否直接构造可靠预测分布，并同时提供点预测和区间？
+对当前主题的关键意义在于：在现有破裂时序代码中建立 lookback-future 库，对比无检索、TS-RAG 与 KReF 的提前量、误报率、CRPS、检索延迟和跨装置退化。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>KReF 对 lookback 做鲁棒预处理，以手工统计量或冻结随机 Fourier 特征嵌入，检索相似 lookback-future 对，用相似度权重定义概率质量、分位数、CRPS 与加权均值预测，并以 PIT 映射和验证集选取的扩张/收缩率调整区间。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 6 个 LTSF 数据集、4 个预测跨度上，12 个数据集-嵌入设置均取得最低 CRPS，9 个设置取得最低 IS90；两组数据上的点预测匹配或超过训练基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 6 个 LTSF 数据集、4 个预测跨度上，12 个数据集-嵌入设置均取得最低 CRPS，9 个设置取得最低 IS90；两组数据上的点预测匹配或超过训练基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>检索库覆盖决定性能；跨装置分布偏移或稀有破裂前兆可能找不到可靠邻居，检索延迟也需纳入实时评估。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为历史炮次检索分支和不确定性基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在现有破裂时序代码中建立 lookback-future 库，对比无检索、TS-RAG 与 KReF 的提前量、误报率、CRPS、检索延迟和跨装置退化。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>LiFTER：连续时间动态图的可执行神经符号预测</h3>
+              <p class="paper__subtitle">LiFTER: A Grounded Neuro-Symbolic Microscope for Continuous-Time Dynamic Graph Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-07。它保留原始交互为带时间的事实，通过可执行时间规则给出可独立复算和干预的预测证据；虽然不是常规多变量时序模型，但对 P1/P3 的可解释前兆链路有独特价值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Minwoo Yu, Young-guk Ha</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.06765" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.06765" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-07。它保留原始交互为带时间的事实，通过可执行时间规则给出可独立复算和干预的预测证据；虽然不是常规多变量时序模型，但对 P1/P3 的可解释前兆链路有独特价值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>连续时间动态图模型通常把历史压入神经状态，预测有效但难以说明哪些实体、事件和时间顺序真正触发输出。
+从本日报的选取理由看，新增 / arXiv 2026-08-07。它保留原始交互为带时间的事实，通过可执行时间规则给出可独立复算和干预的预测证据；虽然不是常规多变量时序模型，但对 P1/P3 的可解释前兆链路有独特价值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否在保持连续时间预测能力的同时，使每个预测都可由历史事实和时间规则独立重算？
+对当前主题的关键意义在于：把诊断波形先转成少量事件事实，在现有模型旁路训练 LiFTER 式规则头，比较解释删除忠实度、关键前兆召回、执行延迟和规则规模。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a44374e0e04158ca.png" alt="Figure 1: Neural CTDG models compress history, and post-hoc explainers select evidence after prediction. TILP executes rules over observed TKG predicates. LiFTER constructs predictions directly from grounded CTDG facts and signed rule executions.">
+                    <figcaption>Figure 1: Neural CTDG models compress history, and post-hoc explainers select evidence after prediction. TILP executes rules over observed TKG predicates. LiFTER constructs predict...</figcaption>
+                  </figure>
+                  <p>LiFTER 将交互保存为 grounded temporal facts，以可执行规则对查询前事实进行匹配；得分是规则执行的带符号和，可检查实体绑定、历史位置与转移贡献。
+阅读时需要把方法设计与主要结果一起看：摘要称其在 4 个连续时间动态图 benchmark 上取得有竞争力的历史负样本预测和最高宏观解释准确率、删除忠实度；19,664 个测试预测的独立执行最大重构误差为 0.0000131。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称其在 4 个连续时间动态图 benchmark 上取得有竞争力的历史负样本预测和最高宏观解释准确率、删除忠实度；19,664 个测试预测的独立执行最大重构误差为 0.0000131。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>动态图边事件不同于连续多变量传感器；规则库增长、数值信号离散化和在线执行成本可能限制高频应用。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>更适合解释层或事件化前端，不是 P1 的统一主干替代。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>把诊断波形先转成少量事件事实，在现有模型旁路训练 LiFTER 式规则头，比较解释删除忠实度、关键前兆召回、执行延迟和规则规模。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>本轮空缺判断：直接不规则/异步多变量统一模型</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for a unified irregular/asynchronous multivariate model*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-11 检索判断</p>
+          <p>论文链接：[arXiv 检索](https://arxiv.org/search/?query=irregular+asynchronous+multivariate+time+series+continuous-time+state+space&searchtype=all)</p>
+          <p>选取理由：本轮空缺判断。未发现新增同时满足真实 Δt、异步多变量、高低频耦合、高频自适应压缩和线性或近线性显存。</p>
+          <p>研究背景：P1 的门槛高于普通规则采样预测或单一连续时间图任务。</p>
+          <p>核心问题：KReF 与 LiFTER 是否可直接替代统一模型？不能；它们只分别覆盖检索分布与可解释时间规则。</p>
+          <p>方法与关键创新：本条仅记录筛选边界，不作为论文推荐。</p>
+          <p>主要结果：直接 P1 强新增空缺。</p>
+          <p>局限性：arXiv 周末索引存在发布节奏延迟，后续批次需重新检查。</p>
+          <p>总结：本轮不以普通时序预测凑数。</p>
+          <p>研究相关性：下一轮继续检索 continuous/selective SSM、Neural CDE/SDE、multi-rate streaming 与 token compression 的交集。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>可控核聚变与 AI 交叉</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变与 AI 交叉</p>
+              <h3>本轮空缺判断：直接聚变 AI 新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for a directly relevant fusion-AI update*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-11 检索判断</p>
+          <p>论文链接：[arXiv physics.plasm-ph](https://arxiv.org/list/physics.plasm-ph/recent)</p>
+          <p>选取理由：本轮空缺判断。最新批次中的聚变条目集中在仪器表征和等离子体物理模拟，未发现达到主推荐门槛的 AI 诊断、破裂预测、控制或跨装置学习新增。</p>
+          <p>研究背景：主题要求不仅与 fusion 相关，还需有明确 AI 方法、实验评价或可迁移工程链路。</p>
+          <p>核心问题：是否存在可替代 SafeDivertor、PC-FDON 或近期神经算子工作的实质新增？本轮没有。</p>
+          <p>方法与关键创新：本条仅记录筛选边界。</p>
+          <p>主要结果：直接聚变 AI 强新增空缺。</p>
+          <p>局限性：周末发布节奏可能导致新批次尚未公开。</p>
+          <p>总结：不以纯物理或仪器论文凑数。</p>
+          <p>研究相关性：继续监测 tokamak disruption、plasma diagnostics、ECEI/BES/visible/IR、cross-device transfer 与 uncertainty 的交集。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发 - P1：不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>KReF：历史炮次的局部经验预测分布</h3>
+              <p class="paper__subtitle">KReF: Training-Free Retrieval for Long-Term Time-Series Forecasting and Predictive Uncertainty</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。它把历史 lookback-future 对直接变成概率预测分布，可作为统一模型之外的轻量检索记忆，优先解决跨炮号相似工况利用与不确定性输出。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yang Zhang, Rui Su</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.06748" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.06748" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。它把历史 lookback-future 对直接变成概率预测分布，可作为统一模型之外的轻量检索记忆，优先解决跨炮号相似工况利用与不确定性输出。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高低频统一模型即使能够编码当前窗口，也未必从有限训练数据中记住稀有前兆；历史相似炮次是可解释且可更新的外部证据。
+从本日报的选取理由看，【P1】新增。它把历史 lookback-future 对直接变成概率预测分布，可作为统一模型之外的轻量检索记忆，优先解决跨炮号相似工况利用与不确定性输出。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样在不增加大模型训练成本的情况下，为当前不规则/多速率窗口补充历史未来分布？
+对当前主题的关键意义在于：原始应用领域是长期时序预测；可迁移模块是 lookback-future 检索分布与 PIT 区间校准；对应跨炮号相似工况、稀有前兆与不确定性问题。预期不增加主干激活显存，但增加索引内存和检索延迟。主要风险是分布外查询找不到可信邻居。最小实验是在现有破裂数据按装置分库，对比无检索、TS-RAG、KReF，并报告 AUC、提前量、CRPS、索引内存和单样本延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>使用鲁棒统计或冻结随机 Fourier 特征构造检索键，以相似历史未来的加权经验分布输出点预测、分位数和 CRPS，并校准区间边界。
+阅读时需要把方法设计与主要结果一起看：6 个 LTSF 数据集上的摘要结果显示 CRPS 优势稳定，并揭示按 horizon/channel 路由仍有明显提升空间。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>6 个 LTSF 数据集上的摘要结果显示 CRPS 优势稳定，并揭示按 horizon/channel 路由仍有明显提升空间。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>稀有破裂事件、跨装置偏移和不规则采样会破坏距离度量；检索库过大时延迟与内存上升。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>将其定位为旁路检索分支，而不是替代连续时间主干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域是长期时序预测；可迁移模块是 lookback-future 检索分布与 PIT 区间校准；对应跨炮号相似工况、稀有前兆与不确定性问题。预期不增加主干激活显存，但增加索引内存和检索延迟。主要风险是分布外查询找不到可信邻居。最小实验是在现有破裂数据按装置分库，对比无检索、TS-RAG、KReF，并报告 AUC、提前量、CRPS、索引内存和单样本延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>LiFTER：事件化诊断的可执行时间规则头</h3>
+              <p class="paper__subtitle">LiFTER: A Grounded Neuro-Symbolic Microscope for Continuous-Time Dynamic Graph Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】新增。它保留真实事件时间顺序并让预测由可执行规则复算，适合为高频压缩后的稀疏事件 token 增加解释和干预能力。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Minwoo Yu, Young-guk Ha</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.06765" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.06765" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】新增。它保留真实事件时间顺序并让预测由可执行规则复算，适合为高频压缩后的稀疏事件 token 增加解释和干预能力。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高频信号经压缩后，必须证明短暂关键事件没有被抹去；仅看最终 AUC 无法说明哪些时间事实贡献了预测。
+从本日报的选取理由看，【P1】新增。它保留真实事件时间顺序并让预测由可执行规则复算，适合为高频压缩后的稀疏事件 token 增加解释和干预能力。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否把压缩后的关键事件表示成可检查事实，并以规则明确连接低频状态和高频瞬态？
+对当前主题的关键意义在于：原始应用领域是连续时间动态图预测；可迁移模块是 grounded temporal facts 与可执行规则目标；对应真实 Δt 保留、跨通道前兆链和压缩后证据审计。预期减少进入解释头的 token，但规则匹配增加 CPU/内存开销。主要风险是连续信号离散化丢失幅值信息。最小实验是在现有诊断代码中提取峰值、斜率突变和阈值越界事件，比较规则头与注意力解释的删除忠实度、事件召回、延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a44374e0e04158ca.png" alt="Figure 1: Neural CTDG models compress history, and post-hoc explainers select evidence after prediction. TILP executes rules over observed TKG predicates. LiFTER constructs predictions directly from grounded CTDG facts and signed rule executions.">
+                    <figcaption>Figure 1: Neural CTDG models compress history, and post-hoc explainers select evidence after prediction. TILP executes rules over observed TKG predicates. LiFTER constructs predict...</figcaption>
+                  </figure>
+                  <p>将事件保存为 grounded facts，学习带实体绑定和时间顺序的可执行规则，以规则执行和直接组成预测得分。
+阅读时需要把方法设计与主要结果一起看：摘要报告 19,664 个测试预测可由独立执行近乎精确复算，最大误差 0.0000131，并在解释准确率与删除忠实度上领先。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 19,664 个测试预测可由独立执行近乎精确复算，最大误差 0.0000131，并在解释准确率与删除忠实度上领先。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始领域是连续时间动态图；数值诊断事件化可能产生阈值敏感性，规则数量与执行时间可能随通道增长。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为压缩后解释头，不适合作为全量高频编码器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域是连续时间动态图预测；可迁移模块是 grounded temporal facts 与可执行规则目标；对应真实 Δt 保留、跨通道前兆链和压缩后证据审计。预期减少进入解释头的 token，但规则匹配增加 CPU/内存开销。主要风险是连续信号离散化丢失幅值信息。最小实验是在现有诊断代码中提取峰值、斜率突变和阈值越界事件，比较规则头与注意力解释的删除忠实度、事件召回、延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>在研课题启发 - P2：RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>MCCF：按模态存在模式校准 RGB-Event 置信度</h3>
+              <p class="paper__subtitle">Conformal Fusion Under Missing Modalities</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】新增。MCCF 不解决事件表征本身，但直接解决 RGB、Event 任一模态缺失或失效时的动态证据权重与覆盖校准，可作为 TriPro 的最小可靠性替换。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Alireza Moayedikia</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.07183" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.07183" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】新增。MCCF 不解决事件表征本身，但直接解决 RGB、Event 任一模态缺失或失效时的动态证据权重与覆盖校准，可作为 TriPro 的最小可靠性替换。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>弱光、运动模糊、事件稀疏和噪声会使不同样本、区域和属性的可靠模态不同；固定融合及二值硬标签无法表达这种不确定性。
+从本日报的选取理由看，【P2】新增。MCCF 不解决事件表征本身，但直接解决 RGB、Event 任一模态缺失或失效时的动态证据权重与覆盖校准，可作为 TriPro 的最小可靠性替换。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>RGB 或 Event 缺失/失效时，属性预测能否保持可解释置信度和目标覆盖率？
+对当前主题的关键意义在于：原始应用领域是通用缺失模态分类；可迁移模块是逐模态证据头、vacuous evidence 与 presence-conditioned conformal calibration；对应 RGB/Event 失效、样本级可靠性和置信度问题。预期增加两个轻量证据头与校准存储，主干显存基本不变。风险是各模态组合样本不足、时钟错位未被处理。最小实验是在 TriPro-ReID 上加入 RGB-only/Event-only/dropout 训练，比较固定融合、BioKD gate 与 MCCF 的 mA、F1、ECE、coverage、set size 和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f7a7348696a4a6af.png" alt="(a) AVMNIST. Final-epoch mean 0.7295 ± 0.0065 0.7295\pm 0.0065 .">
+                    <figcaption>(a) AVMNIST. Final-epoch mean 0.7295 ± 0.0065 0.7295\pm 0.0065 .</figcaption>
+                  </figure>
+                  <p>以 modality dropout 训练 bottleneck 融合，用逐模态 Dirichlet 证据头和 Dempster-Shafer 规则动态组合；缺失模态输出 vacuous evidence，再按 presence mask 做 Mondrian conformal calibration。
+阅读时需要把方法设计与主要结果一起看：摘要称每种非空模态组合均维持目标覆盖率，并在不损失可测准确率的情况下缩小完整与缺失模态 coverage gap。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要称每种非空模态组合均维持目标覆盖率，并在不损失可测准确率的情况下缩小完整与缺失模态 coverage gap。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>它没有原生事件 token、跨时钟对齐或属性级开放词表监督；多属性、多缺失组合会让校准集稀疏。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>优先迁移可靠性头与校准目标，不替换事件编码器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域是通用缺失模态分类；可迁移模块是逐模态证据头、vacuous evidence 与 presence-conditioned conformal calibration；对应 RGB/Event 失效、样本级可靠性和置信度问题。预期增加两个轻量证据头与校准存储，主干显存基本不变。风险是各模态组合样本不足、时钟错位未被处理。最小实验是在 TriPro-ReID 上加入 RGB-only/Event-only/dropout 训练，比较固定融合、BioKD gate 与 MCCF 的 mA、F1、ECE、coverage、set size 和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>本轮空缺判断：原生 RGB-Event 属性识别新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for native RGB-Event attribute recognition*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-11 检索判断</p>
+          <p>论文链接：[arXiv 检索](https://arxiv.org/search/?query=RGB+event+attribute+recognition+asynchronous+alignment&searchtype=all)</p>
+          <p>选取理由：【P2】本轮空缺判断。未发现同时覆盖原生异步事件表示、RGB/Event 时间对齐、属性级动态权重和开放词表或软监督的高质量新增。</p>
+          <p>研究背景：通用缺失模态方法不能替代事件流表征与跨时钟对齐。</p>
+          <p>核心问题：本轮是否有可直接替换 TriPro 事件分支的新方法？没有。</p>
+          <p>方法与关键创新：本条仅记录筛选边界。</p>
+          <p>主要结果：直接 P2 强新增空缺。</p>
+          <p>局限性：周末发布节奏和关键词差异可能造成索引延迟。</p>
+          <p>总结：MCCF 只作为可靠性模块，不被包装成完整 RGB-Event 属性方案。</p>
+          <p>研究相关性：后续继续以 ACGR、EventBind、STP 和 AERODet 为基线，重点检查原生事件 token、异步对齐和属性 prompt 的交集。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>MCCF：图像/诊断缺失组合的覆盖校准</h3>
+              <p class="paper__subtitle">Conformal Fusion Under Missing Modalities</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】新增。可见光帧、IR/ECEI 与标量诊断在真实运行中会分别掉线或降质，MCCF 提供按可用模态组合校准的预警置信度，适合放在低延迟融合头。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Alireza Moayedikia</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.07183" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.07183" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】新增。可见光帧、IR/ECEI 与标量诊断在真实运行中会分别掉线或降质，MCCF 提供按可用模态组合校准的预警置信度，适合放在低延迟融合头。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>破裂预测的安全价值依赖误报、漏报和置信度；若某一诊断失效，模型即使输出同样概率也不应被同等信任。
+从本日报的选取理由看，【P3】新增。可见光帧、IR/ECEI 与标量诊断在真实运行中会分别掉线或降质，MCCF 提供按可用模态组合校准的预警置信度，适合放在低延迟融合头。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>图像或诊断时序缺失时，如何结构性降低证据并维持可验证覆盖？
+对当前主题的关键意义在于：原始应用领域是缺失模态多模态分类；可迁移模块是 modality dropout、逐模态证据分解和条件保形校准；对应传感器掉线、置信度与安全阈值问题。预期主干峰值显存变化很小，增加轻量头和校准查表延迟。主要风险是跨装置分布漂移破坏覆盖。最小实验是在现有图像-诊断模型随机屏蔽 RGB、IR、ECE 与标量通道，按装置外测试 AUC、提前量、ECE、coverage、set size 和端到端延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f7a7348696a4a6af.png" alt="(a) AVMNIST. Final-epoch mean 0.7295 ± 0.0065 0.7295\pm 0.0065 .">
+                    <figcaption>(a) AVMNIST. Final-epoch mean 0.7295 ± 0.0065 0.7295\pm 0.0065 .</figcaption>
+                  </figure>
+                  <p>逐模态证据头定位各输入流的 vacuity，以融合规则组合剩余证据，再对不同 presence mask 分别校准预测集合。
+阅读时需要把方法设计与主要结果一起看：通用 benchmark 结果显示目标覆盖率能在各模态子集维持，且准确率代价不明显；聚变数据尚无直接实验。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>通用 benchmark 结果显示目标覆盖率能在各模态子集维持，且准确率代价不明显；聚变数据尚无直接实验。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未处理图像局部证据选择、异步多采样率对齐、跨装置偏移和早期预警时间窗；模态组合过多会增加校准数据需求。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为融合输出层和安全校准层，而非完整破裂模型。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域是缺失模态多模态分类；可迁移模块是 modality dropout、逐模态证据分解和条件保形校准；对应传感器掉线、置信度与安全阈值问题。预期主干峰值显存变化很小，增加轻量头和校准查表延迟。主要风险是跨装置分布漂移破坏覆盖。最小实验是在现有图像-诊断模型随机屏蔽 RGB、IR、ECE 与标量通道，按装置外测试 AUC、提前量、ECE、coverage、set size 和端到端延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>本轮空缺判断：直接视觉-诊断时序融合破裂预测新增</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for direct vision-diagnostic tokamak disruption prediction*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-11 检索判断</p>
+          <p>论文链接：[arXiv 检索](https://arxiv.org/search/?query=tokamak+disruption+prediction+visible+image+diagnostic+time+series&searchtype=all)</p>
+          <p>选取理由：【P3】本轮空缺判断。未发现直接联合可见光/IR 图像、异步诊断时序、低延迟破裂预警和跨装置评估的新增论文。</p>
+          <p>研究背景：通用 missing-modality 或视觉模型只有在机制可迁移时才能作为子模块，不能替代聚变任务证据。</p>
+          <p>核心问题：是否有直接 P3 新基线？本轮没有。</p>
+          <p>方法与关键创新：本条仅记录筛选边界。</p>
+          <p>主要结果：直接视觉-诊断时序融合破裂预测空缺。</p>
+          <p>局限性：arXiv 发布和项目页更新可能延迟。</p>
+          <p>总结：不以通用多模态论文冒充聚变实证。</p>
+          <p>研究相关性：继续围绕 time-series query image、masked multimodal pretraining、cross-device transfer、physics-informed fusion 与 early warning 检索。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-8">
+        <div class="panel__head">
+          <h2>在研课题启发 - P4：Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>AutoPrune：联合压缩策略的结构化自动搜索</h3>
+              <p class="paper__subtitle">An AI4AI Framework for Visual Token Pruning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】新增。TPDSL 把预算、重要性、覆盖约束与 token 重组置于同一策略空间，最适合把 OmniPack、HiSC、CARVE、DIVE 的分散机制变成可自动比较的组合实验。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhen Liu, Wenli Huang, Wei Song, Yuhan Liu, Zhiqin Yang, Jingwen Fu</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.07193" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.07193" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】新增。TPDSL 把预算、重要性、覆盖约束与 token 重组置于同一策略空间，最适合把 OmniPack、HiSC、CARVE、DIVE 的分散机制变成可自动比较的组合实验。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>P4 不是寻找单一剪枝分数，而是联合决定压缩位置、预算、覆盖、查询条件、跨模态可靠性以及被删 token 的合并或回收。
+从本日报的选取理由看，【P4】新增。TPDSL 把预算、重要性、覆盖约束与 token 重组置于同一策略空间，最适合把 OmniPack、HiSC、CARVE、DIVE 的分散机制变成可自动比较的组合实验。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否自动搜索在性能、关键事件召回、峰值显存与端到端延迟之间最优的压缩策略？
+对当前主题的关键意义在于：原始应用领域是 MLLM 视觉 token 剪枝；可迁移模块是 TPDSL 与残差策略搜索；对应联合重要性/覆盖/相似性/查询、删除回收和动态预算问题。部署策略本身可低开销，但离线搜索增加 LLM 调用成本。风险是搜索 benchmark 与短暂关键事件目标不一致。最小实验是在现有压缩代码定义 15-20 个原子，搜索固定 5%、10%、25% 预算，报告 mAP/AUC、事件召回、FLOPs、峰值显存、prefill 和端到端延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/300795d1a566d762.png" alt="Figure 2: Overview of AutoPrune . TPDSL represents each candidate as a structured residual search state α = ( B , S , C , R ) \alpha=(B,S,C,R) over a strong base policy, enabling executable and budget-compliant policy design. A pre-trained LLM iteratively proposes, validates, and evaluates candidate states using search-history feedback. The selected state performs constrained residual refinement, preserving dominant selections while revising only uncertain decisions.">
+                    <figcaption>Figure 2: Overview of AutoPrune . TPDSL represents each candidate as a structured residual search state α = ( B , S , C , R ) \alpha=(B,S,C,R) over a strong base policy, enabling e...</figcaption>
+                  </figure>
+                  <p>以 131 个原子组成 TPDSL，用强基线上的残差修改压缩搜索空间，并由 LLM 迭代设计无需训练的视觉 token policy。
+阅读时需要把方法设计与主要结果一起看：14 个 benchmark、3 个骨干上，摘要报告 94.4% 剪枝时保留超过 99% 性能、9.9 倍 FLOPs 降低和 6.4 倍 prefill 加速。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>14 个 benchmark、3 个骨干上，摘要报告 94.4% 剪枝时保留超过 99% 性能、9.9 倍 FLOPs 降低和 6.4 倍 prefill 加速。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>AutoPrune 的搜索开销未等于在线推理开销；DSL 原子若不含时间覆盖和模态可靠性，就会偏向静态视觉任务。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>最值得借鉴的是策略表示和残差搜索，不是直接复制视觉原子库。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域是 MLLM 视觉 token 剪枝；可迁移模块是 TPDSL 与残差策略搜索；对应联合重要性/覆盖/相似性/查询、删除回收和动态预算问题。部署策略本身可低开销，但离线搜索增加 LLM 调用成本。风险是搜索 benchmark 与短暂关键事件目标不一致。最小实验是在现有压缩代码定义 15-20 个原子，搜索固定 5%、10%、25% 预算，报告 mAP/AUC、事件召回、FLOPs、峰值显存、prefill 和端到端延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>RoRA：语义核心、上下文和细节的角色预算</h3>
+              <p class="paper__subtitle">RoRA: Role-Oriented Regional Allocation for Visual Token Pruning in MLLMs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】新增。RoRA 的角色化预算和显式区域覆盖，能补足 OmniPack 覆盖选择在“已覆盖什么、还缺什么”上的解释，并提供 0.7 ms 选择开销与端到端加速证据。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Qiyanhui Lu, Han Wu, Rongjian Xu, Tingzhang Luo, Cheng Fan, Xinghao Chen, Minjing Dong, Jufeng Yang, Jianyuan Guo</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.07088" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.07088" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】新增。RoRA 的角色化预算和显式区域覆盖，能补足 OmniPack 覆盖选择在“已覆盖什么、还缺什么”上的解释，并提供 0.7 ms 选择开销与端到端加速证据。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>仅按显著性选 token 会过度集中在少数区域，仅按相似度合并又可能抹掉短暂稀有证据；固定保留率无法适应样本难度。
+从本日报的选取理由看，【P4】新增。RoRA 的角色化预算和显式区域覆盖，能补足 OmniPack 覆盖选择在“已覆盖什么、还缺什么”上的解释，并提供 0.7 ms 选择开销与端到端加速证据。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>固定或自适应预算下，怎样同时保护核心、探索未覆盖上下文并恢复必要细节？
+对当前主题的关键意义在于：原始应用领域是 MLLM 视觉 token 剪枝；可迁移模块是 AAR 覆盖追踪和三角色预算；对应短暂关键证据召回、覆盖度和极低预算性能。预期降低 KV cache 与端到端延迟，选择器增加约毫秒级开销；峰值显存需实测。风险是区域锚点对弱异常不敏感。最小实验是将区域替换为事件时空簇、图像 patch 或诊断异常区间，在采样率变化和模态缺失下与 OmniPack/HiSC/CARVE/DIVE 比较关键事件召回、FLOPs、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ed09087b31d9edd8.png" alt="Figure 2: Overview of RoRA. RoRA decomposes the retained visual token budget into a protected semantic core , complementary context , and fine-grained details . Attention-Anchored Regions represent object-related spatial support already covered by high-confidence evidence, guiding outside-AAR context exploration and inside-AAR detail repair.">
+                    <figcaption>Figure 2: Overview of RoRA. RoRA decomposes the retained visual token budget into a protected semantic core , complementary context , and fine-grained details . Attention-Anchored ...</figcaption>
+                  </figure>
+                  <p>以文本条件注意力和对象先验形成锚点区域，把 token 分为 protected core、complementary context 与 fine-grained detail，只有上下文阶段使用相似度过滤。
+阅读时需要把方法设计与主要结果一起看：摘要报告 88.9% 剪枝下保留 96.5% LLaVA-1.5 性能；66.7% 剪枝时选择开销 0.7 ms，H800 端到端加速 1.33 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 88.9% 剪枝下保留 96.5% LLaVA-1.5 性能；66.7% 剪枝时选择开销 0.7 ms，H800 端到端加速 1.33 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>依赖对象区域先验，可能遗漏无对象语义的微弱瞬态；未报告峰值显存和事件流鲁棒性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为覆盖感知、低选择开销的 P4 基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域是 MLLM 视觉 token 剪枝；可迁移模块是 AAR 覆盖追踪和三角色预算；对应短暂关键证据召回、覆盖度和极低预算性能。预期降低 KV cache 与端到端延迟，选择器增加约毫秒级开销；峰值显存需实测。风险是区域锚点对弱异常不敏感。最小实验是将区域替换为事件时空簇、图像 patch 或诊断异常区间，在采样率变化和模态缺失下与 OmniPack/HiSC/CARVE/DIVE 比较关键事件召回、FLOPs、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-9">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉</p>
+              <h3>MCCF：缺失模态下的条件保形融合</h3>
+              <p class="paper__subtitle">Conformal Fusion Under Missing Modalities</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-07</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">新增 / arXiv 2026-08-07。它把 modality dropout、逐模态证据头、空缺模态的 vacuous evidence 与按模态存在掩码分组的 Mondrian conformal calibration 连成一体，直接回答融合模型缺模态时置信度是否仍可信。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Alireza Moayedikia</p>
+                <p class="muted">arXiv 元数据未提供机构</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.07183" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.07183" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>新增 / arXiv 2026-08-07。它把 modality dropout、逐模态证据头、空缺模态的 vacuous evidence 与按模态存在掩码分组的 Mondrian conformal calibration 连成一体，直接回答融合模型缺模态时置信度是否仍可信。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>传感器失效、采集差异和成本约束会导致推理时模态缺失；仅保持分类准确率并不代表置信度仍可靠。
+从本日报的选取理由看，新增 / arXiv 2026-08-07。它把 modality dropout、逐模态证据头、空缺模态的 vacuous evidence 与按模态存在掩码分组的 Mondrian conformal calibration 连成一体，直接回答融合模型缺模态时置信度是否仍可信。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>整个输入流缺失时，如何让融合模型结构性忽略缺失证据，并对剩余模态组合保持校准？
+对当前主题的关键意义在于：在现有 RGB-Event 或图像-诊断模型上加入模态 dropout、逐模态证据头和 presence-mask 校准，报告 mAP/AUC、ECE、coverage、set size、延迟及所有缺失组合。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f7a7348696a4a6af.png" alt="(a) AVMNIST. Final-epoch mean 0.7295 ± 0.0065 0.7295\pm 0.0065 .">
+                    <figcaption>(a) AVMNIST. Final-epoch mean 0.7295 ± 0.0065 0.7295\pm 0.0065 .</figcaption>
+                  </figure>
+                  <p>MCCF 结合 modality dropout、多模态 bottleneck、逐模态 Dirichlet 证据头、Dempster-Shafer 组合与按模态存在掩码分组的 Mondrian conformal calibration；缺失模态提供 vacuous evidence。
+阅读时需要把方法设计与主要结果一起看：摘要报告在合成任务和 3 个真实多模态 benchmark 上，每种模态存在子集均保持目标覆盖率，缩小完整/缺失模态的 coverage gap，且相对温度缩放和证据基线无可测准确率代价。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在合成任务和 3 个真实多模态 benchmark 上，每种模态存在子集均保持目标覆盖率，缩小完整/缺失模态的 coverage gap，且相对温度缩放和证据基线无可测准确率代价。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>分组保形校准需要每种模态组合有足够校准样本；模态数增加时组合数指数增长，分布漂移下有限样本保证也可能失效。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是 P2/P3 缺失模态与不确定性评估的强基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在现有 RGB-Event 或图像-诊断模型上加入模态 dropout、逐模态证据头和 presence-mask 校准，报告 mAP/AUC、ECE、coverage、set size、延迟及所有缺失组合。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>Token 压缩转向组合策略设计</h3>
+          <p>Token 压缩正在从单一评分函数转向“策略空间 + 约束 + token 重组”的组合设计；AutoPrune 提供自动搜索框架，RoRA 提供覆盖感知的具体构造。</p>
+        </article>
+        <article class="trend">
+          <h3>缺失模态鲁棒性与校准合流</h3>
+          <p>缺失模态研究开始把准确率鲁棒性与不确定性校准统一处理；MCCF 对 RGB-Event 与聚变多诊断系统的安全评估比普通 dropout 更完整。</p>
+        </article>
+        <article class="trend">
+          <h3>P1 仍缺统一架构突破</h3>
+          <p>P1 新增更偏外部检索分布与可执行解释，而非端到端统一架构；真实 Δt、多速率交互和线性内存仍是明确空缺。</p>
+        </article>
+        <article class="trend">
+          <h3>聚变直接证据保持空缺</h3>
+          <p>本轮没有直接聚变 AI 或视觉-诊断破裂预测强新增，后续应等待新发布批次，不应扩大到纯物理或泛多模态论文凑数。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
