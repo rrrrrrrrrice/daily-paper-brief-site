@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-08-27</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-08-27 核心论文简报</h1>
+      <p class="hero__meta">面向对象：AI 时序、多模态视觉、可控核聚变与交叉研究人员</p>
+      <p class="hero__meta">信息检索截止时间：2026-08-27 05:06:50 +08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要：</p>
+        <p>- 主推荐 5 篇均为相对 2026-08-26 归档的新增：PAT 垂直不稳定代理、KATok 自适应视频 tokenizer、oFM 纵向肿瘤多模态基础模型、严格因果流式异常检测、逆 Grad-Shafranov 磁控制。</p>
+        <p>- 顶会回看独立收录 DivPrune、LS3M、DiffCR；P1 收 SeisMamba、MomADv2，P3 收 ReGround-Surg、MoRF-AST，P4 收 HAP、VisCache。P2 及完整 P1/P3 目标均明确写本轮空缺判断。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 DivPrune：以覆盖多样性替代单点显著性剪枝</a></li>
+              <li><a href="#paper-2">02 LS3M：缺失模态下可学习排序的状态空间融合</a></li>
+              <li><a href="#paper-3">03 DiffCR：层、时间步与 Token 三轴自适应压缩</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">不规则时序 / 时序分析 / 预测 / 建模</a>
+            <ul>
+              <li><a href="#paper-4">04 严格因果流式视频异常检测：固定状态、无窗口、无前视</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变及 AI 交叉</a>
+            <ul>
+              <li><a href="#paper-7">07 PAT：从 C-Mod 到 SPARC 的垂直不稳定增长率代理</a></li>
+              <li><a href="#paper-8">08 逆 Grad-Shafranov 神经网络：面向异步触发的托卡马克磁控制</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 - P1：不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-9">09 SeisMamba：低延迟长波形与跨区域早期预警</a></li>
+              <li><a href="#paper-10">10 MomADv2：按当前指令筛选可靠历史记忆</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发 - P2：RGB-Event 属性识别</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-11">11 ReGround-Surg：以可靠性图抑制错误视觉锚点传播</a></li>
+              <li><a href="#paper-12">12 MoRF-AST：运行分布变化下校准稀疏传感重建</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">在研课题启发 - P4：Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-13">13 HAP：按跨模态对齐质量给注意力头加权剪枝</a></li>
+              <li><a href="#paper-14">14 VisCache：关键帧筛选与非对称 KV 压缩</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-8">多模态学习 / 图像 / 计算机视觉 / Token 压缩</a>
+            <ul>
+              <li><a href="#paper-5">05 KATok：按视频内容自适应保留或删除 Token</a></li>
+              <li><a href="#paper-6">06 oFM：把病理图像与纵向诊疗轨迹汇成患者状态</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">PAT：从 C-Mod 到 SPARC 的垂直不稳定增长率代理</a></h3>
+              <p class="card__subtitle">Physics Attention Transformer Surrogate for Rapid Vertical Instability Growth Rate Prediction: Alcator C-Mod to SPARC</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变及 AI 交叉</span>
+                <span class="chip chip--muted">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>2026-08-25 新稿。模型同时预测标量增长率与二维扰动环向电流密度，在 C-Mod 留出平衡和 SPARC 合成平衡上给出控制相关精度，直接连接跨装置代理、空间解释与实时控制。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">KATok：按视频内容自适应保留或删除 Token</a></h3>
+              <p class="card__subtitle">Keep-or-Drop? Adaptive Tokenizer for Compact Video Representation</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉 / Token 压缩</span>
+                <span class="chip chip--muted">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>2026-08-25 新稿。KATok 不再固定视频 VAE 压缩率，而为每个 token 学习 keep-or-drop 概率，并用位置预测缓解删除造成的时空错位，是 P4 数据依赖预算的新基线。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">oFM：把病理图像与纵向诊疗轨迹汇成患者状态</a></h3>
+              <p class="card__subtitle">A Multimodal Foundation Model for Longitudinal Patient Representation and Scalable Insight Generation in Oncology</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习 / 图像 / 计算机视觉 / Token 压缩</span>
+                <span class="chip chip--muted">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>2026-08-25 新稿。oFM 在 167 万癌症患者上联合每日临床/分子事件与 H&E 病理图像；它提供了图像—异步纵向时序融合、证据图解释和大规模冻结表征评估的完整跨领域参照。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">严格因果流式视频异常检测：固定状态、无窗口、无前视</a></h3>
+              <p class="card__subtitle">Strictly Causal Streaming Video Anomaly Detection with a Theoretically-Grounded State-Space Core</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序 / 时序分析 / 预测 / 建模</span>
+                <span class="chip chip--muted">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>2026-08-25 新稿。模型以 O(1) 每帧时间和内存更新固定状态，给出衰减谱、检测延迟与最短可检异常之间的理论联系，并报告 Apple M3 Pro 实测延迟；精度不足也被如实量化。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">逆 Grad-Shafranov 神经网络：面向异步触发的托卡马克磁控制</a></h3>
+              <p class="card__subtitle">An Inverse Grad-Shafranov Neural Network Approach to Tokamak Magnetic Control</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变及 AI 交叉</span>
+                <span class="chip chip--muted">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>2026-08-25 新稿。TCV 实验把期望边界到极向场线圈电流的逆映射交给快速代理，经典控制器保留约束，并展示异步触发下的提前终止与 strike-point 自适应路径。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>DivPrune：以覆盖多样性替代单点显著性剪枝</h3>
+              <p class="paper__subtitle">DivPrune: Diversity-based Visual Token Pruning for Large Multimodal Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。今天仍值得读，因为 KATok 学习逐 token 删除，但没有显式保证保留集合覆盖；DivPrune 把选择写成 Max-Min Diversity，可作为极低预算下避免证据塌缩的正式基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Saeed Ranjbar Alvar, Gursimran Singh, Mohammad Akbari, Yong Zhang</p>
+                <p class="muted">机构以 CVF 正式页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Alvar_DivPrune_Diversity-based_Visual_Token_Pruning_for_Large_Multimodal_Models_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。今天仍值得读，因为 KATok 学习逐 token 删除，但没有显式保证保留集合覆盖；DivPrune 把选择写成 Max-Min Diversity，可作为极低预算下避免证据塌缩的正式基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>按单一重要性分数保留 token 容易选出彼此重复的高分区域，高剪枝率下尤其可能丢掉分散但关键的证据。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。今天仍值得读，因为 KATok 学习逐 token 删除，但没有显式保证保留集合覆盖；DivPrune 把选择写成 Max-Min Diversity，可作为极低预算下避免证据塌缩的正式基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样在免训练条件下选择具有最大覆盖多样性的视觉 token 子集？
+对当前主题的关键意义在于：最小实验在 5%、10%、20% 预算比较显著性、DivPrune、KATok 与 OmniPack，报告关键事件召回、选择器开销、FLOPs、峰值显存和端到端延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>将视觉 token 剪枝表述为 Max-Min Diversity Problem，选择两两差异更大的子集并删除其余 token。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页核验为 CVPR 2025；官方摘要报告在 16 个图像/视频语言数据集取得先进精度，并降低端到端延迟与 GPU 内存。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页核验为 CVPR 2025；官方摘要报告在 16 个图像/视频语言数据集取得先进精度，并降低端到端延迟与 GPU 内存。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>多样性不等于查询相关性，也没有回收被删 token；求解选择问题本身有额外开销。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为 P4 的 coverage-only 正式对照。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验在 5%、10%、20% 预算比较显著性、DivPrune、KATok 与 OmniPack，报告关键事件召回、选择器开销、FLOPs、峰值显存和端到端延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>LS3M：缺失模态下可学习排序的状态空间融合</h3>
+              <p class="paper__subtitle">Incomplete Multi-modal Brain Tumor Segmentation via Learnable Sorting State Space Model</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。P2/P3 都要求模态缺失鲁棒性；LS3M 在状态空间扫描前以可微置换按模态特性重排序列，为“可用模态集合变化时如何决定交互顺序”提供正式基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zheyu Zhang, Yayuan Lu, Feipeng Ma, Yueyi Zhang, Huanjing Yue, Xiaoyan Sun</p>
+                <p class="muted">机构以 CVF 正式页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Incomplete_Multi-modal_Brain_Tumor_Segmentation_via_Learnable_Sorting_State_Space_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。P2/P3 都要求模态缺失鲁棒性；LS3M 在状态空间扫描前以可微置换按模态特性重排序列，为“可用模态集合变化时如何决定交互顺序”提供正式基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>3D 多模态 MRI 常缺少某些序列，固定拼接或固定扫描顺序无法随可用模态与空间结构变化调整。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。P2/P3 都要求模态缺失鲁棒性；LS3M 在状态空间扫描前以可微置换按模态特性重排序列，为“可用模态集合变化时如何决定交互顺序”提供正式基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在模态不完整时保留空间归纳偏置，并同时建模模态内与模态间长程关系？
+对当前主题的关键意义在于：最小实验对 RGB、Event 与诊断通道学习软排序，比较固定顺序、质量门控与 LS3M 的 F1、ECE、缺模态退化、显存及 P95 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>学习可微置换矩阵重排输入，再由 Series State Space Model 捕获局部和长程的模态内/模态间依赖。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页核验为 CVPR 2025；官方摘要报告在 BraTS2018/2020 的缺失模态分割上优于既有方法。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页核验为 CVPR 2025；官方摘要报告在 BraTS2018/2020 的缺失模态分割上优于既有方法。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>规则 3D MRI 与原生异步 Event/诊断时序差异大，排序开销与部署延迟未在摘要量化。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>为缺失模态提供“先重排、后线性状态扫描”的结构参照。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验对 RGB、Event 与诊断通道学习软排序，比较固定顺序、质量门控与 LS3M 的 F1、ECE、缺模态退化、显存及 P95 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>DiffCR：层、时间步与 Token 三轴自适应压缩</h3>
+              <p class="paper__subtitle">Layer- and Timestep-Adaptive Differentiable Token Compression Ratios for Efficient Diffusion Transformers</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025；CVPR 2025</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐。今天仍值得读，因为它不只决定删哪些 token，还联合学习每层、每个扩散时间步的压缩率，可检验固定层位与固定预算是否限制 KATok/HAP 类方法。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Haoran You, Connelly Barnes, Yuqian Zhou, Yan Kang, Zhenbang Du, Wei Zhou, Lingzhi Zhang, Yotam Nitzan, Xiaoyang Liu, Zhe Lin, Eli Shechtman, Sohrab Amirghodsi, Yingyan Celine Lin</p>
+                <p class="muted">机构以 CVF 正式页为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/You_Layer-_and_Timestep-Adaptive_Differentiable_Token_Compression_Ratios_for_Efficient_Diffusion_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐。今天仍值得读，因为它不只决定删哪些 token，还联合学习每层、每个扩散时间步的压缩率，可检验固定层位与固定预算是否限制 KATok/HAP 类方法。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>DiT 对所有图像区域、层和去噪阶段分配相同计算，忽略早期高噪声与后期细节恢复的需求差异。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐。今天仍值得读，因为它不只决定删哪些 token，还联合学习每层、每个扩散时间步的压缩率，可检验固定层位与固定预算是否限制 KATok/HAP 类方法。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否联合学习 token、层和时间步三轴预算，同时维持生成质量？
+对当前主题的关键意义在于：最小实验在现有骨干为每层与时间阶段学习预算，与固定 10% 保留率比较 AUC、瞬态召回、FLOPs、峰值显存和端到端延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>路由器让低重要性 token 跳过整层；层级和时间步级可微压缩率从零初始化共同学习。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页核验为 CVPR 2025；官方摘要报告图像生成与修复任务上取得更优质量—效率权衡。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页核验为 CVPR 2025；官方摘要报告图像生成与修复任务上取得更优质量—效率权衡。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要微调路由器，生成任务的感知质量不能直接代表短暂事件召回。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>是自适应预算位置选择的重要正式参照。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验在现有骨干为每层与时间阶段学习预算，与固定 10% 保留率比较 AUC、瞬态召回、FLOPs、峰值显存和端到端延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>不规则时序 / 时序分析 / 预测 / 建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序 / 时序分析 / 预测 / 建模</p>
+              <h3>严格因果流式视频异常检测：固定状态、无窗口、无前视</h3>
+              <p class="paper__subtitle">Strictly Causal Streaming Video Anomaly Detection with a Theoretically-Grounded State-Space Core</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">2026-08-25 新稿。模型以 O(1) 每帧时间和内存更新固定状态，给出衰减谱、检测延迟与最短可检异常之间的理论联系，并报告 Apple M3 Pro 实测延迟；精度不足也被如实量化。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yogesh Kumar</p>
+                <p class="muted">机构以论文为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24810" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.24810" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>2026-08-25 新稿。模型以 O(1) 每帧时间和内存更新固定状态，给出衰减谱、检测延迟与最短可检异常之间的理论联系，并报告 Apple M3 Pro 实测延迟；精度不足也被如实量化。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>许多流式异常模型内部仍缓存窗口，只报告 GPU 吞吐，难判断真实检测延迟和边缘设备成本。
+从本日报的选取理由看，2026-08-25 新稿。模型以 O(1) 每帧时间和内存更新固定状态，给出衰减谱、检测延迟与最短可检异常之间的理论联系，并报告 Apple M3 Pro 实测延迟；精度不足也被如实量化。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用固定状态完成严格因果检测，并解释记忆衰减怎样限制瞬态响应？
+对当前主题的关键意义在于：将固定状态递推接在高频诊断编码器后，测瞬态长度—检测延迟曲线、AUC、提前量、每点延迟和状态显存，避免只看吞吐。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>冻结视觉骨干，使用输入/状态依赖衰减门的对角线性状态空间递推，以因果下一嵌入预测自监督训练。
+阅读时需要把方法设计与主要结果一起看：Apple M3 Pro 上每帧 0.74/0.77 ms、超过 1300 FPS；Ped2/Avenue AUC 为 67.9%/70.2%，实测延迟 1.6/18.4 帧，明显低于基础衰减给出的 57-59 帧上界。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>Apple M3 Pro 上每帧 0.74/0.77 ms、超过 1300 FPS；Ped2/Avenue AUC 为 67.9%/70.2%，实测延迟 1.6/18.4 帧，明显低于基础衰减给出的 57-59 帧上界。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>精度落后非因果 SSM 基线，仅两个数据集且作者明确仍需补第三个大基准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>强项是可审计的流式延迟，弱项是当前精度。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>将固定状态递推接在高频诊断编码器后，测瞬态长度—检测延迟曲线、AUC、提前量、每点延迟和状态显存，避免只看吞吐。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变及 AI 交叉</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变及 AI 交叉</p>
+              <h3>PAT：从 C-Mod 到 SPARC 的垂直不稳定增长率代理</h3>
+              <p class="paper__subtitle">Physics Attention Transformer Surrogate for Rapid Vertical Instability Growth Rate Prediction: Alcator C-Mod to SPARC</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">2026-08-25 新稿。模型同时预测标量增长率与二维扰动环向电流密度，在 C-Mod 留出平衡和 SPARC 合成平衡上给出控制相关精度，直接连接跨装置代理、空间解释与实时控制。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Arunav Kumar, Cesar Clauser, Theodore Golfinopoulos, Cristina Rea, Francesco Capersene, Dan Boyer, SPARC Team, Alcator C-Mod Team</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24785" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.24785" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>2026-08-25 新稿。模型同时预测标量增长率与二维扰动环向电流密度，在 C-Mod 留出平衡和 SPARC 合成平衡上给出控制相关精度，直接连接跨装置代理、空间解释与实时控制。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>非刚性自由边界响应模型难以满足控制周期，需要既快又能保留空间失稳结构的代理。
+从本日报的选取理由看，2026-08-25 新稿。模型同时预测标量增长率与二维扰动环向电流密度，在 C-Mod 留出平衡和 SPARC 合成平衡上给出控制相关精度，直接连接跨装置代理、空间解释与实时控制。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否以控制相关延迟重建垂直失稳增长率与空间响应，并跨 C-Mod/SPARC 工况工作？
+对当前主题的关键意义在于：先把二维响应辅助头接入现有失稳预测，比较标量单任务与联合空间监督的跨放电/跨装置 MAE、提前量、P99 延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c15f13fb67c1af24.png" alt="Figure 8: (a) PAT vs. MEQ-FGE-L ( R 2 = 0.994 R^{2}=0.994 ). (b) RZIP vs. MEQ-FGE-L ( R 2 = 0.82 R^{2}=0.82 ). (c) Absolute error comparison on the direct benchmark subset.">
+                    <figcaption>Figure 8: (a) PAT vs. MEQ-FGE-L ( R 2 = 0.994 R^{2}=0.994 ). (b) RZIP vs. MEQ-FGE-L ( R 2 = 0.82 R^{2}=0.82 ). (c) Absolute error comparison on the direct benchmark subset.</figcaption>
+                  </figure>
+                  <p>Physics Attention Transformer 学习 MEQ-FGE-L 标签，联合回归标量增长率和二维扰动环向电流密度，并与 FNO2D、DeepONet 对照。
+阅读时需要把方法设计与主要结果一起看：C-Mod 留出 MAE 5.4 s⁻¹，SPARC 合成案例 12.7 s⁻¹，空间本征函数误差约 5%；摘要报告归一化增长率误差与空间重建优于两类算子基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>C-Mod 留出 MAE 5.4 s⁻¹，SPARC 合成案例 12.7 s⁻¹，空间本征函数误差约 5%；摘要报告归一化增长率误差与空间重建优于两类算子基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>SPARC 部分为合成平衡，尚未报告闭环控制、尾延迟和分布外校准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮最直接的跨装置、空间可解释聚变代理。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先把二维响应辅助头接入现有失稳预测，比较标量单任务与联合空间监督的跨放电/跨装置 MAE、提前量、P99 延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变及 AI 交叉</p>
+              <h3>逆 Grad-Shafranov 神经网络：面向异步触发的托卡马克磁控制</h3>
+              <p class="paper__subtitle">An Inverse Grad-Shafranov Neural Network Approach to Tokamak Magnetic Control</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">2026-08-25 新稿。TCV 实验把期望边界到极向场线圈电流的逆映射交给快速代理，经典控制器保留约束，并展示异步触发下的提前终止与 strike-point 自适应路径。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Allen M. Wang, Adriano Mele, Cosmas Heiß 等，TCV Team 与 EUROfusion Tokamak Exploitation Team</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.23976" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.23976" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>2026-08-25 新稿。TCV 实验把期望边界到极向场线圈电流的逆映射交给快速代理，经典控制器保留约束，并展示异步触发下的提前终止与 strike-point 自适应路径。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>未来装置需要高精度边界控制，同时诊断覆盖有限、实时目标会被异步事件改变。
+从本日报的选取理由看，2026-08-25 新稿。TCV 实验把期望边界到极向场线圈电流的逆映射交给快速代理，经典控制器保留约束，并展示异步触发下的提前终止与 strike-point 自适应路径。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从期望等离子体边界快速反推线圈电流，并保留约束、触发与运行安全？
+对当前主题的关键意义在于：将破裂风险或视觉异常作为异步 trigger，只允许改变目标/终止信号，比较无触发、固定阈值与学习触发的边界误差、误触发、P99 延迟和安全约束违例。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/38757a178ee85d37.png" alt="Figure 1: Simplified view of the shape control architecture including the proposed I ​ G ​ S n ​ n IGS_{nn} solver in the case of the TCV tokamak. A set of shape descriptors is provided to the IGS solver, along with a reconstruction of a set of internal plasma parameters of interest. The proposed solver produces target values for the shaping coils currents 𝐈 s targ \mathbf{I}^{\text{targ}}_{s} . These are passed to the lower-level control architecture in charge of regulating the active coil currents, the plasma position and current, and of vertically stabilizing the plasma; note that the current requests may be corrected with terms aimed at compensating the stray field, see Eq. ( 15 ). The resulting control voltages 𝐕 a \mathbf{V}_{a} are applied to the coils of the tokamaks. The magnetic measurements from the tokamak (magnetic fluxes and fields) together with the measured active currents 𝐈 a \mathbf{I}_{a} are fed to the RT equilibrium reconstruction algorithm (LIUQE in the case of TCV), which provides a full flux map and an estimate of the internal plasma parameters, which is fed back to the IGS solver. Assuming that the shaping currents are actuated perfectly, i.e. 𝐈 s ≈ 𝐈 s targ \mathbf{I}_{s}\approx\mathbf{I}^{\text{targ}}_{s} , the IGS solver is an approximate inversion of the plant including the equilibrium reconstruction, and the whole loop is approximately unitary.">
+                    <figcaption>Figure 1: Simplified view of the shape control architecture including the proposed I ​ G ​ S n ​ n IGS_{nn} solver in the case of the TCV tokamak. A set of shape descriptors is pro...</figcaption>
+                  </figure>
+                  <p>快速神经代理提供目标边界到 PF 线圈电流的逆映射，经典控制器执行运行约束；模拟和部分实验展示 strike-point 调整与提前终止。
+阅读时需要把方法设计与主要结果一起看：TCV 实验相对标准放电准备改善 shaping；单网络覆盖多种磁构型，并对实时触发给出部分实验验证。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>TCV 实验相对标准放电准备改善 shaping；单网络覆盖多种磁构型，并对实时触发给出部分实验验证。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>当前没有显式实时形状反馈，实时适配仅部分完成实验闭环，摘要未给出尾延迟。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>价值在“学习逆映射＋经典约束”的控制接口，而非取代整个控制器。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>将破裂风险或视觉异常作为异步 trigger，只允许改变目标/终止信号，比较无触发、固定阈值与学习触发的边界误差、误触发、P99 延迟和安全约束违例。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 - P1：不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>SeisMamba：低延迟长波形与跨区域早期预警</h3>
+              <p class="paper__subtitle">SeisMamba: Low-Latency Single-Station Seismic Magnitude Estimation for Spatially Distributed Earthquake Early Warning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用为稀疏台站地震预警；可迁移模块是层次卷积、稀疏选择性 SSM、多尺度融合和辅助时间预测；对应高频长波形、低延迟与跨区域/装置泛化。线性状态扫描可降长序列显存，但多尺度卷积增加激活。风险是三分量规则波形不含真实异步通道、区域外退化仍明显。最小实验：在高频诊断上比较 TCN、Mamba 与 SeisMamba 的 AUC、提前量、跨采样率性能、峰值显存和 P95 延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Quenton Yeo, Zhaoge Bi, Linghan Huang, Luke Stephen Higgins, Flora Salim, Huaming Chen</p>
+                <p class="muted">原始应用为单站地震预警</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24561" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.24561" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用为稀疏台站地震预警；可迁移模块是层次卷积、稀疏选择性 SSM、多尺度融合和辅助时间预测；对应高频长波形、低延迟与跨区域/装置泛化。线性状态扫描可降长序列显存，但多尺度卷积增加激活。风险是三分量规则波形不含真实异步通道、区域外退化仍明显。最小实验：在高频诊断上比较 TCN、Mamba 与 SeisMamba 的 AUC、提前量、跨采样率性能、峰值显存和 P95 延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>密集地震台网成本高，单站模型必须在短观测窗、长波形和区域分布移位下兼顾准确率与延迟。
+从本日报的选取理由看，【P1】原始应用为稀疏台站地震预警；可迁移模块是层次卷积、稀疏选择性 SSM、多尺度融合和辅助时间预测；对应高频长波形、低延迟与跨区域/装置泛化。线性状态扫描可降长序列显存，但多尺度卷积增加激活。风险是三分量规则波形不含真实异步通道、区域外退化仍明显。最小实验：在高频诊断上比较 TCN、Mamba 与 SeisMamba 的 AUC、提前量、跨采样率性能、峰值显存和 P95 延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何以轻量长序列模型从单站三分量波形快速估计震级并跨区域部署？
+对当前主题的关键意义在于：原始领域是单站地震预警；模块是选择性 SSM、多尺度融合与辅助时间头；对应高频长序列、低延迟和跨装置泛化。预期降低长序列显存，卷积金字塔增加激活。风险是规则同步输入。最小实验比较 AUC、提前量、跨采样率、显存与延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/fbd5b0c0e6c31d4c.png" alt="Figure 1. SeisMamba architecture overview. Local convolutions extract short-range waveform morphology, sparse Mamba blocks model longer temporal context, and the output heads produce scalar and time-resolved magnitude estimates. A pipeline diagram showing a three-component seismic waveform processed by a convolutional encoder, sparse Mamba blocks, multi-scale feature fusion, and scalar and temporal prediction heads.">
+                    <figcaption>Figure 1. SeisMamba architecture overview. Local convolutions extract short-range waveform morphology, sparse Mamba blocks model longer temporal context, and the output heads produ...</figcaption>
+                  </figure>
+                  <p>层次卷积提取局部模式，稀疏选择性状态空间建模长程依赖，多尺度融合并加入辅助时间预测头。
+阅读时需要把方法设计与主要结果一起看：STEAD 上摘要报告最佳 MSE/RMSE/R²；NVIDIA T4、batch 32 推理 0.55 ms，约为 Transformer 基线三倍速度，并做 Chile—Taiwan 区域留出测试。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>STEAD 上摘要报告最佳 MSE/RMSE/R²；NVIDIA T4、batch 32 推理 0.55 ms，约为 Transformer 基线三倍速度，并做 Chile—Taiwan 区域留出测试。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是异步多变量观测，未报告百万长度、真实 Δt 或采样率变化压力测试。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合做 P1 的低延迟高频支路，不是完整统一骨干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是单站地震预警；模块是选择性 SSM、多尺度融合与辅助时间头；对应高频长序列、低延迟和跨装置泛化。预期降低长序列显存，卷积金字塔增加激活。风险是规则同步输入。最小实验比较 AUC、提前量、跨采样率、显存与延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>MomADv2：按当前指令筛选可靠历史记忆</h3>
+              <p class="paper__subtitle">MomADv2: Reliable Temporal Memory for End-to-End Autonomous Driving</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-24</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用为长时程自动驾驶；可迁移模块是按时间连续性与当前指令一致性筛选历史 query、选择性 SSM 演化意图和 flow-matching 残差修正；对应工况切换后旧历史失效与流式记忆污染。筛选减少无效历史计算，但残差流增加推理开销。风险是当前指令/风险状态错误时会系统性过滤正确前兆。最小实验：让当前风险状态查询高低频历史，比较全历史、时间邻近和指令一致筛选的 AUC、提前量、峰值显存与延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ziying Song, Shengkai Zhang, Lin Liu 等</p>
+                <p class="muted">原始应用为端到端自动驾驶规划</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.23405" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.23405" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用为长时程自动驾驶；可迁移模块是按时间连续性与当前指令一致性筛选历史 query、选择性 SSM 演化意图和 flow-matching 残差修正；对应工况切换后旧历史失效与流式记忆污染。筛选减少无效历史计算，但残差流增加推理开销。风险是当前指令/风险状态错误时会系统性过滤正确前兆。最小实验：让当前风险状态查询高低频历史，比较全历史、时间邻近和指令一致筛选的 AUC、提前量、峰值显存与延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长时程记忆可改善连续性，但控制指令切换后旧历史可能失效并持续误导规划。
+从本日报的选取理由看，【P1】原始应用为长时程自动驾驶；可迁移模块是按时间连续性与当前指令一致性筛选历史 query、选择性 SSM 演化意图和 flow-matching 残差修正；对应工况切换后旧历史失效与流式记忆污染。筛选减少无效历史计算，但残差流增加推理开销。风险是当前指令/风险状态错误时会系统性过滤正确前兆。最小实验：让当前风险状态查询高低频历史，比较全历史、时间邻近和指令一致筛选的 AUC、提前量、峰值显存与延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何只保留与当前状态/指令一致的历史，并修正长时预测的局部累积误差？
+对当前主题的关键意义在于：原始领域是自动驾驶规划；模块是状态条件历史筛选和残差修正；对应工况切换后的记忆污染。可降低无效历史显存，残差流增加计算。风险是查询状态误判。最小实验比较三种历史策略的 AUC、提前量、显存与延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3260c2e401bdffd3.png" alt="Figure 1: Motivation of MomADv2. (a) Long-horizon planning requires consistent intentions across planning cycles. (b) Existing methods, represented by MomAD ( 29 ; 11 ; 40 ) , indiscriminately reuse history, introducing new interference. (c) MomADv2 selectively preserves reliable states and refines local trajectory deviations via flow matching. (d) This reliable memory inheritance enables more accurate and safer long-horizon planning.">
+                    <figcaption>Figure 1: Motivation of MomADv2. (a) Long-horizon planning requires consistent intentions across planning cycles. (b) Existing methods, represented by MomAD ( 29 ; 11 ; 40 ) , indi...</figcaption>
+                  </figure>
+                  <p>选择性状态空间记忆按连续性和指令一致性过滤历史规划 query，再用 flow-matching 残差场细化轨迹。
+阅读时需要把方法设计与主要结果一起看：NAVSIM、Bench2Drive 和 nuScenes 上改进长时规划；6 秒规划相对 MomAD 平均碰撞率降低 15.6%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>NAVSIM、Bench2Drive 和 nuScenes 上改进长时规划；6 秒规划相对 MomAD 平均碰撞率降低 15.6%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>输入仍是规则帧/规划 query，未显式保留 Δt，也没有高低频异步通道验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>提供“当前状态条件的历史筛选＋可纠错残差”机制。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是自动驾驶规划；模块是状态条件历史筛选和残差修正；对应工况切换后的记忆污染。可降低无效历史显存，残差流增加计算。风险是查询状态误判。最小实验比较三种历史策略的 AUC、提前量、显存与延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>本轮空缺判断：完整异步百万长度统一骨干</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for a complete asynchronous million-length unified backbone*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-27 检索判断</p>
+          <p>论文链接：[arXiv cs.LG recent](https://arxiv.org/list/cs.LG/recent)</p>
+          <p>选取理由：【P1】本轮空缺判断。SeisMamba 解决规则高频长波形，MomADv2 解决状态条件历史；未发现同时保留真实 Δt、统一多采样率异步通道、百万长度线性显存、流式更新和跨采样率鲁棒性的完整新增。</p>
+          <p>研究背景：局部流式或历史筛选机制不能包装成完整高低频统一模型。</p>
+          <p>核心问题：是否有直接满足 P1 全部约束的新增？没有。</p>
+          <p>方法与关键创新：不适用。</p>
+          <p>主要结果：直接强新增空缺。</p>
+          <p>局限性：项目页与代码发布可能存在索引延迟。</p>
+          <p>总结：维持完整证据门槛。</p>
+          <p>研究相关性：下一轮继续检查 continuous/selective SSM、multi-rate streaming、adaptive sampling、million-length 与 token recycling。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发 - P2：RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>本轮空缺判断：直接原生 RGB-Event 开放属性识别</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for direct native RGB-Event open-vocabulary attribute recognition*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-27 检索判断</p>
+          <p>论文链接：[arXiv cs.CV recent](https://arxiv.org/list/cs.CV/recent)</p>
+          <p>选取理由：【P2】本轮空缺判断。最新批次仅发现时间边事件图、视频稀疏追踪等相邻工作；未发现同时具备原生异步事件、RGB 时间对齐、区域/属性动态加权、开放词表或软标签、模态缺失训练和不确定性校准的新论文。</p>
+          <p>研究背景：一般事件视觉、目标跟踪或图事件建模不能包装成 RGB-Event 属性识别方案。</p>
+          <p>核心问题：是否有可直接替代 TriPro 的完整新增？没有。</p>
+          <p>方法与关键创新：不适用。</p>
+          <p>主要结果：P2 本轮 0 篇合格新增。</p>
+          <p>局限性：项目页和代码发布可能存在索引延迟。</p>
+          <p>总结：不以领域相似或模块拼接凑数。</p>
+          <p>研究相关性：下一轮继续检查 native event representation、event-language alignment、attribute recognition、quality-aware fusion、missing modality 与 calibration。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>ReGround-Surg：以可靠性图抑制错误视觉锚点传播</h3>
+              <p class="paper__subtitle">ReGround-Surg: Reliability-Guided Anchor Grounding for Referring Surgical Video Segmentation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用为手术视频目标定位；可迁移模块是文本/状态条件空间可靠性图、门控侧适配器和可靠性加权视觉到查询注意力；对应用诊断风险状态查询局部图像证据并抑制无关区域。轻量适配器速度损失很小，但仍需逐帧视觉编码。风险是初始可靠性图错后继续强化偏差、遮挡下关键区域缺失。最小实验：用时序风险向量替代文本 query，比 late fusion、普通 cross-attention 与可靠性门控的 AUC、提前量、显存和 P95 延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiaxin Wen, Ming Yin, Lu Liu, Zeyu Fu</p>
+                <p class="muted">原始应用为手术视频指代表达分割</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24671" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/JiaxinWen1/ReGround-Surg" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.24671" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用为手术视频目标定位；可迁移模块是文本/状态条件空间可靠性图、门控侧适配器和可靠性加权视觉到查询注意力；对应用诊断风险状态查询局部图像证据并抑制无关区域。轻量适配器速度损失很小，但仍需逐帧视觉编码。风险是初始可靠性图错后继续强化偏差、遮挡下关键区域缺失。最小实验：用时序风险向量替代文本 query，比 late fusion、普通 cross-attention 与可靠性门控的 AUC、提前量、显存和 P95 延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>两阶段视频分割一旦初始锚点错误，后续跟踪会持续传播错误；复杂手术场景中的相似器械和遮挡会放大问题。
+从本日报的选取理由看，【P3】原始应用为手术视频目标定位；可迁移模块是文本/状态条件空间可靠性图、门控侧适配器和可靠性加权视觉到查询注意力；对应用诊断风险状态查询局部图像证据并抑制无关区域。轻量适配器速度损失很小，但仍需逐帧视觉编码。风险是初始可靠性图错后继续强化偏差、遮挡下关键区域缺失。最小实验：用时序风险向量替代文本 query，比 late fusion、普通 cross-attention 与可靠性门控的 AUC、提前量、显存和 P95 延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在锚点选择阶段估计视觉证据可靠性，并同时增强相关区域、抑制错误证据？
+对当前主题的关键意义在于：原始领域是手术视频分割；模块是状态条件可靠性图和双向门控；对应抑制无关视觉信息。适配器计算较轻，逐帧编码仍占显存。风险是可靠性自强化错误。最小实验比较三类融合的 AUC、提前量、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/87fae005b11402a7.png" alt="Figure 1: Visualisation of ReSurgSAM2 initial frame grounding and subsequent tracking failures under multi-instrument confusion, showing per-frame segmentation results for the expression “large needle driver is manipulating tool” across four conditions: ground truth, ReSurgSAM2, ReSurgSAM2 (w/o Stage II), and ReGround-Surg (Ours, w/o Stage II).">
+                    <figcaption>Figure 1: Visualisation of ReSurgSAM2 initial frame grounding and subsequent tracking failures under multi-instrument confusion, showing per-frame segmentation results for the expr...</figcaption>
+                  </figure>
+                  <p>预测查询条件空间可靠性图，在门控侧适配器和可靠性加权视觉—查询注意力两支复用。
+阅读时需要把方法设计与主要结果一起看：Ref-EndoVis17/18 三个划分上持续改进既有方法，摘要称速度下降可忽略；代码已公开，PRCV 2026 Oral。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>Ref-EndoVis17/18 三个划分上持续改进既有方法，摘要称速度下降可忽略；代码已公开，PRCV 2026 Oral。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是异步诊断融合或预警任务，可靠性图本身未提供概率校准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合做 P3 的“先可靠定位、后融合”最小替换。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是手术视频分割；模块是状态条件可靠性图和双向门控；对应抑制无关视觉信息。适配器计算较轻，逐帧编码仍占显存。风险是可靠性自强化错误。最小实验比较三类融合的 AUC、提前量、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>MoRF-AST：运行分布变化下校准稀疏传感重建</h3>
+              <p class="paper__subtitle">MoRF-AST: Calibrated Probabilistic Virtual Sensing for Structural Monitoring under Changing Operating Conditions</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用为稀疏噪声传感下全场结构重建；可迁移模块是模态坐标参考后验、残差 flow matching、依据已安装传感器历史进行的方差尺度运输；对应跨放电/装置分布变化和预警不确定性校准。后验采样增加计算与显存，部署校准只需历史稀疏传感。风险是变化不以尺度偏差为主时运输方向错误。最小实验：在跨装置破裂预测上比较温度缩放、conformal 与 AST 的 AUC、覆盖误差、提前量、显存和延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Wingho Feng, Quanwang Li, Ming Zhong, Jingyu Yang, Chen Wang</p>
+                <p class="muted">原始应用为桥梁结构虚拟传感</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24531" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.24531" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用为稀疏噪声传感下全场结构重建；可迁移模块是模态坐标参考后验、残差 flow matching、依据已安装传感器历史进行的方差尺度运输；对应跨放电/装置分布变化和预警不确定性校准。后验采样增加计算与显存，部署校准只需历史稀疏传感。风险是变化不以尺度偏差为主时运输方向错误。最小实验：在跨装置破裂预测上比较温度缩放、conformal 与 AST 的 AUC、覆盖误差、提前量、显存和延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>稀疏测量到全场响应本就欠定，训练与运行分布变化还会让后验区间失去概率含义。
+从本日报的选取理由看，【P3】原始应用为稀疏噪声传感下全场结构重建；可迁移模块是模态坐标参考后验、残差 flow matching、依据已安装传感器历史进行的方差尺度运输；对应跨放电/装置分布变化和预警不确定性校准。后验采样增加计算与显存，部署校准只需历史稀疏传感。风险是变化不以尺度偏差为主时运输方向错误。最小实验：在跨装置破裂预测上比较温度缩放、conformal 与 AST 的 AUC、覆盖误差、提前量、显存和延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保持均值精度的同时，针对新运行工况校准后验宽度？
+对当前主题的关键意义在于：原始领域是结构虚拟传感；模块是残差概率流与尺度运输；对应跨装置不确定性。采样增加计算/显存，AST 校准较轻。风险是非尺度型偏移。最小实验比较三类校准的 AUC、覆盖误差、提前量、显存与延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3c3f829353733ce1.png" alt="Figure 7: Direct posterior modeling and likelihood guidance across source validation and V5">
+                    <figcaption>Figure 7: Direct posterior modeling and likelihood guidance across source validation and V5</figcaption>
+                  </figure>
+                  <p>在归一化模态坐标构造解析高斯参考后验，仅对白化残差训练条件流；AST 用历史传感估计尺度并做保持均值的 Bures-Wasserstein 方差运输。
+阅读时需要把方法设计与主要结果一起看：桥面基准均值 NRMSE 7.20%，两种直接条件流为 16.1%/17.9%；八个移位域平均覆盖误差从 0.0535 降至 0.0236，减少 55.9%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>桥面基准均值 NRMSE 7.20%，两种直接条件流为 16.1%/17.9%；八个移位域平均覆盖误差从 0.0535 降至 0.0236，减少 55.9%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>仅对尺度主导偏移有效，迁移到分类预警需重新定义后验和覆盖目标。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>为 P3 增加跨工况后验校准，而非新的融合骨干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是结构虚拟传感；模块是残差概率流与尺度运输；对应跨装置不确定性。采样增加计算/显存，AST 校准较轻。风险是非尺度型偏移。最小实验比较三类校准的 AUC、覆盖误差、提前量、显存与延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>本轮空缺判断：直接视觉—诊断时序托卡马克破裂预测</h3>
+            </div>
+          </div>
+          <p>英文原标题：*Empty slot for direct image-diagnostic tokamak disruption prediction*</p>
+          <p>作者/机构：不适用</p>
+          <p>发布日期：2026-08-27 检索判断</p>
+          <p>论文链接：[arXiv plasma recent](https://arxiv.org/list/physics.plasm-ph/recent)</p>
+          <p>选取理由：【P3】本轮空缺判断。oFM 提供图像—纵向事件融合，ReGround-Surg 提供可靠视觉取证，MoRF-AST 提供跨工况校准；仍未发现同时使用托卡马克可见光/IR 图像、异步诊断时序、低延迟破裂预警、模态缺失训练、不确定性与跨装置评估的新论文。</p>
+          <p>研究背景：跨领域模块不能替代装置级视觉—诊断破裂证据。</p>
+          <p>核心问题：是否有直接匹配 P3 全部约束的新增？没有。</p>
+          <p>方法与关键创新：不适用。</p>
+          <p>主要结果：直接强新增空缺。</p>
+          <p>局限性：装置内部材料可能尚未公开索引。</p>
+          <p>总结：维持直接任务证据门槛。</p>
+          <p>研究相关性：下一轮继续检查 ECEI/BES/visible/IR、early warning、cross-device、missing modality 与 uncertainty。</p>
+          <p>是否值得精读：本轮空缺判断。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>在研课题启发 - P4：Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-13" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>HAP：按跨模态对齐质量给注意力头加权剪枝</h3>
+              <p class="paper__subtitle">HAP: Head-Adaptive Visual Token Pruning via Cross-Modal Alignment</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-24</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】原始应用为高分辨率 VLM；可迁移模块是 PAQ 查询—区域对齐质量、按头软加权的重要性、分组层预算；对应查询相关性、跨模态可靠性与层级预算联合。保留 5.6% token 可显著降 prefill 与激活，但 PAQ/分组打分有额外开销。风险是文本/时序 query 错误时高质量头也会指向错误区域，硬删后不可回收。最小实验：用破裂风险 query 比平均头注意力、HAP 与 OmniPack 的瞬态召回、AUC、FLOPs、峰值显存和延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yuanhao Sun, Huawei Ji, Yuan Jin, Cheng Deng, Luoyi Fu, Xinbing Wang</p>
+                <p class="muted">原始应用为视觉语言模型 prefill，arXiv 标注 EMNLP 2026</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.23921" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/baokou-fw2/HAP" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.23921" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】原始应用为高分辨率 VLM；可迁移模块是 PAQ 查询—区域对齐质量、按头软加权的重要性、分组层预算；对应查询相关性、跨模态可靠性与层级预算联合。保留 5.6% token 可显著降 prefill 与激活，但 PAQ/分组打分有额外开销。风险是文本/时序 query 错误时高质量头也会指向错误区域，硬删后不可回收。最小实验：用破裂风险 query 比平均头注意力、HAP 与 OmniPack 的瞬态召回、AUC、FLOPs、峰值显存和延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>把所有注意力头等权平均会让不对齐的头放大背景，掩盖细粒度查询证据。
+从本日报的选取理由看，【P4】原始应用为高分辨率 VLM；可迁移模块是 PAQ 查询—区域对齐质量、按头软加权的重要性、分组层预算；对应查询相关性、跨模态可靠性与层级预算联合。保留 5.6% token 可显著降 prefill 与激活，但 PAQ/分组打分有额外开销。风险是文本/时序 query 错误时高质量头也会指向错误区域，硬删后不可回收。最小实验：用破裂风险 query 比平均头注意力、HAP 与 OmniPack 的瞬态召回、AUC、FLOPs、峰值显存和延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样识别真正与查询对齐的注意力头，并在给定 FLOPs 预算下分层保留视觉 token？
+对当前主题的关键意义在于：原始领域是 VLM prefill；模块是头对齐质量与层预算；对应查询和跨模态可靠性联合选择。可降 FLOPs/显存但增加打分。风险是 query 偏置和硬删。最小实验比较召回、AUC、FLOPs、显存与延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/30e412044522530e.png" alt="Figure 3: Overview of HAP. Left: FLOPs-driven budget allocation progressively reduces visual tokens across M M layer groups. Right: unified PAQ-softmax aggregation. Head attention maps are softly fused within each layer and then aggregated within each group, yielding a reliable score for visual token pruning.">
+                    <figcaption>Figure 3: Overview of HAP. Left: FLOPs-driven budget allocation progressively reduces visual tokens across M M layer groups. Right: unified PAQ-softmax aggregation. Head attention ...</figcaption>
+                  </figure>
+                  <p>PAQ 衡量每个头的提示—区域对齐质量，软加权聚合头注意力，并按层组分配目标预算后剪枝。
+阅读时需要把方法设计与主要结果一起看：18 个基准上报告先进权衡；LLaVA-1.5-7B 九任务仅保留 5.6% token 时保持 99.1% 原始性能，比 AutoPrune 高 4.2 点。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>18 个基准上报告先进权衡；LLaVA-1.5-7B 九任务仅保留 5.6% token 时保持 99.1% 原始性能，比 AutoPrune 高 4.2 点。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>硬剪无回收，论文结果集中在 VLM，未报告短暂事件和模态缺失鲁棒性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>把“哪些头可信”加入 token 重要性估计。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是 VLM prefill；模块是头对齐质量与层预算；对应查询和跨模态可靠性联合选择。可降 FLOPs/显存但增加打分。风险是 query 偏置和硬删。最小实验比较召回、AUC、FLOPs、显存与延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-14" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>VisCache：关键帧筛选与非对称 KV 压缩</h3>
+              <p class="paper__subtitle">VisCache: Visual KV Cache Pruning for Efficient Vision Large Language Model Inference</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】原始应用为视频 VLM 长上下文；可迁移模块是轻量模型先滤时间冗余关键帧、抛物线层预算、key 剪枝但 value 融合的非对称更新；对应压缩位置、层预算和删除证据回收。可直接降 KV 峰值显存，但多一次轻量 VLM 前传。风险是关键帧筛选漏掉短暂事件，value 融合可能稀释峰值。最小实验：比较仅帧剪、仅 KV 剪与 VisCache 在 5%/10%/20% 预算的关键事件召回、显存、prefill 和端到端延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Lyuke Wang, Zhuo Li, Guangxu Zhu</p>
+                <p class="muted">原始应用为长上下文 VLM 推理</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24063" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/Wlklk/VisCache" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.24063" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】原始应用为视频 VLM 长上下文；可迁移模块是轻量模型先滤时间冗余关键帧、抛物线层预算、key 剪枝但 value 融合的非对称更新；对应压缩位置、层预算和删除证据回收。可直接降 KV 峰值显存，但多一次轻量 VLM 前传。风险是关键帧筛选漏掉短暂事件，value 融合可能稀释峰值。最小实验：比较仅帧剪、仅 KV 剪与 VisCache 在 5%/10%/20% 预算的关键事件召回、显存、prefill 和端到端延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视觉 KV 缓存随视频长度膨胀，统一跨层剪枝会在关键层造成过度信息损失。
+从本日报的选取理由看，【P4】原始应用为视频 VLM 长上下文；可迁移模块是轻量模型先滤时间冗余关键帧、抛物线层预算、key 剪枝但 value 融合的非对称更新；对应压缩位置、层预算和删除证据回收。可直接降 KV 峰值显存，但多一次轻量 VLM 前传。风险是关键帧筛选漏掉短暂事件，value 融合可能稀释峰值。最小实验：比较仅帧剪、仅 KV 剪与 VisCache 在 5%/10%/20% 预算的关键事件召回、显存、prefill 和端到端延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何同时去除时间冗余和跨层 KV 冗余，又保留被删 value 的上下文？
+对当前主题的关键意义在于：原始领域是长视频 VLM；模块是关键帧＋层预算＋value 合并；对应时空/层级压缩和回收。可降 KV 显存，增加前置筛选。风险是瞬态遗漏。最小实验比较召回、显存、prefill 与端到端延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/ef5dc52bf9265198.png" alt="Figure 2: Overview of VisCache. The framework operates in two synergistic stages: (I) A lightweight scout VLM performs prompt-aware keyframe filtering via MMR to eliminate temporal redundancy at the source; (II) During inference, the VLLM constructs the KV cache, which is subsequently refined by PruneKV through attention-aware, layer-wise compression.">
+                    <figcaption>Figure 2: Overview of VisCache. The framework operates in two synergistic stages: (I) A lightweight scout VLM performs prompt-aware keyframe filtering via MMR to eliminate temporal...</figcaption>
+                  </figure>
+                  <p>轻量 VLM 选语义关键帧；PruneKV 用抛物线层预算，选择性删 key 并融合 value。
+阅读时需要把方法设计与主要结果一起看：仅保留 19%-28% KV 时最高 2.35 倍加速并显著降低内存，摘要报告保持有竞争力性能。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>仅保留 19%-28% KV 时最高 2.35 倍加速并显著降低内存，摘要报告保持有竞争力性能。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>选择器前传开销未充分拆分，关键帧方案对稀疏瞬态存在天然风险。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>比纯硬删多了 value 回收与层级预算，但仍需瞬态压力测试。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域是长视频 VLM；模块是关键帧＋层预算＋value 合并；对应时空/层级压缩和回收。可降 KV 显存，增加前置筛选。风险是瞬态遗漏。最小实验比较召回、显存、prefill 与端到端延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-8">
+        <div class="panel__head">
+          <h2>多模态学习 / 图像 / 计算机视觉 / Token 压缩</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉 / Token 压缩</p>
+              <h3>KATok：按视频内容自适应保留或删除 Token</h3>
+              <p class="paper__subtitle">Keep-or-Drop? Adaptive Tokenizer for Compact Video Representation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">2026-08-25 新稿。KATok 不再固定视频 VAE 压缩率，而为每个 token 学习 keep-or-drop 概率，并用位置预测缓解删除造成的时空错位，是 P4 数据依赖预算的新基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yeonkyeong Lee, Hyunsung Go, Jongmin Kim, Sewoong Lim, Donghoon Lee</p>
+                <p class="muted">机构以论文为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24293" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.24293" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>2026-08-25 新稿。KATok 不再固定视频 VAE 压缩率，而为每个 token 学习 keep-or-drop 概率，并用位置预测缓解删除造成的时空错位，是 P4 数据依赖预算的新基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视频片段的时空复杂度差异很大，固定 VAE 压缩率会对静态片段浪费预算、对快速变化片段过度压缩。
+从本日报的选取理由看，2026-08-25 新稿。KATok 不再固定视频 VAE 压缩率，而为每个 token 学习 keep-or-drop 概率，并用位置预测缓解删除造成的时空错位，是 P4 数据依赖预算的新基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何按内容动态选择潜 token，同时避免 token 删除破坏原始时空结构？
+对当前主题的关键意义在于：在视频/Event token 上复现 keep/drop 与位置预测，比较固定保留、硬删和合并回收的瞬态召回、重建误差、FLOPs、峰值显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/da2bd06481543375.png" alt="Figure S3 : Qualitative video generation results with mask visualization on UCF-101. Each row shows a sample generated by the cascaded generation pipeline at 256 2 × 16 256^{2}\times 16 resolution, visualized with a 2-frame skip. The left column displays the token selection mask generated by the mask prior (white = active, black = dropped), and the right column shows the corresponding generated video frames. The cascaded model adaptively allocates more tokens to regions with complex motion and fine-grained details, while suppressing tokens in static or homogeneous areas.">
+                    <figcaption>Figure S3 : Qualitative video generation results with mask visualization on UCF-101. Each row shows a sample generated by the cascaded generation pipeline at 256 2 × 16 256^{2}\tim...</figcaption>
+                  </figure>
+                  <p>Transformer VAE 联合学习潜 token 与 keep-or-drop 选择器，并提出级联/联合位置预测恢复空间一致性。
+阅读时需要把方法设计与主要结果一起看：摘要报告达到先进压缩率下的强重建与生成质量，分析将收益归因于时空冗余削减与无信息 token 删除；未给出可引用的统一显存/延迟数字。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告达到先进压缩率下的强重建与生成质量，分析将收益归因于时空冗余削减与无信息 token 删除；未给出可引用的统一显存/延迟数字。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>选择器依赖训练，缺少极低预算瞬态召回、峰值显存和跨数据集鲁棒性报告。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>提供数据依赖压缩率与位置恢复的清晰组合。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>在视频/Event token 上复现 keep/drop 与位置预测，比较固定保留、硬删和合并回收的瞬态召回、重建误差、FLOPs、峰值显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习 / 图像 / 计算机视觉 / Token 压缩</p>
+              <h3>oFM：把病理图像与纵向诊疗轨迹汇成患者状态</h3>
+              <p class="paper__subtitle">A Multimodal Foundation Model for Longitudinal Patient Representation and Scalable Insight Generation in Oncology</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-25</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">2026-08-25 新稿。oFM 在 167 万癌症患者上联合每日临床/分子事件与 H&E 病理图像；它提供了图像—异步纵向时序融合、证据图解释和大规模冻结表征评估的完整跨领域参照。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Eugene Vorontsov, Yi Kan Wang, Alican Bozkurt 等</p>
+                <p class="muted">机构以论文为准</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.24688" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2608.24688" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>2026-08-25 新稿。oFM 在 167 万癌症患者上联合每日临床/分子事件与 H&E 病理图像；它提供了图像—异步纵向时序融合、证据图解释和大规模冻结表征评估的完整跨领域参照。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>肿瘤状态随治疗演化，单次病理图像或扁平表格都不能完整表示纵向病程与多组学证据。
+从本日报的选取理由看，2026-08-25 新稿。oFM 在 167 万癌症患者上联合每日临床/分子事件与 H&E 病理图像；它提供了图像—异步纵向时序融合、证据图解释和大规模冻结表征评估的完整跨领域参照。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把异质、不同频率的临床事件、组学与病理图像整合为可迁移的患者状态？
+对当前主题的关键意义在于：可迁移为“诊断 episode 编码＋图像状态＋证据图”三段式架构；先在单装置比较时序单模态、图像单模态与联合状态的 AUC、提前量、缺模态退化和显存延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/75170cb8a3c07e99.png" alt="Figure 1: oFM data and architecture. (a) Longitudinal patient records integrate clinical records (EHR and concepts curated from free-text reports), molecular NGS, IHC and ISH, and H&E pathology data. (b-d) The pretraining cohort is summarized by tumor type, modality coverage, and patient-level data partition. (e-f) Daily clinical and molecular facts are encoded as episode embeddings, while pathology embeddings are projected into the shared latent space. (g) A temporal Transformer integrates date-stamped, modality-tagged tokens to produce the patient representation h ⁡ ( t ∗ ) h(t^{*}) for downstream prognostic and treatment-benefit modeling.">
+                    <figcaption>Figure 1: oFM data and architecture. (a) Longitudinal patient records integrate clinical records (EHR and concepts curated from free-text reports), molecular NGS, IHC and ISH, and ...</figcaption>
+                  </figure>
+                  <p>编码每日临床与分子 episode，再与 H&E 病理图像跨时间整合；以下游预测连接证据时间图做机制解释。
+阅读时需要把方法设计与主要结果一起看：167 万患者、超过 100 万用于训练；总生存 AUC 0.774 对专家特征 0.563，11 个治疗比较队列中 9 个改善获益排序，汇总标准化 AUTOC 为基线约 3 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>167 万患者、超过 100 万用于训练；总生存 AUC 0.774 对专家特征 0.563，11 个治疗比较队列中 9 个改善获益排序，汇总标准化 AUTOC 为基线约 3 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>真实世界医疗数据存在选择偏差；摘要未公开峰值显存、端到端延迟与跨机构外部验证细节。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>规模与融合闭环完整，但计算代价和外部泛化仍需审计。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可迁移为“诊断 episode 编码＋图像状态＋证据图”三段式架构；先在单装置比较时序单模态、图像单模态与联合状态的 AUC、提前量、缺模态退化和显存延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>趋势 1：聚变代理从“给一个标量”走向“标量＋空间响应＋控制接口”</h3>
+          <p>PAT 联合增长率和扰动电流密度，逆 Grad-Shafranov 代理直接输出线圈电流；下一步验收应同时看空间误差、跨装置泛化、P99 延迟和闭环安全。</p>
+        </article>
+        <article class="trend">
+          <h3>趋势 2：Token 压缩开始联合预算、可靠性、位置与回收</h3>
+          <p>KATok 自适应保留率，HAP 校准注意力头，VisCache 分层剪 key 并合并 value；单一显著性硬删已不足以构成强基线。</p>
+        </article>
+        <article class="trend">
+          <h3>趋势 3：流式模型需要用“最短可检事件”审计状态记忆</h3>
+          <p>严格因果 SSM 表明基础衰减常数并不能直接代表检测响应；应实测不同瞬态长度的漏检率与检测延迟，而非只报告序列吞吐。</p>
+        </article>
+        <article class="trend">
+          <h3>趋势 4：跨域不确定性要区分均值漂移与方差失配</h3>
+          <p>MoRF-AST 只在运输方向匹配基础后验偏差时改善校准；P3 不能把任意后处理校准当成跨装置可靠性保证。</p>
+          <p>## 四、阅读优先级</p>
+        </article>
+        <article class="trend">
+          <h3>P0</h3>
+          <p>- PAT</p>
+          <p>- 逆 Grad-Shafranov 磁控制</p>
+          <p>- KATok</p>
+          <p>- HAP</p>
+        </article>
+        <article class="trend">
+          <h3>P1</h3>
+          <p>- 用 PAT 的标量＋空间辅助监督重设聚变代理基线，并加入跨装置与 P99 延迟验收。</p>
+          <p>- 统一 5%、10%、20% token 预算，对比 KATok、HAP、VisCache、DivPrune 与 OmniPack 的瞬态召回、显存和端到端延迟。</p>
+          <p>- 用诊断风险状态替代文本 query，验证 ReGround-Surg 式可靠性图能否抑制无关视觉区域。</p>
+        </article>
+        <article class="trend">
+          <h3>P2</h3>
+          <p>- oFM</p>
+          <p>- SeisMamba</p>
+          <p>- LS3M</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
