@@ -448,14 +448,26 @@ h1 {
 
 @media (max-width: 1100px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .sidebar {
     position: static;
+    width: 100%;
+    margin-left: 0;
+    min-width: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 12px;
+  }
+
+  .content,
+  .panel,
+  .cards,
+  .paper-card,
+  .paper-card > div,
+  .sidebar__block {
+    min-width: 0;
   }
 }
 
@@ -489,9 +501,23 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .card,
   .paper-card {
     grid-template-columns: 1fr;
     padding: 18px;
+  }
+
+  .card h3,
+  .paper-card h3,
+  .panel__head h2,
+  .paper--note,
+  .toc-section a,
+  .trend p,
+  .trend li {
+    overflow-wrap: anywhere;
   }
 }
