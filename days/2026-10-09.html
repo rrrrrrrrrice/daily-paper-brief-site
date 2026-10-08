@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-10-09</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-10-09 核心论文简报</h1>
+      <p class="hero__meta">面向对象：AI 时序、多任务学习、多模态学习、计算机视觉、Token 压缩与可控核聚变交叉研究团队</p>
+      <p class="hero__meta">信息检索截止时间：2026-10-09 05:04 +08:00</p>
+      <div class="hero__overview">
+        <p>今日主推荐 5 篇，覆盖实时长上下文世界动作模型、生成感知视频压缩、连续概率预测、异步残差融合和托卡马克实时平衡重建。主推荐与 P1-P4 独立选取，P1-P4 不占主推荐名额。</p>
+        <p>顶会顶刊回看独立收录 ERDM、FlexEvent 与 XComp，均为历史未收录并由 NeurIPS 2025 正式页面核验，不占主推荐名额。</p>
+        <p>P1 和 P2 没有满足完整约束的新增。P3 收录 UltraWorld，并保留直接托卡马克视觉与诊断时序破裂预测空缺。P4 收录 OmniPack 代码更新与 SemanticFold，并保留瞬态保真和完整系统指标空缺。多任务学习本轮也没有证据充分的新工作。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 ERDM：滚动扩散预测中的不确定性传播</a></li>
+              <li><a href="#paper-2">02 FlexEvent：跨工作频率的事件与帧自适应融合</a></li>
+              <li><a href="#paper-3">03 XComp：每个高选择性视频帧压到一个 token</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-10">10 OmniPack：官方代码发布的实质更新</a></li>
+              <li><a href="#paper-11">11 SemanticFold：压缩后不同能力没有同一阈值</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">不规则时序、时序分析与预测</a>
+            <ul>
+              <li><a href="#paper-4">04 Seq-Flow：自滚动误差控制的连续概率预测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">可控核聚变、等离子体诊断与预测</a>
+            <ul>
+              <li><a href="#paper-8">08 物理合成预训练的实时托卡马克平衡重建</a></li>
+              <li><a href="#paper-9">09 UltraWorld：从无位姿临床视频学习交互式超声世界模型</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多任务学习</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态学习与图像、计算机视觉</a>
+            <ul>
+              <li><a href="#paper-5">05 Long-WAM：因果长历史的实时世界动作模型</a></li>
+              <li><a href="#paper-6">06 GRACE：与预训练 DiT 兼容的视频潜变量压缩</a></li>
+              <li><a href="#paper-7">07 Temporal Residual Bottleneck：异步与丢包下的保守残差融合</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">Long-WAM：因果长历史的实时世界动作模型</a></h3>
+              <p class="card__subtitle">Long-WAM: Scaling the Context of World-Action Models</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习与图像、计算机视觉</span>
+                <span class="chip chip--muted">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>它证明仅增加历史长度并不够，因果自回归视频预训练才会让模型真正利用历史。19.2 秒上下文把 RoboCasa GR-1 成功率从 63.3% 提升到 78.7%，RTX 5090 上含未来视频预测的每个动作块耗时 107.4 毫秒。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">GRACE：与预训练 DiT 兼容的视频潜变量压缩</a></h3>
+              <p class="card__subtitle">GRACE: Generation-aware latent compression for efficient video generation</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习与图像、计算机视觉</span>
+                <span class="chip chip--muted">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>GRACE 不只优化重建，而是用冻结 DiT 的特征空间约束压缩潜变量与生成器兼容。它将 Wan2.1-I2V-14B token 数降为八分之一、延迟降低 11.1 倍，同时在 VBench 上匹配压缩前生成质量。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Seq-Flow：自滚动误差控制的连续概率预测</a></h3>
+              <p class="card__subtitle">Seq-Flow: Efficient Probabilistic Forecasting with Self-Rollout Error Control</p>
+              <div class="chip-row">
+                <span class="chip">不规则时序、时序分析与预测</span>
+                <span class="chip chip--muted">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>Seq-Flow 将上一轮预测分布直接作为下一次条件流的源分布，并用自滚动训练控制误差累积。在粒子加速器束流预测上，少量函数评估预算下 CRPS 降低 65%，训练最多四次更新后仍能稳定滚动超过 400 次。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">Temporal Residual Bottleneck：异步与丢包下的保守残差融合</a></h3>
+              <p class="card__subtitle">Temporal Residual Bottleneck for Robust Asynchronous Collaborative Perception</p>
+              <div class="chip-row">
+                <span class="chip">多模态学习与图像、计算机视觉</span>
+                <span class="chip chip--muted">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>该方法保留确定性位姿变换特征作为安全锚点，只让 Δt 条件 xLSTM 预测受门控的时间残差，避免不可靠历史覆盖静态结构。它在固定或不规则延迟和丢包下表现更稳，适合异步多模态融合。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">物理合成预训练的实时托卡马克平衡重建</a></h3>
+              <p class="card__subtitle">Real-time Tokamak Equilibrium Reconstruction Under Limited Experimental Data via Physics-Grounded Synthetic Pre-training</p>
+              <div class="chip-row">
+                <span class="chip">可控核聚变、等离子体诊断与预测</span>
+                <span class="chip chip--muted">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>该工作用廉价模拟平衡预训练，再以少量真实放电微调，并采用形状分布外和跨 campaign 时间外推切分。只用 1% 真实数据时，相对从头训练，极向磁通 nRMSE 在两种困难设置下约降低 58% 和 64%。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>ERDM：滚动扩散预测中的不确定性传播</h3>
+              <p class="paper__subtitle">Elucidated Rolling Diffusion Models for Probabilistic Forecasting of Complex Dynamics</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。ERDM 将 EDM 的噪声日程、预条件和 Heun 采样器改造成滚动预测结构，专门刻画预测步长增加时的不确定性扩张，今天仍适合作为 Seq-Flow 连续更新的概率预测参照。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Salva Rühling Cachay、Miika Aittala、Karsten Kreis、Noah Brenowitz、Arash Vahdat、Morteza Mardani、Rose Yu，机构以正式论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/02cf868040aa0f0a1e1121cf255fdcfb-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。ERDM 将 EDM 的噪声日程、预条件和 Heun 采样器改造成滚动预测结构，专门刻画预测步长增加时的不确定性扩张，今天仍适合作为 Seq-Flow 连续更新的概率预测参照。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高维复杂系统的未来状态具有逐步增大的不确定性。逐时刻独立扩散难表达跨步依赖，普通自回归又容易把单一路径误差持续放大。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。ERDM 将 EDM 的噪声日程、预条件和 Heun 采样器改造成滚动预测结构，专门刻画预测步长增加时的不确定性扩张，今天仍适合作为 Seq-Flow 连续更新的概率预测参照。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在滚动预测中联合建模跨时间依赖与随预测时距扩张的不确定性，同时保持高保真扩散模型的训练和采样稳定性。
+对当前主题的关键意义在于：最小实验是在同一聚变诊断序列比较 ERDM 与 Seq-Flow 的 CRPS、连续 400 步稳定性、前兆召回、采样耗时和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>把 EDM 的核心组件适配到滚动噪声结构，以中等预测时距加权损失集中模型容量，用预训练 EDM 初始化首个窗口，并采用混合序列架构提取渐进去噪下的时空特征。
+阅读时需要把方法设计与主要结果一起看：NeurIPS 正式页报告 ERDM 在二维 Navier-Stokes 和 1.5 度 ERA5 全球天气预测上持续优于包括条件自回归 EDM 在内的扩散基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>NeurIPS 正式页报告 ERDM 在二维 Navier-Stokes 和 1.5 度 ERA5 全球天气预测上持续优于包括条件自回归 EDM 在内的扩散基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有真实不规则采样、异步通道、聚变诊断缺失和在线峰值显存报告。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>ERDM 是不确定性随时距传播的正式概率预测基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在同一聚变诊断序列比较 ERDM 与 Seq-Flow 的 CRPS、连续 400 步稳定性、前兆召回、采样耗时和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>FlexEvent：跨工作频率的事件与帧自适应融合</h3>
+              <p class="paper__subtitle">FlexEvent: Towards Flexible Event-Frame Object Detection at Varying Operational Frequencies</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025，非当日新增</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。FlexFuse 将高频事件与 RGB 语义自适应融合，FlexTune 用频率调整标签适配不同工作频率，直接回应 P2 的采样率变化和事件帧互补问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Dongyue Lu、Lingdong Kong、Gim Hee Lee、Camille Simon Chane、Wei Ooi，机构以正式论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/8064e4ebbcbe594628887b420956d8c3-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。FlexFuse 将高频事件与 RGB 语义自适应融合，FlexTune 用频率调整标签适配不同工作频率，直接回应 P2 的采样率变化和事件帧互补问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件相机能以微秒级响应动态场景，但许多检测器固定工作频率训练，频率升高后事件分布和标签时序改变，模型性能会明显下降。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。FlexFuse 将高频事件与 RGB 语义自适应融合，FlexTune 用频率调整标签适配不同工作频率，直接回应 P2 的采样率变化和事件帧互补问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让同一事件帧检测器在低频到高频范围内保持准确，而不是为每个工作频率重新设计表示和训练协议。
+对当前主题的关键意义在于：最小实验是在 TriPro 分支中替换固定事件窗和直接相加，比较 FlexFuse 与 FlexTune 在 20、90、180 Hz、弱光和 RGB 缺失下的属性 mAP、ECE、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>FlexFuse 联合高频事件动态与 RGB 帧语义，FlexTune 生成频率适配标签，让模型在变化的事件窗口和输出频率下联合优化。
+阅读时需要把方法设计与主要结果一起看：NeurIPS 正式页确认该方法在大规模事件数据上优于既有方法，能从 20 Hz 稳定扩展到 90 Hz，并可在 180 Hz 下进行准确检测。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>NeurIPS 正式页确认该方法在大规模事件数据上优于既有方法，能从 20 Hz 稳定扩展到 90 Hz，并可在 180 Hz 下进行准确检测。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是目标检测，不是属性识别，没有开放词表、属性级不确定性、RGB 缺失和 TriPro-ReID 协议。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>FlexEvent 是跨采样频率事件帧融合的正式基线，但不是完整 P2 解法。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 TriPro 分支中替换固定事件窗和直接相加，比较 FlexFuse 与 FlexTune 在 20、90、180 Hz、弱光和 RGB 缺失下的属性 mAP、ECE、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>XComp：每个高选择性视频帧压到一个 token</h3>
+              <p class="paper__subtitle">One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。XComp 联合可学习的渐进 token 压缩和问题条件帧选择，并用局部片段注意缓解长上下文位置偏置，今天仍值得作为极低预算 P4 基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zheyu Zhang、Ziqi Pang、Shixing Chen、Xiang Hao、Vimal Bhat、Yu-Xiong Wang，机构以正式论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/52eb0f34026703c6a1c27693c2ab60dc-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。XComp 联合可学习的渐进 token 压缩和问题条件帧选择，并用局部片段注意缓解长上下文位置偏置，今天仍值得作为极低预算 P4 基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长视频每帧产生数十到数百个视觉 token，固定稀疏采帧会错过短暂事件，纯启发式合并又缺少任务监督。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。XComp 联合可学习的渐进 token 压缩和问题条件帧选择，并用局部片段注意缓解长上下文位置偏置，今天仍值得作为极低预算 P4 基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把帧内 token 压到极低预算，同时按查询保留关键帧，并避免长序列注意力偏向首尾位置。
+对当前主题的关键意义在于：最小实验是在 1、4、16 token 每帧和 5%、10%、25% 帧预算下，与 OmniPack 比较破裂前兆召回、FLOPs、峰值显存和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>LP-Comp 在 LLM 层内做可学习渐进压缩，QC-Comp 以内部注意分数选择问题相关帧，再通过短片段局部注意减轻位置偏置。
+阅读时需要把方法设计与主要结果一起看：NeurIPS 正式页报告压缩后模型可读取 2 至 4 倍更多帧，使用 2.5% 监督微调数据时，LVBench 准确率从 42.9% 提升到 46.2%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>NeurIPS 正式页报告压缩后模型可读取 2 至 4 倍更多帧，使用 2.5% 监督微调数据时，LVBench 准确率从 42.9% 提升到 46.2%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有聚变关键瞬态召回、跨模态可靠性、删除 token 回收、峰值显存和完整端到端尾延迟。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>XComp 为查询条件的极低视频 token 预算提供了正式证据。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在 1、4、16 token 每帧和 5%、10%、25% 帧预算下，与 OmniPack 比较破裂前兆召回、FLOPs、峰值显存和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>OmniPack：官方代码发布的实质更新</h3>
+              <p class="paper__subtitle">OmniPack: Unified Token Compression for Efficient Omni-modal Large Language Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-08-04 arXiv v1，官方仓库于 2026-09-27 发布代码，本轮按实质代码更新收录</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】原始应用领域是音频、视频与文本全模态大模型压缩。可迁移模块是模态特定重要性、全局覆盖、相似度合并、文本查询引导和音视频协同筛选，对应高频时序、图像和多模态融合的联合 token 预算。前置与中间压缩可降低 FLOPs、KV 和激活显存，但多阶段评分、分组与合并有额外开销。风险是全模态基准的平均性能保持不能证明短暂破裂前兆召回，也没有聚变数据。最小验证是复用新发布的 Qwen2.5-Omni 实现，在 5%、10%、25% 预算下替换视频为诊断图像、音频为高频时序，报告前兆召回、AUC、FLOPs、峰值显存、prefill 和 P99 延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Wanshun Su、Yang Shi、Feihu Liu、Ziwen Yu、Yan Min、Zhuoran Zhang、Qixun Wang、Haotian Wang、Shixuan Liu、Yuanxing Zhang、Peng Wu、Chengfu Huo、Liang Ding，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2608.03812" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/RowanSu/OmniPack" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2608.03812" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】原始应用领域是音频、视频与文本全模态大模型压缩。可迁移模块是模态特定重要性、全局覆盖、相似度合并、文本查询引导和音视频协同筛选，对应高频时序、图像和多模态融合的联合 token 预算。前置与中间压缩可降低 FLOPs、KV 和激活显存，但多阶段评分、分组与合并有额外开销。风险是全模态基准的平均性能保持不能证明短暂破裂前兆召回，也没有聚变数据。最小验证是复用新发布的 Qwen2.5-Omni 实现，在 5%、10%、25% 预算下替换视频为诊断图像、音频为高频时序，报告前兆召回、AUC、FLOPs、峰值显存、prefill 和 P99 延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>全模态模型的音视频 token 很长，单纯前置压缩容易丢全局结构，中间压缩又可能忽略查询条件的跨模态协同。此前论文已核验，但代码状态在近期归档中被漏记。
+从本日报的选取理由看，【P4】原始应用领域是音频、视频与文本全模态大模型压缩。可迁移模块是模态特定重要性、全局覆盖、相似度合并、文本查询引导和音视频协同筛选，对应高频时序、图像和多模态融合的联合 token 预算。前置与中间压缩可降低 FLOPs、KV 和激活显存，但多阶段评分、分组与合并有额外开销。风险是全模态基准的平均性能保持不能证明短暂破裂前兆召回，也没有聚变数据。最小验证是复用新发布的 Qwen2.5-Omni 实现，在 5%、10%、25% 预算下替换视频为诊断图像、音频为高频时序，报告前兆召回、AUC、FLOPs、峰值显存、prefill 和 P99 延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在极低预算下同时利用模态结构、覆盖度、相似性、查询和跨模态协同，并把删除信息合并回保留代表。
+对当前主题的关键意义在于：先直接跑通官方脚本和基线，再把模态映射到高频诊断与图像，检查覆盖合并是否保留短促关键事件。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/227aedd516c8471c.png" alt="Figure 2 : Overview of the OmniPack framework. Before the LLM, modality-specific compression performs importance selection, coverage selection, and similarity-aware token merging. Within the LLM, query-conditioned compression is applied after the ℓ \ell -th Transformer block. The recycle pool and retention pool denote unselected and selected tokens.">
+                    <figcaption>Figure 2 : Overview of the OmniPack framework. Before the LLM, modality-specific compression performs importance selection, coverage selection, and similarity-aware token merging. ...</figcaption>
+                  </figure>
+                  <p>LLM 前使用模态特定重要性、覆盖选择与相似性合并，充分交互后再以文本指导和音视频协同筛选。新仓库提供 Qwen2.5-Omni 核心实现、LMMs-Eval 适配、任务配置和 FastV、VisionZip、OmniZip、OmniSIFT 等基线。
+阅读时需要把方法设计与主要结果一起看：arXiv v1 报告 Qwen2.5-Omni-7B 在 FLOPs 降至 16.7% 时保留 98.0% 原性能，在 FLOPs 仅 6.8% 时仍保留 92.9%。官方仓库确认 2026-09-27 发布代码。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>arXiv v1 报告 Qwen2.5-Omni-7B 在 FLOPs 降至 16.7% 时保留 98.0% 原性能，在 FLOPs 仅 6.8% 时仍保留 92.9%。官方仓库确认 2026-09-27 发布代码。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>尚无新 arXiv 版本或新增实验，仓库只有少量提交，未提供聚变瞬态召回和统一硬件尾延迟结果。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>本轮新增价值是可复现实装，不是新论文结论，纠正此前“未发现代码更新”的归档遗漏。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>先直接跑通官方脚本和基线，再把模态映射到高频诊断与图像，检查覆盖合并是否保留短促关键事件。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>SemanticFold：压缩后不同能力没有同一阈值</h3>
+              <p class="paper__subtitle">SemanticFold: Latent Sequence Compression Separates Language Modeling, Decodability, and Reasoning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】原始应用领域是大语言模型前缀潜序列压缩。可迁移模块是固定目标对照协议和多端点评估，将压缩后的似然、线性可解码性、推理、生成与系统内存延迟分开衡量，对应避免用单一平均准确率证明关键证据保真。序列缩短可降内存和延迟，但学习边界与残差变换有训练开销。风险是文本前缀结论未必迁移到视觉、事件或时序 token。最小验证是在现有压缩器上固定同一破裂预测目标，分别测试 NLL、前兆线性探针、最终 AUC、峰值显存和延迟，寻找不同端点的失效预算。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mingyan Liu、Min Huang，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.10304" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2610.10304" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2610.10304" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】原始应用领域是大语言模型前缀潜序列压缩。可迁移模块是固定目标对照协议和多端点评估，将压缩后的似然、线性可解码性、推理、生成与系统内存延迟分开衡量，对应避免用单一平均准确率证明关键证据保真。序列缩短可降内存和延迟，但学习边界与残差变换有训练开销。风险是文本前缀结论未必迁移到视觉、事件或时序 token。最小验证是在现有压缩器上固定同一破裂预测目标，分别测试 NLL、前兆线性探针、最终 AUC、峰值显存和延迟，寻找不同端点的失效预算。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>压缩研究常用一个准确率或似然指标判断保真，却可能掩盖表示仍可解码但推理已退化，或语言建模改善但系统收益不足的情况。
+从本日报的选取理由看，【P4】原始应用领域是大语言模型前缀潜序列压缩。可迁移模块是固定目标对照协议和多端点评估，将压缩后的似然、线性可解码性、推理、生成与系统内存延迟分开衡量，对应避免用单一平均准确率证明关键证据保真。序列缩短可降内存和延迟，但学习边界与残差变换有训练开销。风险是文本前缀结论未必迁移到视觉、事件或时序 token。最小验证是在现有压缩器上固定同一破裂预测目标，分别测试 NLL、前兆线性探针、最终 AUC、峰值显存和延迟，寻找不同端点的失效预算。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>压缩率是否存在统一安全阈值，以及序列缩短本身和学习残差变换分别贡献什么。
+对当前主题的关键意义在于：将相同多端点协议用于 OmniPack、XComp 和现有高频压缩器，可避免平均 AUC 掩盖短促前兆损失。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>在五个模型规模上固定原生与压缩分支的续写目标，分别评估 NLL、有限标签推理、线性探针、开放生成、内存和延迟，并分解缩短与残差变换贡献。
+阅读时需要把方法设计与主要结果一起看：不同模型与端点呈非单调变化，没有统一压缩阈值。Qwen3-1.7B 在 R=1.7 时平均 NLL 降低 0.135，但 SmolLM2 在 R=1.2 时比原生高 0.013，线性探针准确率和宏 AUC 变化绝对值小于 0.03 且置信区间跨零。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>不同模型与端点呈非单调变化，没有统一压缩阈值。Qwen3-1.7B 在 R=1.7 时平均 NLL 降低 0.135，但 SmolLM2 在 R=1.2 时比原生高 0.013，线性探针准确率和宏 AUC 变化绝对值小于 0.03 且置信区间跨零。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有视觉、多模态、极低 token 预算和短暂事件召回，部分似然改善主要来自残差适配而非缩短本身。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>SemanticFold 的核心价值是证明压缩安全不能由单一标量认证。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>将相同多端点协议用于 OmniPack、XComp 和现有高频压缩器，可避免平均 AUC 掩盖短促前兆损失。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>本轮空缺判断：瞬态保真与完整系统指标的统一 Token 压缩</h3>
+            </div>
+          </div>
+          <p>选取理由：【P4】OmniPack 已可复现，SemanticFold 补充多端点评估，但仍没有方法同时在聚变高频流上联合重要性、覆盖度、相似性、查询、跨模态可靠性和删除回收，并报告短暂前兆召回、峰值显存、FLOPs、prefill 与端到端延迟。</p>
+          <p>研究背景：本轮新增提高了工程可复现性和评估严谨性，但尚未证明极低预算下安全关键瞬态能够稳定保留。</p>
+          <p>核心问题：压缩器怎样在采样率变化、模态缺失和跨装置分布变化时避免漏删低频但决定告警的证据。</p>
+          <p>方法与关键创新：保留完整系统空缺，下一步应把 OmniPack 的覆盖合并、XComp 的查询帧选择、SemanticFold 的多端点协议和可靠性门控放入同一预算控制器。</p>
+          <p>主要结果：没有满足完整 P4 系统指标的新论文或新实验。</p>
+          <p>局限性：下一轮继续检查 token recycling、event recall、modality dropout、adaptive budget 和 end-to-end latency。</p>
+          <p>总结：P4 已具备更好的基线与复现条件，但聚变瞬态保真证据仍为空缺。</p>
+          <p>研究相关性：统一基准至少包含 5%、10%、25% token 预算，采样率变化、模态缺失和跨装置测试，并同时报告前兆召回、AUC、峰值显存、FLOPs、prefill 和 P99 延迟。</p>
+          <p>是否值得精读：本轮不推荐。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>不规则时序、时序分析与预测</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">不规则时序、时序分析与预测</p>
+              <h3>Seq-Flow：自滚动误差控制的连续概率预测</h3>
+              <p class="paper__subtitle">Seq-Flow: Efficient Probabilistic Forecasting with Self-Rollout Error Control</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">Seq-Flow 将上一轮预测分布直接作为下一次条件流的源分布，并用自滚动训练控制误差累积。在粒子加速器束流预测上，少量函数评估预算下 CRPS 降低 65%，训练最多四次更新后仍能稳定滚动超过 400 次。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yinan Huang、Shitij Govil、Bo Dai、Pan Li，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.10440" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2610.10440" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/Graph-COM/Seq-Flow" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2610.10440" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Seq-Flow 将上一轮预测分布直接作为下一次条件流的源分布，并用自滚动训练控制误差累积。在粒子加速器束流预测上，少量函数评估预算下 CRPS 降低 65%，训练最多四次更新后仍能稳定滚动超过 400 次。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>科学在线预测需要新观测到来时快速更新未来轨迹分布。传统扩散或流模型每次从噪声开始，少步采样质量差，简单热启动又未针对预测更新本身训练。
+从本日报的选取理由看，Seq-Flow 将上一轮预测分布直接作为下一次条件流的源分布，并用自滚动训练控制误差累积。在粒子加速器束流预测上，少量函数评估预算下 CRPS 降低 65%，训练最多四次更新后仍能稳定滚动超过 400 次。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何复用上一轮预测分布减少采样步数，同时防止递归复用把早期误差放大到长期滚动。
+对当前主题的关键意义在于：可将上一时间窗的破裂风险轨迹作为源分布，在固定规则采样上先验证少步更新的 CRPS、前兆召回和长期漂移，再加入显式 Δt 条件。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>条件流 ODE 将上一轮预测样本传输到更新后的分布，移动平均教师生成自滚动初始状态，使训练显式看到部署时的递归误差。
+阅读时需要把方法设计与主要结果一起看：在粒子加速器束流预测中，少量 NFE 预算下 CRPS 降低 65%，并在流体动力学预测上保持竞争力。训练自滚动最多四次后，模型仍能准确执行超过 400 次连续更新。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在粒子加速器束流预测中，少量 NFE 预算下 CRPS 降低 65%，并在流体动力学预测上保持竞争力。训练自滚动最多四次后，模型仍能准确执行超过 400 次连续更新。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>摘要未说明真实不规则时间戳、异步多通道和缺失机制，也未报告百万长度复杂度与峰值显存。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>Seq-Flow 是高频滚动概率预测的强更新机制，但不等于 P1 完整统一骨干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可将上一时间窗的破裂风险轨迹作为源分布，在固定规则采样上先验证少步更新的 CRPS、前兆召回和长期漂移，再加入显式 Δt 条件。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">不规则时序、时序分析与预测</p>
+              <h3>本轮空缺判断：真实 Δt、不规则观测与百万长度统一骨干</h3>
+            </div>
+          </div>
+          <p>选取理由：【P1】本轮没有论文同时保留真实时间间隔、处理异步多通道、统一稀疏低频与高频海量点，并报告百万长度时间复杂度和峰值显存。</p>
+          <p>研究背景：Seq-Flow 解决连续预测分布更新，Temporal Residual Bottleneck 使用 Δt 条件残差，但二者都没有统一稀疏不规则观测与高频百万点序列。</p>
+          <p>核心问题：现有新增证据仍不能回答单一模型如何在采样率和缺失机制变化时动态分配状态、token 与计算。</p>
+          <p>方法与关键创新：保留空缺，不把规则时间窗概率更新或协同感知残差替代 continuous-time 多率统一建模。</p>
+          <p>主要结果：没有满足全部 P1 条件的新增或实质更新。</p>
+          <p>局限性：下一轮继续检查 Neural CDE、ODE、SDE、continuous selective SSM、multi-rate coupling、adaptive sampling 和 streaming million-length。</p>
+          <p>总结：P1 完整统一骨干本轮仍为空缺。</p>
+          <p>研究相关性：最小验证是在同一数据切分比较显式 Δt、Seq-Flow 更新和连续时间状态模型，报告缺失、采样率变化、前兆召回、峰值显存和端到端延迟。</p>
+          <p>是否值得精读：本轮不推荐。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>可控核聚变、等离子体诊断与预测</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变、等离子体诊断与预测</p>
+              <h3>物理合成预训练的实时托卡马克平衡重建</h3>
+              <p class="paper__subtitle">Real-time Tokamak Equilibrium Reconstruction Under Limited Experimental Data via Physics-Grounded Synthetic Pre-training</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">该工作用廉价模拟平衡预训练，再以少量真实放电微调，并采用形状分布外和跨 campaign 时间外推切分。只用 1% 真实数据时，相对从头训练，极向磁通 nRMSE 在两种困难设置下约降低 58% 和 64%。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mingdong He、Qixian Hu、Tengfei Xu、Tailin Wu、Zheng Xiong，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.09674" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2610.09674" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2610.09674" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>该工作用廉价模拟平衡预训练，再以少量真实放电微调，并采用形状分布外和跨 campaign 时间外推切分。只用 1% 真实数据时，相对从头训练，极向磁通 nRMSE 在两种困难设置下约降低 58% 和 64%。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>实时平衡重建是托卡马克控制基础，但高质量实验标签昂贵，新 campaign 和新装置初期通常没有足够放电训练数据。
+从本日报的选取理由看，该工作用廉价模拟平衡预训练，再以少量真实放电微调，并采用形状分布外和跨 campaign 时间外推切分。只用 1% 真实数据时，相对从头训练，极向磁通 nRMSE 在两种困难设置下约降低 58% 和 64%。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>物理模拟预训练能否在极少真实标签下提高平衡重建，并跨越等离子体形状和 campaign 时间分布变化。
+对当前主题的关键意义在于：可先用平衡模拟预训练图像与诊断共享表征，再在少量真实放电上微调破裂风险头，比较随机初始化与合成预训练的跨 campaign AUC、校准和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>用物理模拟低成本生成平衡样本做预训练，再以有限真实数据微调，并设置同分布、形状分布外和跨 campaign 三种逐级困难评估。
+阅读时需要把方法设计与主要结果一起看：只使用 1% 真实数据时，相对同量真实数据从头训练，重建极向磁通的逐样本 nRMSE 在形状分布外和跨 campaign 设置下约降低 58% 与 64%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>只使用 1% 真实数据时，相对同量真实数据从头训练，重建极向磁通的逐样本 nRMSE 在形状分布外和跨 campaign 设置下约降低 58% 与 64%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是平衡重建而不是破裂预测，摘要未给出绝对在线延迟、峰值显存和跨装置结果。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>这是数据稀缺托卡马克实时代理的高质量新增证据。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可先用平衡模拟预训练图像与诊断共享表征，再在少量真实放电上微调破裂风险头，比较随机初始化与合成预训练的跨 campaign AUC、校准和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">可控核聚变、等离子体诊断与预测</p>
+              <h3>UltraWorld：从无位姿临床视频学习交互式超声世界模型</h3>
+              <p class="paper__subtitle">UltraWorld: Learning Interactive Ultrasound World Models from Untracked Clinical Videos with Acoustic Sampling Map</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用领域是无跟踪临床超声的自主扫描。可迁移模块是从无位姿视频构造合成动作视频对、以 Acoustic Sampling Map 显式编码采样位置、方向和深度，再自蒸馏为交互世界模型。它对应图像与诊断几何未同步、真实配对稀缺和跨采样轨迹预测问题。训练生成器和合成数据增加前期计算与存储，但推理时不需三维资产。风险是合成动作偏差和解剖掩码误差会传入模型，且超声几何不等于托卡马克诊断几何。最小验证是在现有放电中用磁平衡和相机几何生成合成轨迹对，比较普通视频预训练与采样图条件自蒸馏的跨 campaign AUC、局部前兆定位、显存和 P99 延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Keke Yang、Erqi Wang、Sainan Guan、Hongliang Ren，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.09785" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2610.09785" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2610.09785" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用领域是无跟踪临床超声的自主扫描。可迁移模块是从无位姿视频构造合成动作视频对、以 Acoustic Sampling Map 显式编码采样位置、方向和深度，再自蒸馏为交互世界模型。它对应图像与诊断几何未同步、真实配对稀缺和跨采样轨迹预测问题。训练生成器和合成数据增加前期计算与存储，但推理时不需三维资产。风险是合成动作偏差和解剖掩码误差会传入模型，且超声几何不等于托卡马克诊断几何。最小验证是在现有放电中用磁平衡和相机几何生成合成轨迹对，比较普通视频预训练与采样图条件自蒸馏的跨 campaign AUC、局部前兆定位、显存和 P99 延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>交互式超声世界模型通常需要同步视频与探头位姿，而常规临床录像没有动作标注，难以规模化训练动作到观测的动力学模型。
+从本日报的选取理由看，【P3】原始应用领域是无跟踪临床超声的自主扫描。可迁移模块是从无位姿视频构造合成动作视频对、以 Acoustic Sampling Map 显式编码采样位置、方向和深度，再自蒸馏为交互世界模型。它对应图像与诊断几何未同步、真实配对稀缺和跨采样轨迹预测问题。训练生成器和合成数据增加前期计算与存储，但推理时不需三维资产。风险是合成动作偏差和解剖掩码误差会传入模型，且超声几何不等于托卡马克诊断几何。最小验证是在现有放电中用磁平衡和相机几何生成合成轨迹对，比较普通视频预训练与采样图条件自蒸馏的跨 campaign AUC、局部前兆定位、显存和 P99 延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从无位姿视频迁移视觉先验，并用可编程采样几何生成动作监督，使模型在推理时只依赖局部观测和动作。
+对当前主题的关键意义在于：以诊断几何和磁平衡替代 AsMap，可让时序查询与视觉局部证据共享显式采样位置，但需用真实错配和缺失扰动检验合成偏差。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/eb099df2706da1d2.png" alt="Figure 1: Learning ultrasound world models from untracked clinical videos. (a) Clinical videos provide appearance priors, while 3D anatomy provides motion supervision. Together, they yield synthetic action–video pairs for self-distillation. (b) Complex scanning operations change which anatomical cross-sections are imaged and how they are sampled. AsMap encodes the resulting sampling positions, beam directions, and depths to support reliable action control.">
+                    <figcaption>Figure 1: Learning ultrasound world models from untracked clinical videos. (a) Clinical videos provide appearance priors, while 3D anatomy provides motion supervision. Together, th...</figcaption>
+                  </figure>
+                  <p>先将视频基础模型适配为参考图像与解剖掩码条件生成器，再沿三维解剖可编程轨迹采样掩码生成动作视频对。随后自蒸馏世界模型，并用 AsMap 逐像素编码三维采样位置、束方向和深度。
+阅读时需要把方法设计与主要结果一起看：九个模拟闭环局部规划任务中，相对视觉伺服，最终到目标距离和方向误差分别降低 29% 与 38%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>九个模拟闭环局部规划任务中，相对视觉伺服，最终到目标距离和方向误差分别降低 29% 与 38%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有真实在线临床闭环，也没有托卡马克破裂、模态缺失和跨装置验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>UltraWorld 提供了无同步动作标注条件下引入采样几何并自蒸馏世界模型的迁移路径。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>以诊断几何和磁平衡替代 AsMap，可让时序查询与视觉局部证据共享显式采样位置，但需用真实错配和缺失扰动检验合成偏差。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变、等离子体诊断与预测</p>
+              <h3>本轮空缺判断：直接可见光与诊断时序托卡马克破裂预测</h3>
+            </div>
+          </div>
+          <p>选取理由：【P3】本轮有托卡马克实时平衡重建、异步残差融合和无位姿视频世界模型，但没有论文同时输入托卡马克可见光图像与诊断时序、处理异步缺失、满足低延迟，并做跨装置破裂预测。</p>
+          <p>研究背景：平衡重建提供物理状态，Temporal Residual Bottleneck 提供 Δt 条件融合，UltraWorld 提供采样几何自蒸馏，三者都未完成直接破裂预测链。</p>
+          <p>核心问题：新增证据仍不能回答时序如何查询视觉局部前兆、何时抑制无关视觉信息，以及跨装置时如何校准风险。</p>
+          <p>方法与关键创新：保留完整问题空缺，把合成预训练、保守残差和采样几何作为下一版模型的候选模块。</p>
+          <p>主要结果：没有满足全部 P3 条件的新增论文。</p>
+          <p>局限性：下一轮继续检查 visible or IR diagnostics、ECEI、BES、multimodal disruption prediction、cross-device transfer 与 uncertainty。</p>
+          <p>总结：P3 仍缺少直接、完整、可部署的视觉时序融合证据。</p>
+          <p>研究相关性：最小验证是诊断时序查询 8 至 16 个视觉局部 token，加入模态 dropout、延迟扰动和跨 campaign 切分，报告提前量、峰值显存、尾延迟与跨装置 AUC。</p>
+          <p>是否值得精读：本轮不推荐。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多任务学习</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">多任务学习</p>
+              <h3>本轮空缺判断：可迁移且证据充分的多任务学习新增</h3>
+            </div>
+          </div>
+          <p>选取理由：本轮广泛召回中没有发现同时提供明确任务冲突机制、跨域验证和可复现实验，且能直接迁移到当前时序、视觉或聚变课题的高质量新增。</p>
+          <p>研究背景：仅共享骨干或增加多个损失并不能证明真正缓解任务竞争，若缺少梯度冲突、负迁移和任务权衡评估，难以支持当前工程决策。</p>
+          <p>核心问题：是否存在能在预测、重建、解释和不确定性任务之间稳定分配容量的新机制。</p>
+          <p>方法与关键创新：保留空缺，不用普通多头训练或领域相似论文凑数。</p>
+          <p>主要结果：没有满足证据门槛的新增或实质更新。</p>
+          <p>局限性：下一轮继续检查 task routing、gradient conflict、Pareto optimization、task uncertainty 和 adaptive loss weighting。</p>
+          <p>总结：多任务学习本轮空缺。</p>
+          <p>研究相关性：后续候选至少应在同一骨干上报告单任务与多任务差值、最弱任务退化、显存和训练开销。</p>
+          <p>是否值得精读：本轮不推荐。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态学习与图像、计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习与图像、计算机视觉</p>
+              <h3>Long-WAM：因果长历史的实时世界动作模型</h3>
+              <p class="paper__subtitle">Long-WAM: Scaling the Context of World-Action Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">它证明仅增加历史长度并不够，因果自回归视频预训练才会让模型真正利用历史。19.2 秒上下文把 RoboCasa GR-1 成功率从 63.3% 提升到 78.7%，RTX 5090 上含未来视频预测的每个动作块耗时 107.4 毫秒。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Wei Huang、Bohan Zhang、Chenzhi Liu、Isabella Liu、Shuai Yang、Weian Mao、Luozhou Wang、Yicheng Xiao、Weifeng Lin、Qixin Hu、Bryan Chu、Sifei Liu、Linxi Fan、Xiaojuan Qi、Song Han、Yukang Chen，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.10528" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2610.10528" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2610.10528" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>它证明仅增加历史长度并不够，因果自回归视频预训练才会让模型真正利用历史。19.2 秒上下文把 RoboCasa GR-1 成功率从 63.3% 提升到 78.7%，RTX 5090 上含未来视频预测的每个动作块耗时 107.4 毫秒。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>实时控制需要用历史判断运动趋势和任务进度，但长视觉上下文会增加编码延迟，双向视频预训练也未必形成适合因果执行的历史表示。
+从本日报的选取理由看，它证明仅增加历史长度并不够，因果自回归视频预训练才会让模型真正利用历史。19.2 秒上下文把 RoboCasa GR-1 成功率从 63.3% 提升到 78.7%，RTX 5090 上含未来视频预测的每个动作块耗时 107.4 毫秒。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让长历史在不牺牲实时控制的条件下真正提高动作成功率，并保持未来视频预测能力。
+对当前主题的关键意义在于：可将诊断历史和低频图像组织为因果上下文，用异步编码避免重复计算，并在不同历史长度下比较提前量、AUC、显存和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d3d723161584a049.png" alt="Figure 1 : Overview of Long-WAM. (1) AR video pretraining. LongLive2.0-Robot learns predictive dynamics from approximately 10,000 window-equivalent hours of robot and egocentric videos. (2) Causal-to-causal adaptation. We preserve causal video dependencies while conditioning action-chunk denoising on observed history. (3) Context scaling. Relative to current-observation-only control, success increases from 63.3% to 78.7% on RoboCasa GR-1 and from 94.5% to 99.5% on LIBERO-Long, peaking at 19.2 and 2.4 seconds of history, respectively. (4) Efficient deployment. Asynchronous execution, streaming VAE encoding, decision-time prefill, within-call KV reuse, and hardware-specific acceleration enable real-time control on RTX 5090, DGX Spark, and Jetson AGX Thor.">
+                    <figcaption>Figure 1 : Overview of Long-WAM. (1) AR video pretraining. LongLive2.0-Robot learns predictive dynamics from approximately 10,000 window-equivalent hours of robot and egocentric vi...</figcaption>
+                  </figure>
+                  <p>先在无动作标签的机器人和第一视角视频上做因果自回归预测，再保留历史到未来结构完成世界动作适配，并以流式编码、异步执行和硬件特定优化降低延迟。
+阅读时需要把方法设计与主要结果一起看：RoboCasa GR-1 上 19.2 秒上下文把成功率从 63.3% 提升到 78.7%，RTX 5090 每个动作块为 107.4 毫秒。动态杯子堆叠成功率为 95%，Pi0.5 与 Fast-WAM 在 20 次试验中均未成功。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>RoboCasa GR-1 上 19.2 秒上下文把成功率从 63.3% 提升到 78.7%，RTX 5090 每个动作块为 107.4 毫秒。动态杯子堆叠成功率为 95%，Pi0.5 与 Fast-WAM 在 20 次试验中均未成功。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有真实不规则时间戳、模态缺失和峰值显存细分，107.4 毫秒仍未覆盖更严格的聚变控制周期。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>Long-WAM 证明因果预训练和流式系统协同决定长历史能否转化为实时收益。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可将诊断历史和低频图像组织为因果上下文，用异步编码避免重复计算，并在不同历史长度下比较提前量、AUC、显存和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习与图像、计算机视觉</p>
+              <h3>GRACE：与预训练 DiT 兼容的视频潜变量压缩</h3>
+              <p class="paper__subtitle">GRACE: Generation-aware latent compression for efficient video generation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">GRACE 不只优化重建，而是用冻结 DiT 的特征空间约束压缩潜变量与生成器兼容。它将 Wan2.1-I2V-14B token 数降为八分之一、延迟降低 11.1 倍，同时在 VBench 上匹配压缩前生成质量。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiyoung Kim、Paul Hyunbin Cho、Jisu Nam、Donghoon Lee、Hyunsung Go、Yeonkyeong Lee、Hansaem Kim、Seungryong Kim，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.10524" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2610.10524" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2610.10524" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>GRACE 不只优化重建，而是用冻结 DiT 的特征空间约束压缩潜变量与生成器兼容。它将 Wan2.1-I2V-14B token 数降为八分之一、延迟降低 11.1 倍，同时在 VBench 上匹配压缩前生成质量。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高压缩视频自编码器能显著减少 DiT token，但压缩潜变量分布偏离预训练生成器，单纯提高通道数又会拖慢收敛和推理。
+从本日报的选取理由看，GRACE 不只优化重建，而是用冻结 DiT 的特征空间约束压缩潜变量与生成器兼容。它将 Wan2.1-I2V-14B token 数降为八分之一、延迟降低 11.1 倍，同时在 VBench 上匹配压缩前生成质量。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何提高视频潜变量压缩率，同时维持原预训练 DiT 的分布兼容性与生成质量。
+对当前主题的关键意义在于：可将高频视觉或事件流拆为基础低频状态与残差瞬态，比较像素重建损失与下游破裂预测特征对齐对关键前兆召回和延迟的影响。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/33e46ef27e604424.png" alt="Figure 1: Teaser. We present GRACE , a novel latent compression technique that fine-tunes pretrained video generation models, such as Wan2.1-14B ( Wan et al., 2025 ) , to generate from substantially fewer latent tokens (e.g., nearly 𝟖 × 8\times fewer). (Top) Text-to-video (T2V) samples at 736p from Wan2.1-14B before compression and from GRACE, using the same prompt. (Bottom left) The same comparison at 480p. (Bottom right) On VBench-T2V ( Huang et al., 2023 ; Huang et al., 2024 ) , GRACE preserves the generation quality of Wan2.1-14B before compression and achieves higher scores than existing high-compression autoencoders ( HaCohen et al., 2024 ; Zheng et al., 2026 ; He et al., 2026 ) , while generating 11.1 × 11.1\times faster at 480p and 15.5 × 15.5\times faster at 736p. All models in the plot are evaluated at matched resolutions with 50 sampling steps. The plot reports text-to-video, and the speedups above are measured on image-to-video.">
+                    <figcaption>Figure 1: Teaser. We present GRACE , a novel latent compression technique that fine-tunes pretrained video generation models, such as Wan2.1-14B ( Wan et al., 2025 ) , to generate ...</figcaption>
+                  </figure>
+                  <p>冻结预训练编码器的基础潜变量，学习强压缩下丢失信息的残差潜变量，在冻结 DiT 特征空间做生成感知对齐，再用轻量微调和基础先于残差的非对称去噪适配。
+阅读时需要把方法设计与主要结果一起看：在 480×832×81 设置中，Wan2.1-I2V-14B 的 token 数减少 8 倍、延迟降低 11.1 倍，VBench 生成质量匹配压缩前流水线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 480×832×81 设置中，Wan2.1-I2V-14B 的 token 数减少 8 倍、延迟降低 11.1 倍，VBench 生成质量匹配压缩前流水线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>面向视频生成而非识别或科学瞬态检测，没有峰值显存、压缩器开销和关键稀疏事件召回。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>GRACE 提供了重建质量之外的生成感知压缩目标。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可将高频视觉或事件流拆为基础低频状态与残差瞬态，比较像素重建损失与下游破裂预测特征对齐对关键前兆召回和延迟的影响。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态学习与图像、计算机视觉</p>
+              <h3>Temporal Residual Bottleneck：异步与丢包下的保守残差融合</h3>
+              <p class="paper__subtitle">Temporal Residual Bottleneck for Robust Asynchronous Collaborative Perception</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-07 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">该方法保留确定性位姿变换特征作为安全锚点，只让 Δt 条件 xLSTM 预测受门控的时间残差，避免不可靠历史覆盖静态结构。它在固定或不规则延迟和丢包下表现更稳，适合异步多模态融合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Melih Yazgan、Ahmed Abouelazm、J. Marius Zöllner，机构以论文为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.10090" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2610.10090" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2610.10090" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>该方法保留确定性位姿变换特征作为安全锚点，只让 Δt 条件 xLSTM 预测受门控的时间残差，避免不可靠历史覆盖静态结构。它在固定或不规则延迟和丢包下表现更稳，适合异步多模态融合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>协同感知共享特征可能延迟、丢包或不完整，直接运输历史特征在对应关系错误时会覆盖当前可靠结构。
+从本日报的选取理由看，该方法保留确定性位姿变换特征作为安全锚点，只让 Δt 条件 xLSTM 预测受门控的时间残差，避免不可靠历史覆盖静态结构。它在固定或不规则延迟和丢包下表现更稳，适合异步多模态融合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何利用不规则延迟历史中的时间信息，同时在对应关系不可靠时安全退化到保守基线。
+对当前主题的关键意义在于：可用最近有效图像特征作为锚点，让 Δt 条件时序分支只预测局部残差，并在延迟和丢帧扰动下评估 AUC、ECE、峰值显存和尾延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/336c928bc569eb0b.png" alt="Figure 1 : Overview of the proposed temporal residual bottleneck. Delayed collaborator BEV features are processed in the collaborator local frame. The latest stale feature S i t S_{i}^{t} is pose-warped into a geometric baseline B i t B_{i}^{t} , while a Δ ​ t \Delta t -conditioned xLSTM extracts temporal residual evidence R i t R_{i}^{t} from the available history. A detector-facing residual bottleneck predicts a correction δ ​ F i t \delta F_{i}^{t} , which is applied through an object-focused gate G i t G_{i}^{t} as F ^ i t = B i t + G i t ⊙ δ ​ F i t \hat{F}_{i}^{t}=B_{i}^{t}+G_{i}^{t}\odot\delta F_{i}^{t} . The updated collaborator features are then warped to the ego frame and fused as multi-scale intermediate features for detection.">
+                    <figcaption>Figure 1 : Overview of the proposed temporal residual bottleneck. Delayed collaborator BEV features are processed in the collaborator local frame. The latest stale feature S i t S_...</figcaption>
+                  </figure>
+                  <p>确定性 pose warp 提供锚点，Δt 条件 xLSTM 从历史抽取时间残差，检测器前瓶颈只允许受门控和正则约束的修正进入自车融合。
+阅读时需要把方法设计与主要结果一起看：摘要报告该方法在 DAIR-V2X 与 OPV2V 的严重固定或不规则延迟和丢包下尤其有效，同时承认同步峰值精度有小幅权衡。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告该方法在 DAIR-V2X 与 OPV2V 的严重固定或不规则延迟和丢包下尤其有效，同时承认同步峰值精度有小幅权衡。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有托卡马克图像、属性监督、模态完全缺失校准和具体峰值显存数字。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>该工作提供了“可靠锚点加受限残差”的异步融合范式。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可用最近有效图像特征作为锚点，让 Δt 条件时序分支只预测局部残差，并在延迟和丢帧扰动下评估 AUC、ECE、峰值显存和尾延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">多模态学习与图像、计算机视觉</p>
+              <h3>本轮空缺判断：完整原生 RGB-Event 属性识别</h3>
+            </div>
+          </div>
+          <p>选取理由：【P2】本轮没有发现同时使用原生异步 Event 与 RGB、完成时间对齐、采用属性级或开放词表监督、按样本与区域动态可靠性融合，并评测模态缺失的新论文。</p>
+          <p>研究背景：FlexEvent 解决跨频率事件帧检测，Temporal Residual Bottleneck 解决异步残差融合，但二者都不是开放属性或 ReID 任务。</p>
+          <p>核心问题：现有新增证据不足以直接替换 TriPro-ReID 的事件表示、属性监督和融合模块。</p>
+          <p>方法与关键创新：保留空缺，不把事件检测、协同感知或普通传感器融合伪装成完整 P2 解法。</p>
+          <p>主要结果：没有满足全部 P2 条件的新增或实质更新。</p>
+          <p>局限性：下一轮继续检查 native event token、timestamp alignment、event foundation model、attribute prompt、uncertainty calibration 和 modality dropout。</p>
+          <p>总结：P2 本轮仍为空缺，FlexEvent 只提供跨频率融合模块。</p>
+          <p>研究相关性：最小验证是将 FlexFuse 和频率适配标签接入 TriPro，在固定事件窗与自适应窗下报告弱光属性 mAP、ECE、事件噪声和 RGB 缺失性能。</p>
+          <p>是否值得精读：本轮不推荐。</p>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>趋势一：长上下文收益取决于训练目标和执行流水线</h3>
+          <p>Long-WAM 表明历史长度只有在因果自回归预训练和流式异步执行下才转化为控制收益，Seq-Flow 也通过自滚动训练让模型看到部署时的递归状态。长序列能力正在从静态上下文长度转向训练与部署一致性。</p>
+        </article>
+        <article class="trend">
+          <h3>趋势二：压缩目标从重建误差转向下游兼容和多端点验证</h3>
+          <p>GRACE 用生成器特征空间约束压缩，OmniPack 结合覆盖、相似性和查询协同，SemanticFold 则证明似然、可解码性、推理和系统收益没有统一阈值。后续压缩实验必须同时报告任务保真和真实系统指标。</p>
+        </article>
+        <article class="trend">
+          <h3>趋势三：异步融合更强调保守锚点和显式采样几何</h3>
+          <p>Temporal Residual Bottleneck 用确定性锚点限制历史残差，UltraWorld 用采样位置、方向和深度组织动作监督。对聚变视觉与诊断融合，时间戳和诊断几何应进入模型结构，而不只是数据预处理。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
