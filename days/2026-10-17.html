@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-10-17</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-10-17 核心论文简报</h1>
+      <p class="hero__meta">面向对象：AI 时序、多任务学习、多模态学习、计算机视觉、Token 压缩与可控核聚变交叉研究团队</p>
+      <p class="hero__meta">信息检索截止时间：2026-10-17 05:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日主推荐 5 篇，分别覆盖轨迹级概率预测、互补时序表征、缺失模态融合、动态感知 Token 合并和连续时间视频查询。主推荐与 P1-P4 独立选取，P1-P4 不占主推荐名额。</p>
+        <p>顶会顶刊回看独立收录 Time-IMM、MAESTRO 与 MeToM，均为历史未收录、非当日新增，并由正式 venue 页面核验。</p>
+        <p>P1 收录 Mem4Act，P2 没有完整原生 RGB-Event 属性识别合格新增，P3 收录 MAIA，P4 收录 FastVLA。完整真实 Δt 异步多通道百万长度统一骨干、完整原生 RGB-Event 属性识别、直接可见光与诊断时序托卡马克破裂预测、瞬态保真且系统指标完整的 Token 压缩仍明确写为本轮空缺。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 Time-IMM：不规则多模态多变量时序基准</a></li>
+              <li><a href="#paper-2">02 MAESTRO：稀疏跨模态动态时序融合</a></li>
+              <li><a href="#paper-3">03 MeToM：用视频元数据分配动态 Token 预算</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-11">11 DaTMe：动态感知 Token 合并</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">可控核聚变及 AI 交叉</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发（P1-P4）</a>
+            <ul>
+              <li><a href="#paper-8">08 Mem4Act：固定容量的多粒度长历史记忆</a></li>
+              <li><a href="#paper-9">09 MAIA：视觉、动作与力觉世界模型提前预警异常</a></li>
+              <li><a href="#paper-10">10 FastVLA：任务条件与时间自适应视觉 Token 压缩</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态与计算机视觉</a>
+            <ul>
+              <li><a href="#paper-6">06 FuseAdapt：缺失模态下的适配空间融合</a></li>
+              <li><a href="#paper-7">07 Gen4P：连续时间按需 4D 查询</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">时序分析、预测与建模</a>
+            <ul>
+              <li><a href="#paper-4">04 PathFM：快速生成完整多变量未来轨迹</a></li>
+              <li><a href="#paper-5">05 Twice Upon a Time：互补时序表征</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">PathFM：快速生成完整多变量未来轨迹</a></h3>
+              <p class="card__subtitle">PathFM: Fast Generative Forecasting of Multivariate Trajectories</p>
+              <div class="chip-row">
+                <span class="chip">时序分析、预测与建模</span>
+                <span class="chip chip--muted">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>多数基础预测模型只输出边际分位数，PathFM 直接生成保持变量与时间依赖的完整未来路径，并通过少步蒸馏和历史注意力缓存把多路径采样成本压到接近一次分位数查询，适合聚变风险轨迹和事件时刻估计。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">Twice Upon a Time：互补时序表征</a></h3>
+              <p class="card__subtitle">Twice Upon a Time: Complementary Representations for Time-Series Reasoning</p>
+              <div class="chip-row">
+                <span class="chip">时序分析、预测与建模</span>
+                <span class="chip chip--muted">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>论文不强迫单一表示同时保留绝对测量和形状不变性，而是联合折线图与归一化延迟嵌入，并用干预验证两种视图的不同归纳偏置。对跨装置时序推理和图像化诊断很有启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">FuseAdapt：缺失模态下的适配空间融合</a></h3>
+              <p class="card__subtitle">FuseAdapt: Parameter-Efficient Multimodal Fusion for Semantic Segmentation with Missing Modalities</p>
+              <div class="chip-row">
+                <span class="chip">多模态与计算机视觉</span>
+                <span class="chip chip--muted">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>FuseAdapt 冻结视觉基础模型，只让模态私有低秩分支在 FFN 残差空间交换信息，并用训练期预测模态建模应对缺失。它把融合、缺失鲁棒性和参数效率放在同一设计中。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-11">DaTMe：动态感知 Token 合并</a></h3>
+              <p class="card__subtitle">Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation</p>
+              <div class="chip-row">
+                <span class="chip">Token 压缩与筛选</span>
+                <span class="chip chip--muted">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>DaTMe 不只保护与文本前景对齐的 Token，而是联合去噪步间变化和局部高频结构，保留尚未收敛或含边界细节的区域。它为 P4 的短暂证据保留提供了动态而非静态显著性信号。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">Gen4P：连续时间按需 4D 查询</a></h3>
+              <p class="card__subtitle">Gen4P: Video Generators are 4D Perceivers</p>
+              <div class="chip-row">
+                <span class="chip">多模态与计算机视觉</span>
+                <span class="chip chip--muted">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>Gen4P 将预训练视频生成器改造成单次编码的 4D 感知器，用轻量交叉注意力解码器按位置和连续时间查询所需属性，避免密集输出所有时空位置。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Time-IMM：不规则多模态多变量时序基准</h3>
+              <p class="paper__subtitle">Time-IMM: A Dataset and Benchmark for Irregular Multimodal Multivariate Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025 Datasets and Benchmarks Track，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会回看推荐。它把触发型、约束型和伪影型九类不规则性显式纳入基准，今天仍值得作为 P1 的数据切分和压力测试模板。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ching Chang、Jeehyun Hwang、Yidan Shi、Haixin Wang、Wei Wang、Wen-Chih Peng、Tien-Fu Chen</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/4199594d3c15736df2bf5274fa3155f4-Abstract-Datasets_and_Benchmarks_Track.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会回看推荐。它把触发型、约束型和伪影型九类不规则性显式纳入基准，今天仍值得作为 P1 的数据切分和压力测试模板。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>常用时序基准过于规则、同步和完整，无法区分采样机制与模型能力。
+从本日报的选取理由看，非当日新增，顶会回看推荐。它把触发型、约束型和伪影型九类不规则性显式纳入基准，今天仍值得作为 P1 的数据切分和压力测试模板。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用可控而真实的不规则机制评估异步多模态预测。
+对当前主题的关键意义在于：最小实验是按九类不规则机制重采样现有诊断数据，比较插值、时间编码和连续状态模型的误差、显存与采样率外推。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>提供 Time-IMM 数据集和 IMM-TSF 库，包含时间戳到文本、最近性加权和注意力式多模态融合。
+阅读时需要把方法设计与主要结果一起看：正式页面报告显式建模多模态不规则性可显著提升预测表现。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>正式页面报告显式建模多模态不规则性可显著提升预测表现。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是聚变数据，计算与百万长度压力测试仍不足。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合把 P1 的“不规则”从随机删点升级为原因驱动的评测协议。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是按九类不规则机制重采样现有诊断数据，比较插值、时间编码和连续状态模型的误差、显存与采样率外推。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>MAESTRO：稀疏跨模态动态时序融合</h3>
+              <p class="paper__subtitle">MAESTRO: Adaptive Sparse Attention and Robust Learning for Multimodal Dynamic Time Series</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会回看推荐。MAESTRO 用任务相关动态交互、符号 Token 化、注意力预算和稀疏 MoE 同时处理多模态长序列及任意缺失，今天仍适合做 P3 的强融合基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Payal Mohapatra、Yueyuan Sui、Akash Pandey、Stephen Xia、Qi Zhu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/73eebcdbc4e122eea5be2ca3823ffc26-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会回看推荐。MAESTRO 用任务相关动态交互、符号 Token 化、注意力预算和稀疏 MoE 同时处理多模态长序列及任意缺失，今天仍适合做 P3 的强融合基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>主模态对齐和两两融合在模态多、缺失组合多时扩展性差。
+从本日报的选取理由看，非当日新增，顶会回看推荐。MAESTRO 用任务相关动态交互、符号 Token 化、注意力预算和稀疏 MoE 同时处理多模态长序列及任意缺失，今天仍适合做 P3 的强融合基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在没有固定主模态的情况下控制长多模态序列计算，并适应任意缺失组合。
+对当前主题的关键意义在于：最小实验是在图像与诊断通道上设置固定总 Token 预算和随机模态缺失，比较全连接注意力与稀疏路由的提前量、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>基于任务相关性构造模态内外交互，使用符号 Token、稀疏跨模态注意力和 MoE 路由。
+阅读时需要把方法设计与主要结果一起看：四个数据集上完整观测相对最佳多模态和多变量方法平均提升 4% 和 8%，模态缺失最高 40% 时平均提升 9%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>四个数据集上完整观测相对最佳多模态和多变量方法平均提升 4% 和 8%，模态缺失最高 40% 时平均提升 9%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未直接评估图像与聚变诊断、跨装置迁移和 P99 延迟。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它提供了预算、缺失和动态路由一体化的正式基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在图像与诊断通道上设置固定总 Token 预算和随机模态缺失，比较全连接注意力与稀疏路由的提前量、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>MeToM：用视频元数据分配动态 Token 预算</h3>
+              <p class="paper__subtitle">MeToM: Metadata-Guided Token Merging for Efficient Video LLMs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026，CVPR 2026 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会回看推荐。MeToM 用编码器残差和 GOP 包大小估计空间与时间信息密度，把预算分配提前到视觉编码阶段，今天仍值得作为 P4 的低开销外部信号基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhuojie Wu、Shijie Wang、Xin Yu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2026/html/Wu_MeToM_Metadata-Guided_Token_Merging_for_Efficient_Video_LLMs_CVPR_2026_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会回看推荐。MeToM 用编码器残差和 GOP 包大小估计空间与时间信息密度，把预算分配提前到视觉编码阶段，今天仍值得作为 P4 的低开销外部信号基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>均匀帧预算会把 Token 浪费在低变化区域，后置剪枝也无法节省视觉编码成本。
+从本日报的选取理由看，非当日新增，顶会回看推荐。MeToM 用编码器残差和 GOP 包大小估计空间与时间信息密度，把预算分配提前到视觉编码阶段，今天仍值得作为 P4 的低开销外部信号基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何利用已有元数据在编码前分配空间和逐帧预算，并继续压缩 LLM 内部 Token。
+对当前主题的关键意义在于：最小实验是用事件率、采样包大小和局部变化代替视频元数据，动态分配各时间窗预算，报告关键事件召回、显存、选择器成本和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>用视频编码残差指导空间合并，用 GOP 包大小分配逐帧预算，再按多层注意力合并低贡献 Token。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页报告相对基线实现 2.65 倍推理加速且准确率不下降。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页报告相对基线实现 2.65 倍推理加速且准确率不下降。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>依赖视频编码元数据，难直接覆盖原生 Event 和无压缩诊断流，也未证明短暂异常召回。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>MeToM 提醒 P4 应利用采集链路已有信号，而不只在模型内部重新估计重要性。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用事件率、采样包大小和局部变化代替视频元数据，动态分配各时间窗预算，报告关键事件召回、显存、选择器成本和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>DaTMe：动态感知 Token 合并</h3>
+              <p class="paper__subtitle">Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">DaTMe 不只保护与文本前景对齐的 Token，而是联合去噪步间变化和局部高频结构，保留尚未收敛或含边界细节的区域。它为 P4 的短暂证据保留提供了动态而非静态显著性信号。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>SeungJu Cha 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.22370" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.22370" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>DaTMe 不只保护与文本前景对齐的 Token，而是联合去噪步间变化和局部高频结构，保留尚未收敛或含边界细节的区域。它为 P4 的短暂证据保留提供了动态而非静态显著性信号。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>静态显著性会损失未被查询点名的细节。
+从本日报的选取理由看，DaTMe 不只保护与文本前景对齐的 Token，而是联合去噪步间变化和局部高频结构，保留尚未收敛或含边界细节的区域。它为 P4 的短暂证据保留提供了动态而非静态显著性信号。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>识别安全合并与必须保留的 Token。
+对当前主题的关键意义在于：最小实验比较事件召回、显存、选择器开销和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/490e64d9aacaccbb.png" alt="Figure 10: Additional PixArt- α \alpha results under different compression ratios. Unlike prior methods, DaTMe more faithfully preserves the fine details present in the original image.">
+                    <figcaption>Figure 10: Additional PixArt- α \alpha results under different compression ratios. Unlike prior methods, DaTMe more faithfully preserves the fine details present in the original im...</figcaption>
+                  </figure>
+                  <p>Tweedie 估计、步间变化和高频结构联合重要性图。
+阅读时需要把方法设计与主要结果一起看：PixArt-alpha 与 FLUX 上保持更完整的全图保真。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>PixArt-alpha 与 FLUX 上保持更完整的全图保真。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>系统开销和极低预算指标不完整。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合迁移为瞬态变化感知的合并基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验比较事件召回、显存、选择器开销和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">Token 压缩与筛选</p>
+              <h3>本轮空缺判断：瞬态保真且系统指标完整的在线 Token 压缩</h3>
+            </div>
+          </div>
+          <p>选取理由：【P4】FastVLA 和 DaTMe 提供动态预算与变化感知机制，但尚未同时报告极低预算短暂关键事件召回、采样率变化、模态缺失、峰值显存、选择器开销和端到端 P99 延迟。最小验证是组合任务注意力、动态变化和覆盖约束，在 5%、10%、20%、40% 预算下完整测量上述指标。</p>
+          <p>研究背景：单一准确率、FLOPs 或平均延迟不能证明高频异常场景的可靠压缩。</p>
+          <p>核心问题：如何控制预算而不丢失稀疏短暂证据。</p>
+          <p>方法与关键创新：本轮无完整闭环论文。</p>
+          <p>主要结果：无。</p>
+          <p>局限性：不以不完整系统指标代替工程闭环。</p>
+          <p>总结：P4 有新机制，但完整答案仍空缺。</p>
+          <p>研究相关性：暂无完整论文，最小验证见选取理由。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>可控核聚变及 AI 交叉</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">可控核聚变及 AI 交叉</p>
+              <h3>本轮空缺判断：直接聚变 AI 新增不足</h3>
+            </div>
+          </div>
+          <p>选取理由：本轮 physics.plasm-ph 最新批次包含 EAST 超声分子束注入沉积的实验约束模拟，但不是 AI 方法。没有发现同时满足聚变数据、AI 模型与可复现实验的高质量新增，因此不以纯物理建模凑数。</p>
+          <p>研究背景：聚变交叉推荐必须明确装置、诊断信号或控制闭环，并给出机器学习方法证据。</p>
+          <p>核心问题：如何把异步诊断、图像前兆和实时控制统一到可验证模型。</p>
+          <p>方法与关键创新：本轮无合格新增。</p>
+          <p>主要结果：无。</p>
+          <p>局限性：不把纯物理仿真包装成 AI 进展。</p>
+          <p>总结：直接聚变 AI 本轮空缺。</p>
+          <p>研究相关性：最小验证继续围绕固定容量记忆、多模态未来预测与动态 Token 预算做本地消融。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发（P1-P4）</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>Mem4Act：固定容量的多粒度长历史记忆</h3>
+              <p class="paper__subtitle">Mem4Act: Learning Effective Latent Memory for Long-Horizon Robotic Manipulation</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】原始应用领域是长时机器人操作。可迁移模块是多粒度时间聚合、固定容量潜记忆、语义问答监督和关键帧 DINO 重建，对应高低频历史压缩及策略确实使用记忆的问题。预期以固定状态替代增长历史，降低后续注意力显存，但增加记忆编码和辅助监督成本。主要风险是没有显式真实 Δt，细粒度瞬态可能在聚合中消失。最小验证是在现有高频诊断窗口上构造多粒度聚合与固定容量记忆，对比固定窗口和全历史注意力的前兆召回、峰值显存与 P99 延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yun Zhang、Zhiyu Huang、Tianhui Cai、Chen Tang、Wei Wang、Jiaqi Ma</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.22323" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.22323" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】原始应用领域是长时机器人操作。可迁移模块是多粒度时间聚合、固定容量潜记忆、语义问答监督和关键帧 DINO 重建，对应高低频历史压缩及策略确实使用记忆的问题。预期以固定状态替代增长历史，降低后续注意力显存，但增加记忆编码和辅助监督成本。主要风险是没有显式真实 Δt，细粒度瞬态可能在聚合中消失。最小验证是在现有高频诊断窗口上构造多粒度聚合与固定容量记忆，对比固定窗口和全历史注意力的前兆召回、峰值显存与 P99 延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>保存原始历史会让上下文持续增长，语言摘要和粗压缩又可能丢失细粒度感知证据。
+从本日报的选取理由看，【P1】原始应用领域是长时机器人操作。可迁移模块是多粒度时间聚合、固定容量潜记忆、语义问答监督和关键帧 DINO 重建，对应高低频历史压缩及策略确实使用记忆的问题。预期以固定状态替代增长历史，降低后续注意力显存，但增加记忆编码和辅助监督成本。主要风险是没有显式真实 Δt，细粒度瞬态可能在聚合中消失。最小验证是在现有高频诊断窗口上构造多粒度聚合与固定容量记忆，对比固定窗口和全历史注意力的前兆召回、峰值显存与 P99 延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用固定大小记忆覆盖长历史，并让下游策略真正依赖记忆。
+对当前主题的关键意义在于：原始领域、可迁移模块、对应问题、计算影响、风险与最小验证已在选取理由中给出。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/06d3c4fc155c0b57.png" alt="Figure 1: Motivation and overview of Mem4Act. (a) Mem4Act consolidates retained interaction history into a fixed-size latent memory, providing a bounded context to the action policy. (b) Mem4Act addresses coverage , content , and utilization problems through structured multi-granularity attention, semantic and perceptual supervision, and memory-first training. (c) Mem4Act improves memory-intensive control across simulation benchmarks and real-world robotic tasks.">
+                    <figcaption>Figure 1: Motivation and overview of Mem4Act. (a) Mem4Act consolidates retained interaction history into a fixed-size latent memory, providing a bounded context to the action polic...</figcaption>
+                  </figure>
+                  <p>多粒度时间聚合，联合 QA 与关键帧特征重建监督，并用记忆优先的两阶段训练增强依赖。
+阅读时需要把方法设计与主要结果一起看：在 RoboMME、RMBench 和四个真实任务上成功率分别达到 49.88%、61.0% 和 81.5%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 RoboMME、RMBench 和四个真实任务上成功率分别达到 49.88%、61.0% 和 81.5%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不显式建模 Δt、异步通道和采样率变化，不能视为 P1 完整解法。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为固定容量记忆基线，但仍需加入时间戳动力学。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域、可迁移模块、对应问题、计算影响、风险与最小验证已在选取理由中给出。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>MAIA：视觉、动作与力觉世界模型提前预警异常</h3>
+              <p class="paper__subtitle">MAIA: Anticipating Interaction Anomalies in Contact-Rich Manipulation via Multimodal World Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】原始应用领域是接触丰富机器人操作。可迁移模块是视觉、计划动作和力觉的未来响应世界模型与轻量异常头，对应图像和诊断时序互补前兆、提前量与闭环响应。预期共享未来预测骨干可减少并行检测器开销，但多模态生成训练增加显存。主要风险是计划动作比托卡马克控制信号更强，视觉可能只学习场景捷径，跨装置失效。最小验证是在现有破裂数据上预测下一段可见光和诊断响应，再用预测残差驱动异常头，比较直接融合的提前量、跨装置性能、显存和延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yi Qiao、Maolin Zheng、Haoran Sun、Lujia Dong、Wenzhao Lian</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.21686" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.21686" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】原始应用领域是接触丰富机器人操作。可迁移模块是视觉、计划动作和力觉的未来响应世界模型与轻量异常头，对应图像和诊断时序互补前兆、提前量与闭环响应。预期共享未来预测骨干可减少并行检测器开销，但多模态生成训练增加显存。主要风险是计划动作比托卡马克控制信号更强，视觉可能只学习场景捷径，跨装置失效。最小验证是在现有破裂数据上预测下一段可见光和诊断响应，再用预测残差驱动异常头，比较直接融合的提前量、跨装置性能、显存和延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事后异常检测无法留出纠正时间，单一视觉又不能充分观察接触物理。
+从本日报的选取理由看，【P3】原始应用领域是接触丰富机器人操作。可迁移模块是视觉、计划动作和力觉的未来响应世界模型与轻量异常头，对应图像和诊断时序互补前兆、提前量与闭环响应。预期共享未来预测骨干可减少并行检测器开销，但多模态生成训练增加显存。主要风险是计划动作比托卡马克控制信号更强，视觉可能只学习场景捷径，跨装置失效。最小验证是在现有破裂数据上预测下一段可见光和诊断响应，再用预测残差驱动异常头，比较直接融合的提前量、跨装置性能、显存和延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何预测计划动作的多模态物理后果，并在异常显现前预警。
+对当前主题的关键意义在于：原始领域、模块、问题、计算影响、风险和最小验证已在选取理由中给出。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/61897f552dccd3ab.png" alt="Fig. 3: MAIA Overview. The framework consists of a Vision-Action-Force World Model (VAF-WM) and a predictive anomaly head. VAF-WM extends GE-Base with gated action-force adapters to forecast future visual and force dynamics. The anomaly head fuses these predictions with interaction tokens and uses a temporal transformer to predict anomaly occurrence, temporal prevalence, and localization within the future window.">
+                    <figcaption>Fig. 3: MAIA Overview. The framework consists of a Vision-Action-Force World Model (VAF-WM) and a predictive anomaly head. VAF-WM extends GE-Base with gated action-force adapters t...</figcaption>
+                  </figure>
+                  <p>视觉、动作、力觉世界模型学习正常动力学，轻量头预测即将发生的异常，并发布含 2852 条轨迹、18 个任务和帧级起点标注的 CRIA 数据集。
+阅读时需要把方法设计与主要结果一起看：已见和新任务 bACC 为 0.765 和 0.710，中位提前量为 28.0 和 25.1 步。异常感知动作选择使任务成功率从 52.6% 提升到 61.5%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>已见和新任务 bACC 为 0.765 和 0.710，中位提前量为 28.0 和 25.1 步。异常感知动作选择使任务成功率从 52.6% 提升到 61.5%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不是托卡马克，也未验证异步时钟、模态缺失和跨设备物理泛化。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>MAIA 提供了“先预测物理后果，再判异常”的 P3 可迁移路线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域、模块、问题、计算影响、风险和最小验证已在选取理由中给出。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>FastVLA：任务条件与时间自适应视觉 Token 压缩</h3>
+              <p class="paper__subtitle">FastVLA: Task-Conditioned and Temporally Adaptive Visual Token Compression for Efficient Vision-Language-Action Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1，WACV 2027 接收</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】原始应用领域是闭环机器人 VLA。可迁移模块是任务到视觉注意力、逆 Simpson 分布均匀度和在线滑窗校准的动态预算，对应不同工况和时间步自适应 Token 数量。预期降低 LLM FLOPs、峰值显存和动作延迟，选择器只需已有注意力统计。主要风险是任务注意力会漏掉短暂但尚未影响当前动作的前兆，滑窗在突变采样率下滞后。最小验证是在诊断图像或 Event 序列上用异常查询生成分数，按逆 Simpson 指标动态设预算，对比固定 10%、20%、40% 保留率的关键事件召回、FLOPs、峰值显存和 P99 延迟。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiuyi Xu、Chengyuan Qian、Zhengzhong Tu、Yang Sui、Yangming Shi</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.22146" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.22146" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】原始应用领域是闭环机器人 VLA。可迁移模块是任务到视觉注意力、逆 Simpson 分布均匀度和在线滑窗校准的动态预算，对应不同工况和时间步自适应 Token 数量。预期降低 LLM FLOPs、峰值显存和动作延迟，选择器只需已有注意力统计。主要风险是任务注意力会漏掉短暂但尚未影响当前动作的前兆，滑窗在突变采样率下滞后。最小验证是在诊断图像或 Event 序列上用异常查询生成分数，按逆 Simpson 指标动态设预算，对比固定 10%、20%、40% 保留率的关键事件召回、FLOPs、峰值显存和 P99 延迟。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>闭环 VLA 每步重复编码高分辨率多视图，固定预算要么浪费计算，要么在关键步骤删掉控制证据。
+从本日报的选取理由看，【P4】原始应用领域是闭环机器人 VLA。可迁移模块是任务到视觉注意力、逆 Simpson 分布均匀度和在线滑窗校准的动态预算，对应不同工况和时间步自适应 Token 数量。预期降低 LLM FLOPs、峰值显存和动作延迟，选择器只需已有注意力统计。主要风险是任务注意力会漏掉短暂但尚未影响当前动作的前兆，滑窗在突变采样率下滞后。最小验证是在诊断图像或 Event 序列上用异常查询生成分数，按逆 Simpson 指标动态设预算，对比固定 10%、20%、40% 保留率的关键事件召回、FLOPs、峰值显存和 P99 延迟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何根据任务和当前重要性分布在线决定每一步的 Token 预算。
+对当前主题的关键意义在于：原始领域、模块、问题、计算影响、风险和最小验证已在选取理由中给出。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2a3e79368b31d6a2.jpg" alt="Figure 1 : Overview of FastVLA, our temporally adaptive, training-free visual token compression framework for Vision-Language-Action models. At each action prediction step, FastVLA estimates task-conditioned patch importance via attention, measures distributional uniformity over selected vision tokens, and dynamically adjusts the compression rate using an online sliding-window calibration. By retaining task-relevant yet information-diverse tokens across timesteps, our approach reduces LLM backbone computation while preserving action performance.">
+                    <figcaption>Figure 1 : Overview of FastVLA, our temporally adaptive, training-free visual token compression framework for Vision-Language-Action models. At each action prediction step, FastVLA...</figcaption>
+                  </figure>
+                  <p>训练免费使用任务到视觉注意力评分，以逆 Simpson 指标测量分布均匀度，并用滑窗在线校准压缩率。
+阅读时需要把方法设计与主要结果一起看：三类 VLA 在 LIBERO、SIMPLER 和真实 FR3 上验证。仿真中 LLM FLOPs 降低 35% 至 59%，动作延迟降低 9% 至 32%。真实机器人端到端延迟降低 20%，成功率相当。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>三类 VLA 在 LIBERO、SIMPLER 和真实 FR3 上验证。仿真中 LLM FLOPs 降低 35% 至 59%，动作延迟降低 9% 至 32%。真实机器人端到端延迟降低 20%，成功率相当。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有报告极低预算短暂事件召回、模态缺失与跨数据集鲁棒性，峰值显存数字也未在摘要给出。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>FastVLA 是任务条件和在线动态预算结合得较完整的 P4 新基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始领域、模块、问题、计算影响、风险和最小验证已在选取理由中给出。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>本轮空缺判断：完整原生 RGB-Event 属性识别</h3>
+            </div>
+          </div>
+          <p>选取理由：【P2】本轮没有新论文同时满足原生异步 Event、RGB 时间对齐、按属性动态可靠性、开放词表或软监督、模态缺失与属性识别。原始应用领域为空缺。可迁移模块暂无完整方案，对应问题仍是 TriPro 最小替换。预期计算与显存影响无法由弱相关导航论文代推。主要风险是用事件转帧或简单相加掩盖异步优势。最小验证继续比较原生事件 Token、固定 voxel 和转帧输入，在时间错位、低照度、运动模糊与模态缺失下报告属性 mAP、ECE、峰值显存和延迟。</p>
+          <p>研究背景：本轮新增的神经形态导航工作证明低功耗价值，但没有 RGB 互补、属性头和不确定性监督。</p>
+          <p>核心问题：如何在时钟不同步和质量变化时稳定提取属性级互补证据。</p>
+          <p>方法与关键创新：本轮无合格新增，保留空缺判断。</p>
+          <p>主要结果：无。</p>
+          <p>局限性：不以一般事件导航替代 RGB-Event 属性识别。</p>
+          <p>总结：P2 直接任务本轮空缺。</p>
+          <p>研究相关性：暂无独立论文，最小验证见选取理由。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>本轮空缺判断：直接可见光与诊断时序托卡马克破裂预测</h3>
+            </div>
+          </div>
+          <p>选取理由：【P3】本轮没有新论文同时使用托卡马克可见光与诊断时序，处理异步、缺失、低延迟、跨装置与物理解释。MAIA 仅提供跨领域机制，不能替代直接证据。预期计算与显存影响需由本地最小实验测量。主要风险是视觉捷径和装置身份泄漏。最小验证见 MAIA 条目。</p>
+          <p>研究背景：直接任务需要时序查询局部图像证据并抵抗装置变化。</p>
+          <p>核心问题：如何用异步图像与诊断通道做可解释提前预警。</p>
+          <p>方法与关键创新：本轮无直接合格新增。</p>
+          <p>主要结果：无。</p>
+          <p>局限性：不把机器人异常预警包装成聚变结论。</p>
+          <p>总结：P3 直接任务本轮空缺。</p>
+          <p>研究相关性：暂无直接论文。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态与计算机视觉</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态与计算机视觉</p>
+              <h3>FuseAdapt：缺失模态下的适配空间融合</h3>
+              <p class="paper__subtitle">FuseAdapt: Parameter-Efficient Multimodal Fusion for Semantic Segmentation with Missing Modalities</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">FuseAdapt 冻结视觉基础模型，只让模态私有低秩分支在 FFN 残差空间交换信息，并用训练期预测模态建模应对缺失。它把融合、缺失鲁棒性和参数效率放在同一设计中。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Xin Zhang、Robby T. Tan</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.21779" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.21779" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>FuseAdapt 冻结视觉基础模型，只让模态私有低秩分支在 FFN 残差空间交换信息，并用训练期预测模态建模应对缺失。它把融合、缺失鲁棒性和参数效率放在同一设计中。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>独立融合网络在传感器掉线时容易失效。
+从本日报的选取理由看，FuseAdapt 冻结视觉基础模型，只让模态私有低秩分支在 FFN 残差空间交换信息，并用训练期预测模态建模应对缺失。它把融合、缺失鲁棒性和参数效率放在同一设计中。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>以少量参数实现显式融合和缺失恢复。
+对当前主题的关键意义在于：最小实验做整模态和连续片段缺失，记录 mAP、ECE、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/52768c0be5fa64bd.png" alt="Figure 4: Qualitative results on DELIVER in MISS setting. The proposed method is compared with CMNeXt ( Zhang et al., 2023b ) and StitchFusion ( Li et al., 2024 ) . The model is trained on four modalities { r , d , e , l } \{r,d,e,l\} and tested on { r } \{r\} (Row 1) and { r , l } \{r,l\} (Row 2).">
+                    <figcaption>Figure 4: Qualitative results on DELIVER in MISS setting. The proposed method is compared with CMNeXt ( Zhang et al., 2023b ) and StitchFusion ( Li et al., 2024 ) . The model is tr...</figcaption>
+                  </figure>
+                  <p>冻结 VFM、模态私有 LoRA、FFN 残差路由和 PMM。
+阅读时需要把方法设计与主要结果一起看：缺失模态条件下最高提升 12.56 mIoU。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>缺失模态条件下最高提升 12.56 mIoU。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>尚未处理原生异步 Event。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可直接进入现有多模态代码的轻量基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验做整模态和连续片段缺失，记录 mAP、ECE、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态与计算机视觉</p>
+              <h3>Gen4P：连续时间按需 4D 查询</h3>
+              <p class="paper__subtitle">Gen4P: Video Generators are 4D Perceivers</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">Gen4P 将预训练视频生成器改造成单次编码的 4D 感知器，用轻量交叉注意力解码器按位置和连续时间查询所需属性，避免密集输出所有时空位置。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yitong Xia、Zeren Jiang、Chuanxia Zheng</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.22371" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.22371" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Gen4P 将预训练视频生成器改造成单次编码的 4D 感知器，用轻量交叉注意力解码器按位置和连续时间查询所需属性，避免密集输出所有时空位置。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>密集视频预测计算高且时间点固定。
+从本日报的选取理由看，Gen4P 将预训练视频生成器改造成单次编码的 4D 感知器，用轻量交叉注意力解码器按位置和连续时间查询所需属性，避免密集输出所有时空位置。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>统一并按需解码 4D 属性。
+对当前主题的关键意义在于：最小实验让异常时序查询诊断视频 patch，比较固定帧和按需查询。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/e09fa6c93d6002bd.png" alt="Figure 4: Qualitative Results of 3D Tracking across different methods, consisting of both static and dynamic content. We colorize the dynamic foreground tracklines.">
+                    <figcaption>Figure 4: Qualitative Results of 3D Tracking across different methods, consisting of both static and dynamic content. We colorize the dynamic foreground tracklines.</figcaption>
+                  </figure>
+                  <p>视频潜变量单次编码、轻量交叉注意力和连续时间查询。
+阅读时需要把方法设计与主要结果一起看：点跟踪、深度与位姿估计达到领先或有竞争力结果。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>点跟踪、深度与位姿估计达到领先或有竞争力结果。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未报告流式高频与查询密度的系统开销。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>提供时序查询局部视觉证据的通用接口。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验让异常时序查询诊断视频 patch，比较固定帧和按需查询。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>时序分析、预测与建模</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析、预测与建模</p>
+              <h3>PathFM：快速生成完整多变量未来轨迹</h3>
+              <p class="paper__subtitle">PathFM: Fast Generative Forecasting of Multivariate Trajectories</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">多数基础预测模型只输出边际分位数，PathFM 直接生成保持变量与时间依赖的完整未来路径，并通过少步蒸馏和历史注意力缓存把多路径采样成本压到接近一次分位数查询，适合聚变风险轨迹和事件时刻估计。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jiachen Yao 等，机构以 arXiv 原始页为准</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.22358" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.22358" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>多数基础预测模型只输出边际分位数，PathFM 直接生成保持变量与时间依赖的完整未来路径，并通过少步蒸馏和历史注意力缓存把多路径采样成本压到接近一次分位数查询，适合聚变风险轨迹和事件时刻估计。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>边际分位数不能表达未来轨迹依赖。
+从本日报的选取理由看，多数基础预测模型只输出边际分位数，PathFM 直接生成保持变量与时间依赖的完整未来路径，并通过少步蒸馏和历史注意力缓存把多路径采样成本压到接近一次分位数查询，适合聚变风险轨迹和事件时刻估计。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>快速生成校准且多样的完整未来路径。
+对当前主题的关键意义在于：最小实验比较轨迹能量分数、破裂时间校准、多样本延迟和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3cb880c54e484583.png" alt="Figure 15: Full 4,096-step Lorenz and Rössler continuations. All panels use the same initial conditions. Gray curves show the observed continuation; circles mark the first and last forecast states, and shading marks the first 512 steps.">
+                    <figcaption>Figure 15: Full 4,096-step Lorenz and Rössler continuations. All panels use the same initial conditions. Gray curves show the observed continuation; circles mark the first and last...</figcaption>
+                  </figure>
+                  <p>flow matching、一步至两步蒸馏、跨样本历史缓存和路径评分基准。
+阅读时需要把方法设计与主要结果一起看：fps-bench 聚合路径分数领先外部基线，混沌系统长期变化性更稳定。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>fps-bench 聚合路径分数领先外部基线，混沌系统长期变化性更稳定。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>不规则采样和跨装置显存收益待验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>适合作为聚变风险轨迹预测的新基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验比较轨迹能量分数、破裂时间校准、多样本延迟和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析、预测与建模</p>
+              <h3>Twice Upon a Time：互补时序表征</h3>
+              <p class="paper__subtitle">Twice Upon a Time: Complementary Representations for Time-Series Reasoning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-15 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">论文不强迫单一表示同时保留绝对测量和形状不变性，而是联合折线图与归一化延迟嵌入，并用干预验证两种视图的不同归纳偏置。对跨装置时序推理和图像化诊断很有启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hedi Zisling 等</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.22327" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.22327" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>论文不强迫单一表示同时保留绝对测量和形状不变性，而是联合折线图与归一化延迟嵌入，并用干预验证两种视图的不同归纳偏置。对跨装置时序推理和图像化诊断很有启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>单一表示难兼顾绝对幅值和形态不变性。
+从本日报的选取理由看，论文不强迫单一表示同时保留绝对测量和形状不变性，而是联合折线图与归一化延迟嵌入，并用干预验证两种视图的不同归纳偏置。对跨装置时序推理和图像化诊断很有启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>让模型按任务使用互补时序信息。
+对当前主题的关键意义在于：最小实验比较跨装置性能、幅值扰动鲁棒性、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/96478eea2c5f6284.png" alt="Figure 2: Overview of the Dual-View TSLM. Each visual span is wrapped by vision_start and vision_end . Stage I trains the DINOv3 LoRA and the merger. Stage II trains the LM LoRA. The Qwen vision encoder, the text embedding, and the LLM backbone stay frozen.">
+                    <figcaption>Figure 2: Overview of the Dual-View TSLM. Each visual span is wrapped by vision_start and vision_end . Stage I trains the DINOv3 LoRA and the merger. Stage II trains the LM LoRA. T...</figcaption>
+                  </figure>
+                  <p>双视觉编码器、多层融合和评测时干预。
+阅读时需要把方法设计与主要结果一起看：TSRBench 从 44.5% 提升到 53.2%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>TSRBench 从 44.5% 提升到 53.2%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>图像化时序增加编码成本，不能直接保留原生 Δt。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>互补表示优于单一万能表示的有力证据。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验比较跨装置性能、幅值扰动鲁棒性、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 时序预测从边际分位数转向完整未来路径</h3>
+          <p>PathFM 同时处理轨迹依赖、校准和多样本采样速度，对破裂时间和峰值风险比单点误差更有价值。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 多模态融合开始进入参数高效适配空间</h3>
+          <p>FuseAdapt 表明可以冻结大骨干，只路由低秩残差，并把缺失模态恢复留在训练期，适合小样本科学数据。</p>
+        </article>
+        <article class="trend">
+          <h3>3. Token 压缩从静态显著性转向动态状态与在线预算</h3>
+          <p>DaTMe 使用未收敛动态，FastVLA 使用任务注意力分布，两者都比固定保留率更接近 P4，但完整系统评测仍缺失。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 连续时间查询正在替代固定帧密集解码</h3>
+          <p>Gen4P 的连续时间按需查询提示 P3 可以让诊断时序主动索取局部视觉证据，而不是每帧全量融合。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
