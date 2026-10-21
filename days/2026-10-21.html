@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-10-21</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-10-21 核心论文简报</h1>
+      <p class="hero__meta">面向对象：AI 时序、多任务学习、多模态学习、计算机视觉、Token 压缩与可控核聚变交叉研究团队</p>
+      <p class="hero__meta">信息检索截止时间：2026-10-21 05:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日主推荐 5 篇，覆盖不规则时序轻量建模、原生 RGB-Event 可靠性路由、托卡马克场景控制、长上下文 Token 剪枝和不确定性感知 Token 合并。主推荐与 P1-P4 独立选取，P1-P4 不占主推荐名额。</p>
+        <p>顶会顶刊回看独立收录 MIRA、CyIN、LS-OGD，均为 NeurIPS 2025 正式页面核验的非当日新增论文。</p>
+        <p>P1 收录 CVTA，P2 收录事件相机递归视觉变换器，P3 收录托卡马克核心电子密度重建，P4 收录视觉充分性景观。完整真实 Δt、异步多通道、百万长度线性内存统一骨干，完整原生 RGB-Event 属性识别，直接可见光与诊断时序托卡马克破裂预测，以及瞬态保真且系统指标完整的 Token 压缩仍明确写为本轮空缺。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 MIRA：面向真实医疗数据的时序基础模型</a></li>
+              <li><a href="#paper-2">02 CyIN：连接完整与不完整多模态学习的循环信息瓶颈</a></li>
+              <li><a href="#paper-3">03 LS-OGD：面向多模态概念漂移的 Lyapunov 稳定自适应控制</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">在研课题启发（P1-P4）</a>
+            <ul>
+              <li><a href="#paper-9">09 CVTA：跨变量时间注意力预测不规则多变量时序</a></li>
+              <li><a href="#paper-10">10 事件相机递归视觉变换器：低速稀疏事件流姿态估计</a></li>
+              <li><a href="#paper-11">11 托卡马克核心电子密度重建：神经算子输运代理与不确定性量化</a></li>
+              <li><a href="#paper-12">12 视觉充分性景观：用查询条件可靠性预测 Token 剪枝风险</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">最新主题展开</a>
+            <ul>
+              <li><a href="#paper-4">04 CTLite：可复用连续时间摘要的轻量不规则多变量预测</a></li>
+              <li><a href="#paper-5">05 ERA-Det：可靠性监督 RGB-Event 路由</a></li>
+              <li><a href="#paper-6">06 聚变场景强化学习控制器</a></li>
+              <li><a href="#paper-7">07 TokenGate：学习式预填充 Token 剪枝</a></li>
+              <li><a href="#paper-8">08 UtoMe：不确定性感知 Token 合并</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">CTLite：可复用连续时间摘要的轻量不规则多变量预测</a></h3>
+              <p class="card__subtitle">CTLite: Lightweight Irregular Multivariate Time Series Forecasting with Reusable Continuous-Time Summaries</p>
+              <div class="chip-row">
+                <span class="chip">最新主题展开</span>
+                <span class="chip chip--muted">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>CTLite 直接处理稀疏、异步多变量观测，用参数无关的连续时间多尺度摘要复用历史编码，适合作为 P1 的低显存、低延迟基线。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">ERA-Det：可靠性监督 RGB-Event 路由</a></h3>
+              <p class="card__subtitle">RGB--Event Object Detection Across Operating Frequencies via Reliability-Supervised Routing and Asymmetric-Resolution Fusion</p>
+              <div class="chip-row">
+                <span class="chip">最新主题展开</span>
+                <span class="chip chip--muted">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>ERA-Det 在每个空间位置学习 RGB 与 Event 的可靠性路由，并让 RGB 保持原生分辨率，直接命中 P2 关注的异步事件稀疏、弱光和样本级动态加权。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">聚变场景强化学习控制器</a></h3>
+              <p class="card__subtitle">Reinforcement Learning Controllers for Fusion Scenario Development</p>
+              <div class="chip-row">
+                <span class="chip">最新主题展开</span>
+                <span class="chip chip--muted">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>论文把托卡马克场景开发改写为一次训练、多目标条件控制，直接提供聚变 AI 新增的可部署控制链路，并给出 EAST 仿真成功率和误差。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">TokenGate：学习式预填充 Token 剪枝</a></h3>
+              <p class="card__subtitle">TokenGate: Adapting LLMs for Fast and Memory-Efficient Prefill with Learned Token Pruning</p>
+              <div class="chip-row">
+                <span class="chip">最新主题展开</span>
+                <span class="chip chip--muted">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>TokenGate 用轻量可插拔组件学习端到端 Top-K 剪枝，直接报告 TTFT、峰值显存和多类 Transformer 兼容性，是 P4 的系统收益基线。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">UtoMe：不确定性感知 Token 合并</a></h3>
+              <p class="card__subtitle">UtoMe: Observation-Uncertainty-Guided Token Merging for Weather Foundation Models</p>
+              <div class="chip-row">
+                <span class="chip">最新主题展开</span>
+                <span class="chip chip--muted">2026-10-18 UTC，v1，NeurIPS 2026 接收</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>UtoMe 把观测不确定性和动力学显著性联合用于 Token 合并，说明 P4 的保留预算应保护不可靠但关键的证据，而不是只按相似度合并。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>MIRA：面向真实医疗数据的时序基础模型</h3>
+              <p class="paper__subtitle">MIRA: Medical Time Series Foundation Model for Real-World Health Data</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。MIRA 将连续时间旋转位置编码、频率专家路由和 Neural ODE 外推放进统一医疗时序基础模型，今天仍适合作为 P1 高低频统一建模的结构参照。最小实验是在诊断数据上替换时间编码并按采样率漂移评估。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Hao Li、Bowen Deng、Chang Xu、ZhiYuan Feng、Viktor Schlegel、Yu-Hao Huang、Yizheng Sun、Jingyuan Sun、Kailai Yang、Yiyao Yu、Jiang Bian</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/8e12ba543adc673da5b89c9311fcf72c-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。MIRA 将连续时间旋转位置编码、频率专家路由和 Neural ODE 外推放进统一医疗时序基础模型，今天仍适合作为 P1 高低频统一建模的结构参照。最小实验是在诊断数据上替换时间编码并按采样率漂移评估。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>医疗时序具有不规则间隔、异构采样率和频繁缺失，普通时序基础模型难以迁移到真实机构和模态。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。MIRA 将连续时间旋转位置编码、频率专家路由和 Neural ODE 外推放进统一医疗时序基础模型，今天仍适合作为 P1 高低频统一建模的结构参照。最小实验是在诊断数据上替换时间编码并按采样率漂移评估。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在任意目标时间预测、频率专门化和跨任务迁移之间建立统一表示。
+对当前主题的关键意义在于：原始应用是医疗时序基础模型，可迁移到多率诊断。预期增加小型时间编码与专家路由开销，风险是物理状态切换不满足医疗先验。最小验证是冻结主干，仅替换时间编码，在真实 Δt、缺失率和跨装置设置下比较误差、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>连续时间 Rotary 编码显式使用时间间隔，频率特定 MoE 路由不同时间尺度，连续动力学外推块用 Neural ODE 生成任意时间轨迹。
+阅读时需要把方法设计与主要结果一起看：NeurIPS 正式摘要报告其在真实医疗时序基础模型和多任务基准上取得相对既有模型的改进，并提供跨任务评测套件。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>NeurIPS 正式摘要报告其在真实医疗时序基础模型和多任务基准上取得相对既有模型的改进，并提供跨任务评测套件。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>医疗机构分布不能直接代表聚变装置，频率专家路由也可能扩大参数和显存。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>MIRA 提供了连续时间、频率路由和外推目标的组合模板。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是医疗时序基础模型，可迁移到多率诊断。预期增加小型时间编码与专家路由开销，风险是物理状态切换不满足医疗先验。最小验证是冻结主干，仅替换时间编码，在真实 Δt、缺失率和跨装置设置下比较误差、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>CyIN：连接完整与不完整多模态学习的循环信息瓶颈</h3>
+              <p class="paper__subtitle">CyIN: Cyclic Informative Latent Space for Bridging Complete and Incomplete Multimodal Learning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。CyIN 用 Token 级和标签级信息瓶颈净化跨模态潜变量，并用循环翻译补全缺失模态，今天仍适合映射 P2、P3 的模态缺失训练。最小实验是对诊断通道随机与结构化 dropout 做留一装置测试。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ronghao Lin、Qiaolin He、Sijie Mai、Ying Zeng、Aolin Xiong、Li Huang、Yap-Peng Tan、Haifeng Hu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/1994798981a8467d7d50d8603c6caecb-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。CyIN 用 Token 级和标签级信息瓶颈净化跨模态潜变量，并用循环翻译补全缺失模态，今天仍适合映射 P2、P3 的模态缺失训练。最小实验是对诊断通道随机与结构化 dropout 做留一装置测试。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态模型通常在完整配对数据上训练，部署时模态集合动态变化会造成明显退化。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。CyIN 用 Token 级和标签级信息瓶颈净化跨模态潜变量，并用循环翻译补全缺失模态，今天仍适合映射 P2、P3 的模态缺失训练。最小实验是对诊断通道随机与结构化 dropout 做留一装置测试。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让同一模型同时支持完整输入和多种缺失组合，并避免补全噪声污染共享表示。
+对当前主题的关键意义在于：原始应用是通用多模态学习，可迁移到 RGB、Event 和诊断通道缺失。预期补全分支增加训练显存，推理时可关闭。风险是模型把装置身份当成缺失模式。最小验证是做模态 dropout、时钟偏移和跨装置留出，比较直接门控、CyIN 式潜变量和零填充基线。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>循环信息瓶颈提取任务相关潜变量，跨模态循环翻译从现有模态重建缺失模态，并联合优化完整与不完整场景。
+阅读时需要把方法设计与主要结果一起看：NeurIPS 正式摘要报告其在四个多模态数据集的完整和多种不完整设置中优于基线。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>NeurIPS 正式摘要报告其在四个多模态数据集的完整和多种不完整设置中优于基线。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>循环翻译可能产生物理不一致的伪证据，且没有原生 Event 时间戳和实时延迟评估。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>缺失模态处理应同时约束潜变量信息量和补全方向。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是通用多模态学习，可迁移到 RGB、Event 和诊断通道缺失。预期补全分支增加训练显存，推理时可关闭。风险是模型把装置身份当成缺失模式。最小验证是做模态 dropout、时钟偏移和跨装置留出，比较直接门控、CyIN 式潜变量和零填充基线。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>LS-OGD：面向多模态概念漂移的 Lyapunov 稳定自适应控制</h3>
+              <p class="paper__subtitle">Lyapunov-Stable Adaptive Control for Multimodal Concept Drift</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。LS-OGD 用在线控制器联合调整学习率和模态融合权重，并给出误差有界性，今天仍适合为 P2、P3 的跨装置和传感器漂移提供安全更新基线。最小实验是在人为通道漂移下比较固定融合与 LS-OGD 的校准和恢复速度。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Tianyu Pan、Mengdi Zhu、Alexa Cole、Ronald Wilson、Damon Woodard</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/29d4e09f060a95118762296d240b5e63-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。LS-OGD 用在线控制器联合调整学习率和模态融合权重，并给出误差有界性，今天仍适合为 P2、P3 的跨装置和传感器漂移提供安全更新基线。最小实验是在人为通道漂移下比较固定融合与 LS-OGD 的校准和恢复速度。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态部署会遭遇模态特定概念漂移，固定融合权重可能把单通道退化传播到整体预测。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。LS-OGD 用在线控制器联合调整学习率和模态融合权重，并给出误差有界性，今天仍适合为 P2、P3 的跨装置和传感器漂移提供安全更新基线。最小实验是在人为通道漂移下比较固定融合与 LS-OGD 的校准和恢复速度。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在线识别漂移并稳定地调节学习率与模态贡献，避免灾难性适应。
+对当前主题的关键意义在于：原始应用是多模态概念漂移，可迁移到时钟偏移、弱光、诊断校准变化。预期只更新小型控制器，主干显存不变，风险是漂移检测误报导致过度调节。最小验证是在历史放电回放中注入模态漂移，比较错误率、恢复时间、校准误差和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>LS-OGD 用在线控制器根据预测误差和漂移调节融合权重，理论上保证有界误差并在漂移停止时收敛。
+阅读时需要把方法设计与主要结果一起看：NeurIPS 正式摘要报告了模态特定漂移下的鲁棒性和误差稳定性，并证明有界漂移条件下的最终有界性质。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>NeurIPS 正式摘要报告了模态特定漂移下的鲁棒性和误差稳定性，并证明有界漂移条件下的最终有界性质。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>理论假设未必适用于稀疏事件和破裂前兆分布，在线更新还需评估额外延迟与安全约束。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>融合权重可以作为有稳定性保证的在线控制量。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是多模态概念漂移，可迁移到时钟偏移、弱光、诊断校准变化。预期只更新小型控制器，主干显存不变，风险是漂移检测误报导致过度调节。最小验证是在历史放电回放中注入模态漂移，比较错误率、恢复时间、校准误差和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>在研课题启发（P1-P4）</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>CVTA：跨变量时间注意力预测不规则多变量时序</h3>
+              <p class="paper__subtitle">CVTA: Cross-Variable Temporal Attention for Multivariate Irregular Time Series Prediction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-18 UTC，v1，NeurIPS 2026 接收</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】CVTA 用紧凑连续时间状态承载近期动态，再做跨变量时间注意力，直接对应异步观测和高低频通道耦合。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Ankitkumar Joshi、Milos Hauskrecht</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.25584" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.25584" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】CVTA 用紧凑连续时间状态承载近期动态，再做跨变量时间注意力，直接对应异步观测和高低频通道耦合。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>原始应用是医疗、气候和大规模监测中的不规则多变量预测。
+从本日报的选取理由看，【P1】CVTA 用紧凑连续时间状态承载近期动态，再做跨变量时间注意力，直接对应异步观测和高低频通道耦合。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从异步观测构造可解释状态并在线捕获变量依赖。
+对当前主题的关键意义在于：原始应用为不规则监测时序。可迁移模块是连续时间状态和变量条件注意力，对应真实 Δt、多尺度耦合问题。预期比全局注意力降低显存，风险是状态压缩丢失短暂峰值。最小验证是在现有诊断数据中加入高频事件通道，比较 CVTA、CTLite 和 Neural CDE 的峰值显存、吞吐、采样率漂移和前兆召回。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f802f7154ad378f1.png" alt="Figure 1 : Overview of attention-based architectures for irregular multivariate time series prediction. Irregularly sampled multivariate observations ( top left ) can be modeled using different attention mechanisms: point-wise attention ( bottom left ) applies attention directly to individual observations; patch-based attention ( bottom right ) aggregates observations into temporal patches before applying attention; and structured message passing ( top right ) represents time points and variables as nodes in graphs or hypergraphs and learns attention via message passing.">
+                    <figcaption>Figure 1 : Overview of attention-based architectures for irregular multivariate time series prediction. Irregularly sampled multivariate observations ( top left ) can be modeled us...</figcaption>
+                  </figure>
+                  <p>变量条件嵌入、连续时间状态和动态元决策模块，可作为现有预测模型的辅助模块。
+阅读时需要把方法设计与主要结果一起看：多个真实基准上短期预测准确、在线推理高效，并能改善现有模型。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>多个真实基准上短期预测准确、在线推理高效，并能改善现有模型。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有百万长度线性内存、高低频压缩交互和真实 Δt 外推压力测试。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>CVTA 是 P1 的紧凑跨变量交互模块候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用为不规则监测时序。可迁移模块是连续时间状态和变量条件注意力，对应真实 Δt、多尺度耦合问题。预期比全局注意力降低显存，风险是状态压缩丢失短暂峰值。最小验证是在现有诊断数据中加入高频事件通道，比较 CVTA、CTLite 和 Neural CDE 的峰值显存、吞吐、采样率漂移和前兆召回。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>事件相机递归视觉变换器：低速稀疏事件流姿态估计</h3>
+              <p class="paper__subtitle">Recurrent Vision Transformers for Event-Based Spacecraft Pose Estimation Under Slow Relative Motions</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】论文在低速运动和低照度下用递归记忆聚合稀疏原生事件，并学习时间注意范围，适合迁移到 RGB-Event 属性识别的稀疏与短窗口问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Sofia McLeod、Mohsi Jawaid、Carl Seubert、Tat-Jun Chin</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.25622" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.25622" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】论文在低速运动和低照度下用递归记忆聚合稀疏原生事件，并学习时间注意范围，适合迁移到 RGB-Event 属性识别的稀疏与短窗口问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>原始应用是航天器交会姿态估计，低相对速度时事件率下降，固定窗口信噪比不足。
+从本日报的选取理由看，【P2】论文在低速运动和低照度下用递归记忆聚合稀疏原生事件，并学习时间注意范围，适合迁移到 RGB-Event 属性识别的稀疏与短窗口问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在事件稀疏时利用更长轨迹而不把窗口固定为常数。
+对当前主题的关键意义在于：原始应用为低速航天器事件视觉。可迁移模块是递归事件记忆和轨迹级时间注意，对应 P2 的稀疏事件、运动模糊和窗口自适应。预期比堆叠长事件 Token 降低峰值显存，风险是记忆污染和跨样本漂移。最小验证是在 TriPro-ReID 的事件流上比较固定窗口、RVT 记忆和 ERA-Det 路由，在属性 F1、时钟偏移、事件噪声、峰值显存与延迟上评估。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/c4e8a67058666770.png" alt="Fig. 3 : Proposed RVT-P pipeline. S1–S4 output feature maps at 1/4, 1/8, 1/16, and 1/32 input resolution; P1–P3 are the output feature maps of the FPN, in order of lowest to highest resolution. Fig. 4 depicts the RVT block.">
+                    <figcaption>Fig. 3 : Proposed RVT-P pipeline. S1–S4 output feature maps at 1/4, 1/8, 1/16, and 1/32 input resolution; P1–P3 are the output feature maps of the FPN, in order of lowest to highes...</figcaption>
+                  </figure>
+                  <p>递归视觉 Transformer 跨事件流维护记忆，从完整轨迹学习时间注意跨度，并用热图回归二维三维对应。
+阅读时需要把方法设计与主要结果一起看：在真实低速事件数据上，相比逐事件帧和固定时间窗方法，姿态估计精度与稳定性更好。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在真实低速事件数据上，相比逐事件帧和固定时间窗方法，姿态估计精度与稳定性更好。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有 RGB 互补输入、属性标签、模态缺失和不确定性校准。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可学习的递归时间跨度是低事件率条件下的原生事件表征候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用为低速航天器事件视觉。可迁移模块是递归事件记忆和轨迹级时间注意，对应 P2 的稀疏事件、运动模糊和窗口自适应。预期比堆叠长事件 Token 降低峰值显存，风险是记忆污染和跨样本漂移。最小验证是在 TriPro-ReID 的事件流上比较固定窗口、RVT 记忆和 ERA-Det 路由，在属性 F1、时钟偏移、事件噪声、峰值显存与延迟上评估。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>托卡马克核心电子密度重建：神经算子输运代理与不确定性量化</h3>
+              <p class="paper__subtitle">Reconstruction of Unobserved Core Electron Density in Tokamak Plasmas with a Neural Operator Transport Surrogate and Uncertainty Quantification</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-17 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】论文用 FNO 可微输运代理从反射计和干涉仪重建未观测核心密度，并分别校准观测区和未观测区不确定性，直接推进 P3 的物理解释和实时诊断方向。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>D. Sorokin、A. Granovskiy、M. Stokolesov、E. Adishchev、M. Nurgaliev、G. Subbotin</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.24525" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.24525" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】论文用 FNO 可微输运代理从反射计和干涉仪重建未观测核心密度，并分别校准观测区和未观测区不确定性，直接推进 P3 的物理解释和实时诊断方向。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>反应堆相关装置诊断口有限，电子密度剖面只能部分观测，而实时控制需要完整剖面。
+从本日报的选取理由看，【P3】论文用 FNO 可微输运代理从反射计和干涉仪重建未观测核心密度，并分别校准观测区和未观测区不确定性，直接推进 P3 的物理解释和实时诊断方向。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在部分观测下恢复核心剖面，同时量化未观测区域的可信度。
+对当前主题的关键意义在于：原始应用是托卡马克部分观测密度重建。可迁移模块是物理约束可微代理和未观测区校准，对应 P3 的物理解释、低延迟和跨装置适配。预期用代理替代迭代求解降低延迟，但 FNO 主干仍需评估显存。风险是模拟到实验差距和不确定性失校准。最小验证是在现有诊断数据上冻结代理，只训练风险头，比较解析拟合、FNO 和视觉时序融合的误差、CRPS、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/fd8452cd201d7f55.png" alt="Figure 2: Gaussian-method empirical vs. nominal coverage at the 50/70/90% levels, as a function of ρ \rho (median per level, binned into 20 ρ \rho intervals; shaded region marks the observed edge, ρ ≥ 0.7 \rho\geq 0.7 ), comparing the 100 synthetic discharges (left) against the 13 DIII-D discharges (right). IQR bands are omitted for readability – per-shot spread is wide and reported numerically as the ± \pm std in Table 2 .">
+                    <figcaption>Figure 2: Gaussian-method empirical vs. nominal coverage at the 50/70/90% levels, as a function of ρ \rho (median per level, binned into 20 ρ \rho intervals; shaded region marks th...</figcaption>
+                  </figure>
+                  <p>学习物理一维粒子输运方程系数，用 FNO 代理替代慢输运求解器，比较 ensemble、Laplace、Metropolis-Hastings 和高斯不确定性方法。
+阅读时需要把方法设计与主要结果一起看：在合成和实验 DIII-D 放电上优于标准解析函数拟合，并用 CRPS 和 coverage 分别评估观测与未观测区域。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在合成和实验 DIII-D 放电上优于标准解析函数拟合，并用 CRPS 和 coverage 分别评估观测与未观测区域。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>任务是密度重建而非视觉时序破裂预测，未涉及可见光图像的局部证据选择和跨装置告警提前量。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>物理输运代理和区域化不确定性为 P3 提供可解释状态估计前端。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是托卡马克部分观测密度重建。可迁移模块是物理约束可微代理和未观测区校准，对应 P3 的物理解释、低延迟和跨装置适配。预期用代理替代迭代求解降低延迟，但 FNO 主干仍需评估显存。风险是模拟到实验差距和不确定性失校准。最小验证是在现有诊断数据上冻结代理，只训练风险头，比较解析拟合、FNO 和视觉时序融合的误差、CRPS、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-12" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>视觉充分性景观：用查询条件可靠性预测 Token 剪枝风险</h3>
+              <p class="paper__subtitle">Visual Sufficiency Landscapes: Understanding Query-Conditioned Reliability in Visual Token Pruning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-18 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】论文把可保留子集的成功概率定义为查询条件视觉充分性，并证明它能预测剪枝失败，直接对应短暂关键证据与查询条件预算。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhenghan Li、Kexin Sun、Wei Zheng、Peng Hu、Xiao Wei、Anbo Huang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.24968" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.24968" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】论文把可保留子集的成功概率定义为查询条件视觉充分性，并证明它能预测剪枝失败，直接对应短暂关键证据与查询条件预算。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>不同剪枝策略可能保留不同子集却得到相近平均准确率，平均指标无法揭示哪些样本真正依赖视觉证据。
+从本日报的选取理由看，【P4】论文把可保留子集的成功概率定义为查询条件视觉充分性，并证明它能预测剪枝失败，直接对应短暂关键证据与查询条件预算。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何测量给定层和预算下有多少子集能保持模型行为，并预测高风险输入。
+对当前主题的关键意义在于：原始应用是视觉语言 Token 剪枝。可迁移模块是查询条件风险预测和失败前置检测，对应 P4 的短暂关键证据保护。预期选择器增加少量采样开销，但可减少错误剪枝返工，风险是随机估计在超长序列上过慢。最小验证是在现有 TokenGate 或 OmniPack 管线上加入充分性风险头，比较固定保留率、相似度和风险条件选择在极低预算、事件召回、FLOPs、峰值显存和 P99 延迟上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4c223c8d0d205ae4.png" alt="Figure 1: The same subset can succeed under different sufficiency probabilities. For a fixed image and layer, N = 4 N=4 and K = 2 K=2 yield six subsets. The orange-framed subset S = { 1 , 2 } S=\{1,2\} satisfies joint preservation for both questions, yet the fractions of successful subsets are 4 / 6 4/6 and 1 / 6 1/6 . The heatmap shows a query–budget slice at a fixed layer; gray cells are unspecified. Image patches, success labels, and probabilities are conceptual illustrations.">
+                    <figcaption>Figure 1: The same subset can succeed under different sufficiency probabilities. For a fixed image and layer, N = 4 N=4 and K = 2 K=2 yield six subsets. The orange-framed subset S ...</figcaption>
+                  </figure>
+                  <p>随机采样子集同时检查答案、参考答案似然和输出分布，分离输入变化与估计噪声，得到视觉充分性概率。
+阅读时需要把方法设计与主要结果一起看：在 Qwen2.5-VL、InternVL2 和 LLaVA 上，充分性概率提高剪枝失败预测 AUC。LLaVA 上相对 FastV、VisionZip、SparseVLM 的 AUC 分别增加 0.1151、0.0683 和 0.1401，迁移预测的 log loss 降低 9.0%、13.0% 和 14.1%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 Qwen2.5-VL、InternVL2 和 LLaVA 上，充分性概率提高剪枝失败预测 AUC。LLaVA 上相对 FastV、VisionZip、SparseVLM 的 AUC 分别增加 0.1151、0.0683 和 0.1401，迁移预测的 log loss 降低 9.0%、13.0% 和 14.1%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>随机子集估计本身有额外算法开销，未报告 Event 瞬态、峰值显存和端到端延迟。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>Token 预算应条件化于问题和输入的可剪枝风险，而不是只看平均准确率。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用是视觉语言 Token 剪枝。可迁移模块是查询条件风险预测和失败前置检测，对应 P4 的短暂关键证据保护。预期选择器增加少量采样开销，但可减少错误剪枝返工，风险是随机估计在超长序列上过慢。最小验证是在现有 TokenGate 或 OmniPack 管线上加入充分性风险头，比较固定保留率、相似度和风险条件选择在极低预算、事件召回、FLOPs、峰值显存和 P99 延迟上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>本轮空缺判断：完整原生 RGB-Event 属性识别</h3>
+            </div>
+          </div>
+          <p>英文原标题：*P2 Empty Slot: Native RGB-Event Attribute Recognition*</p>
+          <p>作者/机构：本轮检索判断</p>
+          <p>发布日期：2026-10-21</p>
+          <p>论文链接：[检索基线](https://arxiv.org/)</p>
+          <p>选取理由：【P2】本轮虽有 ERA-Det 和递归事件视觉，但没有论文同时覆盖原生异步 Event、RGB 时间对齐、属性级动态加权、模态缺失、不确定性和开放词表监督。</p>
+          <p>研究背景：检测和姿态估计的事件机制不能替代属性识别的软标签与开放词表目标。</p>
+          <p>核心问题：避免用领域相邻的事件检测论文填充完整 P2 方案。</p>
+          <p>方法与关键创新：继续以 TriPro-ReID 为基线，优先核验原生事件 Token、时钟偏移校准、属性可靠性门控和不确定性监督。</p>
+          <p>主要结果：空缺。</p>
+          <p>局限性：没有发现满足全部条件的新增或实质更新。</p>
+          <p>总结：P2 获得可靠性路由和递归记忆机制，但完整属性任务仍空缺。</p>
+          <p>研究相关性：最小实验已在 ERA-Det 和递归事件视觉条目给出。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>本轮空缺判断：完整真实 Δt 异步百万长度统一骨干</h3>
+            </div>
+          </div>
+          <p>英文原标题：*P1 Empty Slot: Unified Irregular and Million-Length Temporal Backbone*</p>
+          <p>作者/机构：本轮检索判断</p>
+          <p>发布日期：2026-10-21</p>
+          <p>论文链接：[检索基线](https://arxiv.org/)</p>
+          <p>选取理由：【P1】CTLite 和 CVTA 分别覆盖连续时间摘要与跨变量状态，但没有同时证明异步多通道耦合、高低频压缩交互、百万长度线性内存和采样率变化鲁棒性。</p>
+          <p>研究背景：轻量不规则预测模块不等于稀疏观测与高频海量点统一骨干。</p>
+          <p>核心问题：区分可迁移时间模块与端到端工程完整性。</p>
+          <p>方法与关键创新：下一轮继续检索 timestamp-aware selective SSM、continuous SSM、event stream 和 multi-rate hierarchical temporal model。</p>
+          <p>主要结果：完整方案空缺。</p>
+          <p>局限性：当前新增没有统一满足全部条件。</p>
+          <p>总结：保留 CTLite 和 CVTA 为 P1 模块候选，完整统一骨干仍空缺。</p>
+          <p>研究相关性：最小验证已在 CVTA 条目给出。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>本轮空缺判断：直接托卡马克视觉与诊断时序破裂预测</h3>
+            </div>
+          </div>
+          <p>英文原标题：*P3 Empty Slot: Direct Tokamak Vision-Time-Series Disruption Prediction*</p>
+          <p>作者/机构：本轮检索判断</p>
+          <p>发布日期：2026-10-21</p>
+          <p>论文链接：[检索基线](https://arxiv.org/)</p>
+          <p>选取理由：【P3】密度重建和聚变场景控制推进物理状态估计与动作规划，但没有联合真实托卡马克可见光、异步诊断时序和破裂预警标签。</p>
+          <p>研究背景：状态重建、场景控制与破裂预警具有不同标签、延迟和跨装置约束。</p>
+          <p>核心问题：必须区分物理代理进展与可部署视觉时序破裂预警证据。</p>
+          <p>方法与关键创新：继续检索 visible/IR diagnostics、ECEI/BES、time-series query image、cross-device transfer 和 early warning。</p>
+          <p>主要结果：空缺。</p>
+          <p>局限性：没有发现满足完整条件的新增或实质更新论文。</p>
+          <p>总结：P3 获得物理代理和不确定性模块，直接任务仍空缺。</p>
+          <p>研究相关性：最小验证已在密度重建条目给出。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发（P1-P4）</p>
+              <h3>本轮空缺判断：瞬态保真且系统指标完整的在线 Token 压缩</h3>
+            </div>
+          </div>
+          <p>英文原标题：*P4 Empty Slot: Transient-Preserving Online Token Compression*</p>
+          <p>作者/机构：本轮检索判断</p>
+          <p>发布日期：2026-10-21</p>
+          <p>论文链接：[检索基线](https://arxiv.org/)</p>
+          <p>选取理由：【P4】TokenGate、UtoMe 和视觉充分性景观分别推进系统剪枝、不确定性合并与风险预测，但没有单篇论文同时覆盖短暂关键事件召回、跨模态可靠性、极低预算、峰值显存、FLOPs 和端到端延迟。</p>
+          <p>研究背景：Token 数减少不必然转化为墙钟和峰值显存收益，平均准确率也无法证明短暂证据被保留。</p>
+          <p>核心问题：如何把选择质量、可靠性、删除后回收和真实系统收益放入同一评测协议。</p>
+          <p>方法与关键创新：下一轮继续联合 query、coverage、trajectory、reliability 和 recoverable routing，并要求报告选择器开销。</p>
+          <p>主要结果：完整方案空缺。</p>
+          <p>局限性：OmniPack 无实质更新，本轮不重复收录。</p>
+          <p>总结：本轮得到互补组件，完整在线压缩系统仍空缺。</p>
+          <p>研究相关性：最小验证是组合 TokenGate 门控、UtoMe 不确定性锚点和视觉充分性风险头，统一测量极低预算前兆召回、FLOPs、峰值显存和 P99 延迟。</p>
+          <p>是否值得精读：本轮空缺。</p>
+          <p>本轮重点观察 TokenGate 的学习式可训练剪枝、UtoMe 的观测不确定性合并和视觉充分性景观的查询条件风险预测。三者分别对应门控执行、可靠性保护和失败预警，尚未形成同时报告短暂事件召回与端到端系统收益的完整方案。OmniPack 无新版本、新代码、新实验或新的实质课题映射，本轮不重复收录。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>最新主题展开</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">最新主题展开</p>
+              <h3>CTLite：可复用连续时间摘要的轻量不规则多变量预测</h3>
+              <p class="paper__subtitle">CTLite: Lightweight Irregular Multivariate Time Series Forecasting with Reusable Continuous-Time Summaries</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">CTLite 直接处理稀疏、异步多变量观测，用参数无关的连续时间多尺度摘要复用历史编码，适合作为 P1 的低显存、低延迟基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shusen Ma、Xudong Zuo、Yangchun Xie、Yun-Bo Zhao</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.26379" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.26379" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>CTLite 直接处理稀疏、异步多变量观测，用参数无关的连续时间多尺度摘要复用历史编码，适合作为 P1 的低显存、低延迟基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>异步观测反复编码会浪费在线推理预算。
+从本日报的选取理由看，CTLite 直接处理稀疏、异步多变量观测，用参数无关的连续时间多尺度摘要复用历史编码，适合作为 P1 的低显存、低延迟基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何复用同一历史的连续时间摘要。
+对当前主题的关键意义在于：对应不规则与多率诊断预测，最小实验比较真实 Δt、缺失率、峰值显存和前兆召回。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>多尺度矩摘要加低秩跨变量修正，带观测新鲜度和预测跨度。
+阅读时需要把方法设计与主要结果一起看：88 至 2537 个可训练参数，延迟降低 18.6% 至 87.3%，重复预测总运行时间约降 52%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>88 至 2537 个可训练参数，延迟降低 18.6% 至 87.3%，重复预测总运行时间约降 52%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未覆盖百万长度、复杂缺失机制和突发模式切换。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>轻量连续时间摘要适合作为 P1 工程基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>对应不规则与多率诊断预测，最小实验比较真实 Δt、缺失率、峰值显存和前兆召回。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">最新主题展开</p>
+              <h3>ERA-Det：可靠性监督 RGB-Event 路由</h3>
+              <p class="paper__subtitle">RGB--Event Object Detection Across Operating Frequencies via Reliability-Supervised Routing and Asymmetric-Resolution Fusion</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">ERA-Det 在每个空间位置学习 RGB 与 Event 的可靠性路由，并让 RGB 保持原生分辨率，直接命中 P2 关注的异步事件稀疏、弱光和样本级动态加权。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Peijun Shi、Jiannan Zhao、Xiujin Zhu、Zhenguo Lao、Chee-Onn Chow、Wei Ru Wong</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.26090" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.26090" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>ERA-Det 在每个空间位置学习 RGB 与 Event 的可靠性路由，并让 RGB 保持原生分辨率，直接命中 P2 关注的异步事件稀疏、弱光和样本级动态加权。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>事件频率变化会使事件窗口稀疏和可靠性空间不均匀。
+从本日报的选取理由看，ERA-Det 在每个空间位置学习 RGB 与 Event 的可靠性路由，并让 RGB 保持原生分辨率，直接命中 P2 关注的异步事件稀疏、弱光和样本级动态加权。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在事件失效时保留 RGB 的决策能力。
+对当前主题的关键意义在于：适合替换 TriPro 的固定模态加和，并做低光、时钟偏移和模态 dropout 验证。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d941ebbc405c355b.png" alt="Fig. 1: Architecture of ERA-Det. Top: the event histogram and the native-resolution RGB frame are encoded by an RVT encoder and a ResNet-50 with a feature pyramid, asymmetric-resolution fusion maps every RGB level onto the event grid, and reliability-supervised routing fuses the two pyramids at strides 8, 16 and 32 before the PAFPN neck and the YOLOX head. Panel 1: asymmetric-resolution fusion, a depthwise pooling initialized as exact averaging. Panel 2: the per-location router, which corrects the per-sample gate of the base detector at every location. Panel 3: the training-only reliability supervision, whose routing target is computed from two single-modality classifiers and supervises the RGB weight of the router. The inputs are a frame and the following 50 ms of events of the DSEC-Det sequence thun_02_a.">
+                    <figcaption>Fig. 1: Architecture of ERA-Det. Top: the event histogram and the native-resolution RGB frame are encoded by an RVT encoder and a ResNet-50 with a feature pyramid, asymmetric-resol...</figcaption>
+                  </figure>
+                  <p>可靠性监督路由加非对称分辨率融合。
+阅读时需要把方法设计与主要结果一起看：20 至 180 Hz 的 mAP 损失由 6.3 降至 3.1，ERA-Det 达到 63.2 mAP。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>20 至 180 Hz 的 mAP 损失由 6.3 降至 3.1，ERA-Det 达到 63.2 mAP。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有属性识别、开放词表和时钟偏移实验。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>可靠性应进入局部融合权重。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>适合替换 TriPro 的固定模态加和，并做低光、时钟偏移和模态 dropout 验证。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">最新主题展开</p>
+              <h3>聚变场景强化学习控制器</h3>
+              <p class="paper__subtitle">Reinforcement Learning Controllers for Fusion Scenario Development</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">论文把托卡马克场景开发改写为一次训练、多目标条件控制，直接提供聚变 AI 新增的可部署控制链路，并给出 EAST 仿真成功率和误差。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Evgeny Adishchev、Maxim Nurgaliev、Dmitry Sorokin、Alexander Granovsky、Maksim Stokolesov、Igor Prokofyev、Eduard Khairutdinov、Georgy Subbotin</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.26138" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.26138" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>论文把托卡马克场景开发改写为一次训练、多目标条件控制，直接提供聚变 AI 新增的可部署控制链路，并给出 EAST 仿真成功率和误差。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>逐场景调参和模拟器闭环试错成本高。
+从本日报的选取理由看，论文把托卡马克场景开发改写为一次训练、多目标条件控制，直接提供聚变 AI 新增的可部署控制链路，并给出 EAST 仿真成功率和误差。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让物理目标波形驱动线圈和加料动作。
+对当前主题的关键意义在于：可把视觉和诊断风险状态接入安全控制头，先做留出目标波形和约束违例测试。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>自由边界模拟器上的 TQC 控制器，输入 11 维目标。
+阅读时需要把方法设计与主要结果一起看：1024 场景中 86% 形成偏滤器，58% 到达终点仍为偏滤器状态。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>1024 场景中 86% 形成偏滤器，58% 到达终点仍为偏滤器状态。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>仿真证据尚未覆盖实验闭环和破裂预警。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>目标条件 RL 是聚变场景开发的低延迟候选。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可把视觉和诊断风险状态接入安全控制头，先做留出目标波形和约束违例测试。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">04</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">最新主题展开</p>
+              <h3>TokenGate：学习式预填充 Token 剪枝</h3>
+              <p class="paper__subtitle">TokenGate: Adapting LLMs for Fast and Memory-Efficient Prefill with Learned Token Pruning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-19 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">TokenGate 用轻量可插拔组件学习端到端 Top-K 剪枝，直接报告 TTFT、峰值显存和多类 Transformer 兼容性，是 P4 的系统收益基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Liana Patel、Rishabh Ranjan、Ion Stoica、Matei Zaharia、Carlos Guestrin</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.26754" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/tokengate-models/TokenGate" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2610.26754" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>TokenGate 用轻量可插拔组件学习端到端 Top-K 剪枝，直接报告 TTFT、峰值显存和多类 Transformer 兼容性，是 P4 的系统收益基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>长上下文预填充的全量处理造成显存和延迟瓶颈。
+从本日报的选取理由看，TokenGate 用轻量可插拔组件学习端到端 Top-K 剪枝，直接报告 TTFT、峰值显存和多类 Transformer 兼容性，是 P4 的系统收益基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让可学习 Top-K 剪枝具备可训练性和部署收益。
+对当前主题的关键意义在于：可在 Event 和图像 patch 上测试短暂事件召回、FLOPs、显存和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>Token-gated attention 对注意力 logits 做重要性重加权。
+阅读时需要把方法设计与主要结果一起看：TTFT 加速 1.4 至 11.3 倍，峰值显存降低 1.5 至 3.4 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>TTFT 加速 1.4 至 11.3 倍，峰值显存降低 1.5 至 3.4 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>未覆盖瞬态事件召回和跨模态缺失。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>轻量门控组件可把剪枝收益落到预填充系统。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可在 Event 和图像 patch 上测试短暂事件召回、FLOPs、显存和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">05</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">最新主题展开</p>
+              <h3>UtoMe：不确定性感知 Token 合并</h3>
+              <p class="paper__subtitle">UtoMe: Observation-Uncertainty-Guided Token Merging for Weather Foundation Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-18 UTC，v1，NeurIPS 2026 接收</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">UtoMe 把观测不确定性和动力学显著性联合用于 Token 合并，说明 P4 的保留预算应保护不可靠但关键的证据，而不是只按相似度合并。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yunbei Zhang、Janet Wang、Xi Xiao、Jihun Hamm、Xiao Wang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.25001" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.25001" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>UtoMe 把观测不确定性和动力学显著性联合用于 Token 合并，说明 P4 的保留预算应保护不可靠但关键的证据，而不是只按相似度合并。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>观测可靠性随变量、位置和状态变化。
+从本日报的选取理由看，UtoMe 把观测不确定性和动力学显著性联合用于 Token 合并，说明 P4 的保留预算应保护不可靠但关键的证据，而不是只按相似度合并。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在固定预算下保护不可靠但关键的证据。
+对当前主题的关键意义在于：可替换为事件质量和诊断缺失概率，测试极低预算下关键事件召回和系统开销。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/1e615e606c4e1143.png" alt="Figure 1 : UtoMe overview. UtoMe uses observation uncertainty to guide training-time token merging for transformer-based weather forecasting. It first turns weather-state saliency and low observation uncertainty into a patch-level token score, then uses that score to protect forecast-sensitive anchors and merge lower-importance redundant tokens. The framework supports three uncertainty-availability regimes: external uncertainty at both stages, during training only, or neither stage.">
+                    <figcaption>Figure 1 : UtoMe overview. UtoMe uses observation uncertainty to guide training-time token merging for transformer-based weather forecasting. It first turns weather-state saliency ...</figcaption>
+                  </figure>
+                  <p>动力学显著性加资料同化 spread，校准二部匹配。
+阅读时需要把方法设计与主要结果一起看：50% Token reduction 时 Overall error 由 67.32 降至 53.00，编码器 FLOPs 为 0.55 倍。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>50% Token reduction 时 Overall error 由 67.32 降至 53.00，编码器 FLOPs 为 0.55 倍。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>外部不确定性估计和大压缩率退化仍是风险。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>不确定性应成为合并决策的一部分。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>可替换为事件质量和诊断缺失概率，测试极低预算下关键事件召回和系统开销。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 不规则时序从复杂编码转向可复用状态</h3>
+          <p>CTLite 的参数无关摘要和 CVTA 的紧凑连续时间状态都试图避免反复编码，下一步关键是把真实 Δt、多率通道和高频压缩接到同一缓存状态上。</p>
+        </article>
+        <article class="trend">
+          <h3>2. RGB-Event 融合开始显式建模可靠性</h3>
+          <p>ERA-Det 的逐位置路由和递归事件记忆分别解决事件稀疏与模态失效，但完整属性识别仍缺少开放词表和不确定性监督。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 聚变 AI 从预测走向控制和不确定性闭环</h3>
+          <p>强化学习场景控制器负责目标波形到执行器动作，神经算子密度重建负责部分观测下的状态估计，二者为预测、控制和可信度联动提供了接口。</p>
+        </article>
+        <article class="trend">
+          <h3>4. Token 压缩的核心指标从保留率转向风险和系统收益</h3>
+          <p>TokenGate 报告 TTFT 与峰值显存，UtoMe 把不确定性纳入合并，视觉充分性景观则预测哪些输入不能安全压缩。下一步需要统一验证短暂关键证据召回和 P99 延迟。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
