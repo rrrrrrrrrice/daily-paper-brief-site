@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-10-27</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-10-27 核心论文简报</h1>
+      <p class="hero__meta">面向对象：AI 时序、多任务学习、多模态学习、计算机视觉、Token 压缩与可控核聚变交叉研究团队</p>
+      <p class="hero__meta">信息检索截止时间：2026-10-27 05:00 +08:00</p>
+      <div class="hero__overview">
+        <p>今日主推荐 5 篇，覆盖托卡马克放电的统一事件目录、流式视频 KV 记忆压缩、边云分割推理的条件 Token 合并、连续数值保真的医学视觉语言模型，以及时序基础模型生命周期成本与结构剪枝。五篇均为 2026-10-23 UTC 新批次论文。</p>
+        <p>2025-2026 顶会顶刊回看独立收录 TRACE、HTC-VLM 与统一时空 Token 压缩，分别对应时序语义检索、连续与离散双通道压缩，以及极低预算下的全局覆盖和删除 Token 回填，均标注非当日新增。</p>
+        <p>P1 独立收录 ZENO，P2 本轮空缺，P3 独立收录 ARENA，P4 独立收录 The Answer Knows Where to Look。P1-P4 不占主推荐名额。完整原生 RGB-Event 属性识别、直接可见光与诊断时序托卡马克破裂预测，以及同时覆盖短暂关键事件召回和完整系统指标的在线 Token 压缩仍保留明确空缺判断。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 TRACE：用文本语境锚定多通道时序检索</a></li>
+              <li><a href="#paper-2">02 HTC-VLM：连续细节与离散语义锚点的混合压缩</a></li>
+              <li><a href="#paper-3">03 统一时空 Token 压缩：极低预算下兼顾贡献与覆盖</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">在研课题启发 - P1：不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-9">09 ZENO：用 Zakai 方程神经算子做非线性滤波</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发 - P2：RGB-Event 属性识别</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-10">10 ARENA：弱监督聚合可变数量活动区进行太阳耀斑预测</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发 - P4：Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-11">11 The Answer Knows Where to Look：用答案蒸馏学习回答前视觉指针</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">流式记忆与 Token 压缩</a>
+            <ul>
+              <li><a href="#paper-5">05 Video-MemComp：用泰勒敏感度分配流式视频 KV 预算</a></li>
+              <li><a href="#paper-6">06 Consommé：条件 Token 合并支持任意单步预算</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">科学多模态连续预测与时序基础模型效率</a>
+            <ul>
+              <li><a href="#paper-7">07 HAD-VLM：保留连续数值的医学视觉语言模型</a></li>
+              <li><a href="#paper-8">08 TSFM 生命周期审计：从碳成本到无梯度结构剪枝</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-8">聚变数据基础设施与多任务事件识别</a>
+            <ul>
+              <li><a href="#paper-4">04 Tokamak-SI：把托卡马克事件检测统一成时间对齐语义目录</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Tokamak-SI：把托卡马克事件检测统一成时间对齐语义目录</a></h3>
+              <p class="card__subtitle">Tokamak-SI: Interpreting Tokamak Discharges with Labeled Catalogs</p>
+              <div class="chip-row">
+                <span class="chip">聚变数据基础设施与多任务事件识别</span>
+                <span class="chip chip--muted">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>Tokamak-SI 将约束、脱靶、阿尔芬本征模、ELM、锯齿、撕裂模和电阻壁模等既有标签与标注流程归并到同一时间对齐类别数据集，直接缓解聚变 AI 中每个任务各自建库、标签不可复用的问题。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">Video-MemComp：用泰勒敏感度分配流式视频 KV 预算</a></h3>
+              <p class="card__subtitle">Video-MemComp: Taylor-Guided Sensitivity-Aware Memory Management for Streaming Video Understanding</p>
+              <div class="chip-row">
+                <span class="chip">流式记忆与 Token 压缩</span>
+                <span class="chip chip--muted">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>Video-MemComp 把压缩误差拆成局部近似误差和层级结构敏感度，在 RoPE 前安全区域聚合 Token，再用离线梯度先验与在线上下文熵动态分配各层 KV 预算，提供了训练免费且显式受误差控制的流式记忆方案。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">Consommé：条件 Token 合并支持任意单步预算</a></h3>
+              <p class="card__subtitle">Consommé: Conditioned Token Merging for Split Inference</p>
+              <div class="chip-row">
+                <span class="chip">流式记忆与 Token 压缩</span>
+                <span class="chip chip--muted">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>Consommé 利用 CLS Token 既是全局摘要又能指导 patch 保留的双重角色，以压缩 CLS 条件化软门控，将任意数量 patch 单步合并为精确 k 个 Token，适合带宽受限的边云分割推理。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">HAD-VLM：保留连续数值的医学视觉语言模型</a></h3>
+              <p class="card__subtitle">Beyond Discrete Tokens: Preserving Numerical Continuity in Medical Vision-Language Models</p>
+              <div class="chip-row">
+                <span class="chip">科学多模态连续预测与时序基础模型效率</span>
+                <span class="chip chip--muted">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>HAD-VLM 在共享骨干中保留自回归文本交互，同时用扩散过程预测连续坐标和长度，避免把连续测量强行离散成文本 Token，对科学图像中的定量读数与几何约束有直接启发。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">TSFM 生命周期审计：从碳成本到无梯度结构剪枝</a></h3>
+              <p class="card__subtitle">Sustainability of TSFM Deployment and Pretraining: From Carbon Footprint Analysis to Mitigation via Pruning</p>
+              <div class="chip-row">
+                <span class="chip">科学多模态连续预测与时序基础模型效率</span>
+                <span class="chip chip--muted">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>论文不只比较一次推理成本，而是建模 TSFM 预训练投资在完整部署生命周期中的摊销边界，并给出删除单个编码器块的无梯度剪枝结果，适合决定何时使用大基础模型、何时保留小专用模型。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>TRACE：用文本语境锚定多通道时序检索</h3>
+              <p class="paper__subtitle">TRACE: Grounding Time Series in Context for Multimodal Embedding and Retrieval</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025，NeurIPS 2025 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。TRACE 以通道级对齐和难负样本把时序模式锚定到文本语境，今天仍值得用于 Tokamak-SI 事件标签和诊断片段之间的双向检索。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jialin Chen、Ziyu Zhao、Gaukhar Nurbek、Aosong Feng、Ali Maatouk、Leandros Tassiulas、Yifeng Gao、Rex Ying</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/03adea6231459e2aab0a68d0aa19793a-Abstract-Conference.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。TRACE 以通道级对齐和难负样本把时序模式锚定到文本语境，今天仍值得用于 Tokamak-SI 事件标签和诊断片段之间的双向检索。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>医疗、气象和能源时序都依赖领域语境，纯数值表示难以支持跨模态检索和可解释的相似案例召回。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。TRACE 以通道级对齐和难负样本把时序模式锚定到文本语境，今天仍值得用于 Tokamak-SI 事件标签和诊断片段之间的双向检索。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把多通道复杂时序与文本说明对齐，同时兼顾检索和预测任务。
+对当前主题的关键意义在于：最小实验是用 Tokamak-SI 标签描述和现有诊断窗口训练双向检索，检查相似事件召回、跨炮泛化、错误标签敏感性与显存开销。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>构建通用多模态检索器，执行细粒度通道对齐与难负样本挖掘，支持文本到时序和时序到文本双向检索，也可作为下游编码器。
+阅读时需要把方法设计与主要结果一起看：正式页面报告其检索表示可改善预测和解释，并在多个领域的预测与分类任务上达到领先表现。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>正式页面报告其检索表示可改善预测和解释，并在多个领域的预测与分类任务上达到领先表现。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>没有直接处理百万长度、高低频异步缓存和在线延迟，文本语境质量会影响对齐。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>TRACE 可把事件目录升级为可检索的时序语义空间。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是用 Tokamak-SI 标签描述和现有诊断窗口训练双向检索，检查相似事件召回、跨炮泛化、错误标签敏感性与显存开销。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>HTC-VLM：连续细节与离散语义锚点的混合压缩</h3>
+              <p class="paper__subtitle">Hybrid Token Compression for Vision-Language Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026，CVPR 2026 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。HTC-VLM 用连续通道保留纹理细节，用离散通道保存对象语义，再压成单个瓶颈 Token，今天适合与 HAD-VLM 的连续数值头形成跨任务对照。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jusheng Zhang、Xiaoyang Guo、Kaitong Cai、Qinhan Lv、Yijia Fan、Wenhao Chai、Jian Wang、Keze Wang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Hybrid_Token_Compression_for_Vision-Language_Models_CVPR_2026_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。HTC-VLM 用连续通道保留纹理细节，用离散通道保存对象语义，再压成单个瓶颈 Token，今天适合与 HAD-VLM 的连续数值头形成跨任务对照。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>连续压缩容易稀释高层语义，离散量化又损失纹理等细节，单一路径难兼顾两类信息。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。HTC-VLM 用连续通道保留纹理细节，用离散通道保存对象语义，再压成单个瓶颈 Token，今天适合与 HAD-VLM 的连续数值头形成跨任务对照。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>能否用双通道分解语义与外观，再进行极端 Token 压缩。
+对当前主题的关键意义在于：最小实验是把诊断局部波形和物理事件标签分别走连续、离散通道，在相同 Token 预算下比较单通道压缩和混合压缩的异常召回及延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>连续 ViT patch 路径保存细节，MGVQ 离散路径提供四个符号锚点，通过解耦注意掩码和单个瓶颈 Token 联合压缩。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页报告在七个基准上保留 87.2% 原始性能，优于连续压缩基线的 81.0%，压缩比为 580 比 1。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页报告在七个基准上保留 87.2% 原始性能，优于连续压缩基线的 81.0%，压缩比为 580 比 1。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>极端单 Token 表示可能漏掉短暂局部异常，未报告流式缓存、跨模态缺失与峰值显存。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>压缩前先区分需要连续保存和可以离散锚定的信息，比统一相似度合并更稳健。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是把诊断局部波形和物理事件标签分别走连续、离散通道，在相同 Token 预算下比较单通道压缩和混合压缩的异常召回及延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">03</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>统一时空 Token 压缩：极低预算下兼顾贡献与覆盖</h3>
+              <p class="paper__subtitle">Unified Spatiotemporal Token Compression for Video-LLMs at Ultra-Low Retention</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026，CVPR 2026 Main Conference，非当日新增</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增，顶会顶刊回看推荐。该方法把时空 Token 放入统一保留池，联合注意贡献与语义冗余，并把未选 Token 聚类回填，今天仍值得作为 P4 极低预算和删除回收的正式基线。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Junhao Du、Jialong Xue、Anqi Li、Jincheng Dai、Guo Lu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2026/html/Du_Unified_Spatiotemporal_Token_Compression_for_Video-LLMs_at_Ultra-Low_Retention_CVPR_2026_paper.html" target="_blank" rel="noreferrer">论文</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增，顶会顶刊回看推荐。该方法把时空 Token 放入统一保留池，联合注意贡献与语义冗余，并把未选 Token 聚类回填，今天仍值得作为 P4 极低预算和删除回收的正式基线。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>两阶段时空压缩隐含空间与时间可分假设，在极低保留率下容易预算失衡并丢失回答所需证据。
+从本日报的选取理由看，非当日新增，顶会顶刊回看推荐。该方法把时空 Token 放入统一保留池，联合注意贡献与语义冗余，并把未选 Token 聚类回填，今天仍值得作为 P4 极低预算和删除回收的正式基线。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在统一全局预算内兼顾重要性、覆盖和删除信息回收。
+对当前主题的关键意义在于：最小实验是在长静态背景中植入短暂前兆，在 1%、2%、5% 预算下比较纯剪枝、纯合并和回填方案的前兆召回、FLOPs、峰值显存与 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>联合注意权重与语义相似度全局选取高贡献、低冗余 Token，对未选 Token 聚类合并后回填，并在 LLM 内用文本条件做二次合并。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页报告保留约 2% 视觉 Token 时保存 90.1% 基线性能，FLOPs 降到约 2.6%，并在多种骨干上降低端到端延迟和内存。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页报告保留约 2% 视觉 Token 时保存 90.1% 基线性能，FLOPs 降到约 2.6%，并在多种骨干上降低端到端延迟和内存。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>平均问答性能不能证明短暂关键事件召回，选择与回填自身开销仍需在目标硬件复测。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它完整覆盖统一预算、查询条件和删除 Token 回收，是 P4 的重要强基线。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验是在长静态背景中植入短暂前兆，在 1%、2%、5% 预算下比较纯剪枝、纯合并和回填方案的前兆召回、FLOPs、峰值显存与 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>在研课题启发 - P1：不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>ZENO：用 Zakai 方程神经算子做非线性滤波</h3>
+              <p class="paper__subtitle">ZENO: Nonlinear filtering with Zakai Equation Neural Operators</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1，当日新批次</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】ZENO 不先把观测重采样到规则网格，而是用 Zakai 随机偏微分方程约束神经算子，直接近似潜在随机动力系统的非归一化滤波分布，并通过 EM 联合学习状态和 SDE 参数。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Aaditya Prasad、Steven W. Flavell、Brian DePasquale</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32926" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32926" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】ZENO 不先把观测重采样到规则网格，而是用 Zakai 随机偏微分方程约束神经算子，直接近似潜在随机动力系统的非归一化滤波分布，并通过 EM 联合学习状态和 SDE 参数。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>非线性随机系统的在线状态估计需要结合连续动力学与离散观测似然，高维 Zakai 方程通常难以解析或数值求解。
+从本日报的选取理由看，【P1】ZENO 不先把观测重采样到规则网格，而是用 Zakai 随机偏微分方程约束神经算子，直接近似潜在随机动力系统的非归一化滤波分布，并通过 EM 联合学习状态和 SDE 参数。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何以物理约束算子近似完整后验分布，并从部分观测中恢复潜在状态与动力学参数。
+对当前主题的关键意义在于：【P1】原始应用领域是随机动力系统与神经科学。可迁移模块是 Zakai 方程物理损失、后验神经算子和 EM 参数学习，对应真实 Δt 下的连续状态估计与不确定性。预期比点估计 SSM 增加分布表示和算子训练显存，在线推理是否可控取决于状态维度。主要风险是高维诊断使后验近似失真，观测噪声模型错配会系统偏置。最小验证是在现有低维等离子体状态估计数据上保留原始时间戳，比较插值 Kalman、Neural CDE 和 ZENO 的负对数似然、校准、峰值显存及采样率外推。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/d85a3831a487304e.png" alt="Figure 3: ZENO Drift Estimation Performance. A) True cubic drift of double well (dashed line) overlayed with model estimate. B) True Van Der Pol Vector field (Left) vs Model’s infered Vector Field. C) Lorenz Attractor Dynamics plotted in the x ​ z xz plane. D) Model’s NRMSE performance compared to baselines. Dots represent seeds and error bars are 1 SD.">
+                    <figcaption>Figure 3: ZENO Drift Estimation Performance. A) True cubic drift of double well (dashed line) overlayed with model estimate. B) True Van Der Pol Vector field (Left) vs Model’s infe...</figcaption>
+                  </figure>
+                  <p>用 Zakai 方程构造物理信息损失训练神经算子，再把估计后验放入 EM 框架进行参数学习与状态推断。
+阅读时需要把方法设计与主要结果一起看：在双稳态、Van der Pol 和 Lorenz 三个模拟系统上恢复后验和 SDE 参数，并从固定秀丽隐杆线虫全脑成像中恢复前进、后退运动的极限环。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在双稳态、Van der Pol 和 Lorenz 三个模拟系统上恢复后验和 SDE 参数，并从固定秀丽隐杆线虫全脑成像中恢复前进、后退运动的极限环。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始应用不是多率聚变诊断，算子需表示分布，状态维度升高时计算和显存可能快速增长，尚未证明百万长度流式能力。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>ZENO 提供连续随机动力学和观测更新统一建模的概率接口，但不是完整的长序列高低频骨干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>【P1】原始应用领域是随机动力系统与神经科学。可迁移模块是 Zakai 方程物理损失、后验神经算子和 EM 参数学习，对应真实 Δt 下的连续状态估计与不确定性。预期比点估计 SSM 增加分布表示和算子训练显存，在线推理是否可控取决于状态维度。主要风险是高维诊断使后验近似失真，观测噪声模型错配会系统偏置。最小验证是在现有低维等离子体状态估计数据上保留原始时间戳，比较插值 Kalman、Neural CDE 和 ZENO 的负对数似然、校准、峰值显存及采样率外推。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发 - P2：RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>P2 本轮空缺判断：原生事件与属性级可靠性仍未统一</h3>
+            </div>
+          </div>
+          <p>英文原标题：*P2 Gap Assessment: Native RGB-Event Attribute Recognition*</p>
+          <p>作者/机构：本轮检索判断</p>
+          <p>发布日期：2026-10-27</p>
+          <p>论文链接：[arXiv 最新检索](https://arxiv.org/)</p>
+          <p>选取理由：【P2】本轮没有新增或实质更新论文同时覆盖原生异步 Event、RGB 时间对齐、区域和属性级动态加权、模态缺失、不确定性与开放词表监督。Closing the Modality Gap 只解决共享嵌入几何，不能替代原生事件表征和属性识别。</p>
+          <p>研究背景：RGB-Event 属性识别需要在弱光、模糊、事件稀疏、噪声和时钟不同步下保留互补外观与动态证据。</p>
+          <p>核心问题：仍缺少原生事件 Token、跨模态时间对齐和属性级可靠性校准的统一训练目标。</p>
+          <p>方法与关键创新：本轮空缺，继续追踪 event-native token、time-surface、cross-modal alignment、quality-aware fusion、modality dropout 和 open-vocabulary attribute learning。</p>
+          <p>主要结果：本轮空缺判断。</p>
+          <p>局限性：一般模态对齐无法证明事件时间结构被利用，也不能保证缺失模态与开放属性鲁棒性。</p>
+          <p>总结：P2 完整目标继续空缺，不用一般多模态检索论文凑数。</p>
+          <p>研究相关性：【P2】原始应用领域为空缺评估。可迁移模块仅有 simplex 共享坐标约束，可用于校准 RGB 与 Event 全局嵌入，对应模态间几何偏移。预计只增加轻量 softmax 适配器和少量显存。主要风险是全局间隙缩小但属性局部证据和时间同步仍无改善。最小验证是在 TriPro 中保留现有分支，只加入 simplex 适配器和模态 dropout，比较属性 mAP、属性 F1、ECE、弱光鲁棒性、峰值显存和 P99 延迟。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>ARENA：弱监督聚合可变数量活动区进行太阳耀斑预测</h3>
+              <p class="paper__subtitle">ARENA: Active Region attENtion Aggregation for interpretable solar flare prediction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1，当日新批次</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】ARENA 用多实例学习处理每次观测中数量可变的太阳活动区，只需要耀斑或非耀斑弱标签，就能同时预测风险并定位最相关区域，适合迁移到没有精确图像区域标注的聚变前兆定位。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Luis Bauer、Annalena Kofler、Andrés Asensio Ramos、Aparna Venkataramanasastry、Valentín Martínez Pillet、Bernhard Schölkopf</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32758" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32758" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】ARENA 用多实例学习处理每次观测中数量可变的太阳活动区，只需要耀斑或非耀斑弱标签，就能同时预测风险并定位最相关区域，适合迁移到没有精确图像区域标注的聚变前兆定位。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>太阳耀斑预测需要从整盘观测中的多个活动区找到真正驱动事件的局部区域，精确源区标签昂贵且不总是可用。
+从本日报的选取理由看，【P3】ARENA 用多实例学习处理每次观测中数量可变的太阳活动区，只需要耀斑或非耀斑弱标签，就能同时预测风险并定位最相关区域，适合迁移到没有精确图像区域标注的聚变前兆定位。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在只有观测级事件标签时，联合完成可变数量局部区域聚合、风险预测和弱监督定位。
+对当前主题的关键意义在于：【P3】原始应用领域是太阳耀斑预警。可迁移模块是可变实例多实例学习、事件级弱监督和注意力定位，对应托卡马克可见光图像中无区域标注的前兆筛选。计算上只编码候选区域可降低无关像素成本，但区域提议和多实例缓存增加前端开销。主要风险是注意权重被亮度伪相关主导，且缺少诊断时序会误选区域。最小验证是用诊断时序隐藏状态作为查询聚合可见光候选块，对比全图编码、无查询 MIL 和时序查询 MIL 的 AUPRC、提前量、跨炮泛化、峰值显存和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/da2752f37db7ac8a.png" alt="Figure 1 : Overview of the ARENA architecture. Each AR across all channels is extracted, rescaled, and provided to a ResNet-18 which compresses the image into a token vector. For one time point, all AR tokens are concatenated and passed through an ABMIL aggregator, resulting in a single summary vector. This vector is processed by a classification head which predicts whether a flare is happening in the next 24 h 24\text{\,}\mathrm{h} . At inference, the attention weight can be employed to identify the flare-originating AR.">
+                    <figcaption>Figure 1 : Overview of the ARENA architecture. Each AR across all channels is extracted, rescaled, and provided to a ResNet-18 which compresses the image into a token vector. For o...</figcaption>
+                  </figure>
+                  <p>把活动区切块视为多实例集合，用注意力聚合可变数量实例，学习与耀斑标签最相关的区域权重，从而提供预测和定位解释。
+阅读时需要把方法设计与主要结果一起看：摘要报告 Heidke 技能分数为 0.45，与其他耀斑预测方法可比，并开放代码。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 Heidke 技能分数为 0.45，与其他耀斑预测方法可比，并开放代码。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>输入仍是同类图像区域集合，没有诊断时序查询、模态缺失和低延迟约束，弱监督注意力也不一定等于因果源区。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>ARENA 的价值在于用事件级弱标签筛选局部视觉证据，而不是一般特征相加。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>【P3】原始应用领域是太阳耀斑预警。可迁移模块是可变实例多实例学习、事件级弱监督和注意力定位，对应托卡马克可见光图像中无区域标注的前兆筛选。计算上只编码候选区域可降低无关像素成本，但区域提议和多实例缓存增加前端开销。主要风险是注意权重被亮度伪相关主导，且缺少诊断时序会误选区域。最小验证是用诊断时序隐藏状态作为查询聚合可见光候选块，对比全图编码、无查询 MIL 和时序查询 MIL 的 AUPRC、提前量、跨炮泛化、峰值显存和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发 - P4：Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>The Answer Knows Where to Look：用答案蒸馏学习回答前视觉指针</h3>
+              <p class="paper__subtitle">The Answer Knows Where to Look: Zooming before MLLMs Answer under Visual-Token Budgets</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1，当日新批次</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】论文发现正确答案 Token 在中层已经能定位证据，于是用事后正确答案监督一个回答前 look Token，在单次 prefill 中先决定是否缩放以及采用何种视图，把查询条件选择提前到正式回答之前。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zhensheng Hu、Guanglong Xu、Guanqiang Hu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32664" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32664" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】论文发现正确答案 Token 在中层已经能定位证据，于是用事后正确答案监督一个回答前 look Token，在单次 prefill 中先决定是否缩放以及采用何种视图，把查询条件选择提前到正式回答之前。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>极低视觉 Token 预算会让文档、图表和信息图中的细节不可读，先放大可恢复证据，但必须在回答前决定看哪里和是否值得增加预算。
+从本日报的选取理由看，【P4】论文发现正确答案 Token 在中层已经能定位证据，于是用事后正确答案监督一个回答前 look Token，在单次 prefill 中先决定是否缩放以及采用何种视图，把查询条件选择提前到正式回答之前。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何把回答阶段才显现的证据定位能力蒸馏成生成前可用的轻量指针，并按样本信息缺口选择视图。
+对当前主题的关键意义在于：【P4】原始应用领域是文本密集图像问答。可迁移模块是答案蒸馏的预回答指针、按样本信息缺口决策和多视图预算选择，对应高频数据中查询条件的短暂证据保留。预期减少进入大模型的视觉 Token，但多候选视图和指针头增加前端计算。主要风险是未知异常没有可蒸馏答案，错误指针会彻底漏检，跨模态可靠性也未联合建模。最小验证是在已标注前兆窗口上用任务标签蒸馏 look Token，在 1%、5%、10% 预算下比较固定裁剪、注意力裁剪和指针选择，报告关键事件召回、FLOPs、峰值显存、选择器耗时和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5332b47c66596c97.png" alt="Figure 4 : Overview of LookZoom. (1) A dedicated <look> token is appended to the prompt and processed in a single prefill on the low-resolution view v v . Its attention to the image tokens tells where to look, and its hidden state tells how to look. (2) The selected view transform is applied to the full-resolution image and re-encoded within the same per-view budget. (3) The reader answers from the low-resolution view and the selected view; the <look> token never enters this pass. Training: the <look> attention is distilled from the answer-time attention of the model’s own correct rollouts (hindsight distillation), the action head is supervised by the counterfactual outcomes of every view, and the reader is adapted with GRPO.">
+                    <figcaption>Figure 4 : Overview of LookZoom. (1) A dedicated <look> token is appended to the prompt and processed in a single prefill on the low-resolution view v v . Its attention to the imag...</figcaption>
+                  </figure>
+                  <p>专用 look Token 从正确答案注意模式中事后学习集中指针，推理时只做一次 prefill，并在不放大、裁剪、方窗、自适应窗和中心凹变换中按反事实收益选择。
+阅读时需要把方法设计与主要结果一起看：在 Qwen3-VL 三种规模和五个文本密集基准上，98 个视觉 Token 每视图时超过最强基线 4.8 至 9.1 点，超过注意力引导缩放 11.1 至 17.0 点，并具有更快运行速度。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 Qwen3-VL 三种规模和五个文本密集基准上，98 个视觉 Token 每视图时超过最强基线 4.8 至 9.1 点，超过注意力引导缩放 11.1 至 17.0 点，并具有更快运行速度。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>选择依赖答案蒸馏，训练分布外查询可能错误定位，未处理被删 Token 回收、流式事件和完整峰值显存报告。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>它将“答案相关性”前移为预算分配信号，避免先生成答案再定位的循环依赖。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>【P4】原始应用领域是文本密集图像问答。可迁移模块是答案蒸馏的预回答指针、按样本信息缺口决策和多视图预算选择，对应高频数据中查询条件的短暂证据保留。预期减少进入大模型的视觉 Token，但多候选视图和指针头增加前端计算。主要风险是未知异常没有可蒸馏答案，错误指针会彻底漏检，跨模态可靠性也未联合建模。最小验证是在已标注前兆窗口上用任务标签蒸馏 look Token，在 1%、5%、10% 预算下比较固定裁剪、注意力裁剪和指针选择，报告关键事件召回、FLOPs、峰值显存、选择器耗时和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>流式记忆与 Token 压缩</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">流式记忆与 Token 压缩</p>
+              <h3>Video-MemComp：用泰勒敏感度分配流式视频 KV 预算</h3>
+              <p class="paper__subtitle">Video-MemComp: Taylor-Guided Sensitivity-Aware Memory Management for Streaming Video Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">Video-MemComp 把压缩误差拆成局部近似误差和层级结构敏感度，在 RoPE 前安全区域聚合 Token，再用离线梯度先验与在线上下文熵动态分配各层 KV 预算，提供了训练免费且显式受误差控制的流式记忆方案。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yonghui Niu、Yuhao Ji、Chang Nie、Jiao Zhang、Yilong Li、Junlan Feng、Ran He、Caifeng Shan、Chaoyou Fu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32784" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32784" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Video-MemComp 把压缩误差拆成局部近似误差和层级结构敏感度，在 RoPE 前安全区域聚合 Token，再用离线梯度先验与在线上下文熵动态分配各层 KV 预算，提供了训练免费且显式受误差控制的流式记忆方案。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>无界视频缓存和误差累积限制长期流式理解。
+从本日报的选取理由看，Video-MemComp 把压缩误差拆成局部近似误差和层级结构敏感度，在 RoPE 前安全区域聚合 Token，再用离线梯度先验与在线上下文熵动态分配各层 KV 预算，提供了训练免费且显式受误差控制的流式记忆方案。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何按结构敏感度而非均匀比例压缩缓存。
+对当前主题的关键意义在于：最小实验用前兆敏感度分配层预算并测量异常召回、显存和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/56e0e232419915ce.png" alt="Figure 1 : Our architecture . While standard Video-LLM models suffer from linear O ⁡ ( T ) O(T) memory growth, Video-MemComp maintains strictly O ⁡ ( 1 ) O(1) memory via a Taylor-expansion-guided hybrid strategy, enabling efficient streaming video understanding. Specifically, we decompose the error via Taylor expansion into local approximation error ℰ l \mathcal{E}_{l} and layer-wise structural sensitivity 𝒮 l \mathcal{S}_{l} . To minimize ℰ l \mathcal{E}_{l} , we adopt Attention-Preserved Pre-RoPE Aggregation and Intra-layer Sparsity-based KV pruning. Meanwhile, 𝒮 l \mathcal{S}_{l} is used to guide layer-wise budget allocation.">
+                    <figcaption>Figure 1 : Our architecture . While standard Video-LLM models suffer from linear O ⁡ ( T ) O(T) memory growth, Video-MemComp maintains strictly O ⁡ ( 1 ) O(1) memory via a Taylor-e...</figcaption>
+                  </figure>
+                  <p>pre-RoPE 聚合、注意力守恒偏置、离线梯度先验和在线熵预算。
+阅读时需要把方法设计与主要结果一起看：Qwen2.5-VL-3B 从 62.3% 提升到 64.1%，每层约 6000 Token。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>Qwen2.5-VL-3B 从 62.3% 提升到 64.1%，每层约 6000 Token。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>短暂异常召回与真实 P99 延迟仍缺。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>提供误差感知的训练免费流式记忆管理。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验用前兆敏感度分配层预算并测量异常召回、显存和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">流式记忆与 Token 压缩</p>
+              <h3>Consommé：条件 Token 合并支持任意单步预算</h3>
+              <p class="paper__subtitle">Consommé: Conditioned Token Merging for Split Inference</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">Consommé 利用 CLS Token 既是全局摘要又能指导 patch 保留的双重角色，以压缩 CLS 条件化软门控，将任意数量 patch 单步合并为精确 k 个 Token，适合带宽受限的边云分割推理。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Man Ngo、Jan S. Rellermeyer</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32794" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32794" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Consommé 利用 CLS Token 既是全局摘要又能指导 patch 保留的双重角色，以压缩 CLS 条件化软门控，将任意数量 patch 单步合并为精确 k 个 Token，适合带宽受限的边云分割推理。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>边云分割推理的中间 Token 传输成本高。
+从本日报的选取理由看，Consommé 利用 CLS Token 既是全局摘要又能指导 patch 保留的双重角色，以压缩 CLS 条件化软门控，将任意数量 patch 单步合并为精确 k 个 Token，适合带宽受限的边云分割推理。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>冻结骨干时如何以小适配器实现任意预算。
+对当前主题的关键意义在于：最小实验用物理状态摘要条件化高频片段合并。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/fb586a531d0ed86d.png" alt="Figure 1 : Overview of Consommé. By leveraging the CLS token’s information via an IB, it serves as a selection mechanism for the soft-assignment merging gate in order to reduce the number of tokens to be transmitted.">
+                    <figcaption>Figure 1 : Overview of Consommé. By leveraging the CLS token’s information via an IB, it serves as a selection mechanism for the soft-assignment merging gate in order to reduce the...</figcaption>
+                  </figure>
+                  <p>CLS 信息瓶颈加条件软合并门。
+阅读时需要把方法设计与主要结果一起看：激进预算下领先，并可用于浅层切分。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>激进预算下领先，并可用于浅层切分。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>局部短暂证据和系统数字需进一步验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>把全局查询、精确预算和通信压缩统一起来。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验用物理状态摘要条件化高频片段合并。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>科学多模态连续预测与时序基础模型效率</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学多模态连续预测与时序基础模型效率</p>
+              <h3>HAD-VLM：保留连续数值的医学视觉语言模型</h3>
+              <p class="paper__subtitle">Beyond Discrete Tokens: Preserving Numerical Continuity in Medical Vision-Language Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">HAD-VLM 在共享骨干中保留自回归文本交互，同时用扩散过程预测连续坐标和长度，避免把连续测量强行离散成文本 Token，对科学图像中的定量读数与几何约束有直接启发。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Dianye Huang、Jiamei Guo、Yue Zhou、Mingde Li、Yi Xiong、Wei Wang、Nassir Navab、Zhongliang Jiang</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32948" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32948" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>HAD-VLM 在共享骨干中保留自回归文本交互，同时用扩散过程预测连续坐标和长度，避免把连续测量强行离散成文本 Token，对科学图像中的定量读数与几何约束有直接启发。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>科学图像问答与连续数值测量需要不同输出空间。
+从本日报的选取理由看，HAD-VLM 在共享骨干中保留自回归文本交互，同时用扩散过程预测连续坐标和长度，避免把连续测量强行离散成文本 Token，对科学图像中的定量读数与几何约束有直接启发。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何兼顾语言交互和连续几何精度。
+对当前主题的关键意义在于：最小实验比较分箱、MLP 和连续生成头的物理量误差与校准。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/5c52e5053aa72b5f.png" alt="Fig. 2 : Overview of HAD-VLM for prompt-conditioned quantitative ultrasound measurement. The framework comprises (a) an prompt-adapted vision encoder, (b) a projector, (c) a hybrid LLM, and (d) a post-processing module. It integrates autoregressive text generation with diffusion-based continuous measurement prediction via a 5-tuple measurement representation and a coordinate-length consistency mechanism.">
+                    <figcaption>Fig. 2 : Overview of HAD-VLM for prompt-conditioned quantitative ultrasound measurement. The framework comprises (a) an prompt-adapted vision encoder, (b) a projector, (c) a hybrid...</figcaption>
+                  </figure>
+                  <p>自回归文本头、扩散连续头及坐标长度一致性后处理。
+阅读时需要把方法设计与主要结果一起看：超声测量误差相对基线下降 21.4% 至 37.6%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>超声测量误差相对基线下降 21.4% 至 37.6%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>扩散采样成本与实时性未充分验证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>离散语义和连续物理量应解耦输出。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验比较分箱、MLP 和连续生成头的物理量误差与校准。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">科学多模态连续预测与时序基础模型效率</p>
+              <h3>TSFM 生命周期审计：从碳成本到无梯度结构剪枝</h3>
+              <p class="paper__subtitle">Sustainability of TSFM Deployment and Pretraining: From Carbon Footprint Analysis to Mitigation via Pruning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">论文不只比较一次推理成本，而是建模 TSFM 预训练投资在完整部署生命周期中的摊销边界，并给出删除单个编码器块的无梯度剪枝结果，适合决定何时使用大基础模型、何时保留小专用模型。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Cécile Luc、Nathanaël Lemonnier、Ievgen Redko</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32859" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32859" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>论文不只比较一次推理成本，而是建模 TSFM 预训练投资在完整部署生命周期中的摊销边界，并给出删除单个编码器块的无梯度剪枝结果，适合决定何时使用大基础模型、何时保留小专用模型。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>一次推理分数不足以判断 TSFM 是否值得部署。
+从本日报的选取理由看，论文不只比较一次推理成本，而是建模 TSFM 预训练投资在完整部署生命周期中的摊销边界，并给出删除单个编码器块的无梯度剪枝结果，适合决定何时使用大基础模型、何时保留小专用模型。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>何时基础模型成本可摊销，如何低风险减小模型。
+对当前主题的关键意义在于：最小实验逐块删除现有 TSFM，测量跨炮 AUC、功耗和延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/faf0a075c35cb066.png" alt="Figure 1 : Cumulative carbon cost for all five approaches, baseline scenario, versus time at N a = 1000 N_{a}=1000 (left) and versus number of assets at t = 60 t=60 months (right).">
+                    <figcaption>Figure 1 : Cumulative carbon cost for all five approaches, baseline scenario, versus time at N a = 1000 N_{a}=1000 (left) and versus number of assets at t = 60 t=60 months (right).</figcaption>
+                  </figure>
+                  <p>累计碳成本建模加无梯度编码器块剪枝。
+阅读时需要把方法设计与主要结果一起看：删除 7.9% 参数可降低 6% 至 9% FLOPs、碳排和延迟，零样本性能基本不变。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>删除 7.9% 参数可降低 6% 至 9% FLOPs、碳排和延迟，零样本性能基本不变。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>结果依赖部署假设，缺少峰值显存和异常任务审计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>效率决策应覆盖完整生命周期。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验逐块删除现有 TSFM，测量跨炮 AUC、功耗和延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-8">
+        <div class="panel__head">
+          <h2>聚变数据基础设施与多任务事件识别</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">聚变数据基础设施与多任务事件识别</p>
+              <h3>Tokamak-SI：把托卡马克事件检测统一成时间对齐语义目录</h3>
+              <p class="paper__subtitle">Tokamak-SI: Interpreting Tokamak Discharges with Labeled Catalogs</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-23 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">Tokamak-SI 将约束、脱靶、阿尔芬本征模、ELM、锯齿、撕裂模和电阻壁模等既有标签与标注流程归并到同一时间对齐类别数据集，直接缓解聚变 AI 中每个任务各自建库、标签不可复用的问题。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Nathaniel Chen、Alvin Garcia、Ricardo Shousha、Jalal Butt、Azarakhsh Jalalvand、Egemen Kolemen</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.32264" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.32264" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Tokamak-SI 将约束、脱靶、阿尔芬本征模、ELM、锯齿、撕裂模和电阻壁模等既有标签与标注流程归并到同一时间对齐类别数据集，直接缓解聚变 AI 中每个任务各自建库、标签不可复用的问题。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>专用事件检测器的数据与标签定义长期割裂。
+从本日报的选取理由看，Tokamak-SI 将约束、脱靶、阿尔芬本征模、ELM、锯齿、撕裂模和电阻壁模等既有标签与标注流程归并到同一时间对齐类别数据集，直接缓解聚变 AI 中每个任务各自建库、标签不可复用的问题。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何建立可扩展、多事件、时间对齐的放电目录。
+对当前主题的关键意义在于：最小实验建立共享事件头，比较单任务与多任务在跨炮次泛化和推理成本上的差异。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/cc2fff4b9999ab98.png" alt="Figure 3: Annotation and dense labels on two benchmark shots, 0–2 s. Top: CO 2 R0 spectrogram (80–250 kHz); dashed lines bound the annotation’s marked stretch. Below: the annotation (blank: not marked) and the dense labels (gray: absent). The annotation marks 12% of each shot, the dense labels 90% and 51%. A detector that follows the activity is scored a false positive outside the marked stretch.">
+                    <figcaption>Figure 3: Annotation and dense labels on two benchmark shots, 0–2 s. Top: CO 2 R0 spectrogram (80–250 kHz); dashed lines bound the annotation’s marked stretch. Below: the annotatio...</figcaption>
+                  </figure>
+                  <p>归并既有标签和标注方法，训练统一标签传播模型。
+阅读时需要把方法设计与主要结果一起看：AE、ELM、TM 等检测达到或超过早期专用方法。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>AE、ELM、TM 等检测达到或超过早期专用方法。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>跨装置和在线性能尚未完整报告。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>为多任务聚变 AI 提供统一监督与检索基础。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验建立共享事件头，比较单任务与多任务在跨炮次泛化和推理成本上的差异。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 聚变 AI 的瓶颈正在从单一检测器转向统一事件语义层</h3>
+          <p>Tokamak-SI 把多类物理现象对齐到共享时间轴，下一步可与 TRACE 的时序文本检索结合，形成可查询、可多任务训练的诊断目录。</p>
+        </article>
+        <article class="trend">
+          <h3>2. Token 压缩开始显式管理误差、层敏感度和条件预算</h3>
+          <p>Video-MemComp 管理误差累积，Consommé 用全局摘要条件化精确预算，统一时空压缩再回填删除信息，三者可组成从边端到长缓存的系统对照。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 科学多模态模型需要区分离散语义和连续物理量</h3>
+          <p>HAD-VLM 与 HTC-VLM 都显示，文字、对象语义、纹理和连续数值不应被同一离散 Token 通道强行处理。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 弱监督局部证据选择比全图拼接更适合稀有事件预警</h3>
+          <p>ARENA 仅用事件级标签定位活动区，若再由诊断时序提供查询，可形成 P3 的低标注成本视觉筛选器，但必须防止亮度和工况伪相关。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
