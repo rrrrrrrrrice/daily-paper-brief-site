@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 - 2026-10-28</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-10-28 核心论文简报</h1>
+      <p class="hero__meta">面向对象：AI 时序、多任务学习、多模态学习、计算机视觉、Token 压缩与可控核聚变交叉研究团队</p>
+      <p class="hero__meta">信息检索截止时间：2026-10-28 05:00 +08:00</p>
+      <div class="hero__overview">
+        <p>- 今日主推荐 5 篇，覆盖视频注意力分级近似、低成本概率天气预测、可微分聚变模拟、多变量时序跨通道异常检测，以及统一驾驶多模态 Tokenizer，均为此前归档未收录的新增论文。</p>
+        <p>- 2025-2026 顶会顶刊回看独立收录 Tri-Modal Fusion Transformers、Layer-Wise Modality Decomposition 与 Multi-Objective Balanced Covering，分别对应 RGB-热红外-Event 融合、逐层模态贡献审计和双目标 Token 覆盖。</p>
+        <p>- P1 独立收录 TRACE，P2 明确空缺，P3 独立收录 EEGaze，P4 独立收录 EARS。P1-P4 不占主推荐名额。真实 Δt、多采样率、百万长度统一骨干，完整原生 RGB-Event 属性识别，以及直接可见光与诊断时序托卡马克破裂预测仍无完整新增证据。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">在研课题启发 - P1：不规则时序与聚变高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-9">09 TRACE：用时频重建保存增量类别而不保留历史样本</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">在研课题启发 - P2：RGB-Event 属性识别</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</a>
+            <ul>
+              <li><a href="#paper-10">10 EEGaze：用同步 EEG 状态细化图像显著性</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 - P4：Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-11">11 EARS：用声音、运动和时间覆盖检索稀疏视频证据</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">多模态世界状态建模</a>
+            <ul>
+              <li><a href="#paper-8">08 DriveUniTok：统一编码外观、深度与自车运动</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">聚变模拟与多变量时序</a>
+            <ul>
+              <li><a href="#paper-6">06 iGENE：可微分高保真回旋动理学聚变模拟</a></li>
+              <li><a href="#paper-7">07 CLOSURE：把可恢复性与跨通道一致性分开建模</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">高效视觉计算与 Token 预算</a>
+            <ul>
+              <li><a href="#paper-4">04 Triage：把视频注意力块分成跳过、低精度和残差修正三级</a></li>
+              <li><a href="#paper-5">05 Astra：双向传输注意力实现低成本概率天气预测</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">Triage：把视频注意力块分成跳过、低精度和残差修正三级</a></h3>
+              <p class="card__subtitle">Triage: Skip, Skim, or Refine Attention Tiles in Video Diffusion Transformers</p>
+              <div class="chip-row">
+                <span class="chip">高效视觉计算与 Token 预算</span>
+                <span class="chip chip--muted">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>Triage 不再对所有保留注意力块使用同一精度，而是预测每块在不同近似层级下的误差，用单一价格参数在误差与计算间分配预算，并以融合内核在 Blackwell GPU 上执行，提供了从算法到端到端速度的完整证据。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">Astra：双向传输注意力实现低成本概率天气预测</a></h3>
+              <p class="card__subtitle">Efficient probabilistic weather forecasting at quarter-degree resolution with two-sided transport attention</p>
+              <div class="chip-row">
+                <span class="chip">高效视觉计算与 Token 预算</span>
+                <span class="chip chip--muted">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>Astra 让每个区域同时决定从哪里读取和向哪里写入，并用多尺度特征中的 CRPS 监督概率预测，在 0.25 度分辨率上以显著更少训练和推理计算匹配或超过强基线，适合迁移到多尺度物理场预测。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-6">iGENE：可微分高保真回旋动理学聚变模拟</a></h3>
+              <p class="card__subtitle">Accelerating high-fidelity gyrokinetic fusion simulations with iGENE</p>
+              <div class="chip-row">
+                <span class="chip">聚变模拟与多变量时序</span>
+                <span class="chip chip--muted">2026-10-24 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>iGENE 将多物种、碰撞、全电磁非线性 GENE 模型重写为端到端可微的 JAX 实现，并同时报告梯度校验、32 张 H100 强扩展、混合精度 FFT 与多速率子循环，为物理反演和代理模型训练提供可信底座。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">04</div>
+            <div class="card__body">
+              <h3><a href="#paper-7">CLOSURE：把可恢复性与跨通道一致性分开建模</a></h3>
+              <p class="card__subtitle">CLOSURE: Cross-Channel Closure for Multivariate Time Series Anomaly Detection</p>
+              <div class="chip-row">
+                <span class="chip">聚变模拟与多变量时序</span>
+                <span class="chip chip--muted">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+              <p>CLOSURE 指出低重建误差不等于通道关系正常，将扩散重建与“遮住目标通道后由其他通道预测”的关系闭包分开训练，再只在正常数据上校准两种分数，直接对应多诊断信号的协同异常识别。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">05</div>
+            <div class="card__body">
+              <h3><a href="#paper-8">DriveUniTok：统一编码外观、深度与自车运动</a></h3>
+              <p class="card__subtitle">DriveUniTok: A Unified Multimodal Tokenizer for Driving World-Action Models</p>
+              <div class="chip-row">
+                <span class="chip">多模态世界状态建模</span>
+                <span class="chip chip--muted">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>DriveUniTok 把图像外观、投影 LiDAR 深度和自车轨迹视为同一世界状态的不同投影，用可解码连续潜变量统一表示，避免独立模态流的语义不一致，并在下游预测与规划中降低计算成本。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>在研课题启发 - P1：不规则时序与聚变高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与聚变高低频统一建模</p>
+              <h3>TRACE：用时频重建保存增量类别而不保留历史样本</h3>
+              <p class="paper__subtitle">TRACE: Memory-Efficient Time Series Class-Incremental Learning via Temporal-Spectral Reconstruction</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-26 UTC，v1，当日新批次</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】TRACE 冻结紧凑时频表示，为每个新增类别训练轻量独立自编码器，并用重建分数直接分类，不保存历史样本或大型统计矩阵，适合持续加入新的聚变事件类型。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Junhui Mao、Junru Zhang、Liming Ye、Cheng Peng、Haoran Shi、Xiaoli Tang、Baokun Wang、Bin Dou、Yabo Dong、Han Yu</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.35727" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.35727" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】TRACE 冻结紧凑时频表示，为每个新增类别训练轻量独立自编码器，并用重建分数直接分类，不保存历史样本或大型统计矩阵，适合持续加入新的聚变事件类型。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>连续监测系统的类别会随新工况和故障演化，样本回放受隐私与内存限制，单一增量模型又容易递归生成误差和灾难性遗忘。
+从本日报的选取理由看，【P1】TRACE 冻结紧凑时频表示，为每个新增类别训练轻量独立自编码器，并用重建分数直接分类，不保存历史样本或大型统计矩阵，适合持续加入新的聚变事件类型。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在严格记忆预算下持续加入新时序类别，同时避免保存旧样本和破坏已有类别。
+对当前主题的关键意义在于：【P1】原始应用领域是联网传感器的时序类别增量学习。可迁移模块是冻结时频编码器、类别专属轻量生成记忆和重建式判别，对应聚变事件目录持续扩充与隐私受限回放。预期显存随类别数线性增加，但每类模块轻量且无需历史样本缓存。主要风险是类别边界重叠时多个自编码器都能低误差重建，频域特征也可能抹平短暂前兆。最小验证是在现有事件数据按时间顺序引入新类别，比较全量重训、样本回放和 TRACE 的旧类遗忘、新类 F1、每类内存、峰值显存和推理延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/a275cd67f39ec99a.png" alt="Figure 4. Raw-series AE (top) and feature AE (ours, bottom) deterministically reconstruct identical validation inputs. Shading shows real density, and dots show paired reconstructions in a shared joint t-SNE diagnostic space per column. All classes are shown for HAR/UWave/DailySports. Six classes selected post hoc are shown for WISDM/GrabMyo. A two-row, five-column figure. Columns are HAR, UWave, DailySports, WISDM and GrabMyo. Deterministic raw-series AE reconstructions are above feature AE reconstructions. The first three columns show all 6, 8 and 18 classes, with 98, 10 and 36 paired validation inputs per class respectively. WISDM shows classes 0, 1, 2, 3, 4 and 13 with 96 inputs per class. GrabMyo shows classes 5, 6, 10, 13, 14 and 15 with 200 inputs per class. In every column the same real inputs, class colors, background density and joint t-SNE coordinates are shared by both rows. Each real input has exactly one deterministic reconstruction in each row. Raw reconstructions pass through the same frozen initial-task CNN and frozen all-class diagnostic MLP as the real inputs. Feature reconstructions pass through the same diagnostic MLP, which is used only for visualization. WISDM and GrabMyo classes were selected post hoc for neighborhood separation. All three other datasets use all classes.">
+                    <figcaption>Figure 4. Raw-series AE (top) and feature AE (ours, bottom) deterministically reconstruct identical validation inputs. Shading shows real density, and dots show paired reconstructi...</figcaption>
+                  </figure>
+                  <p>使用冻结的时域-频域表示与类别专属轻量自编码器独立保存分布，以重建误差完成无回放分类。
+阅读时需要把方法设计与主要结果一起看：五个 TSCIL 基准上相对 TS-ACL 平均保留内存减少约 98.26%，GrabMyo 准确率相对提升约 33.43%。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>五个 TSCIL 基准上相对 TS-ACL 平均保留内存减少约 98.26%，GrabMyo 准确率相对提升约 33.43%。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>原始应用是规则采样分类增量，不显式保留真实 Δt，不提供高低频异步通道交互或百万长度线性内存保证。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>TRACE 解决持续类别记忆，不是 P1 完整统一骨干。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>【P1】原始应用领域是联网传感器的时序类别增量学习。可迁移模块是冻结时频编码器、类别专属轻量生成记忆和重建式判别，对应聚变事件目录持续扩充与隐私受限回放。预期显存随类别数线性增加，但每类模块轻量且无需历史样本缓存。主要风险是类别边界重叠时多个自编码器都能低误差重建，频域特征也可能抹平短暂前兆。最小验证是在现有事件数据按时间顺序引入新类别，比较全量重训、样本回放和 TRACE 的旧类遗忘、新类 F1、每类内存、峰值显存和推理延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>在研课题启发 - P2：RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>P2 本轮空缺判断：原生事件、属性级可靠性与缺失模态仍未统一</h3>
+            </div>
+          </div>
+          <p>英文原标题：*P2 Gap Assessment: Native RGB-Event Attribute Recognition*</p>
+          <p>作者/机构：本轮检索判断</p>
+          <p>发布日期：2026-10-28</p>
+          <p>论文链接：[arXiv 最新检索](https://arxiv.org/)</p>
+          <p>选取理由：【P2】本轮没有新增或实质更新论文同时覆盖原生异步 Event、RGB 时间对齐、区域与属性级动态加权、时钟偏差、模态缺失、不确定性和开放词表属性监督。相邻工作只覆盖融合或检测，不足以替代完整目标。</p>
+          <p>研究背景：RGB-Event 属性识别要求在弱光、运动模糊、事件稀疏和噪声下保留互补证据，并对不同属性动态调整模态可信度。</p>
+          <p>核心问题：仍缺少端到端原生事件 Token、跨模态时间对齐和属性级可靠性校准的统一训练目标。</p>
+          <p>方法与关键创新：本轮空缺，继续跟踪 event-native representation、timestamp alignment、quality-aware fusion、modality dropout、uncertainty calibration 与 open-vocabulary attribute learning。</p>
+          <p>主要结果：本轮空缺判断。</p>
+          <p>局限性：一般 RGB-Event 检测或转帧融合不能证明属性局部证据、原生事件时间结构和缺失模态鲁棒性同时成立。</p>
+          <p>总结：P2 完整目标继续空缺，不以领域相似论文凑数。</p>
+          <p>研究相关性：【P2】原始应用领域为空缺评估。可迁移模块暂以回看分区的三模态受控融合设计作为实验骨架，对应融合层级和模态子集验证。预计早期融合显存最高，轻量中层融合开销较低。主要风险是检测增益不迁移到细粒度属性，且事件转帧会丢失异步结构。最小验证是在 TriPro 中固定骨干和训练预算，只比较早、中、晚融合与模态 dropout，报告属性 mAP、宏 F1、ECE、弱光退化、峰值显存和 P99 延迟。</p>
+          <p>是否值得精读：本轮空缺。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</h2>
+        </div>
+        <article class="paper-card" id="paper-10" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P3：可见光图像与诊断时序融合的破裂预测</p>
+              <h3>EEGaze：用同步 EEG 状态细化图像显著性</h3>
+              <p class="paper__subtitle">EEGaze: Multimodal Attention Prediction in Visual Search via EEG-Based Saliency Refinement</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-26 UTC，v1，当日新批次</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】EEGaze 不把图像和 EEG 简单相加，而是先得到视觉显著图，再用同步脑电状态进行条件细化，说明低维时序状态可以作为查询压制图像中的无关区域。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mansi Sharma、Dinar Orazgaliyev、Antonio Krüger、Philipp Müller</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.35757" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.35757" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】EEGaze 不把图像和 EEG 简单相加，而是先得到视觉显著图，再用同步脑电状态进行条件细化，说明低维时序状态可以作为查询压制图像中的无关区域。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视觉搜索注意力既受图像内容驱动，也受观察者当前认知状态影响，纯图像显著性无法解释同一场景下不同搜索目标的注意分配。
+从本日报的选取理由看，【P3】EEGaze 不把图像和 EEG 简单相加，而是先得到视觉显著图，再用同步脑电状态进行条件细化，说明低维时序状态可以作为查询压制图像中的无关区域。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何以同步时序信号条件化视觉区域选择，并在自然复杂场景中验证其增益。
+对当前主题的关键意义在于：【P3】原始应用领域是 EEG 辅助的自然场景视觉搜索。可迁移模块是时序条件的显著性细化，对应诊断时序隐藏状态查询可见光局部区域并抑制无关背景。预期只增加轻量细化头，但若保留全图编码，峰值显存下降有限。主要风险是时序状态与亮度伪相关，时间错位会把注意力推向错误区域。最小验证是在现有可见光与诊断数据上用时序隐藏状态调制图像显著图，比较图像单模态、后融合和条件细化的 AUPRC、提前量、区域稳定性、跨炮泛化、峰值显存和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/7b3484156d2eb591.jpg" alt="Figure 1. We present EEGazeNet , the first method to integrate EEG signals into human attention prediction during visual search. The core element of EEGazeNet is a refinement approach that adapts outputs of a state-of-the-art saliency model to the user’s cognitive state assessed via EEG prior to the start of the search. teaser figure teaser figure">
+                    <figcaption>Figure 1. We present EEGazeNet , the first method to integrate EEG signals into human attention prediction during visual search. The core element of EEGazeNet is a refinement appro...</figcaption>
+                  </figure>
+                  <p>构建包含 36 名参与者、140 个自然场景的同步 EEG 与眼动数据集，使用 EEG 引导细化阶段调整现有显著性模型输出。
+阅读时需要把方法设计与主要结果一起看：摘要报告 EEGazeNet 在综合评估中持续优于全部基线和消融设置。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告 EEGazeNet 在综合评估中持续优于全部基线和消融设置。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>EEG 与图像同步条件良好，任务不是早期预警，没有模态缺失、跨装置泛化和低延迟数字。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>关键启发是“时序状态查询图像局部证据”，而不是医学领域本身。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>【P3】原始应用领域是 EEG 辅助的自然场景视觉搜索。可迁移模块是时序条件的显著性细化，对应诊断时序隐藏状态查询可见光局部区域并抑制无关背景。预期只增加轻量细化头，但若保留全图编码，峰值显存下降有限。主要风险是时序状态与亮度伪相关，时间错位会把注意力推向错误区域。最小验证是在现有可见光与诊断数据上用时序隐藏状态调制图像显著图，比较图像单模态、后融合和条件细化的 AUPRC、提前量、区域稳定性、跨炮泛化、峰值显存和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 - P4：Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-11" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>EARS：用声音、运动和时间覆盖检索稀疏视频证据</h3>
+              <p class="paper__subtitle">EARS: Evidence-Aware Retrieval via Sound and Motion for Budgeted Video Reasoning</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-26 UTC，v1，当日新批次</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】EARS 面向极低帧预算，联合光流运动、音频能量和时间非极大值抑制，在不依赖查询和训练的前提下优先保留短暂证据，同时用时间覆盖避免所有预算集中到单一峰值。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Shih-Yao Lin</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.35536" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.35536" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】EARS 面向极低帧预算，联合光流运动、音频能量和时间非极大值抑制，在不依赖查询和训练的前提下优先保留短暂证据，同时用时间覆盖避免所有预算集中到单一峰值。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>均匀采样会漏掉稀疏短事件，纯显著性排序又容易连续选择相邻帧，浪费有限视觉 Token 预算。
+从本日报的选取理由看，【P4】EARS 面向极低帧预算，联合光流运动、音频能量和时间非极大值抑制，在不依赖查询和训练的前提下优先保留短暂证据，同时用时间覆盖避免所有预算集中到单一峰值。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用低成本跨模态统计量在进入 VLM 前筛选短暂证据，并保持时间多样性。
+对当前主题的关键意义在于：【P4】原始应用领域是低帧预算视频推理。可迁移模块是跨模态证据分数与时间非极大值抑制，对应高频诊断和 Event 中短暂峰值保留与预算去重。预期选择器仅需局部运动或能量统计，显存和 FLOPs 很低，但仍需原始流缓存。主要风险是无明显能量变化的物理前兆被完全漏检，采样率变化也会改变分数尺度。最小验证是在现有高频诊断窗口中用一阶差分能量、事件率和时间 NMS 选取 1%、5%、10% Token，对比均匀采样、Top-K 能量和 EARS 式选择的关键事件召回、FLOPs、峰值显存、选择耗时和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/53a1873affb2e525.png" alt="Figure 2 : IC suppresses redundant temporal evidence. Vanilla top- K K clusters around one peak; a minimum gap τ \tau retains diverse frames.">
+                    <figcaption>Figure 2 : IC suppresses redundant temporal evidence. Vanilla top- K K clusters around one peak; a minimum gap τ \tau retains diverse frames.</figcaption>
+                  </figure>
+                  <p>以光流与音频能量构造证据分数，再做时间非极大值抑制，作为无需训练、无需查询的前端帧选择器。
+阅读时需要把方法设计与主要结果一起看：帧级证据 AP 为 0.39，但加入时间多样性后定位 AP 达到 0.94，高于均匀采样的 0.88。K 等于 1 时 XD 子集 F1 为 0.660，对照为 0.614，但配对区间包含零。在多数静音的 UCF-Crime 上略低于均匀采样。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>帧级证据 AP 为 0.39，但加入时间多样性后定位 AP 达到 0.94，高于均匀采样的 0.88。K 等于 1 时 XD 子集 F1 为 0.660，对照为 0.614，但配对区间包含零。在多数静音的 UCF-Crime 上略低于均匀采样。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>只利用运动和音量，安静、缓慢或语义型异常会被漏掉，未报告峰值显存和完整端到端延迟，也没有删除 Token 回收。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>EARS 提供短暂证据与时间覆盖的廉价筛选基线，同时清楚暴露静默事件失效边界。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>【P4】原始应用领域是低帧预算视频推理。可迁移模块是跨模态证据分数与时间非极大值抑制，对应高频诊断和 Event 中短暂峰值保留与预算去重。预期选择器仅需局部运动或能量统计，显存和 FLOPs 很低，但仍需原始流缓存。主要风险是无明显能量变化的物理前兆被完全漏检，采样率变化也会改变分数尺度。最小验证是在现有高频诊断窗口中用一阶差分能量、事件率和时间 NMS 选取 1%、5%、10% Token，对比均匀采样、Top-K 能量和 EARS 式选择的关键事件召回、FLOPs、峰值显存、选择耗时和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>多模态世界状态建模</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态世界状态建模</p>
+              <h3>DriveUniTok：统一编码外观、深度与自车运动</h3>
+              <p class="paper__subtitle">DriveUniTok: A Unified Multimodal Tokenizer for Driving World-Action Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">DriveUniTok 把图像外观、投影 LiDAR 深度和自车轨迹视为同一世界状态的不同投影，用可解码连续潜变量统一表示，避免独立模态流的语义不一致，并在下游预测与规划中降低计算成本。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Jingbo Xu、Hanchao Leng、JiaHui Huang、Hanbing Li、Jingwei Zhao、Kuiyuan Yang、Chen Gao、Guang Chen、Hangjun Ye、Yong Li</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.35044" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.35044" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>DriveUniTok 把图像外观、投影 LiDAR 深度和自车轨迹视为同一世界状态的不同投影，用可解码连续潜变量统一表示，避免独立模态流的语义不一致，并在下游预测与规划中降低计算成本。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>驾驶世界模型常分别预测图像、投影深度和轨迹，独立表示会造成信息损失与跨模态不一致。
+从本日报的选取理由看，DriveUniTok 把图像外观、投影 LiDAR 深度和自车轨迹视为同一世界状态的不同投影，用可解码连续潜变量统一表示，避免独立模态流的语义不一致，并在下游预测与规划中降低计算成本。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何建立既能统一预测又能分别解码的连续多模态 Token 接口。
+对当前主题的关键意义在于：最小实验将可见光、低频诊断摘要和高频局部窗口编码到共享连续潜变量，比较分流预测与统一预测的一致性、缺失模态鲁棒性和显存。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2fceb459ec65bb4b.png" alt="Figure 1: Comparison of latent representations for world-action modeling. (a) BEV tokenizers fuse RGB and LiDAR into a visual latent, while (b) Occupancy tokenizers represent the scene with an occupancy latent; both keep ego motion separate. (c) Modality-specific tokenizers encode RGB, LiDAR, and ego motion into separate streams. (d) DriveUniTok jointly encodes RGB, LiDAR-derived geometry, and ego motion into one unified latent.">
+                    <figcaption>Figure 1: Comparison of latent representations for world-action modeling. (a) BEV tokenizers fuse RGB and LiDAR into a visual latent, while (b) Occupancy tokenizers represent the s...</figcaption>
+                  </figure>
+                  <p>先训练统一 Tokenizer，再冻结它并适配扩散世界动作模型预测未来潜变量，最后解码外观、深度和轨迹。
+阅读时需要把方法设计与主要结果一起看：摘要报告在 NAVSIM 上以更低下游计算成本优于分流方案，强化学习后 PDMS 达到 91.54。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在 NAVSIM 上以更低下游计算成本优于分流方案，强化学习后 PDMS 达到 91.54。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>自动驾驶模态时间同步较好，不能直接解决聚变诊断的异步采样、模态缺失和物理解释。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>统一潜变量可减少跨模态预测冲突，但必须加入时间戳和可靠性机制才能迁移。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验将可见光、低频诊断摘要和高频局部窗口编码到共享连续潜变量，比较分流预测与统一预测的一致性、缺失模态鲁棒性和显存。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>聚变模拟与多变量时序</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">聚变模拟与多变量时序</p>
+              <h3>iGENE：可微分高保真回旋动理学聚变模拟</h3>
+              <p class="paper__subtitle">Accelerating high-fidelity gyrokinetic fusion simulations with iGENE</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-24 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">iGENE 将多物种、碰撞、全电磁非线性 GENE 模型重写为端到端可微的 JAX 实现，并同时报告梯度校验、32 张 H100 强扩展、混合精度 FFT 与多速率子循环，为物理反演和代理模型训练提供可信底座。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Gabriele Merlo、Victor Artigues、Carl-Martin Pfeiler、Frank Jenko</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.33561" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.33561" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>iGENE 将多物种、碰撞、全电磁非线性 GENE 模型重写为端到端可微的 JAX 实现，并同时报告梯度校验、32 张 H100 强扩展、混合精度 FFT 与多速率子循环，为物理反演和代理模型训练提供可信底座。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高保真回旋动理学模拟成本极高，传统代码不便直接做梯度反演、控制优化和端到端代理模型训练。
+从本日报的选取理由看，iGENE 将多物种、碰撞、全电磁非线性 GENE 模型重写为端到端可微的 JAX 实现，并同时报告梯度校验、32 张 H100 强扩展、混合精度 FFT 与多速率子循环，为物理反演和代理模型训练提供可信底座。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在保持多物种、碰撞和全电磁非线性物理的同时实现可微分与高性能扩展。
+对当前主题的关键意义在于：最小实验用其可微线性增长率生成小规模灵敏度数据，训练代理模型后比较直接仿真、有限差分与自动微分的误差和时间成本。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/3e5d8736125329a8.png" alt="Figure 1: (left) Growth rate γ \gamma and (right) frequency ω \omega in units of c s / R c_{s}/R for the CBC case with adiabatic electrons. Shown with circles are the reference results from the GENE code, with blue crosses iGENE (same setup as GENE) and in red iGENE with a spectral representation in velocity space. Resolution in velocity space is indicated in the legend.">
+                    <figcaption>Figure 1: (left) Growth rate γ \gamma and (right) frequency ω \omega in units of c s / R c_{s}/R for the CBC case with adiabatic electrons. Shown with circles are the reference res...</figcaption>
+                  </figure>
+                  <p>重写 GENE 为原生 JAX 集合通信，加入 bfloat16 CUDA FFT、多速率子循环和可调精度 Hermite-Laguerre 速度空间。
+阅读时需要把方法设计与主要结果一起看：从 2 到 32 张 H100 达到 86% 并行效率，单张 H100 每步比单精度 GENE 快 2.63 倍，多速率子循环再获得 1.89 倍加速，五个参数的前向梯度与有限差分一致。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>从 2 到 32 张 H100 达到 86% 并行效率，单张 H100 每步比单精度 GENE 快 2.63 倍，多速率子循环再获得 1.89 倍加速，五个参数的前向梯度与有限差分一致。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>需要 H100 级集群，低精度对罕见不稳定模态的误差和端到端训练显存尚需审计。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>iGENE 是连接高保真聚变模拟、可微反演与学习代理模型的工程底座。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验用其可微线性增长率生成小规模灵敏度数据，训练代理模型后比较直接仿真、有限差分与自动微分的误差和时间成本。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">聚变模拟与多变量时序</p>
+              <h3>CLOSURE：把可恢复性与跨通道一致性分开建模</h3>
+              <p class="paper__subtitle">CLOSURE: Cross-Channel Closure for Multivariate Time Series Anomaly Detection</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">CLOSURE 指出低重建误差不等于通道关系正常，将扩散重建与“遮住目标通道后由其他通道预测”的关系闭包分开训练，再只在正常数据上校准两种分数，直接对应多诊断信号的协同异常识别。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Fan Xu、Hao Wu、Zhi Song、Hanbo Huang、Wenzhuo Ma、Nan Wang、Wei Gong、Xibin Zhao</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.35753" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.35753" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>CLOSURE 指出低重建误差不等于通道关系正常，将扩散重建与“遮住目标通道后由其他通道预测”的关系闭包分开训练，再只在正常数据上校准两种分数，直接对应多诊断信号的协同异常识别。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>正常工况转换可能造成大重建残差却不破坏通道关系，单一传感器漂移也可能被强重建器掩盖。
+从本日报的选取理由看，CLOSURE 指出低重建误差不等于通道关系正常，将扩散重建与“遮住目标通道后由其他通道预测”的关系闭包分开训练，再只在正常数据上校准两种分数，直接对应多诊断信号的协同异常识别。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在仅有正常数据时独立评价信号可恢复性与跨通道解释一致性。
+对当前主题的关键意义在于：最小实验在现有聚变诊断数据中注入单通道漂移和全局工况转换，比较重建残差、闭包分数和二者校准融合的误报率、提前量与推理延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/172684fd067e0ad7.png" alt="Figure 2. Overview of CLOSURE . Paired codebooks store normal temporal bases as code indices; decoded bases condition both corruption and attention. Learned signed coefficients, per-edge gates, and source-only messages predict each target from its peers, never from itself. Independently calibrated scores are combined for detection.">
+                    <figcaption>Figure 2. Overview of CLOSURE . Paired codebooks store normal temporal bases as code indices; decoded bases condition both corruption and attention. Learned signed coefficients, pe...</figcaption>
+                  </figure>
+                  <p>用离散正常时序基记忆条件化扩散重建，再用稀疏有符号门控的关系闭包算子遮住目标通道并从其他通道预测，最终仅以正常数据校准两类分数。
+阅读时需要把方法设计与主要结果一起看：摘要报告在公开基准流上稳定优于近期重建、频域与拓扑检测器。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告在公开基准流上稳定优于近期重建、频域与拓扑检测器。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>扩散重建推理成本和峰值显存未在摘要量化，规则采样基准不能直接证明异步诊断适用性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>将关系一致性从重建目标中解耦，是多诊断异常检测的关键增量。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验在现有聚变诊断数据中注入单通道漂移和全局工况转换，比较重建残差、闭包分数和二者校准融合的误报率、提前量与推理延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>高效视觉计算与 Token 预算</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">高效视觉计算与 Token 预算</p>
+              <h3>Triage：把视频注意力块分成跳过、低精度和残差修正三级</h3>
+              <p class="paper__subtitle">Triage: Skip, Skim, or Refine Attention Tiles in Video Diffusion Transformers</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">Triage 不再对所有保留注意力块使用同一精度，而是预测每块在不同近似层级下的误差，用单一价格参数在误差与计算间分配预算，并以融合内核在 Blackwell GPU 上执行，提供了从算法到端到端速度的完整证据。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yeonjae Kim、Omin Kwon、Seong Hoon Seo、Jae W. Lee</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.35706" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.35706" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Triage 不再对所有保留注意力块使用同一精度，而是预测每块在不同近似层级下的误差，用单一价格参数在误差与计算间分配预算，并以融合内核在 Blackwell GPU 上执行，提供了从算法到端到端速度的完整证据。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视频扩散 Transformer 的数万视觉 Token 使注意力成为主要瓶颈，现有稀疏或量化方法通常让所有保留块采用同一精度，忽略误差差异。
+从本日报的选取理由看，Triage 不再对所有保留注意力块使用同一精度，而是预测每块在不同近似层级下的误差，用单一价格参数在误差与计算间分配预算，并以融合内核在 Blackwell GPU 上执行，提供了从算法到端到端速度的完整证据。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何以极低路由成本为不同注意力块分配不同近似强度，并获得真实硬件加速。
+对当前主题的关键意义在于：最小实验将高频诊断窗口分块，按预测异常分数误差设跳过、低精度和全精度三级，比较统一量化与分级策略的 AUPRC、峰值显存和 P99 延迟。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/707106be8d9aa6fe.png" alt="Figure 5: Overview of Triage . Planning (§ 5 ): ➊ clustering trees group similar queries and keys into tiles; ➋ the router scores each tile by E ~ t = m ~ t ​ ( J t + R t ) ​ w h \tilde{E}_{t}=\tilde{m}_{t}\,(J_{t}+R_{t})\,\sqrt{w_{h}} and assigns it to skip, skim, or refine. Execution (§ 6 ): ➌ in one pass, skipped tiles use cluster means, skimmed tiles one NVFP4 product, and refined tiles three products that add the residuals. Tile patterns are illustrative.">
+                    <figcaption>Figure 5: Overview of Triage . Planning (§ 5 ): ➊ clustering trees group similar queries and keys into tiles; ➋ the router scores each tile by E ~ t = m ~ t ​ ( J t + R t ) ​ w h \...</figcaption>
+                  </figure>
+                  <p>路由器从块统计量预测跳过、NVFP4 计算和 NVFP4 加残差修正的误差收益，再以价格参数控制升级，融合内核单次执行三级计算。
+阅读时需要把方法设计与主要结果一起看：在 Wan2.2、HunyuanVideo 和 LTX-2.5 上相对稠密 FlashAttention 最高获得 2.32 倍端到端加速，并比最高 PSNR 对照高 0.3 至 3.0 dB。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>在 Wan2.2、HunyuanVideo 和 LTX-2.5 上相对稠密 FlashAttention 最高获得 2.32 倍端到端加速，并比最高 PSNR 对照高 0.3 至 3.0 dB。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>依赖 RTX Blackwell FP4 张量核，生成 PSNR 不等于下游关键事件召回，跨硬件收益需复测。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>Triage 把预算分配、误差估计和硬件内核连成完整链路。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验将高频诊断窗口分块，按预测异常分数误差设跳过、低精度和全精度三级，比较统一量化与分级策略的 AUPRC、峰值显存和 P99 延迟。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">高效视觉计算与 Token 预算</p>
+              <h3>Astra：双向传输注意力实现低成本概率天气预测</h3>
+              <p class="paper__subtitle">Efficient probabilistic weather forecasting at quarter-degree resolution with two-sided transport attention</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-10-26 UTC，v1</span>
+                <span class="chip chip--accent">strong_recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">Astra 让每个区域同时决定从哪里读取和向哪里写入，并用多尺度特征中的 CRPS 监督概率预测，在 0.25 度分辨率上以显著更少训练和推理计算匹配或超过强基线，适合迁移到多尺度物理场预测。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Junu Choi、Youngjoon Hong</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2610.35545" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/html/2610.35545" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>Astra 让每个区域同时决定从哪里读取和向哪里写入，并用多尺度特征中的 CRPS 监督概率预测，在 0.25 度分辨率上以显著更少训练和推理计算匹配或超过强基线，适合迁移到多尺度物理场预测。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>高分辨率集合天气预测通常需要大规模训练和昂贵多成员推理，局部注意力又容易削弱远距离传输。
+从本日报的选取理由看，Astra 让每个区域同时决定从哪里读取和向哪里写入，并用多尺度特征中的 CRPS 监督概率预测，在 0.25 度分辨率上以显著更少训练和推理计算匹配或超过强基线，适合迁移到多尺度物理场预测。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在有限训练计算和消费级显存内保留全球多尺度依赖与概率校准。
+对当前主题的关键意义在于：最小实验用双向传输注意力替换现有时序骨干中的全连接注意力，测量跨通道远距依赖、校准误差、峰值显存与采样率外推。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/bd935b1f7c054aff.png" alt="Astra：双向传输注意力实现低成本概率天气预测">
+                    <figcaption>论文核心框架图 / 实验图</figcaption>
+                  </figure>
+                  <p>Kantorovich 双向传输注意力显式建模每个区域的读取与写入，自特征化 CRPS 同时监督原变量和多尺度特征。
+阅读时需要把方法设计与主要结果一起看：摘要报告以 GenCast 9.8% 的硬件归一训练计算匹配其平均 CRPS，15 天单成员 FLOPs 少 39 倍，50 个成员在单张消费级 GPU 上 40 分钟内完成并占用不超过 21 GB。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要报告以 GenCast 9.8% 的硬件归一训练计算匹配其平均 CRPS，15 天单成员 FLOPs 少 39 倍，50 个成员在单张消费级 GPU 上 40 分钟内完成并占用不超过 21 GB。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>结果依赖 WeatherBench 2 与 ERA5，尚未证明对稀疏不规则诊断和突发事件的适用性。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>该工作显示全局传输和概率监督可在较小预算下共存。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验用双向传输注意力替换现有时序骨干中的全连接注意力，测量跨通道远距依赖、校准误差、峰值显存与采样率外推。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>1. 高效计算正在从统一剪枝转向误差分级和真实内核</h3>
+          <p>Triage 以三级近似和融合 FP4 内核给出端到端收益，说明 P4 不能只报告 Token 保留率，还要同时测量路由器开销、硬件支持和误差分布。</p>
+        </article>
+        <article class="trend">
+          <h3>2. 多变量时序需要把“能重建”与“关系仍正常”分开</h3>
+          <p>CLOSURE 的关系闭包可直接用于聚变多诊断协同异常，避免强重建器掩盖单通道漂移，也避免把全局工况转换误判为故障。</p>
+        </article>
+        <article class="trend">
+          <h3>3. 聚变计算正在形成可微高保真模拟底座</h3>
+          <p>iGENE 把物理校验、梯度校验和集群扩展统一起来，为参数反演、控制优化和学习代理模型提供比黑盒数据生成更可靠的链路。</p>
+        </article>
+        <article class="trend">
+          <h3>4. 时序状态作为视觉查询比特征拼接更有迁移价值</h3>
+          <p>EEGaze 和 LMD 分别提供条件细化和模态贡献审计，可组合为 P3 的最小实验，先用诊断时序筛选视觉区域，再验证视觉是否真正贡献前兆。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
