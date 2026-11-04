@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核心论文简报 2026-11-05 - 2026-11-05</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body class="page-day">
+  <header class="day-header">
+    <div class="site-shell">
+      <a class="back-link" href="../index.html">返回日期索引</a>
+      <p class="eyebrow">Daily Paper Brief</p>
+      <h1>2026-11-05 核心论文简报</h1>
+      <p class="hero__meta">面向对象：AI 时序、多任务、多模态、计算机视觉与可控核聚变研究团队</p>
+      <p class="hero__meta">信息检索截止时间：2026-11-05T05:10:26+08:00</p>
+      <div class="hero__overview">
+        <p>今日结论摘要</p>
+        <p>1. 主推荐三篇，CATF 上下文预测、PROVE 视觉验证、VIGOR 证据驱动解码，覆盖时序与视觉多模态，P1–P4 不挤占主推荐。</p>
+        <p>2. 独立 CVPR 2025 回看两篇，STiL 与 Freeze-Align，均非当日新增。</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout site-shell">
+    <aside class="sidebar">
+      <div class="sidebar__block">
+        <h2>当天索引</h2>
+        <p class="sidebar__hint">按主题和论文跳转，快速定位当天条目。</p>
+        <ul class="toc-list">
+          <li class="toc-section">
+            <a href="#section-1">2025-2026 顶会/顶刊回看推荐</a>
+            <ul>
+              <li><a href="#paper-1">01 STiL：保留共享与模态特异信息的半监督融合</a></li>
+              <li><a href="#paper-2">02 Freeze-Align：冻结单模态编码器后训练轻量投影</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-2">在研课题启发 - P1：不规则时序与高低频统一建模</a>
+            <ul>
+              <li><a href="#paper-6">06 BREM-NET：异步神经信号的任务相关与残余动力学分离</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-3">在研课题启发 - P2：RGB-Event 属性识别</a>
+            <ul>
+              <li><a href="#paper-7">07 HIVE-Diff：单帧参考与事件驱动的 HDR 视频扩展</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-4">在研课题启发 - P3：图像与诊断时序融合预警</a>
+            <ul>
+              <li><a href="#paper-8">08 TCM-Former：地学影像与气象时序融合的跨事件失败审计</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-5">在研课题启发 - P4：Token 压缩与筛选</a>
+            <ul>
+              <li><a href="#paper-9">09 BtsPruner：全局代表与局部细节互补保留</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-6">多模态推理与可靠性</a>
+            <ul>
+              <li><a href="#paper-5">05 VIGOR：按反事实视觉证据安排扩散解码顺序</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-7">时序分析与条件预测</a>
+            <ul>
+              <li><a href="#paper-3">03 CATF：由上下文选择单一预测专家</a></li>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-8">本轮空缺判断与更新边界</a>
+            <ul>
+            </ul>
+          </li>
+          <li class="toc-section">
+            <a href="#section-9">视觉语言与细粒度理解</a>
+            <ul>
+              <li><a href="#paper-4">04 PROVE：扰动、修复和复核共同训练视觉验证器</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar__block">
+        <h2>页面目录</h2>
+        <ul>
+          <li><a href="#top-picks">今日必读</a></li>
+          <li><a href="#trend-notes">趋势判断</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section class="panel" id="top-picks">
+        <div class="panel__head">
+          <h2>今日必读</h2>
+          <button class="ghost-button" data-filter-top>只看重点</button>
+        </div>
+        <div class="cards">
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">01</div>
+            <div class="card__body">
+              <h3><a href="#paper-3">CATF：由上下文选择单一预测专家</a></h3>
+              <p class="card__subtitle">CATF: A Manager-Worker Framework for Context-Aware Time-Series Forecasting</p>
+              <div class="chip-row">
+                <span class="chip">时序分析与条件预测</span>
+                <span class="chip chip--muted">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>主推荐，11 月 3 日 v1。将上下文驱动的工况差异转为可检查的硬路由，让每次预测只运行一个 Worker，适合判断工况专门化是否比持续堆大骨干更有效。优先读讨论和成本附录，区分真正的工况发现与基线训练稳定性改善，不将单专家推理误写成全流程成本下降。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">02</div>
+            <div class="card__body">
+              <h3><a href="#paper-4">PROVE：扰动、修复和复核共同训练视觉验证器</a></h3>
+              <p class="card__subtitle">Perturb, Repair, Verify: Self-Play Vision-Language Verifiers for Compositional Understanding</p>
+              <div class="chip-row">
+                <span class="chip">视觉语言与细粒度理解</span>
+                <span class="chip chip--muted">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>主推荐，11 月 3 日 v1。用同一多模态骨干扮演扰动者、验证者和修复者，从正确图文对产生局部属性与关系错误。价值在于构造不断变化的难负例并追踪修复证据，适合细粒度视觉理解与数据质检。自评奖励的闭环也有盲点，必须配套独立人工测试，不能把自身接受当作真实正确。</p>
+            </div>
+          </article>
+          <article class="card card--top" data-paper-card data-top-pick="true">
+            <div class="card__rank">03</div>
+            <div class="card__body">
+              <h3><a href="#paper-5">VIGOR：按反事实视觉证据安排扩散解码顺序</a></h3>
+              <p class="card__subtitle">VIGOR: Visual Gain Ordering for Hallucination Mitigation in Multimodal Discrete Diffusion Language Models</p>
+              <div class="chip-row">
+                <span class="chip">多模态推理与可靠性</span>
+                <span class="chip chip--muted">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+              <p>主推荐，11 月 3 日 v1。检验同一候选词在有图和遮图时的置信变化，用视觉增益决定何时承诺输出，避免语言先验过早锁定错误。它是可靠性干预而非计算压缩，额外前向会让解码约慢一倍，今天值得作为视觉证据依赖与时延之间的明确对照。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="section-1">
+        <div class="panel__head">
+          <h2>2025-2026 顶会/顶刊回看推荐</h2>
+        </div>
+        <article class="paper-card" id="paper-1" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>STiL：保留共享与模态特异信息的半监督融合</h3>
+              <p class="paper__subtitle">STiL: Semi-supervised Tabular-Image Learning for Comprehensive Task-Relevant Information Exploration in Multimodal Classification</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025-06，CVPR 2025 正式论文，非当日新增 / 顶会顶刊回看推荐</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐，CVPR 2025，正式页已核验。今天仍值得读是因为 P3 跨事件失败提醒共享信息未必可迁移。最小实验在按炮划分的视觉与诊断分类上比较共享空间、共享加特异、再加共识伪标签，所有原型只由训练集建立，报告故障与跨年校准、少标签曲线和显存。此为独立回看，不占主推荐或 P1–P4 名额。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Siyi Du, Xinzhe Luo, Declan P. O'Regan, Chen Qin ; Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025, pp. 15549-15559，机构未逐一核验</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Du_STiL_Semi-supervised_Tabular-Image_Learning_for_Comprehensive_Task-Relevant_Information_Exploration_in_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/siyi-wind/STiL" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐，CVPR 2025，正式页已核验。今天仍值得读是因为 P3 跨事件失败提醒共享信息未必可迁移。最小实验在按炮划分的视觉与诊断分类上比较共享空间、共享加特异、再加共识伪标签，所有原型只由训练集建立，报告故障与跨年校准、少标签曲线和显存。此为独立回看，不占主推荐或 P1–P4 名额。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>图像和表格常有大量未标注样本，仅学习跨模态共享信息会丢掉与任务有关的专属特征。医学和自然图像分类中，简单一致性约束还可能将一种模态的错误传播给另一种。STiL 将信息分离与伪标签质量结合，适合回看怎样让视觉与诊断变量互补，而不是强制全部表示对齐。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何在标签有限时兼顾模态共享与专有信息，并让未标注样本的监督可信。分类器一致不等于真实正确，特别是两种模态共有偏差或某一传感器长期失灵时，必须额外检查置信校准与故障鲁棒性。
+对当前主题的关键意义在于：今天仍值得读是因为 P3 跨事件失败提醒共享信息未必可迁移。最小实验在按炮划分的视觉与诊断分类上比较共享空间、共享加特异、再加共识伪标签，所有原型只由训练集建立，报告故障与跨年校准、少标签曲线和显存。此为独立回看，不占主推荐或 P1–P4 名额。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>解耦的对比一致性模块学习跨模态不变信息，同时保留模态专属表示。依据分类器共识生成伪标签，再利用原型嵌入引导标签平滑，改善未标注数据的任务相关学习。机制以 CVF 正式摘要核验，本轮未逐表重审训练配置。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页核验为 CVPR 2025，15549–15559 页。作者报告在自然与医学数据上优于其监督、自监督和半监督对照，本轮未逐表核验数字，因此不转录精确性能。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页核验为 CVPR 2025，15549–15559 页。作者报告在自然与医学数据上优于其监督、自监督和半监督对照，本轮未逐表核验数字，因此不转录精确性能。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>本轮核验正式摘要及 venue，未逐表复核，不能据此断言适用于异步序列和真实缺模态。共识会受共享偏差影响，原型依赖训练分布。官方仓库 HTTP 200，未审计或复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>STiL：保留共享与模态特异信息的半监督融合的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>今天仍值得读是因为 P3 跨事件失败提醒共享信息未必可迁移。最小实验在按炮划分的视觉与诊断分类上比较共享空间、共享加特异、再加共识伪标签，所有原型只由训练集建立，报告故障与跨年校准、少标签曲线和显存。此为独立回看，不占主推荐或 P1–P4 名额。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article class="paper-card" id="paper-2" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">02</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">2025-2026 顶会/顶刊回看推荐</p>
+              <h3>Freeze-Align：冻结单模态编码器后训练轻量投影</h3>
+              <p class="paper__subtitle">Harnessing Frozen Unimodal Encoders for Flexible Multimodal Alignment</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2025-06，CVPR 2025 正式论文，非当日新增 / 顶会顶刊回看推荐</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">非当日新增 / 顶会顶刊回看推荐，CVPR 2025，正式页已核验。今天仍值得读是为 HIVE-Diff 的教师适配提供更轻的成本对照。最小实验冻结现有 RGB 与事件编码器，比较线性、两层 MLP、全量微调，在独立主体和缺模态测试中评估属性性能、校准、训练显存和配对样本效率。此为独立回看，不占主推荐或 P1–P4 名额。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Mayug Maniparambil, Raiymbek Akshulakov, Yasser Abdelaziz Dahou Djilali, Sanath Narayan, Ankit Singh, Noel E. O'Connor ; Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025, pp. 29847-29857，机构未逐一核验</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Maniparambil_Harnessing_Frozen_Unimodal_Encoders_for_Flexible_Multimodal_Alignment_CVPR_2025_paper.html" target="_blank" rel="noreferrer">论文</a><a href="https://github.com/mayug/freeze-align" target="_blank" rel="noreferrer">项目页</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>非当日新增 / 顶会顶刊回看推荐，CVPR 2025，正式页已核验。今天仍值得读是为 HIVE-Diff 的教师适配提供更轻的成本对照。最小实验冻结现有 RGB 与事件编码器，比较线性、两层 MLP、全量微调，在独立主体和缺模态测试中评估属性性能、校准、训练显存和配对样本效率。此为独立回看，不占主推荐或 P1–P4 名额。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>从头训练多模态编码器需要大量配对数据与资源，而已有视觉和语言编码器本身具备较好语义结构。若能找到语义相近的编码器，用小投影建立接口，就可能保留原有模态能力并降低适配成本。但相似空间不是普遍等距，科学诊断与自然图文之间仍存在明显域差距。
+从本日报的选取理由看，非当日新增 / 顶会顶刊回看推荐，CVPR 2025，正式页已核验。今天仍值得读是为 HIVE-Diff 的教师适配提供更轻的成本对照。最小实验冻结现有 RGB 与事件编码器，比较线性、两层 MLP、全量微调，在独立主体和缺模态测试中评估属性性能、校准、训练显存和配对样本效率。此为独立回看，不占主推荐或 P1–P4 名额。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>哪些冻结编码器组合可以通过简单映射对齐，配对概念覆盖是否足够，训练节省又来自冻结、数据挑选还是预训练先验。投影对齐不等于原生时间对齐，也不自动支持模态缺失与属性级置信度。
+对当前主题的关键意义在于：今天仍值得读是为 HIVE-Diff 的教师适配提供更轻的成本对照。最小实验冻结现有 RGB 与事件编码器，比较线性、两层 MLP、全量微调，在独立主体和缺模态测试中评估属性性能、校准、训练显存和配对样本效率。此为独立回看，不占主推荐或 P1–P4 名额。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>先评估单模态潜空间的语义相近性，整理概念丰富的图文配对，再冻结两侧骨干训练 MLP 投影器。在联合空间中评价零样本定位、多语和长文本等能力，重点是灵活复用现有单模态模型。
+阅读时需要把方法设计与主要结果一起看：CVF 正式页核验 CVPR 2025，29847–29857 页。摘要报告 DINOv2 与 All-Roberta-Large 组合的 ImageNet 准确率 76%，相对从头多模态对齐减少 20 倍数据和 65 倍计算需求。这些是作者摘要中的特定对照，未包含完整单模态预训练资源，不能解读为全生命周期节省。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>CVF 正式页核验 CVPR 2025，29847–29857 页。摘要报告 DINOv2 与 All-Roberta-Large 组合的 ImageNet 准确率 76%，相对从头多模态对齐减少 20 倍数据和 65 倍计算需求。这些是作者摘要中的特定对照，未包含完整单模态预训练资源，不能解读为全生命周期节省。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>本轮仅正式摘要与 venue 核验，未逐表复核计算口径。冻结主干限制跨域适应，投影不能凭空补充未编码的事件或物理信息。官方仓库 HTTP 200，未审计或复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>Freeze-Align：冻结单模态编码器后训练轻量投影的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>今天仍值得读是为 HIVE-Diff 的教师适配提供更轻的成本对照。最小实验冻结现有 RGB 与事件编码器，比较线性、两层 MLP、全量微调，在独立主体和缺模态测试中评估属性性能、校准、训练显存和配对样本效率。此为独立回看，不占主推荐或 P1–P4 名额。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-2">
+        <div class="panel__head">
+          <h2>在研课题启发 - P1：不规则时序与高低频统一建模</h2>
+        </div>
+        <article class="paper-card" id="paper-6" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P1：不规则时序与高低频统一建模</p>
+              <h3>BREM-NET：异步神经信号的任务相关与残余动力学分离</h3>
+              <p class="paper__subtitle">Learning Behaviorally Relevant Dynamics in Multimodal Neural Recordings</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P1】11 月 3 日 v1，本轮首次收录，独立于主推荐。不同采样率的专属编码器只在观测存在时注入递归状态，先学习任务相关动力学再建模残余，为高低频统一提供可替换模块。原文仍是离散递归和受控降采样，不能当真实 Δt 连续时间或百万长度复杂度证据。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Parastoo Azizeddin、Eray Erturk、Maryam M. Shanechi，机构：南加州大学</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2611.05167" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2611.05167" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2611.05167" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P1】11 月 3 日 v1，本轮首次收录，独立于主推荐。不同采样率的专属编码器只在观测存在时注入递归状态，先学习任务相关动力学再建模残余，为高低频统一提供可替换模块。原文仍是离散递归和受控降采样，不能当真实 Δt 连续时间或百万长度复杂度证据。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>脑机接口的尖峰信号与局部场电位分别体现快速离散事件和较慢连续活动，统计分布与采样率不同。将全部变化压入一个潜变量会让行为相关信息被大量残余神经变化淹没。本文把异步输入和功能分离结合，比简单重采样拼接更值得迁移到多速率诊断，但证据集中于一只猕猴的特定任务和模拟。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用不同分布、不同频率且会缺失的观测更新统一状态，同时让目标相关与无关变化分工。原始目标是行为解码和神经预测，不是任意不规则多通道预测，因而真实时间间隔、状态演化速度和跨设备分布变化还需单独验证。
+对当前主题的关键意义在于：原始应用领域：脑机接口多模态神经动力学。可迁移模块与训练目标：观测门控的专属编码器、任务相关与残余双状态、分阶段预测似然。对应问题：P1 高低频通道缺失与无关变化干扰。预计计算/显存影响：固定状态在线递归有望控制推理存储，双状态增加参数与训练开销，BPTT 不自动是常数显存。主要风险：离散步长不能表达任意 Δt，成组失联会漂移。最小验证实验：两个采样率诊断通道，比较重采样单 RNN、门控双模态、双状态，按炮隔离并加入速率变化和连续掉线，测短事件召回、误差、峰值显存和 P95 延迟。匹配度高，机制可迁移性中高，工程可行性中，原始证据中等，最新进展为 v1，完整目标仍空缺。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/1c9ae7fb19f38191.png" alt="Figure A.3: Ablations show that multimodal structured modeling improves the accuracy and behavior alignment of behaviorally relevant neural latents while also capturing residual neural variability. (a) Condition-averaged behaviorally relevant latent trajectories. (b) Alignment score. (c) LFP prediction CC. (d) Behavior decoding CC. (e) Spike prediction PP. Bars show mean ± \pm SEM across all sessions and 5 folds (N=20); asterisks indicate significance.">
+                    <figcaption>Figure A.3: Ablations show that multimodal structured modeling improves the accuracy and behavior alignment of behaviorally relevant neural latents while also capturing residual ne...</figcaption>
+                  </figure>
+                  <p>分别建立模态编码器和高斯、泊松观测解码器。先训练第一组 RNN 潜状态预测行为，再学习其到各神经模态的映射，最后用第二组状态拟合未解释的残余动力学。缺失模态的编码输出置零，递归使用可用观测。行为仅作训练监督，推理不输入行为真值。
+阅读时需要把方法设计与主要结果一起看：附录表 A.2，LFP 五倍降采样后行为解码相关系数 0.7571，对齐采样为 0.7645，但 LFP 预测相关系数同时从 0.8078 降至 0.6272，不能称所有任务无损。表 A.3 随机删 80% LFP 的行为相关系数 0.7516，删 80% 尖峰则为 0.6292，模态重要性明显不对称。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>附录表 A.2，LFP 五倍降采样后行为解码相关系数 0.7571，对齐采样为 0.7645，但 LFP 预测相关系数同时从 0.8078 降至 0.6272，不能称所有任务无损。表 A.3 随机删 80% LFP 的行为相关系数 0.7516，删 80% 尖峰则为 0.6292，模态重要性明显不对称。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>完整观测数据上人工降采样和随机缺失，不等于真实传感器异步与成组故障。四个会话、五折给出的 20 个结果不等于 20 个独立受试者。通道按行为预测精度选择，迁移须训练内完成筛选。未确认官方代码可用，未测目标硬件延迟或百万长度训练显存。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>BREM-NET：异步神经信号的任务相关与残余动力学分离的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域：脑机接口多模态神经动力学。可迁移模块与训练目标：观测门控的专属编码器、任务相关与残余双状态、分阶段预测似然。对应问题：P1 高低频通道缺失与无关变化干扰。预计计算/显存影响：固定状态在线递归有望控制推理存储，双状态增加参数与训练开销，BPTT 不自动是常数显存。主要风险：离散步长不能表达任意 Δt，成组失联会漂移。最小验证实验：两个采样率诊断通道，比较重采样单 RNN、门控双模态、双状态，按炮隔离并加入速率变化和连续掉线，测短事件召回、误差、峰值显存和 P95 延迟。匹配度高，机制可迁移性中高，工程可行性中，原始证据中等，最新进展为 v1，完整目标仍空缺。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-3">
+        <div class="panel__head">
+          <h2>在研课题启发 - P2：RGB-Event 属性识别</h2>
+        </div>
+        <article class="paper-card" id="paper-7" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P2：RGB-Event 属性识别</p>
+              <h3>HIVE-Diff：单帧参考与事件驱动的 HDR 视频扩展</h3>
+              <p class="paper__subtitle">HIVE-Diff: High Frame Rate HDR Video Reconstruction from a Single LDR Frame and Events</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-11-02 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P2】11 月 2 日 v1，本轮首次收录。事件适配器用真实 LDR-event 代理监督并受冻结教师约束，为 TriPro 提供低标注跨传感器适配思路。本文生成 HDR 视频，事件为分箱表示且扩散昂贵，只取教师约束适配机制，不将生成结果当原生属性证据。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Caixin Wang、Qingrui Wang、Jie Zhang、Ralph Etienne-Cummings，机构：约翰斯·霍普金斯大学、西北大学、麻省理工学院</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2611.03465" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2611.03465" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/caixinw4-afk/hive-diff" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2611.03465" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P2】11 月 2 日 v1，本轮首次收录。事件适配器用真实 LDR-event 代理监督并受冻结教师约束，为 TriPro 提供低标注跨传感器适配思路。本文生成 HDR 视频，事件为分箱表示且扩散昂贵，只取教师约束适配机制，不将生成结果当原生属性证据。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>常规相机在极端亮度和高速运动中受限，事件有高时间分辨率却缺绝对颜色和亮度。单幅 RGB 参考可补充静态信息，但相距越远越容易漂移。现有逐时刻重建依赖连续 LDR 帧，本文用单参考和事件生成多帧，并探索缺乏真实 HDR 标注时的适配。这与跨设备事件表示有关，但与实时属性识别仍有任务差距。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何从一次绝对外观观测和后续变化恢复时间密集 HDR，以及如何在没有真实 HDR 标签时适配新事件相机。饱和无事件区域只能依赖生成先验，不能宣称恢复了传感器实际观测到的细节，也不能以视觉自然替代身份属性正确。
+对当前主题的关键意义在于：原始应用领域：HDR 视频重建。可迁移模块与训练目标：冻结教师约束的事件适配器和特征一致性，替换 TriPro 的一个事件对齐支路。对应问题：P2 低照度、传感器变化和事件噪声。预计计算/显存影响：只训练小适配器可减少梯度存储，蒸馏多一次教师前向，原完整扩散 9.2 GiB 不适合直接照搬。主要风险：生成幻觉、四分箱丢时间、非因果片段与属性失真。最小验证实验：保留 TriPro 主干，比较无适配、普通适配、冻结教师蒸馏，严格过去窗口，加入时钟偏移、低照度与事件缺失，测属性 mA/F1、校准、每人延迟和显存。匹配度中，机制可迁移性中高，工程可行性中，证据中等，最新进展为 v1，完整目标空缺。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/55bd8aa927dd2db7.png" alt="Figure 2 : Overview of the HIVE-Diff training and inference pipeline. Stage 1 learns event-guided temporal generation from synthetic LDR-event data, and Stage 2 learns HDR content completion with synthetic HDR supervision. Stage 3 adapts the event adaptor to real event data using LDR-event proxy supervision without HDR ground truth. During inference, the adapted event adaptor is combined with the HDR branch and frozen video diffusion backbone for real-world HDR temporal expansion.">
+                    <figcaption>Figure 2 : Overview of the HIVE-Diff training and inference pipeline. Stage 1 learns event-guided temporal generation from synthetic LDR-event data, and Stage 2 learns HDR content ...</figcaption>
+                  </figure>
+                  <p>事件条件视频扩散分离时间生成与 HDR 内容补全，事件适配器将四个事件分箱注入视频骨干，加入曝光条件。合成训练后冻结去噪与 HDR 分支，只用 LDR-event 序列适配事件模块，冻结合成教师通过事件嵌入与残差特征蒸馏约束学生。前一片段潜变量和边界损失改善片段连接。
+阅读时需要把方法设计与主要结果一起看：表 2，在 19 段适配、5 段独立 EventHDR 测试中，首帧 PSNR 从 16.10 到 18.03。表 5 单 L40S、512×512、5 倍扩展、25 Euler 步、FP16/CFG，每输出帧 1.79 秒、9.2 GiB。与 HDRev-Diff 的精度、采样步数不同，不能把约 2.3 倍差异归给纯结构效率，也不能称实时。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>表 2，在 19 段适配、5 段独立 EventHDR 测试中，首帧 PSNR 从 16.10 到 18.03。表 5 单 L40S、512×512、5 倍扩展、25 Euler 步、FP16/CFG，每输出帧 1.79 秒、9.2 GiB。与 HDRev-Diff 的精度、采样步数不同，不能把约 2.3 倍差异归给纯结构效率，也不能称实时。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>20 倍长扩展有质量下降，静态饱和无事件区域内容来自先验，长片段仍漂移。每传感器适配，未验证完全未见相机零适配。无 HDR 真值时 EPC 提升而 MANIQA略降，不能笼统说所有质量均改善。官方仓库 HTTP 200，未审计或复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>HIVE-Diff：单帧参考与事件驱动的 HDR 视频扩展的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域：HDR 视频重建。可迁移模块与训练目标：冻结教师约束的事件适配器和特征一致性，替换 TriPro 的一个事件对齐支路。对应问题：P2 低照度、传感器变化和事件噪声。预计计算/显存影响：只训练小适配器可减少梯度存储，蒸馏多一次教师前向，原完整扩散 9.2 GiB 不适合直接照搬。主要风险：生成幻觉、四分箱丢时间、非因果片段与属性失真。最小验证实验：保留 TriPro 主干，比较无适配、普通适配、冻结教师蒸馏，严格过去窗口，加入时钟偏移、低照度与事件缺失，测属性 mA/F1、校准、每人延迟和显存。匹配度中，机制可迁移性中高，工程可行性中，证据中等，最新进展为 v1，完整目标空缺。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-4">
+        <div class="panel__head">
+          <h2>在研课题启发 - P3：图像与诊断时序融合预警</h2>
+        </div>
+        <article class="paper-card" id="paper-8" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P3：图像与诊断时序融合预警</p>
+              <h3>TCM-Former：地学影像与气象时序融合的跨事件失败审计</h3>
+              <p class="paper__subtitle">Fusing Earth observation embeddings and spaceborne terrain with meteorological forcing for flood peak depth prediction from high-water marks</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P3】11 月 3 日 v1，独立新候选。图像地形与过去气象输入共同预测未来峰值深度，直接对应视觉传感融合预警，同时明确展示按事件留出后的失败。今天最值得迁移的是主任务与辅助目标及严格外推评价，不把已有随机划分收益包装成跨装置可用。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Wen Zhou、Shaowen Wang、Upmanu Lall、Venkatesh Merwade、Dingqi Ye，机构：伊利诺伊大学厄巴纳香槟分校、亚利桑那州立大学、普渡大学</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2611.05220" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2611.05220" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2611.05220" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P3】11 月 3 日 v1，独立新候选。图像地形与过去气象输入共同预测未来峰值深度，直接对应视觉传感融合预警，同时明确展示按事件留出后的失败。今天最值得迁移的是主任务与辅助目标及严格外推评价，不把已有随机划分收益包装成跨装置可用。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>灾害预测和等离子体预警都面临空间背景与动态驱动共同作用、标注稀疏和事件间分布变化。本文以现场水痕深度监督融合地形、地学基础模型嵌入和气象历史，检查是否能补偿地形误差。空间分支含静态与年度信息，不能类比为实时可见光前兆，更需要核对时间可用性和峰值时刻条件。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何用峰前可用的动态变量及空间上下文预测峰值深度，观测监督能否纠正静态输入的系统偏差，学习到的映射是否跨风暴成立。已知峰值时刻和历史事后年度嵌入会改变部署可用信息，因此表中提前量不是完整滚动报警系统。
+对当前主题的关键意义在于：原始应用领域：洪水峰深预警与遥感。可迁移模块与训练目标：空间交叉注意、物理时序描述及主深度与辅助风险监督。对应问题：P3 无关视觉证据抑制、弱前兆监督与跨装置泛化。预计计算/显存影响：固定描述压缩长时序，但两个高分辨率分支有成本，尚无目标硬件计时。主要风险：AE 查询 DEM 不等于时序选图，已知峰时与事后数据不可用于真实预警。最小验证实验：严格按炮和装置隔离，比较单时序、全局图像拼接、时序查询局部图像，加入模态缺失，只用报警时刻前数据，测固定误报率下提前量、跨装置召回、峰值显存及全链路延迟。匹配度中高，机制可迁移性中，工程可行性中，证据对迁移失败较强，对跨域成功不足，最新进展为 v1，完整目标空缺。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <p>TCM-Former 分别编码 DEM、AlphaEarth 与过去 144 小时气象。六个 24 小时窗口使用物理定义的 58 维描述，按提前量掩码。AE 作为查询，DEM 作为键值交叉注意，增强后的空间特征与原 DEM、气象特征拼接，经 MLP 输出深度及峰值高程残差、危险等级辅助任务。原文不是时序查询图像局部证据。
+阅读时需要把方法设计与主要结果一起看：摘要和第 4 节，5689 条水痕、39 个事件并配雨外样本。随机测试的水痕点，6 小时前深度 MAE 为 0.39 m，对应同点水面减 DEM 为 0.93 m。未见事件的水痕深度 R² 为 0.03，MAE 0.57 m 与常数中位数预测相同，不能引用包含干燥样本的 0.26 m 作为水痕预测误差。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要和第 4 节，5689 条水痕、39 个事件并配雨外样本。随机测试的水痕点，6 小时前深度 MAE 为 0.39 m，对应同点水面减 DEM 为 0.93 m。未见事件的水痕深度 R² 为 0.03，MAE 0.57 m 与常数中位数预测相同，不能引用包含干燥样本的 0.26 m 作为水痕预测误差。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>提前量相对附近传感器的已知峰值，未预测峰值时刻。早期事件使用事后年份 AE 嵌入，作者分层检查不等于部署时可获得。AE 与 DEM 部分冗余，按事件测试深度预测失败。没有原生异步诊断或跨装置实验证据，未确认官方代码可用，未独立复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>TCM-Former：地学影像与气象时序融合的跨事件失败审计的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域：洪水峰深预警与遥感。可迁移模块与训练目标：空间交叉注意、物理时序描述及主深度与辅助风险监督。对应问题：P3 无关视觉证据抑制、弱前兆监督与跨装置泛化。预计计算/显存影响：固定描述压缩长时序，但两个高分辨率分支有成本，尚无目标硬件计时。主要风险：AE 查询 DEM 不等于时序选图，已知峰时与事后数据不可用于真实预警。最小验证实验：严格按炮和装置隔离，比较单时序、全局图像拼接、时序查询局部图像，加入模态缺失，只用报警时刻前数据，测固定误报率下提前量、跨装置召回、峰值显存及全链路延迟。匹配度中高，机制可迁移性中，工程可行性中，证据对迁移失败较强，对跨域成功不足，最新进展为 v1，完整目标空缺。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-5">
+        <div class="panel__head">
+          <h2>在研课题启发 - P4：Token 压缩与筛选</h2>
+        </div>
+        <article class="paper-card" id="paper-9" data-paper-card data-top-pick="false">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">在研课题启发 - P4：Token 压缩与筛选</p>
+              <h3>BtsPruner：全局代表与局部细节互补保留</h3>
+              <p class="paper__subtitle">BtsPruner: Role-Aware Visual Token Pruning for Large Vision-Language Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">【P4】11 月 3 日 v1，独立新候选。依据编码层间注意集中度定位角色转换，兼顾全局代表和早层局部细节，直接回应单一重要性硬删会丢稀疏证据的问题。原文仍是固定预算静态视觉 Token，尚无高频瞬态和模态故障验证，不能称通用自适应压缩系统。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zihao Qi、Zhibo Zhang、Miaoxin Zhang、Jincheng Cai、Zengqiang Yan，机构：原始 HTML 未明确机构映射，本轮不推断</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2611.04537" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2611.04537" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/Halenbest/BtsPruner" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2611.04537" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" >
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>【P4】11 月 3 日 v1，独立新候选。依据编码层间注意集中度定位角色转换，兼顾全局代表和早层局部细节，直接回应单一重要性硬删会丢稀疏证据的问题。原文仍是固定预算静态视觉 Token，尚无高频瞬态和模态故障验证，不能称通用自适应压缩系统。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>视觉语言模型的图像 Token 占据大量上下文，简单按单一注意力或相似度删减可能保住全局语义却丢掉少量细节。早期特征与后期全局代表承担不同角色，为压缩策略提供层间互补信息。本文将这种观察转为免训练选择，适合先做静态图像对照，再判断能否迁移到事件或科学视频。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样在同一预算下同时保留全局覆盖与局部细节，并把选择开销计入整体收益。注意力只是交互线索，不是完整因果解释。局部细节回溯选择不等于对已丢弃 Token 建立动态在线回收，也不能保证低能量短事件被保留。
+对当前主题的关键意义在于：原始应用领域：大视觉语言模型静态图像问答。可迁移模块与训练目标：免训练的角色转换定位、多样性代表和早层细节回溯，无新增训练目标。对应问题：P4 全局语义压缩与稀疏瞬态证据保留冲突。预计计算/显存影响：缩短 LLM 输入与 KV，但须保存选层注意信息并统计筛选成本，未必减少视觉编码器计算。主要风险：低注意短事件被忽略，固定比例不随模态可靠性变化，回溯不是真正运行时回收。最小验证实验：同 Token 预算比较注意硬删、相似合并、角色互补，在视频或事件窗口注入短异常，记录事件召回、证据覆盖、选择耗时、FLOPs、KV、峰值显存与 P95 全链路延迟。匹配度高，机制可迁移性中高，工程可行性中，证据中等，最新进展为 v1，完整目标空缺。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/4d0fbb502a9d76af.png" alt="Figure 1: Qualitative comparison of visual token pruning strategies. Existing methods select tokens according to a unified criterion, while BtsPruner preserves complementary token roles under the same token budget.">
+                    <figcaption>Figure 1: Qualitative comparison of visual token pruning strategies. Existing methods select tokens according to a unified criterion, while BtsPruner preserves complementary token ...</figcaption>
+                  </figure>
+                  <p>根据注意集中度随层的变化识别角色转折点，从后期编码发现被全局引用的代表，配合多样性过滤，再递归回溯早期注意关系找互补局部细节。将两类 Token 合并为固定预算输入投影器和语言模型，默认两类比例 0.5。Qwen-VL 的查询投影另需按保留视觉响应选择查询。
+阅读时需要把方法设计与主要结果一起看：表 1，LLaVA-1.5-7B 保留 32/576 Token，作者平均相对性能保持 91.6%，不是任意任务准确率。表 6，单 RTX3090、POPE、LLaVA-NeXT-7B 从 2880 到 160 Token，CUDA 延迟 821 到 138 ms，约 5.95 倍。该计时不能直接等于在线传感、预处理和完整系统端到端加速。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>表 1，LLaVA-1.5-7B 保留 32/576 Token，作者平均相对性能保持 91.6%，不是任意任务准确率。表 6，单 RTX3090、POPE、LLaVA-NeXT-7B 从 2880 到 160 Token，CUDA 延迟 821 到 138 ms，约 5.95 倍。该计时不能直接等于在线传感、预处理和完整系统端到端加速。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>预算和全局局部分配固定，缺自适应时变预算、流式回收、原生事件和短前兆召回实验。作者注意力解释有明确边界。原文给出的 Halenbest/BtsPruner 仓库 HTTP 404，本轮不能记为已开源，未复现。API 将作者写作 Jincheng Cai，HTML 排版为 Jin Cheng Cai，本文作者字段依 API 保留，不推断不同作者。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>BtsPruner：全局代表与局部细节互补保留的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>原始应用领域：大视觉语言模型静态图像问答。可迁移模块与训练目标：免训练的角色转换定位、多样性代表和早层细节回溯，无新增训练目标。对应问题：P4 全局语义压缩与稀疏瞬态证据保留冲突。预计计算/显存影响：缩短 LLM 输入与 KV，但须保存选层注意信息并统计筛选成本，未必减少视觉编码器计算。主要风险：低注意短事件被忽略，固定比例不随模态可靠性变化，回溯不是真正运行时回收。最小验证实验：同 Token 预算比较注意硬删、相似合并、角色互补，在视频或事件窗口注入短异常，记录事件召回、证据覆盖、选择耗时、FLOPs、KV、峰值显存与 P95 全链路延迟。匹配度高，机制可迁移性中高，工程可行性中，证据中等，最新进展为 v1，完整目标空缺。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-6">
+        <div class="panel__head">
+          <h2>多模态推理与可靠性</h2>
+        </div>
+        <article class="paper-card" id="paper-5" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">多模态推理与可靠性</p>
+              <h3>VIGOR：按反事实视觉证据安排扩散解码顺序</h3>
+              <p class="paper__subtitle">VIGOR: Visual Gain Ordering for Hallucination Mitigation in Multimodal Discrete Diffusion Language Models</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">主推荐，11 月 3 日 v1。检验同一候选词在有图和遮图时的置信变化，用视觉增益决定何时承诺输出，避免语言先验过早锁定错误。它是可靠性干预而非计算压缩，额外前向会让解码约慢一倍，今天值得作为视觉证据依赖与时延之间的明确对照。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Junzhe Chen、Tian Qin、Eugenie Shi、Tianshu Zhang、Qiang Ju、Lijie Wen，机构：清华大学、悉尼大学、斯坦福大学、百川智能</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2611.05066" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2611.05066" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/THU-BPM/Vigor" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2611.05066" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>主推荐，11 月 3 日 v1。检验同一候选词在有图和遮图时的置信变化，用视觉增益决定何时承诺输出，避免语言先验过早锁定错误。它是可靠性干预而非计算压缩，额外前向会让解码约慢一倍，今天值得作为视觉证据依赖与时延之间的明确对照。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>多模态离散扩散模型并行填充被遮盖位置，较早确定的词会影响后续解码。高置信候选可能仅来自语言先验，而没有图像证据。改变承诺顺序提供了独立于微调与新骨干的干预点，也提醒科学图像问答不能把流畅回答当作测量支持。本文只验证了可控制内部解码的离散扩散模型。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何区分候选词的视觉支持和语言先验，并在不改候选词身份的情况下减少早期错误承诺。视觉消融是依赖性探针，不能自动等同因果解释或置信校准，遮图造成的分布变化也可能影响分数。
+对当前主题的关键意义在于：最小实验在可控视觉模型上做有图、遮图和打乱图像三组探针，固定回答长度和解码步数，统计局部证据错误、延迟及 allocated/reserved 显存。先评估视觉依赖分数是否与人工证据一致，再考虑把探针蒸馏成廉价可靠性头。此为主推荐，不占 P4 名额。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/2a3c4503e06c9cc4.png" alt="Figure 2: Overview of Vigor in blockwise decoding. At each decoding step, the model runs image-conditioned and visual-ablation passes with shared parameters, computes a Vigor score for every masked position, and selects the top- k k positions to unmask within the current block.">
+                    <figcaption>Figure 2: Overview of Vigor in blockwise decoding. At each decoding step, the model runs image-conditioned and visual-ablation passes with shared parameters, computes a Vigor score...</figcaption>
+                  </figure>
+                  <p>每一步运行原始有图前向和额外遮图前向，对有图前向选定的同一个候选词计算概率差与对数比之和。用该视觉增益替换普通置信排序，选择本步解遮位置，保留原始候选词和块调度。两种骨干分别遮盖视觉嵌入或离散视觉 Token，不修改权重。
+阅读时需要把方法设计与主要结果一起看：第 4 节表 1，LLaDA-V 的 COCO POPE Random 准确率 83.7 到 85.9，F1 85.1 到 87.6。附录表 5 的 A100 计时在各长度均约为基线两倍。表 6 Lumina-DiMOO 峰值 allocated 显存 29.56 到 34.93 GiB，作者按未舍入值报告增加 5.36 GiB，reserved 基本不变，两种显存口径不能混淆。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>第 4 节表 1，LLaDA-V 的 COCO POPE Random 准确率 83.7 到 85.9，F1 85.1 到 87.6。附录表 5 的 A100 计时在各长度均约为基线两倍。表 6 Lumina-DiMOO 峰值 allocated 显存 29.56 到 34.93 GiB，作者按未舍入值报告增加 5.36 GiB，reserved 基本不变，两种显存口径不能混淆。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>每步增加前向，约两倍解码时间，需内部概率和调度访问。仅两类离散扩散骨干，不能外推到普通自回归模型、在线破裂预警或原生事件可靠性。原文仓库 HTTP 200，未审计代码覆盖或复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>VIGOR：按反事实视觉证据安排扩散解码顺序的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验在可控视觉模型上做有图、遮图和打乱图像三组探针，固定回答长度和解码步数，统计局部证据错误、延迟及 allocated/reserved 显存。先评估视觉依赖分数是否与人工证据一致，再考虑把探针蒸馏成廉价可靠性头。此为主推荐，不占 P4 名额。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-7">
+        <div class="panel__head">
+          <h2>时序分析与条件预测</h2>
+        </div>
+        <article class="paper-card" id="paper-3" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">时序分析与条件预测</p>
+              <h3>CATF：由上下文选择单一预测专家</h3>
+              <p class="paper__subtitle">CATF: A Manager-Worker Framework for Context-Aware Time-Series Forecasting</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">主推荐，11 月 3 日 v1。将上下文驱动的工况差异转为可检查的硬路由，让每次预测只运行一个 Worker，适合判断工况专门化是否比持续堆大骨干更有效。优先读讨论和成本附录，区分真正的工况发现与基线训练稳定性改善，不将单专家推理误写成全流程成本下降。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Yueqiao Chen、Dongyu Liu，机构：加州大学戴维斯分校</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2611.05325" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2611.05325" target="_blank" rel="noreferrer">PDF</a><a href="https://github.com/via-cs/catf" target="_blank" rel="noreferrer">项目页</a><a href="https://arxiv.org/html/2611.05325" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>主推荐，11 月 3 日 v1。将上下文驱动的工况差异转为可检查的硬路由，让每次预测只运行一个 Worker，适合判断工况专门化是否比持续堆大骨干更有效。优先读讨论和成本附录，区分真正的工况发现与基线训练稳定性改善，不将单专家推理误写成全流程成本下降。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>环境变量与日历信息往往改变目标序列的生成机制，同一预测器可能难以同时学习各类工况。人工分组依赖经验，软混合专家又要评估多个分支。CATF 用数据学习分区，并让单个专家负责预测，为分工况科学时序预测提供了一个可解释的结构对照。它关心上下文条件预测，尚未处理真实异步传感器或连续时间积分。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>怎样在没有人工工况标签时，让路由器发现有预测意义的分区，并避免初始表现稍好的专家持续抢占样本。路由选择与预测精度的关系需要单独验证，知道哪个专家工作不能解释专家内部的物理因果，也不能保证未见工况下仍有合适专家。
+对当前主题的关键意义在于：最小实验对现有规则采样预测基线比较单模型、随机路由、工况标签路由和学习路由，固定训练 GPU 时间，按炮划分，输入仅含预测前可用工况。报告跨工况误差、路由稳定性、各专家负载和 P95 延迟，先确认专门化收益，再引入 P1 的异步编码。此为主推荐，不占 P1 名额。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/f9c3a2f22efef8da.png" alt="Figure 1. Manager–Worker architecture of CATF . (a) Given the target history X X and the context history C C , the manager ℳ \mathcal{M} outputs routing probabilities P ^ \hat{P} over the K K workers. The worker with the highest probability, 𝒲 k ∗ \mathcal{W}_{k^{*}} , receives the same input ( X , C ) (X,C) and alone predicts the future target sequence Y ^ \hat{Y} . (b) Inside the manager: feature encoding (L1), L m L_{m} Transformer encoder layers (L2), last-timestep pooling, a decoder (L3), and softmax (L4). Two-panel architecture diagram. The upper panel shows the target history and the context history entering a manager that selects one worker by the largest routing probability. The same historical input is passed directly to that worker, which alone produces the target forecast. The lower panel expands the manager into feature encoding, Transformer encoders, last-timestep pooling, decoder, and softmax.">
+                    <figcaption>Figure 1. Manager–Worker architecture of CATF . (a) Given the target history X X and the context history C C , the manager ℳ \mathcal{M} outputs routing probabilities P ^ \hat{P} o...</figcaption>
+                  </figure>
+                  <p>Transformer Manager 读取目标历史和上下文历史，训练与推理均硬分配给一个 Worker。用各专家预测损失形成路由监督，并按训练样本分配量正则化以防塌缩。框架支持多种预测主干，主实验统一三个专家。推理执行 Manager 与选中专家，训练仍涉及所有专家和联合优化。
+阅读时需要把方法设计与主要结果一起看：摘要及第 5 节，五个数据集、四种预测长度和两种归一化下，200 组配对比较有 162 组 MSE 改善。80/10/10 按时间划分，输入 96 步，预测 96/192/336/720 步，每设置五次运行。19/20 是选各自更优归一化后的最佳模型比较，15/20 是与零样本 Time-MoE 比较，不是同等预训练资源结论。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>摘要及第 5 节，五个数据集、四种预测长度和两种归一化下，200 组配对比较有 162 组 MSE 改善。80/10/10 按时间划分，输入 96 步，预测 96/192/336/720 步，每设置五次运行。19/20 是选各自更优归一化后的最佳模型比较，15/20 是与零样本 Time-MoE 比较，不是同等预训练资源结论。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>讨论说明 PM2.5-RV 专家几乎不分化，Weather 的部分收益来自不稳定基线被稳定化，其训练目标含缺失编码。部分消融差异不显著。训练时间与显存明显增加，不能据单一 Worker 宣称低于单模型推理。官方仓库 HTTP 200，尚未审计实现或复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>CATF：由上下文选择单一预测专家的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验对现有规则采样预测基线比较单模型、随机路由、工况标签路由和学习路由，固定训练 GPU 时间，按炮划分，输入仅含预测前可用工况。报告跨工况误差、路由稳定性、各专家负载和 P95 延迟，先确认专门化收益，再引入 P1 的异步编码。此为主推荐，不占 P1 名额。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+      <section class="panel" id="section-8">
+        <div class="panel__head">
+          <h2>本轮空缺判断与更新边界</h2>
+        </div>
+        <article class="paper paper--note">
+          <div class="paper__header">
+            <div>
+              <p class="paper__section">本轮空缺判断与更新边界</p>
+              <h3>本轮空缺判断</h3>
+            </div>
+          </div>
+          <p>P1 完整真实 Δt、异步多通道、高低频统一与百万长度线性显存骨干本轮空缺。BREM-NET 仅提供离散门控递归与任务分离，模拟两百万样本不等于百万长度训练显存验证。</p>
+          <p>P2 完整原生 RGB-Event 属性识别、时钟错位、可靠性融合和缺模态校准本轮空缺。HIVE-Diff 使用分箱事件且生成耗时，取其教师适配而非完整视频重建。</p>
+          <p>P3 可见光与数值诊断异步融合、低延迟、跨装置破裂提前预警完整证据本轮空缺。TCM-Former 是地学输入且跨事件深度失败，不能称跨装置成功。</p>
+          <p>P4 自适应时变预算、短瞬态保真、证据可回收和完整部署计时共同满足的系统本轮空缺。BtsPruner 是固定预算，CUDA 延迟不是完整在线链路。</p>
+          <p>直接聚变 AI 去重后合格新增本轮空缺。新召回的高电流托卡马克逃逸电子缓解研究为等离子体不稳定性物理建模，不把它包装为 AI 方法。虚拟电路 v3、SpectralTF-MAE v2 与 CTLite v2 未完成版本实质差异审计，不重复推荐。</p>
+          <p>OmniPack API 限流，默认分支未变不能说明所有分支与实验均无更新，本轮不重复推荐。</p>
+        </article>
+      </section>
+      <section class="panel" id="section-9">
+        <div class="panel__head">
+          <h2>视觉语言与细粒度理解</h2>
+        </div>
+        <article class="paper-card" id="paper-4" data-paper-card data-top-pick="true">
+          <div class="paper-card__rank">01</div>
+          <div class="paper-card__body">
+            <div class="paper__header">
+              <div>
+              <p class="paper__section">视觉语言与细粒度理解</p>
+              <h3>PROVE：扰动、修复和复核共同训练视觉验证器</h3>
+              <p class="paper__subtitle">Perturb, Repair, Verify: Self-Play Vision-Language Verifiers for Compositional Understanding</p>
+              </div>
+              <div class="paper__meta">
+                <span class="chip">2026-11-03 UTC，v1，预印本，正式接收未核验，本轮首次收录，非今日投稿</span>
+                <span class="chip chip--accent">recommend</span>
+              </div>
+            </div>
+            <p class="paper-card__summary">主推荐，11 月 3 日 v1。用同一多模态骨干扮演扰动者、验证者和修复者，从正确图文对产生局部属性与关系错误。价值在于构造不断变化的难负例并追踪修复证据，适合细粒度视觉理解与数据质检。自评奖励的闭环也有盲点，必须配套独立人工测试，不能把自身接受当作真实正确。</p>
+            <div class="paper__grid">
+              <div>
+                <h4>作者 / 机构</h4>
+                <p>Zijun Huang、Yingjun Du、Cees G. M. Snoek，机构：南加州大学、阿姆斯特丹大学</p>
+                <p class="muted">未提供</p>
+              </div>
+              <div>
+                <h4>原始链接</h4>
+                <p class="link-row">
+<a href="https://arxiv.org/abs/2611.05158" target="_blank" rel="noreferrer">论文</a><a href="https://arxiv.org/pdf/2611.05158" target="_blank" rel="noreferrer">PDF</a><a href="https://arxiv.org/html/2611.05158" target="_blank" rel="noreferrer">图源</a>                </p>
+              </div>
+            </div>
+            <details class="paper__details" open>
+              <summary>展开详情</summary>
+              <div class="paper__details-body">
+                <section class="paper-block"><h4>选取理由</h4><p>主推荐，11 月 3 日 v1。用同一多模态骨干扮演扰动者、验证者和修复者，从正确图文对产生局部属性与关系错误。价值在于构造不断变化的难负例并追踪修复证据，适合细粒度视觉理解与数据质检。自评奖励的闭环也有盲点，必须配套独立人工测试，不能把自身接受当作真实正确。</p></section>
+                <section class="paper-block">
+                  <h4>研究背景</h4>
+                  <p class="paper-block__note">由原简报的核心问题、选取理由和相关性整理，不替代原文背景综述。</p>
+                  <p>图像和描述的整体相似度可能掩盖颜色、数量和关系上的细小错误。静态负例很快被模型学会，强教师生成新标注则增加成本并限制学习上限。本文从已正确的图文对出发，用类型化局部编辑保持问题可定位，再让模型解释和修复。目标是增强图文验证能力，尚不是原生事件输入或多人属性识别系统。</p>
+                </section>
+                <section class="paper-block"><h4>核心问题</h4><p>如何让负例难度随验证器共同变化，同时防止任意改写引入多个不可定位错误。模型既产生反馈又接受修复，是否会共谋于表面规则，需要与固定负例、外部裁判和去掉修复的版本比较。没有外部强裁判不等于完全不需要正确的种子配对。
+对当前主题的关键意义在于：最小实验只在训练集建立颜色和数量扰动对，以固定负例为对照，训练一个小验证头或适配器，保留独立人工复核测试集。统计属性错误召回、误拒率、校准和每类修复成功率，并对奖励投机做盲审。此为主推荐，可供 P2 借鉴但不重复计入。</p></section>
+                <section class="paper-block paper-block--method">
+                  <h4>方法与关键创新</h4>
+                  <figure class="method-figure">
+                    <img src="../assets/figures/58215af742648162.png" alt="Figure 2 : Overview of PROVE . A single Qwen backbone is reused under three role prompts: Mutator, Verifier, and Repairer. Given a clean image-caption pair, the Mutator produces a localized caption perturbation, e.g., changing an attribute from “red” to “blue”, to create a hard image-text mismatch. The Verifier first judges the perturbed caption and returns a decision-feedback pair ( y 1 , r 1 ) (y_{1},r_{1}) that diagnoses the mismatch. Conditioned on this feedback, the Repairer generates a revised caption, which is then checked by the same Verifier to obtain ( y 2 , r 2 ) (y_{2},r_{2}) . Rewards from the two verification rounds train the shared model with DrGRPO, so perturbation, verification, and repair co-evolve within one multimodal backbone.">
+                    <figcaption>Figure 2 : Overview of PROVE . A single Qwen backbone is reused under three role prompts: Mutator, Verifier, and Repairer. Given a clean image-caption pair, the Mutator produces a ...</figcaption>
+                  </figure>
+                  <p>同一共享参数模型通过角色提示执行扰动、第一次验证、修复、第二次验证。确定性编辑器只允许对象、属性、计数和关系四类局部修改，过滤非法编辑。两轮验证结果与编辑惩罚构造奖励，用 DrGRPO 更新共享骨干。部署只调用验证角色，不必运行整个训练闭环。
+阅读时需要把方法设计与主要结果一起看：第 4 节表 1，同一 Qwen3.5-2B 骨干的四组组合理解平均分从 83.22 到 86.85。表 2 三组更广任务平均 58.77 到 61.03。48k 训练对、5k 验证，主训练为 8 张 A100，参考运行 11 小时，即 88 GPU 小时。跨方法表格的训练数据与骨干不同，不能当受控排名。</p>
+                </section>
+                <section class="paper-block"><h4>实验结果</h4><p>第 4 节表 1，同一 Qwen3.5-2B 骨干的四组组合理解平均分从 83.22 到 86.85。表 2 三组更广任务平均 58.77 到 61.03。48k 训练对、5k 验证，主训练为 8 张 A100，参考运行 11 小时，即 88 GPU 小时。跨方法表格的训练数据与骨干不同，不能当受控排名。</p></section>
+                <section class="paper-block"><h4>局限性</h4><p>依赖正确种子配对和模型自身判断，可能强化共享盲点。重复运行附录中部分广泛任务有小幅退化，不能概括为通用能力全面提升。原文承诺发布训练与评价代码，本轮未确认公开官方仓库，未独立复现。</p></section>
+                <section class="paper-block"><h4>总结</h4><p>PROVE：扰动、修复和复核共同训练视觉验证器的迁移判断限于上述机制，按最小验证检验收益与风险。</p></section>
+                <section class="paper-block"><h4>研究相关性与启发</h4><p>最小实验只在训练集建立颜色和数量扰动对，以固定负例为对照，训练一个小验证头或适配器，保留独立人工复核测试集。统计属性错误召回、误拒率、校准和每类修复成功率，并对奖励投机做盲审。此为主推荐，可供 P2 借鉴但不重复计入。</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" id="trend-notes">
+        <div class="panel__head">
+          <h2>趋势判断</h2>
+        </div>
+        <article class="trend">
+          <h3>多模态收益要与可用信息和隔离单位一起读</h3>
+          <p>BREM-NET 的行为监督不在推理输入中，TCM-Former 依赖已知峰时且部分历史事件使用事后年度嵌入。优先审查信息是否在预测时可获得，再以按主体、按事件、按炮、按装置的隔离评价迁移，避免将随机划分优势直接用于部署决策。</p>
+        </article>
+        <article class="trend">
+          <h3>训练免费与部署免费都需要核算</h3>
+          <p>VIGOR 无需训练却约增加一倍解码时间，CATF 推理只运行一个专家但训练成本增长，HIVE-Diff 冻结大部分网络仍需教师与迭代去噪。BtsPruner 的固定预算收益需加上筛选开销与完整前处理计时。资源比较应同时报告峰值 allocated 显存、缓存字节和 P95 全链路时延。</p>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
